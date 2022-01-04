@@ -11,35 +11,40 @@ use PHPUnit\Framework\TestCase;
 
 class ConfirmTest extends TestCase
 {
-    public function testSuccess(): void
-    {
-        $user = $this->buildSignedUpUser();
+	public function testSuccess(): void
+	{
+		$user = $this->buildSignedUpUser();
 
-        $user->confirmSignUp();
+		$user->confirmSignUp();
 
-        self::assertFalse($user->isWait());
-        self::assertTrue($user->isActive());
+		self::assertFalse($user->isWait());
+		self::assertTrue($user->isActive());
 
-        self::assertNull($user->getConfirmToken());
-    }
+		self::assertNull($user->getConfirmToken());
+	}
 
-    public function testAlready(): void
-    {
-        $user = $this->buildSignedUpUser();
+	public function testAlready(): void
+	{
+		$user = $this->buildSignedUpUser();
 
-        $user->confirmSignUp();
-        $this->expectExceptionMessage('User is already confirmed.');
-        $user->confirmSignUp();
-    }
+		$user->confirmSignUp();
+		$this->expectExceptionMessage('User is already confirmed.');
+		$user->confirmSignUp();
+	}
 
-    private function buildSignedUpUser(): User
-    {
-        return new User(
-            Id::next(),
-            new \DateTimeImmutable(),
-            new Email('test@app.test'),
-            'hash',
-            $token = 'token'
-        );
-    }
+	private function buildSignedUpUser(): User
+	{
+		$user = new User(
+			Id::next(),
+			new \DateTimeImmutable()
+		);
+
+		$user->signUpByEmail(
+			new Email('test@app.test'),
+			'hash',
+			$token = 'token'
+		);
+
+		return $user;
+	}
 }
