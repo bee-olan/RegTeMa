@@ -7,7 +7,10 @@ namespace App\Model\User\Entity\User;
 interface UserRepository
 {
 	public function findByConfirmToken(string $token): ?User;
-    public function hasByEmail(Email $email): bool;
+
+	public function hasByEmail(Email $email): bool;
+
+	public function get(Id $id): User;
 
 	public function findByResetToken(string $token): ?User;
 
