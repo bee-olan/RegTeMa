@@ -121,6 +121,7 @@
       <path value="$PROJECT_DIR$/manager/vendor/symfony/options-resolver" />
       <path value="$PROJECT_DIR$/manager/vendor/symfony/property-access" />
       <path value="$PROJECT_DIR$/manager/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/manager/vendor/finesse/swiftmailer-defaults-plugin" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
