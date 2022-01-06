@@ -19,7 +19,7 @@ class User
 {
 	private const STATUS_NEW = 'new';
 	private const STATUS_WAIT = 'wait';
-	private const STATUS_ACTIVE = 'active';
+	public const STATUS_ACTIVE = 'active';
 
 	/**
 	 * @ORM\Column(type="user_user_id")
@@ -215,3 +215,4 @@ class User
 		}
 	}
 }
+
