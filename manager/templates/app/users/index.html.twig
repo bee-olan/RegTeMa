@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Пользователи{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item active">Пользователи</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+    <div class="box">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Дата рег-ции</th>
+                <th>Ф.И или Ник</th>
+                <th>Эл-почта</th>
+                <th>Роль</th>
+                <th>Статус </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.date|date('Y-m-d') }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user_role(user.role) }}</td>
+                    <td>{{ user_status(user.status) }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
