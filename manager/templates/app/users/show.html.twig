@@ -18,6 +18,12 @@
         {% if user.id.value != app.user.id %}
             <a href="{{ path('users.role', {'id': user.id}) }}" class="btn btn-primary">Сменить роль</a>
         {% endif %}
+        {% if user.wait %}
+            <form action="{{ path('users.confirm', {'id': user.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                <input type="hidden" name="token" value="{{ csrf_token('confirm') }}" />
+                <button type="submit" class="btn btn-success">Подтвердить</button>
+            </form>
+        {% endif %}
     </div>
 
     <div class="box">
