@@ -14,17 +14,18 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', Type\TextType::class, ['required' => false, 'attr' => ['placeholder' => 'Name']])
-            ->add('email', Type\TextType::class, ['required' => false, 'attr' => ['placeholder' => 'Email']])
+            ->add('name', Type\TextType::class, ['required' => false, 'attr' => ['placeholder' => 'Ф.И. или Ник']])
+            ->add('email', Type\TextType::class, ['required' => false, 'attr' => ['placeholder' => 'Эл.почта']])
             ->add('status', Type\ChoiceType::class, ['choices' => [
-                'Wait' => User::STATUS_WAIT,
-                'Active' => User::STATUS_ACTIVE,
-                'Blocked' => User::STATUS_BLOCKED,
-            ], 'required' => false, 'placeholder' => 'All statuses'])
+                'Ожидает' => User::STATUS_WAIT,
+                'Активен' => User::STATUS_ACTIVE,
+                'Блокирован' => User::STATUS_BLOCKED,
+            ], 'required' => false, 'placeholder' => 'Все статусы'])
             ->add('role', Type\ChoiceType::class, ['choices' => [
-                'User' => Role::USER,
-                'Admin' => Role::ADMIN,
-            ], 'required' => false, 'placeholder' => 'All roles']);
+                'Пользователи' => Role::USER,
+								'Модераторы' => Role::MODERATOR,
+                'Админы' => Role::ADMIN,
+            ], 'required' => false, 'placeholder' => 'Все роли']);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
