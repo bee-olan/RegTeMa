@@ -1,0 +1,15 @@
+<a{% for attr, value  in options %} {{ attr }}="{{ value }}"{% endfor %} style="color: rgba(0, 0, 0, 0.68)
+;">
+    <span class="pull-right">
+        {% if sorted %}
+            {% if direction == 'desc' %}
+                <i class="fa fa-sort-alpha-asc"></i>
+            {% else %}
+                <i class="fa fa-sort-alpha-desc"></i>
+            {% endif %}
+        {% else %}
+            <i class="fa fa-sort" style="color: red;"></i>
+        {% endif %}
+    </span>
+    {{ title }}
+</a>

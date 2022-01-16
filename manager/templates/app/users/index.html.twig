@@ -37,11 +37,16 @@
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th>Дата рег-ции</th>
-                <th>Ф.И или Ник</th>
-                <th>Эл-почта</th>
-                <th>Роль</th>
-                <th>Статус </th>
+                <th>{{ knp_pagination_sortable(pagination, 'Дата рег-ции', 'date') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Ф.И или Ник', 'name') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Эл-почта', 'email') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Роль', 'role') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Статус', 'status') }}</th>
+{#                <th>Дата рег-ции</th>#}
+{#                <th>Ф.И или Ник</th>#}
+{#                <th>Эл-почта</th>#}
+{#                <th>Роль</th>#}
+{#                <th>Статус </th>#}
             </tr>
             </thead>
             <tbody>
