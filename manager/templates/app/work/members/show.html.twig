@@ -4,9 +4,9 @@
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work') }}">Work</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work.members') }}">Members</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work') }}">Работа</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work.members') }}">Участники</a></li>
         <li class="breadcrumb-item active">{{ member.name.full }}</li>
     </ol>
 {% endblock %}
@@ -35,19 +35,15 @@
         <table class="table table-bordered">
             <tbody>
                 <tr>
-                    <th>Name</th>
-                    <td>{{ member.name.full }}</td>
-                </tr>
-                <tr>
+                    <th>Ф.И. или Ник</th>
                     <th>Email</th>
-                    <td>{{ member.email.value }}</td>
-                </tr>
-                <tr>
                     <th>Group</th>
-                    <td>{{ member.group.name }}</td>
+                    <th>Status</th>
                 </tr>
                 <tr>
-                    <th>Status</th>
+                    <td>{{ member.name.full }}</td>
+                    <td>{{ member.email.value }}</td>
+                    <td>{{ member.group.name }}</td>
                     <td>{{ member_status(member.status.name) }}</td>
                 </tr>
             </tbody>

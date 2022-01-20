@@ -34,16 +34,24 @@
                 <button type="submit" class="btn btn-success">Подтвердить</button>
             </form>
         {% endif %}
+        {% if is_granted('ROLE_WORK_MANAGE_MEMBERS') %}
+            {% if member %}
+                <a href="{{ path('work.members.show', {'id': member.id}) }}" class="btn btn-primary">Смотреть
+                    участника</a>
+            {% else %}
+                <a href="{{ path('work.members.create', {'id': user.id}) }}" class="btn btn-primary">Создать участника</a>
+            {% endif %}
+        {% endif %}
         {% if user.active and user.id.value != app.user.id %}
             <form action="{{ path('users.block', {'id': user.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                 <input type="hidden" name="token" value="{{ csrf_token('block') }}" />
-                <button type="submit" class="btn btn-danger">Block</button>
+                <button type="submit" class="btn btn-danger">Блокировать</button>
             </form>
         {% endif %}
         {% if user.blocked %}
             <form action="{{ path('users.activate', {'id': user.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                 <input type="hidden" name="token" value="{{ csrf_token('activate') }}" />
-                <button type="submit" class="btn btn-success">Activate</button>
+                <button type="submit" class="btn btn-success">Активировать</button>
             </form>
         {% endif %}
     </div>
