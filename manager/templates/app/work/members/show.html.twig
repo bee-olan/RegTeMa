@@ -14,19 +14,21 @@
 {% block body %}
 
     <div class="controls">
-        <a href="{{ path('work.members.edit', {'id': member.id}) }}" class="btn btn-primary">Edit</a>
-        <a href="{{ path('work.members.move', {'id': member.id}) }}" class="btn btn-primary">Move</a>
-        <a href="{{ path('users.show', {'id': member.id}) }}" class="btn btn-primary">View User</a>
+        <a href="{{ path('work.members.edit', {'id': member.id}) }}" class="btn btn-primary">Редактировать</a>
+        <a href="{{ path('work.members.move', {'id': member.id}) }}" class="btn btn-primary">Перевести в другую
+            группу</a>
+        <a href="{{ path('users.show', {'id': member.id}) }}" class="btn btn-primary">Смотреть Пользователей</a>
         {% if member.active and member.id.value != app.user.id %}
-            <form action="{{ path('work.members.archive', {'id': member.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+            <form action="{{ path('work.members.archive', {'id': member.id}) }}" method="post" onsubmit="return
+            confirm('Вы   уверены ?')">
                 <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
-                <button type="submit" class="btn btn-danger">Archive</button>
+                <button type="submit" class="btn btn-danger">Архивировать</button>
             </form>
         {% endif %}
         {% if member.archived %}
-            <form action="{{ path('work.members.reinstate', {'id': member.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+            <form action="{{ path('work.members.reinstate', {'id': member.id}) }}" method="post" onsubmit="return confirm('Вы   уверены?')">
                 <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
-                <button type="submit" class="btn btn-success">Reinstate</button>
+                <button type="submit" class="btn btn-success">Восстановить</button>
             </form>
         {% endif %}
     </div>

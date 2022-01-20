@@ -4,9 +4,9 @@
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work') }}">Work</a></li>
-        <li class="breadcrumb-item active">Members</li>
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work') }}">Работа</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work.members') }}">Участники</a></li>
     </ol>
 {% endblock %}
 
@@ -22,8 +22,8 @@
                 <div class="col-md-2">{{ form_widget(form.group) }}</div>
                 <div class="col-md-2">{{ form_widget(form.status) }}</div>
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary">Filter</button>
-                    <a href="{{ path('work.members') }}" class="btn btn-outline-secondary">Reset</a>
+                    <button type="submit" class="btn btn-primary">Фильтр</button>
+                    <a href="{{ path('work.members') }}" class="btn btn-outline-secondary">Сбросить</a>
                 </div>
             </div>
             {{ form_end(form) }}
