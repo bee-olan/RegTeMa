@@ -24,23 +24,23 @@ class Form extends AbstractType
     {
         $builder
             ->add('name', Type\TextType::class, ['required' => false, 'attr' => [
-                'placeholder' => 'Name',
+                'placeholder' => 'Ф.И. или Ник',
                 'onchange' => 'this.form.submit()',
             ]])
             ->add('email', Type\TextType::class, ['required' => false, 'attr' => [
-                'placeholder' => 'Email',
+                'placeholder' => 'Эл-почта',
                 'onchange' => 'this.form.submit()',
             ]])
             ->add('group', Type\ChoiceType::class, [
                 'choices' => array_flip($this->groups->assoc()),
                 'required' => false,
-                'placeholder' => 'All groups',
+                'placeholder' => 'Все группы',
                 'attr' => ['onchange' => 'this.form.submit()']
             ])
             ->add('status', Type\ChoiceType::class, ['choices' => [
-                'Active' => Status::ACTIVE,
-                'Archived' => Status::ARCHIVED,
-            ], 'required' => false, 'placeholder' => 'All statuses', 'attr' => ['onchange' => 'this.form.submit()']]);
+                'Активен' => Status::ACTIVE,
+                'Архивирован' => Status::ARCHIVED,
+            ], 'required' => false, 'placeholder' => 'Все статусы', 'attr' => ['onchange' => 'this.form.submit()']]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

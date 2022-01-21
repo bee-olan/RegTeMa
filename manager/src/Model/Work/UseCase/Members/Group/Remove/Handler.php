@@ -7,24 +7,33 @@ namespace App\Model\Work\UseCase\Members\Group\Remove;
 use App\Model\Flusher;
 use App\Model\Work\Entity\Members\Group\GroupRepository;
 use App\Model\Work\Entity\Members\Group\Id;
+use App\Model\Work\Entity\Members\Member\MemberRepository;
 
 class Handler
 {
-    private $groups;
-    private $flusher;
+	private $groups;
+	private $members;
+	private $flusher;
 
-    public function __construct(GroupRepository $groups, Flusher $flusher)
-    {
-        $this->groups = $groups;
-        $this->flusher = $flusher;
-    }
+	public function __construct(GroupRepository $groups, MemberRepository $members, Flusher $flusher)
+	{
 
-    public function handle(Command $command): void
-    {
-        $group = $this->groups->get(new Id($command->id));
+		$this->groups = $groups;
+		$this->members = $members;
+		$this->flusher = $flusher;
+	}
 
-        $this->groups->remove($group);
+	public function handle(Command $command): void
+	{
+		$group = $this->groups->get(new Id($command->id));
 
-        $this->flusher->flush();
-    }
+		if ($this->members->hasByGroup($group->getId())) {
+			throw new \DomainException('Group is not empty.');
+		}
+
+		$this->groups->remove($group);
+
+		$this->flusher->flush();
+	}
 }
+
