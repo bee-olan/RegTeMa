@@ -39,7 +39,7 @@ class Form extends AbstractType
             ])
             ->add('status', Type\ChoiceType::class, ['choices' => [
                 'Активен' => Status::ACTIVE,
-                'Архивирован' => Status::ARCHIVED,
+                'Заархивирован' => Status::ARCHIVED,
             ], 'required' => false, 'placeholder' => 'Все статусы', 'attr' => ['onchange' => 'this.form.submit()']]);
     }
 
