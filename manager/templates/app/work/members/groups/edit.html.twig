@@ -4,14 +4,17 @@
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work') }}">Work</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work.members.groups') }}">Groups</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work') }}">Работа</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work.members') }}">Участники</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work.members.groups') }}">Группы</a></li>
         <li class="breadcrumb-item active">{{ group.name }}</li>
     </ol>
 {% endblock %}
 
 {% block body %}
+
+    {{ include('app/work/members/groups/_tabs.html.twig') }}
 
     <div class="card">
         <div class="card-body">

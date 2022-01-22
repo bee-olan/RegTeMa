@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Members{% endblock %}
+{% block title %}Участники{% endblock %}
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
@@ -11,6 +11,8 @@
 {% endblock %}
 
 {% block body %}
+
+    {{ include('app/work/members/_tabs.html.twig') }}
 
     <div class="card">
         <div class="card-body">
@@ -35,10 +37,10 @@
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'Name', 'name') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Email', 'email') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Group', 'group') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Status', 'status') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Ф.И. или Ник', 'name') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Эл-почта', 'email') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Группа', 'group') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Статус', 'status') }}</th>
             </tr>
             </thead>
             <tbody>
