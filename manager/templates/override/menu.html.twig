@@ -1,0 +1,21 @@
+{% extends '@KnpMenu/menu.html.twig' %}
+
+{% block label %}
+    {% if item.extra('icon') is not null %}
+        <i class="{{ item.extra('icon') }}"></i>
+    {% endif %}
+    {% if item.extra('image') is not null %}
+        <div class="{{ item.extra('image') }}"></div>
+{#        <img src="{{ item.extra('image') }}" />#}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{% block item %}
+    {% if item.displayed %}
+        {% if matcher.isCurrent(item) %}
+            {% do item.setLinkAttribute('class', item.getLinkAttribute('class') ~ ' ' ~ options.currentClass) %}
+        {% endif %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
