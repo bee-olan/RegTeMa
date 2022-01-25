@@ -25,7 +25,7 @@ class ProjectMenu
 			->setChildrenAttributes(['class' => 'nav nav-tabs mb-4']);
 
 		$menu
-			->addChild('Dashboard', [
+			->addChild('Панель', [
 				'route' => 'work.projects.project.show',
 				'routeParameters' => ['id' => $options['project_id']]
 			])
@@ -38,7 +38,7 @@ class ProjectMenu
 
 		if ($this->auth->isGranted('ROLE_WORK_MANAGE_PROJECTS')) {
 			$menu
-				->addChild('Settings', [
+				->addChild('Настройки', [
 					'route' => 'work.projects.project.settings',
 					'routeParameters' => ['project_id' => $options['project_id']]
 				])
