@@ -37,7 +37,11 @@ class Department
         $this->id = $id;
         $this->name = $name;
     }
-
+	public function edit(string $name): void
+	{
+		$this->name = $name;
+//        $this->sort = $sort;
+	}
     public function isNameEqual(string $name): bool
     {
         return $this->name === $name;

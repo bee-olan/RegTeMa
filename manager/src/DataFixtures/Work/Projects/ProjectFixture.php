@@ -14,9 +14,9 @@ class ProjectFixture extends Fixture
 {
 	public function load(ObjectManager $manager): void
 	{
-		$active = $this->createProject('First Project', 1);
-		$active->addDepartment(DepartmentId::next(), 'Development');
-		$active->addDepartment(DepartmentId::next(), 'Marketing');
+		$active = $this->createProject('Первый Project', 1);
+		$active->addDepartment(DepartmentId::next(), 'Итальянки');
+		$active->addDepartment(DepartmentId::next(), 'Бак-фаст');
 		$manager->persist($active);
 
 		$active = $this->createProject('Second Project', 2);
