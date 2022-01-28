@@ -59,6 +59,9 @@ services:
         resource: '../src/Widget'
         tags: ['twig.extension']
 
+    App\Menu\Work\ProjectsMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: work_projects }]
+
     App\Menu\SidebarMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: sidebar }]
 
