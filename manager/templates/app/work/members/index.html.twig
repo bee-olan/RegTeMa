@@ -40,6 +40,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'Ф.И. или Ник', 'name') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Эл-почта', 'email') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Группа', 'group') }}</th>
+                <th>Projects</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Статус', 'status') }}</th>
             </tr>
             </thead>
@@ -49,6 +50,7 @@
                     <td><a href="{{ path('work.members.show', {'id': member.id}) }}">{{ member.name }}</a></td>
                     <td>{{ member.email }}</td>
                     <td>{{ member.group }}</td>
+                    <td>{{ member.memberships_count }}</td>
                     <td>{{ member_status(member.status) }}</td>
                 </tr>
             {% endfor %}

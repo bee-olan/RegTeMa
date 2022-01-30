@@ -54,4 +54,26 @@
         </table>
     </div>
 
+        {% if departments %}
+        <div class="box">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Проекты</th>
+                        <th>Отделы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for department in departments %}
+                        <tr>
+                            <td><a href="{{ path('work.projects.project.show', {'id': department.project_id}) }}">{{ department.project_name }}</a></td>
+                            <td>{{ department.department_name }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+
 {% endblock %}
