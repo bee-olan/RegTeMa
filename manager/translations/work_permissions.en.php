@@ -6,5 +6,6 @@ use App\Model\Work\Entity\Projects\Role\Permission;
 
 return [
     Permission::MANAGE_PROJECT_MEMBERS => 'Управлять Участниками Проекта',
-    // 'permissions' => 'РАЗРЕШЕНИЯ',
+    Permission::VIEW_TASKS => 'Просмотр задач',
+    Permission::MANAGE_TASKS => 'Управление задачами',
 ];
