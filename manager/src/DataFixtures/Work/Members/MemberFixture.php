@@ -17,52 +17,54 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class MemberFixture extends Fixture implements DependentFixtureInterface
 {
-	public const REFERENCE_ADMIN = 'work_member_admin';
+    public const REFERENCE_ADMIN = 'work_member_admin';
+    public const REFERENCE_USER = 'work_member_user';
 
-	public function load(ObjectManager $manager): void
-	{
-		/**
-		 * @var User $admin
-		 * @var User $user
-		 */
-		$admin = $this->getReference(UserFixture::REFERENCE_ADMIN);
-		$user = $this->getReference(UserFixture::REFERENCE_USER);
+    public function load(ObjectManager $manager): void
+    {
+        /**
+         * @var User $admin
+         * @var User $user
+         */
+        $admin = $this->getReference(UserFixture::REFERENCE_ADMIN);
+        $user = $this->getReference(UserFixture::REFERENCE_USER);
 
-		/**
-		 * @var Group $staff
-		 * @var Group $customers
-		 */
-		$staff = $this->getReference(GroupFixture::REFERENCE_STAFF);
-		$customers = $this->getReference(GroupFixture::REFERENCE_CUSTOMERS);
+        /**
+         * @var Group $staff
+         * @var Group $customers
+         */
+        $staff = $this->getReference(GroupFixture::REFERENCE_STAFF);
+        $customers = $this->getReference(GroupFixture::REFERENCE_CUSTOMERS);
 
-		$member = $this->createMember($admin, $staff);
-		$manager->persist($member);
-		$this->setReference(self::REFERENCE_ADMIN, $member);
+        $member = $this->createMember($admin, $staff);
+        $manager->persist($member);
+        $this->setReference(self::REFERENCE_ADMIN, $member);
 
-		$member = $this->createMember($user, $customers);
-		$manager->persist($member);
+        $member = $this->createMember($user, $customers);
+        $manager->persist($member);
+        $this->setReference(self::REFERENCE_USER, $member);
 
-		$manager->flush();
-	}
+        $manager->flush();
+    }
 
-	public function getDependencies(): array
-	{
-		return [
-			UserFixture::class,
-			GroupFixture::class,
-		];
-	}
+    public function getDependencies(): array
+    {
+        return [
+            UserFixture::class,
+            GroupFixture::class,
+        ];
+    }
 
-	private function createMember(User $user, Group $group): Member
-	{
-		return new Member(
-			new Id($user->getId()->getValue()),
-			$group,
-			new Name(
-				$user->getName()->getFirst(),
-				$user->getName()->getLast()
-			),
-			new Email($user->getEmail() ? $user->getEmail()->getValue() : null)
-		);
-	}
+    private function createMember(User $user, Group $group): Member
+    {
+        return new Member(
+            new Id($user->getId()->getValue()),
+            $group,
+            new Name(
+                $user->getName()->getFirst(),
+                $user->getName()->getLast()
+            ),
+            new Email($user->getEmail() ? $user->getEmail()->getValue() : null)
+        );
+    }
 }
