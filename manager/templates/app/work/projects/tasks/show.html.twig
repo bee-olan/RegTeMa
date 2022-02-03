@@ -4,11 +4,11 @@
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work') }}">Work</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work.projects') }}">Projects</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work') }}">Работа</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work.projects') }}">Проекты</a></li>
         <li class="breadcrumb-item"><a href="{{ path('work.projects.project.show', {'id': project.id}) }}">{{ project.name }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work.projects.project.tasks', {'project_id': project.id}) }}">Tasks</a>
+        <li class="breadcrumb-item"><a href="{{ path('work.projects.project.tasks', {'project_id': project.id}) }}">Задачи</a>
         </li>
         <li class="breadcrumb-item active">{{ task.name }}</li>
     </ol>
@@ -18,43 +18,43 @@
 
     <h1 class="mt-0 mb-3 font-xl">
         {% if task.parent %}
-            <a href="{{ path('work.projects.tasks.show', {'id': task.parent.id}) }}">{{ task.parent.name }}</a> /
+            <a href="{{ path('work.projects.tasks.show', {'id': task.parent.id}) }}"><b>{{ task.parent.name }}</b></a> /
         {% endif %}
-        {{ task.name }}
+       <b> {{ task.name }}</b>
     </h1>
 
     <div class="controls">
 
         {% if task.hasExecutor(member.id) %}
             {% if task.isNew() %}
-                <form action="{{ path('work.projects.tasks.start', {'id': task.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                <form action="{{ path('work.projects.tasks.start', {'id': task.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                     <input type="hidden" name="token" value="{{ csrf_token('start') }}" />
-                    <button type="submit" class="btn btn-success">Start</button>
+                    <button type="submit" class="btn btn-success">Старт</button>
                 </form>
             {% endif %}
         {% else %}
-            <form action="{{ path('work.projects.tasks.take', {'id': task.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+            <form action="{{ path('work.projects.tasks.take', {'id': task.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                 <input type="hidden" name="token" value="{{ csrf_token('take') }}" />
-                <button type="submit" class="btn btn-success">Take</button>
+                <button type="submit" class="btn btn-success">Задача</button>
             </form>
             {% if task.isNew() %}
-                <form action="{{ path('work.projects.tasks.take_and_start', {'id': task.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                <form action="{{ path('work.projects.tasks.take_and_start', {'id': task.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                     <input type="hidden" name="token" value="{{ csrf_token('take-and-start') }}" />
-                    <button type="submit" class="btn btn-success">Take & Start</button>
+                    <button type="submit" class="btn btn-success">Бери и начинай</button>
                 </form>
             {% endif %}
         {% endif %}
-        <a href="{{ path('work.projects.tasks.assign', {'id': task.id}) }}" class="btn btn-primary">Assign Executors</a>
-        <a href="{{ path('work.projects.project.tasks.create', {'project_id': project.id}) }}?parent={{ task.id }}" class="btn btn-primary">Add SubTasks</a>
-        <a href="{{ path('work.projects.tasks.edit', {'id': task.id}) }}" class="btn btn-primary">Edit</a>
+        <a href="{{ path('work.projects.tasks.assign', {'id': task.id}) }}" class="btn btn-primary">Назначать Исполнителей</a>
+        <a href="{{ path('work.projects.project.tasks.create', {'project_id': project.id}) }}?parent={{ task.id }}" class="btn btn-primary">Добавление подзадач</a>
+        <a href="{{ path('work.projects.tasks.edit', {'id': task.id}) }}" class="btn btn-primary">Редактировать</a>
         <div class="btn-group">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More&hellip;</button>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Больше&hellip;</button>
             <div class="dropdown-menu" x-placement="bottom-start">
-                <a class="dropdown-item" href="{{ path('work.projects.tasks.move', {'id': task.id}) }}">Move To Project&hellip;</a>
-                <a class="dropdown-item" href="{{ path('work.projects.tasks.child', {'id': task.id}) }}">Set As Child Of&hellip;</a>
-                <form class="dropdown-item" action="{{ path('work.projects.tasks.delete', {'id': task.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                <a class="dropdown-item" href="{{ path('work.projects.tasks.move', {'id': task.id}) }}">Перейти К Проекту&hellip;</a>
+                <a class="dropdown-item" href="{{ path('work.projects.tasks.child', {'id': task.id}) }}">Установлен Как Потомок&hellip;</a>
+                <form class="dropdown-item" action="{{ path('work.projects.tasks.delete', {'id': task.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                     <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
-                    <button type="submit" class="btn" style="padding: 0">Delete</button>
+                    <button type="submit" class="btn" style="padding: 0">Удалить</button>
                 </form>
             </div>
         </div>
@@ -64,19 +64,19 @@
         <div class="card">
             <div class="card-header">
                 <a href="{{ path('work.projects.project.tasks.create', {'project_id': project.id}) }}?parent={{ task.id }}" class="btn btn-sm btn-default py-0 pull-right"><span class="fa fa-plus"></span></a>
-                Subtasks
+                Подзадачи
             </div>
             <table class="table table-bordered table-hover mb-0">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Project</th>
-                        <th>Name</th>
+                        <th>Дата</th>
+                        <th>Проект</th>
+                        <th>Имя</th>
                         <th>Type</th>
                         <th><span class="fa fa-fire"></span></th>
-                        <th>Executor</th>
-                        <th>Status</th>
-                        <th>Ready</th>
+                        <th>Исполнитель</th>
+                        <th>Статус</th>
+                        <th>Готов</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -116,7 +116,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Task</div>
+                <div class="card-header">Задача</div>
                 <table class="table table-bordered mb-0">
                     <tbody>
                         <tr>
@@ -124,9 +124,9 @@
                             <td colspan="3">{{ task.id }}</td>
                         </tr>
                         <tr>
-                            <th>Create Date</th>
+                            <th>Дата создания</th>
                             <td>{{ task.date|date('Y-m-d H:i:s') }}</td>
-                            <th>Plan Date</th>
+                            <th>Запланированная</th>
                             <td>
                                 {{ task.planDate ? task.planDate|date('Y-m-d') : '' }}
 
@@ -146,7 +146,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Type</th>
+                            <th>Тип</th>
                             <td>
                                 {{ form_start(typeForm) }}
                                 <div class="row">
@@ -173,7 +173,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Priority</th>
+                            <th>Приоритет</th>
                             <td>
                                 {{ form_start(priorityForm) }}
                                 <div class="row">
@@ -185,7 +185,7 @@
                                 </div>
                                 {{ form_end(priorityForm) }}
                             </td>
-                            <th>Progress</th>
+                            <th>Прогресс</th>
                             <td>
                                 {{ form_start(progressForm) }}
                                 <div class="row">
@@ -213,7 +213,7 @@
         </div>
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header">Author</div>
+                <div class="card-header">Автор</div>
                 <table class="table mb-0">
                     <tbody>
                         <tr>
@@ -231,7 +231,7 @@
             <div class="card">
                 <div class="card-header">
                     <a href="{{ path('work.projects.tasks.assign', {'project_id': project.id, 'id': task.id}) }}" class="btn btn-sm btn-default py-0 pull-right"><span class="fa fa-plus"></span></a>
-                    Executors
+                    Исполнители
                 </div>
                 {% if task.executors %}
                     <table class="table mb-0">
@@ -245,7 +245,7 @@
                                         <a href="{{ path('work.members.show', {'id': executor.id}) }}">{{ executor.name.full }}</a>
                                     </td>
                                     <td style="width: 22px">
-                                        <form action="{{ path('work.projects.tasks.revoke', {'project_id': project.id, 'id': task.id, 'member_id': executor.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                                        <form action="{{ path('work.projects.tasks.revoke', {'project_id': project.id, 'id': task.id, 'member_id': executor.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                                             <input type="hidden" name="token" value="{{ csrf_token('revoke') }}" />
                                             <button type="submit" class="btn btn-sm btn-default">
                                                 <span class="fa fa-times"></span>
