@@ -10,43 +10,43 @@ use PHPUnit\Framework\TestCase;
 
 class ResetTest extends TestCase
 {
-	public function testSuccess(): void
-	{
-		$user = (new UserBuilder())->viaEmail()->confirmed()->build();
+    public function testSuccess(): void
+    {
+        $user = (new UserBuilder())->viaEmail()->confirmed()->build();
 
-		$now = new \DateTimeImmutable();
-		$token = new ResetToken('token', $now->modify('+1 day'));
+        $now = new \DateTimeImmutable();
+        $token = new ResetToken('token', $now->modify('+1 day'));
 
-		$user->requestPasswordReset($token, $now);
+        $user->requestPasswordReset($token, $now);
 
-		self::assertNotNull($user->getResetToken());
+        self::assertNotNull($user->getResetToken());
 
-		$user->passwordReset($now, $hash = 'hash');
+        $user->passwordReset($now, $hash = 'hash');
 
-		self::assertNull($user->getResetToken());
-		self::assertEquals($hash, $user->getPasswordHash());
-	}
+        self::assertNull($user->getResetToken());
+        self::assertEquals($hash, $user->getPasswordHash());
+    }
 
-	public function testExpiredToken(): void
-	{
-		$user = (new UserBuilder())->viaEmail()->confirmed()->build();
+    public function testExpiredToken(): void
+    {
+        $user = (new UserBuilder())->viaEmail()->confirmed()->build();
 
-		$now = new \DateTimeImmutable();
-		$token = new ResetToken('token', $now);
+        $now = new \DateTimeImmutable();
+        $token = new ResetToken('token', $now);
 
-		$user->requestPasswordReset($token, $now);
+        $user->requestPasswordReset($token, $now);
 
-		$this->expectExceptionMessage('Reset token is expired.');
-		$user->passwordReset($now->modify('+1 day'), 'hash');
-	}
+        $this->expectExceptionMessage('Reset token is expired.');
+        $user->passwordReset($now->modify('+1 day'), 'hash');
+    }
 
-	public function testNotRequested(): void
-	{
-		$user = (new UserBuilder())->viaEmail()->confirmed()->build();
+    public function testNotRequested(): void
+    {
+        $user = (new UserBuilder())->viaEmail()->confirmed()->build();
 
-		$now = new \DateTimeImmutable();
+        $now = new \DateTimeImmutable();
 
-		$this->expectExceptionMessage('Resetting is not requested.');
-		$user->passwordReset($now, 'hash');
-	}
+        $this->expectExceptionMessage('Resetting is not requested.');
+        $user->passwordReset($now, 'hash');
+    }
 }

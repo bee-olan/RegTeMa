@@ -44,7 +44,7 @@ class SetChildOfTest extends TestCase
         $project = (new ProjectBuilder())->build();
         $task = (new TaskBuilder())->build($project, $member);
 
-        $this->expectExceptionMessage('Цикломатические дети.');
+        $this->expectExceptionMessage('Cyclomatic children.');
         $task->setChildOf($task);
     }
 

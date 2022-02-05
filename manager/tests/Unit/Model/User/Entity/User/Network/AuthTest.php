@@ -12,26 +12,25 @@ use PHPUnit\Framework\TestCase;
 
 class AuthTest extends TestCase
 {
-	public function testSuccess(): void
-	{
-		$user = User::signUpByNetwork(
-			$id = Id::next(),
-			$date = new \DateTimeImmutable(),
-			$name = new Name('First', 'Last'),
-			$network = 'vk',
-			$identity = '0000001'
-		);
+    public function testSuccess(): void
+    {
+        $user = User::signUpByNetwork(
+            $id = Id::next(),
+            $date = new \DateTimeImmutable(),
+            $name = new Name('First', 'Last'),
+            $network = 'vk',
+            $identity = '0000001'
+        );
 
-		self::assertTrue($user->isActive());
+        self::assertTrue($user->isActive());
 
-		self::assertEquals($id, $user->getId());
-		self::assertEquals($date, $user->getDate());
-		self::assertEquals($name, $user->getName());
+        self::assertEquals($id, $user->getId());
+        self::assertEquals($date, $user->getDate());
+        self::assertEquals($name, $user->getName());
 
-		self::assertCount(1, $networks = $user->getNetworks());
-		self::assertInstanceOf(Network::class, $first = reset($networks));
-		self::assertEquals($network, $first->getNetwork());
-		self::assertEquals($identity, $first->getIdentity());
-	}
+        self::assertCount(1, $networks = $user->getNetworks());
+        self::assertInstanceOf(Network::class, $first = reset($networks));
+        self::assertEquals($network, $first->getNetwork());
+        self::assertEquals($identity, $first->getIdentity());
+    }
 }
-

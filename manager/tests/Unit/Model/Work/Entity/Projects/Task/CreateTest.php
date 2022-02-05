@@ -19,7 +19,7 @@ class CreateTest extends TestCase
         $group = (new GroupBuilder())->build();
         $member = (new MemberBuilder())->build($group);
         $project = (new ProjectBuilder())->build();
-        // $id = 2;
+
         $task = new Task(
             $id = new Id(1),
             $project,
@@ -43,6 +43,8 @@ class CreateTest extends TestCase
 
         self::assertNull($task->getParent());
         self::assertNull($task->getPlanDate());
+        self::assertNull($task->getStartDate());
+        self::assertNull($task->getEndDate());
 
         self::assertTrue($task->isNew());
     }
