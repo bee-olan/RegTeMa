@@ -1,0 +1,28 @@
+Live Server -- не установила, но рекомендуют
+
+Live Sass Compiler - пока нет -позволяет компилировать в css не выходя
+
+EditorConfigGenerate  - есть
+
+Image Preview -есть -просмотр картинок
+
+css peek - удалила, но надо ли? всплывающие окошки при работе c html 
+
+Prettier Formatter   - не работает - приводит любой код в нормальный вид
+            CMD+ Shif + P
+
+Intellisense - много всего
+
+Path Intellisense
+
+Git Merger - установила
+
+Git Graph- установила
+
+Polacode - делать скиншое кода -- Вид-> Палитра команд-> Polacode
+         сделать копию - вставить - дать названи - сохранить
+
+Autoprefixer - нет добавляет код для корректной работы в других браузерах
+
+
+Night Owl новая синяя тема

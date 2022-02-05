@@ -16,12 +16,12 @@ class Form extends AbstractType
     {
         $builder
             ->add('status', Type\ChoiceType::class, ['choices' => [
-                'New' => Status::NEW,
-                'Working' => Status::WORKING,
-                'Need Help' => Status::HELP,
-                'Checking' => Status::CHECKING,
-                'Rejected' => Status::REJECTED,
-                'Done' => Status::DONE,
+                'Новая' => Status::NEW,
+                'В работе' => Status::WORKING,
+                'Нужна помощь' => Status::HELP,
+                'Проверка' => Status::CHECKING,
+                'Отклонена' => Status::REJECTED,
+                'Сделано' => Status::DONE,
             ], 'attr' => ['onchange' => 'this.form.submit()']]);
     }
 
