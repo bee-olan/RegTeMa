@@ -69,8 +69,8 @@ class TasksController extends AbstractController
             $filter,
             $request->query->getInt('page', 1),
             self::PER_PAGE,
-            $request->query->get('sort', 't.id'),
-            $request->query->get('direction', 'desc')
+            $request->query->get('sort'),
+            $request->query->get('direction')
         );
 
         return $this->render('app/work/projects/tasks/index.html.twig', [
@@ -80,7 +80,7 @@ class TasksController extends AbstractController
         ]);
     }
 
-        /**
+    /**
      * @Route("/me", name=".me")
      * @ParamConverter("project", options={"id" = "project_id"})
      * @param Request $request
@@ -101,8 +101,8 @@ class TasksController extends AbstractController
             $filter->forExecutor($this->getUser()->getId()),
             $request->query->getInt('page', 1),
             self::PER_PAGE,
-            $request->query->get('sort', 't.id'),
-            $request->query->get('direction', 'desc')
+            $request->query->get('sort'),
+            $request->query->get('direction')
         );
 
         return $this->render('app/work/projects/tasks/index.html.twig', [
@@ -133,8 +133,8 @@ class TasksController extends AbstractController
             $filter->forAuthor($this->getUser()->getId()),
             $request->query->getInt('page', 1),
             self::PER_PAGE,
-            $request->query->get('sort', 't.id'),
-            $request->query->get('direction', 'desc')
+            $request->query->get('sort'),
+            $request->query->get('direction')
         );
 
         return $this->render('app/work/projects/tasks/index.html.twig', [
@@ -143,7 +143,7 @@ class TasksController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    
+
     /**
      * @Route("/{id}/edit", name=".edit")
      * @param Task $task

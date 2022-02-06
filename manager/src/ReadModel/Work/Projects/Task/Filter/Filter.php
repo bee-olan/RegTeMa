@@ -9,6 +9,7 @@ class Filter
     public $member;
     public $author;
     public $project;
+    public $text;
     public $name;
     public $type;
     public $status;
