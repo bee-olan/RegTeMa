@@ -15,6 +15,7 @@ class Filter
     public $status;
     public $priority;
     public $executor;
+    public $roots;
 
     private function __construct(?string $project)
     {
