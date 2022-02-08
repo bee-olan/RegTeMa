@@ -214,7 +214,9 @@
                     <tbody>
                         {% for file in task.files %}
                             <tr>
-                                <td><a href="{{ storage_path(file.info.path ~ '/' ~ file.info.name) }}" target="_blank">{{ file.info.name }}</a></td>
+                                <td>
+                                    <a href="{{ storage_path(file.info.path ~ '/' ~ file.info.name) }}" target="_blank">{{ file.info.name }}</a>
+                                </td>
                                 <td>{{ (file.info.size / 1024)|number_format(2, '.', ',') }} KB</td>
                                 <td>{{ file.date|date('Y-m-d H:i:s') }}</td>
                                 <td>
@@ -235,7 +237,7 @@
             </div>
             
             {% if task.content %}
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-body pb-0">
                         <p>{{ task.content|markdown|purify|work_processor  }}</p>
                     </div>
