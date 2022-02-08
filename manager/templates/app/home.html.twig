@@ -11,10 +11,21 @@
 {% endblock %}
 
 {% block body %}
-  <div class="immmg"></div>
-  <h1>
-    Переключилась на 11-ю ветку
 
-  </h1>
+{{ work_projects_calendar() }}
+
+    <div class="row">
+        <div class="col-md-6">
+            {{ work_projects_own_tasks() }}
+        </div>
+        <div class="col-md-6">
+            {{ work_projects_tasks_for_me() }}
+        </div>
+    </div>
+
+  
+
+  <div class="immmg"></div>
+  <h1> Переключилась на 11-ю ветку</h1>
   
 {% endblock %}
