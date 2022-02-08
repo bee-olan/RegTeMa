@@ -20,15 +20,15 @@ class Form extends AbstractType
             ->add('parent', Type\IntegerType::class, ['required' => false])
             ->add('plan', Type\DateType::class, ['required' => false, 'widget' => 'single_text', 'input' => 'datetime_immutable'])
             ->add('type', Type\ChoiceType::class, ['choices' => [
-                'Нет' => TaskType::NONE,
-                'Ошибка' => TaskType::ERROR,
+                'None' => TaskType::NONE,
+                'Error' => TaskType::ERROR,
                 'Feature' => TaskType::FEATURE,
             ]])
             ->add('priority', Type\ChoiceType::class, ['choices' => [
-                'Низкий' => 1,
-                'Средний' => 2,
-                'Высокий' => 3,
-                'Экстренный' => 4
+                'Low' => 1,
+                'Normal' => 2,
+                'High' => 3,
+                'Extra' => 4
             ]]);
     }
 

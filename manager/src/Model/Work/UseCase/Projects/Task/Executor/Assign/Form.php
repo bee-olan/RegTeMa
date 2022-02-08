@@ -25,7 +25,7 @@ class Form extends AbstractType
         foreach ($this->members->activeDepartmentListForProject($options['project_id']) as $item) {
             $members[$item['department'] . ' - ' . $item['name']] = $item['id'];
         }
-        
+
         $builder
             ->add('members', Type\ChoiceType::class, [
                 'choices' => $members,
