@@ -7,11 +7,10 @@ namespace App\Model\Work\Entity\Projects\Task;
 use App\Model\Work\Entity\Members\Member\Id as MemberId;
 use App\Model\Work\Entity\Members\Member\Member;
 use App\Model\Work\Entity\Projects\Project\Project;
-use Doctrine\Common\Collections\ArrayCollection;
 use App\Model\Work\Entity\Projects\Task\File\File;
 use App\Model\Work\Entity\Projects\Task\File\Id as FileId;
 use App\Model\Work\Entity\Projects\Task\File\Info;
-
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Webmozart\Assert\Assert;
 
@@ -172,24 +171,36 @@ class Task
         $this->changeStatus(Status::working(), $date);
     }
 
-    public function setChildOf(?Task $parent): void
+    public function setChildOf(Task $parent): void
     {
-        if ($parent) {
-            $current = $parent;
-            do {
-                if ($current === $this) {
-                    throw new \DomainException('Cyclomatic children.');
-                }
-            }
-            while ($current && $current = $current->getParent());
+        if ($parent === $this->parent) {
+            return;
         }
+
+        $current = $parent;
+        do {
+            if ($current === $this) {
+                throw new \DomainException('Cyclomatic children.');
+            }
+        }
+        while ($current && $current = $current->getParent());
 
         $this->parent = $parent;
     }
 
-    public function plan(?\DateTimeImmutable $date): void
+    public function setRoot(): void
+    {
+        $this->parent = null;
+    }
+
+    public function plan(\DateTimeImmutable $date): void
     {
         $this->planDate = $date;
+    }
+
+    public function removePlan(): void
+    {
+        $this->planDate = null;
     }
 
     public function move(Project $project): void
@@ -370,4 +381,3 @@ class Task
         return $this->executors->toArray();
     }
 }
-
