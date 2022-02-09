@@ -35,7 +35,8 @@ class Handler
             $command->content
         );
 
-        $this->flusher->flush();
+        $this->flusher->flush($task);
+        
     }
 }
 
