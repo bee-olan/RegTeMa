@@ -61,7 +61,7 @@ services:
 
     Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler:
         arguments:
-            - '@Predis\Client'
+            - '@Redis'
 
     App\Widget\:
         resource: '../src/Widget'
