@@ -40,6 +40,7 @@ doctrine:
             work_projects_task_file_id: 'App\Model\Work\Entity\Projects\Task\File\IdType'
             work_projects_task_change_id: 'App\Model\Work\Entity\Projects\Task\Change\IdType'
 
+            matkis_u4astniks_group_id: 'App\Model\Matkis\Entity\U4astniks\Group\IdType'
             matkis_rasas_rasa_id: 'App\Model\Matkis\Entity\Rasas\Rasa\IdType'
     orm:
         auto_generate_proxy_classes: true
