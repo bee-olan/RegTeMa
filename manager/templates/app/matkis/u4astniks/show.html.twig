@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Members{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('matkis') }}">Work</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('matkis.u4astniks') }}">Members</a></li>
+        <li class="breadcrumb-item active">{{ u4astnik.name.full }}</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+    <div class="controls">
+        <a href="{{ path('matkis.u4astniks.edit', {'id': u4astnik.id}) }}" class="btn btn-primary">Edit</a>
+        <a href="{{ path('matkis.u4astniks.move', {'id': mu4astnik.id}) }}" class="btn btn-primary">Move</a>
+        <a href="{{ path('users.show', {'id': u4astnik.id}) }}" class="btn btn-primary">View User</a>
+        {% if u4astnik.active and u4astnik.id.value != app.user.id %}
+            <form action="{{ path('matkis.u4astniks.archive', {'id': u4astnik.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
+                <button type="submit" class="btn btn-danger">Archive</button>
+            </form>
+        {% endif %}
+        {% if u4astnik.archived %}
+            <form action="{{ path('matkis.u4astniks.reinstate', {'id': u4astnik.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
+                <button type="submit" class="btn btn-success">Reinstate</button>
+            </form>
+        {% endif %}
+    </div>
+
+    <div class="box">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ u4astnik.name.full }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ u4astnik.email.value }}</td>
+                </tr>
+                <tr>
+                    <th>Group</th>
+                    <td>{{ u4astnik.group.name }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ u4astnik_status(u4astnik.status.name) }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

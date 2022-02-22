@@ -16,6 +16,21 @@ class GroupFetcher
         $this->connection = $connection;
     }
 
+    public function assoc(): array
+    {
+        $stmt = $this->connection->createQueryBuilder()
+            ->select(
+                'id',
+                'name'
+            )
+            ->from('matkis_u4astniks_groups')
+            ->orderBy('name')
+            ->execute();
+
+        return array_column($stmt->fetchAll(FetchMode::ASSOCIATIVE), 'name', 'id');
+    }
+
+
     public function all(): array
     {
         $stmt = $this->connection->createQueryBuilder()
