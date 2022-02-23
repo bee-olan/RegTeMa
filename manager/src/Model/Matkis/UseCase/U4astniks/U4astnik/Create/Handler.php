@@ -31,7 +31,7 @@ class Handler
         $id = new Id($command->id);
 
         if ($this->u4astniks->has($id)) {
-            throw new \DomainException('u4astniks already exists.');
+            throw new \DomainException('U4astnik already exists.');
         }
 
         $group = $this->groups->get(new GroupId($command->group));

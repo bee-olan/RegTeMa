@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Matkis\UseCase\U4astniks\U4astnik\Move;
 
-use App\ReadModel\Matkis\U4astniks\GroupFetcher;
+use App\ReadModel\Work\Members\GroupFetcher;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\Form\FormBuilderInterface;

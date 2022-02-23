@@ -4,15 +4,17 @@
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('matkis') }}">Work</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('matkis.u4astniks') }}">Members</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('matkis.u4astniks.show', {'id': u4astnik.id}) }}">{{ u4astnik.name.full }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('matkis') }}">Работа</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('matkis.u4astniks') }}">Участники</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('matkis.u4astniks.show', {'id': member.id}) }}">{{ member.name.full }}</a></li>
         <li class="breadcrumb-item active">Edit</li>
     </ol>
 {% endblock %}
 
 {% block body %}
+
+    {{ include('app/matkis/u4astniks/_tabs.html.twig') }}
 
     <div class="card">
         <div class="card-body">

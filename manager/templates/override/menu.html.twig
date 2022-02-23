@@ -1,13 +1,20 @@
 {% extends '@KnpMenu/menu.html.twig' %}
 
 {% block label %}
+
     {% if item.extra('icon') is not null %}
         <i class="{{ item.extra('icon') }}"></i>
     {% endif %}
+
     {% if item.extra('image') is not null %}
         <div class="{{ item.extra('image') }}"></div>
 {#        <img src="{{ item.extra('image') }}" />#}
     {% endif %}
+
+    {% if item.extra('image') is not null %}
+        <img class="im" src="{{ item.extra('image') }}" />
+    {% endif %}
+
     {{ parent() }}
 {% endblock %}
 

@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Members{% endblock %}
+{% block title %}Участники{% endblock %}
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('matkis') }}">Work</a></li>
-        <li class="breadcrumb-item active">Members</li>
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('matkis') }}">Работа</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('matkis.u4astniks') }}">Участники</a></li>
     </ol>
 {% endblock %}
 
 {% block body %}
+
+    {{ include('app/matkis/u4astniks/_tabs.html.twig') }}
 
     <div class="card">
         <div class="card-body">
@@ -22,8 +24,8 @@
                 <div class="col-md-2">{{ form_widget(form.group) }}</div>
                 <div class="col-md-2">{{ form_widget(form.status) }}</div>
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary">Filter</button>
-                    <a href="{{ path('matkis.u4astniks') }}" class="btn btn-outline-secondary">Reset</a>
+                    <button type="submit" class="btn btn-primary">Фильтр</button>
+                    <a href="{{ path('matkis.u4astniks') }}" class="btn btn-outline-secondary">Сбросить</a>
                 </div>
             </div>
             {{ form_end(form) }}
@@ -35,19 +37,21 @@
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'Name', 'name') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Email', 'email') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Group', 'group') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Status', 'status') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Ф.И. или Ник', 'name') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Эл-почта', 'email') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Группа', 'group') }}</th>
+                <th>Projects</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Статус', 'status') }}</th>
             </tr>
             </thead>
             <tbody>
-            {% for member in pagination %}
+            {% for u4astnik in pagination %}
                 <tr>
-                    <td><a href="{{ path('work.members.show', {'id': member.id}) }}">{{ member.name }}</a></td>
-                    <td>{{ member.email }}</td>
-                    <td>{{ member.group }}</td>
-                    <td>{{ member_status(member.status) }}</td>
+                    <td><a href="{{ path('matkis.u4astniks.show', {'id': u4astnik.id}) }}">{{ u4astnik.name }}</a></td>
+                    <td>{{ u4astnik.email }}</td>
+                    <td>{{ u4astnik.group }}</td>
+                    <td>{{ u4astnik.memberships_count }}</td>
+                    <td>{{ member_status(u4astnik.status) }}</td>
                 </tr>
             {% endfor %}
             </tbody>

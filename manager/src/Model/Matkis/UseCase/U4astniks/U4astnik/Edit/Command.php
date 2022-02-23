@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Matkis\UseCase\U4astniks\U4astnik\Edit;
 
-use App\Model\Work\Entity\Members\Member\Member;
+use App\Model\Matkis\Entity\U4astniks\U4astnik\U4astnik;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Command
@@ -34,12 +34,12 @@ class Command
         $this->id = $id;
     }
 
-    public static function fromMember(Member $member): self
+    public static function fromMember(U4astnik $u4astnik): self
     {
-        $command = new self($member->getId()->getValue());
-        $command->firstName = $member->getName()->getFirst();
-        $command->lastName = $member->getName()->getLast();
-        $command->email = $member->getEmail()->getValue();
+        $command = new self($u4astnik->getId()->getValue());
+        $command->firstName = $u4astnik->getName()->getFirst();
+        $command->lastName = $u4astnik->getName()->getLast();
+        $command->email = $u4astnik->getEmail()->getValue();
         return $command;
     }
 }

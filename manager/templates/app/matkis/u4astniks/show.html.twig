@@ -4,29 +4,33 @@
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('matkis') }}">Work</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('matkis.u4astniks') }}">Members</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('matkis') }}">Работа</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('matkis.u4astniks') }}">Участники</a></li>
         <li class="breadcrumb-item active">{{ u4astnik.name.full }}</li>
     </ol>
 {% endblock %}
 
 {% block body %}
 
+    {{ include('app/matkis/u4astniks/_tabs.html.twig') }}
+
     <div class="controls">
-        <a href="{{ path('matkis.u4astniks.edit', {'id': u4astnik.id}) }}" class="btn btn-primary">Edit</a>
-        <a href="{{ path('matkis.u4astniks.move', {'id': mu4astnik.id}) }}" class="btn btn-primary">Move</a>
-        <a href="{{ path('users.show', {'id': u4astnik.id}) }}" class="btn btn-primary">View User</a>
+        <a href="{{ path('matkis.u4astniks.edit', {'id': u4astnik.id}) }}" class="btn btn-primary">Редактировать</a>
+        <a href="{{ path('matkis.u4astniks.move', {'id': u4astnik.id}) }}" class="btn btn-primary">Перевести в другую
+            группу</a>
+        <a href="{{ path('users.show', {'id': u4astnik.id}) }}" class="btn btn-primary">Смотреть Пользователей</a>
         {% if u4astnik.active and u4astnik.id.value != app.user.id %}
-            <form action="{{ path('matkis.u4astniks.archive', {'id': u4astnik.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+            <form action="{{ path('matkis.u4astniks.archive', {'id': u4astnik.id}) }}" method="post" onsubmit="return
+            confirm('Вы   уверены ?')">
                 <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
-                <button type="submit" class="btn btn-danger">Archive</button>
+                <button type="submit" class="btn btn-danger">Архивировать</button>
             </form>
         {% endif %}
         {% if u4astnik.archived %}
-            <form action="{{ path('matkis.u4astniks.reinstate', {'id': u4astnik.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+            <form action="{{ path('matkis.u4astniks.reinstate', {'id': u4astnik.id}) }}" method="post" onsubmit="return confirm('Вы   уверены?')">
                 <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
-                <button type="submit" class="btn btn-success">Reinstate</button>
+                <button type="submit" class="btn btn-success">Восстановить</button>
             </form>
         {% endif %}
     </div>
@@ -35,23 +39,41 @@
         <table class="table table-bordered">
             <tbody>
                 <tr>
-                    <th>Name</th>
-                    <td>{{ u4astnik.name.full }}</td>
-                </tr>
-                <tr>
+                    <th>Ф.И. или Ник</th>
                     <th>Email</th>
-                    <td>{{ u4astnik.email.value }}</td>
-                </tr>
-                <tr>
                     <th>Group</th>
-                    <td>{{ u4astnik.group.name }}</td>
+                    <th>Status</th>
                 </tr>
                 <tr>
-                    <th>Status</th>
-                    <td>{{ u4astnik_status(u4astnik.status.name) }}</td>
+                    <td>{{ u4astnik.name.full }}</td>
+                    <td>{{ u4astnik.email.value }}</td>
+                    <td>{{ u4astnik.group.name }}</td>
+                    <td>{{ member_status(u4astnik.status.name) }}</td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+        {% if departments %}
+        <div class="box">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Проекты</th>
+                        <th>Отделы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for department in departments %}
+                        <tr>
+                            <td><a href="{{ path('matkis.projects.project.show', {'id': department.project_id}) }}">{{ department.project_name }}</a></td>
+                            <td>{{ department.department_name }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
 
 {% endblock %}

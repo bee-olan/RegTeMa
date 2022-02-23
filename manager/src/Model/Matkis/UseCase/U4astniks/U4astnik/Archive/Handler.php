@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace App\Model\Matkis\UseCase\U4astniks\U4astnik\Archive;
 
 use App\Model\Flusher;
-use App\Model\Work\Entity\Members\Member\Id;
-use App\Model\Work\Entity\Members\Member\MemberRepository;
+use App\Model\Matkis\Entity\U4astniks\U4astnik\Id;
+use App\Model\Matkis\Entity\U4astniks\U4astnik\U4astnikRepository;
 
 class Handler
 {
-    private $members;
+    private $u4astniks;
     private $flusher;
 
-    public function __construct(MemberRepository $members, Flusher $flusher)
+    public function __construct(U4astnikRepository $u4astniks, Flusher $flusher)
     {
-        $this->members = $members;
+        $this->u4astniks = $u4astniks;
         $this->flusher = $flusher;
     }
 
     public function handle(Command $command): void
     {
-        $member = $this->members->get(new Id($command->id));
+        $u4astnik = $this->u4astniks->get(new Id($command->id));
 
-        $member->archive();
+        $u4astnik->archive();
 
         $this->flusher->flush();
     }
