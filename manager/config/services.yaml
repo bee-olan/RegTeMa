@@ -19,7 +19,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{DependencyInjection,Model/Paseka/Entity,Model/User/Entity,Model\Matkis\Entity,Model/Work/Entity,Migrations,Tests,Kernel.php}'
+        exclude: '../src/{DependencyInjection,Model/Paseka/Entity,Model/User/Entity,Model/Work/Entity,Migrations,Tests,Kernel.php}'
 
     App\Model\User\Entity\User\UserRepository: ~
     App\Model\Work\Entity\Members\Group\GroupRepository: ~
@@ -27,10 +27,6 @@ services:
     App\Model\Work\Entity\Projects\Role\RoleRepository: ~
     App\Model\Work\Entity\Projects\Project\ProjectRepository: ~
     App\Model\Work\Entity\Projects\Task\TaskRepository: ~
-
-    App\Model\Matkis\Entity\U4astniks\Group\GroupRepository: ~
-    App\Model\Matkis\Entity\U4astniks\U4astnik\U4astnikRepository: ~
-    App\Model\Matkis\Entity\Rasas\Rasa\RasaRepository: ~
 
     App\Model\Paseka\Entity\Pchelowods\Group\GroupRepository: ~
     App\Model\Paseka\Entity\Pchelowods\Pchelowod\PchelowodRepository: ~
@@ -72,12 +68,6 @@ services:
     App\Widget\:
         resource: '../src/Widget'
         tags: ['twig.extension']
-
-    App\Menu\Matkis\MatkaSettingsMenu:
-        tags: [{ name: knp_menu.menu_builder, method: build, alias: matkis_matka_settings }]
-
-    App\Menu\Matkis\MatkaMenu:
-        tags: [{ name: knp_menu.menu_builder, method: build, alias: matkis_matka }]
 
     App\Menu\Paseka\PchelowodsSettingsMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_pchelowods_settings }]
