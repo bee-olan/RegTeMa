@@ -9,7 +9,7 @@ use Doctrine\DBAL\Types\StringType;
 
 class StatusType extends StringType
 {
-    public const NAME = 'matkis_u4astniks_u4astnik_status';
+    public const NAME = 'work_members_member_status';
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
@@ -24,5 +24,10 @@ class StatusType extends StringType
     public function getName(): string
     {
         return self::NAME;
+    }
+
+    public function requiresSQLCommentHint(AbstractPlatform $platform) : bool
+    {
+        return true;
     }
 }

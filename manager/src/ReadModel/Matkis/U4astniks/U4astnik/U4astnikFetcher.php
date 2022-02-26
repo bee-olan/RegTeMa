@@ -1,10 +1,4 @@
 <?php
-// namespace App\ReadModel\Matkis\U4astniks\U4astnik;
-
-// use App\Model\Matkis\Entity\U4astniks\U4astnik\U4astnik;
-// use App\ReadModel\Matkis\U4astniks\U4astnik\Filter\Filter;
-
-declare(strict_types=1);
 
 namespace App\ReadModel\Matkis\U4astniks\U4astnik;
 
@@ -51,8 +45,8 @@ class U4astnikFetcher
                 'TRIM(CONCAT(m.name_first, \' \', m.name_last)) AS name',
                 'm.email',
                 'g.name as group',
-                'm.status',
-                '(SELECT COUNT(*) FROM work_projects_project_memberships ms WHERE ms.member_id = m.id) as memberships_count'
+                'm.status'//,
+                // '(SELECT COUNT(*) FROM work_projects_project_memberships ms WHERE ms.member_id = m.id) as memberships_count'
             )
             ->from('matkis_u4astniks_u4astniks', 'm')
             ->innerJoin('m', 'matkis_u4astniks_groups', 'g', 'm.group_id = g.id');

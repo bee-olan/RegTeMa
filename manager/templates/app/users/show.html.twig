@@ -28,12 +28,14 @@
             <a href="{{ path('users.edit', {'id': user.id}) }}" class="btn btn-primary">Редактировать</a>
             <a href="{{ path('users.role', {'id': user.id}) }}" class="btn btn-primary">Сменить роль</a>
         {% endif %}
+
         {% if user.wait %}
             <form action="{{ path('users.confirm', {'id': user.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                 <input type="hidden" name="token" value="{{ csrf_token('confirm') }}" />
                 <button type="submit" class="btn btn-success">Подтвердить</button>
             </form>
         {% endif %}
+
         {% if is_granted('ROLE_WORK_MANAGE_MEMBERS') %}
             {% if member %}
                 <a href="{{ path('work.members.show', {'id': member.id}) }}" class="btn btn-primary">Смотреть
@@ -42,12 +44,23 @@
                 <a href="{{ path('work.members.create', {'id': user.id}) }}" class="btn btn-primary">Создать участника</a>
             {% endif %}
         {% endif %}
+
+        {% if is_granted('ROLE_WORK_MANAGE_MEMBERS') %}
+            {% if u4astnik %}
+                <a href="{{ path('matkis.u4astniks.show', {'id': u4astnik.id}) }}" 
+             class="btn btn-primary">Матки - смотреть пчеловодов</a>
+            {% else %}
+                <a href="{{ path('matkis.u4astniks.create', {'id': user.id}) }}" class="btn btn-primary">Матки - добавить пчеловодов</a> 
+            {% endif %}
+        {% endif %} 
+
         {% if user.active and user.id.value != app.user.id %}
             <form action="{{ path('users.block', {'id': user.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                 <input type="hidden" name="token" value="{{ csrf_token('block') }}" />
                 <button type="submit" class="btn btn-danger">Блокировать</button>
             </form>
         {% endif %}
+
         {% if user.blocked %}
             <form action="{{ path('users.activate', {'id': user.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                 <input type="hidden" name="token" value="{{ csrf_token('activate') }}" />

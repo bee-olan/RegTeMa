@@ -14,6 +14,7 @@ use App\Model\User\UseCase\SignUp\Confirm;
 use App\ReadModel\User\Filter;
 use App\ReadModel\User\UserFetcher;
 use App\ReadModel\Work\Members\Member\MemberFetcher;
+use App\ReadModel\Matkis\U4astniks\U4astnik\U4astnikFetcher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -244,12 +245,14 @@ class UsersController extends AbstractController
      * @Route("/{id}", name=".show")
      * @param User $user
      * @param MemberFetcher $members
+     * @param U4astnikFetcher $u4astniks
      * @return Response
      */
-    public function show(User $user, MemberFetcher $members): Response
+    public function show(User $user, MemberFetcher $members, U4astnikFetcher $u4astniks): Response
     {
         $member = $members->find($user->getId()->getValue());
+        $u4astnik = $u4astniks->find($user->getId()->getValue());
 
-        return $this->render('app/users/show.html.twig', compact('user', 'member'));
+        return $this->render('app/users/show.html.twig', compact('user', 'member', 'u4astnik'));
     }
 }

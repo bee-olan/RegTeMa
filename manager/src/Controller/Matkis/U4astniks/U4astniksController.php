@@ -64,73 +64,74 @@ class U4astniksController extends AbstractController
         ]);
     }
 
-    // /**
-    //  * @Route("/create/{id}", name=".create")
-    //  * @param User $user
-    //  * @param Request $request
-    //  * @param U4astnikFetcher $u4astniks
-    //  * @param Create\Handler $handler
-    //  * @return Response
-    //  */
-    // public function create(User $user, Request $request, U4astnikFetcher $u4astniks, Create\Handler $handler): Response
-    // {
-    //     if ($u4astniks->exists($user->getId()->getValue())) {
-    //         $this->addFlash('error', 'U4astnik already exists.');
-    //         return $this->redirectToRoute('users.show', ['id' => $user->getId()]);
-    //     }
+    /**
+     * @Route("/create/{id}", name=".create")
+     * @param User $user
+     * @param Request $request
+     * @param U4astnikFetcher $u4astniks
+     * @param Create\Handler $handler
+     * @return Response
+     */
+    public function create(User $user, Request $request, U4astnikFetcher $u4astniks, Create\Handler $handler): Response
+    {
+        if ($u4astniks->exists($user->getId()->getValue())) {
+            $this->addFlash('error', 'U4astnik already exists.');
+            return $this->redirectToRoute('users.show', ['id' => $user->getId()]);
+        }
 
-    //     $command = new Create\Command($user->getId()->getValue());
-    //     $command->firstName = $user->getName()->getFirst();
-    //     $command->lastName = $user->getName()->getLast();
-    //     $command->email = $user->getEmail() ? $user->getEmail()->getValue() : null;
+        $command = new Create\Command($user->getId()->getValue());
+        $command->firstName = $user->getName()->getFirst();
+        $command->lastName = $user->getName()->getLast();
+        $command->email = $user->getEmail() ? $user->getEmail()->getValue() : null;
 
-    //     $form = $this->createForm(Create\Form::class, $command);
-    //     $form->handleRequest($request);
+        $form = $this->createForm(Create\Form::class, $command);
+        $form->handleRequest($request);
 
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         try {
-    //             $handler->handle($command);
-    //             return $this->redirectToRoute('matkis.u4astniks.show', ['id' => $user->getId()]);
-    //         } catch (\DomainException $e) {
-    //             $this->errors->handle($e);
-    //             $this->addFlash('error', $e->getMessage());
-    //         }
-    //     }
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $handler->handle($command);
+                return $this->redirectToRoute('matkis.u4astniks.show', ['id' => $user->getId()]);
+            } catch (\DomainException $e) {
+                $this->errors->handle($e);
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
 
-    //     return $this->render('app/matkis/u4astniks/create.html.twig', [
-    //         'form' => $form->createView(),
-    //     ]);
-    // }
+        return $this->render('app/matkis/u4astniks/create.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 
-    // /**
-    //  * @Route("/{id}/edit", name=".edit")
-    //  * @param U4astnik $u4astnik
-    //  * @param Request $request
-    //  * @param Edit\Handler $handler
-    //  * @return Response
-    //  */
-    // public function edit(U4astnik $u4astnik, Request $request, Edit\Handler $handler): Response
-    // {
-    //     $command = Edit\Command::fromU4astnik($u4astnik);
+    /**
+     * @Route("/{id}/edit", name=".edit")
+     * @param U4astnik $u4astnik
+     * @param Request $request
+     * @param Edit\Handler $handler
+     * @return Response
+     */
+    public function edit(  Request $request, Edit\Handler $handler): Response
+    {
+        // $command = Edit\Command::fromU4astnik($u4astnik);
 
-    //     $form = $this->createForm(Edit\Form::class, $command);
-    //     $form->handleRequest($request);
+        // $form = $this->createForm(Edit\Form::class, $command);
+        // $form->handleRequest($request);
 
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         try {
-    //             $handler->handle($command);
-    //             return $this->redirectToRoute('matkis.u4astniks.show', ['id' => $u4astnik->getId()]);
-    //         } catch (\DomainException $e) {
-    //             $this->errors->handle($e);
-    //             $this->addFlash('error', $e->getMessage());
-    //         }
-    //     }
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     try {
+        //         $handler->handle($command);
+        //         // return $this->redirectToRoute('matkis.u4astniks.show', ['id' => $u4astnik->getId()]);
+        //         return $this->redirectToRoute('matkis.u4astniks');
+        //     } catch (\DomainException $e) {
+        //         $this->errors->handle($e);
+        //         $this->addFlash('error', $e->getMessage());
+        //     }
+        // }
 
-    //     return $this->render('app/matkis/u4astniks/edit.html.twig', [
-    //         'u4astnik' => $u4astnik,
-    //         'form' => $form->createView(),
-    //     ]);
-    // }
+        return $this->render('app/matkis/u4astniks/edit.html.twig', [
+            // 'u4astnik' => $u4astnik,
+            // 'form' => $form->createView(),
+        ]);
+    }
 
     // /**
     //  * @Route("/{id}/move", name=".move")
@@ -228,5 +229,18 @@ class U4astniksController extends AbstractController
     //     $departments = $fetcher->allOfMember($u4astnik->getId()->getValue());
 
     //     return $this->render('app/matkis/u4astniks/show.html.twig', compact('u4astnik', 'departments'));
+    // }
+
+
+    // /**
+    //  * @Route("/{id}", name=".show", requirements={"id"=Guid::PATTERN})
+    //  * @param U4astnik $u4astnik
+    //  * @return Response
+    //  */
+    // public function show(U4astnik $u4astnik): Response
+    // {
+    //     // $departments = $fetcher->allOfMember($u4astnik->getId()->getValue());
+
+    //     return $this->render('app/matkis/u4astniks/show.html.twig', compact('u4astnik'));
     // }
 }

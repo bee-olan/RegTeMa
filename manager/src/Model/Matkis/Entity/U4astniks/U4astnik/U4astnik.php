@@ -64,7 +64,7 @@ class U4astnik
     public function archive(): void
     {
         if ($this->status->isArchived()) {
-            throw new \DomainException('Member is already archived.');
+            throw new \DomainException('Участник уже заархивирован.');
         }
         $this->status = Status::archived();
     }
@@ -72,7 +72,7 @@ class U4astnik
     public function reinstate(): void
     {
         if ($this->status->isActive()) {
-            throw new \DomainException('Member is already active.');
+            throw new \DomainException('Участник уже активен.');
         }
         $this->status = Status::active();
     }

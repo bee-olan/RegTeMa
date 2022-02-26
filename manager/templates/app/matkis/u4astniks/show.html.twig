@@ -13,9 +13,9 @@
 
 {% block body %}
 
-    {{ include('app/matkis/u4astniks/_tabs.html.twig') }}
+    {# {{ include('app/matkis/u4astniks/_tabs.html.twig') }} #}
 
-    <div class="controls">
+    {# <div class="controls">
         <a href="{{ path('matkis.u4astniks.edit', {'id': u4astnik.id}) }}" class="btn btn-primary">Редактировать</a>
         <a href="{{ path('matkis.u4astniks.move', {'id': u4astnik.id}) }}" class="btn btn-primary">Перевести в другую
             группу</a>
@@ -33,7 +33,7 @@
                 <button type="submit" class="btn btn-success">Восстановить</button>
             </form>
         {% endif %}
-    </div>
+    </div> #}
 
     <div class="box">
         <table class="table table-bordered">
@@ -45,16 +45,20 @@
                     <th>Status</th>
                 </tr>
                 <tr>
-                    <td>{{ u4astnik.name.full }}</td>
+                    {# <td>{{ u4astnik.name.full }}</td>
                     <td>{{ u4astnik.email.value }}</td>
                     <td>{{ u4astnik.group.name }}</td>
-                    <td>{{ member_status(u4astnik.status.name) }}</td>
+                    <td>{{ u4astnik_status(u4astnik.status.name) }}</td> #}
+                    <td>111111111</td>
+                    <td>2222222222222</td>
+                    <td>333333333333</td>
+                    <td>33333333333333333</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-        {% if departments %}
+        {# {% if departments %}
         <div class="box">
             <table class="table table-bordered">
                 <thead>
@@ -63,17 +67,17 @@
                         <th>Отделы</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {% for department in departments %}
+                <tbody> #}
+                    {# {% for department in departments %}
                         <tr>
                             <td><a href="{{ path('matkis.projects.project.show', {'id': department.project_id}) }}">{{ department.project_name }}</a></td>
                             <td>{{ department.department_name }}</td>
                         </tr>
-                    {% endfor %}
-                </tbody>
+                    {% endfor %} #}
+                {# </tbody>
             </table>
         </div>
-    {% endif %}
+    {% endif %} #}
 
 
 {% endblock %}

@@ -34,7 +34,7 @@ class Command
         $this->id = $id;
     }
 
-    public static function fromMember(U4astnik $u4astnik): self
+    public static function fromU4astnik(U4astnik $u4astnik): self
     {
         $command = new self($u4astnik->getId()->getValue());
         $command->firstName = $u4astnik->getName()->getFirst();

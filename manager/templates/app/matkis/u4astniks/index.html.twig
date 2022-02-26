@@ -47,11 +47,15 @@
             <tbody>
             {% for u4astnik in pagination %}
                 <tr>
-                    <td><a href="{{ path('matkis.u4astniks.show', {'id': u4astnik.id}) }}">{{ u4astnik.name }}</a></td>
+                    <td>
+                    {# a href="{{ path('matkis.u4astniks.show', {'id': u4astnik.id}) }}">{{ u4astnik.name }}</a> #}
+                    {{ u4astnik.name }}
+                    </td>
                     <td>{{ u4astnik.email }}</td>
                     <td>{{ u4astnik.group }}</td>
-                    <td>{{ u4astnik.memberships_count }}</td>
-                    <td>{{ member_status(u4astnik.status) }}</td>
+                    {# <td>{{ u4astnik.memberships_count }}</td> #}
+                    <td>-------------------</td>
+                    <td>{{ u4astnik_status(u4astnik.status) }}</td>
                 </tr>
             {% endfor %}
             </tbody>
