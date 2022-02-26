@@ -79,6 +79,12 @@ services:
     App\Menu\Matkis\MatkaMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: matkis_matka }]
 
+    App\Menu\Paseka\PchelowodsSettingsMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_pchelowods_settings }]
+
+    App\Menu\Paseka\PchelowodsMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_pchelowods }]
+    
     App\Menu\SidebarMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: sidebar }]
 

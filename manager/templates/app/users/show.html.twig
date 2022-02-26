@@ -46,11 +46,11 @@
         {% endif %}
 
         {% if is_granted('ROLE_WORK_MANAGE_MEMBERS') %}
-            {% if u4astnik %}
-                <a href="{{ path('matkis.u4astniks.show', {'id': u4astnik.id}) }}" 
+            {% if pchelowod %}
+                <a href="{{ path('paseka.pchelowods.show', {'id': pchelowod.id}) }}" 
              class="btn btn-primary">Матки - смотреть пчеловодов</a>
             {% else %}
-                <a href="{{ path('matkis.u4astniks.create', {'id': user.id}) }}" class="btn btn-primary">Матки - добавить пчеловодов</a> 
+                <a href="{{ path('paseka.pchelowods.create', {'id': user.id}) }}" class="btn btn-primary">Матки - добавить пчеловодов</a> 
             {% endif %}
         {% endif %} 
 

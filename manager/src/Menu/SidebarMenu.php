@@ -27,20 +27,34 @@ class SidebarMenu
             ->setExtra('icon', 'nav-icon icon-speedometer')
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
-
-        $menu->addChild('УЧАСТНИКИ')->setAttribute('class', 'nav-title')
+            
+        $menu->addChild('П А С Е К А')->setAttribute('class', 'nav-title')
             ->setExtra('image', '../../assets/images/menu/mesto.png')
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link')
             ;
-        $menu->addChild('Добавить  уч-ка', ['route' => 'matkis.u4astniks'])
+        $menu->addChild('Добавить  уч-ка', ['route' => 'paseka.pchelowods'])
             ->setExtra('routes', [
-                ['route' => 'matkis.u4astniks'],
-                ['pattern' => '/^matkis\.u4astniks\..+/']
+                ['route' => 'paseka.pchelowods'],
+                ['pattern' => '/^paseka\.pchelowods\..+/']
             ])
             ->setExtra('icon', 'nav-icon icon-briefcase')
             ->setAttribute('class', 'nav-item')
-            ->setLinkAttribute('class', 'nav-link');        
+            ->setLinkAttribute('class', 'nav-link'); 
+
+        // $menu->addChild('УЧАСТНИКИ')->setAttribute('class', 'nav-title')
+        //     ->setExtra('image', '../../assets/images/menu/mesto.png')
+        //     ->setAttribute('class', 'nav-item')
+        //     ->setLinkAttribute('class', 'nav-link')
+        //     ;
+        // $menu->addChild('Добавить  уч-ка', ['route' => 'matkis.u4astniks'])
+        //     ->setExtra('routes', [
+        //         ['route' => 'matkis.u4astniks'],
+        //         ['pattern' => '/^matkis\.u4astniks\..+/']
+        //     ])
+        //     ->setExtra('icon', 'nav-icon icon-briefcase')
+        //     ->setAttribute('class', 'nav-item')
+        //     ->setLinkAttribute('class', 'nav-link');        
 
         $menu->addChild('М А Т К И')->setAttribute('class', 'nav-title')
             ->setExtra('image', '../../assets/images/menu/mesto.png')

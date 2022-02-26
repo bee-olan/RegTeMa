@@ -5,7 +5,7 @@
 {% block breadcrumbs %}
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Работа</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.pchelowods') }}">Работа</a></li>
         <li class="breadcrumb-item"><a href="{{ path('paseka.pchelowods') }}">Участники</a></li>
         <li class="breadcrumb-item active">{{ pchelowod.name.full }}</li>
     </ol>
@@ -54,7 +54,7 @@
         </table>
     </div>
 
-        {% if departments %}
+        {# {% if departments %}
         <div class="box">
             <table class="table table-bordered">
                 <thead>
@@ -73,7 +73,7 @@
                 </tbody>
             </table>
         </div>
-    {% endif %}
+    {% endif %} #}
 
 
 {% endblock %}
