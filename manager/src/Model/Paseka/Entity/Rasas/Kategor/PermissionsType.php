@@ -46,9 +46,4 @@ class PermissionsType extends JsonType
     {
         return in_array($name, Permission::names(), true) ? new Permission($name) : null;
     }
-
-    public function requiresSQLCommentHint(AbstractPlatform $platform) : bool
-    {
-        return true;
-    }
 }

@@ -32,6 +32,7 @@ services:
     App\Model\Paseka\Entity\Pchelowods\Pchelowod\PchelowodRepository: ~
 
     App\Model\Paseka\Entity\Rasas\Rasa\RasaRepository: ~
+    App\Model\Paseka\Entity\Rasas\Kategor\KategorRepository: ~
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class

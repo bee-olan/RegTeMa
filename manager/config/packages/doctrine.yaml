@@ -47,6 +47,9 @@ doctrine:
 
             paseka_rasas_rasa_id: 'App\Model\Paseka\Entity\Rasas\Rasa\IdType'
             paseka_rasas_rasa_linia_id: 'App\Model\Paseka\Entity\Rasas\Rasa\Linia\IdType'
+            paseka_rasas_kategor_id: 'App\Model\Paseka\Entity\Rasas\Kategor\IdType'
+            paseka_rasas_kategor_permissions: 'App\Model\Paseka\Entity\Rasas\Kategor\PermissionsType'
+
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore

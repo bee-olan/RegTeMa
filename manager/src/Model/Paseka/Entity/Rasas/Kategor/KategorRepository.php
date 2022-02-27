@@ -32,20 +32,20 @@ class KategorRepository
 
     public function get(Id $id): Kategor
     {
-        /** @var Kategor $role */
-        if (!$role = $this->repo->find($id->getValue())) {
+        /** @var Kategor $kategor */
+        if (!$kategor = $this->repo->find($id->getValue())) {
             throw new EntityNotFoundException('Kategor is not found.');
         }
-        return $role;
+        return $kategor;
     }
 
-    public function add(Kategor $role): void
+    public function add(Kategor $kategor): void
     {
-        $this->em->persist($role);
+        $this->em->persist($kategor);
     }
 
-    public function remove(Kategor $role): void
+    public function remove(Kategor $kategor): void
     {
-        $this->em->remove($role);
+        $this->em->remove($kategor);
     }
 }
