@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Matkis\UseCase\Rasas\Rasa\Edit;
+namespace App\Model\Paseka\UseCase\Rasas\Rasa\Edit;
 
 use App\Model\Flusher;
-use App\Model\Matkis\Entity\Rasas\Rasa\Id;
-use App\Model\Matkis\Entity\Rasas\Rasa\RasaRepository;
+use App\Model\Paseka\Entity\Rasas\Rasa\Id;
+use App\Model\Paseka\Entity\Rasas\Rasa\RasaRepository;
 
 class Handler
 {
@@ -25,6 +25,7 @@ class Handler
         
         $rasa->edit(
             $command->name,
+            $command->psewdo,
             $command->sort
         );
 

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ rasa.name }}{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Матки</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Матка</a></li>
+        <li class="breadcrumb-item active">{{ rasa.name }}</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+    {% include 'app/paseka/rasas/rasa/_tabs.html.twig' %}
+
+{% endblock %}

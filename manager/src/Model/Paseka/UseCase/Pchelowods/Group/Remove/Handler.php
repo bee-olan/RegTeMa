@@ -7,20 +7,19 @@ namespace App\Model\Paseka\UseCase\Pchelowods\Group\Remove;
 use App\Model\Flusher;
 use App\Model\Paseka\Entity\Pchelowods\Group\GroupRepository;
 use App\Model\Paseka\Entity\Pchelowods\Group\Id;
-//use App\Model\Paseka\Entity\Pchelowods\Pchelowod\PchelowodRepository;
+use App\Model\Paseka\Entity\Pchelowods\Pchelowod\PchelowodRepository;
 
 class Handler
 {
 	private $groups;
-	//private $pchelowods;
+	private $pchelowods;
 	private $flusher;
 
-	//public function __construct(GroupRepository $groups, PchelowodRepository $pchelowods, Flusher $flusher)
-	public function __construct(GroupRepository $groups, Flusher $flusher)
+	public function __construct(GroupRepository $groups, PchelowodRepository $pchelowods, Flusher $flusher)
 	{
 
 		$this->groups = $groups;
-		//$this->pchelowods = $pchelowods;
+		$this->pchelowods = $pchelowods;
 		$this->flusher = $flusher;
 	}
 
@@ -28,9 +27,9 @@ class Handler
 	{
 		$group = $this->groups->get(new Id($command->id));
 
-		// if ($this->pchelowods->hasByGroup($group->getId())) {
-		// 	throw new \DomainException('Group is not empty.');
-		// }
+		if ($this->pchelowods->hasByGroup($group->getId())) {
+			throw new \DomainException('Group is not empty.');
+		}
 
 		$this->groups->remove($group);
 

@@ -40,7 +40,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'Ф.И. или Ник', 'name') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Эл-почта', 'email') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Группа', 'group') }}</th>
-                <th>Projects</th>
+                <th>Projects - Раса</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Статус', 'status') }}</th>
             </tr>
             </thead>
@@ -50,8 +50,9 @@
                     <td><a href="{{ path('paseka.pchelowods.show', {'id': pchelowod.id}) }}">{{ pchelowod.name }}</a></td>
                     <td>{{ pchelowod.email }}</td>
                     <td>{{ pchelowod.group }}</td>
+                    <td>-------------------</td>
                     {# <td>{{ pchelowod.memberships_count }}</td> #}
-                    <td>{{ member_status(pchelowod.status) }}</td>
+                    <td>{{ pchelowod_status(pchelowod.status) }}</td>
                 </tr>
             {% endfor %}
             </tbody>

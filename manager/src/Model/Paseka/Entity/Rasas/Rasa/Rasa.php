@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model\Paseka\Entity\Rasas\Rasa;
 
-// use App\Model\Paseka\Entity\Rasas\Rasa\Linia\Linia;
-// use App\Model\Paseka\Entity\Rasas\Rasa\Linia\Id as LiniaId;
+use App\Model\Paseka\Entity\Rasas\Rasa\Linia\Linia;
+use App\Model\Paseka\Entity\Rasas\Rasa\Linia\Id as LiniaId;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -46,15 +46,15 @@ class Rasa
     //  */
     // private $status;
 
-    // /**
-    //  * @var ArrayCollection|Linia[]
-    //  * @ORM\OneToMany(
-    //  *     targetEntity="App\Model\Paseka\Entity\Rasas\Rasa\Linia\Linia",
-    //  *     mappedBy="rasa", orphanRemoval=true, cascade={"all"}
-    //  * )
-    //  * @ORM\OrderBy({"name" = "ASC"})
-    //  */
-    // private $linias;
+    /**
+     * @var ArrayCollection|Linia[]
+     * @ORM\OneToMany(
+     *     targetEntity="App\Model\Paseka\Entity\Rasas\Rasa\Linia\Linia",
+     *     mappedBy="rasa", orphanRemoval=true, cascade={"all"}
+     * )
+     * @ORM\OrderBy({"name" = "ASC"})
+     */
+    private $linias;
 
     public function __construct(Id $id, string $name, string $psewdo, int $sort)
     {
@@ -63,7 +63,7 @@ class Rasa
         $this->psewdo = $psewdo;
         $this->sort = $sort;
         // $this->status = Status::active();
-        // $this->linias = new ArrayCollection();
+        $this->linias = new ArrayCollection();
     }
 
     public function edit(string $name, string $psewdo, int $sort): void
@@ -89,47 +89,47 @@ class Rasa
     //     $this->status = Status::active();
     // }
 
-    // public function addLinia(LiniaId $id, string $name): void
-    // {
-    //     foreach ($this->linias as $linia) {
-    //         if ($linia->isNameEqual($name)) {
-    //             throw new \DomainException('Department already exists.');
-    //         }
-    //     }
-    //     $this->linias->add(new Linia($this, $id, $name));
-    // }
+    public function addLinia(LiniaId $id, string $name): void
+    {
+        foreach ($this->linias as $linia) {
+            if ($linia->isNameEqual($name)) {
+                throw new \DomainException('Department already exists.');
+            }
+        }
+        $this->linias->add(new Linia($this, $id, $name));
+    }
 
-    // public function editLinia(LiniaId $id, string $name): void
-    // {
-    //     foreach ($this->linias as $current) {
-    //         if ($current->getId()->isEqual($id)) {
-    //             $current->edit($name);
-    //             return;
-    //         }
-    //     }
-    //     throw new \DomainException('Department is not found.');
-    // }
+    public function editLinia(LiniaId $id, string $name): void
+    {
+        foreach ($this->linias as $current) {
+            if ($current->getId()->isEqual($id)) {
+                $current->edit($name);
+                return;
+            }
+        }
+        throw new \DomainException('Department is not found.');
+    }
 
-    // public function removeLinia(LiniaId $id): void
-    // {
-    //     foreach ($this->linias as $linia) {
-    //         if ($linia->getId()->isEqual($id)) {
-    //             $this->linias->removeElement($linia);
-    //             return;
-    //         }
-    //     }
-    //     throw new \DomainException('Department is not found.');
-    // }
+    public function removeLinia(LiniaId $id): void
+    {
+        foreach ($this->linias as $linia) {
+            if ($linia->getId()->isEqual($id)) {
+                $this->linias->removeElement($linia);
+                return;
+            }
+        }
+        throw new \DomainException('Department is not found.');
+    }
 
-    // public function isArchived(): bool
-    // {
-    //     return $this->status->isArchived();
-    // }
+    public function isArchived(): bool
+    {
+        return $this->status->isArchived();
+    }
 
-    // public function isActive(): bool
-    // {
-    //     return $this->status->isActive();
-    // }
+    public function isActive(): bool
+    {
+        return $this->status->isActive();
+    }
 
     public function getId(): Id
     {
@@ -156,18 +156,18 @@ class Rasa
     //     return $this->status;
     // }
 
-    // public function getLinias()
-    // {
-    //     return $this->linias->toArray();
-    // }
+    public function getLinias()
+    {
+        return $this->linias->toArray();
+    }
 
-    // public function getLinia(LiniaId $id): Linia
-    // {
-    //     foreach ($this->linias as $linia) {
-    //         if ($linia->getId()->isEqual($id)) {
-    //             return $linia;
-    //         }
-    //     }
-    //     throw new \DomainException('linias is not found.');
-    // }
+    public function getLinia(LiniaId $id): Linia
+    {
+        foreach ($this->linias as $linia) {
+            if ($linia->getId()->isEqual($id)) {
+                return $linia;
+            }
+        }
+        throw new \DomainException('linias is not found.');
+    }
 }

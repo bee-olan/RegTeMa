@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Матки{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('matkis') }}">Матки</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Матка</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.rasa.show', {'id': rasa.id}) }}">{{ rasa.name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.rasa.settings', {'rasa_id': rasa.id}) }}">Настройки</a></li>
+        <li class="breadcrumb-item active">Редактировать</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+    {% include 'app/paseka/rasas/rasa/_tabs.html.twig' %}
+
+    {% include 'app/paseka/rasas/rasa/settings/_tabs.html.twig' %}
+
+    <div class="card">
+        <div class="card-body">
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btn btn-primary">Save</button>
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+{% endblock %}

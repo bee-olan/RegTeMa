@@ -1,33 +1,33 @@
 <?php
 
-// declare(strict_types=1);
+declare(strict_types=1);
 
-// namespace App\Model\Matkis\Entity\Rasas\Rasa\Linia;
+namespace App\Model\Paseka\Entity\Rasas\Rasa\Linia;
 
-// use Doctrine\DBAL\Platforms\AbstractPlatform;
-// use Doctrine\DBAL\Types\GuidType;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\GuidType;
 
-// class IdType extends GuidType
-// {
-//     public const NAME = 'matkis_rasas_rasa_linia_id';
+class IdType extends GuidType
+{
+    public const NAME = 'paseka_rasas_rasa_linia_id';
 
-//     public function convertToDatabaseValue($value, AbstractPlatform $platform)
-//     {
-//         return $value instanceof Id ? $value->getValue() : $value;
-//     }
+    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    {
+        return $value instanceof Id ? $value->getValue() : $value;
+    }
 
-//     public function convertToPHPValue($value, AbstractPlatform $platform)
-//     {
-//         return !empty($value) ? new Id($value) : null;
-//     }
+    public function convertToPHPValue($value, AbstractPlatform $platform)
+    {
+        return !empty($value) ? new Id($value) : null;
+    }
 
-//     public function getName(): string
-//     {
-//         return self::NAME;
-//     }
+    public function getName(): string
+    {
+        return self::NAME;
+    }
 
-//     public function requiresSQLCommentHint(AbstractPlatform $platform) : bool
-//     {
-//         return true;
-//     }
-// }
+    public function requiresSQLCommentHint(AbstractPlatform $platform) : bool
+    {
+        return true;
+    }
+}

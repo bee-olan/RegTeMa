@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Matkis\UseCase\Rasas\Rasa\Edit;
+namespace App\Model\Paseka\UseCase\Rasas\Rasa\Edit;
 
-use App\Model\Matkis\Entity\Rasas\Rasa\Rasa;
+use App\Model\Paseka\Entity\Rasas\Rasa\Rasa;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Command
@@ -13,10 +13,17 @@ class Command
      * @Assert\NotBlank()
      */
     public $id;
+
     /**
      * @Assert\NotBlank()
      */
     public $name;
+
+    /**
+     * @Assert\NotBlank()
+     */
+    public $psewdo;
+
     /**
      * @Assert\NotBlank()
      */
@@ -31,6 +38,7 @@ class Command
     {
         $command = new self($rasa->getId()->getValue());
         $command->name = $rasa->getName();
+        $command->psewdo = $rasa->getPsewdo();
         $command->sort = $rasa->getSort();
         return $command;
     }

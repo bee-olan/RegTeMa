@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\DataFixtures\Matkis;
+namespace App\DataFixtures\Paseka;
 
-use App\Model\Matkis\Entity\U4astniks\Group\Group;
-use App\Model\Matkis\Entity\U4astniks\Group\Id;
+use App\Model\Paseka\Entity\Pchelowods\Group\Group;
+use App\Model\Paseka\Entity\Pchelowods\Group\Id;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 

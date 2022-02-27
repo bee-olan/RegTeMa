@@ -56,19 +56,19 @@ class SidebarMenu
         //     ->setAttribute('class', 'nav-item')
         //     ->setLinkAttribute('class', 'nav-link');        
 
-        // $menu->addChild('М А Т К И')->setAttribute('class', 'nav-title')
-        //     ->setExtra('image', '../../assets/images/menu/mesto.png')
-        //     ->setAttribute('class', 'nav-item')
-        //     ->setLinkAttribute('class', 'nav-link')
-        //     ;
-        // $menu->addChild('Добавить  расу', ['route' => 'matkis.u4astniks'])
-        //     ->setExtra('routes', [
-        //         ['route' => 'matkis.u4astniks'],
-        //         ['pattern' => '/^matkis\.u4astniks\..+/']
-        //     ])
-        //     ->setExtra('icon', 'nav-icon icon-briefcase')
-        //     ->setAttribute('class', 'nav-item')
-        //     ->setLinkAttribute('class', 'nav-link');        
+        $menu->addChild('М А Т К И')->setAttribute('class', 'nav-title')
+            ->setExtra('image', '../../assets/images/menu/mesto.png')
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link')
+            ;
+        $menu->addChild('Добавить  расу', ['route' => 'paseka.rasas'])
+            ->setExtra('routes', [
+                ['route' => 'paseka.rasas'],
+                ['pattern' => '/^paseka\.rasas\..+/']
+            ])
+            ->setExtra('icon', 'nav-icon icon-briefcase')
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');        
 
         $menu->addChild('Работа')->setAttribute('class', 'nav-title');
 

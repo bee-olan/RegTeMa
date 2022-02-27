@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Matkis\UseCase\Rasas\Rasa\Edit;
+namespace App\Model\Paseka\UseCase\Rasas\Rasa\Edit;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type;
@@ -15,6 +15,7 @@ class Form extends AbstractType
     {
         $builder
             ->add('name', Type\TextType::class)
+            ->add('psewdo', Type\TextType::class)
             ->add('sort', Type\IntegerType::class);
     }
 
