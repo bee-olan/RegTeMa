@@ -89,21 +89,21 @@ class Rasa
     //     $this->status = Status::active();
     // }
 
-    public function addLinia(LiniaId $id, string $name): void
+    public function addLinia(LiniaId $id, string $name, string $nameStar, int $sortLinia): void
     {
         foreach ($this->linias as $linia) {
             if ($linia->isNameEqual($name)) {
                 throw new \DomainException('Department already exists.');
             }
         }
-        $this->linias->add(new Linia($this, $id, $name));
+        $this->linias->add(new Linia($this, $id, $name, $nameStar, $sortLinia));
     }
 
-    public function editLinia(LiniaId $id, string $name): void
+    public function editLinia(LiniaId $id, string $name, string $nameStar): void
     {
         foreach ($this->linias as $current) {
             if ($current->getId()->isEqual($id)) {
-                $current->edit($name);
+                $current->edit($name,  $nameStar);
                 return;
             }
         }

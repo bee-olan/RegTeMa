@@ -18,10 +18,16 @@ class Command
      * @Assert\NotBlank()
      */
     public $id;
+
     /**
      * @Assert\NotBlank()
      */
     public $name;
+
+    /**
+     * @Assert\NotBlank()
+     */
+    public $nameStar;
 
     public function __construct(string $rasa, string $id)
     {
@@ -33,6 +39,7 @@ class Command
     {
         $command = new self($rasa->getId()->getValue(), $linia->getId()->getValue());
         $command->name = $linia->getName();
+        $command->nameStar = $linia->getNameStar();
         return $command;
     }
 }

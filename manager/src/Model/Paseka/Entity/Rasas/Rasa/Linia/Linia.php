@@ -33,11 +33,30 @@ class Linia
      */
     private $name;
 
-    public function __construct(Rasa $rasa, Id $id, string $name)
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private $nameStar;
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    private $sortLinia;
+
+    public function __construct(Rasa $rasa, 
+                                Id $id, 
+                                string $name,
+                                string $nameStar,
+								int $sortLinia
+                                )
     {
         $this->rasa = $rasa;
         $this->id = $id;
         $this->name = $name;
+        $this->nameStar = $nameStar;
+		$this->sortLinia = $sortLinia;
     }
 
     public function isNameEqual(string $name): bool
@@ -45,11 +64,17 @@ class Linia
         return $this->name === $name;
     }
 
-    public function edit(string $name): void
-	{
-		$this->name = $name;
-//        $this->sort = $sort;
-	}
+    public function isNameStarEqual(string $nameStar): bool
+    {
+        return $this->nameStar === $nameStar;
+    }
+
+    public function edit(string $name, 
+                        string $nameStar): void
+    {
+        $this->name = $name;
+        $this->nameStar = $nameStar;
+    }
 
     public function getId(): Id
     {
@@ -60,4 +85,15 @@ class Linia
     {
         return $this->name;
     }
+
+    public function getNameStar(): string
+    {
+        return $this->nameStar;
+    }
+	
+	public function getSortLinia(): int
+    {
+        return $this->sortLinia;
+    }
+	
 }

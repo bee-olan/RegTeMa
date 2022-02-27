@@ -1,58 +1,76 @@
 <?php
 
-// declare(strict_types=1);
+declare(strict_types=1);
 
-// namespace App\ReadModel\Paseka\Rasas\Rasa;
+namespace App\ReadModel\Paseka\Rasas\Rasa;
 
-// use Doctrine\DBAL\Connection;
-// use Doctrine\DBAL\FetchMode;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\FetchMode;
 
-// class LiniaFetcher
-// {
-//     private $connection;
+class LiniaFetcher
+{
+    private $connection;
 
-//     public function __construct(Connection $connection)
-//     {
-//         $this->connection = $connection;
-//     }
+    public function __construct(Connection $connection)
+    {
+        $this->connection = $connection;
+    }
 
-//     public function listOfRasa(string $rasa): array
-//     {
-//         $stmt = $this->connection->createQueryBuilder()
-//             ->select(
-//                 'id',
-//                 'name'
-//             )
-//             ->from('paseka_rasas_rasa_linias')
-//             ->andWhere('rasa_id = :rasa')
-//             ->setParameter(':rasa', $rasa)
-//             ->orderBy('name')
-//             ->execute();
+    public function getMaxSortLinia(string $rasa): int
+    {
+        return (int)$this->connection->createQueryBuilder()
+            ->select('MAX(l.sort_linia) AS m')
+            ->from('paseka_rasas_rasa_linias', 'l')
+			->andWhere('rasa_id = :rasa')
+            ->setParameter(':rasa', $rasa)
+            ->execute()->fetch()['m'];
+    }
+    
+    public function listOfRasa(string $rasa): array
+    {
+        $stmt = $this->connection->createQueryBuilder()
+            ->select(
+                'id',
+                'name',
+                'name_star',
+				'sort_linia'
+            )
+            ->from('paseka_rasas_rasa_linias')
+            ->andWhere('rasa_id = :rasa')
+            ->setParameter(':rasa', $rasa)
+            ->orderBy('name')
+            ->execute();
 
-//         return $stmt->fetchAll(\PDO::FETCH_KEY_PAIR);
-//     }
+        return $stmt->fetchAll(\PDO::FETCH_KEY_PAIR);
+    }
 
-//     public function allOfRasa(string $rasa): array
-//     {
-//         $stmt = $this->connection->createQueryBuilder()
-//             ->select(
-//                 'd.id',
-//                 'd.name'//,
-//                 // '(
-//                 //     SELECT COUNT(ms.member_id)
-//                 //     FROM work_projects_project_memberships ms
-//                 //     INNER JOIN work_projects_project_membership_departments md ON ms.id = md.membership_id
-//                 //     WHERE md.department_id = d.id AND ms.project_id = :project
-//                 // ) AS members_count'
-//             )
-//             ->from('paseka_rasas_rasa_linias', 'd')
-//             ->andWhere('rasa_id = :rasa')
-//             ->setParameter(':rasa', $rasa)
-//             ->orderBy('name')
-//             ->execute();
+    public function allOfRasa(string $rasa): array
+    {
+        $stmt = $this->connection->createQueryBuilder()
+            ->select(
+                'd.id',
+                'd.name',
+                'd.name_star',
+				'd.sort_linia'
+                
+                //,
+                // '(
+                //     SELECT COUNT(ms.member_id)
+                //     FROM work_projects_project_memberships ms
+                //     INNER JOIN work_projects_project_membership_departments md ON ms.id = md.membership_id
+                //     WHERE md.department_id = d.id AND ms.project_id = :project
+                // ) AS members_count'
+            )
+            ->from('paseka_rasas_rasa_linias', 'd')
+            ->andWhere('rasa_id = :rasa')
+            ->setParameter(':rasa', $rasa)
+            ->orderBy('name')
+            ->orderBy('name_star')
+            ->orderBy('sort_linia')
+            ->execute();
 
-//         return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
-//     }
+        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
+    }
 
     // public function allOfMember(string $member): array
     // {
@@ -74,4 +92,4 @@
 
     //     return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
     // }
-//}
+}

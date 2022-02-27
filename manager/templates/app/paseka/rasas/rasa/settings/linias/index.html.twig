@@ -5,7 +5,7 @@
 {% block breadcrumbs %}
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('matkis') }}">Матки</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Матки</a></li>
         <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Матка</a></li>
         <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.rasa.show', {'id': rasa.id}) }}">{{ rasa.name }}</a></li>
         <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.rasa.settings', {'rasa_id': rasa.id}) }}">редактирование</a></li>
@@ -27,14 +27,17 @@
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th>Линии</th>
-                <th></th>
+                <th>Номер</th>
+                <th>Сок-ное назване Линии</th>
+                <th>Назване Линии</th>
             </tr>
             <tbody>
             {% set token = csrf_token('delete') %}
             {% for linia in linias %}
                 <tr>
+                    <td>{{ linia.sort_linia }}</td>
                     <td>{{ linia.name }}</td>
+                    <td>{{ linia.name_star }}</td>
                     <td>
                         <div class="d-flex flex-row">
                             <a href="{{ path('paseka.rasas.rasa.settings.linias.edit', {'rasa_id': rasa.id, 'id': linia.id}) }}" class="btn btn-sm btn-primary mr-1"><span class="fa fa-pencil"></span></a>

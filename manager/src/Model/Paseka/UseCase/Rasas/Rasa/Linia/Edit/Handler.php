@@ -24,7 +24,10 @@ class Handler
     {
         $rasa = $this->rasas->get(new Id($command->rasa));
 
-        $rasa->editLinia(new LiniaId($command->id), $command->name);
+        $rasa->editLinia(new LiniaId($command->id), 
+                                $command->name,
+                                $command->nameStar
+                            );
 
         $this->flusher->flush();
     }

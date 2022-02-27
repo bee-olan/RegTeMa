@@ -6,7 +6,7 @@ namespace App\DataFixtures\Paseka;
 
 use App\Model\Paseka\Entity\Rasas\Rasa\Rasa;
 use App\Model\Paseka\Entity\Rasas\Rasa\Id;
-//use App\Model\Paseka\Entity\Matka\Rasas\Linia\Id as LiniaId;
+use App\Model\Paseka\Entity\Rasas\Rasa\Linia\Id as LiniaId;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;

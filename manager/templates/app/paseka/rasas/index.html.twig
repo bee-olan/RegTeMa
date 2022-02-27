@@ -39,13 +39,15 @@
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'Name', 'name') }}</th>
-                {# <th>{{ knp_pagination_sortable(pagination, 'Status', 'status') }}</th> #}
+                <th>Сокращенное название</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Раса', 'name') }}</th>
+                <th>Номер</th>
             </tr>
             </thead>
             <tbody>
             {% for rasa in pagination %}
                 <tr>
+                    <td>{{ rasa.psewdo }}</td>
                     <td><a href="{{ path('paseka.rasas.rasa.show', {'id': rasa.id}) }}">{{ rasa.name }}</a></td>
                     <td>{{ rasa.sort }}</td>
                 </tr>

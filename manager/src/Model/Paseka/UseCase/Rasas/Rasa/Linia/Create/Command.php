@@ -17,6 +17,16 @@ class Command
      */
     public $name;
 
+    /**
+     * @Assert\NotBlank()
+     */
+    public $nameStar;
+	
+	/**
+     * @Assert\NotBlank()
+     */
+    public $sortLinia;
+
     public function __construct(string $rasa)
     {
         $this->rasa = $rasa;

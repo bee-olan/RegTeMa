@@ -26,7 +26,9 @@ class Handler
 
         $rasa->addLinia(
             Id::next(),
-            $command->name
+            $command->name ,
+			$command->nameStar,
+			$command->sortLinia
         );
 
         $this->flusher->flush();
