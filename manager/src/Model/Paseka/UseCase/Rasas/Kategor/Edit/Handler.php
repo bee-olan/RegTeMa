@@ -2,28 +2,28 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Work\UseCase\Projects\Role\Edit;
+namespace App\Model\Paseka\UseCase\Rasas\Kategor\Edit;
 
 use App\Model\Flusher;
-use App\Model\Work\Entity\Projects\Role\Id;
-use App\Model\Work\Entity\Projects\Role\RoleRepository;
+use App\Model\Paseka\Entity\Rasas\Kategor\Id;
+use App\Model\Paseka\Entity\Rasas\Kategor\KategorRepository;
 
 class Handler
 {
-    private $roles;
+    private $kategors;
     private $flusher;
 
-    public function __construct(RoleRepository $roles, Flusher $flusher)
+    public function __construct(KategorRepository $kategors, Flusher $flusher)
     {
-        $this->roles = $roles;
+        $this->kategors = $kategors;
         $this->flusher = $flusher;
     }
 
     public function handle(Command $command): void
     {
-        $role = $this->roles->get(new Id($command->id));
+        $kategor = $this->kategors->get(new Id($command->id));
 
-        $role->edit($command->name, $command->permissions);
+        $kategor->edit($command->name, $command->permissions);
 
         $this->flusher->flush();
     }

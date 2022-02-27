@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Work\UseCase\Projects\Role\Copy;
+namespace App\Model\Paseka\UseCase\Rasas\Kategor\Copy;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type;

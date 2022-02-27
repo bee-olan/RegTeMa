@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Work\UseCase\Projects\Role\Create;
+namespace App\Model\Paseka\UseCase\Rasas\Kategor\Create;
 
 use Symfony\Component\Validator\Constraints as Assert;
 

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Work\UseCase\Projects\Role\Edit;
+namespace App\Model\Paseka\UseCase\Rasas\Kategor\Edit;
 
-use App\Model\Work\Entity\Projects\Role\Permission;
-use App\Model\Work\Entity\Projects\Role\Role;
+use App\Model\Paseka\Entity\Rasas\Kategor\Permission;
+use App\Model\Paseka\Entity\Rasas\Kategor\Kategor;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Command
@@ -30,13 +30,13 @@ class Command
         $this->id = $id;
     }
 
-    public static function fromRole(Role $role): self
+    public static function fromRole(Kategor $kategor): self
     {
-        $command = new self($role->getId()->getValue());
-        $command->name = $role->getName();
+        $command = new self($kategor->getId()->getValue());
+        $command->name = $kategor->getName();
         $command->permissions = array_map(static function (Permission $permission): string {
             return $permission->getName();
-        }, $role->getPermissions());
+        }, $kategor->getPermissions());
         return $command;
     }
 }

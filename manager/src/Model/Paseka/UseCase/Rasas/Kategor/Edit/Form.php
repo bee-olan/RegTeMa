@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Work\UseCase\Projects\Role\Edit;
+namespace App\Model\Paseka\UseCase\Rasas\Kategor\Edit;
 
-use App\Model\Work\Entity\Projects\Role\Permission;
+use App\Model\Paseka\Entity\Rasas\Kategor\Permission;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\Form\FormBuilderInterface;

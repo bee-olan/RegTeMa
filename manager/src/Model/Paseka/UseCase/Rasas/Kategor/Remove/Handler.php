@@ -2,36 +2,36 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Work\UseCase\Projects\Role\Remove;
+namespace App\Model\Paseka\UseCase\Rasas\Kategor\Remove;
 
 use App\Model\Flusher;
-use App\Model\Work\Entity\Projects\Project\ProjectRepository;
-use App\Model\Work\Entity\Projects\Role\RoleRepository;
-use App\Model\Work\Entity\Projects\Role\Id;
+use App\Model\Paseka\Entity\Rasas\Rasa\RasaRepository;
+use App\Model\Paseka\Entity\Rasas\Kategor\KategorRepository;
+use App\Model\Paseka\Entity\Rasas\Kategor\Id;
 
 class Handler
 {
-    private $roles;
-    private $projects;
+    private $kategors;
+    private $rasas;
     private $flusher;
 
-    public function __construct(RoleRepository $roles, ProjectRepository $projects, Flusher $flusher)
+    public function __construct(KategorRepository $kategors, RasaRepository $rasas, Flusher $flusher)
     {
 
-        $this->roles = $roles;
-        $this->projects = $projects;
+        $this->kategors = $kategors;
+        $this->rasas = $rasas;
         $this->flusher = $flusher;
     }
 
     public function handle(Command $command): void
     {
-        $role = $this->roles->get(new Id($command->id));
+        $kategor = $this->kategors->get(new Id($command->id));
 
-        if ($this->projects->hasMembersWithRole($role->getId())) {
-            throw new \DomainException('Role contains members.');
-        }
+        // if ($this->rasas->hasMembersWithRole($kategor->getId())) {
+        //     throw new \DomainException('Kategor contains members.');
+        // }
 
-        $this->roles->remove($role);
+        $this->kategors->remove($kategor);
 
         $this->flusher->flush();
     }
