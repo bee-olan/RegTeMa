@@ -8,7 +8,9 @@ use Webmozart\Assert\Assert;
 
 class Permission
 {
-    public const MANAGE_PROJECT_MEMBERS = 'manage_project_members';
+    public const ES_DOKYMENT_MATKI = 'Есть документы на матку';
+    public const NO_DOKYMENT_MATKI = 'Нет документов на матку';
+    public const ADAPTIROV_MATKI = 'Адаптированные матки';
 
     private $name;
 
@@ -21,7 +23,9 @@ class Permission
     public static function names(): array
     {
         return [
-            self::MANAGE_PROJECT_MEMBERS,
+            self::ES_DOKYMENT_MATKI,
+            self::NO_DOKYMENT_MATKI,
+            self::ADAPTIROV_MATKI,
         ];
     }
 

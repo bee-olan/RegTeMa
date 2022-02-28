@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Model\Paseka\Entity\Rasas\Rasa;
 
+use App\Model\Paseka\Entity\Pchelowods\Pchelowod\Id as PchelowodId;
+use App\Model\Paseka\Entity\Pchelowods\Pchelowod\Pchelowod;
+use App\Model\Paseka\Entity\Rasas\Kategor\Kategor;
 use App\Model\Paseka\Entity\Rasas\Rasa\Linia\Linia;
 use App\Model\Paseka\Entity\Rasas\Rasa\Linia\Id as LiniaId;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -56,6 +59,14 @@ class Rasa
      */
     private $linias;
 
+    /**
+     * @var ArrayCollection|Pcheloship[]
+     * @ORM\OneToMany(targetEntity="Pcheloship", mappedBy="project", orphanRemoval=true, cascade={"all"})
+     */
+    private $pcheloships;
+
+
+
     public function __construct(Id $id, string $name, string $psewdo, int $sort)
     {
         $this->id = $id;
@@ -64,6 +75,7 @@ class Rasa
         $this->sort = $sort;
         // $this->status = Status::active();
         $this->linias = new ArrayCollection();
+        $this->pcheloships = new ArrayCollection();
     }
 
     public function edit(string $name, string $psewdo, int $sort): void
@@ -114,11 +126,61 @@ class Rasa
     {
         foreach ($this->linias as $linia) {
             if ($linia->getId()->isEqual($id)) {
+                foreach ($this->pcheloships as $pcheloship) {
+                    if ($pcheloship->isForLinia($id)) {
+                        throw new \DomainException('Unable to remove department with members.');
+                    }
+                }
                 $this->linias->removeElement($linia);
                 return;
             }
         }
         throw new \DomainException('Department is not found.');
+    }
+
+    /**
+     * @param Pcheloship $pchelowod
+     * @param LiniaId[] $liniaIds
+     * @param Kategor[] $kategors
+     * @throws \Exception
+     */
+    public function addPchelowod(Pcheloship $pchelowod, array $liniaIds, array $kategors): void
+    {
+        foreach ($this->pcheloships as $pcheloship) {
+            if ($pcheloship->isForPchelowod($pchelowod->getId())) {
+                throw new \DomainException('Pcheloship already exists.');
+            }
+        }
+        $linias = array_map([$this, 'getLinia'], $liniaIds);
+        $this->pcheloships->add(new Pcheloship($this, $pchelowod, $linias, $kategors));
+    }
+
+    /**
+     * @param PchelowodId $pchelowod
+     * @param LiniaId[] $liniaIds
+     * @param Kategor[] $kategors
+     */
+    public function editPchelowod(PchelowodId $pchelowod, array $liniaIds, array $kategors): void
+    {
+        foreach ($this->pcheloships as $pcheloship) {
+            if ($pcheloship->isForPchelowod($pchelowod)) {
+                $pcheloship->changeLinias(array_map([$this, 'getLinia'], $liniaIds));
+                $pcheloship->changeKategors($kategors);
+                return;
+            }
+        }
+        throw new \DomainException('Pcheloship is not found.');
+    }
+
+    public function removePchelowod(PchelowodId $pchelowod): void
+    {
+        foreach ($this->pcheloships as $pcheloship) {
+            if ($pcheloship->isForPchelowod($pchelowod)) {
+                $this->pcheloships->removeElement($pcheloship);
+                return;
+            }
+        }
+        throw new \DomainException('Pcheloship is not found.');
     }
 
     public function isArchived(): bool
@@ -169,5 +231,10 @@ class Rasa
             }
         }
         throw new \DomainException('linias is not found.');
+    }
+
+    public function getPcheloships()
+    {
+        return $this->pcheloships->toArray();
     }
 }

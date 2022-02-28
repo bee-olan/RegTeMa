@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Роли{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Работа</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Проекты</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.kategors') }}">Роли</a></li>
+        <li class="breadcrumb-item active">{{ kategor.name }}</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+    {{ include('app/paseka/rasas/_tabs.html.twig') }}
+
+    <div class="controls">
+        <a href="{{ path('paseka.rasas.kategors.edit', {'id': kategor.id}) }}" class="btn btn-primary">Edit</a>
+        <form action="{{ path('paseka.rasas.kategors.delete', {'id': kategor.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+            <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        <a href="{{ path('paseka.rasas.kategors.copy', {'id': kategor.id}) }}" class="btn btn-primary">Copy</a>
+    </div>
+
+    <div class="box">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ kategor.name }}</td>
+                </tr>
+                <tr>
+                    <th>Permissions</th>
+                    <td>
+                        <ul class="list-unstyled my-0">
+                            {% for permission in kategor.permissions %}
+                                <li>{{ permission.name|trans({}, 'work_permissions') }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

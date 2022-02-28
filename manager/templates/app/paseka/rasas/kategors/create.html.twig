@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Матки{% endblock %}
+{% block title %}Роли{% endblock %}
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Матки</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Матка</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Работа</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Проекты</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.kategors') }}">Роли</a></li>
         <li class="breadcrumb-item active">Создать</li>
     </ol>
 {% endblock %}

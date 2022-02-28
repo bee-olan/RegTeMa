@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Роли{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Работа</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Проекты</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.kategors') }}">Роли</a></li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+    {{ include('app/paseka/rasas/_tabs.html.twig') }}
+
+    <div class="controls">
+        <a href="{{ path('paseka.rasas.kategors.create') }}" class="btn btn-success">Добавить роль</a>
+    </div>
+
+    <div class="box">
+        <div style="overflow: auto">
+            <table class="table table-bordered table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        {% for kategor in kategors %}
+                            <th style="text-align: center">
+                                <a href="{{ path('paseka.rasas.kategors.show', {'id': kategor.id}) }}">{{ kategor.name }}</a>
+                               {# ({{ kategor.memberships_count }}) #}(-----)
+                            </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for permission in permissions %}
+                        <tr>
+                            <td>{{ permission|trans({}, 'paseka_permissions') }}</td>
+                            {% for kategor in kategors %}
+                                <td style="text-align: center">
+                                    {% if permission in kategor.permissions %}
+                                        <span class="fa fa-check"></span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

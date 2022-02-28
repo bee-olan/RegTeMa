@@ -24,31 +24,56 @@ class RasasMenu
         $menu = $this->factory->createItem('root')
             ->setChildrenAttributes(['class' => 'nav nav-tabs mb-4']);
 
+        // $menu
+        //     ->addChild('Dashboard---------', [
+        //         'route' => 'paseka.rasas.rasa.show',
+        //         'routeParameters' => ['id' => $options['rasa_id']]
+        //     ])
+        //     ->setExtra('routes', [
+        //         ['route' => 'paseka.rasas.rasa.show'],
+        //         ['pattern' => '/^paseka.rasas.rasa.show\..+/']
+        //     ])
+        //     ->setAttribute('class', 'nav-item')
+        //     ->setLinkAttribute('class', 'nav-link');
+
+        // if ($this->auth->isGranted('ROLE_WORK_MANAGE_PROJECTS')) {
+        //     $menu
+        //         ->addChild('Настройки=======', [
+        //             'route' => 'paseka.rasas.rasa.settings',
+        //             'routeParameters' => ['rasa_id' => $options['rasa_id']]
+        //         ])
+        //         ->setExtra('routes', [
+        //             ['route' => 'paseka.rasas.rasa.settings'],
+        //             ['pattern' => '/^paseka.rasas.rasa.settings\..+/']
+        //         ])
+        //         ->setAttribute('class', 'nav-item')
+        //         ->setLinkAttribute('class', 'nav-link');
+       
+        //     $menu
+        //         ->addChild('Roles', ['route' => 'paseka.rasas.kategors'])
+        //         ->setExtra('routes', [
+        //             ['route' => 'paseka.rasas.kategors'],
+        //             ['pattern' => '/^paseka.rasas.kategors\..+/']
+        //         ])
+        //         ->setAttribute('class', 'nav-item')
+        //         ->setLinkAttribute('class', 'nav-link');
+        // }
+
         $menu
-            ->addChild('Dashboard---------', [
-                'route' => 'paseka.rasas.rasa.show',
-                'routeParameters' => ['id' => $options['rasa_id']]
-            ])
+        ->addChild('Раса', ['route' => 'paseka.rasas'])
+        ->setAttribute('class', 'nav-item')
+        ->setLinkAttribute('class', 'nav-link');
+
+    if ($this->auth->isGranted('ROLE_WORK_MANAGE_PROJECTS')) {
+        $menu
+            ->addChild('Категория', ['route' => 'paseka.rasas.kategors'])
             ->setExtra('routes', [
-                ['route' => 'paseka.rasas.rasa.show'],
-                ['pattern' => '/^paseka.rasas.rasa.show\..+/']
+                ['route' => 'paseka.rasas.kategors'],
+                ['pattern' => '/^paseka.rasas.kategors\..+/']
             ])
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
-
-        if ($this->auth->isGranted('ROLE_WORK_MANAGE_PROJECTS')) {
-            $menu
-                ->addChild('Настройки=======', [
-                    'route' => 'paseka.rasas.rasa.settings',
-                    'routeParameters' => ['rasa_id' => $options['rasa_id']]
-                ])
-                ->setExtra('routes', [
-                    ['route' => 'paseka.rasas.rasa.settings'],
-                    ['pattern' => '/^paseka.rasas.rasa.settings\..+/']
-                ])
-                ->setAttribute('class', 'nav-item')
-                ->setLinkAttribute('class', 'nav-link');
-        }
+    }
 
         return $menu;
     }
