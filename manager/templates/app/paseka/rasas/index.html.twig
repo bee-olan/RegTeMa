@@ -4,15 +4,15 @@
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Матки</a></li>
-        <li class="breadcrumb-item active">Матка</li>
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Пасека</a></li>
+        <li class="breadcrumb-item active">Раса---------</li>
     </ol>
 {% endblock %}
 
 {% block body %}
 
-     {{ include('app/paseka/rasas/_tabs.html.twig') }}
+     {{ include('app/paseka/_tabs-p.html.twig') }}
 
     <div class="controls">
         <a href="{{ path('paseka.rasas.create') }}" class="btn btn-success">Добавить расу</a>
@@ -39,17 +39,17 @@
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
+                <th>Номер</th>        
+                <th>{{ knp_pagination_sortable(pagination, 'Раса - название', 'name') }}</th>
                 <th>Сокращенное название</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Раса', 'name') }}</th>
-                <th>Номер</th>
             </tr>
             </thead>
             <tbody>
             {% for rasa in pagination %}
                 <tr>
-                    <td>{{ rasa.psewdo }}</td>
-                    <td><a href="{{ path('paseka.rasas.rasa.show', {'id': rasa.id}) }}">{{ rasa.name }}</a></td>
                     <td>{{ rasa.sort }}</td>
+                    <td><a href="{{ path('paseka.rasas.rasa.show', {'id': rasa.id}) }}">{{ rasa.name }}</a></td>
+                    <td>{{ rasa.psewdo }}</td>
                 </tr>
             {% endfor %}
             </tbody>

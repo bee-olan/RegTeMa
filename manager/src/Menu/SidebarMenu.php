@@ -42,6 +42,17 @@ class SidebarMenu
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link'); 
 
+            $menu['Добавить  уч-ка']->addChild('Проба', ['route' => 'paseka.pchelowods']);
+
+            $menu->addChild('Добавить  расу', ['route' => 'paseka.rasas'])
+            ->setExtra('routes', [
+                ['route' => 'paseka.rasas'],
+                ['pattern' => '/^paseka\.rasas\..+/']
+            ])
+            ->setExtra('icon', 'nav-icon icon-briefcase')
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link'); 
+
         // $menu->addChild('УЧАСТНИКИ')->setAttribute('class', 'nav-title')
         //     ->setExtra('image', '../../assets/images/menu/mesto.png')
         //     ->setAttribute('class', 'nav-item')
@@ -56,21 +67,7 @@ class SidebarMenu
         //     ->setAttribute('class', 'nav-item')
         //     ->setLinkAttribute('class', 'nav-link');        
 
-        $menu->addChild('М А Т К И')->setAttribute('class', 'nav-title')
-            ->setExtra('image', '../../assets/images/menu/mesto.png')
-            ->setAttribute('class', 'nav-item')
-            ->setLinkAttribute('class', 'nav-link')
-            ;
-        $menu->addChild('Добавить  расу', ['route' => 'paseka.rasas'])
-            ->setExtra('routes', [
-                ['route' => 'paseka.rasas'],
-                ['pattern' => '/^paseka\.rasas\..+/']
-            ])
-            ->setExtra('icon', 'nav-icon icon-briefcase')
-            ->setAttribute('class', 'nav-item')
-            ->setLinkAttribute('class', 'nav-link');        
-
-        $menu->addChild('Работа')->setAttribute('class', 'nav-title');
+        $menu->addChild('Р а б о т а')->setAttribute('class', 'nav-title');
 
 			$menu->addChild('Projects', ['route' => 'work.projects'])
 				->setExtra('routes', [
@@ -88,7 +85,7 @@ class SidebarMenu
                     ['pattern' => '/^work\.members\..+/']
                 ])
 
-							->setExtra('image',  'immmg')
+				->setExtra('image',  'immmg')
                 ->setAttribute('class', 'nav-item')
                 ->setLinkAttribute('class', 'nav-link');
 

@@ -15,9 +15,9 @@
 
 {% block body %}
 
-   {% include 'app/paseka/rasas/rasa/_tabs.html.twig' %}
+    {% include 'app/paseka/rasas/rasa/_tabs-r.html.twig' %}
 
-    {% include 'app/paseka/rasas/rasa/settings/_tabs.html.twig' %}
+    {% include 'app/paseka/rasas/rasa/settings/_tabs-s.html.twig' %}
 
     <div class="controls">
         <a href="{{ path('paseka.rasas.rasa.settings.linias.create', {'rasa_id': rasa.id}) }}" class="btn btn-success"> {{ rasa.name }} ---  Добавить линию</a>
@@ -30,6 +30,8 @@
                 <th>Номер</th>
                 <th>Сок-ное назване Линии</th>
                 <th>Назване Линии</th>
+                <th>Регистрирует линию</th>
+                <th></th>
             </tr>
             <tbody>
             {% set token = csrf_token('delete') %}
@@ -38,6 +40,7 @@
                     <td>{{ linia.sort_linia }}</td>
                     <td>{{ linia.name }}</td>
                     <td>{{ linia.name_star }}</td>
+                    {# <td>{{ linia.pchelowods_count }}</td> #}
                     <td>
                         <div class="d-flex flex-row">
                             <a href="{{ path('paseka.rasas.rasa.settings.linias.edit', {'rasa_id': rasa.id, 'id': linia.id}) }}" class="btn btn-sm btn-primary mr-1"><span class="fa fa-pencil"></span></a>
@@ -53,4 +56,4 @@
         </table>
     </div>
 
-{% endblock %}
+{% endblock %} 

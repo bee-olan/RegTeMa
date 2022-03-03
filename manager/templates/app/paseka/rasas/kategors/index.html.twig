@@ -1,22 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Роли{% endblock %}
+{% block title %}Категории{% endblock %}
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Работа</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Проекты</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.kategors') }}">Роли</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Пасека</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Раса</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.kategors') }}">Категории расы</a></li>
     </ol>
 {% endblock %}
 
 {% block body %}
 
-    {{ include('app/paseka/rasas/_tabs.html.twig') }}
+     {{ include('app/paseka/_tabs-p.html.twig') }}
 
     <div class="controls">
-        <a href="{{ path('paseka.rasas.kategors.create') }}" class="btn btn-success">Добавить роль</a>
+        <a href="{{ path('paseka.rasas.kategors.create') }}" class="btn btn-success">Добавить Категории</a>
     </div>
 
     <div class="box">
@@ -28,7 +28,8 @@
                         {% for kategor in kategors %}
                             <th style="text-align: center">
                                 <a href="{{ path('paseka.rasas.kategors.show', {'id': kategor.id}) }}">{{ kategor.name }}</a>
-                               {# ({{ kategor.memberships_count }}) #}(-----)
+                               {# ({{ kategor.pcheloships_count }})#}
+                               (-----) 
                             </th>
                         {% endfor %}
                     </tr>

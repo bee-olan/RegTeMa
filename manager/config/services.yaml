@@ -72,17 +72,20 @@ services:
         resource: '../src/Widget'
         tags: ['twig.extension']
 
-    App\Menu\Paseka\PchelowodsSettingsMenu:
+    App\Menu\Paseka\MainMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_main }]    
+
+    App\Menu\Paseka\Rasas\PchelowodsSettingsMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_pchelowods_settings }]
 
-    App\Menu\Paseka\PchelowodsMenu:
+    App\Menu\Paseka\Rasas\PchelowodsMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_pchelowods }]
 
-    App\Menu\Paseka\RasasSettingsMenu:
-        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_rasas_settings }]
+    App\Menu\Paseka\Rasas\RasasSettingsMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_rasas_rasa_settings }]
 
-    App\Menu\Paseka\RasasMenu:
-        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_rasas }]
+    App\Menu\Paseka\Rasas\RasaMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_rasas_rasa }]
     
     App\Menu\SidebarMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: sidebar }]

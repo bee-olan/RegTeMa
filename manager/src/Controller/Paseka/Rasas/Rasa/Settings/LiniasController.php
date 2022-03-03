@@ -45,8 +45,6 @@ use Symfony\Component\Routing\Annotation\Route;
         // $this->denyAccessUnlessGranted(RasaAccess::MANAGE_MEMBERS, $rasa);
 
         $linias->allOfRasa($rasa->getId()->getValue());
-
-        // print_r($linias);
         
 
         return $this->render('app/paseka/rasas/rasa/settings/linias/index.html.twig', [

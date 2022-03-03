@@ -52,14 +52,13 @@ class LiniaFetcher
                 'd.name',
                 'd.name_star',
 				'd.sort_linia'
-                
-                //,
+                // ,
                 // '(
-                //     SELECT COUNT(ms.member_id)
-                //     FROM work_projects_project_memberships ms
-                //     INNER JOIN work_projects_project_membership_departments md ON ms.id = md.membership_id
-                //     WHERE md.department_id = d.id AND ms.project_id = :project
-                // ) AS members_count'
+                //     SELECT COUNT(ms.pchelowod_id)
+                //     FROM paseka_rasas_rasa_pcheloships ms
+                //     INNER JOIN paseka_rasas_rasa_pcheloships_linias md ON ms.id = md.pcheloship_id
+                //     WHERE md.linia_id = d.id AND ms.rasa_id = :rasa
+                // ) AS pchelowods_count'
             )
             ->from('paseka_rasas_rasa_linias', 'd')
             ->andWhere('rasa_id = :rasa')

@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ rasa.name }}{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Пасека</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Раса</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.rasa.show', {'id': rasa.id}) }}">{{ rasa.name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.rasa.settings', {'rasa_id': rasa.id}) }}">Settings</a></li>
+        <li class="breadcrumb-item active">Пчеловод</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+    {# {% include 'app/paseka/rasas/rasa/_tabs.html.twig' %}
+
+    {% include 'app/paseka/rasas/rasa/settings/_tabs.html.twig' %} #}
+
+    <div class="controls">
+        <a href="{{ path('paseka.rasas.rasa.settings.members.assign', {'rasa_id': rasa.id}) }}" class="btn btn-success">Assign Member</a>
+        <a href="{{ path('paseka.rasas.roles') }}" class="btn btn-primary">Roles</a>
+    </div>
+
+    <div class="box">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Departments</th>
+                <th>Roles</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% set token = csrf_token('revoke') %}
+            {% for membership in memberships %}
+                <tr>
+                    <td>
+                        <a href="{{ path('paseka.members.show', {'id': membership.member.id}) }}" target="_blank" class="pull-right"><span class="fa fa-external-link"></span></a>
+                        {{ membership.member.name.full }}
+                    </td>
+                    <td>
+                        <ul class="list-unstyled my-0">
+                            {% for department in membership.departments %}
+                                <li>{{ department.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="list-unstyled my-0">
+                            {% for role in membership.roles %}
+                                <li>{{ role.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <div class="d-flex flex-row">
+                            <a href="{{ path('paseka.rasas.rasa.settings.members.edit', {'rasa_id': rasa.id, 'member_id': membership.member.id}) }}" class="btn btn-sm btn-primary mr-1"><span class="fa fa-pencil"></span></a>
+                            <form action="{{ path('paseka.rasas.rasa.settings.members.revoke', {'rasa_id': rasa.id, 'member_id': membership.member.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                                <input type="hidden" name="token" value="{{ token }}" />
+                                <button type="submit" class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

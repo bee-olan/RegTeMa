@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Menu\Paseka;
+namespace App\Menu\Paseka\Rasas;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
@@ -49,17 +49,17 @@ class PasekaSettingsMenu
                 ->setAttribute('class', 'nav-item')
                 ->setLinkAttribute('class', 'nav-link');
 
-            // $menu
-            // ->addChild('Участники', [
-            //     'route' => 'work.projects.project.settings.members',
-            //     'routeParameters' => ['project_id' => $options['project_id']]
-            // ])
-            // ->setExtra('routes', [
-            //     ['route' => 'work.projects.project.settings.members'],
-            //     ['pattern' => '/^work.projects.project.settings.members\..+/']
-            // ])
-            // ->setAttribute('class', 'nav-item')
-            // ->setLinkAttribute('class', 'nav-link');
+            $menu
+                ->addChild('Участники', [
+                    'route' => 'paseka.rasas.rasa.settings.pchelowods',
+                    'routeParameters' => ['rasa_id' => $options['rasa_id']]
+                ])
+                ->setExtra('routes', [
+                    ['route' => 'paseka.rasas.rasa.settings.pchelowods'],
+                    ['pattern' => '/^paseka.rasas.rasa.settings.pchelowods\..+/']
+                ])
+                ->setAttribute('class', 'nav-item')
+                ->setLinkAttribute('class', 'nav-link');
 
         }
 

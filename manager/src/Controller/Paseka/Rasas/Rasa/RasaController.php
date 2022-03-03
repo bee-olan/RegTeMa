@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/paseka/rasas/{id}", name="paseka.rasas.rasa")
+ * @Route("/paseka/rasas/{id}/rasa", name="paseka.rasas.rasa")
  */
 class RasaController extends AbstractController
 {

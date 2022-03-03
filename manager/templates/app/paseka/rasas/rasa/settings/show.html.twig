@@ -5,8 +5,8 @@
 {% block breadcrumbs %}
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Матки</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Матка</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Пасека</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Раса</a></li>
         <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.rasa.show', {'id': rasa.id}) }}">{{ rasa.name }}</a></li>
         <li class="breadcrumb-item active">Настройки!!!!!!!</li>
     </ol>
@@ -14,12 +14,12 @@
 
 {% block body %}
 
-    {% include 'app/paseka/rasas/rasa/_tabs.html.twig' %}
+    {% include 'app/paseka/rasas/rasa/_tabs-r.html.twig' %}
 
-     {% include 'app/paseka/rasas/rasa/settings/_tabs.html.twig' %}
+    {% include 'app/paseka/rasas/rasa/settings/_tabs-s.html.twig' %} 
 
     <div class="controls">
-        <a href="{{ path('paseka.rasas.rasa.settings.edit', {'rasa_id': rasa.id}) }}" class="btn btn-primary">Редактировать</a>
+        
         {# {% if rasa.active and rasa.id.value != app.user.id %}
             <form action="{{ path('paseka.rasas.rasa.settings.archive', {'rasa_id': rasa.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
                 <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
@@ -32,10 +32,7 @@
                 <button type="submit" class="btn btn-success">Reinstate</button>
             </form>
         {% endif %}  #}
-        <form action="{{ path('paseka.rasas.rasa.settings.delete', {'rasa_id': rasa.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
-            <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
-            <button type="submit" class="btn btn-danger">Удалить</button>
-        </form>
+   
          <a href="{{ path('paseka.rasas.rasa.settings.linias', {'rasa_id': rasa.id}) }}" class="btn btn-primary">Departments---------Linia</a>
     </div>
 
@@ -43,8 +40,19 @@
         <table class="table table-bordered">
             <tbody>
                 <tr>
-                    <th>Name</th>
-                    <td>{{ rasa.name }}</td>
+                     <th>{{ rasa.sort }}</th>
+                     <td>{{ rasa.psewdo }}</td>
+                    <th>{{ rasa.name }}</th>
+                    <th>
+                        <a href="{{ path('paseka.rasas.rasa.settings.edit', {'rasa_id': rasa.id}) }}" class="btn btn-primary">Редактировать</a>
+                    </th>
+                    <th>
+                        <form action="{{ path('paseka.rasas.rasa.settings.delete', {'rasa_id': rasa.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                            <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+                            <button type="submit" class="btn btn-danger">Удалить</button>
+                        </form>
+                    </th>
+    
                 </tr>
                 <tr>
                     {# <th>Status</th>

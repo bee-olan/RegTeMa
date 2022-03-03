@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/paseka/rasas/{rasa_id}/settings", name="paseka.rasas.rasa.settings")
+ * @Route("/paseka/rasas/{rasa_id}/rasa/settings", name="paseka.rasas.rasa.settings")
  * @ParamConverter("rasa", options={"id" = "rasa_id"})
  */
 class SettingsController extends AbstractController

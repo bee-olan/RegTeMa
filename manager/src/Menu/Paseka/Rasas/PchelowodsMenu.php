@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Menu\Paseka;
+namespace App\Menu\Paseka\Rasas;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;

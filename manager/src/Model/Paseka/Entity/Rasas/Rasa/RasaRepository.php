@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Model\Paseka\Entity\Rasas\Rasa;
 
 use App\Model\EntityNotFoundException;
-//use App\Model\Work\Entity\Projects\Role\Id as RoleId;
+use App\Model\Paseka\Entity\Rasas\Kategor\Id as KategorId;
 use Doctrine\ORM\EntityManagerInterface;
 
 class RasaRepository
@@ -22,16 +22,16 @@ class RasaRepository
         $this->em = $em;
     }
 
-    // public function hasMembersWithRole(RoleId $id): bool
-    // {
-    //     return $this->repo->createQueryBuilder('p')
-    //             ->select('COUNT(p.id)')
-    //             ->innerJoin('p.memberships', 'ms')
-    //             ->innerJoin('ms.roles', 'r')
-    //             ->andWhere('r.id = :role')
-    //             ->setParameter(':role', $id->getValue())
-    //             ->getQuery()->getSingleScalarResult() > 0;
-    // }
+    public function hasPchelowodsWithKategor(KategorId $id): bool
+    {
+        return $this->repo->createQueryBuilder('p')
+                ->select('COUNT(p.id)')
+                ->innerJoin('p.pcheloship', 'ms')
+                ->innerJoin('ms.kategors', 'r')
+                ->andWhere('r.id = :kategor')
+                ->setParameter(':kategor', $id->getValue())
+                ->getQuery()->getSingleScalarResult() > 0;
+    }
 
     public function get(Id $id): Rasa
     {

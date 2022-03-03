@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Menu\Paseka;
+namespace App\Menu\Paseka\Rasas;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
@@ -26,7 +26,7 @@ class RasasSettingsMenu
 
         if ($this->auth->isGranted('ROLE_WORK_MANAGE_PROJECTS')) {
             $menu
-                ->addChild('Общие--', [
+                ->addChild('РАСА - смотреть - редактировать', [
                     'route' => 'paseka.rasas.rasa.settings',
                     'routeParameters' => ['rasa_id' => $options['rasa_id']]
                 ])
@@ -38,7 +38,7 @@ class RasasSettingsMenu
                 ->setLinkAttribute('class', 'nav-link');
 
             $menu
-                ->addChild('Линия - Номер', [
+                ->addChild('ЛИНИЯ - смотреть- добавить', [
                     'route' => 'paseka.rasas.rasa.settings.linias',
                     'routeParameters' => ['rasa_id' => $options['rasa_id']]
                 ])
@@ -50,13 +50,13 @@ class RasasSettingsMenu
                 ->setLinkAttribute('class', 'nav-link');
 
             // $menu
-            // ->addChild('Участники', [
-            //     'route' => 'work.projects.project.settings.members',
-            //     'routeParameters' => ['project_id' => $options['project_id']]
+            // ->addChild('Паека - Участники', [
+            //     'route' => 'paseka.rasas.rasa.settings.pchelowods',
+            //     'routeParameters' => ['rasa_id' => $options['rasa_id']]
             // ])
             // ->setExtra('routes', [
-            //     ['route' => 'work.projects.project.settings.members'],
-            //     ['pattern' => '/^work.projects.project.settings.members\..+/']
+            //     ['route' => 'paseka.rasas.rasa.settings.pchelowods'],
+            //     ['pattern' => '/^paseka.rasas.rasa.settings.pchelowods\..+/']
             // ])
             // ->setAttribute('class', 'nav-item')
             // ->setLinkAttribute('class', 'nav-link');

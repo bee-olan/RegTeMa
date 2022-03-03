@@ -27,9 +27,9 @@ class Handler
     {
         $kategor = $this->kategors->get(new Id($command->id));
 
-        // if ($this->rasas->hasMembersWithRole($kategor->getId())) {
-        //     throw new \DomainException('Kategor contains members.');
-        // }
+        if ($this->rasas->hasPchelowodsWithKategor($kategor->getId())) {
+            throw new \DomainException('Kategor contains members.');
+        }
 
         $this->kategors->remove($kategor);
 
