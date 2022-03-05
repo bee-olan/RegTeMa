@@ -46,7 +46,7 @@ class Pcheloship
      * @ORM\ManyToMany(targetEntity="App\Model\Paseka\Entity\Rasas\Rasa\Linia\Linia")
      * @ORM\JoinTable(name="paseka_rasas_rasa_pcheloship_linias",
      *     joinColumns={@ORM\JoinColumn(name="pcheloship_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="linias_id", referencedColumnName="id")}
+     *     inverseJoinColumns={@ORM\JoinColumn(name="linia_id", referencedColumnName="id")}
      * )
      */
     private $linias;

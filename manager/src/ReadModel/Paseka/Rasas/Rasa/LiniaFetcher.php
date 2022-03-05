@@ -52,14 +52,13 @@ class LiniaFetcher
                 'd.id',
                 'd.name',
                 'd.name_star',
-				'd.sort_linia'
-                // ,
-                // '(
-                //     SELECT COUNT(ms.pchelowod_id)
-                //     FROM paseka_rasas_rasa_pcheloships ms
-                //     INNER JOIN paseka_rasas_rasa_pcheloships_linias md ON ms.id = md.pcheloship_id
-                //     WHERE md.linia_id = d.id AND ms.rasa_id = :rasa
-                // ) AS pchelowods_count'
+				'd.sort_linia' ,
+                '(
+                    SELECT COUNT(ms.pchelowod_id)
+                    FROM paseka_rasas_rasa_pcheloships ms
+                    INNER JOIN paseka_rasas_rasa_pcheloship_linias md ON ms.id = md.pcheloship_id
+                    WHERE md.linia_id = d.id AND ms.rasa_id = :rasa
+                ) AS pchelowods_count'
             )
             ->from('paseka_rasas_rasa_linias', 'd')
             ->andWhere('rasa_id = :rasa')
@@ -72,24 +71,24 @@ class LiniaFetcher
         return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
     }
 
-    // public function allOfMember(string $member): array
-    // {
-    //     $stmt = $this->connection->createQueryBuilder()
-    //         ->select(
-    //             'p.id AS project_id',
-    //             'p.name AS project_name',
-    //             'd.id AS department_id',
-    //             'd.name AS department_name'
-    //         )
-    //         ->from('work_projects_project_memberships', 'ms')
-    //         ->innerJoin('ms', 'work_projects_project_membership_departments', 'msd', 'ms.id = msd.membership_id')
-    //         ->innerJoin('msd', 'work_projects_project_departments', 'd', 'msd.department_id = d.id')
-    //         ->innerJoin('d', 'work_projects_projects', 'p', 'd.project_id = p.id')
-    //         ->andWhere('ms.member_id = :member')
-    //         ->setParameter(':member', $member)
-    //         ->orderBy('p.sort')->addOrderBy('d.name')
-    //         ->execute();
+    public function allOfPchelowod(string $pchelowod): array
+    {
+        $stmt = $this->connection->createQueryBuilder()
+            ->select(
+                'p.id AS rasa_id',
+                'p.name AS rasa_name',
+                'd.id AS linia_id',
+                'd.name AS linia_name'
+            )
+            ->from('paseka_rasas_rasa_pcheloships', 'ms')
+            ->innerJoin('ms', 'paseka_rasas_rasa_pcheloship_linias', 'msd', 'ms.id = msd.pcheloship_id')
+            ->innerJoin('msd', 'paseka_rasas_rasa_linias', 'd', 'msd.linia_id = d.id')
+            ->innerJoin('d', 'paseka_rasas_rasas', 'p', 'd.rasa_id = p.id')
+            ->andWhere('ms.pchelowod_id = :pchelowod')
+            ->setParameter(':pchelowod', $pchelowod)
+            ->orderBy('p.sort')->addOrderBy('d.name')
+            ->execute();
 
-    //     return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
-    // }
+        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
+    }
 }
