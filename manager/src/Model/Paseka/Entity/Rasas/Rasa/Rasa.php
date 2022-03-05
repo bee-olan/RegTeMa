@@ -61,7 +61,7 @@ class Rasa
 
     /**
      * @var ArrayCollection|Pcheloship[]
-     * @ORM\OneToMany(targetEntity="Pcheloship", mappedBy="project", orphanRemoval=true, cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Pcheloship", mappedBy="rasa", orphanRemoval=true, cascade={"all"})
      */
     private $pcheloships;
 
@@ -139,12 +139,12 @@ class Rasa
     }
 
     /**
-     * @param Pcheloship $pchelowod
+     * @param Pchelowod $pchelowod
      * @param LiniaId[] $liniaIds
      * @param Kategor[] $kategors
      * @throws \Exception
      */
-    public function addPchelowod(Pcheloship $pchelowod, array $liniaIds, array $kategors): void
+    public function addPchelowod(Pchelowod $pchelowod, array $liniaIds, array $kategors): void
     {
         foreach ($this->pcheloships as $pcheloship) {
             if ($pcheloship->isForPchelowod($pchelowod->getId())) {
@@ -236,5 +236,15 @@ class Rasa
     public function getPcheloships()
     {
         return $this->pcheloships->toArray();
+    }
+
+    public function getPcheloship(PchelowodId $id): Pcheloship
+    {
+        foreach ($this->pcheloships as $pcheloship) {
+            if ($pcheloship->isForPchelowod($id)) {
+                return $pcheloship;
+            }
+        }
+        throw new \DomainException('Pchelowod is not found.');
     }
 }

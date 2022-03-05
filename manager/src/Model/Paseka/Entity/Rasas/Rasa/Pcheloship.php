@@ -39,15 +39,18 @@ class Pcheloship
      * @ORM\JoinColumn(name="pchelowod_id", referencedColumnName="id", nullable=false)
      */
     private $pchelowod;
+
+
     /**
      * @var ArrayCollection|Linia[]
      * @ORM\ManyToMany(targetEntity="App\Model\Paseka\Entity\Rasas\Rasa\Linia\Linia")
      * @ORM\JoinTable(name="paseka_rasas_rasa_pcheloship_linias",
      *     joinColumns={@ORM\JoinColumn(name="pcheloship_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="linia_id", referencedColumnName="id")}
+     *     inverseJoinColumns={@ORM\JoinColumn(name="linias_id", referencedColumnName="id")}
      * )
      */
     private $linias;
+
     /**
      * @var ArrayCollection|Kategor[]
      * @ORM\ManyToMany(targetEntity="App\Model\Paseka\Entity\Rasas\Kategor\Kategor")
@@ -77,6 +80,7 @@ class Pcheloship
         $this->linias = new ArrayCollection($linias);
         $this->kategors = new ArrayCollection($kategors);
     }
+
 
     /**
      * @param Linia[] $linias

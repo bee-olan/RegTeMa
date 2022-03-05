@@ -36,9 +36,8 @@ class KategorFetcher
             ->select(
                 'r.id',
                 'r.name',
-                'r.permissions'
-                // ,
-                // '(SELECT COUNT(*) FROM work_projects_project_membership_roles m WHERE m.role_id = r.id) AS memberships_count'
+                'r.permissions',
+                 '(SELECT COUNT(*) FROM paseka_rasas_rasa_pcheloship_kategors m WHERE m.kategor_id = r.id) AS pcheloships_count'
             )
             ->from('paseka_rasas_kategors', 'r')
             ->orderBy('name')

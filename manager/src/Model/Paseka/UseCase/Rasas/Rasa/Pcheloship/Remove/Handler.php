@@ -29,10 +29,13 @@ class Handler
 
     public function handle(Command $command): void
     {
-        $rasa = $this->rasas->get(new Id($command->rasa));
-        $pchelowod = $this->pchelowods->get(new PchelowodId($command->pchelowod));
+        $kategor = $this->kategors->get(new Id($command->id));
 
-        $rasa->removePchelowod($pchelowod->getId());
+        if ($this->rasas->hasPchelowodsWithKategor($kategor->getId())) {
+            throw new \DomainException('Kategor contains pchelowods.');
+        }
+
+        $this->kategors->remove($kategor);
 
         $this->flusher->flush();
     }

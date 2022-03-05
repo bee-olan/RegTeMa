@@ -4,21 +4,21 @@
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Work</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Projects</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Пасека</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Раса</a></li>
         <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.rasa.show', {'id': rasa.id}) }}">{{ rasa.name }}</a></li>
         <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.rasa.settings', {'rasa_id': rasa.id}) }}">Settings</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.rasa.settings.members', {'rasa_id': rasa.id}) }}">Members</a></li>
-        <li class="breadcrumb-item active">Assign</li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.rasa.settings.pchelowods', {'rasa_id': rasa.id}) }}">Пчеловоды</a></li>
+        <li class="breadcrumb-item active">Назначать</li>
     </ol>
 {% endblock %}
 
 {% block body %}
-{# 
-    {% include 'app/paseka/rasas/rasa/_tabs.html.twig' %}
 
-    {% include 'app/paseka/rasas/rasa/settings/_tabs.html.twig' %} #}
+  {% include 'app/paseka/rasas/rasa/_tabs-r.html.twig' %}
+
+   {% include 'app/paseka/rasas/rasa/settings/_tabs-s.html.twig' %} 
 
     <div class="card">
         <div class="card-body">

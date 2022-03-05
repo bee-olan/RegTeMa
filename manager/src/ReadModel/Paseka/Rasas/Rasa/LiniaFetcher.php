@@ -31,9 +31,10 @@ class LiniaFetcher
         $stmt = $this->connection->createQueryBuilder()
             ->select(
                 'id',
-                'name',
-                'name_star',
-				'sort_linia'
+                'name'
+                // ,
+                // 'name_star',
+				// 'sort_linia'
             )
             ->from('paseka_rasas_rasa_linias')
             ->andWhere('rasa_id = :rasa')

@@ -62,12 +62,12 @@ class RasaFetcher
             )
             ->from('paseka_rasas_rasas', 'p');
 
-        // if ($filter->member) {
-        //     $qb->andWhere('EXISTS (
-        //         SELECT ms.member_id FROM work_projects_project_memberships ms WHERE ms.project_id = p.id AND ms.member_id = :member
-        //     )');
-        //     $qb->setParameter(':member', $filter->member);
-        // }
+        if ($filter->pchelowod) {
+            $qb->andWhere('EXISTS (
+                SELECT ms.pchelowod_id FROM paseka_rasas_rasa_pcheloships ms WHERE ms.rasa_id = p.id AND ms.pchelowod_id = :pchelowod
+            )');
+            $qb->setParameter(':pchelowod', $filter->pchelowod);
+        }
 
         if ($filter->name) {
             $qb->andWhere($qb->expr()->like('LOWER(p.name)', ':name'));

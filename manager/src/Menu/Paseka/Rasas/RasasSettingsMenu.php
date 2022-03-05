@@ -49,17 +49,31 @@ class RasasSettingsMenu
                 ->setAttribute('class', 'nav-item')
                 ->setLinkAttribute('class', 'nav-link');
 
+            $menu
+                ->addChild('Паека - Участники', [
+                    'route' => 'paseka.rasas.rasa.settings.pchelowods',
+                    'routeParameters' => ['rasa_id' => $options['rasa_id']]
+                ])
+                ->setExtra('routes', [
+                    ['route' => 'paseka.rasas.rasa.settings.pchelowods'],
+                    ['pattern' => '/^paseka.rasas.rasa.settings.pchelowods\..+/']
+                ])
+                ->setAttribute('class', 'nav-item')
+                ->setLinkAttribute('class', 'nav-link');
+
+
+
             // $menu
-            // ->addChild('Паека - Участники', [
-            //     'route' => 'paseka.rasas.rasa.settings.pchelowods',
-            //     'routeParameters' => ['rasa_id' => $options['rasa_id']]
-            // ])
-            // ->setExtra('routes', [
-            //     ['route' => 'paseka.rasas.rasa.settings.pchelowods'],
-            //     ['pattern' => '/^paseka.rasas.rasa.settings.pchelowods\..+/']
-            // ])
-            // ->setAttribute('class', 'nav-item')
-            // ->setLinkAttribute('class', 'nav-link');
+            //     ->addChild('Паека - Участники', [
+            //          'route' => 'paseka.rasas.rasa.settings.pchelowods',
+            //          'routeParameters' => ['rasa_id' => $options['rasa_id']]
+            //     ])
+            //     ->setExtra('routes', [
+            //         ['route' => 'paseka.rasas.rasa.settings.pchelowods'],
+            //         ['pattern' => '/^paseka.rasas.rasa.settings.pchelowods\..+/']
+            //     ])
+            //     ->setAttribute('class', 'nav-item')
+            //     ->setLinkAttribute('class', 'nav-link');
 
         }
 

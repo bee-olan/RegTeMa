@@ -8,23 +8,23 @@ namespace App\ReadModel\Paseka\Rasas\Rasa\Filter;
 
 class Filter
 {
-    // public $member;
+    public $pchelowod;
     public $name;
     public $psewdo;
     // public $status = Status::ACTIVE;
 
-    // private function __construct(?string $member)
-    // {
-    //     $this->member = $member;
-    // }
+    private function __construct(?string $pchelowod)
+    {
+        $this->pchelowod = $pchelowod;
+    }
 
     public static function all(): self
     {
         return new self(null);
     }
 
-    // public static function forMember(string $id): self
-    // {
-    //     return new self($id);
-    // }
+    public static function forPchelowod(string $id): self
+    {
+        return new self($id);
+    }
 }

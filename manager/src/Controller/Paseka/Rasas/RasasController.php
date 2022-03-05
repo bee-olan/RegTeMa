@@ -37,7 +37,11 @@ class RasasController extends AbstractController
      */
     public function index(Request $request, RasaFetcher $fetcher): Response
     {
-        $filter = new Filter\Filter();
+        if ($this->isGranted('ROLE_WORK_MANAGE_PROJECTS')) {
+            $filter = Filter\Filter::all();
+        } else {
+            $filter = Filter\Filter::forPchelowod($this->getUser()->getId());
+        }
 
         $form = $this->createForm(Filter\Form::class, $filter);
         $form->handleRequest($request);
