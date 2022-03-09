@@ -43,10 +43,12 @@ use Symfony\Component\Routing\Annotation\Route;
     public function index(Rasa $rasa, LiniaFetcher $linias): Response
     {
         // $this->denyAccessUnlessGranted(RasaAccess::MANAGE_MEMBERS, $rasa);
-
-        $linias->allOfRasa($rasa->getId()->getValue());
         
-
+   
+        // $linias->allOfRasa($rasa->getId()->getValue());
+        
+//  var_dump($linias);
+//         die;
         return $this->render('app/paseka/rasas/rasa/settings/linias/index.html.twig', [
             'rasa' => $rasa,
             'linias' => $linias->allOfRasa($rasa->getId()->getValue()),
@@ -64,8 +66,10 @@ use Symfony\Component\Routing\Annotation\Route;
     public function create(Rasa $rasa, LiniaFetcher $linias, Request $request, Create\Handler $handler): Response
     {
         // $this->denyAccessUnlessGranted(RasaAccess::MANAGE_MEMBERS, $rasa);
-
+        // var_dump($rasa);
+        
         $command = new Create\Command($rasa->getId()->getValue());
+        
         $command->sortLinia = $linias->getMaxSortLinia($rasa->getId()->getValue()) + 1;
         $form = $this->createForm(Create\Form::class, $command);
         

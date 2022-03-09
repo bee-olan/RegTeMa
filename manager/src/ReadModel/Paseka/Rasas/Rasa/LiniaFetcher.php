@@ -52,20 +52,21 @@ class LiniaFetcher
                 'd.id',
                 'd.name',
                 'd.name_star',
-				'd.sort_linia' ,
-                '(
-                    SELECT COUNT(ms.pchelowod_id)
-                    FROM paseka_rasas_rasa_pcheloships ms
-                    INNER JOIN paseka_rasas_rasa_pcheloship_linias md ON ms.id = md.pcheloship_id
-                    WHERE md.linia_id = d.id AND ms.rasa_id = :rasa
-                ) AS pchelowods_count'
+				'd.sort_linia'
+                // ,
+                // '(
+                //     SELECT COUNT(ms.pchelowod_id)
+                //     FROM paseka_rasas_rasa_pcheloships ms
+                //     INNER JOIN paseka_rasas_rasa_pcheloship_linias md ON ms.id = md.pcheloship_id
+                //     WHERE md.linia_id = d.id AND ms.rasa_id = :rasa
+                // ) AS pchelowods_count'
             )
             ->from('paseka_rasas_rasa_linias', 'd')
             ->andWhere('rasa_id = :rasa')
             ->setParameter(':rasa', $rasa)
             ->orderBy('name')
-            ->orderBy('name_star')
-            ->orderBy('sort_linia')
+            // ->orderBy('name_star')
+            // ->orderBy('sort_linia')
             ->execute();
 
         return $stmt->fetchAll(FetchMode::ASSOCIATIVE);

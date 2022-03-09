@@ -49,6 +49,7 @@ doctrine:
             paseka_rasas_rasa_linia_id: 'App\Model\Paseka\Entity\Rasas\Rasa\Linia\IdType'
             paseka_rasas_kategor_id: 'App\Model\Paseka\Entity\Rasas\Kategor\IdType'
             paseka_rasas_kategor_permissions: 'App\Model\Paseka\Entity\Rasas\Kategor\PermissionsType'
+            paseka_rasas_rasa_linia_nomer_id: 'App\Model\Paseka\Entity\Rasas\Rasa\Linia\Nomer\IdType'
 
     orm:
         auto_generate_proxy_classes: true

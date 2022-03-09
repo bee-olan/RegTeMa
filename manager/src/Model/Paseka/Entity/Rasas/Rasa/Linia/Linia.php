@@ -5,6 +5,11 @@ declare(strict_types=1);
 namespace App\Model\Paseka\Entity\Rasas\Rasa\Linia;
 
 use App\Model\Paseka\Entity\Rasas\Rasa\Rasa;
+
+use App\Model\Paseka\Entity\Rasas\Rasa\Linia\Nomer\Nomer;
+use App\Model\Paseka\Entity\Rasas\Rasa\Linia\Nomer\Id as NomerId;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,6 +50,16 @@ class Linia
      */
     private $sortLinia;
 
+     /**
+     * @var ArrayCollection|Nomer[]
+     * @ORM\OneToMany(
+     *     targetEntity="App\Model\Paseka\Entity\Rasas\Rasa\Linia\Nomer\Nomer",
+     *     mappedBy="linia", orphanRemoval=true, cascade={"all"}
+     * )
+     * @ORM\OrderBy({"name" = "ASC"})
+     */
+    private $nomers;
+
     public function __construct(Rasa $rasa, 
                                 Id $id, 
                                 string $name,
@@ -57,7 +72,56 @@ class Linia
         $this->name = $name;
         $this->nameStar = $nameStar;
 		$this->sortLinia = $sortLinia;
+        $this->nomers = new ArrayCollection();
     }
+    //////////////////// Nomer
+    public function addNomer(NomerId $id,
+                                ///Sparing $sparing, 
+                                string $name, 
+                                string $nameStar, 
+                                string $title,
+                                int $sortNomer   
+                                ): void
+    {
+        foreach ($this->nomers as $nomer) {
+            if ($nomer->isNameEqual($name)) {
+                throw new \DomainException('номер уже существует.');
+            }
+            if ($nomer->isNameStarEqual($nameStar)) {
+                throw new \DomainException('Такая запись уже существует.');
+            }
+        }
+        $this->nomers->add(new Nomer($this, $id, 
+                                    //$sparing, 
+                                    $name, 
+                                    $nameStar, 
+                                    $title, 
+                                    $sortNomer));
+    }
+
+    public function editNomer(NomerId $id, string $name, string $nameStar): void
+    {
+        foreach ($this->nomers as $current) {
+            if ($current->getId()->isEqual($id)) {
+                $current->edit($name, $nameStar);
+                return;
+            }
+        }
+        throw new \DomainException('nomer is not found.');
+    }
+
+    public function removeNomer(NomerId $id): void
+    {
+        foreach ($this->nomers as $nomer) {
+            if ($nomer->getId()->isEqual($id)) {
+                $this->nomers->removeElement($nomer);
+                return;
+            }
+        }
+        throw new \DomainException('Linia is not found.');
+    }
+
+    //////////////////////// end Nomer
 
     public function isNameEqual(string $name): bool
     {
@@ -94,6 +158,21 @@ class Linia
 	public function getSortLinia(): int
     {
         return $this->sortLinia;
+    }
+
+    public function getNomers()
+    {
+        return $this->nomers->toArray();
+    }
+
+    public function getNomer(NomerId $id): Nomer
+    {
+        foreach ($this->nomers as $nomer) {
+            if ($nomer->getId()->isEqual($id)) {
+                return $nomer;
+            }
+        }
+        throw new \DomainException('Nomer is not found.');
     }
 	
 }
