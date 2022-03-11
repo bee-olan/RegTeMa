@@ -50,6 +50,12 @@ class Linia
      */
     private $sortLinia;
 
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private $title;
+
      /**
      * @var ArrayCollection|Nomer[]
      * @ORM\OneToMany(
@@ -64,6 +70,7 @@ class Linia
                                 Id $id, 
                                 string $name,
                                 string $nameStar,
+                                string $title,
 								int $sortLinia
                                 )
     {
@@ -71,6 +78,7 @@ class Linia
         $this->id = $id;
         $this->name = $name;
         $this->nameStar = $nameStar;
+        $this->title = $title;
 		$this->sortLinia = $sortLinia;
         $this->nomers = new ArrayCollection();
     }
@@ -134,10 +142,12 @@ class Linia
     }
 
     public function edit(string $name, 
-                        string $nameStar): void
+                        string $nameStar,
+                        string $title): void
     {
         $this->name = $name;
         $this->nameStar = $nameStar;
+        $this->title = $title;
     }
 
     public function getId(): Id
@@ -163,6 +173,11 @@ class Linia
     public function getNomers()
     {
         return $this->nomers->toArray();
+    }
+
+    public function getTitle(): string
+    {
+        return $this->title;
     }
 
     public function getNomer(NomerId $id): Nomer

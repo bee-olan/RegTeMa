@@ -52,6 +52,7 @@ class LiniaFetcher
                 'd.id',
                 'd.name',
                 'd.name_star',
+                'd.title',
 				'd.sort_linia'
                 // ,
                 // '(

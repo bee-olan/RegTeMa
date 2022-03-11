@@ -101,21 +101,28 @@ class Rasa
     //     $this->status = Status::active();
     // }
 
-    public function addLinia(LiniaId $id, string $name, string $nameStar, int $sortLinia): void
+    public function addLinia(LiniaId $id, 
+                            string $name, 
+                            string $nameStar,
+                            string $title,
+                            int $sortLinia): void
     {
         foreach ($this->linias as $linia) {
             if ($linia->isNameEqual($name)) {
-                throw new \DomainException('Department already exists.');
+                throw new \DomainException('Такая линия  уже существует.');
             }
         }
-        $this->linias->add(new Linia($this, $id, $name, $nameStar, $sortLinia));
+        $this->linias->add(new Linia($this, $id, $name, $nameStar, $title, $sortLinia));
     }
 
-    public function editLinia(LiniaId $id, string $name, string $nameStar): void
+    public function editLinia(LiniaId $id, 
+                                string $name, 
+                                string $nameStar, 
+                                $title): void
     {
         foreach ($this->linias as $current) {
             if ($current->getId()->isEqual($id)) {
-                $current->edit($name,  $nameStar);
+                $current->edit($name,  $nameStar, $title);
                 return;
             }
         }

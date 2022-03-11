@@ -16,7 +16,7 @@ use App\Model\Paseka\Entity\Rasas\Rasa\Linia\LiniaRepository;
 class Handler
 {
     private $linias;
-    private $sparings;
+   // private $sparings;
     private $flusher;
 
     public function __construct(LiniaRepository $linias, 
@@ -31,7 +31,7 @@ class Handler
     public function handle(Command $command): void
     {
         $linia = $this->linias->get(new LiniaId($command->linia));
-
+        $command->title = $command->title."_н-".$command->sortNomer;
        // $sparing = $this->sparings->get(new SparingId($command->sparing));
 
         $linia->addNomer(

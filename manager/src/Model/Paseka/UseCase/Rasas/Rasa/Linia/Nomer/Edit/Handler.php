@@ -23,7 +23,7 @@ class Handler
     public function handle(Command $command): void
     {
         $linia = $this->linias->get(new Id($command->linia));
-
+        $command->title = $command->title."_н-".$command->sortNomer;
         $linia->editNomer(new NomerId($command->id),
 										$command->name, 
 										$command->nameStar, 

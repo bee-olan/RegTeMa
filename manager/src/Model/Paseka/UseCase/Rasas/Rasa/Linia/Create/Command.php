@@ -27,6 +27,12 @@ class Command
      */
     public $sortLinia;
 
+    /**
+     * @Assert\NotBlank()
+     */
+    public $title;
+
+
     public function __construct(string $rasa)
     {
         $this->rasa = $rasa;

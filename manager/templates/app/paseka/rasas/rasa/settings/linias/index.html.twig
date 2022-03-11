@@ -39,10 +39,10 @@
             {% for linia in linias %}
                 <tr>
                     <td>{{ linia.sort_linia }}</td>
-                    <td>{{ linia.name }}</td>
+                    <td>{{ rasa.psewdo}}_{{ linia.name }}</td>
                     <td>{{ linia.name_star }}</td>
                     <td> <a href="{{ path('paseka.rasas.rasa.settings.linias.nomers', {'linia_id': linia.id}) }}" 
-                    class="btn btn-primary">Linia - номер</a>
+                    class="btn btn-primary">Linia - номер   {{linia.title}}</a>
                     </td>
                     {# <td>({{ linia.pchelowods_count }}----)</td> #}
                     <td>

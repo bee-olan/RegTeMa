@@ -26,7 +26,8 @@ class Form extends AbstractType
                     'placeholder' => 'Введите название'
                 ]
             ))
-            ->add('sortLinia', Type\IntegerType::class)
+            // ->add('sortLinia', Type\IntegerType::class)
+            // ->add('title', Type\TextType::class)
             ;
     }
 

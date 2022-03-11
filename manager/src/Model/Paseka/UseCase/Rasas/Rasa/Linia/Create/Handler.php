@@ -24,10 +24,14 @@ class Handler
     {
         $rasa = $this->rasas->get(new RasaId($command->rasa));
 
+        $command->title = $rasa->getPsewdo()."_л-".$command->sortLinia;
+       // dd($command->title) ;
+
         $rasa->addLinia(
             Id::next(),
             $command->name ,
 			$command->nameStar,
+            $command->title,
 			$command->sortLinia
         );
 

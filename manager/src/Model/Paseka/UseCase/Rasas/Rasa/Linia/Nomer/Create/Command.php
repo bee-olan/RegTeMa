@@ -29,7 +29,7 @@ class Command
      */
     public $nameStar;
 	
-	 /**
+	/**
      * @Assert\NotBlank()
      */
     public $title;

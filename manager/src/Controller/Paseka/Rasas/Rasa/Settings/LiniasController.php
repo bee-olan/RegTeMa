@@ -71,12 +71,16 @@ use Symfony\Component\Routing\Annotation\Route;
         $command = new Create\Command($rasa->getId()->getValue());
         
         $command->sortLinia = $linias->getMaxSortLinia($rasa->getId()->getValue()) + 1;
-        $form = $this->createForm(Create\Form::class, $command);
+        $command->title = $rasa->getPsewdo()."_л-".$command->sortLinia;
         
+        $form = $this->createForm(Create\Form::class, $command);
+     
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {
+                 
+                // dd($command->title) ; 
                 $handler->handle($command);
                 return $this->redirectToRoute('paseka.rasas.rasa.settings.linias', ['rasa_id' => $rasa->getId()]);
             } catch (\DomainException $e) {
@@ -87,6 +91,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
         return $this->render('app/paseka/rasas/rasa/settings/linias/create.html.twig', [
             'rasa' => $rasa,
+            'title' => $command->title,
             'form' => $form->createView(),
         ]);
     }
@@ -112,6 +117,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {
+                // $command->title =  "_".$command->name;
+                // $command->title = "л-".$command->sortLinia;
                 $handler->handle($command);
                 return $this->redirectToRoute('paseka.rasas.rasa.settings.linias.show', ['rasa_id' => $rasa->getId(), 'id' => $id]);
             } catch (\DomainException $e) {

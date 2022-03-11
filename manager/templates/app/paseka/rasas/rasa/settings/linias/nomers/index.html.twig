@@ -20,8 +20,8 @@
     {% include 'app/paseka/rasas/rasa/settings/_tabs-s.html.twig' %} #}
 
     <div class="controls">
-        {# <a href="{{ path('paseka.rasas.rasa.settings.linias.create', {'rasa_id': rasa.id}) }}" class="btn btn-success"> {{ rasa.name }} ---  Добавить НОМЕР</a> #}
-    Добавить НОМЕР к линии  {{ linia.name }}
+        <a href="{{ path('paseka.rasas.rasa.settings.linias.nomers.create', {'linia_id': linia.id}) }}" class="btn btn-success"> {{ linia.name }} ---  Добавить НОМЕР</a> 
+   {#  Добавить НОМЕР к линии  {{ linia.name }}#}
     </div>
 
     <div class="box">
@@ -36,23 +36,23 @@
             </tr>
             <tbody>
             {% set token = csrf_token('delete') %}
-            {# {% for linia in linias %}
+             {% for nomer in nomers %}
                 <tr>
-                    <td>{{ linia.sort_linia }}</td>
-                    <td>{{ linia.name }}</td>
-                    <td>{{ linia.name_star }}</td>
-                   
-                    <td>
+                    <td>{{ nomer.sort_nomer }}</td>
+                    <td>{{ nomer.name }}</td>
+                    <td>{{ nomer.name_star }}</td>
+                   <td>{{ nomer.title }}</td>
+                   <td>
                         <div class="d-flex flex-row">
-                            <a href="{{ path('paseka.rasas.rasa.settings.linias.edit', {'rasa_id': rasa.id, 'id': linia.id}) }}" class="btn btn-sm btn-primary mr-1"><span class="fa fa-pencil"></span></a>
-                            <form action="{{ path('paseka.rasas.rasa.settings.linias.delete', {'rasa_id': rasa.id, 'id': linia.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                            <a href="{{ path('paseka.rasas.rasa.settings.linias.nomers.edit', {'linia_id': linia.id, 'id': nomer.id}) }}" class="btn btn-sm btn-primary mr-1"><span class="fa fa-pencil"></span></a>
+                            <form action="{{ path('paseka.rasas.rasa.settings.linias.nomers.delete', {'linia_id': linia.id, 'id': nomer.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
                                 <input type="hidden" name="token" value="{{ token }}" />
                                 <button type="submit" class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>
                             </form>
                         </div>
                     </td>
                 </tr>
-            {% endfor %} #}
+            {% endfor %} 
             </tbody>
         </table>
     </div>
