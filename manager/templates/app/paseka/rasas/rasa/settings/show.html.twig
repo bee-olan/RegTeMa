@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Projects{% endblock %}
+{% block title %}{{ rasa.name }}{% endblock %}
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
@@ -8,7 +8,7 @@
         <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Пасека</a></li>
         <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Раса</a></li>
         <li class="breadcrumb-item"><a href="{{ path('paseka.rasas.rasa.show', {'id': rasa.id}) }}">{{ rasa.name }}</a></li>
-        <li class="breadcrumb-item active">Настройки!!!!!!!</li>
+        <li class="breadcrumb-item active">Редактировать</li>
     </ol>
 {% endblock %}
 
@@ -33,7 +33,7 @@
             </form>
         {% endif %}  #}
    
-         <a href="{{ path('paseka.rasas.rasa.settings.linias', {'rasa_id': rasa.id}) }}" class="btn btn-primary">Departments---------Linia</a>
+         <a href="{{ path('paseka.rasas.rasa.settings.linias', {'rasa_id': rasa.id}) }}" class="btn btn-primary">Смотреть Линии</a>
     </div>
 
     <div class="box">
