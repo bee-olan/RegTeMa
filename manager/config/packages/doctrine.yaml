@@ -40,28 +40,12 @@ doctrine:
             work_projects_task_file_id: 'App\Model\Work\Entity\Projects\Task\File\IdType'
             work_projects_task_change_id: 'App\Model\Work\Entity\Projects\Task\Change\IdType'
 
-            paseka_pchelowods_group_id: 'App\Model\Paseka\Entity\Pchelowods\Group\IdType'
-            paseka_pchelowods_pchelowod_id: 'App\Model\Paseka\Entity\Pchelowods\Pchelowod\IdType'
-            paseka_pchelowods_pchelowod_email: 'App\Model\Paseka\Entity\Pchelowods\Pchelowod\EmailType'
-            paseka_pchelowods_pchelowod_status: 'App\Model\Paseka\Entity\Pchelowods\Pchelowod\StatusType'
-
-            paseka_rasas_rasa_id: 'App\Model\Paseka\Entity\Rasas\Rasa\IdType'
-            paseka_rasas_rasa_linia_id: 'App\Model\Paseka\Entity\Rasas\Rasa\Linia\IdType'
-            paseka_rasas_kategor_id: 'App\Model\Paseka\Entity\Rasas\Kategor\IdType'
-            paseka_rasas_kategor_permissions: 'App\Model\Paseka\Entity\Rasas\Kategor\PermissionsType'
-            paseka_rasas_rasa_linia_nomer_id: 'App\Model\Paseka\Entity\Rasas\Rasa\Linia\Nomer\IdType'
 
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         mappings:
-            Paseka:
-                is_bundle: false
-                type: annotation
-                dir: '%kernel.project_dir%/src/Model/Paseka/Entity'
-                prefix: 'App\Model\Paseka\Entity'
-                alias: Paseka
             User:
                 is_bundle: false
                 type: annotation

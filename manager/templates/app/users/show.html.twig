@@ -45,14 +45,7 @@
             {% endif %}
         {% endif %}
 
-        {% if is_granted('ROLE_WORK_MANAGE_MEMBERS') %}
-            {% if pchelowod %}
-                <a href="{{ path('paseka.pchelowods.show', {'id': pchelowod.id}) }}" 
-             class="btn btn-primary">Матки - смотреть пчеловодов</a>
-            {% else %}
-                <a href="{{ path('paseka.pchelowods.create', {'id': user.id}) }}" class="btn btn-primary">Матки - добавить пчеловодов</a> 
-            {% endif %}
-        {% endif %} 
+
 
         {% if user.active and user.id.value != app.user.id %}
             <form action="{{ path('users.block', {'id': user.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">

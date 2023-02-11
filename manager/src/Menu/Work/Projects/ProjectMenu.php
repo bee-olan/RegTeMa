@@ -45,7 +45,7 @@ class ProjectMenu
             ->setLinkAttribute('class', 'nav-link');
 
         $menu
-            ->addChild('Задачи', [
+            ->addChild('Задачи!!', [
                 'route' => 'work.projects.project.tasks',
                 'routeParameters' => ['project_id' => $options['project_id']]
             ])

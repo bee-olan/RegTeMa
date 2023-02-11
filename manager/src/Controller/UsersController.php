@@ -245,14 +245,13 @@ class UsersController extends AbstractController
      * @Route("/{id}", name=".show")
      * @param User $user
      * @param MemberFetcher $members
-     * @param PchelowodFetcher $pchelowods
      * @return Response
      */
-    public function show(User $user, MemberFetcher $members, PchelowodFetcher $pchelowods): Response
+    public function show(User $user, MemberFetcher $members): Response
     {
         $member = $members->find($user->getId()->getValue());
-        $pchelowod = $pchelowods->find($user->getId()->getValue());
 
-        return $this->render('app/users/show.html.twig', compact('user', 'member', 'pchelowod'));
+
+        return $this->render('app/users/show.html.twig', compact('user', 'member'));
     }
 }

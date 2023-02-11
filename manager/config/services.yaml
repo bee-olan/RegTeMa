@@ -19,7 +19,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{DependencyInjection,Model/Paseka/Entity,Model/User/Entity,Model/Work/Entity,Migrations,Tests,Kernel.php}'
+        exclude: '../src/{DependencyInjection,Model/User/Entity,Model/Work/Entity,Migrations,Tests,Kernel.php}'
 
     App\Model\User\Entity\User\UserRepository: ~
     App\Model\Work\Entity\Members\Group\GroupRepository: ~
@@ -28,13 +28,6 @@ services:
     App\Model\Work\Entity\Projects\Project\ProjectRepository: ~
     App\Model\Work\Entity\Projects\Task\TaskRepository: ~
 
-    App\Model\Paseka\Entity\Pchelowods\Group\GroupRepository: ~
-    App\Model\Paseka\Entity\Pchelowods\Pchelowod\PchelowodRepository: ~
-
-    App\Model\Paseka\Entity\Rasas\Rasa\RasaRepository: ~
-    App\Model\Paseka\Entity\Rasas\Kategor\KategorRepository: ~
-    App\Model\Paseka\Entity\Rasas\Rasa\Linia\LiniaRepository: ~
-    App\Model\Paseka\Entity\Rasas\Rasa\Linia\Nomer\NomerRepository: ~
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -74,20 +67,20 @@ services:
         resource: '../src/Widget'
         tags: ['twig.extension']
 
-    App\Menu\Paseka\MainMenu:
-        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_main }]    
-
-    App\Menu\Paseka\Rasas\PchelowodsSettingsMenu:
-        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_pchelowods_settings }]
-
-    App\Menu\Paseka\Rasas\PchelowodsMenu:
-        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_pchelowods }]
-
-    App\Menu\Paseka\Rasas\RasasSettingsMenu:
-        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_rasas_rasa_settings }]
-
-    App\Menu\Paseka\Rasas\RasaMenu:
-        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_rasas_rasa }]
+#    App\Menu\Paseka\MainMenu:
+#        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_main }]
+#
+#    App\Menu\Paseka\Rasas\PchelowodsSettingsMenu:
+#        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_pchelowods_settings }]
+#
+#    App\Menu\Paseka\Rasas\PchelowodsMenu:
+#        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_pchelowods }]
+#
+#    App\Menu\Paseka\Rasas\RasasSettingsMenu:
+#        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_rasas_rasa_settings }]
+#
+#    App\Menu\Paseka\Rasas\RasaMenu:
+#        tags: [{ name: knp_menu.menu_builder, method: build, alias: paseka_rasas_rasa }]
     
     App\Menu\SidebarMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: sidebar }]
