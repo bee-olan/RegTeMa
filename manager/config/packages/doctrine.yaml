@@ -23,6 +23,9 @@ doctrine:
             user_user_id: 'App\Model\User\Entity\User\IdType'
             user_user_email: 'App\Model\User\Entity\User\EmailType'
             user_user_role: 'App\Model\User\Entity\User\RoleType'
+
+            mesto_okrug_id: 'App\Model\Mesto\Entity\Okrugs\IdType'
+
             comment_comment_id: 'App\Model\Comment\Entity\Comment\IdType'
             comment_comment_author_id: 'App\Model\Comment\Entity\Comment\AuthorIdType'
             work_members_group_id: 'App\Model\Work\Entity\Members\Group\IdType'
@@ -52,6 +55,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Model/User/Entity'
                 prefix: 'App\Model\User\Entity'
                 alias: User
+            Mesto:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Model/Mesto/Entity'
+                prefix: 'App\Model\Mesto\Entity'
+                alias: Mesto
             Comment:
                 is_bundle: false
                 type: annotation
