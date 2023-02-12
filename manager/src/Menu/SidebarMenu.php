@@ -87,7 +87,7 @@ class SidebarMenu
 				->setAttribute('class', 'nav-item')
 				->setLinkAttribute('class', 'nav-link');
 
-        if ($this->auth->isGranted('ROLE_WORK_MANAGE_MEMBERS')) {
+//        if ($this->auth->isGranted('ROLE_WORK_MANAGE_MEMBERS')) {
             $menu->addChild('Участники', ['route' => 'work.members'])
                 ->setExtra('routes', [
                     ['route' => 'work.members'],
@@ -99,7 +99,7 @@ class SidebarMenu
                 ->setLinkAttribute('class', 'nav-link');
 
 			$menu['Участники']->addChild('Contacts',  ['route' => 'work.members']);
-        }
+//        }
 
         $menu->addChild('Control')->setAttribute('class', 'nav-title');
 

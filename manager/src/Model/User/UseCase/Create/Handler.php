@@ -38,7 +38,7 @@ class Handler
         $email = new Email($command->email);
 
         if ($this->users->hasByEmail($email)) {
-            throw new \DomainException('User with this email already exists.');
+            throw new \DomainException('Пользователь с этим адресом электронной почты уже существует.');
         }
 
         $user = User::create(
