@@ -48,8 +48,8 @@
                             {# {% if okrug.u4astniki %}
                                 <a href="{{ path('rabota.u4astniki', {'form': {'okrug': okrug.id}}) }}">{{ okrug.name }}</a>
                             {% else %} #}
-                            {{ okrug.name }}
-{#                            <a href="{{ path('mesto.okrug.oblast', {'id': okrug.id}) }}"> </a>#}
+
+                            <a href="{{ path('mesto.okrug.oblast', {'id': okrug.id}) }}"> {{ okrug.name }} </a>
                             {# {% endif %} #}
 
                         </td>

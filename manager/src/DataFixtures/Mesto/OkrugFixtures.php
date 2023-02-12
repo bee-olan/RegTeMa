@@ -38,7 +38,7 @@ class OkrugFixtures extends Fixture
             '3'
         );
         $manager->persist($ugg);
-//        $this->setReference(self::REFERENCE_UGG, $ugg);
+        $this->setReference(self::REFERENCE_UGG, $ugg);
 
         $priwol = new Okrug(
             Id::next(),
@@ -46,7 +46,7 @@ class OkrugFixtures extends Fixture
             '4'
         );
         $manager->persist($priwol);
-        //$this->setReference(self::REFERENCE_PRIWOL, $priwol);
+//        $this->setReference(self::REFERENCE_PRIWOL, $priwol);
 
         $priwol = new Okrug(
             Id::next(),
@@ -54,7 +54,7 @@ class OkrugFixtures extends Fixture
             '5'
         );
         $manager->persist($priwol);
-//        $this->setReference(self::REFERENCE_PRIWOL, $priwol);
+        $this->setReference(self::REFERENCE_PRIWOL, $priwol);
 
 
         $okrug = new Okrug(

@@ -31,7 +31,7 @@ class Handler
         $id = new Id($command->id);
 
         if ($this->members->has($id)) {
-            throw new \DomainException('Member already exists.');
+            throw new \DomainException('Участник уже существует.');
         }
 
         $group = $this->groups->get(new GroupId($command->group));
