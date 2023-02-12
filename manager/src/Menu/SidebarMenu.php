@@ -27,6 +27,15 @@ class SidebarMenu
             ->setExtra('icon', 'nav-icon icon-speedometer')
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
+
+        $menu->addChild('Место', ['route' => 'mesto.okrug'])
+            ->setExtra('routes', [
+                ['route' => 'mesto.okrug'],
+                ['pattern' => '/^mesto\.okrug\..+/']
+            ])
+            ->setExtra('icon', 'nav-icon icon-briefcase')
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
             
         $menu->addChild('П А С Е К А')->setAttribute('class', 'nav-title')
             ->setExtra('image', '../../assets/images/menu/mesto.png')
