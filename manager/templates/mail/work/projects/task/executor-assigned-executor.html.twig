@@ -2,9 +2,9 @@
 
 {% block body %}
 
-    <p>Hello, {{ executor.name.first }}!</p>
+    <p>Привет, {{ executor.name.first }}!</p>
 
-    <p>You are assigned to task &laquo;{{ task.name }}&raquo;:</p>
+    <p>Вы назначены на задание &laquo;{{ task.name }}&raquo;:</p>
 
     {% set url = url('work.projects.tasks.show', {'id': task.id}) %}
 

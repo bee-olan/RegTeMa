@@ -42,7 +42,7 @@ class SignUpController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                $this->addFlash('success', 'Check your email.');
+                $this->addFlash('success', 'Проверьте свою электронную почту.');
                 return $this->redirectToRoute('home');
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
@@ -75,7 +75,7 @@ class SignUpController extends AbstractController
     ): Response
     {
         if (!$user = $this->users->findBySignUpConfirmToken($token)) {
-            $this->addFlash('error', 'Incorrect or already confirmed token.');
+            $this->addFlash('error', 'Неверный или уже подтвержденный токен.');
             return $this->redirectToRoute('auth.signup');
         }
 

@@ -49,21 +49,28 @@ class Oblast
      */
     private $mesto;
 
-//    /**
-//     * @var ArrayCollection|Raion[]
-//     * @ORM\OneToMany(
-//     *     targetEntity="App\Model\Mesto\Entity\Okrugs\Oblasts\Raions\Raion",
-//     *     mappedBy="oblast", orphanRemoval=true, cascade={"all"}
-//     * )
-//     * @ORM\OrderBy({"name" = "ASC"})
-//     */
-//    private $raions;
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private $shirDolg;
+
+    /**
+     * @var ArrayCollection|Raion[]
+     * @ORM\OneToMany(
+     *     targetEntity="App\Model\Mesto\Entity\Okrugs\Oblasts\Raions\Raion",
+     *     mappedBy="oblast", orphanRemoval=true, cascade={"all"}
+     * )
+     * @ORM\OrderBy({"name" = "ASC"})
+     */
+    private $raions;
 
     public function __construct(Okrug $okrug,
                                 Id $id,
                                 string $name,
                                 string $nomer,
-                                string $mesto
+                                string $mesto,
+                                string $shirDolg
     )
     {
         $this->okrug = $okrug;
@@ -71,52 +78,55 @@ class Oblast
         $this->name = $name;
         $this->nomer = $nomer;
         $this->mesto = $mesto;
-//        $this->raions = new ArrayCollection();
+        $this->shirDolg = $shirDolg;
+        $this->raions = new ArrayCollection();
     }
 
-    public function edit(string $name, string $nomer , string $mesto): void
+    public function edit(string $name, string $nomer , string $mesto,  string $shirDolg): void
     {
         $this->name = $name;
         $this->nomer = $nomer;
         $this->mesto = $mesto;
+        $this->shirDolg = $shirDolg;
     }
 
-    //------------------------------
-//    public function addRaion(  RaionId $id,
-//                               string $name,
-//                               string $nomer,
-//                               string $mesto): void
-//    {
-//        foreach ($this->raions as $raion) {
-//            if ($raion->isNameEqual($name)) {
-//                throw new \DomainException('Такое название района - существует.');
-//            }
-//            if ($raion->isNomerEqual($nomer)) {
-//                throw new \DomainException('Такой номер района - уже существует.');
-//            }
-//        }
-//        $this->raions->add(new Raion($this, $id, $name, $nomer, $mesto));
-//    }
-//    public function editRaion(RaionId $id, string $name, $nomer, $mesto): void
-//    {
-//        foreach ($this->raions as $current) {
-//            if ($current->getId()->isEqual($id)) {
-//                $current->edit($name, $nomer, $mesto);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('Названия района - нет в базе данных .');
-//    }
-//    public function removeRaion(RaionId $id): void
-//    {
-//        foreach ($this->raions as $raion) {
-//            if ($raion->getId()->isEqual($id)) {
-//                $this->raions->removeElement($raion);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('raion is not found.');
-//    }
+    //------------------------------>isNameEqual($name)
+    public function addRaion(  RaionId $id,
+                               string $name,
+                               string $nomer,
+                               string $mesto,
+                                string $shirDolg): void
+    {
+        foreach ($this->raions as $raion) {
+            if ($raion->isNameEqual($name)) {
+                throw new \DomainException('Такое название района - существует.');
+            }
+            if ($raion->isNomerEqual($nomer)) {
+                throw new \DomainException('Такой номер района - уже существует.');
+            }
+        }
+        $this->raions->add(new Raion($this, $id, $name, $nomer, $mesto, $shirDolg));
+    }
+    public function editRaion(RaionId $id, string $name, $nomer, $mesto, $shirDolg): void
+    {
+        foreach ($this->raions as $current) {
+            if ($current->getId()->isEqual($id)) {
+                $current->edit($name, $nomer, $mesto, $shirDolg);
+                return;
+            }
+        }
+        throw new \DomainException('Названия района - нет в базе данных .');
+    }
+    public function removeRaion(RaionId $id): void
+    {
+        foreach ($this->raions as $raion) {
+            if ($raion->getId()->isEqual($id)) {
+                $this->raions->removeElement($raion);
+                return;
+            }
+        }
+        throw new \DomainException('raion is not found.');
+    }
 
 // равно Ли Имя
     public function isNameEqual(string $name): bool
@@ -149,18 +159,24 @@ class Oblast
         return $this->mesto;
     }
 
-//    public function getRaions()
-//    {
-//        return $this->raions->toArray();
-//    }
-//
-//    public function getRaion(RaionId $id): Raion
-//    {
-//        foreach ($this->raions as $raion) {
-//            if ($raion->getId()->isEqual($id)) {
-//                return $raion;
-//            }
-//        }
-//        throw new \DomainException('raion is not found.');
-//    }
+
+    public function getShirDolg(): string
+    {
+        return $this->shirDolg;
+    }
+
+    public function getRaions()
+    {
+        return $this->raions->toArray();
+    }
+
+    public function getRaion(RaionId $id): Raion
+    {
+        foreach ($this->raions as $raion) {
+            if ($raion->getId()->isEqual($id)) {
+                return $raion;
+            }
+        }
+        throw new \DomainException('raion is not found.');
+    }
 }

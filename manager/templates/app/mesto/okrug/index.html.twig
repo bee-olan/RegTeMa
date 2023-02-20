@@ -32,7 +32,7 @@
                       <tr>
                           <th> Номер </th>
                           <th> Название </th>
-                          <th> Кол-во участников </th>
+                          <th> Край\Область  </th>
                           <th></th>
                       </tr>
                   </thead>
@@ -49,12 +49,12 @@
                                 <a href="{{ path('rabota.u4astniki', {'form': {'okrug': okrug.id}}) }}">{{ okrug.name }}</a>
                             {% else %} #}
 
-                            <a href="{{ path('mesto.okrug.oblast', {'id': okrug.id}) }}"> {{ okrug.name }} </a>
+                            <a href="{{ path('mesto.okrug.oblast', {'id': okrug.id}) }}" title="Добавить Край\Область " > {{ okrug.name }} </a>
                             {# {% endif %} #}
 
                         </td>
                         <td>        
-                                {# {{ okrug.u4astniki }}         #}
+                                 {{ okrug.oblasts }}
                         </td>
                        
                         <td>

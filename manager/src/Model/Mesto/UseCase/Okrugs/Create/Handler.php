@@ -26,6 +26,7 @@ class Handler
             Id::next(),
             $command->name,
 			$command->nomer
+
         );
 
         $this->okrugs->add($okrug);

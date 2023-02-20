@@ -67,7 +67,9 @@ class Okrug
 public function addOblast(  OblastId $id,
                             string $name,
                             string $nomer,
-                            string $mesto): void
+                            string $mesto,
+                            string $shirDolg
+                            ): void
     {
         foreach ($this->oblasts as $oblast) {
             if ($oblast->isNameEqual($name)) {
@@ -77,18 +79,18 @@ public function addOblast(  OblastId $id,
                 throw new \DomainException('Такой номер - существует.');
             }
         }
-        $this->oblasts->add(new Oblast($this, $id, $name, $nomer, $mesto));
+        $this->oblasts->add(new Oblast($this, $id, $name, $nomer, $mesto, $shirDolg));
     }
 
-    public function editOblast(OblastId $id, string $name, string $nomer, string $mesto): void
+    public function editOblast(OblastId $id, string $name, string $nomer, string $mesto, $shirDolg): void
     {
         foreach ($this->oblasts as $current) {
             if ($current->getId()->isEqual($id)) {
-                $current->edit($name, $nomer, $mesto);
+                $current->edit($name, $nomer, $mesto, $shirDolg);
                 return;
             }
         }
-        throw new \DomainException('nomer is not found.');
+        throw new \DomainException('номер не найден.');
     }
 
     public function removeOblast(OblastId $id): void
@@ -99,7 +101,7 @@ public function addOblast(  OblastId $id,
                 return;
             }
         }
-        throw new \DomainException('Okrug is not found.');
+        throw new \DomainException('Округ не найден.');
     }
 
 //равно Ли Имя ТАК ПОНЯЛА ЭТО должно быть  В Oblast-----------------------

@@ -24,7 +24,7 @@ class Handler
     public function handle(Command $command): void
     {
         if (!$user = $this->users->findByResetToken($command->token)) {
-            throw new \DomainException('Incorrect or confirmed token.');
+            throw new \DomainException('Неверный или подтвержденный токен.');
         }
 
         $user->passwordReset(

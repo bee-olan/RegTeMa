@@ -26,6 +26,7 @@ class Form extends AbstractType
                     'placeholder' => 'Введите номер'
                 ]
             ))
+
             ;
     }
 

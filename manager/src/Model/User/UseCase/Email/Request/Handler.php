@@ -38,7 +38,7 @@ class Handler
         $email = new Email($command->email);
 
         if ($this->users->hasByEmail($email)) {
-            throw new \DomainException('Email is already in use.');
+            throw new \DomainException('Электронная почта уже используется.');
         }
 
         $user->requestEmailChanging(

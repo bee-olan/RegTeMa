@@ -48,15 +48,15 @@ main {
     line-height: 1.1;
 }
 
-.immmg {
-    background-image: url('../../assets/images/uchastie.jpg');
-    width: 30px;
-    height: 30px;
-    img {
-        display: block; //картинку делаем блочной, чтобы кнопочка начиналась с новой строки
-        //margin-bottom: 1.5rem;
-    }
-}
+// .immmg {
+//     background-image: url('../../assets/images/uchastie.jpg');
+//     width: 30px;
+//     height: 30px;
+//     img {
+//         display: block; //картинку делаем блочной, чтобы кнопочка начиналась с новой строки
+//         //margin-bottom: 1.5rem;
+//     }
+// }
 
 .card {
     &> .table-bordered {
@@ -118,7 +118,6 @@ pre {
     }
 }
 
-@import "chat";
 
 .direct-chat-action {
     padding: 0 0 10px 50px;
@@ -133,3 +132,7 @@ pre {
         padding-left: 15px;
     }
 }
+
+@import "chat";
+@import "strongo";
+@import "teni-text"

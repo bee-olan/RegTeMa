@@ -28,7 +28,7 @@ class AuthController extends AbstractController
 	public function logout(): Response
 	{
 		// controller can be blank: it will never be executed!
-		throw new \Exception('Don\'t forget to activate logout in security.yaml');
+		throw new \Exception('Не забудьте активировать выход из системы в security.yaml');
 	}
 }
 

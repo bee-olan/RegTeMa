@@ -34,6 +34,8 @@
                 <th>Номер</th>
                 <th>Название</th>
                 <th>Номер Округ-Область</th>
+                <th>Районы</th>
+                <th>Широта , Долгота</th>
                 <th>Действия</th>
             </tr>
             <tbody>
@@ -43,12 +45,14 @@
                 <tr>
                     <td>{{ oblast.nomer }}</td>
 
-                    <td>{{ oblast.name }}
-{#                         <a href="{{ path('mesto.okrug.oblast.raion', {'id': oblast.id}) }}"> ***- добавить район</a>#}
+                    <td>
+                         <a href="{{ path('mesto.okrug.oblast.raion', {'id': oblast.id}) }}" title="Добавить Районы">{{ oblast.name }} </a>
 
                     </td>
 
                    <td>{{ oblast.mesto }}</td>
+                    <td>{{ oblast.raions }}</td>
+                    <td>{{ oblast.shir_dolg }}</td>
                     <td>
                         <div class="d-flex flex-row">
                             <a href="{{ path('mesto.okrug.oblast.edit', {'id': okrug.id, 'oblast_id': oblast.id}) }}" class="btn btn-sm btn-primary mr-1"><span class="fa fa-pencil"></span></a>

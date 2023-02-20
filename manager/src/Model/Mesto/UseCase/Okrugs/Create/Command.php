@@ -19,4 +19,6 @@ class Command
      * @Assert\NotBlank()
      */
     public $nomer;
+
+
 }

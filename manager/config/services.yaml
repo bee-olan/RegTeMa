@@ -25,6 +25,7 @@ services:
 
     App\Model\Mesto\Entity\Okrugs\OkrugRepository: ~
     App\Model\Mesto\Entity\Okrugs\Oblasts\OblastRepository: ~
+    App\Model\Mesto\Entity\Okrugs\Oblasts\Raions\RaionRepository: ~
 
     App\Model\Work\Entity\Members\Group\GroupRepository: ~
     App\Model\Work\Entity\Members\Member\MemberRepository: ~

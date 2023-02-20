@@ -40,6 +40,12 @@ class Command
      */
     public $mesto;
 
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    public $shirDolg;
+
     public function __construct(string $okrug, string $id)
     {
         $this->okrug = $okrug;
@@ -52,6 +58,7 @@ class Command
         $command->name = $oblast->getName();
 		$command->nomer = $oblast->getNomer();
 		$command->mesto = $oblast->getMesto();
+		$command->shirDolg = $oblast->getShirDolg();
         return $command;
     }
 }

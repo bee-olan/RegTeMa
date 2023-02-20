@@ -16,7 +16,8 @@ class Form extends AbstractType
         $builder
             ->add('name', Type\TextType::class)
 			->add('nomer', Type\TextType::class)
-			->add('mesto', Type\TextType::class);
+//			->add('mesto', Type\TextType::class)
+            ->add('shirDolg', Type\TextType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
