@@ -23,8 +23,7 @@ class OblastFetcher
                 'id',
                 'name',
                 'nomer',
-                'mesto',
-                'shir_dolg '
+                'mesto'
             )
             ->from('mesto_okrug_oblasts')
             ->andWhere('okrug_id = :okrug')
@@ -44,7 +43,6 @@ class OblastFetcher
                 'd.name',
                 'd.nomer',
                 'd.mesto',
-                'd.shir_dolg ',
                 '(SELECT COUNT(*) FROM mesto_okrug_oblast_raions r WHERE r.oblast_id = d.id) AS raions'
                 // '(
                 //     SELECT COUNT(ms.member_id)

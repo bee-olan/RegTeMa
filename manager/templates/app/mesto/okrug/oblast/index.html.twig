@@ -35,7 +35,6 @@
                 <th>Название</th>
                 <th>Номер Округ-Область</th>
                 <th>Районы</th>
-                <th>Широта , Долгота</th>
                 <th>Действия</th>
             </tr>
             <tbody>
@@ -52,11 +51,10 @@
 
                    <td>{{ oblast.mesto }}</td>
                     <td>{{ oblast.raions }}</td>
-                    <td>{{ oblast.shir_dolg }}</td>
                     <td>
                         <div class="d-flex flex-row">
                             <a href="{{ path('mesto.okrug.oblast.edit', {'id': okrug.id, 'oblast_id': oblast.id}) }}" class="btn btn-sm btn-primary mr-1"><span class="fa fa-pencil"></span></a>
-                            <form action="{{ path('mesto.okrug.oblast.delete', {'id': okrug.id, 'oblast_id': oblast.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                            <form action="{{ path('mesto.okrug.oblast.delete', {'id': okrug.id, 'oblast_id': oblast.id}) }}" method="post" onsubmit="return confirm('Удалить? Вы точно решили?')">
                                 <input type="hidden" name="token" value="{{ token }}" />
                                 <button type="submit" class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>
                             </form>
