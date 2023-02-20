@@ -26,11 +26,6 @@ class Command
      */
     public $mesto;
 
-    /**
-     * @var string
-     * @Assert\NotBlank()
-     */
-    public $shirDolg;
 	
 	public function __construct(string $oblast)
     {

@@ -67,8 +67,7 @@ class Okrug
 public function addOblast(  OblastId $id,
                             string $name,
                             string $nomer,
-                            string $mesto,
-                            string $shirDolg
+                            string $mesto
                             ): void
     {
         foreach ($this->oblasts as $oblast) {
@@ -79,14 +78,14 @@ public function addOblast(  OblastId $id,
                 throw new \DomainException('Такой номер - существует.');
             }
         }
-        $this->oblasts->add(new Oblast($this, $id, $name, $nomer, $mesto, $shirDolg));
+        $this->oblasts->add(new Oblast($this, $id, $name, $nomer, $mesto));
     }
 
-    public function editOblast(OblastId $id, string $name, string $nomer, string $mesto, $shirDolg): void
+    public function editOblast(OblastId $id, string $name, string $nomer, string $mesto): void
     {
         foreach ($this->oblasts as $current) {
             if ($current->getId()->isEqual($id)) {
-                $current->edit($name, $nomer, $mesto, $shirDolg);
+                $current->edit($name, $nomer, $mesto);
                 return;
             }
         }

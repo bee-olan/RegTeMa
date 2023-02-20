@@ -25,8 +25,7 @@ class Handler
         $command->mesto = $command->mesto."-".$command->nomer;
         $raion->edit($command->name, 
                     $command->nomer, 
-                    $command->mesto,
-                    $command->shirDolg
+                    $command->mesto
                 );
 
         $this->flusher->flush();

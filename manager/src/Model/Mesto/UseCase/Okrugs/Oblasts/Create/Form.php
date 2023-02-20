@@ -25,14 +25,7 @@ class Form extends AbstractType
                 'attr' => [
                     'placeholder' => 'Введите номер'
                 ]
-            ))
-            ->add('shirDolg',Type\TextType::class, array(
-                'label' => 'Широта,Долгота ',
-                'attr' => [
-                    'placeholder' => 'хх.ххххх,хх.ххххх'
-                ]
-            ))
-        ;
+            )) ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

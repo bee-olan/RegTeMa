@@ -47,17 +47,11 @@ class Raion
      */
     private $mesto;
 
-    /**
-     * @var string
-     * @ORM\Column(type="string")
-     */
-    private $shirDolg;
 
     public function __construct(Oblast $oblast, Id $id,
                                 string $name,
                                 string $nomer,
-                                string $mesto,
-                                string $shirDolg
+                                string $mesto
     )
     {
         $this->oblast = $oblast;
@@ -65,15 +59,13 @@ class Raion
         $this->name = $name;
         $this->nomer = $nomer;
         $this->mesto = $mesto;
-        $this->shirDolg = $shirDolg;
     }
 
-    public function edit(string $name, string $nomer, string $mesto, string $shirDolg): void
+    public function edit(string $name, string $nomer, string $mesto): void
     {
         $this->name = $name;
         $this->nomer = $nomer;
         $this->mesto = $mesto;
-        $this->shirDolg = $shirDolg;
     }
 
 // равно Ли Имя
