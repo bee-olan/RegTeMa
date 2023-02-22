@@ -151,6 +151,11 @@ class Oblast
         return $this->mesto;
     }
 
+    public function getOkrug(): Okrug
+    {
+        return $this->okrug;
+    }
+
 
     public function getRaions()
     {
