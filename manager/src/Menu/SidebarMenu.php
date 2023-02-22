@@ -28,6 +28,16 @@ class SidebarMenu
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 
+        $menu->addChild('Проект', ['route' => 'proekt'])
+            ->setExtra('routes', [
+                ['route' => 'proekt'],
+                ['pattern' => '/^proekt\..+/']
+            ])
+            ->setExtra('icon', 'nav-icon icon-briefcase')
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
+
+
         $menu->addChild('Место', ['route' => 'mesto.okrug'])
             ->setExtra('routes', [
                 ['route' => 'mesto.okrug'],

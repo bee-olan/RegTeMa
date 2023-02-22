@@ -1,0 +1,346 @@
+{% extends 'proekt/base.html.twig' %}
+
+{% block title %}{{ childmatka.name }}{% endblock %}
+
+{# {% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">На главную</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Пасека</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.matkas') }}">ПлемМатки</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.matkas.plemmatka.show', {'plem_id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('paseka.matkas.plemmatka.childmatkas', {'plemmatka_id': plemmatka.id}) }}">ДочьМатки</a></li>
+        <li class="breadcrumb-item active">{{ childmatka.name }}</li>
+    </ol>
+{% endblock %} #}
+
+ {% block kroxii %}
+        <a href="{{ path('proekt') }}">Главная</a>
+        <a href="{{ path('proekt.pasekas.childmatkas') }}">Список ДочьМаток</a>
+        <span class="aktiv ">ДочьМатка  {{ childmatka.name }}</span>
+    {% endblock %}
+
+{% block bodyy %}
+<div  class="proekts proekts--childmatka">
+    <div class="inklud inklud--child">
+        <div class="inklud__img  ">
+            <img class="" src="{{ asset('assets/proekt/images/matkas/p4ela1.jpg') }}" alt="">           
+        </div>
+{% if not plemmatka %}
+        <div class="inklud__title  teni teni--kategor">
+            Список ПлемМаток и их ДочьМаток
+        </div> 
+ {% else %}
+    <div class="inklud__title  teni teni--kategor">
+            ДочьМатка от {{plemmatka.name}}
+    </div> 
+ {% endif %}       
+</div>
+    <h1 class="mt-0 mb-3 font-xl">
+        {% if childmatka.parent %}
+            <a href="{{ path('paseka.matkas.childmatkas.show', {'id': childmatka.parent.id}) }}">{{ childmatka.parent.name }}</a> /
+        {% endif %}
+        {{ childmatka.name }}
+    </h1>
+ {% include('proekt/pasekas/childmatkas/show-inklud/_knopki.html.twig') %}
+
+ {% include('proekt/pasekas/childmatkas/show-inklud/_if-children.html.twig') %}
+    <div class="row-m">
+        <div class="col-m col-8-m">
+            <div class="card-m">
+                <div class="card-header-m ">ДочьМатка {{childmatka.name}}</div>
+                
+                <table class="tabl-child tabl-bord- tabl-bord-child mb-0">
+                    <tbody>
+                        <tr>
+                            <th>Номер</th>
+                            <td colspan="3">{{ childmatka.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Дата создания</th>
+                            <td>{{ childmatka.date|date('Y-m-d H:i:s') }}</td>
+                            <th>Дата по плану</th>
+                            <td>
+                                {{ childmatka.planDate ? childmatka.planDate|date('Y-m-d') : '' }}
+
+                                <div class="controls-m pull-right-m" style="margin-bottom: 0">
+                                    <a href="{{ path('proekt.pasekas.childmatkas.plan', {'plemmatka_id': plemmatka.id, 'id': childmatka.id}) }}"
+                                       class="btnn btnn--mb0 btnn--pt btnn--col-child">
+                                        <div class="karandash karandash--child">
+                                            <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="редактировать">
+                                        </div>
+                                    </a>
+                                    {% if childmatka.planDate %}
+                                        .
+                                       {# <form action="{{ path('paseka.matkas.childmatkas.plan.remove', {'plemmatka_id': plemmatka.id, 'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                                           <input type="hidden" name="token" value="{{ csrf_token('remove-plan') }}" />
+                                           <button type="submit" class="btn btn-sm py-0">
+                                               <span class="fa fa-times"></span>
+                                           </button>
+                                       </form> #}
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Категория</th>
+                            <td>
+                                {{ form_start(typeForm) }}
+                                <div class="row">
+                                    <div class="col-8-m">{{ form_widget(typeForm.type, {'attr': {'class': 'input-sm'}}) }}</div>
+                                    <div class="col-4-m">
+                                        <button type="submit" class="btn btn-sm btn-default pull-right invisible">
+                                            <span class="fa fa-check"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                {{ form_end(typeForm) }}
+                            </td>
+                            <th>Статус</th>
+                            <td>
+                                {{ form_start(statusForm) }}
+                                <div class="row-m">
+                                    <div class="col-8-m">{{ form_widget(statusForm.status, {'attr': {'class': 'input-sm'}}) }}</div>
+                                    <div class="col-4-m">
+                                        <button type="submit" class="btn btn-sm btn-default pull-right invisible">
+                                            <span class="fa fa-check"></span></button>
+                                    </div>
+                                </div>
+                                {{ form_end(statusForm) }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Приоритет</th>
+                            <td>
+                                {{ form_start(priorityForm) }}
+                                <div class="row">
+                                    <div class="col-8-m">{{ form_widget(priorityForm.priority, {'attr': {'class': 'input-sm'}}) }}</div>
+                                    <div class="col-4-m">
+                                        <button type="submit" class="btn btn-sm btn-default pull-right invisible">
+                                            <span class="fa fa-check"></span></button>
+                                    </div>
+                                </div>
+                                {{ form_end(priorityForm) }}
+                            </td>
+                            <th>Progress</th>
+                            <td>
+                                {{ form_start(progressForm) }}
+                                <div class="row">
+                                    <div class="col-8-m">{{ form_widget(progressForm.progress, {'attr': {'class': 'input-sm'}}) }}</div>
+                                    <div class="col-4-m">
+                                        <button type="submit" class="btn btn-sm btn-default pull-right invisible">
+                                            <span class="fa fa-check"></span></button>
+                                    </div>
+                                </div>
+                                {{ form_end(progressForm) }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-m">
+                <div class="card-header-m"> Файлы
+                    <a href="{{ path('proekt.pasekas.childmatkas.files', {'id': childmatka.id}) }}"
+                       class="btnn btnn--mb0 btnn--pt btnn--col-child">
+                        <div class="karandash karandash--child">
+                            <img src="{{ asset('assets/proekt/images/file.png') }}" alt="загрузить файл">
+                        </div>
+                    </a>
+
+                </div>
+                <table class="tabl mb-0">
+                    <tbody>
+                        {% for file in childmatka.files %}
+                            <tr>
+                                <td>
+                                    ??????
+                                    <a href="{{ storage_path(file.info.path ~ '/' ~ file.info.name) }}" target="_blank">{{ file.info.name }}</a>
+                                </td>
+                                <td>
+                                    ????????
+                                    {{ (file.info.size / 1024)|number_format(2, '.', ',') }} KB
+                                </td>
+                                <td>
+                                    ==============================
+                                    {{ file.date|date('Y-m-d H:i:s') }}
+                                </td>
+                                <td>
+                                    --------------------------
+                                    <a href="{{ path('paseka.uchasties.show', {'id': file.uchastie.id}) }}">{{ file.uchastie.name.full }}</a>
+                                </td>
+                                <td style="width: 27px; box-sizing: content-box">
+                                    <form action="{{ path('paseka.matkas.childmatkas.files.delete', {'id': childmatka.id, 'file_id': file.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                                        <input type="hidden" name="token" value="{{ csrf_token('delete-file') }}" />
+                                        <button type="submit" class="btn btn-sm btn-default">
+                                            <span class="fa fa-times"></span>
+                                        </button>
+                                    </form>
+                                    //////////////////
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {% if childmatka.content %}
+                <div class="card-m mb-3">
+                    <div class="card-body-m pb-0">
+{#                        {{childmatka.content}}#}
+                        {{ childmatka.content|markdown|purify|work_processor }}
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="card">
+                <div class="card-header">Комментарий</div>
+                {% if comments|length %}
+                    <div class="card-body">
+                        <div class="direct-chat">
+                            <div class="direct-chat-messages">
+                                {% for comment in comments %}
+                                    <div class="direct-chat-msg">
+                                        <div class="direct-chat-info clearfix">
+                                            <span class="direct-chat-name pull-left">{{ comment.author_name }}</span>
+                                            <span class="direct-chat-timestamp pull-right">{{ comment.date|date('Y-m-d H:i:s') }}</span>
+                                        </div>
+                                        <img class="direct-chat-img" src="{{ gravatar(comment.author_email, 40) }}" alt="">
+                                        <div class="direct-chat-text">
+                                            {{ comment.text|markdown|purify|work_processor }}
+                                            {% if is_granted('manage', comment) %}
+                                                <div class="controls mb-0">
+                                                    <a href="{{ path('paseka.matkas.childmatkas.comments.edit', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" class="btn btn-sm btn-outline-secondary">
+                                                        <span class="fa fa-pencil"></span>
+                                                    </a>
+                                                    <form action="{{ path('paseka.matkas.childmatkas.comments.delete', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                                                        <input type="hidden" name="token" value="{{ csrf_token('delete-comment') }}" />
+                                                        <button type="submit" class="btn btn-sm btn-outline-secondary">
+                                                            <span class="fa fa-times"></span>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="card-body border-top border-light">
+                    {{ form_start(commentForm) }}
+                    {{ form_widget(commentForm) }}
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                    {{ form_end(commentForm) }}
+                </div>
+            </div>
+
+
+            <div class="card-m">
+                <div class="card-header-m">Выполненные действия!!!</div>
+                <div class="card-body-m">
+                    <div class="direct-chat">
+                        <div class="direct-chat-messages">
+{#                            {% for item in feed.items %}#}
+{#                                {% set comment = item.comment %}#}
+{#                                {% if comment %}#}
+{#                                    <div class="direct-chat-msg">#}
+{#                                        <div class="direct-chat-info clearfix">#}
+{#                                            <span class="direct-chat-name pull-left">{{ comment.author_name }}</span>#}
+{#                                            <span class="direct-chat-timestamp pull-right">{{ comment.date|date('Y-m-d H:i:s') }}</span>#}
+{#                                        </div>#}
+{#                                        222222222222222222222222222#}
+{#                                        <img class="direct-chat-img" src="{{ gravatar(comment.author_email, 40) }}" alt="">#}
+{#                                        <div class="direct-chat-text">#}
+{#                                            333333333333333333333333#}
+{#                                            {{ comment.text|markdown|purify|work_processor }}#}
+{#                                            {% if is_granted('manage', comment) %}#}
+{#                                                <div class="controls mb-0">#}
+{#                                                    <a href="{{ path('paseka.matkas.childmatkas.comments.edit', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" class="btn btn-sm btn-outline-secondary">#}
+{#                                                        <span class="fa fa-pencil"></span>#}
+{#                                                    </a>#}
+{#                                                    <form action="{{ path('paseka.matkas.childmatkas.comments.delete', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">#}
+{#                                                        <input type="hidden" name="token" value="{{ csrf_token('delete-comment') }}" />#}
+{#                                                        <button type="submit" class="btn btn-sm btn-outline-secondary">#}
+{#                                                            <span class="fa fa-times"></span>#}
+{#                                                        </button>#}
+{#                                                    </form>#}
+{#                                                </div>#}
+{#                                            {% endif %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                {% endif %}#}
+{#                                {% set action = item.action %}#}
+{#                                {% if action %}#}
+{#                                    <div class="direct-chat-action">#}
+{#                                        {{ action.date|date('Y-m-d H:i') }}#}
+{#                                        555555555555#}
+{#                                        {{ paseka_matkas_action_row(action) }}#}
+{#                                    </div>#}
+{#                                {% endif %}#}
+{#                            {% endfor %}#}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body border-top border-light">
+{#                    {{ form_start(commentForm) }}#}
+{#                    {{ form_widget(commentForm) }}#}
+{#                    <button type="submit" class="btn btn-primary">Отправить</button>#}
+{#                    {{ form_end(commentForm) }}#}
+                </div>
+            </div>
+
+        </div>
+        <div class="col-m col-4-m">
+            <div class="card-m">
+                <div class="card-header-m">Автор</div>
+                <table class="tabl tabl-col-child mb-0">
+                    <tbody>
+                        <tr>
+                            <td style="width: 24px; box-sizing: content-box">
+                                -----
+{#                                <img src="{{ gravatar(childmatka.author.email.value, 24) }}" class="img-circle" width="24" height="24" alt="" />#}
+                            </td>
+                            <td>
+                                <a href="{{ path('paseka.uchasties.show', {'id': childmatka.author.id}) }}">{{ childmatka.author.name.full }}</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-m">
+                <div class="card-header-m">
+                    <a href="{{ path('paseka.matkas.childmatkas.assign', {'plemmatka_id': plemmatka.id, 'id': childmatka.id}) }}" class="btn btn-sm btn-default py-0 pull-right"><span class="fa fa-plus"></span></a>
+                    Исполнитель
+                </div>
+                {% if childmatka.executors %}
+                    <table class="tabl mb-0">
+                        <tbody>
+                            {% for executor in childmatka.executors %}
+                                <tr>
+                                    <td style="width: 24px; box-sizing: content-box">
+                                        ========
+{#                                        <img src="{{ gravatar(executor.email.value, 24) }}" class="img-circle" width="24" height="24" alt="" />#}
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('paseka.uchasties.show', {'id': executor.id}) }}">{{ executor.name.full }}</a>
+                                    </td>
+                                    <td style="width: 22px">
+                                        <form action="{{ path('paseka.matkas.childmatkas.revoke', {'plemmatka_id': plemmatka.id, 'id': childmatka.id, 'uchastie_id': executor.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                                            <input type="hidden" name="token" value="{{ csrf_token('revoke') }}" />
+                                            <button type="submit" class="btn btn-sm btn-default">
+                                                <span class="fa fa-times"></span>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

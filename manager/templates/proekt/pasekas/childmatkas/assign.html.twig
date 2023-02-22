@@ -1,0 +1,55 @@
+{% extends 'proekt/base.html.twig' %}
+
+{% block title %}{{ childmatka.name }}{% endblock %}
+
+{# {% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work') }}">Work</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work.projects') }}">Projects</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work.projects.project.show', {'id': project.id}) }}">{{ project.name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work.projects.project.childmatkas', {'project_id': project.id}) }}">Tasks</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('work.projects.childmatkas.show', {'id': childmatka.id}) }}">{{ childmatka.name }}</a></li>
+        <li class="breadcrumb-item active">Assign</li>
+    </ol>
+{% endblock %} #}
+ {% block kroxii %}
+        <a href="{{ path('proekt') }}">Главная</a>
+        <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Рег-ция ПлемМатки</a>             
+        <span class="aktiv ">Добавить тестирующего</span> 
+    {% endblock %}
+
+{% block bodyy %}
+<div class="proekts proekts--childmatka pb0">
+    <div class="inklud inklud--child">
+        <div class="inklud__img">
+            <img class="" src="{{ asset('assets/proekt/images/matkas/matki_.png') }}" alt="">            
+        </div>
+
+        <div class="inklud__title teni--">
+           Назначьте исполнителя - тестирующего  
+           {{childmatka.name}}
+        </div> 
+    </div>
+    {# -----обязательно проверить-------------- #}
+   <h1 class="mt-0 mb-3 font-xl">
+       {% if childmatka.parent %}
+           <a href="{{ path('work.projects.childmatkas.show', {'id': childmatka.parent.id}) }}">{{ childmatka.parent.name }}</a> /
+       {% endif %}     
+   </h1>
+
+    <div class="plem-form__header  "> 
+            <div class="child-form ">
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <div>
+                <button type="submit" 
+                class="btnn  btnn--pt btnn--col-child">Назначить</button>
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+{% endblock %}

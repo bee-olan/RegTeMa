@@ -1,0 +1,32 @@
+{% extends 'proekt/base.html.twig' %}
+
+{% block title %}Создать участника{% endblock %}
+
+
+
+{% block kroxii %}
+    {# <a href="{{ path('sait') }}">Главная</a>
+    <a href="{{ path('sait.uchastiess.uchasties') }}">Участники</a> #}
+
+    <span class="aktiv">Создать участника</span>
+
+{% endblock %}
+
+{% block bodyy %}
+
+    {# <div class="card">
+        <div class="card-body"> #}
+    <div class="proekts proekts--uhastiee">
+
+    {% include('proekt/pasekas/uchasties/uchastiee/_uchastie-includ.html.twig') %}
+        <div class="uchastiee__header  ">    
+            <div class="uchastiee-form "> 
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button type="submit" class="btnn btnn--mt btnn--pt">Стать участником</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

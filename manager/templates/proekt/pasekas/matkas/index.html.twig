@@ -1,0 +1,99 @@
+{% extends 'proekt/base.html.twig' %}
+
+{% block title %}ПлемМатка{% endblock %}
+
+{% block sidebar %}              
+    {% include('proekt/pasekas/matkas/side/_sidefiltr.html.twig') %}
+{% endblock %}
+    {% block kroxii %}
+        <a href="{{ path('proekt') }}">Главная</a>
+        <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Рег-ция ПлемМатки</a>             
+        <span class="aktiv ">Список ПлемМаток</span> 
+    {% endblock %}
+
+{% block bodyy %}
+
+    {# <div class="controls">
+        <a href="{{ path('paseka.matkas.plemmatka') }}" class="btn btn-success">Добавить Племенную матку</a>
+    </div> #}
+
+<div  class="  proekts-plem">
+
+    <div class="inklud">
+
+        <div class="inklud__img  inklud__img--plem">
+            <img class="" src="{{ asset('assets/proekt/images/matkas/matkiM.png') }}" alt="">           
+        </div>
+
+        <div class="inklud__title inklud__title--plem teni">
+           Список зарегистрированных  ПлемМаток  &nbsp; &nbsp; 
+           <a href="{{ path('proekt.pasekas.matkas.plemmatkas'  ) }}"
+               class="btnn btnn--mb0 btnn--plus" title="Добавить ПлемМатку"> 
+               <strong class="strongo strongo--sizee">+</strong>  
+            </a>
+        </div> 
+    </div>
+        {# ------------------------- #}
+    <div class="proekts-plr  ">
+                <ul class = "plem__data plem__data--col">
+                    <li class = "plem__name plem__name--wid34 plem__name-list--wid" >
+                    ПлемМатка (по ссылке -расшифровка)
+                    </li> 
+                    <li class = "plem__name">Кат-рия</li>
+                    <li class = "plem__name">П-Номер!!!!</li>
+                    <li class = "plem__name">Выход</li>
+                    <li class = "plem__name">
+                        Статус
+                        {# {{ member_status(u4astnik.status) }}  #}
+                    </li>
+                    <li class = "plem__name">
+                        Ред-вать
+                    </li>
+                </ul>
+                {% for plemmatka in pagination %}
+
+                <ul class = "plem__data">
+                    <li class = "plem__name-list plem__name-list--wid plem-ramka mb0" >
+                        <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plem_id': plemmatka.id}) }}">               
+                            <strong class="strongo strongo--kras">{{ plemmatka.sort }}  </strong> {{ plemmatka.name }}
+                        </a>
+                    </li>
+
+                    <li class = "plem__name-list">  {{ plemmatka.name_kateg }} </li>
+                    <li class = "plem__name-list"> {{ plemmatka.persona }} </li>
+                    <li class = "plem__name-list"> {{ plemmatka.goda_vixod }} </li>
+
+                    <li class = "plem__name-list">{{  plemmatka_status(plemmatka.status) }}</li>
+                    <li class = "plem__name-list">
+                        <a   href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.edit', {'plemmatka_id': plemmatka.id}) }}"  class="btnn btnn--mb1 " >
+                            <div class="karandash">
+                                <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+                {% endfor %}
+
+        <ul class="plem__data plem__data--mt2">
+            <li>
+                <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}"
+                   class="btnn btnn--mb0 btnn--col"> Регистрация ещё одной <strong class="strongo strongo--kras">ПлемМатки  </strong>
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('proekt.pasekas.childmatkas'  ) }}"
+                   class="btnn btnn--mb0 btnn--col">Список всех зарегистрированных  <strong class="strongo strongo--kras">ДочьМаток (ТестМаток) </strong>
+                </a>
+            </li>
+        </ul>
+       
+
+    </div>
+</div>
+
+ {# <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>  #}
+
+{% endblock %}

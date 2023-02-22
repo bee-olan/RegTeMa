@@ -1,0 +1,55 @@
+{% extends 'proekt/base.html.twig' %}
+
+{% block title %}ДочьМатки{% endblock %}
+
+
+{% block sidebar %}
+    {% include('proekt/pasekas/childmatkas/side/_sidefiltr.html.twig') %}
+{% endblock %}
+    {% block kroxii %}
+        <a href="{{ path('proekt') }}">Главная</a>
+        <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Рег-ция ПлемМатки</a>
+        <span class="aktiv ">Список ПлемМаток</span>
+    {% endblock %}
+
+{% block bodyy %}
+
+{#    <h1 class="mt-0 mb-3 font-xl">#}
+{#        {% if task.parent %}#}
+{#            <a href="{{ path('work.projects.tasks.show', {'id': task.parent.id}) }}">{{ task.parent.name }}</a> /#}
+{#        {% endif %}#}
+{#        {{ task.name }}#}
+{#    </h1>#}
+
+    <div  class="proekts proekts--childmatka pb0">
+
+        <div class="inklud inklud--child">
+
+            <div class="inklud__img">
+                <img class="" src="{{ asset('assets/proekt/images/matkas/matki_.png') }}" alt="">
+
+            </div>
+
+            <div class="inklud__title teni--">
+                Для  {{plemmatka.name}} - оформим  ДочьМатку (ТестМатку)
+            </div>
+        </div>
+
+        <div class="proekts-plr  ">
+
+            <h1 class="plem__title  ">Перенос ТестМатки на другой точок:</h1>
+            <div class="plem-form__header  ">
+                <div class="child-form ">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <div>
+                        <button type="submit" class="btnn  btnn--pt btnn--col-child ">Сохранить</button>
+                    </div>
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
