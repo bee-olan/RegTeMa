@@ -1,0 +1,126 @@
+@import "variabproekt";
+@import "mixins";
+@import "vendor/reset";
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", Roboto, "Helvetica Neue",
+  Arial, "Noto Sans", sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.4rem;
+  line-height: 1.5 ;
+  color: $white;
+
+  &.no-scroll,// скрываем скролл для body при модальном о.
+  &.show-sidebar {
+    overflow: hidden;
+  }
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box; // включение длины отступов в общую ширину
+}
+a {
+  color: inherit;
+  opacity: 0.6;
+  transition: opacity .2s linear;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+pre {
+  padding: 9.5px;
+  margin-bottom: 1rem;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f6f6f6;
+  border: 1px solid red;
+
+  // border: 1px solid #e3e3e3;
+  border-radius: 3px;
+}
+
+@import "page/chat";
+@import "page/pagee";
+@import "page/btnn";
+@import "page/kroxii";
+@import "page/strongo";
+@import "page/filters";
+@import "page/navigator";
+@import "page/alert-pr";
+//
+@import "page/header/header";
+
+@import "page/header/subnav";
+@import "page/header/search";
+@import "page/header/burger";
+@import "page/header/nav";
+
+@import "page/wsem/karandash";
+
+//
+@import "page/side/sidebar";
+@import "page/side/sidefiltr";
+
+
+@import "page/profile/profile";
+
+//
+@import "page/main/mainn";
+
+//
+@import "page/container/container";
+
+//
+@import "page/proekts/proekts";
+@import "page/proekts/proekt-text";
+
+@import "page/wstavka/wstavka";
+@import "page/ramka/ramka";
+
+//
+@import "page/mestoss/mestoo";
+@import "page/mestoss/informm";
+@import "page/mestoss/mesto-form";
+
+@import "page/personaa/personaa-form";
+@import "page/personaa/personaa";
+
+//Пасека
+
+@import "paseka/comments/comments";
+@import "paseka/comments/card-mesto";
+
+
+@import "paseka/matkas/matkaa";
+@import "paseka/matkas/plemmatka";
+@import "paseka/matkas/plem-form";
+@import "paseka/matkas/childmatka";
+@import "paseka/matkas/child-form";
+
+
+
+@import "paseka/rasas/rasaa";
+@import "paseka/rasas/ras";
+@import "paseka/rasas/sparingg";
+
+@import "paseka/uchasties/uchasties";
+@import "paseka/uchasties/uchastiee";
+@import "paseka/uchasties/uchastiee-form";
+
+@import "paseka/filter/filter-child";
+
+@import "paseka/inklud/inklud";
+
+@import "paseka/tablle/tablle";
+@import "paseka/tablle/tablle-child";

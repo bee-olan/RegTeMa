@@ -1,0 +1,119 @@
+.proekts {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  max-width: 90rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  // padding-top: .5rem;
+
+  // max-width: 100%;
+  overflow: hidden; // в рамках размера -все лишнее скрылось overflow
+
+  background-color: transparent;
+  box-shadow: 0 15px 25px rgba($white, .35);
+  border-radius: 5px;
+
+  &--uhastiee {
+    background-color: $col-uchastie;
+  }
+
+  &--plemmatka {
+    // padding-bottom: 3rem;
+    color: $plem-color;
+    background-color: $white;
+  }
+
+  &--sezon {
+    //max-width: 100%;
+    //margin-left: 0;
+    //margin-right: 2rem;
+    color: $sezon-text;
+    // color: $col-child-ten;
+
+    // box-shadow: inset 0px 0px 10px rgba($col-child-ten, 0.9), //тень внутри
+    //box-shadow: inset 0px 0px 10px rgba($sezon-teni, 0.9),
+    //0 15px 25px rgba($white, .35);
+    background-color:$col-child ;
+    border-bottom: 2px solid $sezon-teni; // linia
+  }
+
+  &--childmatka {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 2rem;
+    color: $child-text;
+    // color: $col-child-ten;
+    background-color:$col-child ;
+    // box-shadow: inset 0px 0px 10px rgba($col-child-ten, 0.9), //тень внутри
+    box-shadow: inset 0px 0px 10px rgba($child-text, 0.9), 
+    0 15px 25px rgba($white, .35);
+    border-bottom: 2px solid $child-text; // linia
+  }
+
+  &--kategor {
+    max-width: 100%;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    color: $white;
+    background-color:$col-kategor ;
+    box-shadow: inset 0px 0px 10px rgba($white, 0.9), //тень внутри
+      0 15px 25px rgba($col-kategor, .35);
+    border-bottom: 2px solid $white; // linia
+  }
+
+
+  &--rasa {
+    max-width: 100%;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    // padding-bottom: 3rem;
+    color: $rasa-color;
+    background-color: $white;
+    box-shadow: inset 0px 0px 10px rgba($rasa-color, 0.9), //тень внутри
+      0 15px 25px rgba($white, .35);
+    border-bottom: 2px solid $rasa-color; // linia
+  }
+
+  @include breakpoint($mobile-bp) {
+    padding: 1.5rem;
+  }
+}
+.pb0{
+  padding-bottom: 0;
+}
+.proekts-plr {
+  padding: 0 3rem;
+}
+
+.proekts-uch {
+  margin-bottom: 3rem;
+  max-width: 100%;
+  overflow: hidden; // в рамках размера -все лишнее скрылось overflow
+
+  background-color: transparent;
+  box-shadow: 0 15px 25px rgba($white, .35);
+  border-radius: 5px;
+
+  @include breakpoint($mobile-bp) {
+    padding: 1.5rem;
+  }
+}
+
+.proekts-plem {
+  margin-bottom: 3rem;
+  max-width: 100%;
+  margin-left: 1rem;
+  margin-right: 2rem;
+  overflow: hidden; // в рамках размера -все лишнее скрылось overflow
+
+  // background-color: transparent;
+  box-shadow: 0 15px 25px rgba($white, .35);
+  border-radius: 5px;
+
+  color: $plem-color;
+  background-color: $white;
+
+  @include breakpoint($mobile-bp) {
+    padding: 1.5rem;
+  }
+}
