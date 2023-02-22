@@ -94,6 +94,12 @@ class Raion
         return $this->nomer;
     }
 
+
+    public function getOblast(): Oblast
+    {
+        return $this->oblast;
+    }
+
     public function getMesto(): string
     {
         return $this->mesto;
