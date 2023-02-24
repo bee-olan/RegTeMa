@@ -32,12 +32,12 @@
                 {% set token = csrf_token('delete') %}
                 {% for group in groups %}
                     <tr>
-                        <td>  {{ group.name }}
-{#                            {% if group.u4astniki %}#}
-{#                                <a href="{{ path('adminka.uchasties', {'form': {'group': group.id}}) }}">{{ group.name }}</a>#}
-{#                            {% else %}#}
-{#                                {{ group.name }}#}
-{#                            {% endif %}#}
+                        <td>
+                            {% if group.uchasties %}
+                                <a href="{{ path('adminka.uchasties', {'form': {'group': group.id}}) }}">{{ group.name }}</a>
+                            {% else %}
+                                {{ group.name }}
+                            {% endif %}
                         </td>
                         <td>        
                                 {{ group.uchasties }}
