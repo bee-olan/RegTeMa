@@ -6,14 +6,14 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
         <li class="breadcrumb-item"><a href="{{ path('adminka') }}">Админка</a></li>
-		<li class="breadcrumb-item"><a href="{{ path('adminka.uchasties.groups') }}">Участники</a></li>
+		<li class="breadcrumb-item"><a href="{{ path('adminka.uchasties') }}">Участники</a></li>
         <li class="breadcrumb-item active">Группы</li>
     </ol>
 {% endblock %}
 
 {% block body %}
 
-{#{{ include('app/adminka/uchasties/groups/_tabs.html.twig') }}#}
+{{ include('app/adminka/uchasties/groups/_tabs.html.twig') }}
 
     <div class="controls">
         <a href="{{ path('adminka.uchasties.groups.create') }}" class="btn btn-success">Добавить группу</a>
