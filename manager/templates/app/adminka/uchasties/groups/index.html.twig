@@ -6,17 +6,17 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
         <li class="breadcrumb-item"><a href="{{ path('adminka') }}">Админка</a></li>
-		<li class="breadcrumb-item"><a href="{{ path('adminka.uchasties.grups') }}">Участники</a></li>
+		<li class="breadcrumb-item"><a href="{{ path('adminka.uchasties.groups') }}">Участники</a></li>
         <li class="breadcrumb-item active">Группы</li>
     </ol>
 {% endblock %}
 
 {% block body %}
 
-{{ include('app/paseka/uchasties/groups/_tabs.html.twig') }}
+{#{{ include('app/adminka/uchasties/groups/_tabs.html.twig') }}#}
 
     <div class="controls">
-        <a href="{{ path('paseka.uchasties.groups.create') }}" class="btn btn-success">Добавить группу</a>
+        <a href="{{ path('adminka.uchasties.groups.create') }}" class="btn btn-success">Добавить группу</a>
     </div>
 
     <div class="box">
@@ -34,7 +34,7 @@
                     <tr>
                         <td>  {{ group.name }}
 {#                            {% if group.u4astniki %}#}
-{#                                <a href="{{ path('paseka.uchasties', {'form': {'group': group.id}}) }}">{{ group.name }}</a>#}
+{#                                <a href="{{ path('adminka.uchasties', {'form': {'group': group.id}}) }}">{{ group.name }}</a>#}
 {#                            {% else %}#}
 {#                                {{ group.name }}#}
 {#                            {% endif %}#}
@@ -45,8 +45,8 @@
                        
                         <td>
                             <div class="d-flex flex-row">
-                                <a href="{{ path('paseka.uchasties.groups.edit', {'id': group.id}) }}" class="btn btn-sm btn-primary mr-1"><span class="fa fa-pencil"></span></a>
-                                <form action="{{ path('paseka.uchasties.groups.delete', {'id': group.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                                <a href="{{ path('adminka.uchasties.groups.edit', {'id': group.id}) }}" class="btn btn-sm btn-primary mr-1"><span class="fa fa-pencil"></span></a>
+                                <form action="{{ path('adminka.uchasties.groups.delete', {'id': group.id}) }}" method="post" onsubmit="return confirm('Удалить? Вы уверены?')">
                                     <input type="hidden" name="token" value="{{ token }}" />
                                     <button type="submit" class="btn btn-sm btn-danger"><span class="fa fa-trash"></span></button>
                                 </form>
