@@ -42,7 +42,7 @@ class Form extends AbstractType
                 'Активный' => Status::ACTIVE,
                 'Архив' => Status::ARCHIVED,
             ], 'required' => false,
-                'placeholder' => 'Статус',
+                'placeholder' => 'Все статусы',
                 'attr' => ['onchange' => 'this.form.submit()']]);
 
     }
