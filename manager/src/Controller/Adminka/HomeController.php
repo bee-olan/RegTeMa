@@ -16,7 +16,7 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->redirectToRoute('adminka.uchasties.groups');
+        return $this->redirectToRoute('adminka.uchasties');
 //        return $this->render('app/adminka/home.html.twig');
     }
 }

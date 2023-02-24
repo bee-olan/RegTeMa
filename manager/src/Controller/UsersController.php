@@ -11,6 +11,7 @@ use App\Model\User\UseCase\Create;
 use App\Model\User\UseCase\Edit;
 use App\Model\User\UseCase\Role;
 use App\Model\User\UseCase\SignUp\Confirm;
+use App\ReadModel\Adminka\Uchasties\Uchastie\UchastieFetcher;
 use App\ReadModel\User\Filter;
 use App\ReadModel\User\UserFetcher;
 use App\ReadModel\Work\Members\Member\MemberFetcher;
@@ -245,13 +246,14 @@ class UsersController extends AbstractController
      * @Route("/{id}", name=".show")
      * @param User $user
      * @param MemberFetcher $members
+     * @param UchastieFetcher $uchasties
      * @return Response
      */
-    public function show(User $user, MemberFetcher $members): Response
+    public function show(User $user, MemberFetcher $members, UchastieFetcher $uchasties): Response
     {
         $member = $members->find($user->getId()->getValue());
+        $uchastie = $uchasties->find($user->getId()->getValue());
 
-
-        return $this->render('app/users/show.html.twig', compact('user', 'member'));
+        return $this->render('app/users/show.html.twig', compact('user', 'member', 'uchastie'));
     }
 }
