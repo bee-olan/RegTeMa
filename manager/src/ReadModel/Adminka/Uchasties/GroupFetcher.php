@@ -36,8 +36,8 @@ class GroupFetcher
         $stmt = $this->connection->createQueryBuilder()
             ->select(
                 'g.id',
-                'g.name'//,
-               // '(SELECT COUNT(*) FROM paseka_uchasties_uchasties m WHERE m.group_id = g.id) AS uchasties'
+                'g.name',
+                '(SELECT COUNT(*) FROM admin_uchasties_uchasties m WHERE m.group_id = g.id) AS uchasties'
             )
             ->from('admin_uchasties_groups', 'g')
             ->orderBy('name')
