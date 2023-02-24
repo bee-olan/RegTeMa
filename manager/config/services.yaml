@@ -29,6 +29,7 @@ services:
     App\Model\Mesto\Entity\InfaMesto\MestoNomerRepository: ~
 
     App\Model\Adminka\Entity\Uchasties\Group\GroupRepository: ~
+    App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository: ~
 
     App\Model\Work\Entity\Members\Group\GroupRepository: ~
     App\Model\Work\Entity\Members\Member\MemberRepository: ~

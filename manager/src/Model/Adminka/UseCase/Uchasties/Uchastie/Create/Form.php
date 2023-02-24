@@ -30,7 +30,7 @@ class Form extends AbstractType
                 'multiple' => false
                 ])
             ->add('nike', Type\TextType::class, array(
-                'label' => 'Ваш ник',
+                'label' => 'Заполнить поле: ваш ник',
                 'attr' => [
                     'placeholder' => 'Введите ник'
                 ]

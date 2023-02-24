@@ -26,7 +26,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/adminka/uchasties", name="adminka.uchasties")
+ * @Route("/adminka/uchasties/uchastie", name="adminka.uchasties.uchastie")
  */
 class UchastieControllr extends AbstractController
 {

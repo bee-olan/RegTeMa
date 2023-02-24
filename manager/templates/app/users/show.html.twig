@@ -35,6 +35,14 @@
             {% endif %}
         {% endif %}
 
+        {% if is_granted('ROLE_ADMINKA_MANAGE_UCHASTIES') %}
+            {% if uchastie %}
+                <a href="{{ path('adminka.uchasties.show', {'id': uchastie.id}) }}" class="btn btn-primary">Смотреть участника проекта</a>
+            {% else %}
+                <a href="{{ path('adminka.uchasties.create', {'id': user.id}) }}" class="btn btn-primary">Создать участника проекта</a>
+            {% endif %}
+        {% endif %}
+
 
 
         {% if user.active and user.id.value != app.user.id %}
@@ -53,7 +61,6 @@
     </div>
 
     <div class="box">
-{
 
         <table class="table table-bordered">
             <tbody>
@@ -65,10 +72,10 @@
                 <th>Email</th>
                 <td>{{ user.email ? user.email.value : '' }}</td>
             </tr>
-            <tr>
-                <th>ID</th>
-                <td>{{ user.id.value }}</td>
-            </tr>
+{#            <tr>#}
+{#                <th>ID</th>#}
+{#                <td>{{ user.id.value }}</td>#}
+{#            </tr>#}
             <tr>
                 <th>Дата рег-ции</th>
                 <td>{{ user.date|date('Y-m-d H:i:s') }}</td>
