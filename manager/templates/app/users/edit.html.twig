@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Users{% endblock %}
+{% block title %}Редактировать{% endblock %}
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('users') }}">Users</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('users') }}">Пользователи</a></li>
         <li class="breadcrumb-item"><a href="{{ path('users.show', {'id': user.id}) }}">{{ user.name.full }}</a></li>
-        <li class="breadcrumb-item active">Edit</li>
+        <li class="breadcrumb-item active">Редактировать</li>
     </ol>
 {% endblock %}
 
