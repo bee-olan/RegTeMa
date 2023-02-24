@@ -30,6 +30,9 @@ doctrine:
             mesto_mestonomer_id: 'App\Model\Mesto\Entity\InfaMesto\IdType'
 
             admin_uchasties_group_id: 'App\Model\Adminka\Entity\Uchasties\Group\IdType'
+            admin_uchasties_uchastie_id: 'App\Model\Adminka\Entity\Uchasties\Uchastie\IdType'
+            admin_uchasties_uchastie_status: 'App\Model\Adminka\Entity\Uchasties\Uchastie\StatusType'
+            admin_uchasties_uchastie_email: 'App\Model\Adminka\Entity\Uchasties\Uchastie\EmailType'
 
             comment_comment_id: 'App\Model\Comment\Entity\Comment\IdType'
             comment_comment_author_id: 'App\Model\Comment\Entity\Comment\AuthorIdType'
