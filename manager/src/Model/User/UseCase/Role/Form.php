@@ -13,9 +13,9 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('role', Type\ChoiceType::class, ['label' => 'Role', 'choices' => [
+            ->add('role', Type\ChoiceType::class, ['label' => 'Роль', 'choices' => [
                 'Пользователь' => Role::USER,
-								'Модератор' => Role::MODERATOR,
+                'Модератор' => Role::MODERATOR,
                 'Админ' => Role::ADMIN,
             ]]);
     }
