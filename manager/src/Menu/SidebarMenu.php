@@ -47,11 +47,26 @@ class SidebarMenu
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
             
-        $menu->addChild('П А С Е К А')->setAttribute('class', 'nav-title')
-            ->setExtra('image', '../../assets/images/menu/mesto.png')
+        $menu->addChild('Админка')->setAttribute('class', 'nav-title')
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link')
             ;
+        if ($this->auth->isGranted('ROLE_ADMINKA_MANAGE_UCHASTIES')) {
+            $menu->addChild('Группы', ['route' => 'adminka.uchasties.groups'])
+                ->setExtra('routes', [
+                    ['route' => 'adminka.uchasties.groups'],
+                    ['pattern' => '/^adminka\.uchasties\..+/']
+                ])
+
+                ->setAttribute('class', 'nav-item')
+                ->setLinkAttribute('class', 'nav-link');
+
+        }
+
+
+
+
+
 //        $menu->addChild('Добавить  уч-ка', ['route' => 'paseka.pchelowods'])
 //            ->setExtra('routes', [
 //                ['route' => 'paseka.pchelowods'],

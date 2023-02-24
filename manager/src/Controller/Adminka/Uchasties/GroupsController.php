@@ -6,10 +6,10 @@ namespace App\Controller\Adminka\Uchasties;
 
 use App\Annotation\Guid;
 //use App\Model\Paseka\Entity\Uchasties\Group\Group;
-//use App\Model\Paseka\UseCase\Uchasties\Group\Create;
-//use App\Model\Paseka\UseCase\Uchasties\Group\Edit;
-//use App\Model\Paseka\UseCase\Uchasties\Group\Remove;
-//use App\ReadModel\Paseka\Uchasties\GroupFetcher;
+use App\Model\Adminka\UseCase\Uchasties\Group\Create;
+use App\Model\Adminka\UseCase\Uchasties\Group\Edit;
+use App\Model\Adminka\UseCase\Uchasties\Group\Remove;
+
 use App\Model\Adminka\Entity\Uchasties\Group\Group;
 use App\ReadModel\Adminka\Uchasties\GroupFetcher;
 use Psr\Log\LoggerInterface;
