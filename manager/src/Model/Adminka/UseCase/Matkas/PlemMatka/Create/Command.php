@@ -13,10 +13,10 @@ class Command
      */
     public $name;
 
-    /**
-     * @Assert\NotBlank()
-     */
-    public $sort;
+//    /**
+//     * @Assert\NotBlank()
+//     */
+//    public $sort;
 
 //    /**
 //     * @var string

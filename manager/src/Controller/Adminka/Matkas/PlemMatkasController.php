@@ -158,7 +158,7 @@ class PlemMatkasController extends AbstractController
      * @return Response
      */
     public function create( Request $request,
-//                           PlemMatkaFetcher $plemmatkas,
+                           PlemMatkaFetcher $plemmatkas,
 //                           PersonaRepository $personas,
 //                           MestoNomerRepository $mestonomers,
 //                           NomerRepository $nomers,
@@ -184,14 +184,14 @@ class PlemMatkasController extends AbstractController
 
 
         $command = new Create\Command();
-
+        $command->sort = $plemmatkas->getMaxSort() + 1;
 //        $command->rasaNomId = $id;
 //
 //        $command->uchastieId = $uchastieId;
 //
 //        $command->persona = $persona->getNomer();
 //
-//        $command->sort = $plemmatkas->getMaxSortPerson($command->persona) + 1;
+
 //
 //        $command->mesto = $mestonomer->getNomer();
 //

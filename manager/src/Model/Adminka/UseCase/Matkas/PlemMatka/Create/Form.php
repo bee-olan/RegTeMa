@@ -46,8 +46,8 @@ class Form extends AbstractType
                 'attr' => [
                     'placeholder' => 'Внутреняя нумрация или комментарий. Пример: рыжая красотка )))'
                 ]
-            ))
-            ->add('sort', Type\IntegerType::class);
+            ));
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

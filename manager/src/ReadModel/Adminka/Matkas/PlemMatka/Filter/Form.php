@@ -17,7 +17,7 @@ class Form extends AbstractType
     {
         $builder
             ->add('name', Type\TextType::class, ['required' => false, 'attr' => [
-                'placeholder' => 'Name',
+                'placeholder' => 'Название',
                 'onchange' => 'this.form.submit()',
             ]])
 //            ->add('persona', Type\TextType::class, ['required' => false, 'attr' => [
@@ -25,9 +25,9 @@ class Form extends AbstractType
 //                'onchange' => 'this.form.submit()',
 //            ]])
             ->add('status', Type\ChoiceType::class, ['choices' => [
-                'Active' => Status::ACTIVE,
-                'Archived' => Status::ARCHIVED,
-            ], 'required' => false, 'placeholder' => 'All statuses', 'attr' => ['onchange' => 'this.form.submit()']]);
+                'Активная' => Status::ACTIVE,
+                'Архив' => Status::ARCHIVED,
+            ], 'required' => false, 'placeholder' => 'Все статусы', 'attr' => ['onchange' => 'this.form.submit()']]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

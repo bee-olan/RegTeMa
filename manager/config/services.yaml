@@ -85,6 +85,9 @@ services:
     App\Menu\Work\MainMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: work_main }]
 
+    App\Menu\Adminka\MainMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_main }]
+
     App\Menu\Work\Projects\ProjectMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: work_project }]
 
@@ -93,6 +96,9 @@ services:
 
     App\Menu\Work\Projects\SettingsMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: work_project_settings }]
+
+    App\Menu\Adminka\Matkas\RedaktorsMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_plemmatka_redaktors }]
 
     App\Menu\Work\Projects\TaskPresetMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: work_projects_task_presets }]

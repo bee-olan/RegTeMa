@@ -25,7 +25,7 @@ class ProjectMenu
             ->setChildrenAttributes(['class' => 'nav nav-tabs mb-4']);
 
         $menu
-            ->addChild('Dashboard', [
+            ->addChild('Dashboard !!!!', [
                 'route' => 'work.projects.project.show',
                 'routeParameters' => ['id' => $options['project_id']]
             ])

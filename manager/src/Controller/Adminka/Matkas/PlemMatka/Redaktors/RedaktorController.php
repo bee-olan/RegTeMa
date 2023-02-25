@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/paseka/matkas/plemmatka/{plemmatka_id}/redaktors", name="paseka.matkas.plemmatka.redaktors")
+ * @Route("/adminka/matkas/{plemmatka_id}/redaktors", name="adminka.matkas.plemmatka.redaktors")
  * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
  */
 class RedaktorController extends AbstractController
@@ -39,7 +39,7 @@ class RedaktorController extends AbstractController
     {
         //$this->denyAccessUnlessGranted(ProjectAccess::EDIT, $project);
 //        $departamens = $plemmatka->getDepartments();
-        return $this->render('app/paseka/matkas/plemmatka/redaktors/show.html.twig',
+        return $this->render('app/adminka/matkas/plemmatka/redaktors/show.html.twig',
             compact('plemmatka'));
     }
 
@@ -62,14 +62,14 @@ class RedaktorController extends AbstractController
 //        if ($form->isSubmitted() && $form->isValid()) {
 //            try {
 //                $handler->handle($command);
-//                return $this->redirectToRoute('paseka.matkas.plemmatka.show', ['plem_id' => $plemmatka->getId()]);
+//                return $this->redirectToRoute('adminka.matkas.plemmatka.show', ['plem_id' => $plemmatka->getId()]);
 //            } catch (\DomainException $e) {
 //                $this->logger->warning($e->getMessage(), ['exception' => $e]);
 //                $this->addFlash('error', $e->getMessage());
 //            }
 //        }
 //
-//        return $this->render('app/paseka/matkas/plemmatka/redaktors/edit.html.twig', [
+//        return $this->render('app/adminka/matkas/plemmatka/redaktors/edit.html.twig', [
 //            'plemmatka' => $plemmatka,
 //            'form' => $form->createView(),
 //        ]);
@@ -85,7 +85,7 @@ class RedaktorController extends AbstractController
 //    public function archive(PlemMatka $plemmatka, Request $request, Archive\Handler $handler): Response
 //    {
 //        if (!$this->isCsrfTokenValid('archive', $request->request->get('token'))) {
-//            return $this->redirectToRoute('paseka.matkas.plemmatka.show', ['id' => $plemmatka->getId()]);
+//            return $this->redirectToRoute('adminka.matkas.plemmatka.show', ['id' => $plemmatka->getId()]);
 //        }
 //
 //        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, plemmatka);
@@ -99,7 +99,7 @@ class RedaktorController extends AbstractController
 //            $this->addFlash('error', $e->getMessage());
 //        }
 //
-//        return $this->redirectToRoute('paseka.matkas.plemmatka.redaktors', ['plemmatka_id' => $plemmatka->getId()]);
+//        return $this->redirectToRoute('adminka.matkas.plemmatka.redaktors', ['plemmatka_id' => $plemmatka->getId()]);
 //    }
 ////
 ////    /**

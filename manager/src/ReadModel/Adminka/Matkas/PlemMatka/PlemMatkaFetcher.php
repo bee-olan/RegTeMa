@@ -51,6 +51,13 @@ class PlemMatkaFetcher
         return $result ?: null;
     }
 
+    public function getMaxSort(): int
+    {
+        return (int)$this->connection->createQueryBuilder()
+            ->select('MAX(p.sort) AS m')
+            ->from('admin_matkas_plemmatkas', 'p')
+            ->execute()->fetch()['m'];
+    }
 
     public function getMaxSortPerson(int $persona): int
     {

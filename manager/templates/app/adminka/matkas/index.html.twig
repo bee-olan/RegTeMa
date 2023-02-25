@@ -4,16 +4,18 @@
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.matkas') }}">Пасека</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.matkas') }}">Админка</a></li>
         <li class="breadcrumb-item active">ПлемМатка!</li>
     </ol>
 {% endblock %}
 
 {% block body %}
 
+    {{ include('app/adminka/_tabs.html.twig') }}
+
     <div class="controls">
-        <a href="{{ path('paseka.matkas.plemmatka') }}" class="btn btn-success">Добавить Племенную матку</a>
+        <a href="{{ path('adminka.matkas.create') }}" class="btn btn-success">Добавить Племенную матку</a>
     </div>
 
 
@@ -23,11 +25,13 @@
             {{ form_start(form) }}
             <div class="row">
                 <div class="col-md-2">{{ form_widget(form.name) }}</div>
-                <div class="col-md-2">{{ form_widget(form.persona) }}</div>
+{#                <div class="col-md-2">{{ form_widget(form.persona) }}</div>#}
                 <div class="col-md-2">{{ form_widget(form.status) }}</div>
                 <div class="col-md-2">
                     <button type="submit" class="btn btn-primary">Фильтр</button>
-                    <a href="{{ path('paseka.matkas') }}" class="btn btn-outline-secondary">Сброс</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ path('adminka.matkas') }}" class="btn btn-outline-secondary">Сброс</a>
                 </div>
             </div>
             {{ form_end(form) }}
@@ -49,17 +53,17 @@
             {% for plemmatka in pagination %}
                 <tr>
                    <td>
-                       <a href="{{ path('paseka.matkas.plemmatka.show', {'plem_id': plemmatka.id}) }}">
+                       <a href="{{ path('adminka.matkas.plemmatka.show', {'id': plemmatka.id}) }}">
 {#                           {{ plemmatka_kategoria(plemmatka.kategoria) }}#}
                            {{ plemmatka.name }}
                        </a>
                    </td>
 {#                    <td>{{ plemmatka.persona }}</td>#}
                     <td>{{ plemmatka_status(plemmatka.status) }}</td>
-                    <td>
-                        <a href="{{ path('paseka.matkas.plemmatka.redaktors', {'plemmatka_id': plemmatka.id}) }}"
-                           class="btn-my btn-my--smm"><span class="fa fa-pencil"></span></a>
-                    </td>
+{#                    <td>#}
+{#                        <a href="{{ path('adminka.matkas.plemmatka.redaktors', {'plemmatka_id': plemmatka.id}) }}"#}
+{#                           class="btn-my btn-my--smm"><span class="fa fa-pencil"></span></a>#}
+{#                    </td>#}
 
                 </tr>
             {% endfor %}
