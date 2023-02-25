@@ -23,6 +23,7 @@ class SidebarMenu
     {
         $menu = $this->factory->createItem('root')
             ->setChildrenAttributes(['class' => 'nav']);
+
         $menu->addChild('М е н ю', ['route' => 'home'])
             ->setExtra('icon', 'nav-icon icon-speedometer')
             ->setAttribute('class', 'nav-item')
@@ -33,7 +34,8 @@ class SidebarMenu
                 ['route' => 'proekt'],
                 ['pattern' => '/^proekt\..+/']
             ])
-            ->setExtra('icon', 'nav-icon icon-briefcase')
+//            ->setExtra('icon', 'nav-icon icon-briefcase')
+            ->setExtra('image', '../assets/images/uchastie.jpg')
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 
@@ -119,7 +121,7 @@ class SidebarMenu
                     ['pattern' => '/^work\.members\..+/']
                 ])
 
-				->setExtra('image',  'immmg')
+				->setExtra('image',  'image')
                 ->setAttribute('class', 'nav-item')
                 ->setLinkAttribute('class', 'nav-link');
 

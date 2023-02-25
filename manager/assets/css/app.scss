@@ -48,15 +48,15 @@ main {
     line-height: 1.1;
 }
 
-// .immmg {
-//     background-image: url('../../assets/images/uchastie.jpg');
-//     width: 30px;
-//     height: 30px;
-//     img {
-//         display: block; //картинку делаем блочной, чтобы кнопочка начиналась с новой строки
-//         //margin-bottom: 1.5rem;
-//     }
-// }
+ .image {
+     background-image: url('../../assets/images/uchastie.jpg');
+     width: 20px;
+     height: 20px;
+     img {
+        display: block; //картинку делаем блочной, чтобы кнопочка начиналась с новой строки
+      
+     }
+ }
 
 .card {
     &> .table-bordered {
@@ -135,4 +135,4 @@ pre {
 
 @import "chat";
 @import "strongo";
-@import "teni-text"
+@import "teni-text";

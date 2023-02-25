@@ -7,13 +7,12 @@
     {% endif %}
 
     {% if item.extra('image') is not null %}
-        <div class="{{ item.extra('image') }}"></div>
-{#        <img src="{{ item.extra('image') }}" />#}
+        <img src="{{ item.extra('image') }}" />
     {% endif %}
 
-    {% if item.extra('image') is not null %}
-        <img class="im" src="{{ item.extra('image') }}" />
-    {% endif %}
+{#    {% if item.extra('image') is not null %}#}
+{#        <img class="im" src="{{ item.extra('image') }}" />#}
+{#    {% endif %}#}
 
     {{ parent() }}
 {% endblock %}
