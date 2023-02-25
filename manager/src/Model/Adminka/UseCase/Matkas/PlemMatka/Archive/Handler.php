@@ -15,14 +15,14 @@ class Handler
 
     public function __construct(PlemMatkaRepository $plemmatkas, Flusher $flusher)
     {
-        $this->$plemmatkas = $plemmatkas;
+        $this->plemmatkas = $plemmatkas;
         $this->flusher = $flusher;
     }
 
     public function handle(Command $command): void
     {
-//        dd($command->id);
         $plemmatka = $this->plemmatkas->get(new Id($command->id));
+
 
         $plemmatka->archive();
 
