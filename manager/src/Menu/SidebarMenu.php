@@ -65,6 +65,15 @@ class SidebarMenu
                 ->setLinkAttribute('class', 'nav-link');
         }
 
+        $menu->addChild('Матки', ['route' => 'adminka.matkas'])
+            ->setExtra('routes', [
+                ['route' => 'adminka.matkas'],
+                ['pattern' => '/^adminka\.matkas\..+/']
+            ])
+            ->setExtra('icon', 'nav-icon icon-briefcase')
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
+
 
 
 
