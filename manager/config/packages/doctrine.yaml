@@ -34,6 +34,9 @@ doctrine:
             admin_uchasties_uchastie_status: 'App\Model\Adminka\Entity\Uchasties\Uchastie\StatusType'
             admin_uchasties_uchastie_email: 'App\Model\Adminka\Entity\Uchasties\Uchastie\EmailType'
 
+            admin_matkas_plemmatka_id: 'App\Model\Adminka\Entity\Matkas\PlemMatka\IdType'
+            admin_matkas_plemmatka_status: 'App\Model\Adminka\Entity\Matkas\PlemMatka\StatusType'
+
             comment_comment_id: 'App\Model\Comment\Entity\Comment\IdType'
             comment_comment_author_id: 'App\Model\Comment\Entity\Comment\AuthorIdType'
             work_members_group_id: 'App\Model\Work\Entity\Members\Group\IdType'
