@@ -12,47 +12,46 @@
 
 {% block body %}
 
+    {{ include('app/adminka/rasas/_tabs.html.twig') }}
 
 <article class="rasa">
 	
       <div class="rasa__header  ">
-         <h1 class="rasa__title  ">Расы зарегистрированные в БД</h1>
+         <h3 class="rasa__title  ">Расы зарегистрированные в БД </h3>
 
           {% set token = csrf_token('delete') %}
                 {% for rasa in rasas %}
                       
            
-                <ul class="rasa__data">  
-                    <li class="rasa__name  rasa__name--wid5">{{ rasa.name }} </li>
-                    <li class="rasa__name">  {{ rasa.title }}  </li>               
-                    <li class="rasa__name rasa__name--wid5 ">
-                        <a href="{{ path('paseka.rasas.edit', {'id': rasa.id}) }}"
-                            class="btn-my "><span class="fa fa-pencil"></span></a>
+                <ul class="rasa__data">
+                    <li class="rasa__name">  {{ rasa.title }}  </li>
+                    <li class="rasa__name  rasa__name--wid5">{{ rasa.name }} ( {{ rasa.linias }} ) </li>
+                    <li>
+                        <a href="{{ path('adminka.rasas.linias',{'id': rasa.id}) }}"
+                           class="btnn btnn--mb0 btnn--pt">Смотреть/Добавить
+                            <strong class="strongo strongo--kras"> линии </strong>
+                        </a>
                     </li>
-                    <li class="rasa__name ">
-                        <form action="{{ path('paseka.rasas.delete', {'id': rasa.id}) }}" method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
+                    <li class=" rasa__name--wid5 ">
+                        <a href="{{ path('adminka.rasas.edit', {'id': rasa.id}) }}"
+                            class="btnn btnn--mb0 btnn--pt "><span class="fa fa-pencil"></span></a>
+                    </li>
+                    <li class="rasa__name--wid5">
+                        <form action="{{ path('adminka.rasas.delete', {'id': rasa.id}) }}"
+                              method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
                             <input type="hidden" name="token" value="{{ token }}" />
-                            <button type="submit" class="btn-my btn-my--smm "><span class="fa fa-trash"></span></button>
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt "><span class="fa fa-trash"></span></button>
                         </form>
                     </li>
-                    <li class="rasa__name  rasa__name--wid15">
-                        <strong class="stro stro--lin">( Кол-во линий : </strong> 
-                        {{ rasa.linias }} ) 
-                    </li> 
-                     <li>
-                        <a href="{{ path('paseka.rasas.linias',{'id': rasa.id}) }}"
-							class="btn-my btn-my--sm">Смотреть/Добавить
-                             <strong class="stro stro--kras"> линии </strong>
-                            в {{ rasa.title }}
-                        </a>
-                     </li>                     
+
+
                 </ul>  
          {% endfor %}                
     </div>
 </article><!-- rasas -->
     <div class = "rasa__content"  >
-        <a href="{{ path('paseka.rasas.create') }}"
-            class="btn-my btn-my--sm">Добавить название другой <strong class="stro stro--kras"> расы </strong>  в БД</a>
+        <a href="{{ path('adminka.rasas.create') }}"
+            class="btnn btnn--mb0 btnn--pt">Добавить название другой <strong class="strongo strongo--kras"> расы </strong>  в БД</a>
     </div> 
 
 

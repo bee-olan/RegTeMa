@@ -75,6 +75,14 @@ class SidebarMenu
             ->setLinkAttribute('class', 'nav-link');
 
 
+        $menu
+            ->addChild('Раса-Линия_Номер', ['route' => 'adminka.rasas'])
+            ->setExtra('routes', [
+                ['route' => 'adminka.matkas.rasas'],
+                ['pattern' => '/^adminka.matkas.rasas\..+/']
+            ])
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
 
 
 

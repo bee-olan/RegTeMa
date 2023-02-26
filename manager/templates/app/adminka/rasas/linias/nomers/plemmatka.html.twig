@@ -5,8 +5,8 @@
 {% block breadcrumbs %}
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Расы </a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Линия -- {{ linia.name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Расы </a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Линия -- {{ linia.name }}</a></li>
         <li class="breadcrumb-item active">Номера зарегистрированные</li>
     </ol>
 {% endblock %}
@@ -35,7 +35,7 @@
                         <ul class="rasa__data">
 
                             <li >
-                                <a href="{{ path('paseka.matkas.plemmatka.plemmatka', { 'id': nomer.id}) }}" class="btn-my btn-my--sm" >
+                                <a href="{{ path('adminka.matkas.plemmatka.plemmatka', { 'id': nomer.id}) }}" class="btn-my btn-my--sm" >
                                     <strong class="stro stro--kras">  н-{{ nomer.sort_nomer }} </strong>
                                 </a>
                             </li>
@@ -51,7 +51,7 @@
                 </div>
 
 {#                <div class = "rasa__content"  >#}
-{#                    <a href="{{ path('paseka.rasas.linias.nomers.create', {'linia_id': linia.id}) }}"#}
+{#                    <a href="{{ path('adminka.rasas.linias.nomers.create', {'linia_id': linia.id}) }}"#}
 {#                       class="btn-my btn-my--sm">Добавить другой#}
 {#                        <strong class="stro stro--kras"> номер </strong> в БД</a>#}
 {#                </div>#}

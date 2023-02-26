@@ -28,6 +28,15 @@ class MainMenu
             ->addChild('Матки main', ['route' => 'adminka.matkas'])
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
+
+        $menu
+            ->addChild('Раса-Линия_Номер', ['route' => 'adminka.rasas'])
+            ->setExtra('routes', [
+                ['route' => 'adminka.rasas'],
+                ['pattern' => '/^adminka.rasas\..+/']
+            ])
+            ->setAttribute('class', 'nav-item ')
+            ->setLinkAttribute('class', 'nav-link ');
         
 //        $menu
 //            ->addChild('Actions', ['route' => 'adminka.matkas.actions'])
@@ -48,7 +57,10 @@ class MainMenu
 //            ->setAttribute('class', 'nav-item')
 //            ->setLinkAttribute('class', 'nav-link');
     
-//        if ($this->auth->isGranted('ROLE_WORK_MANAGE_PROJECTS')) {
+        if ($this->auth->isGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS')) {
+
+
+
 //            $menu
 //                ->addChild('Roles', ['route' => 'adminka.matkas.roles'])
 //                ->setExtra('routes', [
@@ -57,7 +69,7 @@ class MainMenu
 //                ])
 //                ->setAttribute('class', 'nav-item')
 //                ->setLinkAttribute('class', 'nav-link');
-//        }
+        }
 
         return $menu;
     }

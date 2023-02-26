@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\Rasas\Linias\Nomers\Create;
 
+use App\Model\Adminka\Entity\Rasas\Linias\Linia;
 use App\Model\Flusher;
 
 use App\Model\Adminka\Entity\Rasas\Linias\LiniaRepository;
@@ -16,8 +17,9 @@ class Handler
     private $linias;
     private $flusher;
 
-    public function __construct(LiniaRepository $linias, Flusher $flusher)
+    public function __construct( LiniaRepository $linias, Flusher $flusher)
     {
+        $this->linia = $linias;
         $this->linias = $linias;
         $this->flusher = $flusher;
     }

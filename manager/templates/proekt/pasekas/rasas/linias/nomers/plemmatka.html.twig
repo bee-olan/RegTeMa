@@ -9,7 +9,7 @@
 {% block kroxii %}
   <a href="{{ path('proekt') }}">Главная</a>
   <a href="#">Рег-ция ПлемМатки</a>
-  <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Пункты 1-3</a>
+{#  <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Пункты 1-3</a>#}
   <a href="{{ path('proekt.pasekas.rasas.plemmatka') }}">{{ linia.title }}_</a>
   <span class="aktiv">Выбор н-..</span>
 {% endblock %}
@@ -82,17 +82,10 @@
               <li class="ras__name">{{ nomer.name_star }}</li>
 
               <li class="ras__name--widt10">
-                <a href="{{
-                  path(
-                    'proekt.pasekas.matkas.plemmatkas.plemmatka',
-                    {
-                      id: nomer.id
-                    }
-                  )
-                  }}"
-                  class="btnn btnn--pt btnn--mb0 btnn--col-ras">
+{#                <a href="{{ path('proekt.pasekas.matkas.plemmatkas.plemmatka',{ id: nomer.id} ) }}"#}
+{#                  class="btnn btnn--pt btnn--mb0 btnn--col-ras">#}
                   номер <strong class="strongo strongo--kras">н-{{ nomer.sort_nomer }}</strong>
-                </a>
+{#                </a>#}
               </li>
             </ul>
           {% endfor %}

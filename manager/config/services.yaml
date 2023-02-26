@@ -32,6 +32,9 @@ services:
     App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository: ~
     App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatkaRepository: ~
 
+    App\Model\Adminka\Entity\Rasas\RasaRepository: ~
+    App\Model\Adminka\Entity\Rasas\Linias\LiniaRepository: ~
+
     App\Model\Work\Entity\Members\Group\GroupRepository: ~
     App\Model\Work\Entity\Members\Member\MemberRepository: ~
     App\Model\Work\Entity\Projects\Role\RoleRepository: ~

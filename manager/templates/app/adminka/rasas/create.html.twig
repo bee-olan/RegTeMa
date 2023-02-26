@@ -5,7 +5,7 @@
     {% block kroxi %}  
        
                 <a href="{{ path('home') }}">Главная</a>
-                <a href="{{ path('paseka.rasas') }}">Расы зарегистрированные</a>
+                <a href="{{ path('adminka.rasas') }}">Расы зарегистрированные</a>
                 <span class="aktiv ">Добавить другую расу</span> 
            
     {% endblock %}
@@ -18,7 +18,7 @@
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <button type="submit" class="btn-my btn-my--sm">Добавить в БД</button>
-            <a href="{{ path('paseka.rasas') }}"
+            <a href="{{ path('adminka.rasas') }}"
                 class="btn-my btn-my--sm"> Выйти из режима "Добавить"</a>
             {{ form_end(form) }}
 

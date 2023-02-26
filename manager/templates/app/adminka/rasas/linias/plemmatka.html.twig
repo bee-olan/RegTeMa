@@ -6,7 +6,7 @@
 {% block breadcrumbs %}
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.rasas') }}">Раса -- {{ rasa.title }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Раса -- {{ rasa.title }}</a></li>
         <li class="breadcrumb-item active">Добавить линию или добавить номер к линии</li>
     </ol>
 {% endblock %}
@@ -26,7 +26,7 @@
                         {% for linia in linias %}
                             <ul class="rasa__data">
                                 <li >
-                                    <a href="{{ path('paseka.rasas.linias.nomers.plemmatka', {'linia_id': linia.id}) }}" class="btn-my btn-my--sm" >
+                                    <a href="{{ path('adminka.rasas.linias.nomers.plemmatka', {'linia_id': linia.id}) }}" class="btn-my btn-my--sm" >
                                         <strong class="stro stro--kras">  {{ linia.name }} </strong>
                                     </a>
                                 </li>
@@ -38,7 +38,7 @@
                     </div>
 
             {#        <div class = "rasa__content"  >#}
-{#            <a href="{{ path('paseka.rasas.linias.create', {'id': rasa.id}) }}"#}
+{#            <a href="{{ path('adminka.rasas.linias.create', {'id': rasa.id}) }}"#}
 {#               class="btn-my btn-my--sm">Добавить другую#}
 {#                <strong class="stro stro--kras"> линию </strong> в БД</a>#}
 {#        </div>#}

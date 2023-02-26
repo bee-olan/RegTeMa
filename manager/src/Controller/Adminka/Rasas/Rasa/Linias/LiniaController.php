@@ -45,6 +45,8 @@ class LiniaController extends AbstractController
         //$this->denyAccessUnlessGranted(MateriAccess::MANAGE_MEMBERS, $materi);
 //dd($linias->allOfRasa($rasa->getId()->getValue()));
         //dd($rasa);
+//        $linia= ;
+//        dd($rasa->getLinias());
         return $this->render('app/adminka/rasas/linias/index.html.twig', [
             'rasa' => $rasa,
             'linias' => $linias->allOfRasa($rasa->getId()->getValue()),

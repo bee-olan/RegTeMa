@@ -14,8 +14,12 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', Type\TextType::class)
-            ->add('nameStar', Type\TextType::class);
+//            ->add('name', Type\TextType::class, array(
+//                    'label' => 'Название номера ',
+//                ) )
+            ->add('nameStar', Type\TextType::class, array(
+                    'label' => 'Название номера из документов или личных архивных данных',
+                ));
           //  ->add('title', Type\TextType::class)
     }
 

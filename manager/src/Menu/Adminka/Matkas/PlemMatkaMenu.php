@@ -35,6 +35,15 @@ class PlemMatkaMenu
             ])
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
+
+//        $menu
+//            ->addChild('Раса-Линия_Номер', ['route' => 'adminka.matkas.rasas'])
+//            ->setExtra('routes', [
+//                ['route' => 'adminka.matkas.rasas'],
+//                ['pattern' => '/^adminka.matkas.rasas\..+/']
+//            ])
+//            ->setAttribute('class', 'nav-item')
+//            ->setLinkAttribute('class', 'nav-link');
 //
 //        $menu
 //            ->addChild('Actions', [
