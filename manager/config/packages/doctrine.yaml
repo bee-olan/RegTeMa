@@ -33,6 +33,7 @@ doctrine:
             admin_uchasties_uchastie_id: 'App\Model\Adminka\Entity\Uchasties\Uchastie\IdType'
             admin_uchasties_uchastie_status: 'App\Model\Adminka\Entity\Uchasties\Uchastie\StatusType'
             admin_uchasties_uchastie_email: 'App\Model\Adminka\Entity\Uchasties\Uchastie\EmailType'
+            adminka_uchasties_persona_id: 'App\Model\Adminka\Entity\Uchasties\Personas\IdType'
 
             admin_matkas_plemmatka_id: 'App\Model\Adminka\Entity\Matkas\PlemMatka\IdType'
             admin_matkas_plemmatka_status: 'App\Model\Adminka\Entity\Matkas\PlemMatka\StatusType'

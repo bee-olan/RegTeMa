@@ -30,6 +30,8 @@ services:
 
     App\Model\Adminka\Entity\Uchasties\Group\GroupRepository: ~
     App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository: ~
+    App\Model\Adminka\Entity\Uchasties\Personas\PersonaRepository: ~
+
     App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatkaRepository: ~
 
     App\Model\Adminka\Entity\Rasas\RasaRepository: ~

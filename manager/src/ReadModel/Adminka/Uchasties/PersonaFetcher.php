@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\ReadModel\Paseka\Uchasties;
+namespace App\ReadModel\Adminka\Uchasties;
 
-use App\Model\Paseka\Entity\Uchasties\Personas\Persona;
+use App\Model\Adminka\Entity\Uchasties\Personas\Persona;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\FetchMode;
 use Doctrine\ORM\EntityManagerInterface;
@@ -32,7 +32,7 @@ class PersonaFetcher
                 'id',
                 'nomer'               
             )
-            ->from('paseka_uchasties_personas')
+            ->from('adminka_uchasties_personas')
             ->orderBy('nomer')
             ->execute();
 
@@ -43,7 +43,7 @@ class PersonaFetcher
     {
         return $this->connection->createQueryBuilder()
                 ->select('COUNT (id)')
-                ->from('paseka_uchasties_personas')
+                ->from('adminka_uchasties_personas')
                 ->where('id = :id')
                 ->setParameter(':id', $id)
                 ->execute()->fetchColumn() > 0;
@@ -57,7 +57,7 @@ class PersonaFetcher
                 // ,
                 // '(SELECT COUNT(*) FROM sait_u4astniks_u4astniks m WHERE m.godd_id = g.id) AS u4astniks'
             )
-            ->from('paseka_uchasties_personas', 'p')
+            ->from('adminka_uchasties_personas', 'p')
             ->orderBy('nomer')
             ->execute();
 
@@ -73,7 +73,7 @@ class PersonaFetcher
                 // ,
                 // '(SELECT COUNT(*) FROM sait_u4astniks_u4astniks m WHERE m.godd_id = g.id) AS u4astniks'
             )
-            ->from('paseka_uchasties_personas', 'g')
+            ->from('adminka_uchasties_personas', 'g')
             ->orderBy('nomer')
             ->execute();
 
