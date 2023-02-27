@@ -15,6 +15,7 @@
 {% block body %}
 
     {% include 'app/adminka/matkas/plemmatka/_tabs.html.twig' %}
+    {% include 'app/adminka/matkas/plemmatka/redaktors/_tabs.html.twig' %}
 
     <div class="controls">
         <a href="{{ path('adminka.matkas.plemmatka.redaktors.edit', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Редактировать?</a>
@@ -36,8 +37,8 @@
         </form>
 
 
-{#        <a href="{{ path('adminka.matkas.plemmatka.redaktors.departments', {'plemmatka_id': plemmatka.id}) }}"#}
-{#                class="btn btn-primary">Смотреть СЕЗОНЫ</a>#}
+        <a href="{{ path('adminka.matkas.plemmatka.redaktors.departments', {'plemmatka_id': plemmatka.id}) }}"
+                class="btn btn-primary">Смотреть СЕЗОНЫ</a>
 {#        <a href="{{ path('adminka.matkas.plemmatka.redaktors.uchasties', {'plemmatka_id': plemmatka.id}) }}"#}
 {#                class="btn btn-primary">Привязать участника</a>#}
 

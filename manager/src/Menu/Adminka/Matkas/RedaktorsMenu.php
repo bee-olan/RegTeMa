@@ -37,17 +37,17 @@ class RedaktorsMenu
                 ->setAttribute('class', 'nav-item')
                 ->setLinkAttribute('class', 'nav-link');
 
-//            $menu
-//                ->addChild('Отделы', [
-//                    'route' => 'adminka.matkas.plemmatka.redaktors.departments',
-//                    'routeParameters' => ['plemmatka_id' => $options['plemmatka_id']]
-//                ])
-//                ->setExtra('routes', [
-//                    ['route' => 'adminka.matkas.plemmatka.redaktors.departments'],
-//                    ['pattern' => '/^adminka.matkas.plemmatka.redaktors.departments\..+/']
-//                ])
-//                ->setAttribute('class', 'nav-item')
-//                ->setLinkAttribute('class', 'nav-link');
+            $menu
+                ->addChild('Сезоны', [
+                    'route' => 'adminka.matkas.plemmatka.redaktors.departments',
+                    'routeParameters' => ['plemmatka_id' => $options['plemmatka_id']]
+                ])
+                ->setExtra('routes', [
+                    ['route' => 'adminka.matkas.plemmatka.redaktors.departments'],
+                    ['pattern' => '/^adminka.matkas.plemmatka.redaktors.departments\..+/']
+                ])
+                ->setAttribute('class', 'nav-item')
+                ->setLinkAttribute('class', 'nav-link');
 
 //            $menu
 //            ->addChild('Участники', [

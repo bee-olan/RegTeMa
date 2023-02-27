@@ -37,6 +37,7 @@ doctrine:
 
             admin_matkas_plemmatka_id: 'App\Model\Adminka\Entity\Matkas\PlemMatka\IdType'
             admin_matkas_plemmatka_status: 'App\Model\Adminka\Entity\Matkas\PlemMatka\StatusType'
+            admin_matkas_plemmatka_department_id: 'App\Model\Adminka\Entity\Matkas\PlemMatka\Department\IdType'
 
             adminka_rasa_id: 'App\Model\Adminka\Entity\Rasas\IdType'
             adminka_rasa_linia_id: 'App\Model\Adminka\Entity\Rasas\Linias\IdType'

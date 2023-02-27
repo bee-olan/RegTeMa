@@ -7,9 +7,9 @@ namespace App\Model\Adminka\Entity\Matkas\PlemMatka;
 //use App\Model\Adminka\Entity\Matkas\Kategoria\Kategoria;
 //use App\Model\Adminka\Entity\Matkas\Sparings\Sparing;
 //
-//use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Department;
-//use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id as DepartmentId;
-//
+use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Department;
+use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id as DepartmentId;
+
 //use App\Model\Adminka\Entity\Matkas\Role\Role;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
@@ -97,15 +97,15 @@ class PlemMatka
 //     */
 //    private $kategoria;
 
-//    /**
-//     * @var ArrayCollection|Department[]
-//     * @ORM\OneToMany(
-//     *     targetEntity="App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Department",
-//     *     mappedBy="plemmatka", orphanRemoval=true, cascade={"all"}
-//     * )
-//     * @ORM\OrderBy({"name" = "ASC"})
-//     */
-//    private $departments;
+    /**
+     * @var ArrayCollection|Department[]
+     * @ORM\OneToMany(
+     *     targetEntity="App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Department",
+     *     mappedBy="plemmatka", orphanRemoval=true, cascade={"all"}
+     * )
+     * @ORM\OrderBy({"name" = "ASC"})
+     */
+    private $departments;
 
 //    /**
 //     * @var ArrayCollection|Uchastnik[]
@@ -140,7 +140,7 @@ class PlemMatka
 //        $this->nameKateg = $nameKateg;
 //        $this->kategoria = $kategoria;
 
-//        $this->departments = new ArrayCollection();
+        $this->departments = new ArrayCollection();
 //        $this->uchastniks = new ArrayCollection();
 
     }
@@ -151,10 +151,6 @@ class PlemMatka
         $this->title = $title;
     }
 
-//    public function move(Sparing $sparing): void
-//    {
-//        $this->sparing = $sparing;
-//    }
 
     public function archive(): void
     {
@@ -171,47 +167,47 @@ class PlemMatka
         }
         $this->status = Status::active();
     }
-//    ////////////////
-//    public function addDepartment(DepartmentId $id, string $name): void
-//    {
-//        foreach ($this->departments as $department) {
-//            if ($department->isNameEqual($name)) {
-//                throw new \DomainException('Отдел уже существует.');
-//            }
-//        }
-//        $this->departments->add(new Department($this, $id, $name));
-//    }
-//
-//    public function editDepartment(DepartmentId $id, string $name): void
-//    {
-//        foreach ($this->departments as $current) {
-//            if ($current->getId()->isEqual($id)) {
-//                $current->edit($name);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('Отдел не найден.');
-//    }
-//
-//    public function removeDepartment(DepartmentId $id): void
-//    {
-//        foreach ($this->departments as $department) {
-//            if ($department->getId()->isEqual($id)) {
+    ////////////////
+    public function addDepartment(DepartmentId $id, string $name): void
+    {
+        foreach ($this->departments as $department) {
+            if ($department->isNameEqual($name)) {
+                throw new \DomainException('Отдел уже существует.');
+            }
+        }
+        $this->departments->add(new Department($this, $id, $name));
+    }
+
+    public function editDepartment(DepartmentId $id, string $name): void
+    {
+        foreach ($this->departments as $current) {
+            if ($current->getId()->isEqual($id)) {
+                $current->edit($name);
+                return;
+            }
+        }
+        throw new \DomainException('Отдел не найден.');
+    }
+
+    public function removeDepartment(DepartmentId $id): void
+    {
+        foreach ($this->departments as $department) {
+            if ($department->getId()->isEqual($id)) {
 //                foreach ($this->uchastniks as $uchastnik) {
-////                     if ($uchastnik->isForDepartment($id)) {
-////                         throw new \DomainException('Не удалось удалить отдел с участиемs.');
-////                     }
+//                     if ($uchastnik->isForDepartment($id)) {
+//                         throw new \DomainException('Не удалось удалить отдел с участиемs.');
+//                     }
 //                    if($uchastnik->isForDepartment($id)){
 //                        throw new \DomainException('Не удалось удалить отдел с участиемs.');
 //                    }
 //                }
-//                $this->departments->removeElement($department);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('Отдел не найден.');
-//    }
-//    ///////
+                $this->departments->removeElement($department);
+                return;
+            }
+        }
+        throw new \DomainException('Отдел не найден.');
+    }
+    ///////
 
 
 //    public function hasUchastie(UchastieId $id): bool
@@ -355,22 +351,22 @@ class PlemMatka
 
 
 
-//    public function getDepartments()
-//    {
-//        return $this->departments->toArray();
-//    }
-//
-//
-//    public function getDepartment(DepartmentId $id): Department
-//    {
-//        foreach ($this->departments as $department) {
-//            if ($department->getId()->isEqual($id)) {
-//                return $department;
-//            }
-//        }
-//        throw new \DomainException('раздел  не найден.');
-//    }
-//
+    public function getDepartments()
+    {
+        return $this->departments->toArray();
+    }
+
+
+    public function getDepartment(DepartmentId $id): Department
+    {
+        foreach ($this->departments as $department) {
+            if ($department->getId()->isEqual($id)) {
+                return $department;
+            }
+        }
+        throw new \DomainException('раздел  не найден.');
+    }
+
 //    public function getUchastniks()
 //    {
 //        return $this->uchastniks->toArray();

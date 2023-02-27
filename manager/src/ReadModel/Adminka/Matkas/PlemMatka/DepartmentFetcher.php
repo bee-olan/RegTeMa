@@ -26,7 +26,7 @@ class DepartmentFetcher
                 'id',
                 'name'
             )
-            ->from('paseka_matkas_plemmatka_departments')
+            ->from('admin_matkas_plemmatka_departments')
             ->andWhere('plemmatka_id = :plemmatka')
             ->setParameter(':plemmatka', $plemmatka)
             ->orderBy('name')
@@ -42,12 +42,12 @@ class DepartmentFetcher
                 'd.name',
                 '(
                     SELECT COUNT(ms.uchastie_id) 
-                    FROM paseka_matkas_plemmatka_uchastniks ms
-                    INNER JOIN paseka_matkas_plemmatka_uchastnik_departments md ON ms.id = md.uchastnik_id
+                    FROM admin_matkas_plemmatka_uchastniks ms
+                    INNER JOIN admin_matkas_plemmatka_uchastnik_departments md ON ms.id = md.uchastnik_id
                     WHERE md.department_id = d.id AND ms.plemmatka_id = :plemmatka
                 ) AS uchasties_count'
             )
-            ->from('paseka_matkas_plemmatka_departments', 'd')
+            ->from('admin_matkas_plemmatka_departments', 'd')
             ->andWhere('plemmatka_id = :plemmatka')
             ->setParameter(':plemmatka', $plemmatka)
             ->orderBy('name')
@@ -65,10 +65,10 @@ class DepartmentFetcher
                 'd.id AS department_id',
                 'd.name AS department_name'
             )
-            ->from('paseka_matkas_plemmatka_uchastniks', 'ms')
-            ->innerJoin('ms', 'paseka_matkas_plemmatka_uchastnik_departments', 'msd', 'ms.id = msd.uchastnik_id')
-            ->innerJoin('msd', 'paseka_matkas_plemmatka_departments', 'd', 'msd.department_id = d.id')
-            ->innerJoin('d', 'paseka_matkas_plemmatkas', 'p', 'd.plemmatka_id = p.id')
+            ->from('admin_matkas_plemmatka_uchastniks', 'ms')
+            ->innerJoin('ms', 'admin_matkas_plemmatka_uchastnik_departments', 'msd', 'ms.id = msd.uchastnik_id')
+            ->innerJoin('msd', 'admin_matkas_plemmatka_departments', 'd', 'msd.department_id = d.id')
+            ->innerJoin('d', 'admin_matkas_plemmatkas', 'p', 'd.plemmatka_id = p.id')
             ->andWhere('ms.uchastie_id = :uchastie')
             ->setParameter(':uchastie', $uchastie)
             ->orderBy('p.sort')->addOrderBy('d.name')
@@ -86,10 +86,10 @@ class DepartmentFetcher
                 'd.id AS department_id',
                 'd.name AS department_name'
             )
-         //   ->from('paseka_matkas_plemmatka_uchastniks', 'ms')
-//            ->innerJoin('ms', 'paseka_matkas_plemmatka_uchastnik_departments', 'msd', 'ms.id = msd.uchastnik_id')
-            ->innerJoin('msd', 'paseka_matkas_plemmatka_departments', 'd', 'msd.department_id = d.id')
-            ->innerJoin('d', 'paseka_matkas_plemmatkas', 'p', 'd.plemmatka_id = p.id')
+         //   ->from('admin_matkas_plemmatka_uchastniks', 'ms')
+//            ->innerJoin('ms', 'admin_matkas_plemmatka_uchastnik_departments', 'msd', 'ms.id = msd.uchastnik_id')
+            ->innerJoin('msd', 'admin_matkas_plemmatka_departments', 'd', 'msd.department_id = d.id')
+            ->innerJoin('d', 'admin_matkas_plemmatkas', 'p', 'd.plemmatka_id = p.id')
             ->andWhere('ms.uchastie_id = :uchastie')
             ->setParameter(':uchastie', $uchastie)
             ->orderBy('p.sort')->addOrderBy('d.name')

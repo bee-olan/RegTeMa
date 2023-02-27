@@ -75,7 +75,7 @@ class PlemMatkaMenu
 
         if ($this->auth->isGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS')) {
             $menu
-                ->addChild('Редактирование', [
+                ->addChild('Редактирование - Настройки', [
                     'route' => 'adminka.matkas.plemmatka.redaktors',
                     'routeParameters' => ['plemmatka_id' => $options['plemmatka_id']]
                 ])
