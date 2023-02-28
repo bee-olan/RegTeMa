@@ -15,6 +15,14 @@ main {
     }
 }
 
+a  {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 .controls {
     display: flex;
     flex-direction: row;
@@ -47,15 +55,15 @@ main {
     line-height: 1.1;
 }
 
- .image {
-     background-image: url('../../assets/images/uchastie.jpg');
-     width: 20px;
-     height: 20px;
-     img {
-        display: block; //картинку делаем блочной, чтобы кнопочка начиналась с новой строки
+//  .image {
+//      background-image: url('../../assets/images/uchastie.jpg');
+//      width: 20px;
+//      height: 20px;
+//      img {
+//         display: block; //картинку делаем блочной, чтобы кнопочка начиналась с новой строки
       
-     }
- }
+//      }
+//  }
 
 .card {
     &> .table-bordered {
