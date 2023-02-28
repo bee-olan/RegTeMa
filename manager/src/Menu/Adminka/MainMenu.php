@@ -25,7 +25,7 @@ class MainMenu
             ->setChildrenAttributes(['class' => 'nav nav-tabs mb-4']);
 
         $menu
-            ->addChild('Матки main', ['route' => 'adminka.matkas'])
+            ->addChild('Матки ', ['route' => 'adminka.matkas'])
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 
@@ -61,14 +61,14 @@ class MainMenu
 
 
 
-//            $menu
-//                ->addChild('Roles', ['route' => 'adminka.matkas.roles'])
-//                ->setExtra('routes', [
-//                    ['route' => 'adminka.matkas.roles'],
-//                    ['pattern' => '/^adminka.matkas.roles\..+/']
-//                ])
-//                ->setAttribute('class', 'nav-item')
-//                ->setLinkAttribute('class', 'nav-link');
+            $menu
+                ->addChild('Роли', ['route' => 'adminka.matkas.roles'])
+                ->setExtra('routes', [
+                    ['route' => 'adminka.matkas.roles'],
+                    ['pattern' => '/^adminka.matkas.roles\..+/']
+                ])
+                ->setAttribute('class', 'nav-item')
+                ->setLinkAttribute('class', 'nav-link');
         }
 
         return $menu;
