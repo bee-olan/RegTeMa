@@ -484,7 +484,7 @@ pre {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(#155799, #159957);
+  background: linear-gradient(#159957, #155799);
   background-attachment: fixed;
   overflow: hidden;
 }
