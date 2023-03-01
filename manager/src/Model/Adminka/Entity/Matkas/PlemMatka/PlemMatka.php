@@ -10,7 +10,8 @@ namespace App\Model\Adminka\Entity\Matkas\PlemMatka;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Department;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id as DepartmentId;
 
-//use App\Model\Adminka\Entity\Matkas\Role\Role;
+
+use App\Model\Adminka\Entity\Matkas\Role\Role;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
 
@@ -107,11 +108,11 @@ class PlemMatka
      */
     private $departments;
 
-//    /**
-//     * @var ArrayCollection|Uchastnik[]
-//     * @ORM\OneToMany(targetEntity="Uchastnik", mappedBy="plemmatka", orphanRemoval=true, cascade={"all"})
-//     */
-//    private $uchastniks;
+    /**
+     * @var ArrayCollection|Uchastnik[]
+     * @ORM\OneToMany(targetEntity="Uchastnik", mappedBy="plemmatka", orphanRemoval=true, cascade={"all"})
+     */
+    private $uchastniks;
 
 // string $uchastieId,
 //                                 string  $mesto,
@@ -123,7 +124,8 @@ class PlemMatka
                                  string $name,
                                  int $sort,
                                  string $title,
-                                 int $godaVixod
+                                 int $godaVixod,
+                                 string $uchastieId
                                   )
     {
         $this->id = $id;
@@ -131,8 +133,14 @@ class PlemMatka
         $this->sort = $sort;
         $this->title = $title;
         $this->godaVixod = $godaVixod;
+
+        $this->uchastieId = $uchastieId;
         $this->status = Status::active();
-//        $this->uchastieId = $uchastieId;
+
+        $this->departments = new ArrayCollection();
+        $this->uchastniks = new ArrayCollection();
+
+    }
 //        $this->mesto = $mesto;
 //        $this->persona = $persona;
 //        $this->rasaNomId = $rasaNomId;
@@ -140,14 +148,10 @@ class PlemMatka
 //        $this->nameKateg = $nameKateg;
 //        $this->kategoria = $kategoria;
 
-        $this->departments = new ArrayCollection();
-//        $this->uchastniks = new ArrayCollection();
 
-    }
 
     public function edit( string $title): void
     {
-        //$this->sparing = $sparing;
         $this->title = $title;
     }
 
@@ -210,71 +214,71 @@ class PlemMatka
     ///////
 
 
-//    public function hasUchastie(UchastieId $id): bool
-//    {
-//        foreach ($this->uchastniks as $uchastnik) {
-//            if ($uchastnik->isForUchastie($id)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
+    public function hasUchastie(UchastieId $id): bool
+    {
+        foreach ($this->uchastniks as $uchastnik) {
+            if ($uchastnik->isForUchastie($id)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
-//    /**
-//     * @param Uchastie $uchastie
-//     * @param DepartmentId[] $departmentIds
-//     * @param Role[] $roles
-//     * @throws \Exception
-//     */
-//    public function addUchastie(Uchastie $uchastie, array $departmentIds, array $roles): void
-//    {
-//        foreach ($this->uchastniks as $uchastnik) {
-//            if ($uchastnik->isForUchastie($uchastie->getId())) {
-//                throw new \DomainException('Такой участник уже добавлен.');
-//            }
-//        }
-//        $departments = array_map([$this, 'getDepartment'], $departmentIds);
-//        $this->uchastniks->add(new Uchastnik($this, $uchastie, $departments, $roles));
-//    }
-//
-//    /**
-//     * @param UchastieId $uchastie
-//     * @param DepartmentId[] $departmentIds
-//     * @param Role[] $roles
-//     */
-//    public function editUchastie(UchastieId $uchastie, array $departmentIds, array $roles): void
-//    {
-//        foreach ($this->uchastniks as $uchastnik) {
-//            if ($uchastnik->isForUchastie($uchastie)) {
-//                $uchastnik->changeDepartments(array_map([$this, 'getDepartment'], $departmentIds));
-//                $uchastnik->changeRoles($roles);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('Uchastie is not found.');
-//    }
-//
-//    public function removeUchastie(UchastieId $uchastie): void
-//    {
-//        foreach ($this->uchastniks as $uchastnik) {
-//            if ($uchastnik->isForUchastie($uchastie)) {
-//                $this->uchastniks->removeElement($uchastnik);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('Uchastie is not found.');
-//    }
-//
-//    public function isUchastieGranted(UchastieId $id, string $permission): bool
-//    {
-//        foreach ($this->uchastniks as $uchastnik) {
-//            if ($uchastnik->isForUchastie($id)) {
-//                return $uchastnik->isGranted($permission);
-//            }
-//        }
-//        return false;
-//    }
+    /**
+     * @param Uchastie $uchastie
+     * @param DepartmentId[] $departmentIds
+     * @param Role[] $roles
+     * @throws \Exception
+     */
+    public function addUchastie(Uchastie $uchastie, array $departmentIds, array $roles): void
+    {
+        foreach ($this->uchastniks as $uchastnik) {
+            if ($uchastnik->isForUchastie($uchastie->getId())) {
+                throw new \DomainException('Такой участник уже добавлен.');
+            }
+        }
+        $departments = array_map([$this, 'getDepartment'], $departmentIds);
+        $this->uchastniks->add(new Uchastnik($this, $uchastie, $departments, $roles));
+    }
+
+    /**
+     * @param UchastieId $uchastie
+     * @param DepartmentId[] $departmentIds
+     * @param Role[] $roles
+     */
+    public function editUchastie(UchastieId $uchastie, array $departmentIds, array $roles): void
+    {
+        foreach ($this->uchastniks as $uchastnik) {
+            if ($uchastnik->isForUchastie($uchastie)) {
+                $uchastnik->changeDepartments(array_map([$this, 'getDepartment'], $departmentIds));
+                $uchastnik->changeRoles($roles);
+                return;
+            }
+        }
+        throw new \DomainException('Uchastie is not found.');
+    }
+
+    public function removeUchastie(UchastieId $uchastie): void
+    {
+        foreach ($this->uchastniks as $uchastnik) {
+            if ($uchastnik->isForUchastie($uchastie)) {
+                $this->uchastniks->removeElement($uchastnik);
+                return;
+            }
+        }
+        throw new \DomainException('Uchastie is not found.');
+    }
+
+    public function isUchastieGranted(UchastieId $id, string $permission): bool
+    {
+        foreach ($this->uchastniks as $uchastnik) {
+            if ($uchastnik->isForUchastie($id)) {
+                return $uchastnik->isGranted($permission);
+            }
+        }
+        return false;
+    }
 
 
     public function isArchived(): bool
