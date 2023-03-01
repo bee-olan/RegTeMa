@@ -28,6 +28,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/adminka/uchasties/uchastie", name="adminka.uchasties.uchastie")
  */
+// это можно удалить есть в проект-пасека-...
 class UchastieControllr extends AbstractController
 {
     private const PER_PAGE = 20;
@@ -95,16 +96,17 @@ class UchastieControllr extends AbstractController
      * @Route("/create", name=".create")
      * @param Request $request
      * @param User $user
-     * @param UserRepository $users
+//     * @param UserRepository $users
      * @param UchastieFetcher $uchasties
      * @param Create\Handler $handler
      * @return Response
      */
     public function create( Request $request,User $user,
                             UchastieFetcher $uchasties,
-                            UserRepository $users,
+//                            UserRepository $users,
                             Create\Handler $handler): Response
     {
+
         if ($uchasties->exists($user->getId()->getValue())) {
             $this->addFlash('error', 'Участник уже существует.');
             return $this->redirectToRoute('users.show', ['id' => $user->getId()]);

@@ -11,6 +11,7 @@ use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Adminka\UseCase\Uchasties\Uchastie\Create;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
 
+use App\Model\User\Entity\User\User;
 use App\Model\User\Entity\User\UserRepository;
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
@@ -66,11 +67,14 @@ class UchastieControllr extends AbstractController
      * @param Create\Handler $handler
      * @return Response
      */
-    public function create( Request $request, UserRepository $users, Create\Handler $handler): Response
+    public function create( Request $request,  UserRepository $users, Create\Handler $handler): Response
     {
         $idUser = $this->getUser()->getId();
-        $user = $users->find($idUser);
+//
 
+        $idUser = $this->getUser()->getId();
+        $user = $users->find($idUser);
+//        dd($user);
 // следующие присваения перенести в Handler не можeм т.к. инфа  из $user
         $command = new Create\Command($idUser);
         $command->firstName = $user->getName()->getFirst();
