@@ -105,6 +105,7 @@ class UchastieFetcher
         $stmt = $this->connection->createQueryBuilder()
             ->select([
                 'm.id',
+                'm.nike',
                 'CONCAT(m.name_first, \' \', m.name_last, \' \', m.name_nike) AS name',
                 'g.name AS group'
             ])

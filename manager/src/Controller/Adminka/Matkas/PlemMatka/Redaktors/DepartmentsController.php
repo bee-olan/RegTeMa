@@ -47,8 +47,8 @@ class DepartmentsController extends AbstractController
 //        'departments' => $plemmatka->getDepartments(), ????
         return $this->render('app/adminka/matkas/plemmatka/redaktors/departments/index.html.twig', [
             'plemmatka' => $plemmatka,
-            'departments' => $plemmatka->getDepartments(),
-//            'departments' => $departments->allOfPlemMatka($plemmatka->getId()->getValue()),
+//            'departments' => $plemmatka->getDepartments(),
+            'departments' => $departments->allOfPlemMatka($plemmatka->getId()->getValue()),
         ]);
     }
 

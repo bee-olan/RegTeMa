@@ -56,9 +56,9 @@ class Command
 //    /**
 //     * @Assert\NotBlank()
 //     */
-//    public $kategoria;
+//    public $kategoria;    string $nomerId,
 
-//    public function __construct(string $nomerId, int $sort, string $uchastieId)
+//    public function __construct( int $sort, string $uchastieId)
 //    {
 //        $this->nomerId=$nomerId;
 //        $this->sort = $sort;

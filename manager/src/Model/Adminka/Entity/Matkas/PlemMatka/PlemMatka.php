@@ -124,8 +124,8 @@ class PlemMatka
                                  string $name,
                                  int $sort,
                                  string $title,
-                                 int $godaVixod,
-                                 string $uchastieId
+                                 int $godaVixod
+//                                 string $uchastieId
                                   )
     {
         $this->id = $id;
@@ -134,7 +134,7 @@ class PlemMatka
         $this->title = $title;
         $this->godaVixod = $godaVixod;
 
-        $this->uchastieId = $uchastieId;
+//        $this->uchastieId = $uchastieId;
         $this->status = Status::active();
 
         $this->departments = new ArrayCollection();
@@ -197,14 +197,11 @@ class PlemMatka
     {
         foreach ($this->departments as $department) {
             if ($department->getId()->isEqual($id)) {
-//                foreach ($this->uchastniks as $uchastnik) {
-//                     if ($uchastnik->isForDepartment($id)) {
-//                         throw new \DomainException('Не удалось удалить отдел с участиемs.');
-//                     }
-//                    if($uchastnik->isForDepartment($id)){
-//                        throw new \DomainException('Не удалось удалить отдел с участиемs.');
-//                    }
-//                }
+                foreach ($this->uchastniks as $uchastnik) {
+                     if ($uchastnik->isForDepartment($id)) {
+                         throw new \DomainException('Не удалось удалить отдел с участиемs.');
+                     }
+                }
                 $this->departments->removeElement($department);
                 return;
             }
@@ -320,6 +317,14 @@ class PlemMatka
     public function getGodaVixod(): int
     {
         return $this->godaVixod;
+    }
+
+    /**
+     * @return Uchastnik[]|ArrayCollection
+     */
+    public function getUchastniks()
+    {
+        return $this->uchastniks;
     }
 
 //    public function getNameKateg(): string

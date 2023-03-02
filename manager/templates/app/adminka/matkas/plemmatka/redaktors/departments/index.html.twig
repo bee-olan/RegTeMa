@@ -38,7 +38,7 @@
             {% for department in departments %}
                 <tr>
                     <td>{{ department.name }}</td>
-{#                    <td>{{ department.uchasties_count }}</td>#}
+                    <td>{{ department.uchasties_count }}</td>
                     <td>
                         <div class="d-flex flex-row">
                             <a href="{{ path('adminka.matkas.plemmatka.redaktors.departments.edit', {'plemmatka_id': plemmatka.id, 'id': department.id}) }}" class="btn btn-sm btn-primary mr-1"><span class="fa fa-pencil"></span></a>

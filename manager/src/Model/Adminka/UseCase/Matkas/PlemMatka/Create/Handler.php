@@ -89,7 +89,7 @@ class Handler
             $command->sort,
             $command->title,
             $command->godaVixod=2022
-//            $command->uchastieId,
+//            $command->uchastieId
 //            $command->mesto,
 //            $command->persona,
 //            $command->rasaNomId,
