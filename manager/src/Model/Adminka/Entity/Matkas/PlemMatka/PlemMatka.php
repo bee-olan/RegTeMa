@@ -325,6 +325,17 @@ class PlemMatka
         return $this->uchastniks->toArray();
     }
 
+
+    public function getUchastnik(UchastieId $id): Uchastnik
+    {
+        foreach ($this->uchastniks as $uchastnik) {
+            if ($uchastnik->isForUchastie($id)) {
+                return $uchastnik;
+            }
+        }
+        throw new \DomainException('Такого участника  нет.');
+    }
+
 //    public function getNameKateg(): string
 //    {
 //        return $this->nameKateg;
@@ -373,25 +384,6 @@ class PlemMatka
         }
         throw new \DomainException('раздел  не найден.');
     }
-
-//    public function getUchastniks()
-//    {
-//        return $this->uchastniks->toArray();
-//    }
-//
-//    public function getUchastnik(UchastieId $id): Uchastnik
-//    {
-//        foreach ($this->uchastniks as $uchastnik) {
-//            if ($uchastnik->isForUchastie($id)) {
-//                return $uchastnik;
-//            }
-//        }
-//        throw new \DomainException('Такого участника нет.');
-//    }
-
-
-
-
 
 
 }

@@ -28,7 +28,7 @@
                         {% for role in roles %}
                             <th style="text-align: center">
                                 <a href="{{ path('adminka.matkas.roles.show', {'id': role.id}) }}">{{ role.name }}</a>
-{#                                ({{ role.uchastniks_count }})#}
+                                ( {{ role.uchastniks_count }} )
                             </th>
                         {% endfor %}
                     </tr>

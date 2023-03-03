@@ -36,9 +36,8 @@ class RoleFetcher
             ->select(
                 'r.id',
                 'r.name',
-                'r.permissions'
-//                ,
-//                '(SELECT COUNT(*) FROM adminka_matkas_plemmatka_uchastnik_roles m WHERE m.role_id = r.id) AS uchastniks_count'
+                'r.permissions',
+                '(SELECT COUNT(*) FROM adminka_matkas_plemmatka_uchastnik_roles m WHERE m.role_id = r.id) AS uchastniks_count'
             )
             ->from('adminka_matkas_roles', 'r')
             ->orderBy('name')
