@@ -198,6 +198,13 @@ class PlemMatkaFetcher
             ->from('admin_matkas_plemmatkas', 'p')
 //            ->innerJoin('p', 'admin_matkas_kategorias', 's', 'p.kategoria_id = s.id')
         ;
+        if ($filter->uchastie) {
+            $qb->andWhere('EXISTS (
+                SELECT ms.uchastie_id FROM adminka_matkas_plemmatkas_uchastniks ms WHERE ms.plemmatka_id = p.id AND ms.uchastie_id = :uchastie
+            )');
+            $qb->setParameter(':uchastie', $filter->uchastie);
+        }
+
 
         if ($filter->name) {
             $qb->andWhere($qb->expr()->like('p.name', ':name'));
