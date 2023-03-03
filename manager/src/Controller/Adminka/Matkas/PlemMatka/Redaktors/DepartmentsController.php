@@ -11,6 +11,7 @@ use  App\Model\Adminka\UseCase\Matkas\PlemMatka\Department\Create;
 use  App\Model\Adminka\UseCase\Matkas\PlemMatka\Department\Edit;
 use  App\Model\Adminka\UseCase\Matkas\PlemMatka\Department\Remove;
 use App\ReadModel\Adminka\Matkas\PlemMatka\DepartmentFetcher;
+use App\Security\Voter\Adminka\Matkas\PlemMatkaAccess;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Controller\ErrorHandler;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
@@ -42,9 +43,8 @@ class DepartmentsController extends AbstractController
      */
     public function index(PlemMatka $plemmatka, DepartmentFetcher $departments): Response
     {
-       // $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_MEMBERS, $plemmatka);
+        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
 
-//        'departments' => $plemmatka->getDepartments(), ????
         return $this->render('app/adminka/matkas/plemmatka/redaktors/departments/index.html.twig', [
             'plemmatka' => $plemmatka,
 //            'departments' => $plemmatka->getDepartments(),
@@ -61,7 +61,7 @@ class DepartmentsController extends AbstractController
      */
     public function create(PlemMatka $plemmatka, Request $request, Create\Handler $handler): Response
     {
-        //$this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_MEMBERS, $plemmatka);
+        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
 
         $command = new Create\Command($plemmatka->getId()->getValue());
 
@@ -94,7 +94,7 @@ class DepartmentsController extends AbstractController
      */
     public function edit(PlemMatka $plemmatka, string $id, Request $request, Edit\Handler $handler): Response
     {
-        //$this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_MEMBERS, $plemmatka);
+        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
 
         $department = $plemmatka->getDepartment(new Id($id));
 
@@ -130,7 +130,7 @@ class DepartmentsController extends AbstractController
      */
     public function delete(PlemMatka $plemmatka, string $id, Request $request, Remove\Handler $handler): Response
     {
-        //$this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_MEMBERS, $plemmatka);
+        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
 
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('adminka.matkas.plemmatka.redaktors.departments', ['plemmatka_id' => $plemmatka->getId()]);

@@ -13,6 +13,7 @@ use App\Model\Adminka\UseCase\Matkas\PlemMatka\Reinstate;
 use App\Model\Adminka\UseCase\Matkas\PlemMatka\Remove;
 
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
+use App\Security\Voter\Adminka\Matkas\PlemMatkaAccess;
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,7 +41,7 @@ class RedaktorController extends AbstractController
      */
     public function show(PlemMatka $plemmatka): Response
     {
-        //$this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
+        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
 //        $departamens = $plemmatka->getDepartments();
         return $this->render('app/adminka/matkas/plemmatka/redaktors/show.html.twig',
             compact('plemmatka'));
@@ -55,7 +56,7 @@ class RedaktorController extends AbstractController
      */
     public function edit(PlemMatka $plemmatka, Request $request, Edit\Handler $handler): Response
     {
-       // $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
+        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
 
         $command = Edit\Command::fromPlemMatka($plemmatka);
 
@@ -91,7 +92,7 @@ class RedaktorController extends AbstractController
             return $this->redirectToRoute('adminka.matkas.plemmatka.show', ['id' => $plemmatka->getId()]);
         }
 
-//        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, plemmatka);
+        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
 
         $command = new Archive\Command($plemmatka->getId()->getValue());
 
@@ -117,8 +118,8 @@ class RedaktorController extends AbstractController
         if (!$this->isCsrfTokenValid('reinstate', $request->request->get('token'))) {
             return $this->redirectToRoute('adminka.matkas.plemmatka.redaktors', ['plemmatka_id' => $plemmatka->getId()]);
         }
+        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
 
-//        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
 
         $command = new Reinstate\Command($plemmatka->getId()->getValue());
 
@@ -144,6 +145,7 @@ class RedaktorController extends AbstractController
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('adminka.matkas.plemmatka.settings', ['plemmatka_id' => $plemmatka->getId()]);
         }
+        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
 
         $command = new Remove\Command($plemmatka->getId()->getValue());
 

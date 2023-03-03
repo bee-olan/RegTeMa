@@ -11,6 +11,7 @@ use App\Model\Adminka\UseCase\Matkas\PlemMatka\Uchastnik;
 
 use App\Controller\ErrorHandler;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
+use App\Security\Voter\Adminka\Matkas\PlemMatkaAccess;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,7 +38,7 @@ class UchastiesController extends AbstractController
      */
     public function index(PlemMatka $plemmatka): Response
     {
-       // $this->denyAccessUnlessGranted(ProjectAccess::MANAGE_MEMBERS, $plemmatka);
+        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
 // выводит из проекта uchastniks - учстников
         return $this->render('app/adminka/matkas/plemmatka/redaktors/uchasties/index.html.twig', [
             'plemmatka' => $plemmatka,
@@ -55,8 +56,9 @@ class UchastiesController extends AbstractController
     public function assign(PlemMatka $plemmatka, Request $request, Uchastnik\Add\Handler $handler): Response
     {
         // Привязывает к проекту-ПлемМатка - нового  сотрудника
-       // $this->denyAccessUnlessGranted(ProjectAccess::MANAGE_MEMBERS, $plemmatka);
-//Проверка на : Если попытается привязать сотрудника, но еще нет департ-сообщества, то соотв. сообщение
+        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
+
+        //Проверка на : Если попытается привязать сотрудника, но еще нет департ-сообщества, то соотв. сообщение
         if (!$plemmatka->getDepartments()) {
             $this->addFlash('error', 'Добавьте отделы перед добавлением участников.');
             return $this->redirectToRoute('adminka.matkas.plemmatka.redaktors.uchasties', ['plemmatka_id' => $plemmatka->getId()]);
@@ -93,7 +95,7 @@ class UchastiesController extends AbstractController
      */
     public function edit(PlemMatka $plemmatka, string $uchastie_id, Request $request, Uchastnik\Edit\Handler $handler): Response
     {
-        //$this->denyAccessUnlessGranted(ProjectAccess::MANAGE_MEMBERS, $plemmatka);
+        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
 
 //        $uchastnik = $plemmatka->getUchastnik(new Id($uchastie_id));
         $uchastnik = $plemmatka->getUchastnik(new Id($uchastie_id));
@@ -130,7 +132,7 @@ class UchastiesController extends AbstractController
      */
     public function revoke(PlemMatka $plemmatka, string $uchastie_id, Request $request, Uchastnik\Remove\Handler $handler): Response
     {
-        //$this->denyAccessUnlessGranted(ProjectAccess::MANAGE_MEMBERS, $plemmatka);
+        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
 
         if (!$this->isCsrfTokenValid('revoke', $request->request->get('token'))) {
             return $this->redirectToRoute('adminka.matkas.plemmatka.redaktors.departments', ['plemmatka_id' => $plemmatka->getId()]);

@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
-class  extends Voter
+class PlemMatkaAccess extends Voter
 {
 
     public const VIEW = 'view';
