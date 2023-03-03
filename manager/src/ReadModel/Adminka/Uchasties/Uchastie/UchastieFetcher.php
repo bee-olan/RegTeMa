@@ -106,7 +106,7 @@ class UchastieFetcher
             ->select([
                 'm.id',
                 'm.nike',
-                'CONCAT(m.name_first, \' \', m.name_last, \' \', m.name_nike) AS name',
+                'CONCAT(m.name_first, \' \', m.name_last) AS name',
                 'g.name AS group'
             ])
             ->from('admin_uchasties_uchasties', 'm')

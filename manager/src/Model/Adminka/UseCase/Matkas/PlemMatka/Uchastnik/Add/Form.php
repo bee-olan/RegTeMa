@@ -28,21 +28,24 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
 
-//        $uchasties = [];
-//        foreach ($this->uchasties->activeGroupedList() as $item) {
-//            $uchasties[$item['group']][$item['name']] = $item['id'];
-//        }
+        $uchasties = [];
+        foreach ($this->uchasties->activeGroupedList() as $item) {
+            $uchasties[$item['group']][$item['name']] = $item['id'];
+        }
 
         $builder
-//            ->add('uchastie', Type\ChoiceType::class, [
-//                'choices' => $uchasties,
-//            ])
+            ->add('uchastie', Type\ChoiceType::class, [
+                'label' => 'Участники',
+                'choices' => $uchasties,
+            ])
             ->add('departments', Type\ChoiceType::class, [
+                'label' => ' Сезоны',
                 'choices' => array_flip($this->departments->listOfPlemMatka($options['plemmatka'])),
                 'expanded' => true,
                 'multiple' => true,
             ])
             ->add('roles', Type\ChoiceType::class, [
+                'label' => ' Роль участника',
                 'choices' => array_flip($this->roles->allList()),
                 'expanded' => true,
                 'multiple' => true,

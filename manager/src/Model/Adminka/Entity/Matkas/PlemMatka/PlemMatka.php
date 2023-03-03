@@ -319,12 +319,10 @@ class PlemMatka
         return $this->godaVixod;
     }
 
-    /**
-     * @return Uchastnik[]|ArrayCollection
-     */
+
     public function getUchastniks()
     {
-        return $this->uchastniks;
+        return $this->uchastniks->toArray();
     }
 
 //    public function getNameKateg(): string

@@ -7,6 +7,7 @@ namespace App\Model\Adminka\UseCase\Matkas\PlemMatka\Uchastnik\Add;
 use App\Model\Flusher;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatkaRepository;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Id;
+use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 use App\Model\Adminka\Entity\Matkas\Role\Role;
 use App\Model\Adminka\Entity\Matkas\Role\Id as RoleId;
 use App\Model\Adminka\Entity\Matkas\Role\RoleRepository;
@@ -38,7 +39,9 @@ class Handler
     {
         $plemmatka = $this->plemmatkas->get(new Id($command->plemmatka));
 
-        $uchastie = $this->uchasties->get(new UchastieId($plemmatka->getUchastieId()));
+//        $uchastie = $this->uchasties->get(new UchastieId($plemmatka->getUchastieId()));
+
+        $uchastie = $this->uchasties->get(new UchastieId($command->uchastie));
 
         $departments = array_map(static function (string $id): DepartmentId {
             return new DepartmentId($id);

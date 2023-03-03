@@ -13,10 +13,10 @@ class Command
      */
     public $plemmatka;
 
-//    /**
-//     * @Assert\NotBlank()
-//     */
-//    public $uchastie;
+    /**
+     * @Assert\NotBlank()
+     */
+    public $uchastie;
 
     /**
      * @Assert\NotBlank()
