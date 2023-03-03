@@ -267,6 +267,7 @@ class PlemMatka
         throw new \DomainException('Uchastie is not found.');
     }
 
+// если есть у пользователя разрешение
     public function isUchastieGranted(UchastieId $id, string $permission): bool
     {
         foreach ($this->uchastniks as $uchastnik) {
