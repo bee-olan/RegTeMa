@@ -50,8 +50,8 @@ class UchastieFetcher
                 'm.email',
                 'm.nike',
                 'g.name as group',
-                'm.status'
-//                '(SELECT COUNT(*) FROM admin_matkas_plemmatka_uchastniks ms WHERE ms.uchastie_id = m.id) as uchastniks_count',
+                'm.status',
+                '(SELECT COUNT(*) FROM adminka_matkas_plemmatka_uchastniks ms WHERE ms.uchastie_id = m.id) as uchastniks_count'
 //                '(SELECT COUNT(*) FROM admin_sezons_uchasgodas ug WHERE ug.uchastie_id = m.id) as uchasgodas_count'
             )
             ->from('admin_uchasties_uchasties', 'm')

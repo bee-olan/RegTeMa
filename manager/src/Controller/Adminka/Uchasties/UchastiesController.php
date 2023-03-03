@@ -15,6 +15,7 @@ use App\Model\Adminka\UseCase\Uchasties\Uchastie\Reinstate;
 use App\Model\Adminka\UseCase\Uchasties\Uchastie\Create;
 use App\Model\Adminka\UseCase\Uchasties\Uchastie\Move;
 //use App\ReadModel\Adminka\Matkas\PlemMatka\DepartmentFetcher;
+use App\ReadModel\Adminka\Matkas\PlemMatka\DepartmentFetcher;
 use App\ReadModel\Adminka\Uchasties\Uchastie\Filter;
 use App\ReadModel\Adminka\Uchasties\Uchastie\UchastieFetcher;
 use Psr\Log\LoggerInterface;
@@ -228,14 +229,14 @@ class UchastiesController extends AbstractController
     /**
      * @Route("/{id}", name=".show", requirements={"id"=Guid::PATTERN})
      * @param Uchastie $uchastie
-//     * @param DepartmentFetcher $fetcher
+     * @param DepartmentFetcher $fetcher
      * @return Response
      */
-    public function show(Uchastie $uchastie ): Response
+    public function show(Uchastie $uchastie,  DepartmentFetcher $fetcher): Response
     {
-//        $departments = $fetcher->allOfUchastie($uchastie->getId()->getValue());
+        $departments = $fetcher->allOfUchastie($uchastie->getId()->getValue());
 
         return $this->render('app/adminka/uchasties/show.html.twig',
-            compact('uchastie' ));
+            compact('uchastie' , 'departments'));
     }
 }
