@@ -37,6 +37,8 @@ class MainMenu
             ])
             ->setAttribute('class', 'nav-item ')
             ->setLinkAttribute('class', 'nav-link ');
+
+
         
 //        $menu
 //            ->addChild('Actions', ['route' => 'adminka.matkas.actions'])
@@ -59,6 +61,15 @@ class MainMenu
     
         if ($this->auth->isGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS')) {
 
+
+            $menu
+                ->addChild('Категории', ['route' => 'adminka.matkas.kategorias'])
+                ->setExtra('routes', [
+                    ['route' => 'adminka.matkas.kategorias'],
+                    ['pattern' => '/^adminka.matkas.kategorias\..+/']
+                ])
+                ->setAttribute('class', 'nav-item')
+                ->setLinkAttribute('class', 'nav-link');
 
 
             $menu

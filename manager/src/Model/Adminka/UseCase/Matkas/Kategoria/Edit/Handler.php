@@ -23,7 +23,7 @@ class Handler
     {
         $kategoria = $this->kategorias->get(new Id($command->id));
 
-        $kategoria->edit($command->name, $command->nomer, $command->permissions);
+        $kategoria->edit($command->name, $command->permissions);
 
         $this->flusher->flush();
     }
