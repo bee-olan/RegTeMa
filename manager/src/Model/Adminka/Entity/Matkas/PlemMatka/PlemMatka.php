@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\Entity\Matkas\PlemMatka;
 
-//use App\Model\Adminka\Entity\Matkas\Kategoria\Kategoria;
+use App\Model\Adminka\Entity\Matkas\Kategoria\Kategoria;
 //use App\Model\Adminka\Entity\Matkas\Sparings\Sparing;
 //
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Department;
@@ -43,17 +43,17 @@ class PlemMatka
 //     */
 //    private $uchastieId;
 
-//    /**
-//     * @var string
-//     * @ORM\Column(type="string", name="rasa_nom_id")
-//     */
-//    private $rasaNomId;
+    /**
+     * @var string
+     * @ORM\Column(type="string", name="rasa_nom_id")
+     */
+    private $rasaNomId;
 
-//    /**
-//     * @var string
-//     * @ORM\Column(type="string")
-//     */
-//      private $mesto;
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+      private $mesto;
 
     /**
      * @var string
@@ -61,11 +61,11 @@ class PlemMatka
      */
     private $title;
 
-//    /**
-//     * @var int
-//     * @ORM\Column(type="integer")
-//     */
-//    private $persona;
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    private $persona;
 
     /**
      * @var int
@@ -91,12 +91,12 @@ class PlemMatka
      */
     private $godaVixod;
 
-//    /**
-//     * @var Kategoria
-//     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Matkas\Kategoria\Kategoria")
-//     * @ORM\JoinColumn(name="kategoria_id", referencedColumnName="id", nullable=false)
-//     */
-//    private $kategoria;
+    /**
+     * @var Kategoria
+     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Matkas\Kategoria\Kategoria")
+     * @ORM\JoinColumn(name="kategoria_id", referencedColumnName="id", nullable=false)
+     */
+    private $kategoria;
 
     /**
      * @var ArrayCollection|Department[]
@@ -115,17 +115,19 @@ class PlemMatka
     private $uchastniks;
 
 // string $uchastieId,
-//                                 string  $mesto,
-////                                 string $rasaNomId,
+
 //                                 string $nameKateg,
-//                                 Kategoria $kategoria,
-//                                 int  $persona,
+//
+//
     public function __construct( Id $id,
                                  string $name,
                                  int $sort,
                                  string $title,
-                                 int $godaVixod
-//                                 string $uchastieId
+                                 int $godaVixod,
+                                 string  $mesto,
+                                 string $rasaNomId,
+                                 int  $persona,
+                                 Kategoria $kategoria
                                   )
     {
         $this->id = $id;
@@ -133,20 +135,20 @@ class PlemMatka
         $this->sort = $sort;
         $this->title = $title;
         $this->godaVixod = $godaVixod;
-
-//        $this->uchastieId = $uchastieId;
+        $this->kategoria = $kategoria;
+        $this->mesto = $mesto;
+        $this->persona = $persona;
+        $this->rasaNomId = $rasaNomId;
         $this->status = Status::active();
 
         $this->departments = new ArrayCollection();
         $this->uchastniks = new ArrayCollection();
 
     }
-//        $this->mesto = $mesto;
-//        $this->persona = $persona;
-//        $this->rasaNomId = $rasaNomId;
+
 
 //        $this->nameKateg = $nameKateg;
-//        $this->kategoria = $kategoria;
+//
 
 
 
@@ -342,31 +344,31 @@ class PlemMatka
 //        return $this->nameKateg;
 //    }
 //
-//    public function getKategoria(): Kategoria
-//    {
-//        return $this->kategoria;
-//    }
+    public function getKategoria(): Kategoria
+    {
+        return $this->kategoria;
+    }
 
-//    public function getMesto(): string
-//    {
-//        return $this->mesto;
-//    }
+    public function getMesto(): string
+    {
+        return $this->mesto;
+    }
 //
 //    public function getUchastieId(): string
 //    {
 //        return $this->uchastieId;
 //    }
 //
-//    public function getPersona(): int
-//    {
-//        return $this->persona;
-//    }
+    public function getPersona(): int
+    {
+        return $this->persona;
+    }
 
 
-//    public function getRasaNomId(): string
-//    {
-//        return $this->rasaNomId;
-//    }
+    public function getRasaNomId(): string
+    {
+        return $this->rasaNomId;
+    }
 
 
 
