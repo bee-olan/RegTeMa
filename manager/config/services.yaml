@@ -34,6 +34,7 @@ services:
 
     App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatkaRepository: ~
     App\Model\Adminka\Entity\Matkas\Role\RoleRepository: ~
+    App\Model\Adminka\Entity\Matkas\Kategoria\KategoriaRepository: ~
 
     App\Model\Adminka\Entity\Rasas\RasaRepository: ~
     App\Model\Adminka\Entity\Rasas\Linias\LiniaRepository: ~

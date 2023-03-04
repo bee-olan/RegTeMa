@@ -42,6 +42,9 @@ doctrine:
             adminka_matkas_role_permissions: 'App\Model\Adminka\Entity\Matkas\Role\PermissionsType'
             adminka_matkas_role_id: 'App\Model\Adminka\Entity\Matkas\Role\IdType'
 
+            admin_matkas_kategoria_id: 'App\Model\Adminka\Entity\Matkas\Kategoria\IdType'
+            admin_matkas_kategoria_permissions: 'App\Model\Adminka\Entity\Matkas\Kategoria\PermissionsType'
+
             adminka_rasa_id: 'App\Model\Adminka\Entity\Rasas\IdType'
             adminka_rasa_linia_id: 'App\Model\Adminka\Entity\Rasas\Linias\IdType'
             adminka_rasa_linia_nomer_id: 'App\Model\Adminka\Entity\Rasas\Linias\Nomers\IdType'
