@@ -38,7 +38,7 @@ class ResetController extends AbstractController
             try {
                 $handler->handle($command);
                 $this->addFlash('success', 'Проверьте свою электронную почту.');
-                return $this->redirectToRoute('home');
+                return $this->redirectToRoute('proekt');
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());

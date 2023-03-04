@@ -4,6 +4,36 @@
 @import "~font-awesome/scss/font-awesome";
 @import "~toastr/toastr";
 
+
+body {
+    //background-color: $color-rasa;
+
+    font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.2rem;
+    line-height: 1.1;
+    color: $border-linia;
+}
+.header {
+    display: flex;
+    width: calc(100% - #{$sidebar-width});
+
+    background-color: $grad1;
+    //height: 30px; убираем, чтобы шапка растягивалась по содержимому
+    //background-color: darken($header-color, 5%); //darken  затемнение цвета
+    box-shadow: 0 5px 22px rgba($black, .25);
+    //  стилизация тени - не прозрачность 25%
+
+    position: fixed; // фиксированное позиционирование
+    top: 0;
+    right: 0;
+    z-index: $z-index-header;
+    // меняем ширину шабки на 100%
+
+}
 main {
     & > .container {
         padding: 80px 15px 0;

@@ -71,7 +71,7 @@ class FacebookAuthenticator extends SocialAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): ?Response
     {
-        return new RedirectResponse($this->urlGenerator->generate('home'));
+        return new RedirectResponse($this->urlGenerator->generate('proekt'));
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
