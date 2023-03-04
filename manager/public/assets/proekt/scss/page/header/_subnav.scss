@@ -2,9 +2,8 @@
      display: none; //скрыть nav
 
      width: 16.5rem;
-     padding: .5rem 0;
-   
-    background-color: $header-color;
+     padding: .5rem 0;   
+    //background-color: $header-color;
      border-radius: 0 0 5px 5px;
      box-shadow: 0 6px 8px rgba($black, .2);
      position: absolute; // родителя nav__item
@@ -33,7 +32,8 @@
      transition: background-color .2s ease-in-out;
 
     &:hover {
-        background-color: darken($header-color, 5%);
+        //background-color: darken($header-color, 5%);
+      background-color: $header-color;
         text-decoration: none;    
     }
 

@@ -908,7 +908,6 @@ pre {
   display: none;
   width: 16.5rem;
   padding: 0.5rem 0;
-  background-color: rgb(155, 144, 74);
   border-radius: 0 0 5px 5px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   position: absolute;
@@ -934,7 +933,7 @@ pre {
   transition: background-color 0.2s ease-in-out;
 }
 .subnavv__link:hover {
-  background-color: #8a8042;
+  background-color: rgb(151, 144, 93);
   text-decoration: none;
 }
 @media screen and (max-width: 991px) {
@@ -1043,7 +1042,7 @@ pre {
   position: relative;
 }
 .navv__item:hover .navv__link {
-  background-color: rgb(155, 144, 74);
+  background-color: rgb(151, 144, 93);
   text-decoration: none;
   color: #f6f6f6;
 }
@@ -1056,7 +1055,7 @@ pre {
   padding: 0.6rem 1.35rem 0.6rem 1.35rem;
   font-size: 1.6rem;
   line-height: 1.6;
-  color: rgb(155, 144, 74);
+  color: rgb(151, 144, 93);
   text-decoration: none;
   transition: background-color 0.2s linear;
 }
@@ -1264,7 +1263,7 @@ pre {
   max-width: 11%;
 }
 .sideefiltr__li:hover .uch-nav__link {
-  background-color: rgb(155, 144, 74);
+  background-color: rgb(151, 144, 93);
   text-decoration: none;
   color: #f6f6f6;
 }
@@ -2734,7 +2733,7 @@ legend {
   align-items: center;
 }
 .fil-chi-li:hover .uch-nav__link {
-  background-color: rgb(155, 144, 74);
+  background-color: rgb(151, 144, 93);
   text-decoration: none;
   color: #f6f6f6;
 }
