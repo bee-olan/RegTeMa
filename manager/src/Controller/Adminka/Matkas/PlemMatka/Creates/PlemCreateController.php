@@ -11,6 +11,7 @@ use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 use App\Model\Adminka\Entity\Matkas\Sparings\SparingRepository;
 
 
+use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id as NomerId;
 
@@ -41,31 +42,34 @@ class PlemCreateController extends AbstractController
         );
     }
 
-//    /**
-//     * @Route("/plemmatka/{id}", name=".plemmatka" , requirements={"id"=Guid::PATTERN})
-//     * @param Request $request
+    /**
+     * @Route("/plemmatka/{id}", name=".plemmatka" , requirements={"id"=Guid::PATTERN})
+     * @param Request $request
 //     * @param NomerRepository $nomers
-//     * @param PersonaFetcher $personas
-//     * @param MestoNomerFetcher $mestoNomers
+     *  @param Nomer $nomer
+     * @param PersonaFetcher $personas
+     * @param MestoNomerFetcher $mestoNomers
 //     * @param string $id
-//     * @return Response
-//     */
-//    public function plemmatka(string $id, Request $request,
-//                              PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
-//                              NomerRepository $nomers): Response
-//    {
-//        $idUser = $this->getUser()->getId();
-//
+     * @return Response
+     */
+    public function plemmatka( Request $request,
+                              PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
+                              Nomer $nomer): Response
+    {
+
+        dd($nomer);
+        $idUser = $this->getUser()->getId();
+
 //        $nomer = $nomers->get(new NomerId($id));
-//
-//        $persona = $personas->find($idUser);
-//
-//        $mestoNomer = $mestoNomers->find($idUser);
-//
-//        return $this->render('app/adminka/matkas/plemmatka/creates/plemmatka.html.twig',
-//            compact('nomer', 'persona', 'mestoNomer') );
-//    }
-//
+
+        $persona = $personas->find($idUser);
+
+        $mestoNomer = $mestoNomers->find($idUser);
+
+        return $this->render('app/adminka/matkas/plemmatka/creates/plemmatka.html.twig',
+            compact('nomer', 'persona', 'mestoNomer') );
+    }
+
 //    /**
 //     * @Route("/sdelano/{id_nom}/{plemmatka}", name=".sdelano" , requirements={"id_nom"=Guid::PATTERN})
 //     * @param Request $request
