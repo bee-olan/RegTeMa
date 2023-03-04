@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Paseka\UseCase\Matkas\Kategoria\Create;
+namespace App\Model\Adminka\UseCase\Matkas\Kategoria\Create;
 
 use App\Model\Flusher;
-use App\Model\Paseka\Entity\Matkas\Kategoria\Kategoria;
-use App\Model\Paseka\Entity\Matkas\Kategoria\Id;
-use App\Model\Paseka\Entity\Matkas\Kategoria\KategoriaRepository;
+use App\Model\Adminka\Entity\Matkas\Kategoria\Kategoria;
+use App\Model\Adminka\Entity\Matkas\Kategoria\Id;
+use App\Model\Adminka\Entity\Matkas\Kategoria\KategoriaRepository;
 
 class Handler
 {

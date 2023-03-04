@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Paseka\UseCase\Matkas\Kategoria\Edit;
+namespace App\Model\Adminka\UseCase\Matkas\Kategoria\Edit;
 
-use App\Model\Paseka\Entity\Matkas\Kategoria\Permission;
+use App\Model\Adminka\Entity\Matkas\Kategoria\Permission;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type;

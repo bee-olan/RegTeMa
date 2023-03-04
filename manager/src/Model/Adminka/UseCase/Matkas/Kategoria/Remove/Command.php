@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Paseka\UseCase\Matkas\Kategoria\Remove;
+namespace App\Model\Adminka\UseCase\Matkas\Kategoria\Remove;
 
 use Symfony\Component\Validator\Constraints as Assert;
 

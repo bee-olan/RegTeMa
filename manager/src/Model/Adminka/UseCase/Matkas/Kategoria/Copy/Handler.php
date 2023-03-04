@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Paseka\UseCase\Matkas\Kategoria\Copy;
+namespace App\Model\Admimka\UseCase\Matkas\Kategoria\Copy;
 
 use App\Model\Flusher;
-use App\Model\Paseka\Entity\Matkas\Kategoria\Id;
-use App\Model\Paseka\Entity\Matkas\Kategoria\KategoriaRepository;
+use App\Model\Admimka\Entity\Matkas\Kategoria\Id;
+use App\Model\Admimka\Entity\Matkas\Kategoria\KategoriaRepository;
 
 class Handler
 {
