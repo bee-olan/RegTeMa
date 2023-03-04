@@ -5,16 +5,18 @@ declare(strict_types=1);
 namespace App\Model\Adminka\Entity\Matkas\PlemMatka;
 
 use App\Model\Adminka\Entity\Matkas\Kategoria\Kategoria;
-//use App\Model\Adminka\Entity\Matkas\Sparings\Sparing;
-//
+
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Department;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id as DepartmentId;
 
 
 use App\Model\Adminka\Entity\Matkas\Role\Role;
+use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
+use App\Model\Adminka\Entity\Uchasties\Personas\Persona;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
 
+use App\Model\Mesto\Entity\InfaMesto\MestoNomer;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -43,15 +45,25 @@ class PlemMatka
 //     */
 //    private $uchastieId;
 
+//    /**
+//     * @var string
+//     * @ORM\Column(type="string", name="rasa_nom_id")
+//     */
     /**
-     * @var string
-     * @ORM\Column(type="string", name="rasa_nom_id")
+     * @var Nomer
+     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer")
+     * @ORM\JoinColumn(name="nomer_id", referencedColumnName="id", nullable=false)
      */
-    private $rasaNomId;
+    private $nomer;
 
+//    /**
+//     * @var string
+//     * @ORM\Column(type="string")
+//     */
     /**
-     * @var string
-     * @ORM\Column(type="string")
+     * @var MestoNomer
+     * @ORM\ManyToOne(targetEntity="App\Model\Mesto\Entity\InfaMesto\MestoNomer")
+     * @ORM\JoinColumn(name="mesto_id", referencedColumnName="id", nullable=false)
      */
       private $mesto;
 
@@ -61,9 +73,14 @@ class PlemMatka
      */
     private $title;
 
+//    /**
+//     * @var int
+//     * @ORM\Column(type="integer")
+//     */
     /**
-     * @var int
-     * @ORM\Column(type="integer")
+     * @var Persona
+     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Uchasties\Personas\Persona")
+     * @ORM\JoinColumn(name="persona_id", referencedColumnName="id", nullable=false)
      */
     private $persona;
 
@@ -79,11 +96,6 @@ class PlemMatka
      */
     private $status;
 
-//    /**
-//     * @var string
-//     * @ORM\Column(type="string")
-//     */
-//    private $nameKateg;
 
     /**
      * @var int
@@ -124,9 +136,9 @@ class PlemMatka
                                  int $sort,
                                  string $title,
                                  int $godaVixod,
-                                 string  $mesto,
-                                 string $rasaNomId,
-                                 int  $persona,
+                                 MestoNomer  $mesto,
+                                 Nomer $nomer,
+                                 Persona  $persona,
                                  Kategoria $kategoria
                                   )
     {
@@ -138,18 +150,13 @@ class PlemMatka
         $this->kategoria = $kategoria;
         $this->mesto = $mesto;
         $this->persona = $persona;
-        $this->rasaNomId = $rasaNomId;
+        $this->nomer = $nomer;
         $this->status = Status::active();
 
         $this->departments = new ArrayCollection();
         $this->uchastniks = new ArrayCollection();
 
     }
-
-
-//        $this->nameKateg = $nameKateg;
-//
-
 
 
     public function edit( string $title): void
@@ -339,35 +346,26 @@ class PlemMatka
         throw new \DomainException('Такого участника  нет.');
     }
 
-//    public function getNameKateg(): string
-//    {
-//        return $this->nameKateg;
-//    }
-//
+
     public function getKategoria(): Kategoria
     {
         return $this->kategoria;
     }
 
-    public function getMesto(): string
+    public function getMesto(): MestoNomer
     {
         return $this->mesto;
     }
-//
-//    public function getUchastieId(): string
-//    {
-//        return $this->uchastieId;
-//    }
-//
-    public function getPersona(): int
+
+    public function getPersona(): Persona
     {
         return $this->persona;
     }
 
 
-    public function getRasaNomId(): string
+    public function getNomer(): Nomer
     {
-        return $this->rasaNomId;
+        return $this->nomer;
     }
 
 
