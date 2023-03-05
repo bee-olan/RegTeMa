@@ -93,13 +93,13 @@ class PlemCreateController extends AbstractController
 //            return $this->redirectToRoute('mesto.infamesto.okrugs');
 //        }
 
-        $persona = $personas->find($this->getUser()->getId());
-
-        $mesto = $mestoNomers->find($this->getUser()->getId());
+//        $persona = $personas->find($this->getUser()->getId());
+//
+//        $mesto = $mestoNomers->find($this->getUser()->getId());
         $sort = $plemmatkas->getMaxSort() + 1;
         $command = new Create\Command($this->getUser()->getId(), $sort, $nomer->getId()->getValue());
 
-        $command->sort = $plemmatkas->getMaxSort() + 1;
+//        $command->sort = $plemmatkas->getMaxSort() + 1;
 //        $command->rasaNomId = $id;
 //
 //        $command->uchastieId = $uchastieId;

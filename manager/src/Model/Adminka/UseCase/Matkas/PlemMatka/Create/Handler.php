@@ -23,8 +23,8 @@ use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id as NomerId;
 use App\Model\Adminka\Entity\Matkas\Kategoria\KategoriaRepository;
 use App\Model\Adminka\Entity\Matkas\Kategoria\Id as KategoriaId;
 //
-//use App\Model\Adminka\Entity\Sezons\Godas\Id as GodaId;
-//use App\Model\Adminka\Entity\Sezons\Godas\GodaRepository;
+use App\Model\Adminka\Entity\Sezons\Godas\Id as GodaId;
+use App\Model\Adminka\Entity\Sezons\Godas\GodaRepository;
 
 //use App\Model\Adminka\Entity\Uchasties\Personas\Id as PersonaId;
 //use App\Model\Adminka\Entity\Uchasties\Personas\PersonaRepository;
@@ -32,24 +32,22 @@ use App\Model\Adminka\Entity\Matkas\Kategoria\Id as KategoriaId;
 class Handler
 {
     private $plemmatkas;
-//    private $godas;
+    private $godas;
     private $kategorias;
     private $personas;
-//    private $mestonomers;
     private $nomerRepository; //  основа для плем матки
     private $flusher;
 
     public function __construct(PlemMatkaRepository $plemmatkas,
                                     PersonaFetcher $personas,
                                     MestoNomerFetcher $mestoNomers,
-//                                GodaRepository $godas,
-                                KategoriaRepository $kategorias,
-
-                                NomerRepository $nomerRepository,
-                                Flusher $flusher)
+                                    GodaRepository $godas,
+                                    KategoriaRepository $kategorias,
+                                    NomerRepository $nomerRepository,
+                                    Flusher $flusher)
     {
         $this->plemmatkas = $plemmatkas;
-//        $this->godas = $godas;
+        $this->godas = $godas;
         $this->kategorias = $kategorias;
         $this->personas=$personas;
         $this->mestoNomers=$mestoNomers;
@@ -61,37 +59,29 @@ class Handler
     {
         $persona = $this->personas->find($command->uchastieId);
         $mesto = $this->mestoNomers->find($command->uchastieId);
-
-//        $goda = $this->godas->get(new GodaId($command->goda));
-//
+        $goda = $this->godas->get(new GodaId($command->goda));
         $kategoria = $this->kategorias->get(new KategoriaId($command->kategoria));
-//dd($kategoria);
-
 
 //        if ($this->plemmatkas->hasSortPerson($sort, $command->persona)) {
 //            throw new \DomainException('ТАКОЙ номер есть в БД.');
 //        }
         $nomer = $this->nomerRepository->get(new NomerId($command->nomer));
-//dd($nomer);
         $nom = explode("_", $nomer->getTitle());
 
-        $command->nameKateg = $kategoria->getName();
 
-        $command->mesto = $mesto->getNomer();
+        $command->godaVixod = (int)$goda->getGod();
 
-        $command->persona = $persona->getNomer();
-//        $command->rasaNomId = $mestonomer->getId()->getValue();
-//        $command->godaVixod = (int)$goda->getGod();
-        $command->godaVixod=2022;
-        $command->name = $nom[0]."_".$command->nameKateg."_".$command->sort." : ".
-            $nom[1]."-".$nom[2]." : пн".$command->persona."_".$command->mesto."_".$command->godaVixod;
-//dd($command->name);
+        $command->name = $nom[0]."_".$kategoria->getName()."_".$command->sort." : ".
+                            $nom[1]."-".$nom[2].
+                            " : пн".$persona->getNomer()."_".
+                            $mesto->getNomer()."_".$command->godaVixod;
+
         $plemmatka = new PlemMatka(
             Id::next(),
             $command->name,
             $command->sort,
             $command->title,
-            $command->godaVixod=2022,
+            $command->godaVixod,
             $mesto,
             $nomer,
             $persona,

@@ -47,11 +47,11 @@ class Command
 //     */
 //    public $persona;
 
-//    /**
-//     * @var string
-//     * @Assert\NotBlank()
-//     */
-//    public $goda;
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    public $goda;
 
     /**
      * @Assert\NotBlank()
