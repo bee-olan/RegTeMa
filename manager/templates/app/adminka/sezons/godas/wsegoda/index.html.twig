@@ -1,0 +1,87 @@
+{% extends 'proekt/base.html.twig' %}
+
+{% block title %}Все сезоны{% endblock %}
+
+  {% block kroxii %}
+      <a href="{{ path('proekt') }}">Главная</a>
+      {#      <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Выбор сезона</a>#}
+      <span class="aktiv ">Список сезонов</span>
+  {% endblock %}
+
+{% block bodyy %}
+
+    <div  class="proekts proekts--sezon pb0">
+
+        <div class="inklud inklud--sezon">
+
+            <div class="inklud__img">
+                <img class="" src="{{ asset('assets/proekt/images/sezon/sezons.png') }}" alt="">
+
+            </div>
+
+            <div class="inklud__title teni  teni--sezon ">
+
+             Сезоны ,  в которых есть участники..................................
+            </div>
+        </div>
+    <div class="proekts-plr  ">
+
+        <div class="box-m">
+            {% if uchasgodas  %}
+
+                <table class="tabl table-bord- table-hover">
+                    <thead>
+                    <tr>
+                        <th> Сезон </th>
+                        <th> Номер группы </th>
+                        <th> Кол-во взятков </th>
+                        <td> -- </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for uchasgoda in uchasgodas %}
+                        <tr>
+                            <td>
+                                 {{ uchasgoda.sezon }}
+                            </td>
+                            <td>
+                                {{ uchasgoda.grtochka }} (  {{ uchasgoda.name }} )
+                            </td>
+                            <td> {{ uchasgoda.kolwz }} </td>
+                            <td>
+
+                                <a href="{{ path('sezons.tochkas.create', {'uchasgoda_id': uchasgoda.id}) }}"
+                                   class="btn-my btn-my--sm">Добавить
+                                    <strong class="stro stro--kras"> точкок </strong>
+
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                {% endif %}
+
+                    <ul class="plem__data plem__data--mt2">
+                        <li>
+                            <a href="{{ path('sezons.nachalos.create') }}"
+                               class="btnn btnn--mb0 btnn--col">Выбрать  сезон
+{#                                <strong class="strongo strongo--kras">{{ nachalo.sezon}} </strong>#}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('sezons.godas'  ) }}"
+                               class="btnn btnn--mb0 btnn--col" >Список сезонов
+                            </a>
+                        </li>
+                    </ul>
+
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Сезоны{% endblock %}
+
+{#  {% block kroxii %}#}
+{#      <a href="{{ path('proekt') }}">Главная</a>#}
+{#      <span class="aktiv ">Выбор сезона!</span>#}
+{#  {% endblock %}#}
+
+{% block body %}
+   
+    <div  class="proekts proekts--sezon pb0">
+
+        <div class="inklud">
+            <div class="inklud__img">
+                <img class="" src="{{ asset('assets/proekt/images/sezon/sezons.png') }}" alt="">
+            </div>
+            <div class="inklud__title teni">
+               Выбор  Сезона
+            </div>
+        </div>
+
+        <div class="proekts-plr  ">
+
+            <div class="box">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th> Год </th>
+                            <th> Сезон </th>
+                            <td>Участников</td>
+{#                            <td>ТестМаток</td>#}
+                            <td> Ред-ние </td>
+                            <td> Удаление </td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set token = csrf_token('delete') %}
+                        {% for goda in godass %}
+                            <tr>
+                                <td>
+                                    <a href="{{ path('adminka.sezons.godas.create') }}">
+                                        {{ goda.god }}
+                                    </a>
+                                </td>
+                                <td>
+{#                                    <a href="{{ path('sezons.godas.uchasgoda', {'id': goda.id})  }}">#}
+                                      {{ goda.sezon }}
+{#                                    </a>#}
+                                </td>
+{#                                <td> {{ goda.uchasgoda_count}} </td>#}
+                                <td> ---------- </td>
+                                <td> <a href="{{ path('adminka.sezons.godas.edit', {'id': goda.id}) }}" class="btnn btnn--mb0 btnn--pt btnn--col-sezon" >
+{#                                       <div class="karandash">#}
+{#                                            <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="">#}
+{#                                        </div> #}
+                                        <div class="karandash karandash--child">
+                                            <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="редактировать">
+                                        </div>
+                                    </a>
+                                </td>
+                                <td>
+
+                                    <div>
+                                        <a href="{{ path('adminka.sezons.godas.delete' , {'id': goda.id} ) }}" class="btnn btnn--mb0 btnn--pt btnn--col-sezon" >
+                                        <div class="karandash karandash--child">
+                                            <img src="{{ asset('assets/proekt/images/delet.png') }}" alt="редактировать">
+                                        </div>
+                                        </a>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="controls">
+            <a href="{{ path('adminka.sezons.godas.create') }}" class="btnn  btnn--pt">Добавить новый !!! сезон</a>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

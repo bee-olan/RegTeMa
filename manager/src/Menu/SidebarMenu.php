@@ -48,6 +48,15 @@ class SidebarMenu
             ->setExtra('icon', 'nav-icon icon-briefcase')
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
+
+        $menu->addChild('Сезоны (добавить)', ['route' => 'adminka.sezons.godas'])
+            ->setExtra('routes', [
+                ['route' => 'adminka.sezons.godas'],
+                ['pattern' => '/^adminka\.sezons.godas\..+/']
+            ])
+            ->setExtra('icon', 'nav-icon icon-briefcase')
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
             
         $menu->addChild('Админка')->setAttribute('class', 'nav-title')
             ->setAttribute('class', 'nav-item')
