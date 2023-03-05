@@ -7,7 +7,7 @@
 
 body {
     //background-color: $color-rasa;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     line-height: 1.4;
     color: $border-linia;
 }
@@ -87,8 +87,9 @@ a {
     transition: opacity .2s linear;
   
     &:hover {
-    color: inherit;
-      opacity: 1;
+        text-decoration: none;
+        color: inherit;
+        opacity: 1;
     }
   }
 
@@ -156,6 +157,8 @@ pre {
 
 @import "adminka/uchastie/uchastie";
 @import "adminka/matkas/matka";
+
+@import "form/group-form";
 
 @import "rasas/rasa";
 @import "rasas/info_rasa";
