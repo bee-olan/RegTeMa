@@ -10,11 +10,12 @@ use App\Model\Adminka\Entity\Matkas\Kategoria\Permission;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 use App\Model\Adminka\Entity\Matkas\Sparings\SparingRepository;
 
-
+use App\Model\Adminka\UseCase\Matkas\PlemMatka\Create;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id as NomerId;
 
+use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id;
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
@@ -45,7 +46,6 @@ class PlemCreateController extends AbstractController
     /**
      * @Route("/plemmatka/{id}", name=".plemmatka" , requirements={"id"=Guid::PATTERN})
      * @param Request $request
-//     * @param NomerRepository $nomers
      *  @param Nomer $nomer
      * @param PersonaFetcher $personas
      * @param MestoNomerFetcher $mestoNomers
@@ -53,21 +53,86 @@ class PlemCreateController extends AbstractController
      * @return Response
      */
     public function plemmatka( Request $request,
-                              PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
+                              PersonaFetcher $personas, MestoNomerFetcher $mestos,
                               Nomer $nomer): Response
     {
 
-        dd($nomer);
-        $idUser = $this->getUser()->getId();
+        $persona = $personas->find($this->getUser()->getId());
 
-//        $nomer = $nomers->get(new NomerId($id));
-
-        $persona = $personas->find($idUser);
-
-        $mestoNomer = $mestoNomers->find($idUser);
-
+        $mesto = $mestos->find($this->getUser()->getId());
+//        dd($persona);
         return $this->render('app/adminka/matkas/plemmatka/creates/plemmatka.html.twig',
             compact('nomer', 'persona', 'mestoNomer') );
+    }
+
+    /**
+     * @Route("/create/{id}", name=".create" , requirements={"id"=Guid::PATTERN})
+     * @param Request $request
+     * @param Nomer $nomer
+     * @param PersonaFetcher $personas
+     * @param MestoNomerFetcher $mestoNomers
+     * @param PlemMatkaFetcher $plemmatkas
+     * @param Create\Handler $handler
+     * @return Response
+     */
+    public function create( Request $request, Nomer $nomer,
+                                PlemMatkaFetcher $plemmatkas,
+                                PersonaFetcher $personas,
+                                MestoNomerFetcher $mestoNomers,
+                                Create\Handler $handler): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS');
+
+//        if (!$plemmatkas->existsPerson($this->getUser()->getId())) {
+//            $this->addFlash('error', 'Начните с выбора ПерсонНомера ');
+//            return $this->redirectToRoute('adminka.uchasties.personas.diapazon');
+//        }
+
+//        if (!$plemmatkas->existsMesto($this->getUser()->getId())) {
+//            $this->addFlash('error', 'Пожалуйста, определитесь с номером места расположения Вашей пасеки ');
+//            return $this->redirectToRoute('mesto.infamesto.okrugs');
+//        }
+
+        $persona = $personas->find($this->getUser()->getId());
+
+        $mesto = $mestoNomers->find($this->getUser()->getId());
+
+        $command = new Create\Command();
+
+        $command->sort = $plemmatkas->getMaxSort() + 1;
+//        $command->rasaNomId = $id;
+//
+//        $command->uchastieId = $uchastieId;
+//
+//        $command->persona = $persona->getNomer();
+//
+
+//
+//        $command->mesto = $mestonomer->getNomer();
+//
+//        $command->name = $nomer->getTitle()." : ".$command->mesto."_пН-". $command->persona."_№".$command->sort;
+
+        //dd($command);
+
+        $form = $this->createForm(Create\Form::class, $command);
+        $form->handleRequest($request);
+
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $handler->handle($command);
+                return $this->redirectToRoute('adminka.matkas');
+            } catch (\DomainException $e) {
+                $this->logger->warning($e->getMessage(), ['exception' => $e]);
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
+
+        return $this->render('app/adminka/matkas/create.html.twig', [
+            'form' => $form->createView(),
+            'command' => $command,
+        ]);
     }
 
 //    /**
