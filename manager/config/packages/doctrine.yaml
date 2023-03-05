@@ -49,6 +49,8 @@ doctrine:
             adminka_rasa_linia_id: 'App\Model\Adminka\Entity\Rasas\Linias\IdType'
             adminka_rasa_linia_nomer_id: 'App\Model\Adminka\Entity\Rasas\Linias\Nomers\IdType'
 
+            admin_sezons_goda_id: 'App\Model\Adminka\Entity\Sezons\Godas\IdType'
+
             comment_comment_id: 'App\Model\Comment\Entity\Comment\IdType'
             comment_comment_author_id: 'App\Model\Comment\Entity\Comment\AuthorIdType'
             work_members_group_id: 'App\Model\Work\Entity\Members\Group\IdType'
