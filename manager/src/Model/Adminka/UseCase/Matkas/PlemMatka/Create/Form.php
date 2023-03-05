@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\Matkas\PlemMatka\Create;
 
-//use App\ReadModel\Adminka\Matkas\KategoriaFetcher;
-//use App\ReadModel\Adminka\Matkas\SparingFetcher;
+use App\ReadModel\Adminka\Matkas\KategoriaFetcher;
 
 //use App\ReadModel\Adminka\Sezons\Godas\GodaFetcher;
 use Symfony\Component\Form\AbstractType;
@@ -15,32 +14,32 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class Form extends AbstractType
 {
-//    private $godaFetchers;
-//    private $kategorias;
-//
-//    public function __construct(KategoriaFetcher $kategorias, GodaFetcher $godaFetchers)
-//    {
+//    private $godaFetchers;, GodaFetcher $godaFetchers
+    private $kategorias;
+
+    public function __construct(KategoriaFetcher $kategorias)
+    {
 //        $this->godaFetchers = $godaFetchers;
-//        $this->kategorias = $kategorias;
-//    }
+        $this->kategorias = $kategorias;
+    }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        //dd($this->kategorias->assoc());
+//        dd($this->kategorias->allList());
         $builder
-//            ->add('kategoria', Type\ChoiceType::class, [
-//                'label' => 'Категория ПлемМатки',
-//                'choices' => array_flip($this->kategorias->allList()),
-//                'expanded' => true,
-//                'multiple' => false
-//            ])
+            ->add('kategoria', Type\ChoiceType::class, [
+                'label' => 'Категория ПлемМатки',
+                'choices' => array_flip($this->kategorias->allList()),
+                'expanded' => true,
+                'multiple' => false
+            ])
 //            ->add('goda', Type\ChoiceType::class, [
 //                'label' => 'Год выхода матки',
 //                'choices' => array_flip($this->godaFetchers->assocGod()),
 //                'expanded' => false,
 //                'multiple' => false,
 //            ])
-            ->add('name', Type\TextType::class)
+//            ->add('name', Type\TextType::class)
             ->add('title', Type\TextType::class, array(
                 'label' => ' Внутренняя нумерация',
                 'attr' => [

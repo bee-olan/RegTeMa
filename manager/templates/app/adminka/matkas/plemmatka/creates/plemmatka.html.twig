@@ -45,7 +45,7 @@
             </ul>
 
             <ul class="uchastie__data">
-                {% if mestoNomer and persona %}
+                {% if mesto and persona %}
                     <li>
                         <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -53,7 +53,7 @@
                     </li>
                     <li class="uchastie__name  ">С учетом Ваших данных: ПерсонНомера и НомерМеста.</li>
                     <li><div class = "uchastie-nomer uchastie-nomer__wid12">
-                            {{ nomer.title }} : {{ mestoNomer.nomer }}_Пн-{{ persona.nomer }}
+                            {{ nomer.title }} : {{ mesto.nomer }}_Пн-{{ persona.nomer }}
                         </div></li>
                     <li></li>
                 {% else %}

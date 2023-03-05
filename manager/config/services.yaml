@@ -38,6 +38,7 @@ services:
 
     App\Model\Adminka\Entity\Rasas\RasaRepository: ~
     App\Model\Adminka\Entity\Rasas\Linias\LiniaRepository: ~
+    App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository: ~
 
     App\Model\Work\Entity\Members\Group\GroupRepository: ~
     App\Model\Work\Entity\Members\Member\MemberRepository: ~

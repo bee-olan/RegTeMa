@@ -62,7 +62,7 @@ class PlemCreateController extends AbstractController
         $mesto = $mestos->find($this->getUser()->getId());
 //        dd($persona);
         return $this->render('app/adminka/matkas/plemmatka/creates/plemmatka.html.twig',
-            compact('nomer', 'persona', 'mestoNomer') );
+            compact('nomer', 'persona', 'mesto') );
     }
 
     /**
@@ -96,8 +96,8 @@ class PlemCreateController extends AbstractController
         $persona = $personas->find($this->getUser()->getId());
 
         $mesto = $mestoNomers->find($this->getUser()->getId());
-
-        $command = new Create\Command();
+        $sort = $plemmatkas->getMaxSort() + 1;
+        $command = new Create\Command($this->getUser()->getId(), $sort, $nomer->getId()->getValue());
 
         $command->sort = $plemmatkas->getMaxSort() + 1;
 //        $command->rasaNomId = $id;
