@@ -9,17 +9,14 @@ use App\Annotation\Guid;
 // use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
 // use App\Model\Mesto\Entity\InfaMesto\Id;
 // use App\Model\Mesto\Entity\InfaMesto\MestoNomerRepository;
-//use App\ReadModel\Proekt\Pasekas\Uchasties\Side\Filter;
-//use App\ReadModel\Proekt\Pasekas\Uchasties\Side\SideFilterFetcher;
+use App\ReadModel\Proekt\Pasekas\Uchasties\Side\Filter;
+use App\ReadModel\Proekt\Pasekas\Uchasties\Side\SideFilterFetcher;
 
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 
 use App\ReadModel\Adminka\Matkas\PlemMatka\DepartmentFetcher;
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
 use App\ReadModel\Adminka\Uchasties\Uchastie\UchastieFetcher;
-
-//use App\ReadModel\Proekt\Pasekas\Uchasties\Side\SideFilterFetcher;
-//use App\ReadModel\Proekt\Pasekas\Uchasties\Side\Filter;
 
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
