@@ -54,6 +54,26 @@
             text-decoration: none;
             color: $grad2;
         }
+        &--rasa {
+          background-color: $transpar;
+          color: $col-text;
+          //border: 1px solid  $zelen-linia;
+
+          &:hover {
+            background: linear-gradient( $grad1-o, $grad2-o);
+            text-decoration: none;
+            color: $grad2;
+            //border: 1px solid $border-kroxi;
+          }
+        }
+        &--col {
+          border: 1px solid $plem-color;
+          &:hover {
+            background: linear-gradient( $grad1-o, $grad2-o);
+            text-decoration: none;
+            color: $grad1;
+          }
+        }
       &--karandash {
         margin-bottom: -0.5rem;
         margin-left: 0;

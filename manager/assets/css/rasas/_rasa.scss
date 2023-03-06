@@ -8,15 +8,16 @@
   //background-color: transparent;
   box-shadow: 0 15px 25px rgba($black, .35);
   border-radius: 5px;
+
 }
 
-//.active-ras {
-//  //color: $white transparent;
-//  background:  #70a370;
-//  border-top-left-radius: 5rem;
-//  border-top-right-radius: 5rem;
-//
-//}
+.active-ras {
+  //color: $white transparent;
+  background:  #70a370;
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 5rem;
+
+}
 
 .rasa__header {
   margin: 0 0 2.5rem;
@@ -48,7 +49,7 @@
   align-items: center; // выравнивание по вертикали
   list-style: none; // убрала точку у li
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: $col-text;
   line-height: 2.0;
 
@@ -95,7 +96,7 @@
   width: 98%;
   padding: 1.5rem 1.5rem;
   overflow: hidden; // в рамках размера -все лишнее скрылось overflow
-  background-color: #588557;
+  background-color: $zelen-linia;
   //background-color: transparent;
   box-shadow: 0 15px 25px rgba($black, .35);
   border-radius: 5px;

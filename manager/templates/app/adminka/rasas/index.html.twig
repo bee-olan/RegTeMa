@@ -24,23 +24,23 @@
                       
            
                 <ul class="rasa__data">
-                    <li class="rasa__name">  {{ rasa.title }}  </li>
-                    <li class="rasa__name  rasa__name--wid5">{{ rasa.name }} ( {{ rasa.linias }} ) </li>
-                    <li>
+                    <li class="rasa__name rasa__name--wid15 ">  {{ rasa.title }}  </li>
+                    <li class="rasa__name  ">{{ rasa.name }} ( {{ rasa.linias }} ) </li>
+                    <li class=" rasa__name--wid15">
                         <a href="{{ path('adminka.rasas.linias',{'id': rasa.id}) }}"
-                           class="btnn btnn--mb0 btnn--pt">Смотреть/Добавить
+                           class="btnn btnn--mb0 btnn--pt btnn--rasa">См/Добавить
                             <strong class="strongo strongo--kras"> линии </strong>
                         </a>
                     </li>
                     <li class=" rasa__name--wid5 ">
                         <a href="{{ path('adminka.rasas.edit', {'id': rasa.id}) }}"
-                            class="btnn btnn--mb0 btnn--pt "><span class="fa fa-pencil"></span></a>
+                            class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
                     </li>
                     <li class="rasa__name--wid5">
                         <form action="{{ path('adminka.rasas.delete', {'id': rasa.id}) }}"
                               method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
                             <input type="hidden" name="token" value="{{ token }}" />
-                            <button type="submit" class="btnn btnn--mb0 btnn--pt "><span class="fa fa-trash"></span></button>
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa "><span class="fa fa-trash"></span></button>
                         </form>
                     </li>
 
@@ -48,11 +48,11 @@
                 </ul>  
          {% endfor %}                
     </div>
-</article><!-- rasas -->
+
     <div class = "rasa__content"  >
         <a href="{{ path('adminka.rasas.create') }}"
-            class="btnn btnn--mb0 btnn--pt">Добавить название другой <strong class="strongo strongo--kras"> расы </strong>  в БД</a>
-    </div> 
-
+            class="btnn btnn--mb0 btnn--pt btnn--rasa">Добавить название другой <strong class=" strongo--kras"> расы </strong>  в БД</a>
+    </div>
+    </article><!-- rasas -->
 
 {% endblock %}

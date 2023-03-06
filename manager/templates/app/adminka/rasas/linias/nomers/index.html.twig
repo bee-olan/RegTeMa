@@ -17,13 +17,13 @@
     {{ include('app/adminka/rasas/_tabs.html.twig') }}
 
 <article class="rasa">
-	<h4 class="rasa__title  "><strong> Раса </strong> :   {{ linia.title }}</h4>
+	<h4 class="rasa__title  "><strong class="strongo"> Раса </strong> :   {{ linia.title }}</h4>
 	<div class="linia ">
-		<h4 class="rasa__title  "><strong> Линия </strong> :  {{ linia.name }} | {{ linia.nameStar }}</h4>
+		<h4 class="rasa__title  "><strong class="strongo"> Линия </strong> :  {{ linia.name }} | {{ linia.nameStar }}</h4>
 		<div class="nomer ">
 			<div class="rasa__header  ">
-				<h5 class="rasa__title  "><strong> Номера </strong> зарегистрированные в БД
-											<strong> для </strong> линии <strong> {{ linia.name }} </strong></h5>
+				<h5 class="rasa__title  "><strong class="strongo"> Номера </strong> зарегистрированные в БД
+										 для линии <strong class="strongo"> {{ linia.name }} </strong></h5>
 				{% set token = csrf_token('delete') %}
                 {% for nomer in nomers %}
                       
@@ -36,13 +36,13 @@
                                   
                     <li class=" rasa__name--wid5">
                         <a href="{{ path('adminka.rasas.linias.nomers.edit', {'linia_id': linia.id, 'id': nomer.id}) }}"
-                            class="btnn btnn--karandash  "><span class="fa fa-pencil"></span>
+                            class="btnn btnn--karandash  btnn--rasa"><span class="fa fa-pencil"></span>
                         </a>
                     </li>
                     <li class="rasa__name--wid5">
                         <form action="{{ path('adminka.rasas.linias.nomers.delete', {'linia_id': linia.id, 'id': nomer.id}) }}" method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
                             <input type="hidden" name="token" value="{{ token }}" />
-                            <button type="submit" class="btnn btnn--mb0 btnn--pt "><span class="fa fa-trash"></span></button>
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-trash"></span></button>
                         </form>
                     </li>
 
@@ -59,7 +59,7 @@
 
             <div class = "rasa__content"  >
                 <a href="{{ path('adminka.rasas.linias.nomers.create', {'linia_id': linia.id}) }}"
-                    class="btnn btnn--mb0 btnn--pt">Добавить другой
+                    class="btnn btnn--mb0 btnn--pt btnn--rasa">Добавить другой
                      <strong class="strongo strongo--kras"> номер </strong> в БД</a>
             </div>
 	    </div>
