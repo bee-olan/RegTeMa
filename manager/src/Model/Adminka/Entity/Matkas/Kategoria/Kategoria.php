@@ -68,7 +68,7 @@ class Kategoria
         });
     }
 
-    public function clone(Id $id, string $name, int $nomer): self
+    public function clone(Id $id, string $name): self
     {
         return new self($id, $name, array_map(static function (Permission $permission) {
             return $permission->getName();

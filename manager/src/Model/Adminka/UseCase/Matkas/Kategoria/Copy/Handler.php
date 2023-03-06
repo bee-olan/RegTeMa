@@ -26,11 +26,12 @@ class Handler
         if ($this->kategorias->hasByName($command->name)) {
             throw new \DomainException('Kategoria already exists.');
         }
+        $kategoria = $current->clone(Id::next(), $command->name) ;                      // текущий
 
-        $kategoria = $current->clone(
-            Id::next(),
-            $command->name
-        );
+//        $kategoria = $current->clone(
+//            Id::next(),
+//            $command->name
+//        );
 
         $this->kategorias->add($kategoria);
 

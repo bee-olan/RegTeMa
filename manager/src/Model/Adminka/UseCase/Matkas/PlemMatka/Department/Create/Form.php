@@ -21,7 +21,7 @@ class Form extends AbstractType
 
     public function buildForm( FormBuilderInterface $builder, array $options): void
     {
-        $builder
+//        $builder
 //            ->add('name', Type\ChoiceType::class, [
 //                'label' => 'Сезон работы матки',
 //                'choices' => array_flip($this->godas->assocGod()),
@@ -29,7 +29,7 @@ class Form extends AbstractType
 //                'multiple' => false,
 //            ]);
 
-            ->add('name', Type\TextType::class);
+//            ->add('name', Type\TextType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

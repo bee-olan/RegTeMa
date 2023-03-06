@@ -12,10 +12,10 @@ class Command
      * @Assert\NotBlank()
      */
     public $plemmatka;
-    /**
-     * @Assert\NotBlank()
-     */
-    public $name;
+//    /**
+//     * @Assert\NotBlank()
+//     */
+//    public $name;
 
     public function __construct(string $plemmatka)
     {

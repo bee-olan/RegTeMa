@@ -27,8 +27,8 @@ class Handler
     {
         $plemmatka = $this->plemmatkas->get(new PlemMatkaId($command->plemmatka));
 
-//        $nach = $plemmatka->getGodaVixod()+ count($plemmatka->getDepartments());
-        $nach =$command->name;
+       $nach = $plemmatka->getGodaVixod()+ count($plemmatka->getDepartments());
+//        $nach =$command->name;
             $name = $nach." - ".($nach +1);
 
             $plemmatka->addDepartment(
