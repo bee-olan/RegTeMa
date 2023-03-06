@@ -18,7 +18,7 @@
     {% include 'app/adminka/matkas/plemmatka/redaktors/_tabs.html.twig' %}
 
     <div class="controls">
-        <a href="{{ path('adminka.matkas.plemmatka.redaktors.edit', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Редактировать?</a>
+        <a href="{{ path('adminka.matkas.plemmatka.redaktors.edit', {'plemmatka_id': plemmatka.id}) }}" class="btn-my btn-primary">Редактировать?</a>
         {% if plemmatka.active and plemmatka.id.value != app.user.id %}
             <form action="{{ path('adminka.matkas.plemmatka.redaktors.archive', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Отправить в архив? Вы уверены?')">
                 <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />

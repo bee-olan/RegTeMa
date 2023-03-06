@@ -13,7 +13,7 @@
 
                             <h1 class="teni teni--auth">Авторизация</h1>
 
-                            <p class="text-muted">Войди в свою учетную запись</p>
+                            <p class="text-mutedb ma-bo-1">Войди в свою учетную запись</p>
                             {% if error %}
                                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                             {% endif %}
@@ -38,7 +38,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row ma-bo-2">
                                     <div class="col-6">
                                         <button class="btn btn-primary px-4" type="submit">Вход</button>
                                     </div>
@@ -58,13 +58,28 @@
                         </div>
                     </div>
                     <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
-                        <div class="card-body text-center">
-                            <div>
-                                <h2>Регистрация</h2>
-                                <p>Сайт для пчеловодов и матководов.</p>
-                                <h3><strong class=" strongo strongo--chast-text teni ">Рег</strong>иональное
-                                    <strong class="strongo strongo--chast-text teni ">Те</strong>стирование
-                                    <strong class="strongo strongo--chast-text teni ">Ма</strong>ток.</h3>
+                        <div class="card-body fo-si ">
+                            <div class=" text-center ma-bo-1">
+                                <h3 class="  ma-bo-1" >
+                                    <strong class=" strongo strongo--chast-text teni ma-bo-2">Регистрация</strong>
+                                </h3>
+
+                                <p class="  ma-bo-1"  >Сайт для пчеловодов и матководов.</p>
+                            </div>
+                            <div class="  ma-bo-1" >
+                                <h3 >
+                                    <p  class=" pa-le-2 ">
+                                        <strong class=" strongo strongo--chast-text teni ">Рег</strong>иональное
+                                    </p>
+                                    <p  class=" pa-le-5 ">
+                                        <strong class="strongo strongo--chast-text teni ">Те</strong>стирование
+                                    </p>
+                                    <p class=" pa-le-8 " >
+                                        <strong class="strongo strongo--chast-text teni ">Ма</strong>ток.
+                                    </p>
+                                </h3>
+                            </div>
+                            <div class=" text-center ma-bo-1">
                                 <a class="btn btn-primary active mt-3" href="{{ path('auth.signup') }}">Зарегистрироваться
                                     Сейчас!</a>
                             </div>
