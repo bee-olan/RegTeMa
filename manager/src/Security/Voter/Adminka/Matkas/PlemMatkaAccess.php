@@ -19,6 +19,7 @@ class PlemMatkaAccess extends Voter
     public const VIEW = 'view';
     public const MANAGE_UCHASTIES = 'manage_uchasties';
     public const EDIT = 'edit';
+    public const CREATE = 'create';
 
     private $security;
 
@@ -49,6 +50,9 @@ class PlemMatkaAccess extends Voter
                 return
                     $this->security->isGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS') ||
                     $subject->hasUchastie(new Id($user->getId()));
+                break;
+            case self::CREATE:
+                return $this->security->isGranted('ROLE_MANAGE_PLEMMATKAS');
                 break;
             case self::EDIT:
                 return $this->security->isGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS');

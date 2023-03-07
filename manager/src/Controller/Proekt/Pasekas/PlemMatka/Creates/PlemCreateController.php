@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Adminka\Matkas\PlemMatka\Creates;
+namespace App\Controller\Proekt\Pasekas\PlemMatka\Creates;
 
 use App\Annotation\Guid;
 
@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/adminka/matkas/plemmatka/creates", name="adminka.matkas.plemmatka.creates")
+ * @Route("/proekt/pasekas/matkas/plemmatkas/creates", name="proekt.pasekas.matkas.plemmatkas.creates")
  */
 class PlemCreateController extends AbstractController
 {
@@ -39,7 +39,7 @@ class PlemCreateController extends AbstractController
     public function index(): Response
     {
 
-        return $this->render('app/adminka/matkas/plemmatka/creates/index.html.twig'
+        return $this->render('proekt/pasekas/matkas/plemmatkas/creates/index.html.twig'
         );
     }
 
@@ -61,7 +61,7 @@ class PlemCreateController extends AbstractController
 
         $mesto = $mestos->find($this->getUser()->getId());
 //        dd($persona);
-        return $this->render('app/adminka/matkas/plemmatka/creates/plemmatka.html.twig',
+        return $this->render('proekt/pasekas/matkas/plemmatkas/creates/plemmatka.html.twig',
             compact('nomer', 'persona', 'mesto') );
     }
 
@@ -81,11 +81,11 @@ class PlemCreateController extends AbstractController
                                 MestoNomerFetcher $mestoNomers,
                                 Create\Handler $handler): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS');
+        $this->denyAccessUnlessGranted('ROLE_MANAGE_PLEMMATKAS');
 
 //        if (!$plemmatkas->existsPerson($this->getUser()->getId())) {
 //            $this->addFlash('error', 'Начните с выбора ПерсонНомера ');
-//            return $this->redirectToRoute('adminka.uchasties.personas.diapazon');
+//            return $this->redirectToRoute('proekt/pasekas.uchasties.personas.diapazon');
 //        }
 
 //        if (!$plemmatkas->existsMesto($this->getUser()->getId())) {
@@ -122,14 +122,14 @@ class PlemCreateController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('adminka.matkas');
+                return $this->redirectToRoute('proekt.pasekas.matkas');
             } catch (\DomainException $e) {
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 
-        return $this->render('app/adminka/matkas/create.html.twig', [
+        return $this->render('proekt/pasekas/matkas/plemmatkas/creates/create.html.twig', [
             'form' => $form->createView(),
             'command' => $command,
         ]);
@@ -162,7 +162,7 @@ class PlemCreateController extends AbstractController
 //        $plemId = $plemmatkas->findIdByPlemMatka($plemmatka);
 //
 //
-//        return $this->render('app/adminka/matkas/plemmatka/creates/sdelano.html.twig',
+//        return $this->render('app/proekt/pasekas/matkas/plemmatka/creates/sdelano.html.twig',
 //            compact('nomer', 'persona', 'mestoNomer', 'plemmatka', 'plemId') );
 //    }
 //
@@ -192,7 +192,7 @@ class PlemCreateController extends AbstractController
 //
 //        $infaMesto = $fetchers->infaMesto($plemmatka->getMesto());
 //
-//        return $this->render('app/adminka/matkas/plemmatka/show.html.twig',
+//        return $this->render('app/proekt/pasekas/matkas/plemmatka/show.html.twig',
 //            compact('plemmatka', 'infaRasaNom', 'infaMesto', 'uchastie','kategorias', 'permissions'));
 //    }
 }

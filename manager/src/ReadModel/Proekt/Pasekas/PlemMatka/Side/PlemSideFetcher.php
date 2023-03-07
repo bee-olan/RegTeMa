@@ -190,7 +190,7 @@ class PlemSideFetcher
                 'p.persona_id',
                 'p.status',
                 'p.sort',
-                'p.rasa_id',
+//                'p.rasa_id',
                 'p.kategoria_id',
                 'p.nomer_id',
                 'p.goda_vixod '
@@ -218,17 +218,17 @@ class PlemSideFetcher
             $qb->setParameter(':status', $filter->status);
         }
 
-        if ($filter->name_kateg) {
-            $qb->andWhere($qb->expr()->like('LOWER(p.name_kateg)', ':name_kateg'));
-            $qb->setParameter(':name_kateg', '%' . mb_strtolower($filter->name_kateg) . '%');
-        }
-
-        if ($filter->persona) {
-            $qb->andWhere('p.persona = :persona');
-            $qb->setParameter(':persona', $filter->persona);
-        }
-
-        if (!\in_array($sort, ['name','name_kateg', 'status','persona'], true)) {
+//        if ($filter->kategoria) {
+//            $qb->andWhere($qb->expr()->like('LOWER(p.name_kateg)', ':name_kateg'));
+//            $qb->setParameter(':name_kateg', '%' . mb_strtolower($filter->name_kateg) . '%');
+//        }
+//
+//        if ($filter->persona) {
+//            $qb->andWhere('p.persona = :persona');
+//            $qb->setParameter(':persona', $filter->persona);
+//        }
+//,'name_kateg','persona'
+        if (!\in_array($sort, ['name', 'status'], true)) {
             throw new \UnexpectedValueException('Cannot sort by ' . $sort);
         }
 

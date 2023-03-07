@@ -187,20 +187,22 @@ class PlemMatkaFetcher
             ->select(
                 'p.id',
                 'p.name',
-//                'p.persona',
+                'p.persona_id',
                 'p.status',
 //                'p.rasa_nom_id',
-                'p.goda_vixod '
+                'p.goda_vixod ',
+                'pe.nomer as persona'
 //                's.name AS kategoria'
                 //,
               //  'm.nomer as mestonomer'
             )
             ->from('admin_matkas_plemmatkas', 'p')
+            ->innerJoin('p', 'adminka_uchasties_personas', 'pe', 'p.persona_id = pe.id')
 //            ->innerJoin('p', 'admin_matkas_kategorias', 's', 'p.kategoria_id = s.id')
         ;
         if ($filter->uchastie) {
             $qb->andWhere('EXISTS (
-                SELECT ms.uchastie_id FROM adminka_matkas_plemmatkas_uchastniks ms WHERE ms.plemmatka_id = p.id AND ms.uchastie_id = :uchastie
+                SELECT ms.uchastie_id FROM adminka_matkas_plemmatka_uchastniks ms WHERE ms.plemmatka_id = p.id AND ms.uchastie_id = :uchastie
             )');
             $qb->setParameter(':uchastie', $filter->uchastie);
         }
@@ -225,8 +227,8 @@ class PlemMatkaFetcher
 //            $qb->andWhere('p.persona = :persona');
 //            $qb->setParameter(':persona', $filter->persona);
 //        }
-//        ,'persona'
-        if (!\in_array($sort, ['name', 'status'], true)) {
+//
+        if (!\in_array($sort, ['name', 'status','persona'], true)) {
             throw new \UnexpectedValueException('Cannot sort by ' . $sort);
         }
 

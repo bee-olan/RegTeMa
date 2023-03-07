@@ -55,12 +55,12 @@
                 <ul class = "plem__data">
                     <li class = "plem__name-list plem__name-list--wid plem-ramka mb0" >
                         <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plem_id': plemmatka.id}) }}">               
-                            <strong class="strongo strongo--kras">{{ plemmatka.sort }}  </strong> {{ plemmatka.name }}
+                             {{ plemmatka.name }} - <strong class="strongo strongo--kras">{{ plemmatka.sort }}  </strong>
                         </a>
                     </li>
 
-                    <li class = "plem__name-list">  {{ plemmatka.name_kateg }} </li>
-                    <li class = "plem__name-list"> {{ plemmatka.persona }} </li>
+{#                    <li class = "plem__name-list">  {{ plemmatka.kategoria.name }} </li>#}
+{#                    <li class = "plem__name-list"> {{ plemmatka.persona }} </li>#}
                     <li class = "plem__name-list"> {{ plemmatka.goda_vixod }} </li>
 
                     <li class = "plem__name-list">{{  plemmatka_status(plemmatka.status) }}</li>
@@ -77,14 +77,14 @@
 
         <ul class="plem__data plem__data--mt2">
             <li>
-                <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}"
+                <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}"
                    class="btnn btnn--mb0 btnn--col"> Регистрация ещё одной <strong class="strongo strongo--kras">ПлемМатки  </strong>
                 </a>
             </li>
             <li>
-                <a href="{{ path('proekt.pasekas.childmatkas'  ) }}"
-                   class="btnn btnn--mb0 btnn--col">Список всех зарегистрированных  <strong class="strongo strongo--kras">ДочьМаток (ТестМаток) </strong>
-                </a>
+{#                <a href="{{ path('proekt.pasekas.childmatkas'  ) }}"  class="btnn btnn--mb0 btnn--col">#}
+                 Список всех зарегистрированных  <strong class="strongo strongo--kras">ДочьМаток (ТестМаток) </strong>
+{#                </a>#}
             </li>
         </ul>
        

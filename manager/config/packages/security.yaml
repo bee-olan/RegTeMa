@@ -39,7 +39,10 @@ security:
             - ROLE_MESTO_MANAGE_MESTOS
             - ROLE_ADMINKA_MANAGE_UCHASTIES
             - ROLE_ADMINKA_MANAGE_PLEMMATKAS
-        ROLE_MODERATOR: [ROLE_USER]
+            - ROLE_MANAGE_PLEMMATKAS
+        ROLE_MODERATOR:
+            - ROLE_USER
+            - ROLE_MANAGE_PLEMMATKAS
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:

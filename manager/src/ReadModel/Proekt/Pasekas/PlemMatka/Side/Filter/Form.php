@@ -24,10 +24,10 @@ class Form extends AbstractType
 //                'placeholder' => 'Введите название ',
 //                'onchange' => 'this.form.submit()', // отправляет форму
 //            ]])
-            ->add('persona', Type\TextType::class, ['required' => false, 'attr' => [
-                'placeholder' => 'Поле для ввода номера',
-                'onchange' => 'this.form.submit()',
-            ]])
+//            ->add('persona', Type\TextType::class, ['required' => false, 'attr' => [
+//                'placeholder' => 'Поле для ввода номера',
+//                'onchange' => 'this.form.submit()',
+//            ]])
             ->add('status', Type\ChoiceType::class, ['choices' => [
                 'Активные' => Status::ACTIVE,
                 'В архиве' => Status::ARCHIVED,
