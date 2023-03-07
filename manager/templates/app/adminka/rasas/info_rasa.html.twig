@@ -2,23 +2,17 @@
 
 {% block title %}Раса{% endblock %}
 
-{# {% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-       
-        <li class="breadcrumb-item active">Раса</li>
-    </ol>
-{% endblock %} #}
- 
-{#    {% block kroxi %}  #}
-{#       #}
-{#                <a href="{{ path('home') }}">Главная</a>#}
-{#                #}
-{#                <span class="aktiv ">Информация о расах</span> #}
-{#           #}
-{#    {% endblock %}#}
+{% block breadcrumbs %}
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+		<li class="breadcrumb-item active">Расы зарегистрированные</li>
+	</ol>
+{% endblock %}
 
-{% block body %}     	
+{% block body %}
+
+    {{ include('app/adminka/rasas/_tabs.html.twig') }}
+
 	
 <article class="info_rasa">
 	
