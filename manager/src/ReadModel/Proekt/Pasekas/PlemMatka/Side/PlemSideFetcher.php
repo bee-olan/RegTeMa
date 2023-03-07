@@ -193,12 +193,15 @@ class PlemSideFetcher
 //                'p.rasa_id',
                 'p.kategoria_id',
                 'p.nomer_id',
-                'p.goda_vixod '
+                'p.goda_vixod ',
+                'pe.nomer as persona'
 //                ,
 //                'd.name as departs'
 
             )
-            ->from('admin_matkas_plemmatkas', 'p');
+            ->from('admin_matkas_plemmatkas', 'p')
+            ->innerJoin('p', 'adminka_uchasties_personas', 'pe', 'p.persona_id = pe.id')
+        ;
 
         if ($filter->uchastie) {
             $qb->andWhere('EXISTS (
@@ -227,8 +230,8 @@ class PlemSideFetcher
 //            $qb->andWhere('p.persona = :persona');
 //            $qb->setParameter(':persona', $filter->persona);
 //        }
-//,'name_kateg','persona'
-        if (!\in_array($sort, ['name', 'status'], true)) {
+//,'name_kateg'
+        if (!\in_array($sort, ['name', 'status','persona'], true)) {
             throw new \UnexpectedValueException('Cannot sort by ' . $sort);
         }
 

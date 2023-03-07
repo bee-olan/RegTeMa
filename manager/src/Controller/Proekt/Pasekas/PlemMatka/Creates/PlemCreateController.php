@@ -6,20 +6,12 @@ namespace App\Controller\Proekt\Pasekas\PlemMatka\Creates;
 
 use App\Annotation\Guid;
 
-use App\Model\Adminka\Entity\Matkas\Kategoria\Permission;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use App\Model\Adminka\UseCase\Matkas\PlemMatka\Create;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id as NomerId;
-
-use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
-use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
-use App\Model\Adminka\Entity\Uchasties\Uchastie\Id;
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
-use App\ReadModel\Adminka\Matkas\KategoriaFetcher;
 use App\ReadModel\Adminka\Matkas\PlemMatka\PlemMatkaFetcher;
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -93,26 +85,10 @@ class PlemCreateController extends AbstractController
 //            return $this->redirectToRoute('mesto.infamesto.okrugs');
 //        }
 
-//        $persona = $personas->find($this->getUser()->getId());
-//
-//        $mesto = $mestoNomers->find($this->getUser()->getId());
+
         $sort = $plemmatkas->getMaxSort() + 1;
         $command = new Create\Command($this->getUser()->getId(), $sort, $nomer->getId()->getValue());
 
-//        $command->sort = $plemmatkas->getMaxSort() + 1;
-//        $command->rasaNomId = $id;
-//
-//        $command->uchastieId = $uchastieId;
-//
-//        $command->persona = $persona->getNomer();
-//
-
-//
-//        $command->mesto = $mestonomer->getNomer();
-//
-//        $command->name = $nomer->getTitle()." : ".$command->mesto."_пН-". $command->persona."_№".$command->sort;
-
-        //dd($command);
 
         $form = $this->createForm(Create\Form::class, $command);
         $form->handleRequest($request);
@@ -122,7 +98,8 @@ class PlemCreateController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('proekt.pasekas.matkas');
+                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.creates.sdelano',
+                [ 'plemmatka' => $command->name]);
             } catch (\DomainException $e) {
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
                 $this->addFlash('error', $e->getMessage());
@@ -135,37 +112,38 @@ class PlemCreateController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/sdelano/{id_nom}/{plemmatka}", name=".sdelano" , requirements={"id_nom"=Guid::PATTERN})
-//     * @param Request $request
+    /**
+     * @Route("/sdelano/{plemmatka}", name=".sdelano" , requirements={"plemmatka"=Guid::PATTERN})
+     * @ParamConverter("plemmatkas", options={"id" = "plemmatka_id"})
+     * @param Request $request
 //     * @param NomerRepository $nomers
-//     * @param PersonaFetcher $personas
-//     * @param MestoNomerFetcher $mestoNomers
-//     * @param string $id_nom
+     * @param PlemMatka $plemmatkas
+     * @param MestoNomerFetcher $mestoNomers
 //     * @param string $plemmatka
-//     * @param PlemMatkaFetcher $plemmatkas
-//     * @return Response
-//     */
-//    public function sdelano(string $id_nom, string $plemmatka, Request $request,
-//                            PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
-//                            NomerRepository $nomers, PlemMatkaFetcher $plemmatkas): Response
-//    {
-//
-//        $idUser = $this->getUser()->getId();
-//
+     * @param PlemMatkaFetcher $plemmatkas
+     * @return Response
+     */
+    public function sdelano( string $plemmatka, Request $request,
+                            PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
+//                            NomerRepository $nomers,
+                            PlemMatkaFetcher $plemmatkas): Response
+    {
+dd($plemmatka);
+        $idUser = $this->getUser()->getId();
+
 //        $nomer = $nomers->get(new NomerId($id_nom));
-//
-//        $persona = $personas->find($idUser);
-//
-//        $mestoNomer = $mestoNomers->find($idUser);
-//
-//        $plemId = $plemmatkas->findIdByPlemMatka($plemmatka);
-//
-//
-//        return $this->render('app/proekt/pasekas/matkas/plemmatka/creates/sdelano.html.twig',
-//            compact('nomer', 'persona', 'mestoNomer', 'plemmatka', 'plemId') );
-//    }
-//
+
+        $persona = $personas->find($idUser);
+
+        $mestoNomer = $mestoNomers->find($idUser);
+
+        $plemId = $plemmatkas->findIdByPlemMatka($plemmatka);
+
+
+        return $this->render('app/proekt/pasekas/matkas/plemmatka/creates/sdelano.html.twig',
+            compact('nomer', 'persona', 'mestoNomer', 'plemmatka', 'plemId') );
+    }
+
 //    /**
 //     * @Route("/{plem_id}", name=".show", requirements={"plem_id"=Guid::PATTERN})
 //     * @param PlemMatka $plemmatka

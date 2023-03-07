@@ -35,11 +35,11 @@
                         </a>
                     </li>
 
-                    <li class="  rasa__name--wid5">
+                    <li >
                         <a href="{{ path('adminka.rasas.linias.edit', {'id': rasa.id, 'linia_id': linia.id}) }}"
                             class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
                     </li>
-                    <li class="rasa__name--wid5">
+                    <li >
                         <form action="{{ path('adminka.rasas.linias.delete', {'id': rasa.id, 'linia_id': linia.id}) }}" method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
                             <input type="hidden" name="token" value="{{ token }}" />
                             <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-trash"></span></button>
