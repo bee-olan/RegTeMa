@@ -29,17 +29,17 @@
                       
            
                 <ul class="rasa__data">
-                    <li class="rasa__name">{{ nomer.name_star }}</li>
+                    <li class="rasa__name rasa__name--wid15">{{ nomer.name_star }}</li>
 
                     <li class="rasa__name rasa__name--wid5">н-{{ nomer.sort_nomer }}</li>
                     <li class="rasa__name rasa__name--wid10 b-color ">{{ nomer.title }}</li>
                                   
-                    <li class=" rasa__name--wid5">
+                    <li class="  ma-ri-0 ">
                         <a href="{{ path('adminka.rasas.linias.nomers.edit', {'linia_id': linia.id, 'id': nomer.id}) }}"
-                            class="btnn btnn--karandash  btnn--rasa"><span class="fa fa-pencil"></span>
+                            class="btnn btnn--karandash btnn--pt btnn--rasa"><span class="fa fa-pencil"></span>
                         </a>
                     </li>
-                    <li class="rasa__name--wid5">
+                    <li class="  ma-le-0">
                         <form action="{{ path('adminka.rasas.linias.nomers.delete', {'linia_id': linia.id, 'id': nomer.id}) }}" method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
                             <input type="hidden" name="token" value="{{ token }}" />
                             <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-trash"></span></button>
