@@ -42,7 +42,9 @@ class RedaktorController extends AbstractController
 //dd($plemmatka);
 //        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
 
-        return $this->render('proekt/pasekas/matkas/plemmatkas/redaktorss/show.html.twig', compact('plemmatka'));
+        return $this->render('proekt/pasekas/matkas/plemmatkas/redaktorss/show.html.twig', [
+            'plemmatka' => $plemmatka,
+        ]);
     }
 
     /**

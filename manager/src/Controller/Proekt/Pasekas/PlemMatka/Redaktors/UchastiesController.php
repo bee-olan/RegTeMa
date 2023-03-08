@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/paseka/matkas/{plemmatka_id}/redaktors/uchasties", name="paseka.matkas.plemmatka.redaktors.uchasties")
+ * @Route("/proekt/pasekas/matkas/{plemmatka_id}/redaktorss/uchastiess", name="proekt.pasekas.matkas.plemmatkas.redaktorss.uchastiess")
  * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
  */
 class UchastiesController extends AbstractController
@@ -37,9 +37,9 @@ class UchastiesController extends AbstractController
      */
     public function index(PlemMatka $plemmatka): Response
     {
-        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
+//        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
 // выводит из проекта uchastniks - учстников
-        return $this->render('app/paseka/matkas/plemmatka/redaktors/uchasties/index.html.twig', [
+        return $this->render('proekt/pasekas/matkas/plemmatkas/redaktorss/uchastiess/index.html.twig', [
             'plemmatka' => $plemmatka,
             'uchastniks' => $plemmatka->getUchastniks(),
         ]);

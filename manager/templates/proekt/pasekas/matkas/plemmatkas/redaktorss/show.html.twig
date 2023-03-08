@@ -20,9 +20,9 @@
 
 {% block bodyy %}
 
-{#    {% include 'app/paseka/matkas/plemmatka/_tabs.html.twig' %}#}
+    {% include('proekt/pasekas/matkas/plemmatkas/redaktorss/_tabs.html.twig') %}
 
-{#    {% include 'app/work/matkas/plemmatka/redaktors/_tabs.html.twig' %}#}
+
 
     <div class="controls">
         <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.edit', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Редактировать</a>
@@ -61,7 +61,7 @@
                 <tr>
                     <th>Название</th>
 {#                    <td>{{ plemmatka_kategoria(plemmatka.nameKateg) }}{{ plemmatka.name }}</td>#}
-                    <td>{{ plemmatka.kategoria.name }}{{ plemmatka.name }}</td>
+                    <td>{{ plemmatka.name }}</td>
                 </tr>
                 <tr>
                     <th>Статус</th>
