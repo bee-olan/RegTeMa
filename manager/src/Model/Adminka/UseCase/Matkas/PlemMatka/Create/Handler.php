@@ -73,7 +73,7 @@ class Handler
 
         $command->name = $nom[0]."_".$kategoria->getName()."_".$command->sort." : ".
                             $nom[1]."-".$nom[2].
-                            " : пн".$persona->getNomer()."_".
+                            " : пн-".$persona->getNomer()."_".
                             $mesto->getNomer()."_".$command->godaVixod;
 
         $plemmatka = new PlemMatka(

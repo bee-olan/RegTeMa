@@ -8,7 +8,7 @@
             <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Пункты 1-3</a>
              <a href="{{ path('proekt.pasekas.rasas.plemmatka') }}">Раса_</a>
             <span class="aktiv ">Пункт 3</span> 
-            {% if plemId  %}
+            {% if plemmatka  %}
             <span class="aktiv ">Катеория и внутреняя нумерация</span>
             <span style= "color: red">Сделано!!!  </span>
             {% endif %} 
@@ -23,7 +23,7 @@
         
         <div class="proekts-plr  ">
 
-            {% if plemId  %}
+            {% if plemmatka  %}
                 <h1 class="plem__title  "> Всё получилось!     ................</h1>
             {% else %}
                 <h1 class="plem__title "> Для регистрации ПлемМатки, надо последовательно заполнить пункты: 1 - 3 </h1>
@@ -38,7 +38,7 @@
                     </li>
                     <li class="plem__name  ">Раса - Линия - Номер</li>
                     <li><div class = "plem-nomer  plem-nomer__wid8">
-                            {{ nomer.title }}
+                            {{ nomer }}
                         </div></li>
                     <li></li>
                 {% else %}
@@ -52,7 +52,7 @@
             </ul>
 
             <ul class="plem__data">
-                {% if mestoNomer and persona %}
+                {% if mesto and persona %}
                     <li>
                         <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -60,7 +60,8 @@
                     </li>
                     <li class="plem__name  ">С учетом Ваших данных: ПерсонНомера и НомерМеста.</li>
                     <li><div class = "plem-nomer plem-nomer__wid12">
-                            {{ nomer.title }} : {{ mestoNomer.nomer }}_Пн-{{ persona.nomer }}
+                            {{ nomer }}: пн-{{ persona }}_{{ mesto }}
+
                         </div></li>
                     <li></li>
                 {% else %}
@@ -81,7 +82,7 @@
                     </li>
                     {# <li class="plem__name  ">Добавили категорию  {{kategoria}} и внутреннюю нумерацию</li> #}
                     <li > <div class = "plem-nomer plem-nomer__wid12">     
-                               <strong class="strongo strongo--kras"> {{ plemmatka }}  </strong>
+                               <strong class="strongo strongo--kras"> {{ plemmatka.name }}  </strong>
                             </div> 
                     </li>
                     <li class="plem__name  ">эти данные берём за основу при регистрации ДочьМатки!  </li>
@@ -99,9 +100,10 @@
             <ul class="plem__data plem__data--mt2">
                 <li>
 {#                    Перейти к регистрации  <strong class="strongo strongo--kras">ДочьМатки  </strong>#}
-                    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemId.id}  ) }}"
-                       class="btnn btnn--mb0 btnn--col">Перейти к регистрации  <strong class="strongo strongo--kras">ДочьМатки  </strong>
-                    </a>
+{#                    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id}  ) }}"#}
+{#                       class="btnn btnn--mb0 btnn--col">#}
+                        Перейти к регистрации  <strong class="strongo strongo--kras">ДочьМатки  </strong>
+{#                    </a>#}
                 </li>
                 <li> 
                     <a href="{{ path('proekt.pasekas.matkas'  ) }}"
