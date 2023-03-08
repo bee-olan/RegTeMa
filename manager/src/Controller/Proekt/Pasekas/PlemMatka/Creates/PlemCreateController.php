@@ -153,33 +153,37 @@ class PlemCreateController extends AbstractController
 //
 
 //                'plemmatkaa' => $plemmatka->getName(),
-//    /**
-//     * @Route("/{plem_id}", name=".show", requirements={"plem_id"=Guid::PATTERN})
-//     * @param PlemMatka $plemmatka
+    /**
+     * @Route("/{plemmatka_id}", name=".show", requirements={"plemmatka_id"=Guid::PATTERN})
+     * @param PlemMatka $plemmatka
 //     * @param   string $plem_id
-//     * @param PlemMatkaFetcher $fetchers
+     * @param PlemMatkaFetcher $fetchers
 //     * @param UchastieRepository $uchasties
 //     * @param KategoriaFetcher $kategoria
-//     * @return Response
-//     */
-//    public function show( string $plem_id, PlemMatkaFetcher $fetchers,
+     * @return Response
+     */
+    public function show(  PlemMatkaFetcher $fetchers,
+                          PlemMatka $plemmatka
 //                          UchastieRepository $uchasties ,
-//                          KategoriaFetcher $kategoria ): Response
-//    {
-//
-//        $plemmatka = $fetchers->find($plem_id);
-//        // dd( $plemmatka);
-//
+//                          KategoriaFetcher $kategoria
+    ): Response
+    {
+
+        $plemmatka = $fetchers->find($plem_id);
+        // dd( $plemmatka);
+
 //        $uchastie = $uchasties->get(new Id($plemmatka->getUchastieId()));
-//
+
 //        $kategorias = $kategoria->all();
 //        $permissions = Permission::names();
-//
+
 //        $infaRasaNom = $fetchers->infaRasaNom($plemmatka->getRasaNomId());
-//
+
 //        $infaMesto = $fetchers->infaMesto($plemmatka->getMesto());
-//
-//        return $this->render('app/proekt/pasekas/matkas/plemmatka/show.html.twig',
-//            compact('plemmatka', 'infaRasaNom', 'infaMesto', 'uchastie','kategorias', 'permissions'));
-//    }
+
+        return $this->render('app/proekt/pasekas/matkas/plemmatkas/redaktorss/show.html.twig',
+            compact('plemmatka'
+//                'infaRasaNom', 'uchastie','kategorias', 'permissions'
+            ));
+    }
 }

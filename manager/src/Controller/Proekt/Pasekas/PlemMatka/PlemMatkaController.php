@@ -44,93 +44,93 @@ class PlemMatkaController extends AbstractController
         );
     }
 
-    /**
-     * @Route("/plemmatka/{id}", name=".plemmatka" , requirements={"id"=Guid::PATTERN})
-     * @param Request $request
-     * @param NomerRepository $nomers
-     * @param PersonaFetcher $personas
-     * @param MestoNomerFetcher $mestoNomers
-     * @param string $id
-     * @return Response
-     */
-    public function plemmatka(string $id, Request $request,
-                              PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
-                              NomerRepository $nomers): Response
-    {
-        $idUser = $this->getUser()->getId();
+//    /**
+//     * @Route("/plemmatka/{id}", name=".plemmatka" , requirements={"id"=Guid::PATTERN})
+//     * @param Request $request
+//     * @param NomerRepository $nomers
+//     * @param PersonaFetcher $personas
+//     * @param MestoNomerFetcher $mestoNomers
+//     * @param string $id
+//     * @return Response
+//     */
+//    public function plemmatka(string $id, Request $request,
+//                              PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
+//                              NomerRepository $nomers): Response
+//    {
+//        $idUser = $this->getUser()->getId();
+//
+//        $nomer = $nomers->get(new NomerId($id));
+//
+//        $persona = $personas->find($idUser);
+//
+//        $mestoNomer = $mestoNomers->find($idUser);
+//
+//        return $this->render('proekt/pasekas/matkas/plemmatkas/plemmatka.html.twig',
+//            compact('nomer', 'persona', 'mestoNomer') );
+//    }
 
-        $nomer = $nomers->get(new NomerId($id));
+//    /**
+//     * @Route("/sdelano/{id_nom},{kategoria},{plemmatka}", name=".sdelano" , requirements={"id_nom"=Guid::PATTERN})
+//     * @param Request $request
+//     * @param NomerRepository $nomers
+//     * @param PersonaFetcher $personas
+//     * @param MestoNomerFetcher $mestoNomers
+//     * @param string $id_nom
+//     * @param string $plemmatka
+//     * @param string $kategoria
+//     * @param PlemMatkaFetcher $plemmatkas
+//     * @return Response
+//     */
+//    public function sdelano(string $id_nom, string $kategoria, string $plemmatka, Request $request,
+//                              PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
+//                              NomerRepository $nomers, PlemMatkaFetcher $plemmatkas): Response
+//    {
+//
+//        $idUser = $this->getUser()->getId();
+//
+//        $nomer = $nomers->get(new NomerId($id_nom));
+//
+//        $persona = $personas->find($idUser);
+//
+//        $mestoNomer = $mestoNomers->find($idUser);
+//
+//        $plemId = $plemmatkas->findIdByPlemMatka($plemmatka);
+//
+////dd($plemId);
+//        return $this->render('proekt/pasekas/matkas/plemmatkas/sdelano.html.twig',
+//            compact('kategoria', 'nomer', 'persona', 'mestoNomer', 'plemmatka', 'plemId') );
+//    }
 
-        $persona = $personas->find($idUser);
-
-        $mestoNomer = $mestoNomers->find($idUser);
-
-        return $this->render('proekt/pasekas/matkas/plemmatkas/plemmatka.html.twig',
-            compact('nomer', 'persona', 'mestoNomer') );
-    }
-
-    /**
-     * @Route("/sdelano/{id_nom},{kategoria},{plemmatka}", name=".sdelano" , requirements={"id_nom"=Guid::PATTERN})
-     * @param Request $request
-     * @param NomerRepository $nomers
-     * @param PersonaFetcher $personas
-     * @param MestoNomerFetcher $mestoNomers
-     * @param string $id_nom
-     * @param string $plemmatka
-     * @param string $kategoria
-     * @param PlemMatkaFetcher $plemmatkas
-     * @return Response
-     */
-    public function sdelano(string $id_nom, string $kategoria, string $plemmatka, Request $request,
-                              PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
-                              NomerRepository $nomers, PlemMatkaFetcher $plemmatkas): Response
-    {
-
-        $idUser = $this->getUser()->getId();
-
-        $nomer = $nomers->get(new NomerId($id_nom));
-
-        $persona = $personas->find($idUser);
-
-        $mestoNomer = $mestoNomers->find($idUser);
-
-        $plemId = $plemmatkas->findIdByPlemMatka($plemmatka);
-
-//dd($plemId);
-        return $this->render('proekt/pasekas/matkas/plemmatkas/sdelano.html.twig',
-            compact('kategoria', 'nomer', 'persona', 'mestoNomer', 'plemmatka', 'plemId') );
-    }
-
-   /**
-    * @Route("/{plem_id}", name=".show", requirements={"plem_id"=Guid::PATTERN})
-    * @ParamConverter("plemmatka", options={"id" = "plem_id"})
-    * @param PlemMatka $plemmatka
-    * @param   string $plem_id
-    * @param PlemMatkaFetcher $fetchers
-    * @param UchastieRepository $uchasties
-    * @param KategoriaFetcher $kategoria
-    * @return Response
-    */
-   public function show( string $plem_id,
-                        PlemMatka $plemmatka,     
-                        PlemMatkaFetcher $fetchers,
-                        UchastieRepository $uchasties ,
-                         KategoriaFetcher $kategoria ): Response
-   {
- 
-     // $plemmatka = $fetchers->find($plem_id);
-     
-
-       $uchastie = $uchasties->get(new Id($plemmatka->getUchastieId()));
-       // dd( $plemmatka->getNameKateg());
-       $kategorias = $kategoria->all();
-       $permissions = Permission::names();
-
-       $infaRasaNom = $fetchers->infaRasaNom($plemmatka->getRasaNomId());
-//dd($infaRasaNom);
-      $infaMesto = $fetchers->infaMesto($plemmatka->getMesto());
-
-       return $this->render('proekt/pasekas/matkas/plemmatkas/show.html.twig',
-           compact('plemmatka', 'infaRasaNom', 'infaMesto', 'uchastie','kategorias', 'permissions'));
-   }
+//   /**
+//    * @Route("/{plem_id}", name=".show", requirements={"plem_id"=Guid::PATTERN})
+//    * @ParamConverter("plemmatka", options={"id" = "plem_id"})
+//    * @param PlemMatka $plemmatka
+//    * @param   string $plem_id
+//    * @param PlemMatkaFetcher $fetchers
+//    * @param UchastieRepository $uchasties
+//    * @param KategoriaFetcher $kategoria
+//    * @return Response
+//    */
+//   public function show( string $plem_id,
+//                        PlemMatka $plemmatka,
+//                        PlemMatkaFetcher $fetchers,
+//                        UchastieRepository $uchasties ,
+//                         KategoriaFetcher $kategoria ): Response
+//   {
+//
+//     // $plemmatka = $fetchers->find($plem_id);
+//
+//
+//       $uchastie = $uchasties->get(new Id($plemmatka->getUchastieId()));
+//       // dd( $plemmatka->getNameKateg());
+//       $kategorias = $kategoria->all();
+//       $permissions = Permission::names();
+//
+//       $infaRasaNom = $fetchers->infaRasaNom($plemmatka->getRasaNomId());
+////dd($infaRasaNom);
+//      $infaMesto = $fetchers->infaMesto($plemmatka->getMesto());
+//
+//       return $this->render('proekt/pasekas/matkas/plemmatkas/show.html.twig',
+//           compact('plemmatka', 'infaRasaNom', 'infaMesto', 'uchastie','kategorias', 'permissions'));
+//   }
 }

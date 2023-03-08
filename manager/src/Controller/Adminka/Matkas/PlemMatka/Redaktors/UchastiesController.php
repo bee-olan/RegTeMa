@@ -60,7 +60,7 @@ class UchastiesController extends AbstractController
 
         //Проверка на : Если попытается привязать сотрудника, но еще нет департ-сообщества, то соотв. сообщение
         if (!$plemmatka->getDepartments()) {
-            $this->addFlash('error', 'Добавьте отделы перед добавлением участников.');
+            $this->addFlash('error', 'Добавьте СЕЗОНЫ перед добавлением участников.');
             return $this->redirectToRoute('adminka.matkas.plemmatka.redaktors.uchasties', ['plemmatka_id' => $plemmatka->getId()]);
         }
 

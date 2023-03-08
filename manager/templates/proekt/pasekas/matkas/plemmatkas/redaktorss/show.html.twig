@@ -1,51 +1,57 @@
-{% extends 'base.html.twig' %}
+{% extends 'proekt/base.html.twig' %}
 
-{% block title %}Projects{% endblock %}
+{% block title %}Редактирование{% endblock %}
 
-{% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Пасека</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.matkas') }}">ПлемМатки</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.matkas.plemmatka.show', {'plem_id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
-        <li class="breadcrumb-item active">Редактировать</li>
-    </ol>
-{% endblock %}
+{#{% block breadcrumbs %}#}
+{#    <ol class="breadcrumb">#}
+{#        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>#}
+{#        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Пасека</a></li>#}
+{#        <li class="breadcrumb-item"><a href="{{ path('proekt.pasekas.matkas') }}">ПлемМатки</a></li>#}
+{#        <li class="breadcrumb-item"><a href="{{ path('proekt.pasekas.matkas.plemmatka.show', {'plem_id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>#}
+{#        <li class="breadcrumb-item active">Редактировать</li>#}
+{#    </ol>#}
+{#{% endblock %}#}
 
-{% block body %}
+   {% block kroxii %}
+       <a href="{{ path('proekt') }}">Главная</a>
+       <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Рег-ция ПлемМатки</a>
+       <span class="aktiv ">Список ПлемМаток</span>
+   {% endblock %}
+
+{% block bodyy %}
 
 {#    {% include 'app/paseka/matkas/plemmatka/_tabs.html.twig' %}#}
 
 {#    {% include 'app/work/matkas/plemmatka/redaktors/_tabs.html.twig' %}#}
 
     <div class="controls">
-        <a href="{{ path('paseka.matkas.plemmatka.redaktors.edit', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Редактировать</a>
+        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.edit', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Редактировать</a>
         {% if plemmatka.active and plemmatka.id.value != app.user.id %}
-            <form action="{{ path('paseka.matkas.plemmatka.redaktors.archive', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+            <form action="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.archive', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                 <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
-                <button type="submit" class="btn btn-danger">Archive</button>
+                <button type="submit" class="btn btn-danger">В архив</button>
             </form>
         {% endif %}
         {% if plemmatka.archived %}
-            <form action="{{ path('paseka.matkas.plemmatka.redaktors.reinstate', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+            <form action="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.reinstate', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                 <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
-                <button type="submit" class="btn btn-success">Reinstate</button>
+                <button type="submit" class="btn btn-success">Из архива</button>
             </form>
         {% endif %}
-        <form action="{{ path('paseka.matkas.delete', {'id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
-            <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
-            <button type="submit" class="btn btn-danger">Delete</button>
-        </form>
+{#        <form action="{{ path('proekt.pasekas.matkas.delete', {'id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">#}
+{#            <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />#}
+{#            <button type="submit" class="btn btn-danger">Delete</button>#}
+{#        </form>#}
 
 {#        <td >#}
-{#            <form action="{{ path('paseka.matkas.delete', {'id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Подтверждаете - удалить?')">#}
+{#            <form action="{{ path('proekt.pasekas.matkas.delete', {'id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Подтверждаете - удалить?')">#}
 {#                <input type="hidden" name="token" value="{{ token }}" />#}
 {#                <button type="submit" class="btn-my btn-my--smm "><span class="fa fa-trash"></span></button>#}
 {#            </form>#}
 {#        </td>#}
 
-        <a href="{{ path('paseka.matkas.plemmatka.redaktors.departments', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Отделы!!!!!!!</a>
-        <a href="{{ path('paseka.matkas.plemmatka.redaktors.uchasties', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Привязать участника</a>
+{#        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.departments', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Отделы!!!!!!!</a>#}
+{#        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.uchasties', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Привязать участника</a>#}
 
     </div>
 
@@ -53,11 +59,12 @@
         <table class="table table-bordered">
             <tbody>
                 <tr>
-                    <th>Name</th>
-                    <td>{{ plemmatka_kategoria(plemmatka.nameKateg) }}{{ plemmatka.name }}</td>
+                    <th>Название</th>
+{#                    <td>{{ plemmatka_kategoria(plemmatka.nameKateg) }}{{ plemmatka.name }}</td>#}
+                    <td>{{ plemmatka.kategoria.name }}{{ plemmatka.name }}</td>
                 </tr>
                 <tr>
-                    <th>Status</th>
+                    <th>Статус</th>
                     <td>{{ plemmatka_status(plemmatka.status.name) }}</td>
                 </tr>
             </tbody>

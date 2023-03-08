@@ -15,9 +15,11 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', Type\TextType::class)
+            ->add('name', Type\TextType::class, [
+                'label' => 'Название Роли',
+            ])
             ->add('permissions', Type\ChoiceType::class, [
-                'label' => 'Разрешения',
+                'label' => 'Разрешения для роли',
                 'choices' => array_combine(Permission::names(), Permission::names()),
                 'required' => false,
                 'expanded' => true,

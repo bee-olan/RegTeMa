@@ -58,7 +58,7 @@ class UchastiesController extends AbstractController
        // $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
 //Проверка на : Если попытается привязать сотрудника, но еще нет департ-сообщества, то соотв. сообщение
         if (!$plemmatka->getDepartments()) {
-            $this->addFlash('error', 'Добавьте отделы перед добавлением участников.');
+            $this->addFlash('error', 'Добавьте сезоны перед добавлением участников.');
             return $this->redirectToRoute('paseka.matkas.plemmatka.redaktors.uchasties', ['plemmatka_id' => $plemmatka->getId()]);
         }
 

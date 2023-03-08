@@ -30,7 +30,7 @@ class Form extends AbstractType
 
         $uchasties = [];
         foreach ($this->uchasties->activeGroupedList() as $item) {
-            $uchasties[$item['group']][$item['name']] = $item['id'];
+            $uchasties[$item['group']][$item['nike'].' ('.$item['name'].')'] = $item['id'];
         }
 
         $builder

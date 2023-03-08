@@ -26,7 +26,7 @@
         </div>
 
         <div class="inklud__title inklud__title--plem teni">
-           Список зарегистрированных  ПлемМаток  &nbsp; &nbsp; 
+           Список зарегистрированных  ПлемМаток !!! &nbsp; &nbsp;
            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates'  ) }}"
                class="btnn btnn--mb0 btnn--plus" title="Добавить ПлемМатку"> 
                <strong class="strongo strongo--sizee">+</strong>  
@@ -54,7 +54,7 @@
 
                 <ul class = "plem__data">
                     <li class = "plem__name-list plem__name-list--wid plem-ramka mb0" >
-                        <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plem_id': plemmatka.id}) }}">               
+                        <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id}) }}">
                              {{ plemmatka.name }} - <strong class="strongo strongo--kras">{{ plemmatka.sort }}  </strong>
                         </a>
                     </li>
