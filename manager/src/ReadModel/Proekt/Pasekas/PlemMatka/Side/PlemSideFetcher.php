@@ -133,44 +133,44 @@ class PlemSideFetcher
 //        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
 //    }
 
-    public function infaRasaNom(string $rasaNomId): array
-    {
-        $stmt = $this->connection->createQueryBuilder()
-            ->select(
-                'n.name_star AS nomer',
-                'l.name_star AS linia',
-                'r.title AS rasa'
-            )
-            ->from('adminka_rasa_linia_nomers', 'n')
-            ->innerJoin('n', 'adminka_rasa_linias', 'l', 'n.linia_id = l.id')
-            ->innerJoin('l', 'adminka_rasas', 'r', 'l.rasa_id = r.id')
-            ->andWhere('n.id = :rasaNomId')
-            ->setParameter(':rasaNomId', $rasaNomId)
-            ->execute();
-
-        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
-    }
-
-
-    public function infaMesto(string $mesto): array
-    {
-        $stmt = $this->connection->createQueryBuilder()
-            ->select(
-                'r.name AS raion',
-                'ob.name AS oblast',
-                'ok.name AS okrug'
-            )
-            ->from('mesto_okrug_oblast_raions', 'r')
-            ->innerJoin('r', 'mesto_okrug_oblasts', 'ob', 'r.oblast_id = ob.id')
-            ->innerJoin('ob', 'mesto_okrugs', 'ok', 'ob.okrug_id = ok.id')
-
-            ->andWhere('r.mesto = :mesto')
-            ->setParameter(':mesto', $mesto)
-           // ->orderBy('p.sort')->addOrderBy('d.name')
-            ->execute();
-
-        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
-    }
+//    public function infaRasaNom(string $rasaNomId): array
+//    {
+//        $stmt = $this->connection->createQueryBuilder()
+//            ->select(
+//                'n.name_star AS nomer',
+//                'l.name_star AS linia',
+//                'r.title AS rasa'
+//            )
+//            ->from('adminka_rasa_linia_nomers', 'n')
+//            ->innerJoin('n', 'adminka_rasa_linias', 'l', 'n.linia_id = l.id')
+//            ->innerJoin('l', 'adminka_rasas', 'r', 'l.rasa_id = r.id')
+//            ->andWhere('n.id = :rasaNomId')
+//            ->setParameter(':rasaNomId', $rasaNomId)
+//            ->execute();
+//
+//        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
+//    }
+//
+//
+//    public function infaMesto(string $mesto): array
+//    {
+//        $stmt = $this->connection->createQueryBuilder()
+//            ->select(
+//                'r.name AS raion',
+//                'ob.name AS oblast',
+//                'ok.name AS okrug'
+//            )
+//            ->from('mesto_okrug_oblast_raions', 'r')
+//            ->innerJoin('r', 'mesto_okrug_oblasts', 'ob', 'r.oblast_id = ob.id')
+//            ->innerJoin('ob', 'mesto_okrugs', 'ok', 'ob.okrug_id = ok.id')
+//
+//            ->andWhere('r.mesto = :mesto')
+//            ->setParameter(':mesto', $mesto)
+//           // ->orderBy('p.sort')->addOrderBy('d.name')
+//            ->execute();
+//
+//        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
+//    }
 
     /**
      * @param Filter $filter
@@ -194,13 +194,15 @@ class PlemSideFetcher
                 'p.kategoria_id',
                 'p.nomer_id',
                 'p.goda_vixod ',
-                'pe.nomer as persona'
+                'pe.nomer as persona',
+                'k.name AS kategoria'
 //                ,
 //                'd.name as departs'
 
             )
             ->from('admin_matkas_plemmatkas', 'p')
             ->innerJoin('p', 'adminka_uchasties_personas', 'pe', 'p.persona_id = pe.id')
+            ->innerJoin('p', 'admin_matkas_kategorias', 'k', 'p.kategoria_id = k.id')
         ;
 
         if ($filter->uchastie) {

@@ -119,4 +119,10 @@ class Nomer
     {
         return $this->sortNomer;
     }
+
+
+    public function getLinia(): Linia
+    {
+        return $this->linia;
+    }
 }

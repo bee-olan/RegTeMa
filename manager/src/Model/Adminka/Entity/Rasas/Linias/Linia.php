@@ -191,4 +191,11 @@ class Linia
         }
         throw new \DomainException('Nomer is not found.');
     }
+
+
+    public function getRasa(): Rasa
+    {
+        return $this->rasa;
+    }
+
 }

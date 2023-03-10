@@ -24,21 +24,38 @@
         </div> 
     </div>
 
-        <div class="plem plem__jus-se">
-            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id}  ) }}"
-               class="btnn btnn--mb0 btnn--col">Перейти к регистрации  <strong class="strongo strongo--kras">ДочьМатки  </strong>
-            </a>
-            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka', {'plemmatka_id' : plemmatka.id}  ) }}"
-               class="btnn btnn--mb0 btnn--col">Смотреть всех <strong class="strongo strongo--kras">ДочьМаток</strong> этой <strong class="stro stro--kras">ПлемМатки</strong>
-            </a>
-        </div>
+{#        <div class="plem plem__jus-se">#}
+{#            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id}  ) }}"#}
+{#               class="btnn btnn--mb0 btnn--col">Перейти к регистрации  <strong class="strongo strongo--kras">ДочьМатки  </strong>#}
+{#            </a>#}
+{#            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka', {'plemmatka_id' : plemmatka.id}  ) }}"#}
+{#               class="btnn btnn--mb0 btnn--col">Смотреть всех <strong class="strongo strongo--kras">ДочьМаток</strong> этой <strong class="stro stro--kras">ПлемМатки</strong>#}
+{#            </a>#}
+{#        </div>#}
 
         <div class="proekts-plr" >
             <h1 class="plem__title  ">{{ plemmatka.name }} :  названия данных ПлемМатки, которые берём за основу</h1>
        
-            <ul class="plem plem__jus-st "> 
-                <li class="plem__name plem-nomer" >{{ plemmatka.nameKateg }}_</li>
+
+            <ul class="plem plem__jus-st ">
+                <li class="plem__name plem-nomer" >{{plemmatka.nomer.linia.rasa.name}}_</li>
+                <li class="plem__name plem__name--wid20"> Раса : &nbsp; &nbsp;   <strong class="strongo "> {{plemmatka.nomer.linia.rasa.title}}</strong></li>
+            </ul>
+            <ul class="plem plem__jus-st ">
+                <li class="plem__name plem-nomer" >{{ plemmatka.kategoria.name }}_</li>
                 <li class="plem__name plem__name--wid20"> Катеория -- пояснения внизу этой  странички</li>
+            </ul>
+            <ul class="plem plem__jus-st">
+                <li class="plem__name  plem-nomer" >  <strong class="strongo  strongo--kras">{{plemmatka.sort}} : </strong></li>
+                <li class="plem__name plem__name--wid20" > <strong class="strongo ">{{ plemmatka.title}}  </strong> : &nbsp; &nbsp;    нумерация и название маточки  или комментарий  </li>
+            </ul>
+            <ul class="plem plem__jus-st ">
+                <li class="plem__name plem-nomer" >{{plemmatka.nomer.linia.name}}_</li>
+                <li class="plem__name plem__name--wid20"> Линия : &nbsp; &nbsp;   <strong class="strongo "> {{plemmatka.nomer.linia.nameStar}}</strong></li>
+            </ul>
+            <ul class="plem plem__jus-st ">
+                <li class="plem__name plem-nomer" >{{plemmatka.nomer.name}}_</li>
+                <li class="plem__name plem__name--wid20"> Номер : &nbsp; &nbsp;   <strong class="strongo "> {{plemmatka.nomer.nameStar}}</strong></li>
             </ul>
 {#            <ul class="plem plem__jus-st "> #}
 {#                <li class="plem__name plem-nomer" >{{infaRasaNom[0].name}}_</li>#}
@@ -60,10 +77,7 @@
 {#                <li class="plem__name plem-nomer" >пН-{{ plemmatka.persona }}</li>#}
 {#                <li class="plem__name plem__name--wid20" >персональный номер матковода с ником : &nbsp; &nbsp; <strong class="strongo "> {{ uchastie.name.nike}} ( {{ uchastie.name.last }} , {{ uchastie.name.first }})  </strong></li>#}
 {#            </ul>#}
-{#            <ul class="plem plem__jus-st"> #}
-{#                <li class="plem__name  plem-nomer" > №{{plemmatka.sort}}</li>#}
-{#                <li class="plem__name plem__name--wid20" > <strong class="strongo  strongo--kras"> {{ plemmatka.title}} </strong>  : &nbsp; &nbsp;   внутренняя нумерация или название маточки  и комментарий  </li>#}
-{#            </ul>#}
+{#
 {#            <ul class="plem plem__jus-st"> #}
 {#                <li class="plem__name plem-nomer" >{{ plemmatka_status(plemmatka.status.name) }}  </li>#}
 {#                <li class="plem__name plem__name--wid20" >-- статус ПлемМатки на данный момент  </li>#}
