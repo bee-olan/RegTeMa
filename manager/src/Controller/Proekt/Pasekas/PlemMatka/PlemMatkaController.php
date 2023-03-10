@@ -50,17 +50,14 @@ class PlemMatkaController extends AbstractController
     * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
     * @param PlemMatka $plemmatka
     * @param PlemMatkaFetcher $fetchers
-    * @param UchastieRepository $uchasties
-    * @param KategoriaFetcher $kategoria
     * @return Response
     */
    public function show(  PlemMatka $plemmatka,
-                        PlemMatkaFetcher $fetchers,
-                        UchastieRepository $uchasties ,
-                         KategoriaFetcher $kategoria ): Response
+                            PlemMatkaFetcher $fetchers
+                        ): Response
    {
-//dd( $plemmatka->getNomer()->getLinia()->getNameStar());
-     // $plemmatka = $fetchers->find($plem_id);
+//dd( $plemmatka->getMesto()->getNomer());
+// $plemmatka = $fetchers->find($plem_id);
 
 
 //       $uchastie = $uchasties->get(new Id($plemmatka->getUchastieId()));
@@ -68,11 +65,12 @@ class PlemMatkaController extends AbstractController
 //       $kategorias = $kategoria->all();
 //       $permissions = Permission::names();
 //
-//       $infaRasaNom = $fetchers->infaRasaNom($plemmatka->getRasaNomId());
-//
-//      $infaMesto = $fetchers->infaMesto($plemmatka->getMesto());
+//       $infaRasaNom = $fetchers->infaRasaNom($plemmatka->getMesto()->getRaionId() );
 
+//
+      $infaMesto = $fetchers->infaMesto($plemmatka->getMesto()->getNomer());
+//       dd($infaMesto);
        return $this->render('proekt/pasekas/matkas/plemmatkas/show.html.twig',
-           compact('plemmatka'));
+           compact('plemmatka', 'infaMesto'));
    }
 }
