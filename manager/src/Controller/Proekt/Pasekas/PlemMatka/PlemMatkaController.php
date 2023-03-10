@@ -53,6 +53,7 @@ class PlemMatkaController extends AbstractController
     * @return Response
     */
    public function show(  PlemMatka $plemmatka,
+                            KategoriaFetcher $kategoria,
                             PlemMatkaFetcher $fetchers
                         ): Response
    {
@@ -62,8 +63,8 @@ class PlemMatkaController extends AbstractController
 
 //       $uchastie = $uchasties->get(new Id($plemmatka->getUchastieId()));
 //
-//       $kategorias = $kategoria->all();
-//       $permissions = Permission::names();
+       $kategorias = $kategoria->all();
+       $permissions = Permission::names();
 //
 //       $infaRasaNom = $fetchers->infaRasaNom($plemmatka->getMesto()->getRaionId() );
 
@@ -71,6 +72,6 @@ class PlemMatkaController extends AbstractController
       $infaMesto = $fetchers->infaMesto($plemmatka->getMesto()->getNomer());
 //       dd($infaMesto);
        return $this->render('proekt/pasekas/matkas/plemmatkas/show.html.twig',
-           compact('plemmatka', 'infaMesto'));
+           compact('plemmatka', 'infaMesto','kategorias', 'permissions'));
    }
 }
