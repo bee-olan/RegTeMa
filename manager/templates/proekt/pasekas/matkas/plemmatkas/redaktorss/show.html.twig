@@ -2,25 +2,71 @@
 
 {% block title %}Редактирование{% endblock %}
 
-{#{% block breadcrumbs %}#}
-{#    <ol class="breadcrumb">#}
-{#        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>#}
-{#        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Пасека</a></li>#}
-{#        <li class="breadcrumb-item"><a href="{{ path('proekt.pasekas.matkas') }}">ПлемМатки</a></li>#}
-{#        <li class="breadcrumb-item"><a href="{{ path('proekt.pasekas.matkas.plemmatka.show', {'plem_id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>#}
-{#        <li class="breadcrumb-item active">Редактировать</li>#}
-{#    </ol>#}
-{#{% endblock %}#}
-
    {% block kroxii %}
        <a href="{{ path('proekt') }}">Главная</a>
-       <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Рег-ция ПлемМатки</a>
-       <span class="aktiv ">Список ПлемМаток</span>
+       <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
+       <a href="{{ path('proekt.pasekas.matkas') }}">Список ПлемМаток</a>
+       <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id})  }}">{{ plemmatka.name }}</a>
+       <span class="aktiv ">Добавить сезон. Редактировать. Архив</span>
    {% endblock %}
 
 {% block bodyy %}
+    <div  class="  proekts-plem">
 
-    {% include('proekt/pasekas/matkas/plemmatkas/redaktorss/_tabs.html.twig') %}
+    <div class="inklud">
+
+        <div class="inklud__img  ">
+            <img class="" src="{{ asset('assets/proekt/images/sezon/sezon4.png') }}" alt="">
+        </div>
+
+        <div class="inklud__title inklud__title--plem teni">
+            Добавить сезон . Редактировать . Архив
+        </div>
+    </div>
+
+
+    <div class="proekts-plr" >
+    <h1 class="plem__title  "><strong class="strongo ">{{ plemmatka.name }} </strong> --   ПлемМатка, берём за основу для ТестМаток</h1>
+
+
+    <ul class="plem plem__jus-st ">
+        <li class="plem__name " ><strong class="strongo ">Комментарий : </strong></li>
+        <li class="plem__name " >{{plemmatka.title}}</li>
+        <li class="plem__name--wid20">  &nbsp; &nbsp;
+            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.edit',
+                {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Редактировать</a>
+        </li>
+    </ul>
+
+        <ul class="plem plem__jus-st ">
+            <li class="plem__name " ><strong class="strongo ">Статус : </strong></li>
+            <li class="plem__name " >{{ plemmatka_status(plemmatka.status.name) }}</li>
+            <li >  &nbsp; &nbsp;
+                {% if plemmatka.active and plemmatka.id.value != app.user.id %}
+                    <form action="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.archive', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                        <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
+                        <button type="submit" class="btnn  btnn--pt">В архив</button>
+                    </form>
+                {% endif %}
+                {% if plemmatka.archived %}
+                    <form action="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.reinstate', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                        <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
+                        <button type="submit" class="btnn  btnn--pt">Из архива</button>
+                    </form>
+                {% endif %}
+            </li>
+        </ul>
+        <ul class="plem plem__jus-st ">
+            <li class="plem__name " ><strong class="strongo ">Все сезоны данной ПлемМатки: </strong></li>
+{#            <li class="plem__name " >{{plemmatka.title}}</li>#}
+            <li class="plem__name--wid20">  &nbsp; &nbsp;
+                <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.departmentss',
+                    {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Смотреть</a>
+            </li>
+        </ul>
+
+    </div>
+</div>
 
 
 

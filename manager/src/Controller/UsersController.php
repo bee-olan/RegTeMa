@@ -102,7 +102,7 @@ class UsersController extends AbstractController
     public function edit(User $user, Request $request, Edit\Handler $handler): Response
     {
         if ($user->getId()->getValue() === $this->getUser()->getId()) {
-            $this->addFlash('error', 'Unable to edit yourself.');
+            $this->addFlash('error', 'Не удается отредактировать себя.');
             return $this->redirectToRoute('users.show', ['id' => $user->getId()]);
         }
 
@@ -137,7 +137,7 @@ class UsersController extends AbstractController
     public function role(User $user, Request $request, Role\Handler $handler): Response
     {
         if ($user->getId()->getValue() === $this->getUser()->getId()) {
-            $this->addFlash('error', 'Unable to change role for yourself.');
+            $this->addFlash('error', 'Не в состоянии изменить роль для себя.');
             return $this->redirectToRoute('users.show', ['id' => $user->getId()]);
         }
 
@@ -226,7 +226,7 @@ class UsersController extends AbstractController
         }
 
         if ($user->getId()->getValue() === $this->getUser()->getId()) {
-            $this->addFlash('error', 'Unable to block yourself.');
+            $this->addFlash('error', 'Неспособный заблокировать себя.');
             return $this->redirectToRoute('users.show', ['id' => $user->getId()]);
         }
 

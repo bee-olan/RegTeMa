@@ -45,80 +45,87 @@ class UchastiesController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/assign", name=".assign")
-     * @param PlemMatka $plemmatka
-     * @param Request $request
-     * @param Uchastnik\Add\Handler $handler
-     * @return Response
-     */
-    public function assign(PlemMatka $plemmatka, Request $request, Uchastnik\Add\Handler $handler): Response
-    {
-        // Привязывает к проекту-ПлемМатка - нового  сотрудника
-       // $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
-//Проверка на : Если попытается привязать сотрудника, но еще нет департ-сообщества, то соотв. сообщение
-        if (!$plemmatka->getDepartments()) {
-            $this->addFlash('error', 'Добавьте сезоны перед добавлением участников.');
-            return $this->redirectToRoute('paseka.matkas.plemmatka.redaktors.uchasties', ['plemmatka_id' => $plemmatka->getId()]);
-        }
-
-        $command = new Uchastnik\Add\Command($plemmatka->getId()->getValue());
-
-        $form = $this->createForm(Uchastnik\Add\Form::class, $command, ['plemmatka' => $plemmatka->getId()->getValue()]);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            try {
-                $handler->handle($command);
-                return $this->redirectToRoute('paseka.matkas.plemmatka.redaktors.uchasties', ['plemmatka_id' => $plemmatka->getId()]);
-            } catch (\DomainException $e) {
-                $this->errors->handle($e);
-                $this->addFlash('error', $e->getMessage());
-            }
-        }
-
-        return $this->render('app/paseka/matkas/plemmatka/redaktors/uchasties/assign.html.twig', [
-            'plemmatka' => $plemmatka,
-            'form' => $form->createView(),
-        ]);
-    }
-
 //    /**
-//     * @Route("/{uchastie_id}/edit", name=".edit")
+//     * @Route("/assign", name=".assign")
 //     * @param PlemMatka $plemmatka
-//     * @param string $uchastie_id
 //     * @param Request $request
-//     * @param Uchastnik\Edit\Handler $handler
+//     * @param Uchastnik\Add\Handler $handler
 //     * @return Response
 //     */
-//    public function edit(PlemMatka $plemmatka, string $uchastie_id, Request $request, Uchastnik\Edit\Handler $handler): Response
+//    public function assign(PlemMatka $plemmatka, Request $request, Uchastnik\Add\Handler $handler): Response
 //    {
-//        //$this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
+//        // Привязывает к проекту-ПлемМатка - нового  сотрудника
+//       // $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
+////Проверка на : Если попытается привязать сотрудника, но еще нет департ-сообщества, то соотв. сообщение
+//        if (!$plemmatka->getDepartments()) {
+//            $this->addFlash('error', 'Добавьте сезоны перед добавлением участников.');
+//            return $this->redirectToRoute('paseka.matkas.plemmatka.redaktors.uchasties', ['plemmatka_id' => $plemmatka->getId()]);
+//        }
 //
-//        $uchastnik = $plemmatka->getUchastnik(new Id($uchastie_id));
+//        $command = new Uchastnik\Add\Command($plemmatka->getId()->getValue());
 //
-//        $command = Uchastnik\Edit\Command::fromUchastnik($plemmatka, $uchastnik);
-//
-//        $form = $this->createForm(Uchastnik\Edit\Form::class, $command, ['plemmatka' => $plemmatka->getId()->getValue()]);
+//        $form = $this->createForm(Uchastnik\Add\Form::class, $command, ['plemmatka' => $plemmatka->getId()->getValue()]);
 //        $form->handleRequest($request);
 //
 //        if ($form->isSubmitted() && $form->isValid()) {
 //            try {
 //                $handler->handle($command);
-//                return $this->redirectToRoute('app/paseka/matkas/plemmatka/redaktors/uchasties', ['plemmatka_id' => $plemmatka->getId()]);
+//                return $this->redirectToRoute('paseka.matkas.plemmatka.redaktors.uchasties', ['plemmatka_id' => $plemmatka->getId()]);
 //            } catch (\DomainException $e) {
 //                $this->errors->handle($e);
 //                $this->addFlash('error', $e->getMessage());
 //            }
 //        }
 //
-//        return $this->render('app/paseka/matkas/plemmatka/redaktors/uchasties/edit.html.twig', [
+//        return $this->render('app/paseka/matkas/plemmatka/redaktors/uchasties/assign.html.twig', [
 //            'plemmatka' => $plemmatka,
-//            'uchastnik' => $uchastnik,
 //            'form' => $form->createView(),
 //        ]);
 //    }
-//
+
+    /**
+     * @Route("/edit", name=".edit")
+     * @param PlemMatka $plemmatka
+//     * @param string $uchastie_id
+     * @param Request $request
+     * @param Uchastnik\Edit\Handler $handler
+     * @return Response
+     */
+    public function edit( Request $request,
+                        PlemMatka $plemmatka,
+                        Uchastnik\Edit\Handler $handler): Response
+    {
+        //$this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
+        $uchastnik = $plemmatka->getPersona()->getId();
+        if ($uchastnik === $this->getUser()->getId()) {
+            $this->addFlash('error', 'Не удается отредактировать себя.');
+            return $this->redirectToRoute('users.show', ['id' => $user->getId()]);
+        }
+//dd($this->getUser()->getId());
+//        $uchastnik = $plemmatka->getUchastnik(new Id($uchastie_id));
+dd(  );
+        $command = Uchastnik\Edit\Command::fromUchastnik($plemmatka, $uchastnik);
+
+        $form = $this->createForm(Uchastnik\Edit\Form::class, $command, ['plemmatka' => $plemmatka->getId()->getValue()]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $handler->handle($command);
+                return $this->redirectToRoute('app/paseka/matkas/plemmatka/redaktors/uchasties', ['plemmatka_id' => $plemmatka->getId()]);
+            } catch (\DomainException $e) {
+                $this->errors->handle($e);
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
+
+        return $this->render('app/paseka/matkas/plemmatka/redaktors/uchasties/edit.html.twig', [
+            'plemmatka' => $plemmatka,
+            'uchastnik' => $uchastnik,
+            'form' => $form->createView(),
+        ]);
+    }
+
 //    /**
 //     * @Route("/{uchastie_id}/revoke", name=".revoke", methods={"POST"})
 //     * @param PlemMatka $plemmatka

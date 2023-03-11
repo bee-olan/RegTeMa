@@ -47,7 +47,7 @@
                         {# {{ member_status(u4astnik.status) }}  #}
                     </li>
                     <li class = "plem__name">
-                        Ред-вать
+                        Сезоны
                     </li>
                 </ul>
                 {% for plemmatka in pagination %}
@@ -65,9 +65,9 @@
 
                     <li class = "plem__name-list">{{  plemmatka_status(plemmatka.status) }}</li>
                     <li class = "plem__name-list">
-                        <a   href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.edit', {'plemmatka_id': plemmatka.id}) }}"  class="btnn btnn--mb1 " >
+                        <a   href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id}) }}"  class="btnn btnn--mb1 " >
                             <div class="karandash">
-                                <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="">
+                                <img src="{{ asset('assets/proekt/images/sezon/sezon4.png') }}" alt="">
                             </div>
                         </a>
                     </li>
