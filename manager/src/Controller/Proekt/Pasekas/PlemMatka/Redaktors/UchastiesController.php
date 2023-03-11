@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Proekt\Pasekas\PlemMatka\Redaktors;
 
 use App\Annotation\Guid;
-
+use App\Model\Adminka\Entity\Uchasties\Uchastie\Id;
 use App\Model\Adminka\UseCase\Matkas\PlemMatka\Uchastnik;
 
 use App\Controller\ErrorHandler;
@@ -88,38 +88,38 @@ class UchastiesController extends AbstractController
      * @param PlemMatka $plemmatka
 //     * @param string $uchastie_id
      * @param Request $request
-     * @param Uchastnik\Edit\Handler $handler
+     * @param Uchastnik\EditSez\Handler $handler
      * @return Response
      */
     public function edit( Request $request,
                         PlemMatka $plemmatka,
-                        Uchastnik\Edit\Handler $handler): Response
+                        Uchastnik\EditSez\Handler $handler): Response
     {
         //$this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
-        $uchastnik = $plemmatka->getPersona()->getId();
-        if ($uchastnik === $this->getUser()->getId()) {
-            $this->addFlash('error', 'Не удается отредактировать себя.');
-            return $this->redirectToRoute('users.show', ['id' => $user->getId()]);
+        $uchastnikI = $plemmatka->getPersona()->getId()->getValue();
+        if ($uchastnikI ==! $this->getUser()->getId()) {
+            $this->addFlash('error', 'Эту матку зарегистрировали не Вы.');
+            return $this->redirectToRoute('proekt.pasekas.matkas');
         }
 //dd($this->getUser()->getId());
-//        $uchastnik = $plemmatka->getUchastnik(new Id($uchastie_id));
-dd(  );
-        $command = Uchastnik\Edit\Command::fromUchastnik($plemmatka, $uchastnik);
+//        $uchastnik = $plemmatka->getUchastnik(new Id($this->getUser()->getId()));
+        $uchastnik = $plemmatka->getUchastnik(new Id($uchastnikI));
+        $command = Uchastnik\EditSez\Command::fromUchastnik($plemmatka, $uchastnik);
 
-        $form = $this->createForm(Uchastnik\Edit\Form::class, $command, ['plemmatka' => $plemmatka->getId()->getValue()]);
+        $form = $this->createForm(Uchastnik\EditSez\Form::class, $command, ['plemmatka' => $plemmatka->getId()->getValue()]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('app/paseka/matkas/plemmatka/redaktors/uchasties', ['plemmatka_id' => $plemmatka->getId()]);
+                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.uchastiess', ['plemmatka_id' => $plemmatka->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 
-        return $this->render('app/paseka/matkas/plemmatka/redaktors/uchasties/edit.html.twig', [
+        return $this->render('proekt/pasekas/matkas/plemmatkas/redaktorss/uchastiess/edit.html.twig', [
             'plemmatka' => $plemmatka,
             'uchastnik' => $uchastnik,
             'form' => $form->createView(),

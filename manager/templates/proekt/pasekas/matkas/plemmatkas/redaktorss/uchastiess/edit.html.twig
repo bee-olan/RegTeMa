@@ -1,24 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'proekt/base.html.twig' %}
 
 {% block title %}{{ plemmatka.name }}{% endblock %}
 
-{% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Пасека</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.matkas') }}">ПлемМатки</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.matkas.plemmatka.show', {'plem_id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.matkas.plemmatka.redaktors', {'plemmatka_id': plemmatka.id}) }}">Редактирование</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka.matkas.plemmatka.redaktors.uchasties', {'plemmatka_id': plemmatka.id}) }}">Участие</a></li>
-        <li class="breadcrumb-item active">{{ uchastnik.uchastie.name.full }}</li>
-    </ol>
-{% endblock %}
+ {% block kroxii %}
+     <a href="{{ path('proekt') }}">Главная</a>
+     <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
+     <a href="{{ path('proekt.pasekas.matkas') }}">Список ПлемМаток</a>
+     <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id})  }}">{{ plemmatka.name }}</a>
+     <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id})  }}">Редактировать</a>
+     <span class="aktiv ">Добавить сезон</span>
+ {% endblock %}
 
-{% block body %}
+{% block bodyy %}
 
-    {% include 'app/work/plemmatkas/plemmatka/_tabs.html.twig' %}
-
-    {% include 'app/work/plemmatkas/plemmatka/settings/_tabs.html.twig' %}
 
     <div class="card">
         <div class="card-body">
@@ -26,7 +20,7 @@
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
             </div>
             {{ form_end(form) }}
 
