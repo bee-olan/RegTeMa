@@ -126,41 +126,15 @@ class UchastiesController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/{uchastie_id}/revoke", name=".revoke", methods={"POST"})
-//     * @param PlemMatka $plemmatka
-//     * @param string $uchastie_id
-//     * @param Request $request
-//     * @param Uchastnik\Remove\Handler $handler
-//     * @return Response
-//     */
-//    public function revoke(PlemMatka $plemmatka, string $uchastie_id, Request $request, Uchastnik\Remove\Handler $handler): Response
-//    {
-//        //$this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
-//
-//        if (!$this->isCsrfTokenValid('revoke', $request->request->get('token'))) {
-//            return $this->redirectToRoute('paseka.matkas.plemmatka.redaktors.departments', ['plemmatka_id' => $plemmatka->getId()]);
-//        }
-//
-//        $command = new Uchastnik\Remove\Command($plemmatka->getId()->getValue(), $uchastie_id);
-//
-//        try {
-//            $handler->handle($command);
-//        } catch (\DomainException $e) {
-//            $this->errors->handle($e);
-//            $this->addFlash('error', $e->getMessage());
-//        }
-//
-//        return $this->redirectToRoute('paseka.matkas.plemmatka.redaktors.uchasties', ['plemmatka_id' => $plemmatka->getId()]);
-//    }
-//
-//    /**
-//     * @Route("/{uchastie_id}", name=".show", requirements={"uchastie_id"=Guid::PATTERN}))
-//     * @param PlemMatka $plemmatka
-//     * @return Response
-//     */
-//    public function show(PlemMatka $plemmatka): Response
-//    {
-//        return $this->redirectToRoute('paseka.matkas.plemmatka.redaktors.uchasties', ['plemmatka_id' => $plemmatka->getId()]);
-//    }
+
+
+    /**
+     * @Route("/{uchastie_id}", name=".show", requirements={"uchastie_id"=Guid::PATTERN}))
+     * @param PlemMatka $plemmatka
+     * @return Response
+     */
+    public function show(PlemMatka $plemmatka): Response
+    {
+        return $this->redirectToRoute('paseka.matkas.plemmatka.redaktors.uchasties', ['plemmatka_id' => $plemmatka->getId()]);
+    }
 }

@@ -13,16 +13,16 @@
 {% block bodyy %}
     <div  class="  proekts-plem">
 
-    <div class="inklud">
+        <div class="inklud">
 
-        <div class="inklud__img  ">
-            <img class="" src="{{ asset('assets/proekt/images/sezon/sezon4.png') }}" alt="">
-        </div>
+            <div class="inklud__img  ">
+                <img class="" src="{{ asset('assets/proekt/images/sezon/sezon4.png') }}" alt="">
+            </div>
 
-        <div class="inklud__title inklud__title--plem teni">
-            Добавить сезон . Редактировать . Архив
+            <div class="inklud__title inklud__title--plem teni">
+                Добавить сезон . Редактировать . Статус (Активная/В архиве)
+            </div>
         </div>
-    </div>
 
 
     <div class="proekts-plr" >
@@ -40,7 +40,7 @@
 
         <ul class="plem plem__jus-st ">
             <li class="plem__name " ><strong class="strongo ">Статус : </strong></li>
-            <li class="plem__name " >{{ plemmatka_status(plemmatka.status.name) }}</li>
+            <li class="plem__name " ><strong class="strongo strongo--kras"> {{ plemmatka_status(plemmatka.status.name) }} </strong></li>
             <li >  &nbsp; &nbsp;
                 {% if plemmatka.active and plemmatka.id.value != app.user.id %}
                     <form action="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.archive', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
@@ -68,53 +68,5 @@
     </div>
 </div>
 
-
-
-    <div class="controls">
-        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.edit', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Редактировать</a>
-        {% if plemmatka.active and plemmatka.id.value != app.user.id %}
-            <form action="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.archive', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
-                <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
-                <button type="submit" class="btn btn-danger">В архив</button>
-            </form>
-        {% endif %}
-        {% if plemmatka.archived %}
-            <form action="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.reinstate', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
-                <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
-                <button type="submit" class="btn btn-success">Из архива</button>
-            </form>
-        {% endif %}
-{#        <form action="{{ path('proekt.pasekas.matkas.delete', {'id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">#}
-{#            <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />#}
-{#            <button type="submit" class="btn btn-danger">Delete</button>#}
-{#        </form>#}
-
-{#        <td >#}
-{#            <form action="{{ path('proekt.pasekas.matkas.delete', {'id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Подтверждаете - удалить?')">#}
-{#                <input type="hidden" name="token" value="{{ token }}" />#}
-{#                <button type="submit" class="btn-my btn-my--smm "><span class="fa fa-trash"></span></button>#}
-{#            </form>#}
-{#        </td>#}
-
-{#        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.departments', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Отделы!!!!!!!</a>#}
-{#        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.uchasties', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Привязать участника</a>#}
-
-    </div>
-
-    <div class="box">
-        <table class="table table-bordered">
-            <tbody>
-                <tr>
-                    <th>Название</th>
-{#                    <td>{{ plemmatka_kategoria(plemmatka.nameKateg) }}{{ plemmatka.name }}</td>#}
-                    <td>{{ plemmatka.name }}</td>
-                </tr>
-                <tr>
-                    <th>Статус</th>
-                    <td>{{ plemmatka_status(plemmatka.status.name) }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 
 {% endblock %}

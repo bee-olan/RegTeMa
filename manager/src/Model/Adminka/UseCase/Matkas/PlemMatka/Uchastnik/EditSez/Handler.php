@@ -19,24 +19,25 @@ class Handler
 {
     private $plemmatkas;
     private $uchasties;
-    private $roles;
+//    private $roles;
     private $flusher;
 
     public function __construct(
         PlemMatkaRepository $plemmatkas,
         UchastieRepository $uchasties,
-        RoleRepository $roles,
+//        RoleRepository $roles,
         Flusher $flusher
     )
     {
         $this->plemmatkas = $plemmatkas;
         $this->uchasties = $uchasties;
-        $this->roles = $roles;
+//        $this->roles = $roles;
         $this->flusher = $flusher;
     }
 
     public function handle(Command $command): void
     {
+
         $plemmatka = $this->plemmatkas->get(new Id($command->plemmatka)) ;
         $uchastie = $this->uchasties->get(new UchastieId($command->uchastie));
 //        $role = $this->roles->get(new RoleId($command->uchastie));
@@ -44,12 +45,12 @@ class Handler
         $departments = array_map(static function (string $id): DepartmentId {
             return new DepartmentId($id);
         }, $command->departments);
-
+//
 //        $roles = array_map(function (string $id): Role {
 //            return $this->roles->get(new RoleId($id));
 //        }, $command->roles);
 
-        $plemmatka->editUchastie($uchastie->getId(), $departments,  $command->roles);
+        $plemmatka->editSezonUchastie($uchastie->getId(), $departments);
 
         $this->flusher->flush();
     }

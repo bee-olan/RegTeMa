@@ -13,12 +13,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class Form extends AbstractType
 {
-    private $roles;
+//    private $roles;
     private $departments;
 
-    public function __construct(RoleFetcher $roles, DepartmentFetcher $departments)
+    public function __construct( DepartmentFetcher $departments)
     {
-        $this->roles = $roles;
+//        $this->roles = $roles;
         $this->departments = $departments;
     }
 
@@ -27,10 +27,12 @@ class Form extends AbstractType
         $builder
             ->add('departments', Type\ChoiceType::class, [
                 'choices' => array_flip($this->departments->listOfPlemMatka($options['plemmatka'])),
+                'label' => ' Сезоны',
                 'expanded' => true,
                 'multiple' => true,
             ]);
 //            ->add('roles', Type\ChoiceType::class, [
+//                    'required' =>false,
 //                'choices' => array_flip($this->roles->allList()),
 //                'expanded' => true,
 //                'multiple' => true,

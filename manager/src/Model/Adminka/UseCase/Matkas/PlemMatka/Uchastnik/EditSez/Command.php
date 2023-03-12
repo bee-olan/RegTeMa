@@ -42,9 +42,11 @@ class Command
         $command->departments = array_map(static function (Department $department): string {
             return $department->getId()->getValue();
         }, $uchasnik->getDepartments());
-        $command->roles = array_map(static function (Role $role): string {
-            return $role->getId()->getValue();
-        }, $uchasnik->getRoles());
+
+//        $command->roles = array_map(static function (Role $role): string {
+//            return $role->getId()->getValue();
+//        }, $uchasnik->getRoles());
+
         return $command;
     }
 }

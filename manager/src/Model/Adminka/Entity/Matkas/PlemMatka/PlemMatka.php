@@ -262,7 +262,24 @@ class PlemMatka
                 return;
             }
         }
-        throw new \DomainException('Uchastie is not found.');
+        throw new \DomainException('Участие не найдено.');
+    }
+
+    /**
+     * @param UchastieId $uchastie
+     * @param DepartmentId[] $departmentIds
+//     * @param Role[] $roles
+     */
+    public function editSezonUchastie(UchastieId $uchastie, array $departmentIds): void
+    {
+        foreach ($this->uchastniks as $uchastnik) {
+            if ($uchastnik->isForUchastie($uchastie)) {
+                $uchastnik->changeDepartments(array_map([$this, 'getDepartment'], $departmentIds));
+//                $uchastnik->changeRoles($roles);
+                return;
+            }
+        }
+        throw new \DomainException('Участие не найдено.');
     }
 
     public function removeUchastie(UchastieId $uchastie): void
@@ -273,7 +290,7 @@ class PlemMatka
                 return;
             }
         }
-        throw new \DomainException('Uchastie is not found.');
+        throw new \DomainException('Участие не найдено.');
     }
 
 // если есть у пользователя разрешение

@@ -2,33 +2,73 @@
 
 {% block title %}{{ plemmatka.name }}{% endblock %}
 
-{#{% block breadcrumbs %}#}
-{#    <ol class="breadcrumb">#}
-{#        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>#}
-{#        <li class="breadcrumb-item"><a href="{{ path('paseka') }}">Пасека</a></li>#}
-{#        <li class="breadcrumb-item"><a href="{{ path('paseka.matkas') }}">ПлемМатки</a></li>#}
-{#        <li class="breadcrumb-item"><a href="{{ path('paseka.matkas.plemmatka.show', {'plem_id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>#}
-{#        <li class="breadcrumb-item"><a href="{{ path('paseka.matkas.plemmatka.redaktors', {'plemmatka_id': plemmatka.id}) }}">Редактирование</a></li>#}
-{#        <li class="breadcrumb-item active">Участие</li>#}
-{#    </ol>#}
-{#{% endblock %}#}
+{% block kroxii %}
+<a href="{{ path('proekt') }}">Главная</a>
+<a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
+<a href="{{ path('proekt.pasekas.matkas') }}">Список ПлемМаток</a>
+<a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id})  }}">{{ plemmatka.name }}</a>
+<a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id})  }}">Редактировать</a>
+<span class="aktiv ">Добавить сезон</span>
 
 {% block bodyy %}
 
-{#    {% include 'app/work/plemmatkas/plemmatka/_tabs.html.twig' %}#}
+    <div  class="  proekts-plem">
 
-{#    {% include 'app/paseka/plemmatkas/plemmatka/settings/_tabs.html.twig' %}#}
+    <div class="inklud">
 
-    <div class="controls">
-        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.uchastiess.assign', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-success">Прикрепить участника</a>
-{#        <a href="{{ path('proekt.pasekas.matkas.roless') }}" class="btn btn-primary">Роли</a>#}
+        <div class="inklud__img  ">
+            <img class="" src="{{ asset('assets/proekt/images/sezon/sezon4.png') }}" alt="">
+        </div>
+
+        <div class="inklud__title inklud__title--plem teni">
+            Добавить сезон . Редактировать . Статус (Активная/В архиве)
+        </div>
     </div>
+
+
+    <div class="proekts-plr" >
+    <h1 class="plem__title  "><strong class="strongo ">{{ plemmatka.name }} </strong> --   ПлемМатка, берём за основу для ТестМаток</h1>
+
+        {% for uchastnik in uchastniks %}
+            <ul class="plem plem__jus-st ">
+                <li class="plem__name " > {{ uchastnik.uchastie.nike }}  ( {{ uchastnik.uchastie.name.full }} )</li>
+                <li class="ma-le-2 " >
+                    <ul class="list-unstyled my-0">
+                        {% for role in uchastnik.roles %}
+                            <li>{{ role.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="ma-le-2 " >
+                    <ul class="list-unstyled my-0">
+                        {% for department in uchastnik.departments %}
+                            <li>{{ department.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        {% endfor %}
+        <ul class="plem plem__jus-st ">
+            <li class="plem__name " ><strong class="strongo ">Все сезоны данной ПлемМатки: </strong></li>
+            {#            <li class="plem__name " >{{plemmatka.title}}</li>#}
+            <li class="plem__name--wid20">  &nbsp; &nbsp;
+                <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.departmentss',
+                    {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Смотреть</a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+
+
+
 
     <div class="box">
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th>Название</th>
+                <th>Ник ( Имя )</th>
                 <th>Сезоны</th>
                 <th>Роли</th>
                 <th></th>
@@ -39,8 +79,8 @@
             {% for uchastnik in uchastniks %}
                 <tr>
                     <td>
-                        <a href="{{ path('paseka.uchasties.show', {'id': uchastnik.uchastie.id}) }}" target="_blank" class="pull-right"><span class="fa fa-external-link"></span></a>
-                        {{ uchastnik.uchastie.name.full }}
+{#                        <a href="{{ path('paseka.uchasties.show', {'id': uchastnik.uchastie.id}) }}" target="_blank" class="pull-right"><span class="fa fa-external-link"></span></a>#}
+                        {{ uchastnik.uchastie.nike }}  ( {{ uchastnik.uchastie.name.full }} )
                     </td>
                     <td>
                         <ul class="list-unstyled my-0">

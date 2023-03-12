@@ -7,24 +7,58 @@
      <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
      <a href="{{ path('proekt.pasekas.matkas') }}">Список ПлемМаток</a>
      <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id})  }}">{{ plemmatka.name }}</a>
-     <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id})  }}">Редактировать</a>
+     <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id})  }}">Редактировать</a>
      <span class="aktiv ">Добавить сезон</span>
  {% endblock %}
 
 {% block bodyy %}
 
+    <div  class="  proekts-plem">
 
-    <div class="card">
-        <div class="card-body">
+    <div class="inklud">
 
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <div>
-                <button type="submit" class="btn btn-primary">Сохранить</button>
-            </div>
-            {{ form_end(form) }}
+        <div class="inklud__img">
+            <img class="" src="{{ asset('assets/proekt/images/karandash_m.png') }}" alt="">
 
         </div>
+
+        <div class="inklud__title teni">
+           Добавить новый сезон  ПлемМатки!
+        </div>
     </div>
+
+      <div class="proekts-plr  ">
+          {% if plemmatka.active  %}
+              <h1 class="plem__title  "><strong class="strongo strongo--kras">{{ plemmatka.name }} </strong> </h1>
+            <div class="plem-form__header  ">
+                <div class="plem-form ">
+
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <div>
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                    {{ form_end(form) }}
+
+                    </div>
+                </div>
+                {% endif %}
+
+            {% if plemmatka.archived  %}
+                <h1 class="plem__title  ">Вы не можете добавить новый сезон, ПлемМатка находится в <strong class="strongo strongo--kras">архиве </strong></h1>
+                <ul class="plem plem__jus-st ">
+
+                    <li >
+                        <a href="{{ path('proekt.pasekas.matkas') }}" class="btnn btnn--mb0 btnn--col">Смотреть список</a>
+                    </li>
+                    <li class="plem__name--wid20">  &nbsp; &nbsp;
+                        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show',
+                            {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Сезоны, статус, редактирование</a>
+                    </li>
+                </ul>
+            {% endif %}
+      </div>
+
+</div>
 
 {% endblock %}
