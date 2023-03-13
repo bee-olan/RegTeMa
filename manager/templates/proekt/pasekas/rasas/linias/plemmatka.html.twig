@@ -88,20 +88,20 @@
                                         <span class="direct-chat-timestamp pull-right">{{ comment.date|date('Y-m-d H:i:s') }}</span>
                                     </div>
                                     <img class="direct-chat-img" src="{{ gravatar(comment.author_email, 40) }}" alt="">
-                                    <div class="direct-chat-text">
+                                    <div class="direct-chat-text direct-chat-text--rasa">
                                         {{ comment.text|markdown|purify|adminka_processor }}
                                         {% if is_granted('manage', comment) %}
                                             <div class="controls-m ">
                                                 <a href="{{ path('proekt.pasekas.rasas.linias.comment.edit',
                                                     {'rasa_id': rasa.id, 'id': comment.id}) }}"
-                                                   class="btnn btnn--mb0 btnn--pt btnn--col-child">
+                                                   class="btnn btnn--mb0 btnn--pt btnn--col-golub">
                                                     <div class="karandash karandash--child">
                                                         <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="редактировать">
                                                     </div>
                                                 </a>
                                                 <form action="{{ path('proekt.pasekas.rasas.linias.comment.delete', {'rasa_id': rasa.id, 'id': comment.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
                                                     <input type="hidden" name="token" value="{{ csrf_token('delete-comment') }}" />
-                                                    <button type="submit"  class="btnn  btnn--ml3 btnn--pt btnn--col-child">
+                                                    <button type="submit"  class="btnn  btnn--ml3 btnn--pt btnn--col-golub">
 
                                                         <div class="karandash karandash--child">
                                                             <img src="{{ asset('assets/proekt/images/delet.png') }}" alt="удалить">
