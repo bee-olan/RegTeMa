@@ -95,64 +95,11 @@ class SidebarMenu
 
 
 
-//        $menu->addChild('Добавить  уч-ка', ['route' => 'paseka.pchelowods'])
-//            ->setExtra('routes', [
-//                ['route' => 'paseka.pchelowods'],
-//                ['pattern' => '/^paseka\.pchelowods\..+/']
-//            ])
-//            ->setExtra('icon', 'nav-icon icon-briefcase')
-//            ->setAttribute('class', 'nav-item')
-//            ->setLinkAttribute('class', 'nav-link');
 
-//            $menu['Добавить  уч-ка']->addChild('Проба', ['route' => 'paseka.pchelowods']);
-
-            // $menu->addChild('Добавить  расу', ['route' => 'paseka.rasas'])
-            // ->setExtra('routes', [
-            //     ['route' => 'paseka.rasas'],
-            //     ['pattern' => '/^paseka\.rasas\..+/']
-            // ])
-            // ->setExtra('icon', 'nav-icon icon-briefcase')
-            // ->setAttribute('class', 'nav-item')
-            // ->setLinkAttribute('class', 'nav-link'); 
-
-        // $menu->addChild('УЧАСТНИКИ')->setAttribute('class', 'nav-title')
-        //     ->setExtra('image', '../../assets/images/menu/mesto.png')
-        //     ->setAttribute('class', 'nav-item')
-        //     ->setLinkAttribute('class', 'nav-link')
-        //     ;
-        // $menu->addChild('Добавить  уч-ка', ['route' => 'matkis.u4astniks'])
-        //     ->setExtra('routes', [
-        //         ['route' => 'matkis.u4astniks'],
-        //         ['pattern' => '/^matkis\.u4astniks\..+/']
-        //     ])
-        //     ->setExtra('icon', 'nav-icon icon-briefcase')
-        //     ->setAttribute('class', 'nav-item')
-        //     ->setLinkAttribute('class', 'nav-link');        
 
         $menu->addChild('Р а б о т а')->setAttribute('class', 'nav-title');
 
-			$menu->addChild('Projects', ['route' => 'work.projects'])
-				->setExtra('routes', [
-					['route' => 'work.projects'],
-					['pattern' => '/^work\.projects\..+/']
-				])
-				->setExtra('icon', 'nav-icon icon-briefcase')
-				->setAttribute('class', 'nav-item')
-				->setLinkAttribute('class', 'nav-link');
 
-//        if ($this->auth->isGranted('ROLE_WORK_MANAGE_MEMBERS')) {
-            $menu->addChild('Участники', ['route' => 'work.members'])
-                ->setExtra('routes', [
-                    ['route' => 'work.members'],
-                    ['pattern' => '/^work\.members\..+/']
-                ])
-
-				->setExtra('image',  'image')
-                ->setAttribute('class', 'nav-item')
-                ->setLinkAttribute('class', 'nav-link');
-
-			$menu['Участники']->addChild('Contacts',  ['route' => 'work.members']);
-//        }
 
         $menu->addChild('Control')->setAttribute('class', 'nav-title');
 

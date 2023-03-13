@@ -14,8 +14,8 @@ use App\Model\User\UseCase\SignUp\Confirm;
 use App\ReadModel\Adminka\Uchasties\Uchastie\UchastieFetcher;
 use App\ReadModel\User\Filter;
 use App\ReadModel\User\UserFetcher;
-use App\ReadModel\Work\Members\Member\MemberFetcher;
-use App\ReadModel\Paseka\Pchelowods\Pchelowod\PchelowodFetcher;
+//use App\ReadModel\Work\Members\Member\MemberFetcher;
+//use App\ReadModel\Paseka\Pchelowods\Pchelowod\PchelowodFetcher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -245,15 +245,15 @@ class UsersController extends AbstractController
     /**
      * @Route("/{id}", name=".show")
      * @param User $user
-     * @param MemberFetcher $members
+//     * @param MemberFetcher $members
      * @param UchastieFetcher $uchasties
      * @return Response
      */
-    public function show(User $user, MemberFetcher $members, UchastieFetcher $uchasties): Response
+    public function show(User $user, UchastieFetcher $uchasties): Response
     {
-        $member = $members->find($user->getId()->getValue());
+//        $member = $members->find($user->getId()->getValue());
         $uchastie = $uchasties->find($user->getId()->getValue());
 
-        return $this->render('app/users/show.html.twig', compact('user', 'member', 'uchastie'));
+        return $this->render('app/users/show.html.twig', compact('user', 'uchastie'));
     }
 }

@@ -26,14 +26,14 @@
             </form>
         {% endif %}
 
-        {% if is_granted('ROLE_WORK_MANAGE_MEMBERS') %}
-            {% if member %}
-                <a href="{{ path('work.members.show', {'id': member.id}) }}" class="btn btn-primary">Смотреть
-                    участника</a>
-            {% else %}
-                <a href="{{ path('work.members.create', {'id': user.id}) }}" class="btn btn-primary">Создать участника</a>
-            {% endif %}
-        {% endif %}
+{#        {% if is_granted('ROLE_WORK_MANAGE_MEMBERS') %}#}
+{#            {% if member %}#}
+{#                <a href="{{ path('work.members.show', {'id': member.id}) }}" class="btn btn-primary">Смотреть#}
+{#                    участника</a>#}
+{#            {% else %}#}
+{#                <a href="{{ path('work.members.create', {'id': user.id}) }}" class="btn btn-primary">Создать участника</a>#}
+{#            {% endif %}#}
+{#        {% endif %}#}
 
         {% if is_granted('ROLE_ADMINKA_MANAGE_UCHASTIES') %}
             {% if uchastie %}
