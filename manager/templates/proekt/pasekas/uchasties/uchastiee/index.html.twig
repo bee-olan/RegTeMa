@@ -7,9 +7,8 @@
 {# {% endblock %}#}
 
 {% block kroxii %}
-{#    <a href="{{ path('sait') }}">Главная</a>#}
-    {# <a href="{{ path('sait.uchastiess.uchastie') }}">Участники</a> #}
-
+    <a href="{{ path('proekt') }}">Главная</a>
+     <a href="{{ path('proekt.pasekas.uchasties') }}">Список Участников</a>
     <span class="aktiv">Стать участником</span>
 
 {% endblock %}
@@ -47,7 +46,7 @@
                         <li class="uchastiee__name uch-tabl__linia" >1. Выбрать для себя персональный номер </li>
                         <li>
                             <a href="{{ path('proekt.personaa.diapazon') }}"
-                            class="btn-my btn-my--sm">Выбрать <strong class="stro stro--kras">ПерсонНомер  </strong>
+                            class="btnn btnn--mb-1">Выбрать <strong class="strongo strongo--kras">ПерсонНомер  </strong>
                             </a>
                         </li>
                     {% endif %}
@@ -69,7 +68,7 @@
                         <li class="uchastiee__name  uch-tabl__linia" >2. Определиться с номером места расположения пасеки </li>
                         <li>
                             <a href="{{ path('proekt.mestoo.okrugs') }}"
-                            class="btn-my btn-my--sm">Найти <strong class="stro stro--kras">номер  </strong> места расположения
+                            class="btnn btnn--mb-1">Выбрать <strong class="strongo strongo--kras">НомерМеста  </strong>
                             </a>
                         </li>
                     {% endif %}

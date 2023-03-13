@@ -71,23 +71,23 @@ class InformController extends AbstractController
         ]);
     }
  
-	/**
-    * @Route("/inform", name=".inform")
-    * @return Response
-    * @param PersonaFetcher $uchasties
-    */
-   public function inform(PersonaFetcher $uchasties): Response
-   {
-
-
-       $personas = $uchasties->allPers();
-
-       $personanom = $uchasties ->find($this->getUser()->getId());
-
-
-       return $this->render('proekt/pasekas/uchasties/inform.html.twig',
-                               compact('personas', 'personanom'));
-   }
+//	/**
+//    * @Route("/inform", name=".inform")
+//    * @return Response
+//    * @param PersonaFetcher $uchasties
+//    */
+//   public function inform(PersonaFetcher $uchasties): Response
+//   {
+//
+//
+//       $personas = $uchasties->allPers();
+//
+//       $personanom = $uchasties ->find($this->getUser()->getId());
+//
+//
+//       return $this->render('proekt/pasekas/uchasties/inform.html.twig',
+//                               compact('personas', 'personanom'));
+//   }
 
     /**
      * @Route("/show/{id}", name=".show", requirements={"id"=Guid::PATTERN})
@@ -103,31 +103,6 @@ class InformController extends AbstractController
             compact('uchastie', 'departments'));
     }
 
-//     /**
-//      * @Route("/inform", name=".inform")
-//      * @param Request $request
-//      * @param UchastieFetcher $fetcher
-//      * @return Response
-//      */
-//     public function inform(Request $request, UchastieFetcher $fetcher): Response
-//     {
-//         $filter = new Filter\Filter();
 
-//         $forms = $this->createForm(Filter\Form::class, $filter);
-//         $forms->handleRequest($request);
-
-//         $pagination = $fetcher->all(
-//             $filter,
-//             $request->query->getInt('page', 1),
-//             self::PER_PAGE,
-//             $request->query->get('sort', 'name'),
-//             $request->query->get('direction', 'asc')
-//         );
-// //dd($pagination);
-//         return $this->render('proekt/pasekas/uchasties/inform.html.twig', [
-//             'pagination' => $pagination,
-//             'forms' => $forms->createView(),
-//         ]);
-//     }
 }
 

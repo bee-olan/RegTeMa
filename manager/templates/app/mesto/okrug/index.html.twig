@@ -2,14 +2,7 @@
 
 {% block title %}Место-округ{% endblock %}
 
-{#{% block includemenu %}#}
-{#	<header class="header-container header-nav">#}
-{#		<img src="../../../assets/app/rabota/u4astniki/mestos/images/mesto_.png " width="55"  alt="Место">#}
-{#		<div class="header-link  ">#}
-{#				Номер места расположения пасеки#}
-{#		</div>#}
-{#	</header>#}
-{#{% endblock %}#}
+
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
@@ -22,9 +15,6 @@
 
 {% block body %}
 
-    <div class="controls">
-       <a href="{{ path('mesto.okrug.create') }}" class="btn-my btn-my--smm">Добавить   новые названия в БД</a>
-    </div>
 
           <div class="box">
               <table class="table table-bordered table-hover">
@@ -45,12 +35,8 @@
                             {{ okrug.nomer }}
                         </td>
                         <td>
-                            {# {% if okrug.u4astniki %}
-                                <a href="{{ path('rabota.u4astniki', {'form': {'okrug': okrug.id}}) }}">{{ okrug.name }}</a>
-                            {% else %} #}
 
                             <a href="{{ path('mesto.okrug.oblast', {'id': okrug.id}) }}" title="Добавить Край\Область " > {{ okrug.name }} </a>
-                            {# {% endif %} #}
 
                         </td>
                         <td>        
@@ -71,5 +57,7 @@
             </tbody>
         </table>
     </div>
-
+    <div class="controls">
+        <a href="{{ path('mesto.okrug.create') }}" class="btn-my btn-success">Добавить   новые названия в БД</a>
+    </div>
 {% endblock %}

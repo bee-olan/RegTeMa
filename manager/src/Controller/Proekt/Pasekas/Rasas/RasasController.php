@@ -7,9 +7,10 @@ namespace App\Controller\Proekt\Pasekas\Rasas;
 use App\Annotation\Guid;
 use App\Model\Adminka\Entity\Rasas\Rasa;
 use App\Model\Adminka\UseCase\Rasas\Create;
-use App\Model\Adminka\UseCase\Rasas\Edit;
-use App\Model\Adminka\UseCase\Rasas\Remove;
+
+
 use App\ReadModel\Adminka\Rasas\RasaFetcher;
+
 use App\Controller\ErrorHandler;
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -51,12 +52,12 @@ class RasasController extends AbstractController
     /**
      * @Route("/plemmatka", name=".plemmatka")
      * @param RasaFetcher $fetcher
+
      * @return Response
      */
     public function plemmatka(RasaFetcher $fetcher): Response
     {
         $rasas = $fetcher->all();
-        //dd($rasas);
 
 
         return $this->render('proekt/pasekas/rasas/plemmatka.html.twig',

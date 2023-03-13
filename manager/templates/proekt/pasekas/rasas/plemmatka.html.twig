@@ -12,12 +12,7 @@
 {#    <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Пункты 1-3</a>#}
     <span class="aktiv ">Выбoр Расы</span> 
 {% endblock %}
-{# {% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        <li class="breadcrumb-item active">Расы зарегистрированные</li>
-    </ol>
-{% endblock %} #}
+
 
 {% block bodyy %}
 
@@ -28,7 +23,7 @@
 
         <div class="proekts-plr  ">
 
-            <h1 class="ras__title  ">Расы зарегистрированные в БД, жмём на нужное сокращенное название</h1>
+            <h1 class="ras__title  ">Расы зарегистрированные в БД, жмём на нужное сокращенное название!</h1>
 
             {% for rasa in rasas %}
 
@@ -45,5 +40,8 @@
             {% endfor %}
         </div>
     </div><!-- rasas -->
+
+
+
 
 {% endblock %}

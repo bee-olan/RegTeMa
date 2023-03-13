@@ -6,14 +6,10 @@
 {% block breadcrumbs %}
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-{#        <li class="breadcrumb-item"><a href="{{ path('rabota.u4astniki.mestos.mesto') }}">Номер места расп-ния</a></li>#}
-{#         <li class="breadcrumb-item"><a href="{{ path('rabota.u4astniki.mestos.mesto') }}">Округ</a></li>#}
-         {# <li class="breadcrumb-item">{{ okrug.name }}</li> #}
-         <li class="breadcrumb-item active"> {{ oblast.name }} 
-        </li> 
-{#		<li class="breadcrumb-item active"> <a href="{{ path('mesto.okrug.oblast.raion.create',#}
-{#            {'id': oblast.id}) }}" > Добавить Район </a>#}
-{#        </li>#}
+         <li class="breadcrumb-item active"> {{ oblast.name }} </li>
+		<li class="breadcrumb-item active"> <a href="{{ path('mesto.okrug.oblast.raion.create',
+            {'id': oblast.id}) }}" > Добавить Район </a>
+        </li>
     </ol>
 {% endblock %}
 
@@ -21,12 +17,6 @@
 
 
  <h2>{{ oblast.nomer }} - {{ oblast.name }}</h2>
-
-    <div class="controls">  
-        <a href="{{ path('mesto.okrug.oblast.raion.create',
-            {'id': oblast.id}) }}" class="btn btn-success">Добавить Районы
-        </a>
-    </div>
 
     <div class="box">
         <table class="table table-bordered table-hover">
@@ -43,12 +33,7 @@
              {% for raion in raions %}
                 <tr>
                     <td>{{ raion.nomer }}</td>
-
-                    <td>
-
-                        {{ raion.name }} 
-                    </td>                
-                    
+                    <td> {{ raion.name }} </td>
                    <td>{{ raion.mesto }}</td>
                     <td>
                          <div class="d-flex flex-row">
@@ -64,5 +49,9 @@
             </tbody>
         </table>
     </div>
-
+    <div class="controls">
+        <a href="{{ path('mesto.okrug.oblast.raion.create',
+            {'id': oblast.id}) }}" class="btn-my btn-success">Добавить Районы
+        </a>
+    </div>
 {% endblock %}

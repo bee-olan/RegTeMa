@@ -9,7 +9,7 @@
 {% block kroxii %}
             <a href="{{ path('proekt') }}">Главная</a>
             <a href="{{ path('proekt.mestoo.inform') }}">НомерМеста</a>
-            <span class="aktiv">Информация</span>   
+            <span class="aktiv">Информация</span>
 {% endblock %}
 
 {% block bodyy %}
@@ -26,42 +26,42 @@
         </div>
 
        <div class = "wstavka__title ">
-            Номера мест расположения пасек участников проекта 
-        </div> 
+            Номера мест расположения пасек участников проекта
+        </div>
     </div>
 
     <div class="proekts-plr">
         <div class="ramka">
 
             {% for mestonom in fetcher %}
-                <div class = "ramka__mesto-nomer">		
+                <div class = "ramka__mesto-nomer">
                     {{ mestonom.mestonomer  }}
                 </div>
             {% endfor %}
         </div>
 
-        {% if mestonomer %} 
+        {% if mestonomer %}
             <h2 class = "pagee__title "><strong class = "strongo--name-nike">{{ last }},</strong>  Вы определились с НомерМестом - номер места расположения Вашей пасеки  </h2>
             <div class="ramka">
                 <div class = "ramka__mesto-nomer mestoo__nomer-text">
                     {{ mestonomer.nomer }}
                 </div>
-            </div> 
+            </div>
             <div class="ramka">
                 <div class = "personaa__title ">Перейти на страничку
                     <a  href= "{{ path('proekt.pasekas.uchasties.uchastiee') }}">
                            Стать участником
                     </a>
                 </div>
-            </div>        
-        {% else %} 
-            <h2 class = "pagee__title ">Вам, для участия в проекте,  нужно определиться  
-            с номером места нахождения Вашей пасеки.<br> Можно отсюда 
-            <a href="{{ path('proekt.mestoo.okrugs') }}">перейти по ссылке </a> 
+            </div>
+        {% else %}
+            <h2 class = "pagee__title ">Вам, для участия в проекте,  нужно определиться
+            с номером места нахождения Вашей пасеки.<br> Можно отсюда
+            <a href="{{ path('proekt.mestoo.okrugs') }}">перейти по ссылке </a>
               или <br>
             в верхнем меню выбрать:  <strong class = "strongo strongo--krox"  >НомерМеста ->Найти НомерМеста.</strong>
             </h2>
         {% endif %}
     </div>
-</div>        
+</div>
 {% endblock %}

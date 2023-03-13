@@ -35,7 +35,7 @@ class SidebarMenu
                 ['pattern' => '/^proekt\..+/']
             ])
 //            ->setExtra('icon', 'nav-icon icon-briefcase')
-            ->setExtra('image', '../assets/images/uchastie.jpg')
+//            ->setExtra('image', '../assets/images/uchastie.jpg')
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 
@@ -49,7 +49,7 @@ class SidebarMenu
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 
-        $menu->addChild('Сезоны (добавить)', ['route' => 'adminka.sezons.godas'])
+        $menu->addChild('Сезоны (+)', ['route' => 'adminka.sezons.godas'])
             ->setExtra('routes', [
                 ['route' => 'adminka.sezons.godas'],
                 ['pattern' => '/^adminka\.sezons.godas\..+/']
@@ -65,7 +65,7 @@ class SidebarMenu
         if ($this->auth->isGranted('ROLE_ADMINKA_MANAGE_UCHASTIES')) {
 
 
-            $menu->addChild('Участники!!!!', ['route' => 'adminka.uchasties'])
+            $menu->addChild('Участники!', ['route' => 'adminka.uchasties'])
                 ->setExtra('routes', [
                     ['route' => 'adminka.uchasties'],
                     ['pattern' => '/^adminka\.uchasties\..+/']
@@ -97,11 +97,12 @@ class SidebarMenu
 
 
 
-        $menu->addChild('Р а б о т а')->setAttribute('class', 'nav-title');
+        $menu->addChild('Зарегистрированы')
+            ->setAttribute('class', 'nav-title')
+            ->setLinkAttribute('class', 'nav-link')
+        ;
 
 
-
-        $menu->addChild('Control')->setAttribute('class', 'nav-title');
 
         if ($this->auth->isGranted('ROLE_MANAGE_USERS')) {
             $menu->addChild('Пользователи', ['route' => 'users'])
