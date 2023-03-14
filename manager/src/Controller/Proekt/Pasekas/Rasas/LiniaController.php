@@ -63,7 +63,7 @@ class LiniaController extends AbstractController
                                LiniaFetcher $linias,
                                CommentLiniaFetcher $comments,
                                Comment\AddLinia\Handler $commentHandler
-    ): Response
+                                ): Response
     {
         $commentCommand = new Comment\AddLinia\Command(
             $this->getUser()->getId(),

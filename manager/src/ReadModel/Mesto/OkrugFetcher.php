@@ -46,4 +46,27 @@ class OkrugFetcher
 
         return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
     }
+
+    public function allZajavkas(): array
+    {
+        $stmt = $this->connection->createQueryBuilder()
+            ->select(
+                'c.id',
+                'c.date',
+                'c.author_id',
+                'c.entity_type',
+                'c.entity_id',
+                'c.text',
+                'actor.name_last AS name'
+
+
+            )
+            ->from('comment_comments', 'c')
+            ->leftJoin('c', 'user_users', 'actor', 'c.author_id = actor.id')
+//            ->leftJoin('c', 'adminka_rasas', 'rasas', 'c.entity_id = rasas.id')
+            ->orderBy('date')
+            ->execute();
+
+        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
+    }
 }

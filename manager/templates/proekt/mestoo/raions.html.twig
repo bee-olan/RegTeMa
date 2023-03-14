@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block kroxii %}
-            <a href="{{ path('home') }}">Главная</a>
+            <a href="{{ path('proekt') }}">Главная</a>
             <a href="{{ path('proekt.mestoo.inform') }}">НомерМеста</a>
             <a href="{{ path('proekt.mestoo.okrugs', {'okrug_id': okrug.id} ) }}">Номера Округов</a>
             <a href="{{ path('proekt.mestoo.oblasts', {'oblast_id': oblast.id, 'okrug_id': okrug.id} ) }}">Номера Регионов/Областей</a>
@@ -137,7 +137,7 @@
                                 </div>
                                 <img class="direct-chat-img" src="{{ gravatar(comment.author_email, 40) }}" alt="">
                                 <div class="direct-chat-text">
-                                    {{ comment.text|markdown|purify|work_processor }}
+                                    {{ comment.text|markdown|purify|adminka_processor }}
                                     {% if is_granted('manage', comment) %}
                                         <div class="controls-m">
                                             <a href="{{ path('proekt.mestoo.commentr.edit', {'oblast_id': oblast.id, 'id': comment.id}) }}"

@@ -39,9 +39,9 @@
     margin: 5px 0 0 50px;
     color: #444444;
 
-    &--rasa {
-        background: rgba($color-rasa, .2);
-    }
+        &--rasa {
+            background-color:  $color-rasa; //  rgba($color-rasa, .2);
+        }
 }
 .direct-chat-text:after,
 .direct-chat-text:before {

@@ -18,7 +18,7 @@ class Form extends AbstractType
                 'label' => 'Запрос :  ',
                 'attr' => [
                     'rows' => 3,
-                    'placeholder' => 'Название тут'
+                    'placeholder' => 'Округ - Регион/Область - Район '
                 ]]);
     }
 
