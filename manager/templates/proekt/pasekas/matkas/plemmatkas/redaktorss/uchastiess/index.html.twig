@@ -9,6 +9,7 @@
 <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id})  }}">{{ plemmatka.name }}</a>
 <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id})  }}">Редактировать</a>
 <span class="aktiv ">Добавить сезон</span>
+{% endblock %}
 
 {% block bodyy %}
 
@@ -64,7 +65,7 @@
 
 
 
-    <div class="box">
+    {# <div class="box">
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
@@ -79,7 +80,6 @@
             {% for uchastnik in uchastniks %}
                 <tr>
                     <td>
-{#                        <a href="{{ path('paseka.uchasties.show', {'id': uchastnik.uchastie.id}) }}" target="_blank" class="pull-right"><span class="fa fa-external-link"></span></a>#}
                         {{ uchastnik.uchastie.nike }}  ( {{ uchastnik.uchastie.name.full }} )
                     </td>
                     <td>
@@ -98,17 +98,13 @@
                     </td>
                     <td>
                         <div class="d-flex flex-row">
-{#                            <a href="{{ path('paseka.matkas.plemmatka.redaktors.uchasties.edit', {'plemmatka_id': plemmatka.id, 'uchastie_id': uchastnik.uchastie.id}) }}" class="btn btn-sm btn-primary mr-1"><span class="fa fa-pencil"></span></a>#}
-{#                            <form action="{{ path('paseka.matkas.plemmatka.redaktors.uchasties.revoke', {'plemmatka_id': plemmatka.id, 'uchastie_id': uchastnik.uchastie.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">#}
-{#                                <input type="hidden" name="token" value="{{ token }}" />#}
-{#                                <button type="submit" class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>#}
-{#                            </form>#}
+
                         </div>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-    </div>
+    </div> #}
 
 {% endblock %}
