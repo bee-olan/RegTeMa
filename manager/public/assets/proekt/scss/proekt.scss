@@ -1,5 +1,6 @@
 @import "variabproekt";
 @import "mixins";
+// @import "font-awesome/scss/font-awesome";
 @import "vendor/reset";
 
 html {
@@ -85,6 +86,8 @@ pre {
 
 @import "page/proekts/proekts";
 @import "page/proekts/proekt-text";
+
+@import "page/stories/stories";
 
 @import "page/wstavka/wstavka";
 @import "page/ramka/ramka";

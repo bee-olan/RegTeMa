@@ -3,6 +3,8 @@
 
 namespace App\DataFixtures\Mesto;
 
+//use App\Model\Paseka\Entity\Rasas\Rasa;
+//use App\Model\Paseka\Entity\Rasas\Id;
 
 use App\Model\Mesto\Entity\Okrugs\Okrug;
 use App\Model\Mesto\Entity\Okrugs\Id;
@@ -14,7 +16,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 class OkrugFixtures extends Fixture
 {
     public const REFERENCE_PRIWOL= 'mesto_okrug_priwol';
-    public const REFERENCE_UGG= 'mesto_okrug_ugg';
+    public const REFERENCE_UGG= 'mesto_okrug_$ugg';
 
     public function load(ObjectManager $manager): void
     {
@@ -46,7 +48,7 @@ class OkrugFixtures extends Fixture
             '4'
         );
         $manager->persist($priwol);
-//        $this->setReference(self::REFERENCE_PRIWOL, $priwol);
+        //$this->setReference(self::REFERENCE_PRIWOL, $priwol);
 
         $priwol = new Okrug(
             Id::next(),
