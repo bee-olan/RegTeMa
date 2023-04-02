@@ -7,6 +7,10 @@
     //background-color: transparent;
     box-shadow: 0 15px 25px rgba($black, .35);
     border-radius: 5px;
+
+    &--bac-col{
+      background-color: #9a8aec;;
+    }
   }
   .matka__header{
     margin: 0 0 2.5rem;
@@ -68,10 +72,11 @@
   }
 .matka__kateg{
   color: $mat-col-text;
-  &:hover {
-    opacity: 1;
-    text-decoration: none;
-  color: $mat-fon-ul;
-  }
+
+    &:hover {
+      opacity: 1;
+      text-decoration: none;
+      color: $mat-fon-ul;
+    }
 }
   

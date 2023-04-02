@@ -14,14 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class Form extends AbstractType
 {
-    private $sparings;
-//    private $godaFetchers;
 
-    public function __construct(SparingFetcher $sparings)
-    {
-        $this->sparings = $sparings;
-//        $this->godaFetchers = $godaFetchers;
-    }
 
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -35,12 +28,6 @@ class Form extends AbstractType
                 'placeholder' => ' Подробное описание ДочьМатки'
                 ]])
 
-            ->add('sparing', Type\ChoiceType::class, [
-                'label' => 'Выбрать вид   облета  ',
-                'choices' => array_flip($this->sparings->assoc()),
-                'expanded' => true,
-                'multiple' => false,
-                ])
            // ->add('parent', Type\IntegerType::class, ['required' => false])
             ->add('plan_date', Type\DateType::class, [
                 'label' => 'Дата выхода ДочьМатки  ',

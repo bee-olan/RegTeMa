@@ -30,7 +30,6 @@ class Handler
     private $uchasties;
     private $plemmatkas;
     private $childmatkas;
-    private $sparings;
     private $personas;
     private $mestonomers;
     private $flusher;
@@ -39,7 +38,6 @@ class Handler
             UchastieRepository $uchasties, 
             PlemMatkaRepository $plemmatkas, 
             ChildMatkaRepository $childmatkas,
-            SparingRepository $sparings,
             PersonaRepository $personas,
             MestoNomerRepository $mestonomers,
             Flusher $flusher)
@@ -47,7 +45,6 @@ class Handler
         $this->uchasties = $uchasties;
         $this->plemmatkas = $plemmatkas;
         $this->childmatkas = $childmatkas;
-        $this->sparings = $sparings;
         $this->personas=$personas;
         $this->mestonomers=$mestonomers;
         $this->flusher = $flusher;
@@ -71,7 +68,6 @@ class Handler
 
         $plem=explode(" ",$plemmatka->getName() );
 
-        $sparing = $this->sparings->get(new SparingId($command->sparing));
         $command->godaVixod = (int)$command->plan_date->format('Y');
 
 
@@ -98,7 +94,7 @@ class Handler
             $command->priority,
             $command->name,
             $command->content,
-            $sparing,
+            $command->kolChild = 2,
             $command->godaVixod,
             $sezonPlem,
             $command->sezonChild=null

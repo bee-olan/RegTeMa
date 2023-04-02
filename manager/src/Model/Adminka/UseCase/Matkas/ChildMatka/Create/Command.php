@@ -53,10 +53,7 @@ class Command
      */
     public $priority;
 
-    /**
-     * @Assert\NotBlank()
-     */
-    public $sparing;
+
 
     /**
      * @var string

@@ -53,17 +53,17 @@ class PlemMatkaMenu
 //            ->setAttribute('class', 'nav-item')
 //            ->setLinkAttribute('class', 'nav-link');
 
-//        $menu
-//            ->addChild('Задачи!!', [
-//                'route' => 'adminka.matkas.plemmatka.tasks',
-//                'routeParameters' => ['plemmatka_id' => $options['plemmatka_id']]
-//            ])
-//            ->setExtra('routes', [
-//                ['route' => 'adminka.matkas.plemmatka.tasks'],
-//                ['pattern' => '/^adminka.matkas.plemmatka.tasks\..+/']
-//            ])
-//            ->setAttribute('class', 'nav-item')
-//            ->setLinkAttribute('class', 'nav-link');
+        $menu
+            ->addChild('Добавить ДочьМатку!!', [
+                'route' => 'adminka.matkas.plemmatka.childmatkas',
+                'routeParameters' => ['plemmatka_id' => $options['plemmatka_id']]
+            ])
+            ->setExtra('routes', [
+                ['route' => 'adminka.matkas.plemmatka.childmatkas'],
+                ['pattern' => '/^adminka.matkas.plemmatka.childmatkas\..+/']
+            ])
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
 
 //        $menu
 //            ->addChild('Calendar', [

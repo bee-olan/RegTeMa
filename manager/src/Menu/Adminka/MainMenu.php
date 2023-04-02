@@ -25,7 +25,7 @@ class MainMenu
             ->setChildrenAttributes(['class' => 'nav nav-tabs mb-4']);
 
         $menu
-            ->addChild('Матки ', ['route' => 'adminka.matkas'])
+            ->addChild('ПлемМатки ', ['route' => 'adminka.matkas'])
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 
@@ -38,26 +38,6 @@ class MainMenu
             ->setAttribute('class', 'nav-item ')
             ->setLinkAttribute('class', 'nav-link ');
 
-
-        
-//        $menu
-//            ->addChild('Actions', ['route' => 'adminka.matkas.actions'])
-//            ->setAttribute('class', 'nav-item')
-//            ->setLinkAttribute('class', 'nav-link');
-//
-//        $menu
-//            ->addChild('Tasks', ['route' => 'adminka.matkas.tasks'])
-//            ->setExtra('routes', [
-//                ['route' => 'adminka.matkas.tasks'],
-//                ['pattern' => '/^adminka.matkas.tasks\..+/']
-//            ])
-//            ->setAttribute('class', 'nav-item')
-//            ->setLinkAttribute('class', 'nav-link');
-//
-//        $menu
-//            ->addChild('Calendar', ['route' => 'adminka.matkas.calendar'])
-//            ->setAttribute('class', 'nav-item')
-//            ->setLinkAttribute('class', 'nav-link');
     
         if ($this->auth->isGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS')) {
 
@@ -81,6 +61,15 @@ class MainMenu
                 ->setAttribute('class', 'nav-item')
                 ->setLinkAttribute('class', 'nav-link');
         }
+
+        $menu
+            ->addChild('ДочьМатки', ['route' => 'adminka.matkas.childmatkas'])
+            ->setExtra('routes', [
+                ['route' => 'adminka.matkas.childmatkas'],
+                ['pattern' => '/^adminka.matkas.childmatkas\..+/']
+            ])
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
 
         return $menu;
     }

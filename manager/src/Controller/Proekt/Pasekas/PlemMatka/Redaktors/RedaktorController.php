@@ -9,7 +9,8 @@ use App\Annotation\Guid;
 use  App\Model\Adminka\UseCase\Matkas\PlemMatka\Edit;
 use App\Model\Adminka\UseCase\Matkas\PlemMatka\Archive;
 use App\Model\Adminka\UseCase\Matkas\PlemMatka\Reinstate;
-
+use App\ReadModel\Adminka\Matkas\ChildMatka\CommentFetcher;
+use App\Model\Comment\UseCase\Comment;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 use App\Security\Voter\Adminka\Matkas\PlemMatkaAccess;
 use Psr\Log\LoggerInterface;
@@ -35,15 +36,24 @@ class RedaktorController extends AbstractController
     /**
      * @Route("/show", name=".show", requirements={"id"=Guid::PATTERN})
      * @param PlemMatka $plemmatka
+     * @param Request $request
+     * @param CommentFetcher $comments
+     * @param Comment\Create\Handler $commentHandler
      * @return Response
      */
-    public function show(PlemMatka $plemmatka): Response
+    public function show(PlemMatka $plemmatka,
+                         Request $request,
+                         CommentFetcher $comments,
+                         Comment\Create\Handler $commentHandler
+    ): Response
     {
 //dd($plemmatka);
 //        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
 
         return $this->render('proekt/pasekas/matkas/plemmatkas/redaktorss/show.html.twig', [
             'plemmatka' => $plemmatka,
+            'uchastniks' => $plemmatka->getUchastniks(),
+
         ]);
     }
 

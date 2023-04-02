@@ -191,14 +191,13 @@ class PlemMatkaFetcher
                 'p.status',
 //                'p.rasa_nom_id',
                 'p.goda_vixod ',
-                'pe.nomer as persona'
-//                's.name AS kategoria'
-                //,
-              //  'm.nomer as mestonomer'
+                'pe.nomer as persona',
+                'p.kategoria_id',
+                's.name AS kategoria'
             )
             ->from('admin_matkas_plemmatkas', 'p')
             ->innerJoin('p', 'adminka_uchasties_personas', 'pe', 'p.persona_id = pe.id')
-//            ->innerJoin('p', 'admin_matkas_kategorias', 's', 'p.kategoria_id = s.id')
+            ->innerJoin('p', 'admin_matkas_kategorias', 's', 'p.kategoria_id = s.id')
         ;
         if ($filter->uchastie) {
             $qb->andWhere('EXISTS (

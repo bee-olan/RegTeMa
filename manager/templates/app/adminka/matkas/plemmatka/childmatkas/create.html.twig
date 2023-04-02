@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Создать{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.matkas') }}">ПлемМатки - список</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.matkas.plemmatka.show', {'id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.matkas.plemmatka.childmatkas', {'plemmatka_id': plemmatka.id}) }}">ТестМатка</a></li>
+        <li class="breadcrumb-item active">Создать</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+    <div class="controls">
+         <h2>  К  <strong class="strongo strongo--kras">  {{ plemmatka.name }} </strong> сезон
+             {{ sezonPlem }}   добавить<strong class="strongo strongo--kras">   ДочьМатку </strong></h2>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <div>
+                <button type="submit" class="btn btn-primary">СОХРАНИТЬ</button>
+                <a href="{{ path('adminka.matkas') }}"
+                   class="btn-my btn-my--sm"> Выйти из режима "Добавить"</a>
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+{% endblock %}

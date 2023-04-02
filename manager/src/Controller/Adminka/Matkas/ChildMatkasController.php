@@ -1,0 +1,620 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Controller\Adminka\Matkas;
+
+use App\Model\Comment\UseCase\Comment;
+use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
+use App\Model\Adminka\UseCase\Matkas\ChildMatka\ChildOf;
+use App\Model\Adminka\UseCase\Matkas\ChildMatka\Edit;
+use App\Model\Adminka\UseCase\Matkas\ChildMatka\Executor;
+
+use App\Model\Adminka\UseCase\Matkas\ChildMatka\Plan;
+use App\Model\Adminka\UseCase\Matkas\ChildMatka\Priority;
+
+use App\Model\Adminka\UseCase\Matkas\ChildMatka\Remove;
+use App\Model\Adminka\UseCase\Matkas\ChildMatka\Start;
+use App\Model\Adminka\UseCase\Matkas\ChildMatka\Status;
+use App\Model\Adminka\UseCase\Matkas\ChildMatka\Take;
+use App\Model\Adminka\UseCase\Matkas\ChildMatka\TakeAndStart;
+use App\Model\Adminka\UseCase\Matkas\ChildMatka\Type;
+
+
+use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatka;
+
+use App\ReadModel\Adminka\Matkas\Actions\ActionFetcher;
+use App\ReadModel\Adminka\Matkas\Actions\Feed\Feed;
+use App\ReadModel\Adminka\Matkas\ChildMatka\ChildMatkaFetcher;
+use App\ReadModel\Adminka\Uchasties\Uchastie\UchastieFetcher;
+use App\ReadModel\Adminka\Matkas\ChildMatka\Filter;
+
+use App\ReadModel\Adminka\Matkas\ChildMatka\CommentFetcher;
+use App\Model\Adminka\UseCase\Matkas\ChildMatka\Files;
+
+use App\Service\Uploader\FileUploader;
+
+use App\Controller\ErrorHandler;
+use App\Security\Voter\Adminka\Matkas\ChildMatkaAccess;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+/**
+ * @Route("/adminka/matkas/childmatkas", name="adminka.matkas.childmatkas")
+ * @param Request $request
+ * @param ChildMatkaFetcher $childmatkas
+ * @return Response
+ */
+class ChildMatkasController extends AbstractController
+{
+    private const PER_PAGE = 50;
+
+    private $errors;
+
+    public function __construct(ErrorHandler $errors)
+    {
+        $this->errors = $errors;
+    }
+
+    /**
+     * @Route("", name="")
+     * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
+     * @param Request $request
+     * @param ChildMatkaFetcher $childmatkas
+     * @return Response
+     */
+    public function index(Request $request, ChildMatkaFetcher $childmatkas): Response
+    {
+         if ($this->isGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS')) {
+             $filter = Filter\Filter::all();
+         } else {
+            $filter = Filter\Filter::all()->forUchastie($this->getUser()->getId());
+        }
+//dd($filter);
+        $form = $this->createForm(Filter\Form::class, $filter);
+        $form->handleRequest($request);
+
+        $pagination = $childmatkas->all(
+            $filter,
+            $request->query->getInt('page', 1),
+            self::PER_PAGE,
+            $request->query->get('sort', 't.id'),
+            $request->query->get('direction', 'desc')
+        );
+
+        return $this->render('app/adminka/matkas/childmatkas/index.html.twig', [
+            'plemmatka' => null,
+            'pagination' => $pagination,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name=".edit")
+     * @param ChildMatka $childmatka
+     * @param Request $request
+     * @param Edit\Handler $handler
+     * @return Response
+     */
+    public function edit(ChildMatka $childmatka, Request $request, Edit\Handler $handler): Response
+    {
+        $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+
+        $command = Edit\Command::fromChildMatka($this->getUser()->getId(), $childmatka);
+
+        $form = $this->createForm(Edit\Form::class, $command);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $handler->handle($command);
+                return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+            } catch (\DomainException $e) {
+                $this->errors->handle($e);
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
+
+        return $this->render('app/adminka/matkas/childmatkas/edit.html.twig', [
+            'plemmatka' => $childmatka->getPlemMatka(),
+            'childmatka' => $childmatka,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/files", name=".files")
+     * @param ChildMatka $childmatka
+     * @param Request $request
+     * @param Files\Add\Handler $handler
+     * @param FileUploader $uploader
+     * @return Response
+     */
+    public function files(ChildMatka $childmatka, Request $request, Files\Add\Handler $handler, FileUploader $uploader): Response
+    {
+        $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+
+        $command = new Files\Add\Command($this->getUser()->getId(), $childmatka->getId()->getValue());
+
+        $form = $this->createForm(Files\Add\Form::class, $command);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $files = [];
+            foreach ($form->get('files')->getData() as $file) {
+                $uploaded = $uploader->upload($file);
+                $files[] = new Files\Add\File(
+                    $uploaded->getPath(),
+                    $uploaded->getName(),
+                    $uploaded->getSize()
+                );
+            }
+            $command->files = $files;
+            try {
+                $handler->handle($command);
+                return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+            } catch (\DomainException $e) {
+                $this->errors->handle($e);
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
+
+        return $this->render('app/adminka/matkas/childmatkas/files.html.twig', [
+            'plemmatka' => $childmatka->getPlemMatka(),
+            'childmatka' => $childmatka,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/files/{file_id}/delete", name=".files.delete", methods={"POST"})
+     * @ParamConverter("uchastie", options={"id" = "uchastie_id"})
+     * @param ChildMatka $childmatka
+     * @param string $file_id
+     * @param Request $request
+     * @param Files\Remove\Handler $handler
+     * @return Response
+     */
+    public function fileDelete(ChildMatka $childmatka, string $file_id, Request $request, Files\Remove\Handler $handler): Response
+    {
+        if (!$this->isCsrfTokenValid('revoke', $request->request->get('token'))) {
+            return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+        }
+
+//        $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+
+        $command = new Files\Remove\Command($this->getUser()->getId(), $childmatka->getId()->getValue(), $file_id);
+
+        try {
+            $handler->handle($command);
+        } catch (\DomainException $e) {
+            $this->errors->handle($e);
+            $this->addFlash('error', $e->getMessage());
+        }
+
+        return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+    }
+
+    /**
+     * @Route("/{id}/child", name=".child")
+     * @param ChildMatka $childmatka
+     * @param Request $request
+     * @param ChildOf\Handler $handler
+     * @return Response
+     */
+    public function childOf(ChildMatka $childmatka, Request $request, ChildOf\Handler $handler): Response
+    {
+        $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+
+        $command = ChildOf\Command::fromChildMatka($this->getUser()->getId(), $childmatka);
+
+        $form = $this->createForm(ChildOf\Form::class, $command);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $handler->handle($command);
+                return $this->redirectToRoute('adminka.plemmatkas.childmatkas.show', ['id' => $childmatka->getId()]);
+            } catch (\DomainException $e) {
+                $this->errors->handle($e);
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
+
+        return $this->render('app/adminka/matkas/childmatkas/child.html.twig', [
+            'plemmatka' => $childmatka->getPlemMatka(),
+            'childmatka' => $childmatka,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/assign", name=".assign")
+     * @param ChildMatka $childmatka
+     * @param Request $request
+     * @param Executor\Assign\Handler $handler
+     * @return Response
+     */
+    public function assign(ChildMatka $childmatka, Request $request, Executor\Assign\Handler $handler): Response
+    {
+        $plemmatka = $childmatka->getPlemMatka();
+        
+       // $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+
+        $command = new Executor\Assign\Command($this->getUser()->getId(), $childmatka->getId()->getValue());
+// dd  ($command);
+        $form = $this->createForm(Executor\Assign\Form::class, $command, ['plemmatka_id' => $plemmatka->getId()->getValue()]);
+      
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $handler->handle($command);
+                return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+            } catch (\DomainException $e) {
+                $this->errors->handle($e);
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
+
+        return $this->render('app/adminka/matkas/childmatkas/assign.html.twig', [
+            'plemmatka' => $plemmatka,
+            'childmatka' => $childmatka,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/revoke/{uchastie_id}", name=".revoke", methods={"POST"})
+     * @ParamConverter("uchastie", options={"id" = "uchastie_id"})
+     * @param ChildMatka $childmatka
+     * @param Uchastie $uchastie
+     * @param Request $request
+     * @param Executor\Revoke\Handler $handler
+     * @return Response
+     */
+    public function revoke(ChildMatka $childmatka, Uchastie $uchastie, Request $request, Executor\Revoke\Handler $handler): Response
+    {
+        if (!$this->isCsrfTokenValid('revoke', $request->request->get('token'))) {
+            return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+        }
+
+       // $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+
+        $command = new Executor\Revoke\Command(
+            $this->getUser()->getId(),
+            $childmatka->getId()->getValue(),
+            $uchastie->getId()->getValue()
+        );
+
+        try {
+            $handler->handle($command);
+        } catch (\DomainException $e) {
+            $this->errors->handle($e);
+            $this->addFlash('error', $e->getMessage());
+        }
+
+        return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+    }
+
+    /**
+     * @Route("/{id}/take", name=".take", methods={"POST"})
+     * @param ChildMatka $childmatka
+     * @param Request $request
+     * @param Take\Handler $handler
+     * @return Response
+     */
+    public function take(ChildMatka $childmatka, Request $request, Take\Handler $handler): Response
+    {
+        if (!$this->isCsrfTokenValid('take', $request->request->get('token'))) {
+            return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+        }
+
+//        $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+
+        $command = new Take\Command($this->getUser()->getId(), $childmatka->getId()->getValue());
+
+        try {
+            $handler->handle($command);
+        } catch (\DomainException $e) {
+            $this->errors->handle($e);
+            $this->addFlash('error', $e->getMessage());
+        }
+
+        return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+    }
+
+    /**
+     * @Route("/{id}/take/start", name=".take_and_start", methods={"POST"})
+     * @param ChildMatka $childmatka
+     * @param Request $request
+     * @param TakeAndStart\Handler $handler
+     * @return Response
+     */
+    public function takeAndStart(ChildMatka $childmatka, Request $request, TakeAndStart\Handler $handler): Response
+    {
+        if (!$this->isCsrfTokenValid('take-and-start', $request->request->get('token'))) {
+            return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+        }
+
+        //$this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+
+        $command = new TakeAndStart\Command($this->getUser()->getId(), $childmatka->getId()->getValue());
+
+        try {
+            $handler->handle($command);
+        } catch (\DomainException $e) {
+            $this->errors->handle($e);
+            $this->addFlash('error', $e->getMessage());
+        }
+
+        return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+    }
+
+    /**
+     * @Route("/{id}/start", name=".start", methods={"POST"})
+     * @param ChildMatka $childmatka
+     * @param Request $request
+     * @param Start\Handler $handler
+     * @return Response
+     */
+    public function start(ChildMatka $childmatka, Request $request, Start\Handler $handler): Response
+    {
+        if (!$this->isCsrfTokenValid('start', $request->request->get('token'))) {
+            return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+        }
+
+        //$this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+
+        $command = new Start\Command($this->getUser()->getId(), $childmatka->getId()->getValue());
+
+        try {
+            $handler->handle($command);
+        } catch (\DomainException $e) {
+            $this->errors->handle($e);
+            $this->addFlash('error', $e->getMessage());
+        }
+
+        return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+    }
+
+//    /**
+//     * @Route("/{id}/move", name=".move")
+//     * @param ChildMatka $childmatka
+//     * @param Request $request
+//     * @param Move\Handler $handler
+//     * @return Response
+//     */
+//    public function move(ChildMatka $childmatka, Request $request, Move\Handler $handler): Response
+//    {
+//       // $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+//
+//        $command = Move\Command::fromChildMatka($this->getUser()->getId(), $childmatka);
+//
+//        $form = $this->createForm(Move\Form::class, $command);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            try {
+//                $handler->handle($command);
+//                return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+//            } catch (\DomainException $e) {
+//                $this->errors->handle($e);
+//                $this->addFlash('error', $e->getMessage());
+//            }
+//        }
+//
+//        return $this->render('app/adminka/plemmatkas/childmatkas/move.html.twig', [
+//            'plemmatka' => $childmatka->getPlemMatka(),
+//            'childmatka' => $childmatka,
+//            'form' => $form->createView(),
+//        ]);
+//    }
+
+    /**
+     * @Route("/{id}/plan", name=".plan")
+     * @param ChildMatka $childmatka
+     * @param Request $request
+     * @param Plan\Set\Handler $handler
+     * @return Response
+     */
+    public function plan(ChildMatka $childmatka, Request $request, Plan\Set\Handler $handler): Response
+    {
+       // $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+
+        $command = Plan\Set\Command::fromChildMatka($this->getUser()->getId(), $childmatka);
+
+        $form = $this->createForm(Plan\Set\Form::class, $command);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $handler->handle($command);
+                return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+            } catch (\DomainException $e) {
+                $this->errors->handle($e);
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
+
+        return $this->render('app/adminka/matkas/childmatkas/plan.html.twig', [
+            'plemmatka' => $childmatka->getPlemMatka(),
+            'childmatka' => $childmatka,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/plan/remove", name=".plan.remove", methods={"POST"})
+     * @param ChildMatka $childmatka
+     * @param Request $request
+     * @param Plan\Remove\Handler $handler
+     * @return Response
+     */
+    public function removePlan(ChildMatka $childmatka, Request $request, Plan\Remove\Handler $handler): Response
+    {
+        if (!$this->isCsrfTokenValid('remove-plan', $request->request->get('token'))) {
+            return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+        }
+
+        $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+
+        $command = new Plan\Remove\Command($this->getUser()->getId(), $childmatka->getId()->getValue());
+
+        try {
+            $handler->handle($command);
+        } catch (\DomainException $e) {
+            $this->errors->handle($e);
+            $this->addFlash('error', $e->getMessage());
+        }
+
+        return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+    }
+
+    /**
+     * @Route("/{id}/delete", name=".delete", methods={"POST"})
+     * @param ChildMatka $childmatka
+     * @param Request $request
+     * @param Remove\Handler $handler
+     * @return Response
+     */
+    public function delete(ChildMatka $childmatka, Request $request, Remove\Handler $handler): Response
+    {
+        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+            return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+        }
+
+        $this->denyAccessUnlessGranted(ChildMatkaAccess::DELETE, $childmatka);
+
+        $command = new Remove\Command($childmatka->getId()->getValue());
+
+        try {
+            $handler->handle($command);
+        } catch (\DomainException $e) {
+            $this->errors->handle($e);
+            $this->addFlash('error', $e->getMessage());
+        }
+
+        return $this->redirectToRoute('adminka.matkas.childmatkas');
+    }
+
+    /**
+     * @Route("/{id}", name=".show", requirements={"id"="\d+"}))
+     * @param ChildMatka $childmatka
+     * @param Request $request
+     * @param UchastieFetcher $uchasties
+     * @param ChildMatkaFetcher $childmatkas
+     * @param CommentFetcher $comments
+     * @param ActionFetcher $actions
+     * @param Status\Handler $statusHandler
+     * @param Type\Handler $typeHandler
+     * @param Priority\Handler $priorityHandler
+     * @param Comment\Create\Handler
+     * @return Response
+     */
+    public function show(
+        ChildMatka $childmatka,
+        Request $request,
+        UchastieFetcher $uchasties,
+        ChildMatkaFetcher $childmatkas,
+        CommentFetcher $comments,
+       ActionFetcher $actions,
+        Status\Handler $statusHandler,
+        Type\Handler $typeHandler,
+        Priority\Handler $priorityHandler,
+        Comment\Create\Handler $commentHandler
+    ): Response
+    {
+//        $this->denyAccessUnlessGranted(ChildMatkaAccess::VIEW, $childmatka);
+
+        if (!$uchastie = $uchasties->find($this->getUser()->getId())) {
+            throw $this->createAccessDeniedException();
+        }
+
+
+        $statusCommand = Status\Command::fromChildMatka($this->getUser()->getId(), $childmatka);
+
+        $statusForm = $this->createForm(Status\Form::class, $statusCommand);
+
+        $statusForm->handleRequest($request);
+
+        if ($statusForm->isSubmitted() && $statusForm->isValid()) {
+            try {
+                $statusHandler->handle($statusCommand);
+                return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+            } catch (\DomainException $e) {
+                $this->errors->handle($e);
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
+
+
+
+        $typeCommand = Type\Command::fromChildMatka($this->getUser()->getId(), $childmatka);
+        $typeForm = $this->createForm(Type\Form::class, $typeCommand);
+        $typeForm->handleRequest($request);
+        if ($typeForm->isSubmitted() && $typeForm->isValid()) {
+            try {
+                $typeHandler->handle($typeCommand);
+                return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+            } catch (\DomainException $e) {
+                $this->errors->handle($e);
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
+
+        $priorityCommand = Priority\Command::fromChildMatka($this->getUser()->getId(), $childmatka);
+        $priorityForm = $this->createForm(Priority\Form::class, $priorityCommand);
+        $priorityForm->handleRequest($request);
+        if ($priorityForm->isSubmitted() && $priorityForm->isValid()) {
+            try {
+                $priorityHandler->handle($priorityCommand);
+                return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+            } catch (\DomainException $e) {
+                $this->errors->handle($e);
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
+
+        $commentCommand = new Comment\Create\Command(
+            $this->getUser()->getId(),
+            ChildMatka::class,
+            (string)$childmatka->getId()->getValue()
+        );
+
+        $commentForm = $this->createForm(Comment\Create\Form::class, $commentCommand);
+        $commentForm->handleRequest($request);
+        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+            try {
+                $commentHandler->handle($commentCommand);
+                return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+            } catch (\DomainException $e) {
+                $this->errors->handle($e);
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
+
+//        $feed = new Feed(
+//            $actions->allForChildMatka($childmatka->getId()->getValue()),
+//            $comments->allForChildMatka($childmatka->getId()->getValue())
+//        );
+
+
+        return $this->render('app/adminka/matkas/childmatkas/show.html.twig', [
+            'plemmatka' => $childmatka->getPlemMatka(),
+            'childmatka' => $childmatka,
+            'uchastie' => $uchastie,
+            'children' => $childmatkas->childrenOf($childmatka->getId()->getValue()),
+            'comments' => $comments->allForChildMatka($childmatka->getId()->getValue()),
+//            'feed' => $feed,
+            'statusForm' => $statusForm->createView(),
+            'typeForm' => $typeForm->createView(),
+            'priorityForm' => $priorityForm->createView(),
+            'commentForm' => $commentForm->createView(),
+        ]);
+    }
+}

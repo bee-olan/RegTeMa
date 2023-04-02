@@ -29,7 +29,10 @@ class PlemMatkaController extends AbstractController
     {
         $this->denyAccessUnlessGranted(PlemMatkaAccess::VIEW, $plemmatka);
 
-        return $this->render('app/adminka/matkas/plemmatka/show.html.twig', compact('plemmatka'));
+        return $this->render('app/adminka/matkas/plemmatka/show.html.twig', [
+            'plemmatka' => $plemmatka,
+            'uchastniks' => $plemmatka->getUchastniks(),
+        ]);
     }
 }
 //    /**
