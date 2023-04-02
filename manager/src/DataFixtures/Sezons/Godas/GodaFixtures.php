@@ -15,26 +15,26 @@ class GodaFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
-        $sezon2020 = new Goda(
+        $sezon2015 = new Goda(
             Id::next(),
-            2020,
-            '2020-2021'
+            2015,
+            '2015-2016'
         );
-        $manager->persist($sezon2020);
+        $manager->persist($sezon2015);
 
-        $sezon2021 = new Goda(
-            Id::next(),
-            2021,
-            '2021-2022'
-        );
-        $manager->persist($sezon2021);
-
-        $sezon2022 = new Goda(
-            Id::next(),
-            2022,
-            '2022-2023'
-        );
-        $manager->persist($sezon2022);
+//        $sezon2021 = new Goda(
+//            Id::next(),
+//            2021,
+//            '2021-2022'
+//        );
+//        $manager->persist($sezon2021);
+//
+//        $sezon2022 = new Goda(
+//            Id::next(),
+//            2022,
+//            '2022-2023'
+//        );
+//        $manager->persist($sezon2022);
 
         $manager->flush();
     }

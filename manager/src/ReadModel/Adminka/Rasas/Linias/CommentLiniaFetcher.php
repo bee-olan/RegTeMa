@@ -30,9 +30,11 @@ class CommentLiniaFetcher
                 'm.id AS author_id',
                 'TRIM(CONCAT(m.name_first, \' \', m.name_last)) AS author_name',
                 'm.email AS author_email',
+                'u.nike as author_nike',
                 'c.text'
             )
             ->from('comment_comments', 'c')
+            ->innerJoin('c', 'admin_uchasties_uchasties', 'u', 'c.author_id = u.id')
             ->innerJoin('c', 'user_users', 'm', 'c.author_id = m.id')
             ->andWhere('c.entity_type = :entity_type AND c.entity_id = :entity_id')
             ->setParameter(':entity_type', Rasa::class)

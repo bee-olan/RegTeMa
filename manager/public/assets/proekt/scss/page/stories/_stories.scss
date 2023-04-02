@@ -1,21 +1,19 @@
 @import url(http://fonts.googleapis.com/css?family=Oleo+Script);
  
 .storie-main{
-    // margin-top: -3rem;
-    // margin-bottom: 2rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+   margin-top: -6.7rem;
+
 }
 .osnowa{
-
+padding-bottom: 5rem;
  background-color: rgb(119,122,77);
  background: -webkit-linear-gradient(-45deg, 
  rgb(119,122,77) 25%,
- rgb(88,92,42) 25%, 
- rgb(88,92,42) 50%, 
+ rgb(175, 169, 112) 25%, 
+ #ccb44b 50%, 
  rgb(119,122,77) 50%, 
  rgb(119,122,77) 75%, 
- rgb(88,92,42) 75%);
+ rgb(175, 169, 112) 75%);
  background-size:4px 4px;
 }
  
@@ -25,9 +23,9 @@
  font-size: 6.250em;
  color: transparent; /*это скроет текст*/
  letter-spacing: 0.1em;
- text-shadow:
+ text-shadow: 0 1px 5px #ccb44b ,
  /*это реальный цвет текста - просто размытый*/
- 0 1px 5px rgb(88,92,42),
+//  0 1px 5px rgb(88,92,42),
   
  /* это темные тени для вставки
 , вторая из которых придает более четкий вид и глубину верхней части букв*/
@@ -115,6 +113,10 @@
     position: absolute;
     left: 0;
     z-index: 3;
+
+    &--rln{
+        color: $blue-text;
+    }
 }
 
 .stories__title {

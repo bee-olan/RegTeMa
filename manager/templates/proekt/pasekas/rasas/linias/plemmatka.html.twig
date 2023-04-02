@@ -84,7 +84,7 @@
                             {% for comment in comments %}
                                 <div class="direct-chat-msg">
                                     <div class="direct-chat-info clearfix">
-                                        <span class="direct-chat-name pull-left">{{ comment.author_name }}</span>
+                                        <span class="direct-chat-name pull-left">{{ comment.author_nike }}</span>
                                         <span class="direct-chat-timestamp pull-right">{{ comment.date|date('Y-m-d H:i:s') }}</span>
                                     </div>
                                     <img class="direct-chat-img" src="{{ gravatar(comment.author_email, 40) }}" alt="">

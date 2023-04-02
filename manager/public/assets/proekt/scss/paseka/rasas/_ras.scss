@@ -41,21 +41,16 @@
 }
 
 .ras__name {
-  // display: flex; // добавляем т.к добаилась li-шка
-  //width: 20.0rem;
-  // color: $text-uchastie;
+      border-bottom: 1px solid $rasa-color; // linia
+      padding: .6rem 2rem;
 
-  border-bottom: 1px solid $rasa-color; // linia
+      &--widt {
+        width: 35.0rem;
+      }
 
-  padding: .6rem 2rem;
-
-  &--widt {
-    width: 20.0rem;
-  }
-
-  &--widt10 {
-    width: 15.0rem;
-  }
+      &--widt10 {
+        width: 15.0rem;
+      }
 
 
 }
