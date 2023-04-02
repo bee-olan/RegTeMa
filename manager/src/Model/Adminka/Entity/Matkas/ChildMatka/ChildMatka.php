@@ -35,7 +35,7 @@ class ChildMatka
     /**
      * @var Id
      * @ORM\Column(type="admin_matkas_childmatka_id")
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\SequenceGenerator(sequenceName="admin_matkas_childmatkas_seq", initialValue=1)
      * @ORM\Id
      */

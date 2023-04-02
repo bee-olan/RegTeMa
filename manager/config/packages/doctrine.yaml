@@ -17,7 +17,7 @@ doctrine:
 
         url: '%env(resolve:DATABASE_URL)%'
 
-        schema_filter: '~^(?!work_projects_tasks_seq)~'
+        schema_filter: '~^(?!admin_matkas_childmatkas_seq)~'
 
         types:
             user_user_id: 'App\Model\User\Entity\User\IdType'
