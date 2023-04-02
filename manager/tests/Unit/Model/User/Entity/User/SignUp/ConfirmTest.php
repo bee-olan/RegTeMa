@@ -26,7 +26,7 @@ class ConfirmTest extends TestCase
         $user = (new UserBuilder())->viaEmail()->build();
 
         $user->confirmSignUp();
-        $this->expectExceptionMessage('User is already confirmed.');
+        $this->expectExceptionMessage('Пользователь уже подтвержден.');
         $user->confirmSignUp();
     }
 }

@@ -10,7 +10,6 @@ use App\Model\Adminka\Entity\Matkas\ChildMatka\Status;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\Type;
 
 //use App\Model\Adminka\Entity\Matkas\PlemMatka\Status;
-use App\Model\Adminka\Entity\Matkas\Sparings\Sparing;
 use App\Tests\Builder\Adminka\Matkas\KategoriaBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\LiniaBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\NomerBuilder;
@@ -18,7 +17,6 @@ use App\Tests\Builder\Adminka\Matkas\PersonaBuilder;
 use App\Tests\Builder\Adminka\Matkas\PlemMatkaBuilder;
 use App\Tests\Builder\Adminka\Matkas\MestoNomerBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\RasaBuilder;
-use App\Tests\Builder\Adminka\Matkas\SparingBuilder;
 use App\Tests\Builder\Adminka\Uchasties\GroupBuilder;
 use App\Tests\Builder\Adminka\Uchasties\UchastieBuilder;
 use PHPUnit\Framework\TestCase;
@@ -30,7 +28,7 @@ class CreateTest extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
+//        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
@@ -49,7 +47,7 @@ class CreateTest extends TestCase
             $priority = 2,
             $name = 'Test ChildMatka',
             $content = 'Test Content',
-             $sparing,
+            $kolChild = 2,
              $godaVixod = 2020,
             $sezonPlem = '2020-2021',
                  $sezonChild = '2022-2023'
@@ -65,7 +63,7 @@ class CreateTest extends TestCase
         self::assertEquals($priority, $childmatka->getPriority());
         self::assertEquals($name, $childmatka->getName());
         self::assertEquals($content, $childmatka->getContent());
-        self::assertEquals($sparing, $childmatka->getSparing());
+
         self::assertEquals($sezonPlem, $childmatka->getSezonPlem());
         self::assertEquals($sezonChild, $childmatka->getSezonChild());
 

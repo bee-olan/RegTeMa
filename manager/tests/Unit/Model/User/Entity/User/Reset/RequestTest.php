@@ -31,7 +31,7 @@ class RequestTest extends TestCase
 
         $user->requestPasswordReset($token, $now);
 
-        $this->expectExceptionMessage('Resetting is already requested.');
+        $this->expectExceptionMessage('Сброс уже запрошен.');
         $user->requestPasswordReset($token, $now);
     }
 
@@ -59,7 +59,7 @@ class RequestTest extends TestCase
 
         $user = (new UserBuilder())->viaEmail()->build();
 
-        $this->expectExceptionMessage('User is not active.');
+        $this->expectExceptionMessage('Пользователь не активен.');
         $user->requestPasswordReset($token, $now);
     }
 
@@ -70,7 +70,7 @@ class RequestTest extends TestCase
 
         $user = (new UserBuilder())->viaNetwork()->build();
 
-        $this->expectExceptionMessage('Email is not specified.');
+        $this->expectExceptionMessage('Адрес электронной почты не указан.');
         $user->requestPasswordReset($token, $now);
     }
 }

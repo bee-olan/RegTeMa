@@ -4,7 +4,6 @@ namespace App\Tests\Builder\Adminka\Matkas;
 
 namespace App\Tests\Unit\Model\Adminka\Entity\Matkas\ChildMatka;
 
-
 use App\Model\Adminka\Entity\Matkas\ChildMatka\Type;
 use App\Tests\Builder\Adminka\Matkas\ChildMatkaBuilder;
 use App\Tests\Builder\Adminka\Matkas\KategoriaBuilder;
@@ -14,7 +13,7 @@ use App\Tests\Builder\Adminka\Matkas\PlemMatkaBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\LiniaBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\NomerBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\RasaBuilder;
-use App\Tests\Builder\Adminka\Matkas\SparingBuilder;
+//use App\Tests\Builder\Adminka\Matkas\SparingBuilder;
 use App\Tests\Builder\Adminka\Uchasties\GroupBuilder;
 use App\Tests\Builder\Adminka\Uchasties\UchastieBuilder;
 
@@ -27,7 +26,7 @@ class ChangeTypeTest extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
+//        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
@@ -36,7 +35,7 @@ class ChangeTypeTest extends TestCase
         $plemmatka = (new PlemMatkaBuilder())->build( $mesto,  $nomer,   $persona,  $kategoria);
         $childmatka = (new ChildMatkaBuilder())
             ->withType(new Type(Type::TFBK))
-            ->build( $plemmatka,  $uchastie,  $sparing);
+            ->build( $plemmatka,  $uchastie);
 
         $childmatka->changeType($type = new Type(Type::IO));
 
@@ -47,7 +46,7 @@ class ChangeTypeTest extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
+//        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
@@ -56,7 +55,7 @@ class ChangeTypeTest extends TestCase
         $plemmatka = (new PlemMatkaBuilder())->build( $mesto,  $nomer,   $persona,  $kategoria);
         $childmatka = (new ChildMatkaBuilder())
             ->withType($type = new Type(Type::TFBK))
-            ->build( $plemmatka,  $uchastie,  $sparing);
+            ->build( $plemmatka,  $uchastie);
 
         $this->expectExceptionMessage('Тип уже тот же самый.');
         $childmatka->changeType($type);

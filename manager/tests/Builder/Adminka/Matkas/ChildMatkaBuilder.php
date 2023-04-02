@@ -9,7 +9,7 @@ use App\Model\Adminka\Entity\Matkas\ChildMatka\Id;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\Status;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\Type;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
-use App\Model\Adminka\Entity\Matkas\Sparings\Sparing;
+
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 
 class ChildMatkaBuilder
@@ -22,6 +22,7 @@ class ChildMatkaBuilder
     private $content;
     private $godaVixod;
     private $status;
+    private  $kolChild;
     private $sezonPlem;
     private $sezonChild;
 
@@ -33,6 +34,7 @@ class ChildMatkaBuilder
         $this->priority = 1;
         $this->name = 'Task';
         $this->content = 'Content';
+        $this->kolChild = 2;
         $this->godaVixod = 2020;
         $this->sezonPlem = '2020-2021';
         $this->sezonChild = '2022-2023';
@@ -47,7 +49,7 @@ class ChildMatkaBuilder
         return $clone;
     }
 
-    public function build(PlemMatka $plemmatka, Uchastie $author, Sparing $sparing): ChildMatka
+    public function build(PlemMatka $plemmatka, Uchastie $author): ChildMatka
     {
         return new ChildMatka(
             $this->id,
@@ -58,7 +60,7 @@ class ChildMatkaBuilder
             $this->priority,
             $this->name,
             $this->content,
-            $sparing,
+            $this->kolChild,
             $this->godaVixod,
             $this->sezonPlem,
             $this->sezonChild

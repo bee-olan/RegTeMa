@@ -13,7 +13,7 @@ use App\Tests\Builder\Adminka\Matkas\PlemMatkaBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\LiniaBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\NomerBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\RasaBuilder;
-use App\Tests\Builder\Adminka\Matkas\SparingBuilder;
+//use App\Tests\Builder\Adminka\Matkas\SparingBuilder;
 use App\Tests\Builder\Adminka\Uchasties\GroupBuilder;
 use App\Tests\Builder\Adminka\Uchasties\UchastieBuilder;
 
@@ -26,7 +26,7 @@ class PlanTest  extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
+//        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
@@ -36,7 +36,7 @@ class PlanTest  extends TestCase
 
         $plemmatka = (new PlemMatkaBuilder())->build( $mesto,  $nomer,   $persona,  $kategoria);
 
-        $childmatka = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie,  $sparing);
+        $childmatka = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie);
 
         $childmatka->plan($date = new \DateTimeImmutable());
 

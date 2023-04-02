@@ -25,7 +25,7 @@ class BlockTest extends TestCase
 
         $user->block();
 
-        $this->expectExceptionMessage('User is already blocked.');
+        $this->expectExceptionMessage('Пользователь уже заблокирован.');
         $user->block();
     }
 }

@@ -30,7 +30,7 @@ class ConfirmTest extends TestCase
     {
         $user = (new UserBuilder())->viaEmail()->confirmed()->build();
 
-        $this->expectExceptionMessage('Changing is not requested.');
+        $this->expectExceptionMessage('Изменение не требуется.');
         $user->confirmEmailChanging('token');
     }
 
@@ -43,7 +43,7 @@ class ConfirmTest extends TestCase
             'token'
         );
 
-        $this->expectExceptionMessage('Incorrect changing token.');
+        $this->expectExceptionMessage('Неправильный изменяемый токен.');
         $user->confirmEmailChanging('incorrect-token');
     }
 }

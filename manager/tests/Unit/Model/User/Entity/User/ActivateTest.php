@@ -27,7 +27,7 @@ class ActivateTest extends TestCase
 
         $user->activate();
 
-        $this->expectExceptionMessage('User is already active.');
+        $this->expectExceptionMessage('Пользователь уже активен.');
         $user->activate();
     }
 }

@@ -15,7 +15,7 @@ use App\Tests\Builder\Adminka\Matkas\PlemMatkaBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\LiniaBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\NomerBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\RasaBuilder;
-use App\Tests\Builder\Adminka\Matkas\SparingBuilder;
+//use App\Tests\Builder\Adminka\Matkas\SparingBuilder;
 use App\Tests\Builder\Adminka\Uchasties\GroupBuilder;
 use App\Tests\Builder\Adminka\Uchasties\UchastieBuilder;
 
@@ -28,7 +28,7 @@ class ChangeStatusTest extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
+//        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
@@ -36,7 +36,7 @@ class ChangeStatusTest extends TestCase
         $kategoria  = (new KategoriaBuilder())->build();
         $plemmatka = (new PlemMatkaBuilder())->build( $mesto,  $nomer,   $persona,  $kategoria);
         $childmatka = (new ChildMatkaBuilder())
-            ->build( $plemmatka,  $uchastie,  $sparing);
+            ->build( $plemmatka,  $uchastie);
 
         $childmatka->changeStatus($status = new Status(Status::REJECTED), $date = new \DateTimeImmutable());
 
@@ -51,7 +51,7 @@ class ChangeStatusTest extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
+//        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
@@ -59,7 +59,7 @@ class ChangeStatusTest extends TestCase
         $kategoria  = (new KategoriaBuilder())->build();
         $plemmatka = (new PlemMatkaBuilder())->build( $mesto,  $nomer,   $persona,  $kategoria);
         $childmatka = (new ChildMatkaBuilder())
-            ->build( $plemmatka,  $uchastie,  $sparing);
+            ->build( $plemmatka,  $uchastie);
 
         $childmatka->changeStatus($status = new Status(Status::REJECTED ), $date = new \DateTimeImmutable());
 
@@ -73,7 +73,7 @@ class ChangeStatusTest extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
+//        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
@@ -81,7 +81,7 @@ class ChangeStatusTest extends TestCase
         $kategoria  = (new KategoriaBuilder())->build();
         $plemmatka = (new PlemMatkaBuilder())->build( $mesto,  $nomer,   $persona,  $kategoria);
         $childmatka = (new ChildMatkaBuilder())
-            ->build( $plemmatka,  $uchastie,  $sparing);
+            ->build( $plemmatka,  $uchastie);
 
         $childmatka->changeStatus(
             new Status(Status::WORKING),
@@ -97,7 +97,7 @@ class ChangeStatusTest extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
+//        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
@@ -105,7 +105,7 @@ class ChangeStatusTest extends TestCase
         $kategoria  = (new KategoriaBuilder())->build();
         $plemmatka = (new PlemMatkaBuilder())->build( $mesto,  $nomer,   $persona,  $kategoria);
         $childmatka = (new ChildMatkaBuilder())
-            ->build( $plemmatka,  $uchastie,  $sparing);
+            ->build( $plemmatka,  $uchastie);
 
         $childmatka->changeStatus(
             new Status(Status::WORKING),
@@ -126,7 +126,7 @@ class ChangeStatusTest extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
+//        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
@@ -134,7 +134,7 @@ class ChangeStatusTest extends TestCase
         $kategoria  = (new KategoriaBuilder())->build();
         $plemmatka = (new PlemMatkaBuilder())->build( $mesto,  $nomer,   $persona,  $kategoria);
         $childmatka = (new ChildMatkaBuilder())
-            ->build( $plemmatka,  $uchastie,  $sparing);
+            ->build( $plemmatka,  $uchastie);
 
         $childmatka->changeStatus(
             new Status(Status::DONE),
@@ -150,7 +150,7 @@ class ChangeStatusTest extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
+//        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
@@ -158,7 +158,7 @@ class ChangeStatusTest extends TestCase
         $kategoria  = (new KategoriaBuilder())->build();
         $plemmatka = (new PlemMatkaBuilder())->build( $mesto,  $nomer,   $persona,  $kategoria);
         $childmatka = (new ChildMatkaBuilder())
-            ->build( $plemmatka,  $uchastie,  $sparing);
+            ->build( $plemmatka,  $uchastie);
 
         $childmatka->changeStatus(
             new Status(Status::DONE),

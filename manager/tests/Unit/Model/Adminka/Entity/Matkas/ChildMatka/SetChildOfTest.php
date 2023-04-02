@@ -13,7 +13,6 @@ use App\Tests\Builder\Adminka\Matkas\PlemMatkaBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\LiniaBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\NomerBuilder;
 use App\Tests\Builder\Adminka\Matkas\Rasas\RasaBuilder;
-use App\Tests\Builder\Adminka\Matkas\SparingBuilder;
 use App\Tests\Builder\Adminka\Uchasties\GroupBuilder;
 use App\Tests\Builder\Adminka\Uchasties\UchastieBuilder;
 
@@ -27,7 +26,6 @@ class SetChildOfTest  extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
@@ -35,8 +33,8 @@ class SetChildOfTest  extends TestCase
         $kategoria  = (new KategoriaBuilder())->build();
         $plemmatka = (new PlemMatkaBuilder())->build( $mesto,  $nomer,   $persona,  $kategoria);
 
-        $childmatka = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie,  $sparing);
-        $parent = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie,  $sparing);
+        $childmatka = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie);
+        $parent = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie);
 
         $childmatka->setChildOf($parent);
 
@@ -49,7 +47,6 @@ class SetChildOfTest  extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
@@ -69,14 +66,13 @@ class SetChildOfTest  extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
         $persona = (new  PersonaBuilder())->build();
         $kategoria  = (new KategoriaBuilder())->build();
         $plemmatka = (new PlemMatkaBuilder())->build( $mesto,  $nomer,   $persona,  $kategoria);
-        $childmatka = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie,  $sparing);
+        $childmatka = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie);
 
 
         $this->expectExceptionMessage('Цикломатические дети.');
@@ -90,18 +86,17 @@ class SetChildOfTest  extends TestCase
         $group = (new GroupBuilder())->build();
         $uchastie = (new UchastieBuilder())->build($group);
         $mesto = (new MestoNomerBuilder())->build();
-        $sparing =  (new SparingBuilder())->build();
         $rasa  = (new RasaBuilder())->build();
         $linia  = (new LiniaBuilder())->build($rasa);
         $nomer  = (new NomerBuilder())->build($linia);
         $persona = (new  PersonaBuilder())->build();
         $kategoria  = (new KategoriaBuilder())->build();
         $plemmatka = (new PlemMatkaBuilder())->build( $mesto,  $nomer,   $persona,  $kategoria);
-        $childmatka = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie,  $sparing);
+        $childmatka = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie);
 
 
-        $child1 = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie,  $sparing);
-        $child2 = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie,  $sparing);
+        $child1 = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie);
+        $child2 = (new ChildMatkaBuilder())->build( $plemmatka,  $uchastie);
 
         $child1->setChildOf($childmatka);
         $child2->setChildOf($child1);
