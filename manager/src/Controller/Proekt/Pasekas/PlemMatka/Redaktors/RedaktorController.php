@@ -50,7 +50,7 @@ class RedaktorController extends AbstractController
     {
 //dd($plemmatka);
 //        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
-        $commentCommand = new Comment\AddSezon\Handler(
+        $commentCommand = new Comment\AddSezon\Command(
             $this->getUser()->getId(),
             PlemMatka::class,
             $plemmatka->getId()->getValue()
