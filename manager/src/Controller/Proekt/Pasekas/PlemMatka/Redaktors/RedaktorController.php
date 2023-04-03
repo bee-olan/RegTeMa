@@ -12,6 +12,7 @@ use App\Model\Adminka\UseCase\Matkas\PlemMatka\Reinstate;
 use App\ReadModel\Adminka\Matkas\ChildMatka\CommentFetcher;
 use App\Model\Comment\UseCase\Comment;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
+use App\ReadModel\Adminka\Matkas\PlemMatka\CommentPlemFetcher;
 use App\Security\Voter\Adminka\Matkas\PlemMatkaAccess;
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -37,22 +38,40 @@ class RedaktorController extends AbstractController
      * @Route("/show", name=".show", requirements={"id"=Guid::PATTERN})
      * @param PlemMatka $plemmatka
      * @param Request $request
-     * @param CommentFetcher $comments
-     * @param Comment\Create\Handler $commentHandler
+     * @param CommentPlemFetcher $comments
+     * @param Comment\AddSezon\Handler $commentHandler
      * @return Response
      */
     public function show(PlemMatka $plemmatka,
                          Request $request,
-                         CommentFetcher $comments,
-                         Comment\Create\Handler $commentHandler
+                         CommentPlemFetcher $comments,
+                         Comment\AddSezon\Handler $commentHandler
     ): Response
     {
 //dd($plemmatka);
 //        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
+        $commentCommand = new Comment\AddSezon\Handler(
+            $this->getUser()->getId(),
+            PlemMatka::class,
+            $plemmatka->getId()->getValue()
+        );
 
+        $commentForm = $this->createForm(Comment\AddSezon\Form::class, $commentCommand);
+        $commentForm->handleRequest($request);
+        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+            try {
+                $commentHandler->handle($commentCommand);
+                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
+            } catch (\DomainException $e) {
+                $this->errors->handle($e);
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
         return $this->render('proekt/pasekas/matkas/plemmatkas/redaktorss/show.html.twig', [
             'plemmatka' => $plemmatka,
             'uchastniks' => $plemmatka->getUchastniks(),
+            'comments' => $comments->allForPlemMatka($plemmatka->getId()->getValue()),
+            'commentForm' => $commentForm->createView(),
 
         ]);
     }

@@ -189,11 +189,13 @@ class PlemMatkaFetcher
                 'p.name',
                 'p.persona_id',
                 'p.status',
-//                'p.rasa_nom_id',
+                'p.sort',
                 'p.goda_vixod ',
                 'pe.nomer as persona',
                 'p.kategoria_id',
-                's.name AS kategoria'
+                's.name AS kategoria',
+                '(SELECT COUNT(*) FROM admin_matkas_plemmatka_departments d WHERE d.plemmatka_id = p.id) AS departments_count',
+                '(SELECT COUNT(*) FROM admin_matkas_childmatkas c WHERE c.plemmatka_id = p.id) AS child_count'
             )
             ->from('admin_matkas_plemmatkas', 'p')
             ->innerJoin('p', 'adminka_uchasties_personas', 'pe', 'p.persona_id = pe.id')

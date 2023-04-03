@@ -2,7 +2,9 @@
 
 {% block title %}ПлемМатка{% endblock %}
 
-
+{% block sidebar %}
+    {% include('proekt/pasekas/matkas/side/_side_plem_create.html.twig') %}
+{% endblock %}
 
  {% block kroxii %}
             <a href="{{ path('proekt') }}">Главная</a>
@@ -53,7 +55,7 @@
             </div>
         </div>  
 </div><!-- rasas -->
-{#{% include('proekt/pasekas/matkas/kategor/_kategor-includ.html.twig') %}#}
+{% include('proekt/pasekas/matkas/kategor/_kategor-includ.html.twig') %}
 
 
 {% endblock %}

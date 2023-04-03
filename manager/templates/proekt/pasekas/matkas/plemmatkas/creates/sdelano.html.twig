@@ -1,6 +1,10 @@
 {% extends 'proekt/base.html.twig' %}
 
-{% block title %}....{% endblock %}
+{% block title %}Сделано!{% endblock %}
+
+{% block sidebar %}
+    {% include('proekt/pasekas/matkas/side/_side_plem_sdelano.html.twig') %}
+{% endblock %}
 
 {% block kroxii %}
             <a href="{{ path('proekt') }}">Главная</a>
@@ -99,15 +103,24 @@
 
             <ul class="plem__data plem__data--mt2">
                 <li>
-{#                    Перейти к регистрации  <strong class="strongo strongo--kras">ДочьМатки  </strong>#}
-{#                    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id}  ) }}"#}
-{#                       class="btnn btnn--mb0 btnn--col">#}
-                        Перейти к регистрации  <strong class="strongo strongo--kras">ДочьМатки  </strong>
-{#                    </a>#}
+                    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id' : plemmatka.id}  ) }}"
+                       class="btnn btnn--mb0 btnn--col">
+                        Перейти к выбору  <strong class="strongo strongo--kras">сезонов </strong> и объявлению <strong class="strongo strongo--kras">ДочьМаток (ТестМаток) </strong>
+                    </a>
                 </li>
                 <li> 
+
+                </li>
+            </ul>
+            <ul class="plem__data plem__data--mt2">
+                <li>
+                    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show' , {'plemmatka_id' : plemmatka.id}  ) }}"
+                       class="btnn btnn--mb0 btnn--col">Посмотреть  <strong class="strongo strongo--kras"> расшифровку  </strong> названия ПлемМатки.
+                    </a>
+                </li>
+                <li>
                     <a href="{{ path('proekt.pasekas.matkas'  ) }}"
-                       class="btnn btnn--mb0 btnn--col">Список всех зарегистрированных  <strong class="strongo strongo--kras">ПлемМаток  </strong>
+                       class="btnn btnn--mb0 btnn--col">Список Ваших <strong class="strongo strongo--kras">ПлемМаток  </strong> с выбранным сезоном.
                     </a>
                 </li>
             </ul>

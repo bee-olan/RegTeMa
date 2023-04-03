@@ -13,53 +13,62 @@
 
 {% block body %}
 
+
     {{ include('app/adminka/matkas/plemmatka/_tabs.html.twig') }}
 
     <article class="matka matka--bac-col" >
         <div class="matka__header">
             <div style="overflow: auto">
                 <table class="table table-bordered table-hover mb-0 ">
-                    <thead>
-                    <tr >
-                        <th style="text-align: center; color: white" >Автор</th>
-                        <th style="text-align: center; color: white" >Роль</th>
-                        <th style="text-align: center; color: white">
-                            ПлемМатка
-                        </th>
-                        <th style="text-align: center; color: white" >Сезоны  вывода ДочьМаток </th>
-                    </tr>
-                    </thead>
                     <tbody>
+                    <tr >
+                        <th style=" color: white">ПлемМатка </th>
+                        <td >{{ plemmatka.name }} </td>
+                    </tr >
+                    {#                </thead>#}
+
+                    {#            </table>#}
+                    {#            <table class="table table-bordered table-hover mb-0 ">#}
+
+                    {#                <tbody>#}
 
                     {% for uchastnik in uchastniks %}
-                        {% for department in uchastnik.departments %}
-                            <tr class="matka__kateg" >
-                                <td >{{ uchastnik.uchastie.nike }}  ( {{ uchastnik.uchastie.name.full }} ) </td>
-                                <td  >
-                                    {% for role in uchastnik.roles %}
-                                        {{ role.name }}
+
+                        <tr  >
+                            <th style=" color: white" >Автор</th>
+                            <td >{{ uchastnik.uchastie.nike }}  ( {{ uchastnik.uchastie.name.full }} ) </td>
+                        </tr>
+                        <tr  >
+                            <th style=" color: white" >Роль</th>
+                            <td  >
+                                {% for role in uchastnik.roles %}
+                                    {{ role.name }}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr  >
+                            <th style=" color: white" >Сезоны  ПлемМатки </th>
+                            <td >
+                                <table class="table  table-hover  ">
+                                    <tbody>
+                                    {% for department in uchastnik.departments %}
+
+                                        {% if plemmatka %}
+                                            <tr  >
+                                                <th> {{ department.name }} --</th>
+                                                <td>
+                                                    <a href="{{ path('adminka.matkas.plemmatka.childmatkas.create', {'plemmatka_id' : plemmatka.id, 'department_id' : department.id} ) }}"
+                                                    >   добавить ДочьМатку
+                                                    </a>
+                                                </td>
+                                            </tr  >
+                                        {% endif %}
                                     {% endfor %}
-                                </td>
-                                <td >
-                                    {{ plemmatka.name }}
-                                </td>
-                                <td style="text-align: center; color: white">
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
 
-
-
-                                    {% if plemmatka %}
-                                        <div class="controls">
-                                            <a href="{{ path('adminka.matkas.plemmatka.childmatkas.create', {'plemmatka_id' : plemmatka.id, 'department_id' : department.id} ) }}"
-                                               class="btnn btnn--mb0 btnn--pt   "><span class="fa fa-check"></span>   {{ department.name }} -- добавить ДочьМатку
-                                            </a>
-                                        </div>
-                                    {% endif %}
-                                </td>
-
-
-
-                            </tr>
-                        {% endfor %}
                     {% endfor %}
                     </tbody>
                 </table>

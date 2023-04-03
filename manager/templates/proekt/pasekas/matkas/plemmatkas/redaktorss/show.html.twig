@@ -25,84 +25,154 @@
         </div>
 
 
-        <div class="proekts-plr" >
-            <h1 class="plem__title  "><strong class="strongo ">{{ plemmatka.name }} </strong> --   ПлемМатка, берём за основу для ТестМаток</h1>
+    <div class="proekts-plr" >
+    <h1 class="plem__title  "><strong class="strongo ">{{ plemmatka.name }} </strong> --   ПлемМатка, берём за основу для ТестМаток</h1>
 
-            <ul class="plem plem__jus-st ">
-                <li class="plem__name " ><strong class="strongo ">Комментарий : </strong></li>
-                <li class="plem__name " >{{plemmatka.title}}</li>
-                <li class="plem__name--wid20">  &nbsp; &nbsp;
-                    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.edit',
-                        {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Редактировать</a>
-                </li>
-            </ul>
+    <ul class="plem plem__jus-st ">
+        <li class="plem__name " ><strong class="strongo ">Комментарий : </strong></li>
+        <li class="plem__name " >{{plemmatka.title}}</li>
+        <li class="plem__name--wid20">  &nbsp; &nbsp;
+            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.edit',
+                {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Редактировать</a>
+        </li>
+    </ul>
 
-            <ul class="plem plem__jus-st ">
-                <li class="plem__name " ><strong class="strongo ">Статус : </strong></li>
-                <li class="plem__name " ><strong class="strongo strongo--kras"> {{ plemmatka_status(plemmatka.status.name) }} </strong></li>
-                <li >  &nbsp; &nbsp;
-                    {% if plemmatka.active and plemmatka.id.value != app.user.id %}
-                        <form action="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.archive', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
-                            <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
-                            <button type="submit" class="btnn  btnn--pt">В архив</button>
-                        </form>
-                    {% endif %}
-                    {% if plemmatka.archived %}
-                        <form action="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.reinstate', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
-                            <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
-                            <button type="submit" class="btnn  btnn--pt">Из архива</button>
-                        </form>
-                    {% endif %}
-                </li>
-            </ul>
-
-            <ul class="plem plem__jus-st ">
-                {% if uchastniks %}
-                    <li class="plem__name " ><strong class="strongo ">Заявленные сезоны данной ПлемМатки: </strong></li>
-
-                    <li class="plem__name--wid20">  &nbsp; &nbsp;
-                        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.departmentss',
-                            {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Добавить сезон</a>
-                    </li>
-                {% else %}
-                    <li class="plem__name " ><strong class="strongo ">Пока для этой ПлемМатки нет заявленных сезонов </strong></li>
+        <ul class="plem plem__jus-st ">
+            <li class="plem__name " ><strong class="strongo ">Статус : </strong></li>
+            <li class="plem__name " ><strong class="strongo strongo--kras"> {{ plemmatka_status(plemmatka.status.name) }} </strong></li>
+            <li >  &nbsp; &nbsp;
+                {% if plemmatka.active and plemmatka.id.value != app.user.id %}
+                    <form action="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.archive', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                        <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
+                        <button type="submit" class="btnn  btnn--pt">В архив</button>
+                    </form>
                 {% endif %}
+                {% if plemmatka.archived %}
+                    <form action="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.reinstate', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                        <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
+                        <button type="submit" class="btnn  btnn--pt">Из архива</button>
+                    </form>
+                {% endif %}
+            </li>
+        </ul>
+
+        <ul class="plem plem__jus-st ">
+            {% if uchastniks %}
+                <li class="plem__name " ><strong class="strongo ">Заявленные сезоны данной ПлемМатки: </strong></li>
+
+                <li class="plem__name--wid20">  &nbsp; &nbsp;
+                    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.departmentss',
+                        {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Добавить сезон</a>
+                </li>
+                <li>
+                </li>
+            {% else %}
+                <li class="plem__name " ><strong class="strongo ">Написать заявку на первый сезон (см ниже) </strong></li>
+            {% endif %}
+        </ul>
+
+
+        {% for uchastnik in uchastniks %}
+            <ul class="plem plem__jus-st ">
+                <li>
+                    <h1 class="plem__title strongo--kras "> Внимание !!!  Объявляем ДочьМаток   </h1>
+                </li>
             </ul>
+            <ul class="plem plem__jus-st ">
+                <li class="plem__name " > {{ uchastnik.uchastie.nike }}  ( {{ uchastnik.uchastie.name.full }} )</li>
 
-            {% for uchastnik in uchastniks %}
-                <ul class="plem plem__jus-st ">
+                <li  class=  "strongo " >Выбрать сезон для новых ДочьМаток : </li>
+                <li class="ma-le-2 " >   
+                    <ul class="list-unstyled my-0">
+                        {% for department in uchastnik.departments %}
+                            <li   >
+                                {% if plemmatka %}
+                                    
+                                    <div class="controls">
+                                        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id, 'department_id' : department.id  } ) }}"
+                                           class="btnn btnn--mb0 btnn--pt  ">{{ department.name }} -<strong class="strongo strongo--kras"> добавить ДочьМаток  </strong>
+                                        </a>
+                                    </div>
+                                {% endif %}
 
-                    <li class="plem__name " > {{ uchastnik.uchastie.nike }}  ( {{ uchastnik.uchastie.name.full }} )</li>
-                    <li class="ma-le-2 " >
-                        <ul class="list-unstyled my-0">
-                            {% for role in uchastnik.roles %}
-                                <li>{{ role.name }}</li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    <li class="plem__name " ><strong class="strongo ">Добавить ДочьМаток--: </strong></li>
-                    <li class="ma-le-2 " >
-                        <ul class="list-unstyled my-0">
-                            {% for department in uchastnik.departments %}
-                                <li>{{ department.name }}</li>
-                                <li>
-                                    {% if plemmatka %}
-                                        <div class="controls">Добавить ДочьМатку к ПлемМатке {{ plemmatka.name }}
-                                            {#                                        <a href="{{ path('paseka.matkas.plemmatka.childmatkas.create', {'plemmatka_id' : plemmatka.id} ) }}"#}
-                                            {#                                           class="btn-my btn-success matka__title ">Добавить ДочьМатку к ПлемМатке {{ plemmatka.name }}#}
-                                            {#                                        </a>#}
-                                        </div>
-                                    {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        {% endfor %}
 
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                </ul>
-            {% endfor %}
+    </div>
+</div>
 
+    {# ----------------------- #}
+{% if uchastniks %}
+    <h3 class="form__title">Для добавления  очередного сезона  для ПлемМатки, перейдите по ссылке</h3>
+{% else %}
+    <div  class="proekts proekts-plr">
+        <h3 class="form__title">Написать запрос  на первый сезон  данной ПлемМатки по предоставлению ДочьМаток в проект</h3>
+
+        <div class="mesto-form__header  ">
+            <div class="mesto-form ">
+                {{ form_start(commentForm) }}
+
+                {{ form_widget(commentForm) }}
+
+                <button type="submit" class="btnn  btnn--mb0 btnn--pt">Отправить</button>
+                {{ form_end(commentForm) }}
+
+            </div>
         </div>
     </div>
 
 
+
+    {# ----------------------- #}
+
+    <div  class="proekts proekts-plr">
+        <div class="card-mesto">
+            <h3 class="form__title">Запрос на первый сезон в проекте  данной ПлемМатки, </h3>
+            {% if comments|length %}
+                <div class="card-body">
+                    <div class="direct-chat">
+                        <div class="direct-chat-messages">
+                            {% for comment in comments %}
+                                <div class="direct-chat-msg">
+                                    <div class="direct-chat-info clearfix">
+                                        <span class="direct-chat-name pull-left">{{ comment.author_name }}</span>
+                                        <span class="direct-chat-timestamp pull-right">{{ comment.date|date('Y-m-d H:i:s') }}</span>
+                                    </div>
+                                    <img class="direct-chat-img" src="{{ gravatar(comment.author_email, 40) }}" alt="">
+                                    <div class="direct-chat-text">
+                                        {{ comment.text|markdown|purify|adminka_processor }}
+                                        {% if is_granted('manage', comment) %}
+                                            <div class="controls-m ">
+                                                <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.comment.edit',
+                                                    {'plemmatka_id': plemmatka.id, 'id': comment.id}) }}"
+                                                   class="btnn btnn--mb0 btnn--pt btnn--col-child">
+                                                    <div class="karandash karandash--child">
+                                                        <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="редактировать">
+                                                    </div>
+                                                </a>
+                                                <form action="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.comment.delete', {'plemmatka_id': plemmatka.id, 'id': comment.id}) }}" method="post" onsubmit="return confirm('Вы  уверены? Удалить?')">
+                                                    <input type="hidden" name="token" value="{{ csrf_token('delete-comment') }}" />
+                                                    <button type="submit"  class="btnn  btnn--ml3 btnn--pt btnn--col-child">
+
+                                                        <div class="karandash karandash--child">
+                                                            <img src="{{ asset('assets/proekt/images/delet.png') }}" alt="удалить">
+                                                        </div>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
 {% endblock %}

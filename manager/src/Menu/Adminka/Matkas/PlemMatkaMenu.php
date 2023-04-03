@@ -25,7 +25,7 @@ class PlemMatkaMenu
             ->setChildrenAttributes(['class' => 'nav nav-tabs mb-4']);
 
         $menu
-            ->addChild('Информация!!!!', [
+            ->addChild('Добавить ДочьМатку', [
                 'route' => 'adminka.matkas.plemmatka.show',
                 'routeParameters' => ['id' => $options['plemmatka_id']]
             ])
@@ -54,7 +54,7 @@ class PlemMatkaMenu
 //            ->setLinkAttribute('class', 'nav-link');
 
         $menu
-            ->addChild('Добавить ДочьМатку!!', [
+            ->addChild(' Список ДочьМаток этой племМ', [
                 'route' => 'adminka.matkas.plemmatka.childmatkas',
                 'routeParameters' => ['plemmatka_id' => $options['plemmatka_id']]
             ])

@@ -81,7 +81,7 @@ class PlemCreateController extends AbstractController
                                 MestoNomerFetcher $mestoNomers,
                                 Create\Handler $handler): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS');
+//        $this->denyAccessUnlessGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS');
 
 //        if (!$plemmatkas->existsPerson($this->getUser()->getId())) {
 //            $this->addFlash('error', 'Начните с выбора ПерсонНомера ');

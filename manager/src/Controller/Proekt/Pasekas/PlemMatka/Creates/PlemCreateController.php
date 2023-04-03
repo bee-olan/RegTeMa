@@ -6,7 +6,9 @@ namespace App\Controller\Proekt\Pasekas\PlemMatka\Creates;
 
 use App\Annotation\Guid;
 
+use App\Model\Adminka\Entity\Matkas\Kategoria\Permission;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
+use App\ReadModel\Adminka\Matkas\KategoriaFetcher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use App\Model\Adminka\UseCase\Matkas\PlemMatka\Create;
@@ -61,19 +63,21 @@ class PlemCreateController extends AbstractController
      * @Route("/create/{id}", name=".create" , requirements={"id"=Guid::PATTERN})
      * @param Request $request
      * @param Nomer $nomer
-     * @param PersonaFetcher $personas
-     * @param MestoNomerFetcher $mestoNomers
+    //     * @param PersonaFetcher $personas
+    //     * @param MestoNomerFetcher $mestoNomers
      * @param PlemMatkaFetcher $plemmatkas
+     * @param KategoriaFetcher $kategoria
      * @param Create\Handler $handler
      * @return Response
      */
     public function create( Request $request, Nomer $nomer,
-                                PlemMatkaFetcher $plemmatkas,
-                                PersonaFetcher $personas,
-                                MestoNomerFetcher $mestoNomers,
-                                Create\Handler $handler): Response
+                            PlemMatkaFetcher $plemmatkas,
+                            KategoriaFetcher $kategoria,
+//                                PersonaFetcher $personas,
+//                                MestoNomerFetcher $mestoNomers,
+                            Create\Handler $handler): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_MANAGE_PLEMMATKAS');
+//        $this->denyAccessUnlessGranted('ROLE_MANAGE_PLEMMATKAS');
 
 //        if (!$plemmatkas->existsPerson($this->getUser()->getId())) {
 //            $this->addFlash('error', 'Начните с выбора ПерсонНомера ');
@@ -84,7 +88,8 @@ class PlemCreateController extends AbstractController
 //            $this->addFlash('error', 'Пожалуйста, определитесь с номером места расположения Вашей пасеки ');
 //            return $this->redirectToRoute('mesto.infamesto.okrugs');
 //        }
-
+        $kategorias = $kategoria->all();
+        $permissions = Permission::names();
 
         $sort = $plemmatkas->getMaxSort() + 1;
         $command = new Create\Command($this->getUser()->getId(), $sort, $nomer->getId()->getValue());
@@ -99,7 +104,7 @@ class PlemCreateController extends AbstractController
             try {
                 $handler->handle($command);
                 return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.creates.sdelano', [ 'name' => $command->name]);
-                dd($command->name);
+//                dd($command->name);
             } catch (\DomainException $e) {
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
                 $this->addFlash('error', $e->getMessage());
@@ -109,6 +114,8 @@ class PlemCreateController extends AbstractController
         return $this->render('proekt/pasekas/matkas/plemmatkas/creates/create.html.twig', [
             'form' => $form->createView(),
             'command' => $command,
+            'kategorias' => $kategorias,
+            'permissions' => $permissions
         ]);
     }
 

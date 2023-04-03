@@ -107,9 +107,11 @@ class UchastieFetcher
                 'm.id',
                 'm.nike',
                 'CONCAT(m.name_first, \' \', m.name_last) AS name',
-                'g.name AS group'
+                'g.name AS group',
+                'p.nomer AS persona'
             ])
             ->from('admin_uchasties_uchasties', 'm')
+            ->leftJoin('m', 'adminka_uchasties_personas', 'p', 'p.id = m.id')
             ->leftJoin('m', 'admin_uchasties_groups', 'g', 'g.id = m.group_id')
              ->andWhere('m.status = :status')
              ->setParameter(':status', Status::ACTIVE)

@@ -140,10 +140,9 @@ class PlemSideFetcher
                 'p.nomer_id',
                 'p.goda_vixod ',
                 'pe.nomer as persona',
-                'k.name AS kategoria'
-//                ,
-//                'd.name as departs'
-
+                'k.name AS kategoria',
+                '(SELECT COUNT(*) FROM admin_matkas_plemmatka_departments d WHERE d.plemmatka_id = p.id) AS departments_count',
+                '(SELECT COUNT(*) FROM admin_matkas_childmatkas c WHERE c.plemmatka_id = p.id) AS child_count'
             )
             ->from('admin_matkas_plemmatkas', 'p')
             ->innerJoin('p', 'adminka_uchasties_personas', 'pe', 'p.persona_id = pe.id')
@@ -168,17 +167,24 @@ class PlemSideFetcher
             $qb->setParameter(':status', $filter->status);
         }
 
-//        if ($filter->kategoria) {
-//            $qb->andWhere($qb->expr()->like('LOWER(p.name_kateg)', ':name_kateg'));
-//            $qb->setParameter(':name_kateg', '%' . mb_strtolower($filter->name_kateg) . '%');
-//        }
+        if ($filter->kategoria) {
+//            $qb->andWhere($qb->expr()->like('LOWER(p.kategoria)', ':kategoria'));
+//            $qb->setParameter(':kategoria', '%' . mb_strtolower($filter->kategoria) . '%');
+            $qb->andWhere('k.name = :name');
+            $qb->setParameter(':name', $filter->kategoria);
+        }
 //
 //        if ($filter->persona) {
 //            $qb->andWhere('p.persona = :persona');
 //            $qb->setParameter(':persona', $filter->persona);
 //        }
-//,'name_kateg'
-        if (!\in_array($sort, ['name', 'status','persona'], true)) {
+
+        if ($filter->goda_vixod) {
+            $qb->andWhere('p.goda_vixod = :goda_vixod');
+            $qb->setParameter(':goda_vixod', $filter->goda_vixod);
+        }
+
+        if (!\in_array($sort, ['name','persona', 'kategoria', 'goda_vixod'], true)) {
             throw new \UnexpectedValueException('Cannot sort by ' . $sort);
         }
 

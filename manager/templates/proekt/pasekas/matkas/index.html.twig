@@ -36,41 +36,55 @@
         {# ------------------------- #}
     <div class="proekts-plr  ">
                 <ul class = "plem__data plem__data--col">
+                    <li></li>
                     <li class = "plem__name plem__name--wid34 plem__name-list--wid" >
                     ПлемМатка (по ссылке -расшифровка)
                     </li> 
                     <li class = "plem__name">Кат-рия</li>
-                    <li class = "plem__name">П-Номер!!!!</li>
-                    <li class = "plem__name">Выход</li>
-                    <li class = "plem__name">
-                        Статус
-                        {# {{ member_status(u4astnik.status) }}  #}
-                    </li>
-                    <li class = "plem__name">
-                        Сезоны
-                    </li>
+                    <li class = "plem__name">Сезоны/дочьки</li>
+                    <li class = "plem__name">Сезоны</li>
+                    <li class = "plem__name"> ДочьМатки</li>
+                    <li class = "plem__name"> Статус</li>
                 </ul>
                 {% for plemmatka in pagination %}
 
                 <ul class = "plem__data">
+                    <li><strong class="strongo strongo--kras">{{ plemmatka.sort }}  </strong></li>
                     <li class = "plem__name-list plem__name-list--wid plem-ramka mb0" >
-                        <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id}) }}">
-                             {{ plemmatka.name }} - <strong class="strongo strongo--kras">{{ plemmatka.sort }}  </strong>
+                        <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id}) }}"  title = "Расшифровка названия" >
+                             {{ plemmatka.name }}
                         </a>
                     </li>
 
-                    <li class = "plem__name-list">  {{ plemmatka.kategoria }} </li>
-                    <li class = "plem__name-list"> {{ plemmatka.persona }} </li>
-                    <li class = "plem__name-list"> {{ plemmatka.goda_vixod }} </li>
-
-                    <li class = "plem__name-list">{{  plemmatka_status(plemmatka.status) }}</li>
+                    <li class = "plem__name-list">  {{ plemmatka_kategoria(plemmatka.kategoria) }} </li>
                     <li class = "plem__name-list">
-                        <a   href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id}) }}"  class="btnn btnn--mb1 " >
+                        {{ plemmatka.departments_count }}
+                        {% if plemmatka.departments_count < 1 %}
+                            - ожидает
+                        {% else %}
+                            /  {{ plemmatka.child_count }}
+                        {% endif %}
+                    </li>
+{#                    <li class = "plem__name-list"> {{ plemmatka.goda_vixod }} </li>#}
+
+
+                    <li class = "plem__name-list">
+                        <a   href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id}) }}"  class="btnn btnn--mb1 "
+                             title = "Добавить новый сезон, объявить ДочьМаток, редактировать" >
                             <div class="karandash">
                                 <img src="{{ asset('assets/proekt/images/sezon/sezon4.png') }}" alt="">
                             </div>
                         </a>
                     </li>
+                    <li class = "plem__name-list">
+                        <a   href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id}) }}"  class="btnn btnn--mb1 "
+                             title = "Список ДочьМаток от этой маточки" >
+                            <div class="karandash">
+                                <img src="{{ asset('assets/proekt/images/matkas/matki_.png') }}" alt="матка">
+                            </div>
+                        </a>
+                    </li>
+                    <li class = "plem__name-list">{{  plemmatka_status(plemmatka.status) }}</li>
                 </ul>
 
                 {% endfor %}
@@ -82,9 +96,9 @@
                 </a>
             </li>
             <li>
-{#                <a href="{{ path('proekt.pasekas.childmatkas'  ) }}"  class="btnn btnn--mb0 btnn--col">#}
+                <a href="{{ path('proekt.pasekas.childmatkas'  ) }}"  class="btnn btnn--mb0 btnn--col">
                  Список всех зарегистрированных  <strong class="strongo strongo--kras">ДочьМаток (ТестМаток) </strong>
-{#                </a>#}
+                </a>
             </li>
         </ul>
        

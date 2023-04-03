@@ -10,8 +10,8 @@ class Filter
 {
     public $uchastie;
     public $name;
-    public $persona_id;
-    public $kategoria_id;
+    public $goda_vixod;
+    public $kategoria;
     public $status = Status::ACTIVE;
 
 

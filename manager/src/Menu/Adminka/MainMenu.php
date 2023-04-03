@@ -63,7 +63,7 @@ class MainMenu
         }
 
         $menu
-            ->addChild('ДочьМатки', ['route' => 'adminka.matkas.childmatkas'])
+            ->addChild('ДочьМатки - список', ['route' => 'adminka.matkas.childmatkas'])
             ->setExtra('routes', [
                 ['route' => 'adminka.matkas.childmatkas'],
                 ['pattern' => '/^adminka.matkas.childmatkas\..+/']

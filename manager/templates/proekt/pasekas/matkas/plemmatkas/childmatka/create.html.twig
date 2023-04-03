@@ -1,25 +1,15 @@
 {% extends 'proekt/base.html.twig' %}
 
-{% block title %}Create{% endblock %}
+{% block title %}Добавить{% endblock %}
 
-{# {% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-       <li class="breadcrumb-item"><a href="{{ path('work') }}">Work</a></li>
-       <li class="breadcrumb-item"><a href="{{ path('paseka_matkas') }}">ПлемМатки</a></li>
-       <li class="breadcrumb-item"><a href="{{ path('paseka_matkas.plemmatka.show', {'id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka_matkas.plemmatka.childmatkas', {'plemmatka_id': plemmatka.id}) }}">ТестМатка</a></li>
-        <li class="breadcrumb-item active">Create</li>
-    </ol>
-{% endblock %} #}
 
 {% block kroxii %}
     <a href="{{ path('proekt') }}">Главная</a>
-    <a href="#">Рег-ция ПлемМатки</a>
-    <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Список ПлемМаток</a>
-        <a href="{{ path('proekt.pasekas.rasas.plemmatka') }}">Раса_</a>
-    <span class="aktiv ">Пункт 3</span> 
-    <span class="aktiv ">Катеория и внутреняя нумерация</span> 
+{#    <a href="#">Рег-ция ПлемМатки</a>#}
+{#    <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Список ПлемМаток</a>#}
+{#        <a href="{{ path('proekt.pasekas.rasas.plemmatka') }}">Раса_</a>#}
+{#    <span class="aktiv ">Пункт 3</span> #}
+    <span class="aktiv ">Добавить </span>
 {% endblock %}   
 
 {% block bodyy %}
@@ -36,25 +26,46 @@
         </div>
 
         <div class="inklud__title teni--">
-            Для  {{plemmatka.name}} - оформим  ДочьМатку (ТестМатку)
-        </div> 
-    </div>
+    Добавить ДочьМатку к   {{ plemmatka.name }}  сезон
+            <strong class="strongo strongo--kras strongo--sizee" >  {{ sezonPlem }} </strong>
+            </div>
+        </div>
 
-    <div class="proekts-plr  ">
+        <div class="proekts-plr  ">
 
-        <h1 class="plem__title  ">Заполняем еще две позиции:</h1>
-        <div class="plem-form__header  "> 
-            <div class="child-form ">
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <div>
-                    <button type="submit" class="btnn  btnn--pt btnn--col-child ">Сохранить</button>
+            <h1 class="plem__title  ">Заполняем еще две позиции:</h1>
+            <div class="plem-form__header  ">
+                <div class="child-form ">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <div>
+                        <button type="submit" class="btnn  btnn--pt btnn--col-child ">Сохранить</button>
+                    </div>
+                    {{ form_end(form) }}
+
                 </div>
-                {{ form_end(form) }}
-
             </div>
         </div>
     </div>
-</div>
+
+    {#    <div class="controls">#}
+{#        <h2> Добавить ДочьМатку к  <strong class="strongo strongo--kras">  {{ plemmatka.name }} </strong> сезон#}
+{#            <strong class="strongo strongo--kras">  {{ sezonPlem }} </strong></h2>#}
+{#    </div>#}
+
+{#    <div class="card">#}
+{#        <div class="card-body">#}
+
+{#            {{ form_start(form) }}#}
+{#            {{ form_widget(form) }}#}
+{#            <div>#}
+{#                <button type="submit" class="btn btn-primary">СОХРАНИТЬ</button>#}
+{#                <a href="{{ path('adminka.matkas') }}"#}
+{#                   class="btn-my btn-my--sm"> Выйти из режима "Добавить"</a>#}
+{#            </div>#}
+{#            {{ form_end(form) }}#}
+
+{#        </div>#}
+{#    </div>#}
 
 {% endblock %}

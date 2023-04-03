@@ -20,10 +20,15 @@ class Form extends AbstractType
                 'placeholder' => 'Введите часть названия',
                 'onchange' => 'this.form.submit()',
             ]])
-//            ->add('name_kateg', Type\TextType::class, ['required' => false, 'attr' => [
-//                'placeholder' => 'Введите название ',
-//                'onchange' => 'this.form.submit()', // отправляет форму
-//            ]])
+            ->add('kategoria', Type\TextType::class, ['required' => false, 'attr' => [
+                'placeholder' => 'Обозначение кат-рии ',
+                'onchange' => 'this.form.submit()', // отправляет форму
+            ]])
+            ->add('goda_vixod', Type\TextType::class, ['required' => false, 'attr' => [
+                'placeholder' => 'Поле для ввода года',
+                'onchange' => 'this.form.submit()',
+            ]])
+
 //            ->add('persona', Type\TextType::class, ['required' => false, 'attr' => [
 //                'placeholder' => 'Поле для ввода номера',
 //                'onchange' => 'this.form.submit()',
