@@ -8,8 +8,9 @@
 {% endblock %}
     {% block kroxii %}
         <a href="{{ path('proekt') }}">Главная</a>
-        <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Рег-ция ПлемМатки</a>             
-        <span class="aktiv ">Список ПлемМаток---</span>
+        <a href="{{ path('proekt.pasekas.matkas') }}">Список ПлемМаток</a>
+        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
+        <span class="aktiv ">Список ПлемМаток + ДочьМаток</span>
     {% endblock %}
 
 {% block bodyy %}
@@ -67,16 +68,18 @@
         <table class="tabl-child  tabl-hover-child ">
             <thead>
             <tr  >
-                <th  >Дата!!!! </th>
+
                 {% if not plemmatka %}
                 <th class="tabl-col-plem "  >  ПлемМатка</th>
                 {% endif %}
                  <th class="tabl-col-child" >ДочьМатка</th>
-                <th  >Автор</th>
+                <th class="tabl-col-child" >Выход </th>
+                <th></th>
                 <th >Приорит</th>
-                <th  >Испол---ль</th>
+                <th  >Автор</th>
+                <th  >Исполн.</th>
                 <th  >Статус</th>
-                <th >Дата</th>
+{#                <th >Дата!!!</th>#}
                 
                 
             </tr>
@@ -84,13 +87,9 @@
             <tbody>
             {% for childmatka in pagination %}
                 <tr>
-{#                    <td>{{ childmatka.id }} </td>#}
-                    <td class="tabl-bord-">{{ childmatka.date|date('Y-m-d') }}</td>
-
-
-                    {% if not plemmatka %}
+             {% if not plemmatka %}
                         <td class="tabl-bord- tabl-bord-plem ">
-                            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plem_id': childmatka.plemmatka_id}) }}">{{ childmatka.plemmatka_name }}</a>
+                            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': childmatka.plemmatka_id}) }}">{{ childmatka.plemmatka_name }}</a>
                         </td>
                     {% endif %}
                     <td class="tabl-bord- tabl-bord-child">
@@ -99,26 +98,22 @@
                         {% endif %}
                         <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.id}) }}">
                             {{ childmatka.name }}
-
                         </a>
-                        {# {{ childmatka.sparing }} #}
                     </td>
+                    <td class="tabl-bord- tabl-bord-child">{{ childmatka.date|date('Y-m-d') }}</td>
+                    <td class="tabl-bord- tabl-bord-child">   {{ adminka_matkas_childmatka_type(childmatka.type) }}</td>
+                    <td class="tabl-bord-">{{ adminka_matkas_childmatka_priority(childmatka.priority) }}</td>
+
                     <td class="tabl-bord-">{{ childmatka.author_name }}</td>
-{#                    <td>#}
-{#                        {% if childmatka.type != 'none' %}#}
-{#                            {{ paseka_matkas_childmatka_type(childmatka.type) }}#}
-{#                        {% endif %}#}
-{#                    </td>#}
-                    <td class="tabl-bord-">{{childmatka.priority}}</td>
+
                     <td class="tabl-bord-" >
                         {% for executor in childmatka.executors %}
                             <span class="badge badge-default" style="background: #eee">{{ executor.name }}</span>
                         {% endfor %}
                     </td> 
-                     <td class="tabl-bord-">{{ childmatka.status }}</td>
-                   <td class="tabl-bord-" >{{ childmatka.plan_date ? childmatka.plan_date|date('Y-m-d') : '' }}</td>
-                  
-                   
+                     <td class="tabl-bord-">{{ adminka_matkas_childmatka_status(childmatka.status) }}</td>
+{#                   <td class="tabl-bord-" >{{ childmatka.plan_date ? childmatka.plan_date|date('Y-m-d') : '' }}</td>#}
+
                 </tr>
             {% endfor %}
             </tbody>

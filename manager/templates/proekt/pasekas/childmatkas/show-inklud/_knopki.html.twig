@@ -11,7 +11,7 @@
                 </form>
             {% endif %}
         {% else %}
-            <form action="{{ path('paseka.matkas.childmatkas.take', {'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+            <form action="{{ path('adminka.matkas.childmatkas.take', {'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                 <input type="hidden" name="token" value="{{ csrf_token('take') }}" />
                 <button type="submit" 
                 class="btnn btnn--mb0 btnn--pt btnn--col-child">Бери</button>
@@ -27,15 +27,15 @@
 
                <a href="{{ path('proekt.pasekas.childmatkas.assign', {'id': childmatka.id}) }}" 
             class="btnn  btnn--pt btnn--col-child">Назначить исполнителя</a>
-
-        <a href="{{ path('proekt.pasekas.childmatkas.create', {'plemmatka_id': plemmatka.id}) }}?parent={{ childmatka.id }}" 
-            class="btnn  btnn--pt btnn--col-child">Добавить ДочьМатку</a>
+     Добавить ДочьМатку??
+{#        <a href="{{ path('proekt.pasekas.childmatkas.create', {'plemmatka_id': plemmatka.id}) }}?parent={{ childmatka.id }}" #}
+{#            class="btnn  btnn--pt btnn--col-child">Добавить ДочьМатку</a>#}
 
         <a href="{{ path('proekt.pasekas.childmatkas.edit', {'id': childmatka.id}) }}" 
             class="btnn  btnn--pt btnn--col-child">Редактировать ком-рий</a>
-
-        <a href="{{ path('proekt.pasekas.childmatkas.move', {'id': childmatka.id}) }}"
-            class="btnn  btnn--pt btnn--col-child">Перемстить на другой точок&hellip;</a>
+     Перемстить на другой точок??
+{#        <a href="{{ path('proekt.pasekas.childmatkas.move', {'id': childmatka.id}) }}"#}
+{#            class="btnn  btnn--pt btnn--col-child">Перемстить на другой точок&hellip;</a>#}
 
  {% else %}
  {# участник заказавает маточку #}

@@ -67,11 +67,11 @@ class Command
 //     */
 //    public $sezonChild;
 
-//    /**
-//     * @var int
-//     * @Assert\NotBlank()
-//     */
-//    public $godaVixod;
+    /**
+     * @var int
+     * @Assert\NotBlank()
+     */
+    public $kolChild;
 
     public function __construct(string $plemmatka, string $uchastie, string $sezonPlem)
     {

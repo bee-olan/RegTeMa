@@ -28,7 +28,10 @@ class Form extends AbstractType
                 'placeholder' => ' Подробное описание ДочьМатки'
                 ]])
 
-           // ->add('parent', Type\IntegerType::class, ['required' => false])
+            ->add('kolChild', Type\IntegerType::class, [
+                'label' => 'Сколько (кол-во) маточек регистрировать?',
+                'required' => false
+            ])
             ->add('plan_date', Type\DateType::class, [
                 'label' => 'Дата выхода ДочьМатки  ',
                 'required' => false, 

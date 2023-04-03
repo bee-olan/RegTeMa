@@ -105,12 +105,12 @@ class ChildMatka
     private $type;
 
 
-//    /**
-//     * @var ArrayCollection|File[]
-//     * @ORM\OneToMany(targetEntity="App\Model\Adminka\Entity\Matkas\ChildMatka\File\File", mappedBy="childmatka", orphanRemoval=true, cascade={"all"})
-//     * @ORM\OrderBy({"date" = "ASC"})
-//     */
-//    private $files;
+    /**
+     * @var ArrayCollection|File[]
+     * @ORM\OneToMany(targetEntity="App\Model\Adminka\Entity\Matkas\ChildMatka\File\File", mappedBy="childmatka", orphanRemoval=true, cascade={"all"})
+     * @ORM\OrderBy({"date" = "ASC"})
+     */
+    private $files;
 
 
     /**
@@ -195,7 +195,7 @@ class ChildMatka
         $this->date = $date;
         $this->name = $name;
         $this->content = $content;
-//        $this->files = new ArrayCollection();
+        $this->files = new ArrayCollection();
         $this->type = $type;
         $this->priority = $priority;
         $this->status = Status::new();
@@ -284,27 +284,27 @@ class ChildMatka
 
         $this->parent = $parent;
 
-        $this->addChange($actor, $date, Set::fromParent($parent->getId()));
+//        $this->addChange($actor, $date, Set::fromParent($parent->getId()));
     }
 
 
     public function setRoot(Uchastie $actor, \DateTimeImmutable $date): void
     {
         $this->parent = null;
-        $this->addChange($actor, $date, Set::forRemovedParent());
+//        $this->addChange($actor, $date, Set::forRemovedParent());
     }
 
     public function plan(Uchastie $actor, \DateTimeImmutable $date, \DateTimeImmutable $plan): void
     {
         $this->planDate = $plan;
-        $this->addChange($actor, $date, Set::fromPlan($plan));
+//        $this->addChange($actor, $date, Set::fromPlan($plan));
         // $this->recordEvent(new Event\TaskPlanChanged($actor->getId(), $this->id, $date));
     }
 
     public function removePlan(Uchastie $actor, \DateTimeImmutable $date): void
     {
         $this->planDate = null;
-        $this->addChange($actor, $date, Set::forRemovedPlan());
+//        $this->addChange($actor, $date, Set::forRemovedPlan());
     }
 // переместить
     public function move(Uchastie $actor, \DateTimeImmutable $date, PlemMatka $plemmatka): void
@@ -515,16 +515,13 @@ class ChildMatka
     }
 
 
-
-
-
-//    /**
-//     * @return File[]
-//     */
-//    public function getFiles(): array
-//    {
-//        return $this->files->toArray();
-//    }
+    /**
+     * @return File[]
+     */
+    public function getFiles(): array
+    {
+        return $this->files->toArray();
+    }
 //
 //
 //     /**

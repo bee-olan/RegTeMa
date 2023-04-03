@@ -54,7 +54,7 @@ class ChildSideFetcher
                 't.parent_id AS parent',
                 't.type',
                 't.priority',
-                't.progress',
+//                't.progress',
                 't.plan_date',
                 't.status',
                 'r.nomer AS mesto',
@@ -161,16 +161,16 @@ class ChildSideFetcher
                 't.plan_date',
                 't.status',
                 'r.nomer AS mesto',
-                'u.nomer AS  author_persona',
-                's.name AS  sparing',
-                's.title AS  sparing_title'
+                'u.nomer AS  author_persona'
+//                's.name AS  sparing',
+//                's.title AS  sparing_title'
             )
             ->from('admin_matkas_childmatkas', 't')
             ->innerJoin('t', 'admin_uchasties_uchasties', 'm', 't.author_id = m.id')
             ->innerJoin('t', 'admin_matkas_plemmatkas', 'p', 't.plemmatka_id = p.id')
             ->innerJoin('t', 'mesto_mestonomers', 'r', 't.author_id = r.id')
             ->innerJoin('t', 'adminka_uchasties_personas', 'u', 't.author_id = u.id')
-            ->innerJoin('t', 'admin_matkas_sparings', 's', 't.sparing_id = s.id')
+//            ->innerJoin('t', 'admin_matkas_sparings', 's', 't.sparing_id = s.id')
         ;
 
        if ($filter->uchastie) {
@@ -289,16 +289,14 @@ class ChildSideFetcher
                 't.plan_date',
                 't.status',
                 'r.nomer AS mesto',
-                'u.nomer AS  author_persona',
-                's.name AS  sparing',
-                's.title AS  sparing_title'
+                'u.nomer AS  author_persona'
+
             )
             ->from('admin_matkas_childmatkas', 't')
             ->innerJoin('t', 'admin_uchasties_uchasties', 'm', 't.author_id = m.id')
             ->innerJoin('t', 'admin_matkas_plemmatkas', 'p', 't.plemmatka_id = p.id')
             ->innerJoin('t', 'mesto_mestonomers', 'r', 't.author_id = r.id')
             ->innerJoin('t', 'adminka_uchasties_personas', 'u', 't.author_id = u.id')
-            ->innerJoin('t', 'admin_matkas_sparings', 's', 't.sparing_id = s.id')
                     ;
         if ($filter->uchastie) {
             $qb->innerJoin('t', 'adminka_matkas_plemmatka_uchastniks', 'ms', 't.plemmatka_id = ms.plemmatka_id');
@@ -352,7 +350,7 @@ class ChildSideFetcher
              $qb->setParameter(':executor', $filter->executor);
          }
        // , 'author_name'
-        if (!\in_array($sort, ['t.id', 't.date', 'plemmatka_name', 'name', 't.type', 't.plan_date', 't.progress', 't.priority', 't.status'], true)) {
+        if (!\in_array($sort, ['t.id', 't.date', 'plemmatka_name', 'name', 't.type', 't.plan_date', 't.priority', 't.status'], true)) {
             throw new \UnexpectedValueException('Cannot sort by ' . $sort);
         }
 

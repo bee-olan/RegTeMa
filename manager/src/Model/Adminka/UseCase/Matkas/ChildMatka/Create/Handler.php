@@ -78,7 +78,7 @@ class Handler
 //      dd( $command->sezonPlem);
 
 
-       for ($i = 1; $i <= 3; $i++) {
+       for ($i = 1; $i <= (int)$command->kolChild; $i++) {
 
             $childmatkaId = $this->childmatkas->nextId();
             $sezonPlem = $command->sezonPlem;
@@ -94,7 +94,7 @@ class Handler
             $command->priority,
             $command->name,
             $command->content,
-            $command->kolChild = 2,
+            $command->kolChild ,
             $command->godaVixod,
             $sezonPlem,
             $command->sezonChild=null

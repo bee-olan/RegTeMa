@@ -29,20 +29,20 @@
                             </td>
                             <td>
                                 {% if child.type != 'none' %}
-                                    {{ paseka_matkas_childmatka_type(child.type) }}
+                                    {{ adminka_matkas_childmatka_type(child.type) }}
                                 {% endif %}
                             </td>
-                            <td>{{ paseka_matkas_childmatka_priority(child.priority) }}</td>
+                            <td>{{ adminka_matkas_childmatka_priority(child.priority) }}</td>
                             <td>
                                 {% for executor in child.executors %}
                                     <span class="badge badge-default" style="background: #eee">{{ executor.name }}</span>
                                 {% endfor %}
                             </td>
-                            <td>{{ paseka_matkas_childmatka_status(child.status) }}</td>
+                            <td>{{ adminka_matkas_childmatka_status(child.status) }}</td>
                             <td>
-                                {% if child.progress %}
-                                    {{ paseka_matkas_childmatka_progress(child.progress) }}
-                                {% endif %}
+{#                                {% if child.progress %}#}
+{#                                    {{ adminka_matkas_childmatka_progress(child.progress) }}#}
+{#                                {% endif %}#}
                             </td>
                         </tr>
                     {% endfor %}
@@ -50,4 +50,4 @@
             </table>
         </div>
     {% endif %}
-    ///////-----------------------/////////////////////////
+

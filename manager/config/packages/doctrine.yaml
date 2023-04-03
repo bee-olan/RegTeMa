@@ -57,6 +57,7 @@ doctrine:
 
             comment_comment_id: 'App\Model\Comment\Entity\Comment\IdType'
             comment_comment_author_id: 'App\Model\Comment\Entity\Comment\AuthorIdType'
+            adminka_matkas_childmatka_file_id: 'App\Model\Adminka\Entity\Matkas\ChildMatka\File\IdType'
 
 
 
