@@ -99,6 +99,10 @@ services:
     App\Menu\Adminka\Matkas\RedaktorsMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_plemmatka_redaktors }]
 
+    App\Menu\Adminka\Matkas\CildMatkaPoiskMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_matkas_childmatka_poisks }]
+
+
 
     Symfony\Component\HttpFoundation\Session\Session:
         alias: Symfony\Component\HttpFoundation\Session\SessionInterface
