@@ -97,7 +97,7 @@ class CommentPlemSezonController extends AbstractController
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss', ['plemmatka_id' => $plemmatka->getId()]);
+        return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
     }
 
     private function checkCommentIsForPlem(PlemMatka $plemmatka, Comment $comment): void

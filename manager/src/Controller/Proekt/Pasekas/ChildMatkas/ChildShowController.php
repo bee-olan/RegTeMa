@@ -83,18 +83,6 @@ class ChildShowController extends AbstractController
             }
         }
 
-//        $progressCommand = Progress\Command::fromChildMatka($childmatka);
-//        $progressForm = $this->createForm(Progress\Form::class, $progressCommand);
-//        $progressForm->handleRequest($request);
-//        if ($progressForm->isSubmitted() && $progressForm->isValid()) {
-//            try {
-//                $progressHandler->handle($progressCommand);
-//                return $this->redirectToRoute('paseka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
-//            } catch (\DomainException $e) {
-//                $this->errors->handle($e);
-//                $this->addFlash('error', $e->getMessage());
-//            }
-//        }
 
         $typeCommand = Type\Command::fromChildMatka($this->getUser()->getId(), $childmatka);
         $typeForm = $this->createForm(Type\Form::class, $typeCommand);

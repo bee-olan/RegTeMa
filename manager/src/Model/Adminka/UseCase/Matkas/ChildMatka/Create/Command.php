@@ -78,7 +78,7 @@ class Command
         $this->plemmatka = $plemmatka;
         $this->uchastie = $uchastie;
         $this->sezonPlem = $sezonPlem;
-//        $this->type = Type::NABLUD;
+        $this->kolChild = 1;
         $this->priority = 2;
 
     }
