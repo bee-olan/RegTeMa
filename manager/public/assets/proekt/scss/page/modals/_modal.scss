@@ -14,3 +14,37 @@
     left: 0;
     z-index: $z-index-modal;
 }
+
+.modal__content {
+    width: 100%;
+    max-width: 500px;
+    padding: 8rem;
+    position: relative;
+
+    background-color: $primary-modal;
+    border-radius: 5px;
+
+    &--contact {
+        padding-bottom: 2.5rem;
+    }
+}
+
+.modal__close {
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: .5;
+
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+
+    transition: transform .2s linear, opacity .2s linear;
+
+    &:hover {
+        transform: rotate(90deg);
+        opacity: 1;
+    }
+}
+

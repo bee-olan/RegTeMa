@@ -1438,6 +1438,103 @@ pre {
   z-index: 1010;
 }
 
+.modal__content {
+  width: 100%;
+  max-width: 500px;
+  padding: 8rem;
+  position: relative;
+  background-color: #202020;
+  border-radius: 5px;
+}
+.modal__content--contact {
+  padding-bottom: 2.5rem;
+}
+
+.modal__close {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  transition: transform 0.2s linear, opacity 0.2s linear;
+}
+.modal__close:hover {
+  transform: rotate(90deg);
+  opacity: 1;
+}
+
+.formm--auth {
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+.formm__group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.formm__group--md {
+  margin-bottom: 2.5rem;
+}
+
+.formm__control {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0 0.75rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #3F3F3F;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #f6f6f6;
+}
+.formm__control::-moz-placeholder {
+  color: rgba(246, 246, 246, 0.2);
+}
+.formm__control::placeholder {
+  color: rgba(246, 246, 246, 0.2);
+}
+.formm__control:focus + .formm__line {
+  width: 100%;
+}
+.formm__control--textarea {
+  height: 30px;
+  overflow: hidden;
+  resize: none;
+}
+
+.formm__line {
+  width: 0;
+  height: 1px;
+  background-color: #155799;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  transition: width 0.2s linear;
+}
+
+.formm__footer--center {
+  text-align: center;
+}
+
+.formm__footer-list {
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+.formm__footer-list li {
+  margin: 0 0.5rem;
+}
+.formm__footer-list a {
+  color: #f6f6f6;
+}
+
 .containerr {
   max-width: 90rem;
   margin: 0 auto;
