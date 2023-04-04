@@ -996,6 +996,7 @@ pre {
   display: none;
   width: 16.5rem;
   padding: 0.5rem 0;
+  background-color: rgba(151, 144, 93, 0.2);
   border-radius: 0 0 5px 5px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   position: absolute;
@@ -1420,6 +1421,21 @@ pre {
 
 .mainn {
   padding: 10.7rem 0 8rem 270px;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1010;
 }
 
 .containerr {
@@ -2052,6 +2068,54 @@ legend {
   color: #a78c16;
 }
 
+.badge {
+  padding: 0.28em 0.4em 0.22em 0.4em;
+  line-height: 1.1;
+}
+
+.badge-primary {
+  color: #fff;
+  background-color: #20a8d8;
+}
+
+.badge-danger {
+  color: #fff;
+  background-color: #ED3024;
+}
+
+.badge-warning {
+  color: #fff;
+  background-color: #ffc107;
+}
+
+.badge-success {
+  color: #fff;
+  background-color: #28a745;
+}
+
+.badge-secondary {
+  color: #fff;
+  background-color: #6c757d;
+}
+
+.badge-dark {
+  color: #fff;
+  background-color: #343a40;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  transition: color 0.15s;
+}
+
 .comments {
   margin-top: 5rem;
 }
@@ -2230,7 +2294,7 @@ legend {
 .plem__name-list {
   display: flex;
   padding: 0.6rem;
-  min-width: 13%;
+  min-width: 10%;
 }
 .plem__name-list--wid {
   min-width: 34%;
@@ -2239,7 +2303,7 @@ legend {
 
 .plem__name {
   display: flex;
-  min-width: 13%;
+  min-width: 10%;
   padding: 0.6rem;
   border-bottom: 1px solid #155799;
 }
@@ -2458,6 +2522,25 @@ legend {
 
 .child-form__header {
   margin: 0 0 2.5rem 0;
+}
+
+.child-form-comment form div div textarea {
+  width: 100%;
+  padding-left: 1rem;
+  color: inherit;
+}
+.child-form-comment form div div input {
+  display: block;
+  width: 90%;
+  padding: 0.5rem 0 0.75rem;
+  background: #0c3156;
+  border: none;
+}
+.child-form-comment form div div input::-moz-placeholder {
+  color: rgba(142, 57, 198, 0.5);
+}
+.child-form-comment form div div input::placeholder {
+  color: rgba(142, 57, 198, 0.5);
 }
 
 .child-form {
