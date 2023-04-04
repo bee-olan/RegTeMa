@@ -124,7 +124,7 @@ class ChildMatkasController extends AbstractController
      */
     public function edit(ChildMatka $childmatka, Request $request, Edit\Handler $handler): Response
     {
-        $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+//        $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
 
         $command = Edit\Command::fromChildMatka($this->getUser()->getId(), $childmatka);
 

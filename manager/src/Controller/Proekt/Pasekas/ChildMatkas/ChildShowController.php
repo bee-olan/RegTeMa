@@ -76,7 +76,7 @@ class ChildShowController extends AbstractController
         if ($statusForm->isSubmitted() && $statusForm->isValid()) {
             try {
                 $statusHandler->handle($statusCommand);
-                return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+                return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
@@ -90,7 +90,7 @@ class ChildShowController extends AbstractController
         if ($typeForm->isSubmitted() && $typeForm->isValid()) {
             try {
                 $typeHandler->handle($typeCommand);
-                return $this->redirectToRoute('paseka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+                return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
@@ -103,7 +103,7 @@ class ChildShowController extends AbstractController
         if ($priorityForm->isSubmitted() && $priorityForm->isValid()) {
             try {
                 $priorityHandler->handle($priorityCommand);
-                return $this->redirectToRoute('paseka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+                return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
@@ -121,7 +121,7 @@ class ChildShowController extends AbstractController
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             try {
                 $commentHandler->handle($commentCommand);
-                return $this->redirectToRoute('paseka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
+                return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());

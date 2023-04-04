@@ -33,6 +33,6 @@ class Handler
 
         $childmatka->changePriority($actor, new \DateTimeImmutable(),$command->priority);
 
-        $this->flusher->flush($childmatka);
+        $this->flusher->flush();
     }
 }

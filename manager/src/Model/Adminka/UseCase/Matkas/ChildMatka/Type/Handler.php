@@ -11,7 +11,6 @@ use App\Model\Adminka\Entity\Matkas\ChildMatka\Type;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatkaRepository;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
-use App\Model\Adminka\UseCase\Matkas\ChildMatka\Priority\Command;
 
 class Handler
 {
@@ -29,11 +28,19 @@ class Handler
 
     public function handle(Command $command): void
     {
+
         $actor = $this->uchasties->get(new UchastieId($command->actor));
         $childmatka = $this->childmatkas->get(new Id($command->id));
 
-        $childmatka->changeType($actor, new \DateTimeImmutable(),new Type($command->type));
+//        $childmatka->changeType($actor, new \DateTimeImmutable(),new Type($command->type));
 
-        $this->flusher->flush($childmatka);
+        $childmatka->changeType(
+            $actor,
+            new \DateTimeImmutable(),
+            new Type($command->type)
+        );
+
+        $this->flusher->flush();
+
     }
 }

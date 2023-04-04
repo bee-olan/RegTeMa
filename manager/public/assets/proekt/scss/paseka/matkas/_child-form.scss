@@ -3,6 +3,35 @@
     // padding-left: 2.5rem;
 
   }
+.child-form-comment {
+    form {
+        div {
+            div{
+                textarea {
+                    width: 100%;
+                    padding-left: 1rem;
+                    color: inherit;
+                }
+                input {
+                    display: block;
+                    width: 90%;
+                    padding: .5rem 0 .75rem;
+                    background: #0c3156;
+                    //background: none;// убираем цвет
+
+                    border: none;
+
+                    &::placeholder {
+                        color: rgba($child-text, .5); // непрозрачность
+
+                    }
+                }
+            }
+        }
+
+    }
+}
+
 .child-form{
     margin-right: 4rem;
 

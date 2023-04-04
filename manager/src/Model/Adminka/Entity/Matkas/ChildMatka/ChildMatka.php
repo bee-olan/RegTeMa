@@ -350,10 +350,12 @@ class ChildMatka
     {
         Assert::range($priority, 1, 4);
         if ($priority === $this->priority) {
-            throw new \DomainException('Priority is already same.');
+            throw new \DomainException('Приоритет уже тот же.');
         }
         $this->priority = $priority;
         $this->addChange($actor, $date, Set::fromPriority($priority));
+//        $this->recordEvent(new Event\PlemMatkaPriorityChanged($actor->getId(), $this->id, $priority));
+
     }
 //-------------  Executor
     public function hasExecutor(UchastieId $id): bool

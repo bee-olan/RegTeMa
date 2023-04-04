@@ -28,6 +28,7 @@ class CommentFetcher
                 'm.id AS author_id',
                 'TRIM(CONCAT(m.name_first, \' \', m.name_last)) AS author_name',
                 'm.email AS author_email',
+                'm.nike AS author_nike',
                 'c.text'
             )
             ->from('comment_comments', 'c')

@@ -555,7 +555,9 @@ class ChildMatkasController extends AbstractController
 
 
         $typeCommand = Type\Command::fromChildMatka($this->getUser()->getId(), $childmatka);
+
         $typeForm = $this->createForm(Type\Form::class, $typeCommand);
+
         $typeForm->handleRequest($request);
         if ($typeForm->isSubmitted() && $typeForm->isValid()) {
             try {
