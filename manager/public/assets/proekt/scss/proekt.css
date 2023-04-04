@@ -1437,6 +1437,9 @@ pre {
   left: 0;
   z-index: 1010;
 }
+.modal.show {
+  display: flex;
+}
 
 .modal__content {
   width: 100%;

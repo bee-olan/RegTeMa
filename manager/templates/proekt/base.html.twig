@@ -15,7 +15,7 @@
 
 <title>Привер Проект</title>
 </head>
-<body class="no-scroll" >
+<body  >
 
 <div class="pagee">
   
@@ -50,10 +50,15 @@
     </main>
 </div>
 
-{{ include('proekt/base/_story-modal.html.twig') }}
+{% block modall %}
+    {# {% include('proekt/base/_story-modal.html.twig') %} #}
+    {% include('proekt/base/_contact-modal.html.twig') %}
+{% endblock %}
+
 
 <!-- JS -->
-<script src="assets/proekt/js/proekt.js"></script>
+<script src="../assets/proekt/js/modal.js"></script>
+{# <script src="assets/proekt/js/proekt.js"></script> #}
 </body>
 </html>
 
