@@ -1,5 +1,7 @@
 .modal {
-    display: flex;
+  // это для позиционирования м.о. относительно маски
+  //display: flex;
+  display: none; // скрываем мод.окно и визуализация будет через js
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -13,7 +15,8 @@
     top: 0;
     left: 0;
     z-index: $z-index-modal;
-
+  //выше мы заменили display: flex на display: none; что бы скрыть м.о
+  //теперь создаем  showw - этот класс будем выдаваться  модальному окну и оно - покажется
     &.show {
         display: flex;
     }
@@ -27,10 +30,13 @@
 
     background-color: $primary-modal;
     border-radius: 5px;
+  opacity: 0;
 
-    &--contact {
-        padding-bottom: 2.5rem;
-    }
+  //чуть приполнять для эффекта анимации
+  transform: translateY(-150px);
+  transition: transform 200ms ease-in-out,
+  opacity 200ms ease-in-out;
+
 }
 
 .modal__close {
