@@ -37,6 +37,15 @@
   transition: transform 200ms ease-in-out,
   opacity 200ms ease-in-out;
 
+    &--contact {
+      padding-bottom: 2.5rem;
+    }
+
+    &--story {
+        padding: 0;
+        background: none;
+    }
+
 }
 
 .modal__close {
@@ -57,4 +66,10 @@
         opacity: 1;
     }
 }
+
+.modal__video {
+  display: block;
+  margin: 0 auto;
+}
+
 

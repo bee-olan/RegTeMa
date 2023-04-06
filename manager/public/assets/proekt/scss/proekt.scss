@@ -17,8 +17,8 @@ body {
   font-size: 1.4rem;
   line-height: 1.5 ;
   color: $white;
-
-  &.no-scroll,// скрываем скролл для body при модальном о.
+// скрываем скролл для body при модальном о.
+  &.no-scroll,
   &.show-sidebar {
     overflow: hidden;
   }
@@ -83,6 +83,7 @@ pre {
 
 @import "page/modals/modal";
 @import "page/modals/formm";
+@import "page/modals/fotomodal";
 //
 @import "page/container/container";
 

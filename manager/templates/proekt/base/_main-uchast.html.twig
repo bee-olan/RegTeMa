@@ -1,108 +1,257 @@
-{#    <div class=" osnowa">#}
-<h2 class = "storie-teni storie-teni--em4">
+
+<h1 class="storie-teni">  Рег - Те - Ма</h1>
+
+<h2 class = "storie-teni storie-teni--em4"> 1 - 
     <a href="{{ path('proekt.pasekas.uchasties.uchastiee') }}" >
-        Стать участником проекта
+      Стать участником проекта
     </a>
 </h2>
-<h1 class="storie-teni">  Рег - Те - Ма</h1>
-{#    </div>#}
 
-<h2 class = "storie-teni storie-teni--em4"> 1 -
+
+<div class="proekts-plr  ">
+    <!-- Stories -->
+    <div class="stories">
+        <div class="stories__item" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+            <img class="stories__preview" 
+            src="assets/proekt/images/stories/st-u-1.png"  alt="">
+            <div class="stories__title">Последовательность действий ... </div>
+            <time class="stories__date" >Обзор ... </time>
+        </div>
+
+        <div class="stories__item" onclick="openModal();currentSlide(2)" class="hover-shadow cursor" >
+            <img class="stories__preview" src="assets/proekt/images/stories/st-u-2.png" alt="">
+            <div class="stories__title">1-1 ПерсонНомер</div>
+            <time class="stories__date" >Шаг 1</time>
+        </div>
+
+        <div class="stories__item" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+            <img class="stories__preview" src="assets/proekt/images/stories/st-u-3.png" alt="">
+            <div class="stories__title">1-2 Номер Места</div>
+            <time class="stories__date" >Шаг 2</time>
+        </div>
+
+        <div class="stories__item" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+            <img class="stories__preview" src="{{ asset('assets/proekt/images/stories/st-u-4.png') }}" alt="">
+            <div class="stories__title">1-3 .. Группа и Ник</div>
+            <time class="stories__date" >Шаг 3</time>
+        </div>
+
+        <div class="stories__item" onclick="openModal();currentSlide(5)" class="hover-shadow cursor">
+            <img class="stories__preview" src="{{ asset('assets/proekt/images/stories/st-u-5.png') }}" alt="">
+            <div class="stories__title">1-4 Вы участник ...</div>
+            <time class="stories__date" >Шаг 3</time>
+        </div>
+    </div><!-- /.stories -->
+</div >
+
+
+
+<h2 class = "storie-teni storie-teni--em4"> 1-1 -
     <a href="{{ path('proekt.personaa.diapazon') }}" >ПерсонНомер</a>
 </h2>
 <div class="proekts-plr  ">
     <!-- Stories -->
     <div class="stories">
-        <div class="stories__item" data-modal="story-modal">
-            <img class="stories__preview" src="assets/proekt/images/stories/pn1.png" alt="">
+        <div class="stories__item" onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+            <img class="stories__preview" 
+            src="assets/proekt/images/stories/pn-1.png"  alt="">
             <div class="stories__title">Выбираем  диапазон ... </div>
             <time class="stories__date" >Шаг 1</time>
         </div>
 
-        <div class="stories__item">
-            <img class="stories__preview" src="assets/proekt/images/stories/pn2.png" alt="">
+        <div class="stories__item" onclick="openModal();currentSlide(7)" class="hover-shadow cursor" >
+            <img class="stories__preview" src="assets/proekt/images/stories/pn-2.png" alt="">
             <div class="stories__title">... жмите на  цифру</div>
             <time class="stories__date" >Шаг 2</time>
         </div>
 
-        <div class="stories__item">
-            <img class="stories__preview" src="assets/proekt/images/stories/pn3.png" alt="">
+        <div class="stories__item" onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
+            <img class="stories__preview" src="assets/proekt/images/stories/pn-3.png" alt="">
             <div class="stories__title">Сохранить в БД</div>
             <time class="stories__date" >Шаг 3</time>
         </div>
 
-        <div class="stories__item">
-            <img class="stories__preview" src="{{ asset('assets/proekt/images/stories/pn4.png') }}" alt="">
-            {# src="assets/proekt/images/stories/pn4.png"
-#}
+        <div class="stories__item" onclick="openModal();currentSlide(9)" class="hover-shadow cursor">
+            <img class="stories__preview" src="{{ asset('assets/proekt/images/stories/pn-4.png') }}" alt="">
             <div class="stories__title">Продолжить ...</div>
             <time class="stories__date" >Шаг 4</time>
         </div>
+
+        <div class="stories__item" onclick="openModal();currentSlide(10)" class="hover-shadow cursor" >
+            <img class="stories__preview" src="assets/proekt/images/stories/st-u-2.png" alt="">
+            <div class="stories__title">1-1 ПерсонНомер</div>
+            <time class="stories__date" >Шаг 5</time>
+        </div>
+
     </div><!-- /.stories -->
 </div >
-<h2 class = "storie-teni storie-teni--em4"> 2 -
+
+
+<h2 class = "storie-teni storie-teni--em4"> 1-2 -
     <a href="{{ path('proekt.mestoo.okrugs') }}" >Номер места</a>
 </h2>
 <div class="proekts-plr  ">
     <!-- Stories -->
     <div class="stories">
-        <div class="stories__item">
+        <div class="stories__item" onclick="openModal();currentSlide(11)" class="hover-shadow cursor">
             <img class="stories__preview" src="assets/proekt/images/stories/m1.png" alt="">
             <div class="stories__title">Выбираем  Округ ... </div>
             <time class="stories__date" >Шаг 1</time>
         </div>
 
-        <div class="stories__item">
+        <div class="stories__item" onclick="openModal();currentSlide(12)" class="hover-shadow cursor">
             <img class="stories__preview" src="assets/proekt/images/stories/m2.png" alt="">
             <div class="stories__title">... отправить запрос..</div>
             <time class="stories__date" >Шаг 2</time>
         </div>
 
-        <div class="stories__item">
-            <img class="stories__preview" src="assets/proekt/images/stories/m3.png" alt="">
-            <div class="stories__title">Сохранить в БД</div>
+        <div class="stories__item" onclick="openModal();currentSlide(13)" class="hover-shadow cursor">
+            <img class="stories__preview" src="assets/proekt/images/stories/m-3.png" alt="">
+            <div class="stories__title">Область .. Район</div>
             <time class="stories__date" >Шаг 3</time>
         </div>
 
-        <div class="stories__item">
-            <img class="stories__preview" src="{{ asset('assets/proekt/images/stories/m4.png') }}" alt="">
-            {# src="assets/proekt/images/stories/pn4.png"
-#}
-            <div class="stories__title">Продолжить ...</div>
+        <div class="stories__item" onclick="openModal();currentSlide(14)" class="hover-shadow cursor">
+            <img class="stories__preview" src="{{ asset('assets/proekt/images/stories/m-4.png') }}" alt="">
+            <div class="stories__title" >Сохранить в БД</div>
             <time class="stories__date" >Шаг 4</time>
+        </div>
+        <div class="stories__item" onclick="openModal();currentSlide(15)" class="hover-shadow cursor">
+            <img class="stories__preview" src="{{ asset('assets/proekt/images/stories/m-5.png') }}" alt="">
+            <div class="stories__title" >Продолжить ...</div>
+            <time class="stories__date" >Шаг 5</time>
         </div>
     </div><!-- /.stories -->
 </div >
-<h2 class = "storie-teni storie-teni--em4"> 3 -
+<h2 class = "storie-teni storie-teni--em4"> 1-3 -
     <a href="{{ path('proekt.pasekas.uchasties.uchastiee') }}" >Группа - Ник</a>
 </h2>
 <div class="proekts-plr  ">
     <!-- Stories -->
     <div class="stories">
-        <div class="stories__item">
+        <div class="stories__item" onclick="openModal();currentSlide(16)" class="hover-shadow cursor">
             <img class="stories__preview" src="assets/proekt/images/stories/uch1.png" alt="">
             <div class="stories__title">Жмем  подтвердить ... </div>
             <time class="stories__date" >Шаг 1</time>
         </div>
 
-        <div class="stories__item">
+        <div class="stories__item" onclick="openModal();currentSlide(17)" class="hover-shadow cursor">
             <img class="stories__preview" src="assets/proekt/images/stories/uch2.png" alt="">
             <div class="stories__title">Выбираем Группу и Ник</div>
             <time class="stories__date" >Шаг 2</time>
         </div>
 
-        <div class="stories__item">
+        <div class="stories__item" onclick="openModal();currentSlide(18)" class="hover-shadow cursor">
             <img class="stories__preview" src="assets/proekt/images/stories/uch3.png" alt="">
             <div class="stories__title">Ваши данные в БД ..</div>
             <time class="stories__date" >Шаг 3</time>
         </div>
 
-        <div class="stories__item">
+        <div class="stories__item" onclick="openModal();currentSlide(19)" class="hover-shadow cursor" >
             <img class="stories__preview" src="{{ asset('assets/proekt/images/stories/pn4.png') }}" alt="">
-            {# src="assets/proekt/images/stories/pn4.png"
-#}
             <div class="stories__title">Продолжить ...</div>
             <time class="stories__date" >Шаг 4</time>
         </div>
     </div><!-- /.stories -->
 </div >
+
+<div class="proekts-plr  ">
+
+    <div id="myModal" class="my-modal">
+    
+    <button class="modal__close" type="button">
+                <img src="../assets/proekt/images/close.svg" alt="Закрыть">
+            </button>
+
+    <div class="my-modal-content">
+
+        <div class="mySlides">  
+        <img src="assets/proekt/images/stories/st-u-1.png" style="width:100%">              
+        </div>
+
+        <div class="mySlides">
+        <img src="assets/proekt/images/stories/st-u-2.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+        <img src="assets/proekt/images/stories/st-u-3.png" style="width:100%">
+        </div>
+        
+        <div class="mySlides">
+        <img src="assets/proekt/images/stories/st-u-4.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/stories/st-u-5.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/stories/pn1.png" style="width:100%">
+        </div>
+
+         <div class="mySlides">
+            <img src="assets/proekt/images/stories/pn2.png" style="width:100%">
+        </div>
+
+         <div class="mySlides">
+            <img src="assets/proekt/images/stories/pn3.png" style="width:100%">
+        </div>
+
+         <div class="mySlides">
+            <img src="assets/proekt/images/stories/pn4.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/stories/st-u-2.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/stories/m1.png" style="width:100%">
+        </div>
+
+         <div class="mySlides">
+            <img src="assets/proekt/images/stories/m2.png" style="width:100%">
+        </div>
+
+         <div class="mySlides">
+            <img src="assets/proekt/images/stories/m-3.png" style="width:100%">
+        </div>
+
+         <div class="mySlides">
+            <img src="assets/proekt/images/stories/m-4.png" style="width:100%">
+        </div>
+ 
+        <div class="mySlides">
+            <img src="assets/proekt/images/stories/m-5.png" style="width:100%">
+        </div>
+
+       <div class="mySlides">
+            <img src="assets/proekt/images/stories/m1.png" style="width:100%">
+        </div>
+
+         <div class="mySlides">
+            <img src="assets/proekt/images/stories/m2.png" style="width:100%">
+        </div>
+
+         <div class="mySlides">
+            <img src="assets/proekt/images/stories/m-3.png" style="width:100%">
+        </div>
+
+         <div class="mySlides">
+            <img src="assets/proekt/images/stories/m-4.png" style="width:100%">
+        </div>
+ 
+        <div class="mySlides">
+            <img src="assets/proekt/images/stories/m-5.png" style="width:100%">
+        </div>
+        
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+
+        <div class="caption-container">
+        <p id="caption"></p>
+        </div>
+
+    </div>
+    </div>
+</div>

@@ -15,7 +15,7 @@
 
 <title>Привер Проект</title>
 </head>
-<body id="saitBody" >
+<body id="modalId" >
 
 <div class="pagee">
   
@@ -50,15 +50,17 @@
     </main>
 </div>
 
-{% block modall %}
-     {% include('proekt/base/_story-modal.html.twig') %}
-    {% include('proekt/base/_contact-modal.html.twig') %}
-{% endblock %}
+{# {% block modall %} #}
+   {{  include('proekt/base/_story-modal.html.twig')}}
+    {{  include('proekt/base/_contact-modal.html.twig') }}
+{# {% endblock %} #}
 
+{# {{include('proekt/base/_story-modal.html.twig')}} #}
+{# {{include('proekt/base/_contact-modal.html.twig')}} #}
 
 <!-- JS -->
 <script src="../assets/proekt/js/modal.js"></script>
-{# <script src="assets/proekt/js/proekt.js"></script> #}
+<script src="../assets/proekt/js/fotomodal.js"></script>
 </body>
 </html>
 
