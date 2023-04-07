@@ -56,13 +56,14 @@
                         </a>
                     </li>
 
+
                     <li class = "plem__name-list">  {{ plemmatka_kategoria(plemmatka.kategoria) }} </li>
                     <li class = "plem__name-list">
-                        {{ plemmatka.departments_count }}
+                        {{ plemmatka.departments_count }}---
                         {% if plemmatka.departments_count < 1 %}
                             - ожидает
                         {% else %}
-                            /  {{ plemmatka.child_count }}
+                            / ?? {{ plemmatka.child_count }}
                         {% endif %}
                     </li>
 {#                    <li class = "plem__name-list"> {{ plemmatka.goda_vixod }} </li>#}
@@ -70,15 +71,15 @@
 
                     <li class = "plem__name-list">
                         <a   href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id}) }}"  class="btnn btnn--mb1 "
-                             title = "Добавить новый сезон, объявить ДочьМаток, редактировать" >
+                             title = "Редактировать, архивировать, добавить новый сезон" >
                             <div class="karandash">
                                 <img src="{{ asset('assets/proekt/images/sezon/sezon4.png') }}" alt="">
                             </div>
                         </a>
                     </li>
                     <li class = "plem__name-list">
-                        <a   href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id}) }}"  class="btnn btnn--mb1 "
-                             title = "Список ДочьМаток от этой маточки" >
+                        <a   href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.show', {'plemmatka_id': plemmatka.id}) }}"  class="btnn btnn--mb1 "
+                             title = "Добавить ДочьМаток от этой маточки" >
                             <div class="karandash">
                                 <img src="{{ asset('assets/proekt/images/matkas/matki_.png') }}" alt="матка">
                             </div>

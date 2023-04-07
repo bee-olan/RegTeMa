@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Proekt\Pasekas\PlemMatka\ChildMatka;
 
+use App\Annotation\Guid;
+
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id;
 use App\Model\Adminka\UseCase\Matkas\ChildMatka\Create;
 
@@ -17,11 +19,12 @@ use App\Security\Voter\Adminka\Matkas\PlemMatkaAccess;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("proekt/pasekas/matkas/plemmatkas/childmatka/{plemmatka_id}/childmatka", name="proekt.pasekas.matkas.plemmatkas.childmatka")
+ * @Route("proekt/pasekas/matkas/plemmatkas/childmatka/{plemmatka_id}", name="proekt.pasekas.matkas.plemmatkas.childmatka")
  * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
  */
 class ChildMatkaController extends AbstractController
@@ -176,6 +179,43 @@ class ChildMatkaController extends AbstractController
             'plemmatka' => $plemmatka,
             'sezonPlem' => $sezonPlem,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/show", name=".show", requirements={"id"=Guid::PATTERN})
+     * @param PlemMatka $plemmatka
+     * @param Request $request
+     * @return Response
+     */
+    public function show(PlemMatka $plemmatka,
+                         Request $request ): Response
+    {
+//dd($plemmatka);
+//        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
+        // $commentCommand = new Comment\AddSezon\Command(
+        //     $this->getUser()->getId(),
+        //     PlemMatka::class,
+        //     $plemmatka->getId()->getValue()
+        // );
+
+        // $commentForm = $this->createForm(Comment\AddSezon\Form::class, $commentCommand);
+        // $commentForm->handleRequest($request);
+        // if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+        //     try {
+        //         $commentHandler->handle($commentCommand);
+        //         return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
+        //     } catch (\DomainException $e) {
+        //         $this->errors->handle($e);
+        //         $this->addFlash('error', $e->getMessage());
+        //     }
+        // }
+        return $this->render('proekt/pasekas/matkas/plemmatkas/childmatka/show.html.twig', [
+            'plemmatka' => $plemmatka,
+            'uchastniks' => $plemmatka->getUchastniks(),
+            // 'comments' => $comments->allForPlemMatka($plemmatka->getId()->getValue()),
+            // 'commentForm' => $commentForm->createView(),
+
         ]);
     }
 }

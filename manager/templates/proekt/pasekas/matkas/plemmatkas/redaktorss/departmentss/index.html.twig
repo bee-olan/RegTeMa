@@ -7,7 +7,7 @@
       <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
       <a href="{{ path('proekt.pasekas.matkas') }}">Список ПлемМаток</a>
       <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id})  }}">{{ plemmatka.name }}</a>
-      <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id})  }}">Редактировать</a>
+      <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id})  }}">Редактировать</a>
       <span class="aktiv ">Добавить сезон</span>
   {% endblock %}
 
@@ -37,7 +37,7 @@
             {% if department.uchasties_count  < 1 %}
                 <li class="plem__name--wid20">  &nbsp; &nbsp;
                     <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.uchastiess.edit',
-                        {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Добавить сезон</a>
+                        {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">добавить этот</a>
                 </li>
             {% endif %}
             </ul>

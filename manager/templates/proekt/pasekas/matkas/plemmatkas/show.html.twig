@@ -25,19 +25,18 @@
     </div>
 
         <div class="plem plem__jus-se">
+            <a href="{{ path('proekt.pasekas.matkas'  ) }}"
+               class="btnn btnn--mb0 btnn--col"> Список ПлемМаток с <strong class="strongo strongo--kras"> выбранным сезоном </strong> .
+            </a>
             <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id' : plemmatka.id}  ) }}"
                class="btnn btnn--mb0 btnn--col">
-                Перейти к выбору  <strong class="strongo strongo--kras">сезонов </strong> и объявлению <strong class="strongo strongo--kras">ДочьМаток (ТестМаток) </strong>
+                .. к выбору  <strong class="strongo strongo--kras">сезонов </strong> 
             </a>
-            <a href="{{ path('proekt.pasekas.matkas'  ) }}"
-               class="btnn btnn--mb0 btnn--col"> Список Ваших ПлемМаток с<strong class="strongo strongo--kras"> выбранным сезоном </strong> .
+            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id' : plemmatka.id}  ) }}"
+               class="btnn btnn--mb0 btnn--col">
+                .. к  объявлению <strong class="strongo strongo--kras">ДочьМаток </strong>
             </a>
-{#            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id}  ) }}"#}
-{#               class="btnn btnn--mb0 btnn--col">Перейти к регистрации  <strong class="strongo strongo--kras">ДочьМатки  </strong>#}
-{#            </a>#}
-{#            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka', {'plemmatka_id' : plemmatka.id}  ) }}"#}
-{#               class="btnn btnn--mb0 btnn--col">Смотреть всех <strong class="strongo strongo--kras">ДочьМаток</strong> этой <strong class="stro stro--kras">ПлемМатки</strong>#}
-{#            </a>#}
+           
         </div>
 
         <div class="proekts-plr" >

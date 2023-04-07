@@ -32,11 +32,11 @@
 
         {% for uchastnik in uchastniks %}
             <ul class="plem plem__jus-st ">
-                <li class="plem__name " > {{ uchastnik.uchastie.nike }}  ( {{ uchastnik.uchastie.name.full }} )</li>
+                <li  > <strong class="strongo ">{{ uchastnik.uchastie.nike }}  </strong> </li>
                 <li class="ma-le-2 " >
                     <ul class="list-unstyled my-0">
                         {% for role in uchastnik.roles %}
-                            <li>{{ role.name }}</li>
+                            <li>( {{ role.name }} ), сезоны : </li>
                         {% endfor %}
                     </ul>
                 </li>
@@ -50,11 +50,14 @@
             </ul>
         {% endfor %}
         <ul class="plem plem__jus-st ">
-            <li class="plem__name " ><strong class="strongo ">Добавить сезоны, редактировать, объявить ДочьМатку: </strong></li>
-            {#            <li class="plem__name " >{{plemmatka.title}}</li>#}
+           
             <li class="plem__name--wid20">  &nbsp; &nbsp;
                 <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show',
-                    {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col"> - вернуться на страничку </a>
+                    {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col"> - перейти на страничку редактирования</a>
+            </li>
+            <li class="plem__name--wid20">  &nbsp; &nbsp;
+                <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.show',
+                    {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col"> - перейти на страничку добавления ДочьМаток</a>
             </li>
         </ul>
 

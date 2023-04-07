@@ -892,6 +892,18 @@ pre {
   color: #4f100c;
 }
 
+.ma-to-2 {
+  margin-top: 2rem;
+}
+
+.ma-to-3 {
+  margin-top: 3rem;
+}
+
+.ma-to-4 {
+  margin-top: 4rem;
+}
+
 .ma-bo-1 {
   margin-bottom: 1rem;
 }
@@ -910,6 +922,10 @@ pre {
 
 .ma-ri-0 {
   margin-right: 0;
+}
+
+.pa-to-2 {
+  padding-top: 2rem;
 }
 
 .pa-le-0 {

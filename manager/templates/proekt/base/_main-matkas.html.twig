@@ -15,99 +15,193 @@
         <div class="proekts-plr  ">
             <!-- Stories -->
             <div class="stories">
-                <div class="stories__item" data-modal="story-modal">
-                    <img class="stories__preview" src="assets/proekt/images/stories/rln1.png" alt="">
-{#                    <a href="{{ storage_path(file.info.path ~ '/' ~ file.info.name) }}" target="_blank">{{ file.info.name }}</a>#}
-                    <div class="stories__title   stories__title--rln">Пишем запрос ... </div>
+                <div class="stories__item" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="assets/proekt/images/plemmatka/rln-m1.png" alt="">
+                    <div class="stories__title   stories__title--rln">Смотрим, если  ... </div>
                     <time class="stories__date  stories__date--rln" >Шаг 1</time>
                 </div>
 
-                <div class="stories__item"  data-modal="story-modal">
-                    <img class="stories__preview" src="assets/proekt/images/stories/rln2.png" alt="">
+                <div class="stories__item"  onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="assets/proekt/images/plemmatka/rln-m2.png" alt="">
                     <div class="stories__title  stories__title--rln">Выбираем Расу...</div>
                     <time class="stories__date stories__date--rln" >Шаг 2</time>
                 </div>
 
-                <div class="stories__item">
-                    <img class="stories__preview" src="assets/proekt/images/stories/rln3.png" alt="">
-                    <div class="stories__title  stories__title--rln">.. Линию-Номер ..</div>
+                <div class="stories__item" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="assets/proekt/images/plemmatka/rln-m3.png" alt="">
+                    <div class="stories__title  stories__title--rln">Обязательная проверка</div>
                     <time class="stories__date stories__date--rln" >Шаг 3</time>
                 </div>
 
-                <div class="stories__item">
-                    <img class="stories__preview" src="{{ asset('assets/proekt/images/stories/rln5.png') }}" alt="">
-                    {# src="assets/proekt/images/stories/pn4.png"
-        #}
-                    <div class="stories__title  ">Продолжаем ...</div>
+                <div class="stories__item" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="{{ asset('assets/proekt/images/plemmatka/rln-m4.png') }}" alt="">
+                    <div class="stories__title stories__title--rln ">Начало ...</div>
                     <time class="stories__date stories__date--rln" >Шаг 4</time>
+                </div>
+
+                <div class="stories__item" onclick="openModal();currentSlide(5)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="{{ asset('assets/proekt/images/plemmatka/rln-m5.png') }}" alt="">
+                    <div class="stories__title stories__title--rln ">Как-то так ...</div>
+                    <time class="stories__date stories__date--rln" >Шаг 5</time>
                 </div>
             </div><!-- /.stories -->
         </div >
-        <h2 class = "storie-teni storie-teni--em4"> 2 -
-            <a href="{{ path('proekt.mestoo.okrugs') }}" >Продолжить регистрацию ПлемМатки</a>
-        </h2>
+
+        <h2 class = "storie-teni storie-teni--em4">2 - Продолжаем рег-цию ПлемМатки</h2>
         <div class="proekts-plr  ">
             <!-- Stories -->
             <div class="stories">
-                <div class="stories__item">
-                    <img class="stories__preview" src="assets/proekt/images/stories/pm1.png" alt="">
+                <div class="stories__item" onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="assets/proekt/images/plemmatka/rln-m6.png" alt="">
                     <div class="stories__title stories__date--rln">Категория - Год - Комментарий ... </div>
+                    <time class="stories__date stories__date--rln" >Шаг 6</time>
+                </div>
+
+                <div class="stories__item" onclick="openModal();currentSlide(7)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="assets/proekt/images/plemmatka/rln-m7.png" alt="">
+                    <div class="stories__title stories__date--rln">Всё получилось ...</div>
+                    <time class="stories__date stories__date--rln" >Шаг 7</time>
+                </div>
+
+                <div class="stories__item" onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="assets/proekt/images/plemmatka/rln-m8.png" alt="">
+                    <div class="stories__title stories__date--rln">Заявка на сезон</div>
+                    <time class="stories__date " >Шаг 8</time>
+                </div>
+
+                <div class="stories__item" onclick="openModal();currentSlide(9)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="{{ asset('assets/proekt/images/plemmatka/rln-m9.png') }}" alt="">
+                    <div class="stories__title ">Редактировать ...</div>
+                    <time class="stories__date " >Шаг 9</time>
+                </div>
+
+                <div class="stories__item" onclick="openModal();currentSlide(10)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="{{ asset('assets/proekt/images/plemmatka/rln-m10.png') }}" alt="">
+                    <div class="stories__title stories__date--rln">Список ПлемМаток..</div>
+                    <time class="stories__date stories__date--rln" >Шаг 10</time>
+                </div>
+            </div><!-- /.stories -->
+    </div >  {#   конец  #}
+        {# =============  функционал кнопок #}
+ <h2 class = "storie-teni storie-teni--em4">3 - Добавить сезон . Редактировать . Статус.</h2>
+        <div class="proekts-plr  ">
+            <!-- Stories -->
+            <div class="stories">
+                <div class="stories__item" onclick="openModal();currentSlide(11)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="assets/proekt/images/plemmatka/pm-m1.png" alt="">
+                    <div class="stories__title stories__date--rln">Список  ПлемМаток</div>
                     <time class="stories__date stories__date--rln" >Шаг 1</time>
                 </div>
 
-                <div class="stories__item">
-                    <img class="stories__preview" src="assets/proekt/images/stories/pm3.png" alt="">
-                    <div class="stories__title stories__date--rln">Как-то так ...</div>
+                <div class="stories__item" onclick="openModal();currentSlide(12)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="assets/proekt/images/plemmatka/pm-m2.png" alt="">
+                    <div class="stories__title stories__date--rln">Добавить сезон . Редактировать . Статус</div>
                     <time class="stories__date stories__date--rln" >Шаг 2</time>
                 </div>
 
-                <div class="stories__item">
-                    <img class="stories__preview" src="assets/proekt/images/stories/m3.png" alt="">
-                    <div class="stories__title stories__date--rln">Сохранить в БД</div>
-                    <time class="stories__date stories__date--rln" >Шаг 3</time>
+                <div class="stories__item" onclick="openModal();currentSlide(13)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="assets/proekt/images/plemmatka/pm-m3.png" alt="">
+                    <div class="stories__title stories__date--rln">Всё просто ...</div>
+                    <time class="stories__date stories__date--rln " >Шаг 3</time>
                 </div>
 
-                <div class="stories__item">
-                    <img class="stories__preview" src="{{ asset('assets/proekt/images/stories/m4.png') }}" alt="">
-                    {# src="assets/proekt/images/stories/pn4.png"
-        #}
-                    <div class="stories__title stories__date--rln">Продолжить ...</div>
-                    <time class="stories__date stories__date--rln" >Шаг 4</time>
+                <div class="stories__item" onclick="openModal();currentSlide(14)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="{{ asset('assets/proekt/images/plemmatka/pm-m4.png') }}" alt="">
+                    <div class="stories__title  stories__date--rln ">Жмём  на кнопку.</div>
+                    <time class="stories__date stories__date--rln " >Шаг 4</time>
+                </div>
+
+                <div class="stories__item" onclick="openModal();currentSlide(15)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="{{ asset('assets/proekt/images/plemmatka/pm-m5.png') }}" alt="">
+                    <div class="stories__title stories__date--rln">Выбрали - сохранили </div>
+                    <time class="stories__date stories__date--rln" >Шаг 5</time>
                 </div>
             </div><!-- /.stories -->
         </div >
-        <h2 class = "storie-teni storie-teni--em4"> 3 -
-            <a href="{{ path('proekt.pasekas.uchasties.uchastiee') }}" >Группа - Ник</a>
-        </h2>
-        <div class="proekts-plr  ">
-            <!-- Stories -->
-            <div class="stories">
-                <div class="stories__item">
-                    <img class="stories__preview" src="assets/proekt/images/stories/uch1.png" alt="">
-                    <div class="stories__title">Жмем  подтвердить ... </div>
-                    <time class="stories__date" >Шаг 1</time>
-                </div>
+{#  конец функцинала #}
 
-                <div class="stories__item">
-                    <img class="stories__preview" src="assets/proekt/images/stories/uch2.png" alt="">
-                    <div class="stories__title">Выбираем Группу и Ник</div>
-                    <time class="stories__date" >Шаг 2</time>
-                </div>
-
-                <div class="stories__item">
-                    <img class="stories__preview" src="assets/proekt/images/stories/uch3.png" alt="">
-                    <div class="stories__title">Ваши данные в БД ..</div>
-                    <time class="stories__date" >Шаг 3</time>
-                </div>
-
-                <div class="stories__item">
-                    <img class="stories__preview" src="{{ asset('assets/proekt/images/stories/pn4.png') }}" alt="">
-                    {# src="assets/proekt/images/stories/pn4.png"
-        #}
-                    <div class="stories__title">Продолжить ...</div>
-                    <time class="stories__date" >Шаг 4</time>
-                </div>
-            </div><!-- /.stories -->
-        </div >
     </div>
 </article>
+{# ------------------------------------------------------------------------- #}
+<div class="proekts-plr  ">
+
+    <div id="myModal" class="my-modal">
+    
+    <button class="modal__close" type="button">
+                <img src="../assets/proekt/images/close.svg" alt="Закрыть">
+    </button>
+
+    <div class="my-modal-content">
+
+        <div class="mySlides">  
+            <img src="assets/proekt/images/plemmatka/rln--b1.png" style="width:100%">              
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/rln-b2.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/rln-b3.png" style="width:100%">
+        </div>
+        
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/rln-b4.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/rln-b5.png" style="width:100%">
+        </div>
+ 
+        <div class="mySlides">  
+            <img src="assets/proekt/images/plemmatka/rln-b6.png" style="width:100%">              
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/rln-b7.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/rln-b8.png" style="width:100%">
+        </div>
+        
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/rln-b9.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/rln-b10.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/pm-b1.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/pm-b2.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/pm-b3.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/pm-b4.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/pm-b5.png" style="width:100%">
+        </div>
+
+        
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+
+        <div class="caption-container">
+        <p id="caption"></p>
+        </div>
+
+    </div>
+    </div>
+</div>
+
