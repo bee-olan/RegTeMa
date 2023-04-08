@@ -15,7 +15,7 @@ class UserFixture extends Fixture
 {
     public const REFERENCE_ADMIN = 'user_user_admin';
     public const REFERENCE_USER = 'user_user_user';
-
+    public const REFERENCE_MODERATOR = 'user_user_moderator';
     private $hasher;
 
     public function __construct(PasswordHasher $hasher)
@@ -48,14 +48,24 @@ class UserFixture extends Fixture
         );
         $manager->persist($confirmed);
         $this->setReference(self::REFERENCE_USER, $confirmed);
-
+//--------------------
         $admin = $this->createAdminByEmail(
-            new Name('James', 'Bond'),
+            new Name('Ольга', 'Игоревна'),
             new Email('admin@app.test'),
             $hash
         );
         $manager->persist($admin);
         $this->setReference(self::REFERENCE_ADMIN, $admin);
+//        -----------------
+        $matkowod = $this->createModeratorByEmail(
+            new Name('Дмитрий', 'Евгеньевич'),
+            new Email('itlar@app.test'),
+            $hash
+        );
+        $manager->persist($matkowod);
+        $this->setReference(self::REFERENCE_MODERATOR, $matkowod);
+
+//        -----------------
 
         $manager->flush();
     }
@@ -64,6 +74,13 @@ class UserFixture extends Fixture
     {
         $user = $this->createSignUpConfirmedByEmail($name, $email, $hash);
         $user->changeRole(Role::admin());
+        return $user;
+    }
+
+    private function createModeratorByEmail(Name $name, Email $email, string $hash): User
+    {
+        $user = $this->createSignUpConfirmedByEmail($name, $email, $hash);
+        $user->changeRole(Role::moderator());
         return $user;
     }
 

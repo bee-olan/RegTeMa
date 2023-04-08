@@ -21,6 +21,7 @@ class LiniaFixtures extends Fixture implements DependentFixtureInterface
     public const REFERENCE_KAR_2= 'rasas_rasa_linia_kar_2';
     public const REFERENCE_IT_1= 'rasas_rasa_linia_it_1';
     public const REFERENCE_IT_2= 'rasas_rasa_linia_it_2';
+    public const REFERENCE_KAR_JAK= 'rasas_rasa_linia_kar_jak';
 
     public function load(ObjectManager $manager): void
     {
@@ -35,11 +36,13 @@ class LiniaFixtures extends Fixture implements DependentFixtureInterface
         /**
          * @var Rasa $sredruss
          * @var Rasa $karnik
+         * @var Rasa $jak
          * @var Rasa $itall
          */
         $sredruss = $this->getReference(RasaFixtures::REFERENCE_SREDRUSS);
         $karnik = $this->getReference(RasaFixtures::REFERENCE_KARNIK);
         $itall = $this->getReference(RasaFixtures::REFERENCE_ITALL);
+        $jak= $this->getReference(RasaFixtures::REFERENCE_JAK_KARNIK);
 //
 
         $sredruss_1 = $this->createLinia($sredruss, $name="л-1", $nameStar="1 запись о линии для Ср",
@@ -53,10 +56,17 @@ class LiniaFixtures extends Fixture implements DependentFixtureInterface
         $this->setReference(self::REFERENCE_SR_2, $sredruss_2);
 ////////////////////////////////////////////////////////////////////
 
+        $karnik_jak = $this->createLinia($jak, $name="л-1", $nameStar="Бикань",
+        $title="Як_л-1", $sortLinia = 1);
+        $manager->persist($karnik_jak);
+         $this->setReference(self::REFERENCE_KAR_JAK, $karnik_jak);
+
+////////////////////////////////////////////////////////////////////
+
         $karnik_1 = $this->createLinia($karnik, $name="л-1", $nameStar="1 запись о линии для Кр",
             $title="Кр_л-1", $sortLinia = 1);
         $manager->persist($karnik_1);
-         $this->setReference(self::REFERENCE_KAR_1, $karnik_1);
+        $this->setReference(self::REFERENCE_KAR_1, $karnik_1);
 
         $karnik_2 = $this->createLinia($karnik, $name="л-2", $nameStar="2 запись о линии для Кр",
             $title="Кр_л-2", $sortLinia = 2);

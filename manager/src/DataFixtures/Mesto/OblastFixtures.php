@@ -20,6 +20,7 @@ class OblastFixtures extends Fixture implements DependentFixtureInterface
 {
     public const REFERENCE_ROST= 'mesto_obl_rost';
     public const REFERENCE_PERM= 'mesto_obl_perm';
+    public const REFERENCE_JAROS= 'mesto_obl_jaros';
 
 
     public function load(ObjectManager $manager): void
@@ -34,10 +35,16 @@ class OblastFixtures extends Fixture implements DependentFixtureInterface
         /**
          * @var Okrug $ugg
          * @var Okrug $priwol
+         * @var Okrug $centr
          */
         $ugg = $this->getReference(OkrugFixtures::REFERENCE_UGG);
         $priwol = $this->getReference(OkrugFixtures::REFERENCE_PRIWOL);
+        $centr = $this->getReference(OkrugFixtures::REFERENCE_CENTR);
 //
+
+        $jaros = $this->createOblast($centr, $name="Ярославская обл", $nomer= "76", $mesto = "1-76");
+        $manager ->persist($jaros);
+        $this->setReference(self::REFERENCE_JAROS, $jaros);
 
         $rost = $this->createOblast($ugg, $name="Ростовская обл", $nomer = "61", $mesto = "3-61");
         $manager->persist($rost);

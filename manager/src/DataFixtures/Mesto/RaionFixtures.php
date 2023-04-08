@@ -25,9 +25,14 @@ class RaionFixtures extends Fixture implements DependentFixtureInterface
         /**
          * @var Oblast $rost
          * @var Oblast $perm
+         * @var Oblast $jaros
          */
         $rost = $this->getReference(OblastFixtures::REFERENCE_ROST);
         $perm = $this->getReference(OblastFixtures::REFERENCE_PERM);
+        $jaros =$this->getReference(OblastFixtures::REFERENCE_JAROS);
+
+        $rai = $this->createRaion($jaros, $name= "Ростовский район ", $nomer="12", $mesto= "1-76-12");
+        $manager->persist($rai);
 
         $rai = $this->createRaion($rost, $name="Азовский район", $nomer = "1", $mesto = "3-61-1");
         $manager->persist($rai);

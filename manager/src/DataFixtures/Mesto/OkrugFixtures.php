@@ -17,15 +17,19 @@ class OkrugFixtures extends Fixture
 {
     public const REFERENCE_PRIWOL= 'mesto_okrug_priwol';
     public const REFERENCE_UGG= 'mesto_okrug_$ugg';
+    public const REFERENCE_CENTR= 'mesto_okrug_centr';
 
     public function load(ObjectManager $manager): void
     {
-        $okrug = new Okrug(
+
+
+        $centr = new Okrug(
             Id::next(),
             'Центральный округ',
             '1'
         );
-    $manager->persist($okrug);
+        $manager->persist($centr);
+        $this->setReference(self::REFERENCE_CENTR, $centr);
 
         $okrug = new Okrug(
             Id::next(),

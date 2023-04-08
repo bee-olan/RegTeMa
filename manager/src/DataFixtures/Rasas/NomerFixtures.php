@@ -31,6 +31,7 @@ class NomerFixtures extends Fixture implements DependentFixtureInterface
          * @var Linia $karnik_2
          * @var Linia $itall_1
          * @var Linia $itall_2
+         * @var Linia $karnik_jak
          */
         $sredruss_1 = $this->getReference(LiniaFixtures::REFERENCE_SR_1);
         $sredruss_2 = $this->getReference(LiniaFixtures::REFERENCE_SR_2);
@@ -38,11 +39,18 @@ class NomerFixtures extends Fixture implements DependentFixtureInterface
         $karnik_1 = $this->getReference(LiniaFixtures::REFERENCE_KAR_1);
         $karnik_2 = $this->getReference(LiniaFixtures::REFERENCE_KAR_2);
 
+        $karnik_jak = $this->getReference(LiniaFixtures::REFERENCE_KAR_JAK);
+
         $itall_1 = $this->getReference(LiniaFixtures::REFERENCE_IT_1);
         $itall_2 = $this->getReference(LiniaFixtures::REFERENCE_IT_2);
+//----------------------------------------
+
+        $nomer = $this->createLinia($karnik_jak, $name="н-1", $nameStar="4-2015",
+        $title="Як_л-1_н-1", $sortLinia = 1);
+        $manager->persist($nomer);
 
         $nomer = $this->createLinia($sredruss_1, $name="н-1", $nameStar="1 запись о номере для Ср_л-1",
-            $title="Ср_л-1_н-1", $sortLinia = 1);
+        $title="Ср_л-1_н-1", $sortLinia = 1);
         $manager->persist($nomer);
 
         $nomer = $this->createLinia($sredruss_1, $name="н-2", $nameStar="2 запись о номере для Ср_л-1",
