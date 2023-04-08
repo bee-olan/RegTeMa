@@ -61,13 +61,12 @@ class ChildMatkasController extends AbstractController
             $filter,
             $request->query->getInt('page', 1),
             self::PER_PAGE,
-//            $request->query->get('sort', 't.id'),
-//            $request->query->get('direction', 'desc')
             $request->query->get('sort'),
             $request->query->get('direction')
         );
 
         return $this->render('proekt/pasekas/childmatkas/index.html.twig', [
+            'proba' => 'проба',
             'plemmatka' => null,
             'pagination' => $pagination,
             'form' => $form->createView(),

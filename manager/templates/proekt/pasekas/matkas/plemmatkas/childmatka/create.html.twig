@@ -5,11 +5,9 @@
 
 {% block kroxii %}
     <a href="{{ path('proekt') }}">Главная</a>
-{#    <a href="#">Рег-ция ПлемМатки</a>#}
-{#    <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Список ПлемМаток</a>#}
-{#        <a href="{{ path('proekt.pasekas.rasas.plemmatka') }}">Раса_</a>#}
-{#    <span class="aktiv ">Пункт 3</span> #}
-    <span class="aktiv ">Добавить </span>
+    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
+    <a href="{{ path('proekt.pasekas.matkas') }}">Список ПлемМаток</a>
+    <span class="aktiv ">Добавить ДочьМатку</span>
 {% endblock %}   
 
 {% block bodyy %}
@@ -33,7 +31,7 @@
 
         <div class="proekts-plr  ">
 
-            <h1 class="plem__title  ">Заполняем еще две позиции:</h1>
+            <h1 class="plem__title  ">Заполняем 5-ть позиций:</h1>
             <div class="plem-form__header  ">
                 <div class="child-form ">
                     {{ form_start(form) }}

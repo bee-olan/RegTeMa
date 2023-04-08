@@ -114,22 +114,6 @@ class PlemMatkaFetcher
                 ->execute()->fetchColumn() > 0;
     }
 
-//    public function infaSparing(string $sparingId): array
-//    {
-//        $stmt = $this->connection->createQueryBuilder()
-//            ->select(
-//                's.title ',
-//                's.name'
-//            )
-//            ->from('admin_matkas_sparings', 's')
-//            //->innerJoin('p', 'admin_uchasties_uchasties', 'u', 'p.id = u.id')
-//            ->andWhere('s.id = :sparingId')
-//            ->setParameter(':sparingId', $sparingId)
-//            // ->orderBy('p.sort')->addOrderBy('d.name')
-//            ->execute();
-//
-//        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
-//    }
 
     public function infaRasaNom(string $rasaNomId): array
     {

@@ -62,15 +62,22 @@ class Form extends AbstractType
             ], 'required' => false, 'placeholder' => 'Приоритеты', 'attr' => ['onchange' => 'this.form.submit()']])
             ->add('author', Type\ChoiceType::class, [
                 'choices' => $uchasties,
-                'required' => false, 'placeholder' => 'Автор', 'attr' => ['onchange' => 'this.form.submit()']
+                'required' => false,
+                'placeholder' => 'Автор',
+                'attr' => ['onchange' => 'this.form.submit()']
             ])
             ->add('executor', Type\ChoiceType::class, [
                 'choices' => $uchasties,
-                'required' => false, 'placeholder' => 'Исполнитель', 'attr' => ['onchange' => 'this.form.submit()']
-            ]);
-    //         ->add('roots', Type\ChoiceType::class, ['choices' => [
-    //             'Roots' => Status::NEW,
-    //         ], 'required' => false, 'placeholder' => 'All levels', 'attr' => ['onchange' => 'this.form.submit()']]);
+                'required' => false,
+                'placeholder' => 'Исполнитель',
+                'attr' => ['onchange' => 'this.form.submit()']
+            ])
+             ->add('roots', Type\ChoiceType::class, ['choices' => [
+                 'Только родители' => Status::NEW,
+             ], 'required' => false,
+            'placeholder' => 'Все уровни',
+            'attr' => ['onchange' => 'this.form.submit()']
+        ]);
      }
 
     public function configureOptions(OptionsResolver $resolver): void

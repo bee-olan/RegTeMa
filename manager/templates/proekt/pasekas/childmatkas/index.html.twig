@@ -10,6 +10,9 @@
         <a href="{{ path('proekt') }}">Главная</a>
         <a href="{{ path('proekt.pasekas.matkas') }}">Список ПлемМаток</a>
         <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
+        {% if plemmatka %}
+            <li class="breadcrumb-item"><a href="{{ path('proekt.pasekas.matkas.childmatkas', {'id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
+        {% endif %}
         <span class="aktiv ">Список ПлемМаток + ДочьМаток</span>
     {% endblock %}
 
@@ -24,22 +27,24 @@
         </div>
     {% endif %}
 
-
+!!!!!!!!!!!!!!!!!!! {{ proba }}
 <div  class="proekts proekts--childmatka">
     <div class="inklud inklud--child">
         <div class="inklud__img  ">
             <img class="" src="{{ asset('assets/proekt/images/matkas/p4ela1.jpg') }}" alt="">           
         </div>
-{% if not plemmatka %}
-        <div class="inklud__title  teni teni--kategor">
-            Список ПлемМаток и их ДочьМаток
-        </div> 
- {% else %}
-    <div class="inklud__title  teni teni--kategor">
-        От {{plemmatka.name}} -  список  ДочьМаток
-    </div> 
- {% endif %}       
+        {% if not plemmatka %}
+                <div class="inklud__title  teni teni--kategor">
+                    Список ПлемМаток и их ДочьМаток
+                </div>
+         {% else %}
+            <div class="inklud__title  teni teni--kategor">
+                От {{plemmatka.name}} -  список  ДочьМаток
+            </div>
+         {% endif %}
     </div>
+
+
 <div class="tabl__header ">
     <div style="overflow: auto">
         {#                       , {'plemmatka_id': plemmatka.id}#}
@@ -67,29 +72,49 @@
 
         <table class="tabl-child  tabl-hover-child ">
             <thead>
-            <tr  >
+{#            <tr  >#}
 
-                {% if not plemmatka %}
-                <th class="tabl-col-plem "  >  ПлемМатка</th>
-                {% endif %}
-                 <th class="tabl-col-child" >ДочьМатка</th>
-                <th class="tabl-col-child" >Выход </th>
-                <th></th>
-                <th >Приорит</th>
-                <th  >Автор</th>
-                <th  >Исполн.</th>
-                <th  >Статус</th>
+{#                {% if not plemmatka %}#}
+{#                <th class="tabl-col-plem "  >  ПлемМатка</th>#}
+{#                {% endif %}#}
+{#                 <th class="tabl-col-child" >ДочьМатка</th>#}
+{#                <th class="tabl-col-child" >Выход </th>#}
+{#                <th></th>#}
+{#                <th >Приорит</th>#}
+{#                <th  >Автор</th>#}
+{#                <th  >Исполн.</th>#}
+{#                <th  >Статус</th>#}
 {#                <th >Дата!!!</th>#}
-                
-                
-            </tr>
+{#                #}
+{#                #}
+{#            </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+<tr>
+    <th>Сезон ПлемМатки</th>
+    {% if not plemmatka %}
+        <th>{{ knp_pagination_sortable(pagination, 'ПлемМатка', 'plemmatka_name') }}</th>
+    {% endif %}
+    <th>{{ knp_pagination_sortable(pagination, 'ДочьМатка', 'name') }}</th>
+
+    <th>{{ knp_pagination_sortable(pagination, 'Выход', 't.date') }}</th>
+    <th></th>
+    <th>{{ knp_pagination_sortable(pagination, 'Автор', 'author_name') }}</th>
+    {#                <th>{{ knp_pagination_sortable(pagination, 'Type', 't.type') }}</th>#}
+    <th>{{ knp_pagination_sortable(pagination, '<span class="fa fa-fire"></span>', 't.priority', {'encode': false}) }}</th>
+    <th>Исполн.</th>
+    {#                <th>{{ knp_pagination_sortable(pagination, 'Plan', 't.plan_date') }}</th>#}
+    <th>{{ knp_pagination_sortable(pagination, 'Статус', 't.status') }}</th>
+    {#                <th>{{ knp_pagination_sortable(pagination, 'Ready', 't.progress') }}</th>#}
+</tr>
             </thead>
             <tbody>
+            {% set sezon = '2000' %}
             {% for childmatka in pagination %}
                 <tr>
-             {% if not plemmatka %}
+                    {% if not plemmatka %}
                         <td class="tabl-bord- tabl-bord-plem ">
-                            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': childmatka.plemmatka_id}) }}">{{ childmatka.plemmatka_name }}</a>
+                            <a href="{{ path('proekt.pasekas.childmatkas', {'id': childmatka.plemmatka_id}) }}">{{ childmatka.plemmatka_sort }}</a>
                         </td>
                     {% endif %}
                     <td class="tabl-bord- tabl-bord-child">

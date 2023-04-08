@@ -71,7 +71,7 @@ class ChildMatkaFetcher
                 't.parent_id AS parent',
                 't.type',
                 't.priority',
-                't.progress',
+//                't.progress',
                 't.plan_date',
                 't.status',
                 'r.nomer AS mesto',
@@ -81,14 +81,14 @@ class ChildMatkaFetcher
             ->innerJoin('t', 'admin_uchasties_uchasties', 'm', 't.author_id = m.id')
             ->innerJoin('t', 'admin_matkas_plemmatkas', 'p', 't.plemmatka_id = p.id')
             ->innerJoin('t', 'mesto_mestonomers', 'r', 't.author_id = r.id')
-            ->innerJoin('t', 'admin_uchasties_personas', 'u', 't.author_id = u.id')
+            ->innerJoin('t', 'adminka_uchasties_personas', 'u', 't.author_id = u.id')
         ;
 
-//        if ($filter->member) {
-//            $qb->innerJoin('t', 'admin_matkas_plemmatka_memberships', 'ms', 't.plemmatka_id = ms.plemmatka_id');
-//            $qb->andWhere('ms.member_id = :member');
-//            $qb->setParameter(':member', $filter->member);
-//        }
+        if ($filter->uchastie) {
+            $qb->innerJoin('t', 'admin_matkas_plemmatka_uchastniks', 'ms', 't.plemmatka_id = ms.plemmatka_id');
+            $qb->andWhere('ms.uchastie_id = :uchastie');
+            $qb->setParameter(':uchastie', $filter->uchastie);
+        }
 
         if ($filter->plemmatka) {
             $qb->andWhere('t.plemmatka_id = :plemmatka');

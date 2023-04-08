@@ -22,14 +22,14 @@ class Form extends AbstractType
         $builder
 //            ->add('name', Type\TextType::class)
             ->add('content', Type\TextareaType::class, [
-                'label' => 'Описание ДочьМатки  ',
+                'label' => '1) Описание ДочьМатки  ',
                 'required' => false,
                 'attr' => ['rows' => 3,
                 'placeholder' => ' Подробное описание ДочьМатки'
                 ]])
 
             ->add('kolChild', Type\ChoiceType::class, [
-                'label' => 'Сколько (кол-во) маточек регистрировать?',
+                'label' => '2) Сколько (кол-во) маточек регистрировать?',
 //                'required' => false,
                 'choices' => [
                     '1' => 1,
@@ -41,13 +41,13 @@ class Form extends AbstractType
                 'multiple' => false,
             ])
             ->add('plan_date', Type\DateType::class, [
-                'label' => 'Дата выхода ДочьМатки  ',
+                'label' => '3) Дата выхода ДочьМатки  ',
                 'required' => false, 
                 'widget' => 'single_text', 
                 'input' => 'datetime_immutable'
                 ])
              ->add('type', Type\ChoiceType::class, [
-                 'label' => 'Выбрать вид   облета !!!:   ',
+                 'label' => '4) Выбрать вид   облета !!!:   ',
                  'choices' => [
                      'тф-бк' => ChildMatkaType::TFBK,
                      'ио' => ChildMatkaType::IO,
@@ -59,7 +59,7 @@ class Form extends AbstractType
                  'multiple' => false,
              ])
             ->add('priority', Type\ChoiceType::class, [
-                'label' => 'Приоритеты для заказа на тестирование   ',
+                'label' => '5) Приоритеты для заказа на тестирование   ',
                 'choices' => [
                 'Низкий' => 1,
                 'Обычный' => 2,

@@ -59,12 +59,10 @@
 
                     <li class = "plem__name-list">  {{ plemmatka_kategoria(plemmatka.kategoria) }} </li>
                     <li class = "plem__name-list">
-                        {{ plemmatka.departments_count }}---
-                        {% if plemmatka.departments_count < 1 %}
-                            - ожидает
-                        {% else %}
-                            / ?? {{ plemmatka.child_count }}
-                        {% endif %}
+
+                        <a class="" href="{{ path('proekt.pasekas.childmatkas', {'id': plemmatka.id}) }}"  title = "Список дочерних от этой маточки" >
+                            {{ plemmatka.departments_count }} /  {{ plemmatka.child_count }}
+                        </a>
                     </li>
 {#                    <li class = "plem__name-list"> {{ plemmatka.goda_vixod }} </li>#}
 

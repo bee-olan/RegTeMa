@@ -69,7 +69,8 @@ class Form extends AbstractType
             ])
             ->add('executor', Type\ChoiceType::class, [
                 'choices' => $uchasties,
-                'required' => false, 'placeholder' => 'Исполнители',
+                'required' => false,
+                'placeholder' => 'Исполнители',
                 'attr' => ['onchange' => 'this.form.submit()']
             ])
              ->add('roots', Type\ChoiceType::class, ['choices' => [

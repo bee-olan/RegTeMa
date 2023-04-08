@@ -74,7 +74,7 @@ class ChildMatkasController extends AbstractController
          } else {
             $filter = Filter\Filter::all()->forUchastie($this->getUser()->getId());
         }
-//dd($filter);
+
         $form = $this->createForm(Filter\Form::class, $filter);
         $form->handleRequest($request);
 

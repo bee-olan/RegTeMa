@@ -49,7 +49,6 @@
 
         <h2 class = "storie-teni storie-teni--em4">2 - Продолжаем рег-цию ПлемМатки</h2>
         <div class="proekts-plr  ">
-            <!-- Stories -->
             <div class="stories">
                 <div class="stories__item" onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
                     <img class="stories__preview" src="assets/proekt/images/plemmatka/rln-m6.png" alt="">
@@ -80,12 +79,11 @@
                     <div class="stories__title stories__date--rln">Список ПлемМаток..</div>
                     <time class="stories__date stories__date--rln" >Шаг 10</time>
                 </div>
-            </div><!-- /.stories -->
+            </div>
     </div >  {#   конец  #}
         {# =============  функционал кнопок #}
  <h2 class = "storie-teni storie-teni--em4">3 - Добавить сезон . Редактировать . Статус.</h2>
         <div class="proekts-plr  ">
-            <!-- Stories -->
             <div class="stories">
                 <div class="stories__item" onclick="openModal();currentSlide(11)" class="hover-shadow cursor">
                     <img class="stories__preview" src="assets/proekt/images/plemmatka/pm-m1.png" alt="">
@@ -116,9 +114,45 @@
                     <div class="stories__title stories__date--rln">Выбрали - сохранили </div>
                     <time class="stories__date stories__date--rln" >Шаг 5</time>
                 </div>
-            </div><!-- /.stories -->
+            </div>
         </div >
 {#  конец функцинала #}
+
+        <h2 class = "storie-teni storie-teni--em4">4 - ДочьМатки - заявляем</h2>
+        <div class="proekts-plr  ">
+            <div class="stories">
+                <div class="stories__item" onclick="openModal();currentSlide(16)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="assets/proekt/images/plemmatka/cm-m1.png" alt="">
+                    <div class="stories__title stories__date--rln">Из списка ПлемМаток. </div>
+                    <time class="stories__date stories__date--rln" >Шаг 1</time>
+                </div>
+
+                <div class="stories__item" onclick="openModal();currentSlide(17)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="assets/proekt/images/plemmatka/cm-m2.png" alt="">
+                    <div class="stories__title stories__date--rln">Выбираем сезон</div>
+                    <time class="stories__date stories__date--rln" >Шаг 2</time>
+                </div>
+
+                <div class="stories__item" onclick="openModal();currentSlide(18)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="assets/proekt/images/plemmatka/cm-m3.png" alt="">
+                    <div class="stories__title stories__date--rln">Заполнить - сохранить</div>
+                    <time class="stories__date stories__date--rln " >Шаг 3</time>
+                </div>
+
+                <div class="stories__item" onclick="openModal();currentSlide(19)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="{{ asset('assets/proekt/images/plemmatka/cm-m4.png') }}" alt="">
+                    <div class="stories__title stories__date--rln ">Результат...</div>
+                    <time class="stories__date stories__date--rln " >Шаг 4</time>
+                </div>
+
+                <div class="stories__item" onclick="openModal();currentSlide(20)" class="hover-shadow cursor">
+                    <img class="stories__preview" src="{{ asset('assets/proekt/images/plemmatka/cm-m5.png') }}" alt="">
+                    <div class="stories__title stories__date--rln">Список ПлемМаток..</div>
+                    <time class="stories__date stories__date--rln" >Шаг 5</time>
+                </div>
+            </div>
+        </div >
+        {# =============  дочьМатки #}
 
     </div>
 </article>
@@ -192,7 +226,26 @@
         <div class="mySlides">
             <img src="assets/proekt/images/plemmatka/pm-b5.png" style="width:100%">
         </div>
+{#--------------------#}
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/cm-b1.png" style="width:100%">
+        </div>
 
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/cm-b2.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/cm-b3.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/cm-b4.png" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <img src="assets/proekt/images/plemmatka/cm-b5.png" style="width:100%">
+        </div>
         
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>

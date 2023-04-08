@@ -5,10 +5,9 @@
 {% block breadcrumbs %}
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        {# <li class="breadcrumb-item"><a href="{{ path('work') }}">Work</a></li>#}
         <li class="breadcrumb-item"><a href="{{ path('adminka.matkas') }}">ПлемМатки - список</a></li>
         {% if plemmatka %}
-            <li class="breadcrumb-item"><a href="{{ path('adminka.matkas.plemmatka.show', {'id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('adminka.matkas.childmatkas', {'id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
         {% endif %}
         <li class="breadcrumb-item active">Список! </li>
     </ol>
