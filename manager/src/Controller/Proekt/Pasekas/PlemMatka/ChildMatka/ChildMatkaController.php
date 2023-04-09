@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("proekt/pasekas/matkas/plemmatkas/childmatka/{plemmatka_id}", name="proekt.pasekas.matkas.plemmatkas.childmatka")
+ * @Route("proekt/pasekas/matkas/plemmatkas/{plemmatka_id}/childmatka", name="proekt.pasekas.matkas.plemmatkas.childmatka")
  * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
  */
 class ChildMatkaController extends AbstractController
@@ -39,7 +39,7 @@ class ChildMatkaController extends AbstractController
         $this->childmatkas = $childmatkas;
         $this->errors = $errors;
     }
-
+// страничка конкретной  задачи
     /**
      * @Route("", name="")
      * @param PlemMatka $plemmatka
@@ -57,7 +57,7 @@ class ChildMatkaController extends AbstractController
         $form->handleRequest($request);
 
 
-        $pagination = $this->childmatkas->allChildMat(
+        $pagination = $this->childmatkas->all(
             $filter,
             $request->query->getInt('page', 1),
             self::PER_PAGE,
@@ -67,6 +67,7 @@ class ChildMatkaController extends AbstractController
 
         return $this->render('proekt/pasekas/childmatkas/index.html.twig', [
             'plemmatka' => $plemmatka,
+            'sezons' => $plemmatka->getDepartments(),
             'pagination' => $pagination,
             'form' => $form->createView(),
         ]);

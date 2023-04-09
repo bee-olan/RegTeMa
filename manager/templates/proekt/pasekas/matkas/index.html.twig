@@ -60,7 +60,7 @@
                     <li class = "plem__name-list">  {{ plemmatka_kategoria(plemmatka.kategoria) }} </li>
                     <li class = "plem__name-list">
 
-                        <a class="" href="{{ path('proekt.pasekas.childmatkas', {'id': plemmatka.id}) }}"  title = "Список дочерних от этой маточки" >
+                        <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka', {'plemmatka_id': plemmatka.id}) }}"  title = "Список дочерних от этой маточки" >
                             {{ plemmatka.departments_count }} /  {{ plemmatka.child_count }}
                         </a>
                     </li>

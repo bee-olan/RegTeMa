@@ -55,14 +55,6 @@ class ChildMatkasController extends AbstractController
 
         $form->handleRequest($request);
 
-//        $pagination = $this->childmatkas->allChildMat(
-//            $filter,
-//            $request->query->getInt('page', 1),
-//            self::PER_PAGE,
-//            $request->query->get('sort'),
-//            $request->query->get('direction', 'desc')
-//        );
-//        $pagination = $this->childmatkas->allChildMat(
         $pagination = $this->childmatkas->all(
             $filter,
             $request->query->getInt('page', 1),

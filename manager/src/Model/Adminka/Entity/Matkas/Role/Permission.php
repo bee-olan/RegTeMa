@@ -8,15 +8,12 @@ use Webmozart\Assert\Assert;
 
 class Permission
 {
-    public const MANAGE_PLEMMATKA_UCHASTIES = 'Manage_plemMatok_uchasties';
-    public const VIEW_CHILDMATKAS = 'view_childMatkas';
-    public const VIEW_PLEMMATKAS = 'view_plemMatkas';
-    public const MANAGE_CHILDMATKAS = 'manage_childMatkas';
-    public const MANAGE_PLEMMATKAS = 'manage_plemMatkas';
+    public const MANAGE_PLEMMATKA_UCHASTIES = 'Управление матками участниками';
+    public const VIEW_CHILD = 'Смотреть ДочьМаток';
+    public const VIEW_PLEMMATKAS = 'Смотреть_ПлемМаток';
+    public const MANAGE_CHILDMATKAS = 'Управление_ДочьМаток';
+    public const MANAGE_PLEMMATKAS = 'Управление ПлемМаток';
 
-//    public const MANAGE_PROJECT_MEMBERS = 'manage_project_members';
-//    public const VIEW_TASKS = 'view_tasks';
-//    public const MANAGE_TASKS = 'manage_tasks';
 
     private $name;
 
@@ -29,11 +26,11 @@ class Permission
     public static function names(): array
     {
         return [
-            self::MANAGE_PLEMMATKA_UCHASTIES => 'Управление матками участниками',
-            self::VIEW_CHILDMATKAS => 'Смотреть ДочьМаток',
-            self::VIEW_PLEMMATKAS => 'Смотреть ПлемМаток',
-            self::MANAGE_CHILDMATKAS => 'Управление ДочьМаток',
-            self::MANAGE_PLEMMATKAS => 'Управление ПлемМаток',
+            self::MANAGE_PLEMMATKA_UCHASTIES,
+            self::VIEW_CHILD ,
+            self::VIEW_PLEMMATKAS,
+            self::MANAGE_CHILDMATKAS,
+            self::MANAGE_PLEMMATKAS
         ];
     }
 

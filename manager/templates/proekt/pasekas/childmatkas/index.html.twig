@@ -11,7 +11,7 @@
         <a href="{{ path('proekt.pasekas.matkas') }}">Список ПлемМаток</a>
         <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
         {% if plemmatka %}
-            <li class="breadcrumb-item"><a href="{{ path('proekt.pasekas.matkas.childmatkas', {'id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('proekt.pasekas.childmatkas', {'id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
         {% endif %}
         <span class="aktiv ">Список ПлемМаток + ДочьМаток</span>
     {% endblock %}
@@ -20,14 +20,18 @@
 
 
      {% if plemmatka %}
-        <div class="controls">
-            <a href="{{ path('paseka.matkas.plemmatka.childmatkas.create', {'plemmatka_id' : plemmatka.id} ) }}"
-               class="btn-my btn-success matka__title ">Добавить ДочьМатку к ПлемМатке {{ plemmatka.name }}
-            </a>
+        <div class="controls">Добавить ДочьМатку к ПлемМатке???
+            {#            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id} ) }}"#}
+            {#               class="btn-my btn-success matka__title ">Добавить ДочьМатку к ПлемМатке {{ plemmatka.name }}#}
+            {#            </a>#}
         </div>
+{#        <div class="controls">#}
+{#            <a href="{{ path('paseka.matkas.plemmatka.childmatkas.create', {'plemmatka_id' : plemmatka.id} ) }}"#}
+{#               class="btn-my btn-success matka__title ">Добавить ДочьМатку к ПлемМатке {{ plemmatka.name }}#}
+{#            </a>#}
+{#        </div>#}
     {% endif %}
 
-!!!!!!!!!!!!!!!!!!! {{ proba }}
 <div  class="proekts proekts--childmatka">
     <div class="inklud inklud--child">
         <div class="inklud__img  ">
