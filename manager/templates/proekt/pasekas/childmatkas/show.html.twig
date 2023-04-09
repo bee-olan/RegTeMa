@@ -37,13 +37,30 @@
     <div class="row-m">
         <div class="col-m col-8-m">
             <div class="card-m">
-                <div class="card-header-m ">ДочьМатка {{childmatka.name}}</div>
+                <div class="card-header-m "> <strong class="strongo  strongo--kras " > {{ childmatka.id }} --- </strong> ДочьМатка {{childmatka.name}}</div>
                 
                 <table class="tabl-child tabl-bord- tabl-bord-child mb-0">
                     <tbody>
                         <tr>
-                            <th>Номер</th>
-                            <td colspan="3">{{ childmatka.id }}</td>
+                            <th>Внутр. номер   </th>
+
+                            <td colspan="2">
+
+                                    {% if childmatka.content %}
+                                        {{ childmatka.content|markdown|purify|adminka_processor }}
+                                    {% endif %}
+                            </td>
+                            <td>
+                                    <div class="controls-m  pull-right-m" style="margin-bottom: 0">
+                                        <a href="{{ path('proekt.pasekas.childmatkas.plan', {'plemmatka_id': plemmatka.id, 'id': childmatka.id}) }}"
+                                           class="btnn btnn--mb0 btnn--pt btnn--col-child pa-to-5">
+                                            <div class="karandash karandash--child ">
+                                                <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="редактировать">
+                                            </div>
+                                        </a>
+
+                                    </div>
+                            </td>
                         </tr>
                         <tr>
                             <th>Дата выхода</th>
@@ -112,35 +129,24 @@
                                 </div>
                                 {{ form_end(priorityForm) }}
                             </td>
-{#                            <th>Progress</th>#}
-{#                            <td>#}
-{#                                {{ form_start(progressForm) }}#}
-{#                                <div class="row">#}
-{#                                    <div class="col-8-m">{{ form_widget(progressForm.progress, {'attr': {'class': 'input-sm'}}) }}</div>#}
-{#                                    <div class="col-4-m">#}
-{#                                        <button type="submit" class="btn btn-sm btn-default pull-right invisible">#}
-{#                                            <span class="fa fa-check"></span></button>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                {{ form_end(progressForm) }}#}
-{#                            </td>#}
+
                         </tr>
                     </tbody>
                 </table>
             </div>
 {#--------#}
             {% if childmatka.content %}
-{#    <div class="card-m">#}
+
                 <div class="card-m mb-3">
-        <div class="card-header-m"> Внутренняя нумерация, нужная информация </div>
+                <div class="card-header-m"> Внутренняя нумерация, нужная информация </div>
 
                     <div class="card-body-m pb-0">
-                        {#                        {{childmatka.content}}#}
-                        {{ childmatka.content|markdown|purify|adminka_processor }}
                     </div>
-                </div>
+                </div>          {#                        {{childmatka.content}}#}
+                        {{ childmatka.content|markdown|purify|adminka_processor }}
 
-{#    </div>#}
+
+
             {% endif %}
 {#-------------#}
             <div class="card-m">

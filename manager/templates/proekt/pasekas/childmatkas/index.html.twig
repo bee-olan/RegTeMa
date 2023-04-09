@@ -19,139 +19,127 @@
 {% block bodyy %}
 
 
-     {% if plemmatka %}
-        <div class="controls">Добавить ДочьМатку к ПлемМатке???
-            {#            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id} ) }}"#}
-            {#               class="btn-my btn-success matka__title ">Добавить ДочьМатку к ПлемМатке {{ plemmatka.name }}#}
-            {#            </a>#}
-        </div>
-{#        <div class="controls">#}
-{#            <a href="{{ path('paseka.matkas.plemmatka.childmatkas.create', {'plemmatka_id' : plemmatka.id} ) }}"#}
-{#               class="btn-my btn-success matka__title ">Добавить ДочьМатку к ПлемМатке {{ plemmatka.name }}#}
-{#            </a>#}
-{#        </div>#}
-    {% endif %}
 
 <div  class="proekts proekts--childmatka">
     <div class="inklud inklud--child">
         <div class="inklud__img  ">
-            <img class="" src="{{ asset('assets/proekt/images/matkas/p4ela1.jpg') }}" alt="">           
+            <img class="" src="{{ asset('../assets/proekt/images/matkas/p4ela1.jpg') }}" alt="">
         </div>
         {% if not plemmatka %}
                 <div class="inklud__title  teni teni--kategor">
                     Список ПлемМаток и их ДочьМаток
                 </div>
          {% else %}
-            <div class="inklud__title  teni teni--kategor">
-                От {{plemmatka.name}} -  список  ДочьМаток
+            <div class="inklud__title ">
+                список  ДочьМаток от <strong class="strongo  strongo--sizee " >{{plemmatka.sort}}  </strong> -- {{plemmatka.name}}
             </div>
          {% endif %}
     </div>
 
 
-<div class="tabl__header ">
-    <div style="overflow: auto">
-        {#                       , {'plemmatka_id': plemmatka.id}#}
-        <table class="tabl-child  tabl-hover-child">
-           <tr>
-               <td>
-                   <a href="{{ path('proekt.pasekas.childmatkas') }}"
-                      class="btnn btnn--mb0 btnn--pt btnn--col"> Показать <strong class="strongo strongo--kras">всех  </strong> маток
-                   </a>
+    <div class="tabl__header ">
+        <div style="overflow: auto">
+            <table class="tabl-child  tabl-hover-child">
+               <tr>
+                   <td>
+                       <a href="{{ path('proekt.pasekas.childmatkas') }}"
+                          class="btnn btnn--mb0 btnn--pt btnn--col"> Показать <strong class="strongo strongo--kras">всех  </strong> маток
+                       </a>
 
-               </td>
-               <td>
-                   <a href="{{ path('proekt.pasekas.childmatkas.own') }}"
-                      class="btnn btnn--mb0 btnn--pt btnn--col"> Найти и показать <strong class="strongo strongo--kras">моих  </strong> маток
-                   </a>
+                   </td>
+                   <td>
+                       <a href="{{ path('proekt.pasekas.childmatkas.own') }}"
+                          class="btnn btnn--mb0 btnn--pt btnn--col"> Показать <strong class="strongo strongo--kras">моих  </strong> маток (автор)
+                       </a>
 
-               </td>
-               <td>
-                   <a href="{{ path('proekt.pasekas.childmatkas.me'  ) }}"
-                      class="btnn btnn--mb0 btnn--pt btnn--col">Найти и показать   <strong class="strongo strongo--kras">тестируемых мной </strong> маток
-                   </a>
-               </td>
-           </tr>
-       </table>
+                   </td>
+                   <td>
+                       <a href="{{ path('proekt.pasekas.childmatkas.me'  ) }}"
+                          class="btnn btnn--mb0 btnn--pt btnn--col">Показать   <strong class="strongo strongo--kras">тестируемых мной </strong> маток (исполн)
+                       </a>
+                   </td>
+               </tr>
+           </table>
 
-        <table class="tabl-child  tabl-hover-child ">
-            <thead>
-{#            <tr  >#}
+            <table class="tabl-child  tabl-hover-child ">
+                <thead>
 
-{#                {% if not plemmatka %}#}
-{#                <th class="tabl-col-plem "  >  ПлемМатка</th>#}
-{#                {% endif %}#}
-{#                 <th class="tabl-col-child" >ДочьМатка</th>#}
-{#                <th class="tabl-col-child" >Выход </th>#}
-{#                <th></th>#}
-{#                <th >Приорит</th>#}
-{#                <th  >Автор</th>#}
-{#                <th  >Исполн.</th>#}
-{#                <th  >Статус</th>#}
-{#                <th >Дата!!!</th>#}
-{#                #}
-{#                #}
-{#            </tr>#}
-{#            </thead>#}
-{#            <tbody>#}
-<tr>
-    <th>Сезон ПлемМатки</th>
-    {% if not plemmatka %}
-        <th>{{ knp_pagination_sortable(pagination, 'ПлемМатка', 'plemmatka_name') }}</th>
-    {% endif %}
-    <th>{{ knp_pagination_sortable(pagination, 'ДочьМатка', 'name') }}</th>
+                    <tr>
+                        <th>Сезон</th>
+                        {% if not plemmatka %}
+                            <th>{{ knp_pagination_sortable(pagination, 'ПлемМатка', 'plemmatka_name') }}</th>
+                        {% endif %}
+                        <th>{{ knp_pagination_sortable(pagination, 'ДочьМатка', 'name') }}</th>
 
-    <th>{{ knp_pagination_sortable(pagination, 'Выход', 't.date') }}</th>
-    <th></th>
-    <th>{{ knp_pagination_sortable(pagination, 'Автор', 'author_name') }}</th>
-    {#                <th>{{ knp_pagination_sortable(pagination, 'Type', 't.type') }}</th>#}
-    <th>{{ knp_pagination_sortable(pagination, '<span class="fa fa-fire"></span>', 't.priority', {'encode': false}) }}</th>
-    <th>Исполн.</th>
-    {#                <th>{{ knp_pagination_sortable(pagination, 'Plan', 't.plan_date') }}</th>#}
-    <th>{{ knp_pagination_sortable(pagination, 'Статус', 't.status') }}</th>
-    {#                <th>{{ knp_pagination_sortable(pagination, 'Ready', 't.progress') }}</th>#}
-</tr>
-            </thead>
-            <tbody>
-            {% set sezon = '2000' %}
-            {% for childmatka in pagination %}
-                <tr>
+                        <th>{{ knp_pagination_sortable(pagination, 'Выход', 't.date') }}</th>
+                        <th></th>
+
+                        <th>{{ knp_pagination_sortable(pagination, 'Автор', 'author_name') }}</th>
+                        <th>Исполн.</th>
+                        <th>{{ knp_pagination_sortable(pagination, 'Статус', 't.status') }}</th>
+                        <th >Приорит</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% set sezon = '2000' %}
+                {% for childmatka in pagination %}
+
+                    {% if  (childmatka.sezon_plem == sezon) %}
+                        <tr>
+                        <td></td>
+                    {% else %}
+                        <tr>
+                            <td>
+                                {{ childmatka.sezon_plem }}
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                        <td></td>
+                    {% endif %}
+                    {% set sezon = childmatka.sezon_plem %}
+
                     {% if not plemmatka %}
                         <td class="tabl-bord- tabl-bord-plem ">
-                            <a href="{{ path('proekt.pasekas.childmatkas', {'id': childmatka.plemmatka_id}) }}">{{ childmatka.plemmatka_sort }}</a>
+                            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka', {'plemmatka_id': childmatka.plemmatka_id}) }}" >{{ childmatka.plemmatka_sort }}</a>
                         </td>
                     {% endif %}
-                    <td class="tabl-bord- tabl-bord-child">
-                        {% if childmatka.parent %}
-                            <span class="fa fa-angle-double-right"></span>
-                        {% endif %}
-                        <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.id}) }}">
-                            {{ childmatka.name }}
-                        </a>
-                    </td>
-                    <td class="tabl-bord- tabl-bord-child">{{ childmatka.date|date('Y-m-d') }}</td>
-                    <td class="tabl-bord- tabl-bord-child">   {{ adminka_matkas_childmatka_type(childmatka.type) }}</td>
-                    <td class="tabl-bord-">{{ adminka_matkas_childmatka_priority(childmatka.priority) }}</td>
 
-                    <td class="tabl-bord-">{{ childmatka.author_name }}</td>
-
-                    <td class="tabl-bord-" >
-                        {% for executor in childmatka.executors %}
-                            <span class="badge badge-default" style="background: #eee">{{ executor.name }}</span>
-                        {% endfor %}
-                    </td> 
-                     <td class="tabl-bord-">{{ adminka_matkas_childmatka_status(childmatka.status) }}</td>
-{#                   <td class="tabl-bord-" >{{ childmatka.plan_date ? childmatka.plan_date|date('Y-m-d') : '' }}</td>#}
-
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>    
-</div>
+                        <td class="tabl-bord- tabl-bord-child">
+                            {% if childmatka.parent %}
+                                <span class="fa fa-angle-double-right"></span>
+                            {% endif %}
+                            <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.id}) }}">
+                                {{ childmatka.name }}
+                            </a>
+                        </td>
+                        <td class="tabl-bord- tabl-bord-child">{{ childmatka.date|date('Y-m-d') }}</td>
+                        <td class="tabl-bord- tabl-bord-child">   {{ adminka_matkas_childmatka_type(childmatka.type) }}</td>
+                        <td class="tabl-bord-">{{ childmatka.author_name }}</td>
+                        <td class="tabl-bord-" >...
+                            {% for executor in childmatka.executors %}
+                                <span class="badge badge-default" style="background: #eee">{{ executor.name }}</span>
+                            {% endfor %}
+                        </td>
+                        <td class="tabl-bord-">{{ adminka_matkas_childmatka_status(childmatka.status) }}</td>
+                        <td class="tabl-bord-">{{ adminka_matkas_childmatka_priority(childmatka.priority) }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
     <div class="navigation">
         {{ knp_pagination_render(pagination) }}
     </div>
 
 {% endblock %}
+

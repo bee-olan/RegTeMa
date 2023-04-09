@@ -51,7 +51,7 @@
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th>Сезон ПлемМатки</th>
+                <th>Сезон </th>
                 {% if not plemmatka %}
                     <th>{{ knp_pagination_sortable(pagination, 'ПлемМатка', 'plemmatka_name') }}</th>
                 {% endif %}
@@ -71,8 +71,6 @@
             <tbody>
             {% set sezon = '2000' %}
             {% for childmatka in pagination %}
-               
-
                         {% if  (childmatka.sezon_plem == sezon) %}
                             <tr>
                                 <td></td>

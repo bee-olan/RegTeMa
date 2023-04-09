@@ -88,7 +88,14 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin-bottom: 20px;
-}  
+}
+
+.card-body-m{
+  flex: 1 1 auto;
+  padding: 0.7rem;
+  text-align: left;
+}
+
 .pull-right-m {
   float: right;
 }
