@@ -7,10 +7,11 @@
     // div {
         form {
             div {
-                // display: flex;
-                // justify-content: flex-start;
-                // align-items: baseline; // выравнивание по вертикали
+                display: flex;
+                justify-content: flex-start;
+                align-items: baseline; // выравнивание по вертикали
                 margin-bottom: .6rem;
+                position: relative;
                 div {
                     label {
                         min-width: 12rem;

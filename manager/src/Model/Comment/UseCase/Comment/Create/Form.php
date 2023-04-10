@@ -15,10 +15,10 @@ class Form extends AbstractType
     {
         $builder
             ->add('text', Type\TextareaType::class, [
-                'label' => 'Сообщение',
+                'label' => 'Сообщение..',
                 'attr' => [
                     'cols' =>40 ,
-                    'rows' => 4]
+                    'rows' => 3]
         ]);
     }
 

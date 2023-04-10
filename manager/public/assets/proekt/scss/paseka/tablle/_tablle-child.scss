@@ -2,6 +2,10 @@
 .tabl th, .tabl td {
   // padding: .55rem;
   vertical-align: middle;
+
+  &--file{
+    color: #3F3F3F;
+  }
  
 }
 
@@ -23,7 +27,7 @@ tr{
 
 .tabl-hover-child tbody tr:hover {
 
-  background-color: rgba($text, 0.1);
+  background-color: rgba($text, 0.4);
 }
 
 .tabl-child {

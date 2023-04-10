@@ -929,6 +929,14 @@ pre {
   margin-left: 2rem;
 }
 
+.ma-le_6 {
+  margin-left: 6rem;
+}
+
+.ma-le-16 {
+  margin-left: -26rem;
+}
+
 .ma-ri-0 {
   margin-right: 0;
 }
@@ -2806,7 +2814,11 @@ legend {
 }
 
 .child-form-comment form div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
   margin-bottom: 0.6rem;
+  position: relative;
 }
 .child-form-comment form div div label {
   min-width: 12rem;
@@ -3497,6 +3509,9 @@ tr {
 .tabl th, .tabl td {
   vertical-align: middle;
 }
+.tabl th--file, .tabl td--file {
+  color: #3F3F3F;
+}
 
 th {
   padding: 0.55rem;
@@ -3517,7 +3532,7 @@ tr {
 }
 
 .tabl-hover-child tbody tr:hover {
-  background-color: rgba(167, 140, 22, 0.1);
+  background-color: rgba(167, 140, 22, 0.4);
 }
 
 .tabl-child {
