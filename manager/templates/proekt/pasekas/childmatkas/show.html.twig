@@ -42,7 +42,7 @@
                 <table class="tabl-child tabl-bord- tabl-bord-child mb-0">
                     <tbody>
                         <tr>
-                            <th>Внутр. номер   </th>
+                            <th>Характенистика  </th>
 
                             <td colspan="2">
 
@@ -52,7 +52,7 @@
                             </td>
                             <td>
                                     <div class="controls-m  pull-right-m" style="margin-bottom: 0">
-                                        <a href="{{ path('proekt.pasekas.childmatkas.plan', {'plemmatka_id': plemmatka.id, 'id': childmatka.id}) }}"
+                                        <a href="{{ path('proekt.pasekas.childmatkas.edit', {'plemmatka_id': plemmatka.id, 'id': childmatka.id}) }}"
                                            class="btnn btnn--mb0 btnn--pt btnn--col-child pa-to-5">
                                             <div class="karandash karandash--child ">
                                                 <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="редактировать">
@@ -65,7 +65,7 @@
                         <tr>
                             <th>Дата выхода</th>
                             <td>{{ childmatka.date|date('Y-m-d ') }}</td>
-                            <th>Дата по плану</th>
+                            <th>Дата реализации</th>
                             <td>
                                 {{ childmatka.planDate ? childmatka.planDate|date('Y-m-d') : '' }}
 
@@ -78,9 +78,9 @@
                                     </a>
                                     {% if childmatka.planDate %}
 
-                                        <form action="{{ path('proekt.pasekas.childmatkas.plan.remove', {'plemmatka_id': plemmatka.id, 'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
-                                           <input type="hidden" name="token" value="{{ csrf_token('remove-plan') }}"
-                                           />
+                                        <form action="{{ path('proekt.pasekas.childmatkas.plan.remove', {'plemmatka_id': plemmatka.id, 'id': childmatka.id}) }}"
+                                              method="post" onsubmit="return confirm('Вы уверены?')" class="btnn btnn--mb0 btnn--pt btnn--col-child">
+                                           <input type="hidden" name="token" value="{{ csrf_token('remove-plan') }}" />
                                             <div class="karandash karandash--child">
                                                 <img src="{{ asset('assets/proekt/images/delet.png') }}" alt="редактировать">
                                             </div>
@@ -134,28 +134,15 @@
                     </tbody>
                 </table>
             </div>
-{#--------#}
-            {% if childmatka.content %}
 
-                <div class="card-m mb-3">
-                <div class="card-header-m"> Внутренняя нумерация, нужная информация </div>
-
-                    <div class="card-body-m pb-0">
-                    </div>
-                </div>          {#                        {{childmatka.content}}#}
-                        {{ childmatka.content|markdown|purify|adminka_processor }}
-
-
-
-            {% endif %}
 {#-------------#}
             <div class="card-m">
                 <div class="card-header-m"> Файлы, фото маточки
                     <a href="{{ path('proekt.pasekas.childmatkas.files', {'id': childmatka.id}) }}"
-                       class="btnn btnn--mb0 btnn--pt btnn--col-child">
-                        <div class="karandash karandash--child">
-                            <img src="{{ asset('assets/proekt/images/file.png') }}" alt="загрузить файл">
-                        </div>
+                     class="pa-le-3" >
+{#                        <div class="karandash karandash--child">#}
+                            <img src="{{ asset('assets/proekt/images/file-m.png') }}" alt="загрузить файл">
+{#                        </div>#}
                     </a>
 
                 </div>
@@ -182,8 +169,10 @@
                                 <td style="width: 27px; box-sizing: content-box">
                                     <form action="{{ path('proekt.pasekas.childmatkas.files.delete', {'id': childmatka.id, 'file_id': file.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                                         <input type="hidden" name="token" value="{{ csrf_token('delete-file') }}" />
-                                        <button type="submit" class="btn btn-sm btn-default">
-                                            <span class="fa fa-times"></span>
+                                        <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--col-child">
+                                            <div class="karandash karandash--child">
+                                                <img src="{{ asset('assets/proekt/images/delet.png') }}" alt="редактировать">
+                                            </div>
                                         </button>
                                     </form>
 
@@ -197,7 +186,7 @@
 
 
             <div class="card-m">
-                <div class="card-header-m">Комментарий</div>
+                <div class="card-header-m">Обмен информацией</div>
                 {% if comments|length %}
                     <div class="card-body">
                         <div class="direct-chat">
@@ -209,19 +198,27 @@
                                             <span class="direct-chat-timestamp pull-right">{{ comment.date|date('Y-m-d H:i:s') }}</span>
                                         </div>
                                         <img class="direct-chat-img" src="{{ gravatar(comment.author_email, 40) }}" alt="">
-                                        <div class="direct-chat-text">
+                                        <div class="ma-bo-2  direct-chat-text direct-chat-text--child  ">
+
                                             {{ comment.text|markdown|purify|adminka_processor }}
+
                                             {% if is_granted('manage', comment) %}
-                                                <div class="controls mb-0"> редактир--- удалить
-{#                                                    <a href="{{ path('proekt.pasekas.childmatkas.comment.edit', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" class="btn btn-sm btn-outline-secondary">#}
-{#                                                        <span class="fa fa-pencil"></span>#}
-{#                                                    </a>#}
-{#                                                    <form action="{{ path('paseka.matkas.childmatkas.comments.delete', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">#}
-{#                                                        <input type="hidden" name="token" value="{{ csrf_token('delete-comment') }}" />#}
-{#                                                        <button type="submit" class="btn btn-sm btn-outline-secondary">#}
-{#                                                            <span class="fa fa-times"></span>#}
-{#                                                        </button>#}
-{#                                                    </form>#}
+                                                <div class="controls-m  ">
+
+                                                    <a href="{{ path('proekt.pasekas.childmatkas.comment.edit', {'childmatka_id': childmatka.id, 'id': comment.id}) }}"                                                        class="btnn btnn--mb0 btnn--pt btnn--col-child">
+                                                        <div class="karandash karandash--child">
+                                                            <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="редактировать">
+                                                        </div>
+                                                    </a>
+                                                    <form action="{{ path('proekt.pasekas.childmatkas.comment.delete', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                                                        <input type="hidden" name="token" value="{{ csrf_token('delete-comment') }}" />
+                                                        <button type="submit"  class="btnn btnn--mb0 btnn--pt btnn--col-child">
+
+                                                            <div class="karandash karandash--child">
+                                                                <img src="{{ asset('assets/proekt/images/delet.png') }}" alt="редактировать">
+                                                            </div>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             {% endif %}
                                         </div>

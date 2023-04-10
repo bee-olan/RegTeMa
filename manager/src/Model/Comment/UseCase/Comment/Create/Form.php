@@ -15,8 +15,11 @@ class Form extends AbstractType
     {
         $builder
             ->add('text', Type\TextareaType::class, [
-                'label' => 'Ком-рий',
-                'attr' => ['rows' => 6]]);
+                'label' => 'Сообщение',
+                'attr' => [
+                    'cols' =>40 ,
+                    'rows' => 4]
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

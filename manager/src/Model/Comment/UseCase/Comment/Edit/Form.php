@@ -14,7 +14,9 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('text', Type\TextareaType::class, ['label' => 'Comment', 'attr' => ['rows' => 6]]);
+            ->add('text', Type\TextareaType::class, [
+                'label' => 'Сообщение',
+                'attr' => ['rows' => 6]]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

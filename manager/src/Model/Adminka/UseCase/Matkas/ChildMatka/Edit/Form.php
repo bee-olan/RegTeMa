@@ -15,7 +15,11 @@ class Form extends AbstractType
     {
         $builder
 //            ->add('name', Type\TextType::class)
-            ->add('content', Type\TextareaType::class, ['required' => false, 'attr' => ['rows' => 10]]);
+            ->add('content', Type\TextareaType::class, [
+                'label' => ' Характеристика  ',
+                'required' => false,
+                'attr' => ['rows' => 10]
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

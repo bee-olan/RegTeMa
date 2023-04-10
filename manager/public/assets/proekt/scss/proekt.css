@@ -392,6 +392,8 @@ pre {
 
 .direct-chat-msg {
   margin-bottom: 10px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .direct-chat-msg:before,
@@ -420,6 +422,9 @@ pre {
 }
 .direct-chat-text--rasa {
   background-color: rgba(21, 87, 153, 0.3);
+}
+.direct-chat-text--child {
+  background-color: #efe9cd;
 }
 
 .direct-chat-text:after,
@@ -458,11 +463,15 @@ pre {
 
 .direct-chat-info {
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 3.5rem;
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .direct-chat-name {
   font-weight: 600;
+  float: left;
 }
 
 .direct-chat-timestamp {
@@ -2339,6 +2348,11 @@ legend {
   background-color: #20a8d8;
 }
 
+.badge-info {
+  color: #fff;
+  background-color: #8e39c6;
+}
+
 .badge-danger {
   color: #fff;
   background-color: #ED3024;
@@ -2765,7 +2779,7 @@ legend {
 .card-header-m {
   padding: 0.6rem 0.7rem;
   margin-bottom: 0;
-  background-color: #f0f3f5;
+  background-color: #efe9cd;
   box-shadow: inset 0px 0px 10px rgba(142, 57, 198, 0.9);
   border-bottom: 1px solid #8e39c6;
 }
@@ -2777,6 +2791,12 @@ legend {
   margin-bottom: 20px;
 }
 
+.card-body-m {
+  flex: 1 1 auto;
+  padding: 0.7rem;
+  text-align: left;
+}
+
 .pull-right-m {
   float: right;
 }
@@ -2785,10 +2805,20 @@ legend {
   margin: 0 0 2.5rem 0;
 }
 
+.child-form-comment form div {
+  margin-bottom: 0.6rem;
+}
+.child-form-comment form div div label {
+  min-width: 12rem;
+  font-size: 1.6rem;
+  color: #a78c16;
+}
 .child-form-comment form div div textarea {
-  width: 100%;
+  min-width: 95%;
   padding-left: 1rem;
+  padding-top: 2rem;
   color: inherit;
+  border-bottom: 1px solid rgb(175, 169, 112);
 }
 .child-form-comment form div div input {
   display: block;
@@ -3450,7 +3480,6 @@ tr {
 .tabl {
   width: 100%;
   margin-bottom: 1rem;
-  color: #155799;
   font-size: 1.6rem;
   line-height: 1.6;
 }

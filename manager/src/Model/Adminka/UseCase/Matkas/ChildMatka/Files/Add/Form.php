@@ -16,6 +16,7 @@ class Form extends AbstractType
     {
         $builder
             ->add('files', Type\FileType::class, [
+                'label' => ' Фото таточки  ',
                 'mapped' => false,
                 'multiple' => true,
                 'constraints' => [

@@ -6,6 +6,11 @@
     overflow: auto;
 }
 
+// .pull-left {
+//     float: left;
+//     padding-bottom: 1rem;
+//   }
+
 .direct-chat-msg,
 .direct-chat-text {
     display: block;
@@ -13,6 +18,8 @@
 
 .direct-chat-msg {
     margin-bottom: 10px;
+    padding-left: .5rem;
+    padding-right: .5rem;
 }
 .direct-chat-msg:before,
 .direct-chat-msg:after {
@@ -34,13 +41,16 @@
     position: relative;
     padding: 8px 10px;
     background: rgba($white, .2);
-    // background: #d2d6de;
+    // background: #d2d6de; background-color: #efe9cd;
     border: 1px solid #d2d6de;
     margin: 5px 0 0 50px;
     color: #444444;
 
         &--rasa {
             background-color:  rgba($grad1, .3);
+        }
+        &--child {
+            background-color:  #efe9cd;
         }
 }
 .direct-chat-text:after,
@@ -65,8 +75,11 @@
 }
 .direct-chat-text > *:last-child {
     margin-bottom: 0;
+   
     // padding-left: 1rem;
-    //margin-right: 1rem;
+//    margin-top: 1rem;
+     
+//     background-color: #efe9cd;
 }
 .direct-chat-img {
     border-radius: 50%;
@@ -76,11 +89,15 @@
 }
 .direct-chat-info {
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: 3.5rem;
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     // font-size: 12px;
 }
 .direct-chat-name {
     font-weight: 600;
+    float: left;
 }
 .direct-chat-timestamp {
     color: #999;

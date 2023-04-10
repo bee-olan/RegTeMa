@@ -14,7 +14,11 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('date', Type\DateType::class, ['widget' => 'single_text', 'input' => 'datetime_immutable']);
+            ->add('date', Type\DateType::class, [
+                'label' => ' Дата реализации ',
+                'widget' => 'single_text',
+                'input' => 'datetime_immutable'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

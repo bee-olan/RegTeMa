@@ -4,33 +4,50 @@
 
   }
 .child-form-comment {
-    form {
-        div {
-            div{
-                textarea {
-                    width: 100%;
-                    padding-left: 1rem;
-                    color: inherit;
-                }
-                input {
-                    display: block;
-                    width: 90%;
-                    padding: .5rem 0 .75rem;
-                    background: #0c3156;
-                    //background: none;// убираем цвет
+    // div {
+        form {
+            div {
+                // display: flex;
+                // justify-content: flex-start;
+                // align-items: baseline; // выравнивание по вертикали
+                margin-bottom: .6rem;
+                div {
+                    label {
+                        min-width: 12rem;
+                        // margin-left: .5rem;
+                        font-size: 1.6rem;
+                        color: $text;
+                    }
 
-                    border: none;
+                    textarea {
+                        min-width: 95%;
+                        padding-left: 1rem;
+                        padding-top: 2rem;
+                        color: inherit;
+                        border-bottom: 1px solid $border-lin-nav; 
+                    }
 
-                    &::placeholder {
-                        color: rgba($child-text, .5); // непрозрачность
+                    input {
+                        display: block;
+                        width: 90%;
+                        padding: .5rem 0 .75rem;
+                        background: #0c3156;
+                        //background: none;// убираем цвет
 
+                        border: none;
+
+                        &::placeholder {
+                            color: rgba($child-text, .5); // непрозрачность
+
+                        }
                     }
                 }
             }
-        }
 
-    }
+        }
+    // }
 }
+
 
 .child-form{
     margin-right: 4rem;
