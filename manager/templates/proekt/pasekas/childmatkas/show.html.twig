@@ -298,11 +298,11 @@
                     <tbody>
                         <tr>
                             <td style="width: 24px; box-sizing: content-box">
-                                -----
-{#                                <img src="{{ gravatar(childmatka.author.email.value, 24) }}" class="img-circle" width="24" height="24" alt="" />#}
+
+                                <img src="{{ gravatar(childmatka.author.email.value, 24) }}" class="img-circle" width="24" height="24" alt="" />
                             </td>
                             <td>
-{#                                <a href="{{ path('paseka.uchasties.show', {'id': childmatka.author.id}) }}">{{ childmatka.author.name.full }}</a>#}
+                                <a href="{{ path('proekt.pasekas.uchasties.show', {'id': childmatka.author.id}) }}">{{ childmatka.author.name.full }}</a>
                             </td>
                         </tr>
                     </tbody>

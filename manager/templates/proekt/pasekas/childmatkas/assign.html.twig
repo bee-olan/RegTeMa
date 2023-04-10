@@ -2,20 +2,10 @@
 
 {% block title %}{{ childmatka.name }}{% endblock %}
 
-{# {% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work') }}">Work</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work.projects') }}">Projects</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work.projects.project.show', {'id': project.id}) }}">{{ project.name }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work.projects.project.childmatkas', {'project_id': project.id}) }}">Tasks</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work.projects.childmatkas.show', {'id': childmatka.id}) }}">{{ childmatka.name }}</a></li>
-        <li class="breadcrumb-item active">Assign</li>
-    </ol>
-{% endblock %} #}
+
  {% block kroxii %}
         <a href="{{ path('proekt') }}">Главная</a>
-        <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Рег-ция ПлемМатки</a>             
+        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
         <span class="aktiv ">Добавить тестирующего</span> 
     {% endblock %}
 

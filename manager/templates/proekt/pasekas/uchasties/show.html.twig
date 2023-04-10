@@ -36,15 +36,15 @@
                 </tr>
                  <tr>
                     <th>Ник</th>
-                    <td>{{ uchastie.name.nike }}</td>
+                    <td>{{ uchastie.nike }}</td>
 					<td>
-						<a href="{{ path('paseka.uchasties.edit', {'id': uchastie.id}) }}" class="btn btn-primary">Редактировать</a>
+{#						<a href="{{ path('paseka.uchasties.edit', {'id': uchastie.id}) }}" class="btn btn-primary">Редактировать</a>#}
 					</td>
                 </tr>
-                <tr>
-                    <th>Участие как</th>
-                    <td>{{ user_uchkak(uchastie.uchkak.name) }}</td>
-                </tr>
+{#                <tr>#}
+{#                    <th>Участие как</th>#}
+{#                    <td>{{ user_uchkak(uchastie.uchkak.name) }}</td>#}
+{#                </tr>#}
                  <tr>
                     <th>Email</th>
                     <td>{{ uchastie.email.value }}</td>
@@ -53,10 +53,10 @@
                 <tr>
                     <th>Group</th>
                     <td>{{ uchastie.group.name }}</td>
-					 <td>
-						<a href="{{ path('paseka.uchasties.move', {'id': uchastie.id}) }}"
-						class="btn btn-primary">Перевести в другую группу</a>
-					</td>
+{#					 <td>#}
+{#						<a href="{{ path('paseka.uchasties.move', {'id': uchastie.id}) }}"#}
+{#						class="btn btn-primary">Перевести в другую группу</a>#}
+{#					</td>#}
                 </tr>
                 <tr>
                     <th>Дата создания</th>
