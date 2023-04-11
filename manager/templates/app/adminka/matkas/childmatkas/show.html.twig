@@ -52,10 +52,10 @@
                 Перети&hellip;
             </button>
             <div class="dropdown-menu" x-placement="bottom-start">
-{#                <a class="dropdown-item" href="{{ path('paseka.matkas.childmatkas.move', {'id': childmatka.id}) }}">Перейти к ПлемМатке&hellip;</a>#}
-{#                <a class="dropdown-item" href="{{ path('paseka.matkas.childmatkas.child', {'id': childmatka.id}) }}">Установлен как Дочерний элемент&hellip;</a>#}
+{#                <a class="dropdown-item" href="{{ path('adminka.matkas.childmatkas.move', {'id': childmatka.id}) }}">Перейти к ПлемМатке&hellip;</a>#}
+{#                <a class="dropdown-item" href="{{ path('adminka.matkas.childmatkas.child', {'id': childmatka.id}) }}">Установлен как Дочерний элемент&hellip;</a>#}
                 Установлен как Дочерний элемент
-{#                <form class="dropdown-item" action="{{ path('paseka.matkas.childmatkas.delete', {'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">#}
+{#                <form class="dropdown-item" action="{{ path('adminka.matkas.childmatkas.delete', {'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">#}
 {#                    <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />#}
 {#                    <button type="submit" class="btn" style="padding: 0">Удалить</button>#}
 {#                </form>#}
@@ -194,19 +194,7 @@
                                 </div>
                                 {{ form_end(priorityForm) }}
                             </td>
-{# --Прогресс----------------------------------------- #}
-{#                            <th>Прогресс</th>#}
-{#                            <td>#}
-{#                                {{ form_start(progressForm) }}#}
-{#                                <div class="row">#}
-{#                                    <div class="col-sm-8">{{ form_widget(progressForm.progress, {'attr': {'class': 'input-sm'}}) }}</div>#}
-{#                                    <div class="col-sm-4">#}
-{#                                        <button type="submit" class="btn btn-sm btn-default pull-right invisible">#}
-{#                                            <span class="fa fa-check"></span></button>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                {{ form_end(progressForm) }}#}
-{#                            </td>#}
+
                         </tr>
                     </tbody>
                 </table>
@@ -262,98 +250,98 @@
 
 
 {#--------Комментарий  и История------------#}
-            <div class="card">
-                <div class="card-header">Временный ком-рий</div>
-                {% if comments|length %}
-                    <div class="card-body">
-                        <div class="direct-chat">
-                            <div class="direct-chat-messages">
-                                {% for comment in comments %}
-                                    <div class="direct-chat-msg">
-                                        <div class="direct-chat-info clearfix">
-                                            <span class="direct-chat-name pull-left">{{ comment.author_nike }}</span>
-                                            <span class="direct-chat-timestamp pull-right">{{ comment.date|date('Y-m-d H:i:s') }}</span>
-                                        </div>
-                                        <img class="direct-chat-img" src="{{ gravatar(comment.author_email, 40) }}" alt="">
-                                        <div class="direct-chat-text">
-                                            {{ comment.text|markdown|purify|adminka_processor }}
-                                            {% if is_granted('manage', comment) %}
-                                                <div class="controls mb-0">
-                                                    <a href="{{ path('adminka.matkas.childmatkas.comments.edit', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" class="btn btn-sm btn-outline-secondary">
-                                                        <span class="fa fa-pencil"></span>
-                                                    </a>
-                                                    <form action="{{ path('adminka.matkas.childmatkas.comments.delete', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
-                                                        <input type="hidden" name="token" value="{{ csrf_token('delete-comment') }}" />
-                                                        <button type="submit" class="btn btn-sm btn-outline-secondary">
-                                                            <span class="fa fa-times"></span>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-                <div class="card-body border-top border-light">
-                    {{ form_start(commentForm) }}
-                    {{ form_widget(commentForm) }}
-                    <button type="submit" class="btn btn-primary">Отправить !!!!!!!!!!!</button>
-                    {{ form_end(commentForm) }}
-                </div>
-            </div>
+{#            <div class="card">#}
+{#                <div class="card-header">Временный ком-рий</div>#}
+{#                {% if comments|length %}#}
+{#                    <div class="card-body">#}
+{#                        <div class="direct-chat">#}
+{#                            <div class="direct-chat-messages">#}
+{#                                {% for comment in comments %}#}
+{#                                    <div class="direct-chat-msg">#}
+{#                                        <div class="direct-chat-info clearfix">#}
+{#                                            <span class="direct-chat-name pull-left">{{ comment.author_nike }}</span>#}
+{#                                            <span class="direct-chat-timestamp pull-right">{{ comment.date|date('Y-m-d H:i:s') }}</span>#}
+{#                                        </div>#}
+{#                                        <img class="direct-chat-img" src="{{ gravatar(comment.author_email, 40) }}" alt="">#}
+{#                                        <div class="direct-chat-text">#}
+{#                                            {{ comment.text|markdown|purify|adminka_processor }}#}
+{#                                            {% if is_granted('manage', comment) %}#}
+{#                                                <div class="controls mb-0">#}
+{#                                                    <a href="{{ path('adminka.matkas.childmatkas.comments.edit', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" class="btn btn-sm btn-outline-secondary">#}
+{#                                                        <span class="fa fa-pencil"></span>#}
+{#                                                    </a>#}
+{#                                                    <form action="{{ path('adminka.matkas.childmatkas.comments.delete', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">#}
+{#                                                        <input type="hidden" name="token" value="{{ csrf_token('delete-comment') }}" />#}
+{#                                                        <button type="submit" class="btn btn-sm btn-outline-secondary">#}
+{#                                                            <span class="fa fa-times"></span>#}
+{#                                                        </button>#}
+{#                                                    </form>#}
+{#                                                </div>#}
+{#                                            {% endif %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                {% endfor %}#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endif %}#}
+{#                <div class="card-body border-top border-light">#}
+{#                    {{ form_start(commentForm) }}#}
+{#                    {{ form_widget(commentForm) }}#}
+{#                    <button type="submit" class="btn btn-primary">Отправить !!!!!!!!!!!</button>#}
+{#                    {{ form_end(commentForm) }}#}
+{#                </div>#}
+{#            </div>#}
 {#            ====================================#}
             <div class="card">
                 <div class="card-header">Комментарий  и История</div>
                 <div class="card-body">
                     <div class="direct-chat">
                         <div class="direct-chat-messages">
-{#                            {% for item in feed.items %}#}
-{#                                {% set comment = item.comment %}#}
-{#                                {% if comment %}#}
-{#                                                <div class="direct-chat-msg">#}
-{#                                                    <div class="direct-chat-info clearfix">#}
-{#                                                        <span class="direct-chat-name pull-left">{{ comment.author_name }}</span>#}
-{#                                                        <span class="direct-chat-timestamp pull-right">{{ comment.date|date('Y-m-d H:i:s') }}</span>#}
-{#                                                    </div>#}
-{#                                                    <img class="direct-chat-img" src="{{ gravatar(comment.author_email, 40) }}" alt="">#}
-{#                                                    <div class="direct-chat-text">#}
-{#                                                        {{ comment.text|markdown|purify|adminka_processor }}#}
-{#                                                        {% if is_granted('manage', comment) %}#}
-{#                                                            <div class="controls mb-0">#}
-{#                                                                <a href="{{ path('adminka.matkas.childmatkas.comments.edit', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" class="btn btn-sm btn-outline-secondary">#}
-{#                                                                    <span class="fa fa-pencil"></span>#}
-{#                                                                </a>#}
-{#                                                                <form action="{{ path('paseka.matkas.childmatkas.comments.delete', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">#}
-{#                                                                    <input type="hidden" name="token" value="{{ csrf_token('delete-comment') }}" />#}
-{#                                                                    <button type="submit" class="btn btn-sm btn-outline-secondary">#}
-{#                                                                        <span class="fa fa-times"></span>#}
-{#                                                                    </button>#}
-{#                                                                </form>#}
-{#                                                            </div>#}
-{#                                                        {% endif %}#}
-{#                                                    </div>#}
-{#                                                </div>#}
-{#                                {% endif %}#}
-{#                                {% set action = item.action %}#}
-{#                                {% if action %}#}
-{#                                    <div class="direct-chat-action">#}
-{#                                        {{ action.date|date('Y-m-d H:i') }}#}
-{#                                        {{ adminka_matkas_action_row(action) }}#}
-{#                                    </div>#}
-{#                                {% endif %}#}
-{#                            {% endfor %}#}
+                            {% for item in feed.items %}
+                                {% set comment = item.comment %}
+                                {% if comment %}
+                                                <div class="direct-chat-msg">
+                                                    <div class="direct-chat-info clearfix">
+                                                        <span class="direct-chat-name pull-left">{{ comment.author_nike }}</span>
+                                                        <span class="direct-chat-timestamp pull-right">{{ comment.date|date('Y-m-d H:i:s') }}</span>
+                                                    </div>
+                                                    <img class="direct-chat-img" src="{{ gravatar(comment.author_email, 40) }}" alt="">
+                                                    <div class="direct-chat-text">
+                                                        {{ comment.text|markdown|purify|adminka_processor }}
+                                                        {% if is_granted('manage', comment) %}
+                                                            <div class="controls mb-0">
+                                                                <a href="{{ path('adminka.matkas.childmatkas.comments.edit', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" class="btn btn-sm btn-outline-secondary">
+                                                                    <span class="fa fa-pencil"></span>
+                                                                </a>
+                                                                <form action="{{ path('adminka.matkas.childmatkas.comments.delete', {'childmatka_id': childmatka.id, 'id': comment.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                                                                    <input type="hidden" name="token" value="{{ csrf_token('delete-comment') }}" />
+                                                                    <button type="submit" class="btn btn-sm btn-outline-secondary">
+                                                                        <span class="fa fa-times"></span>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                {% endif %}
+                                {% set action = item.action %}
+                                {% if action %}
+                                    <div class="direct-chat-action">
+                                        {{ action.date|date('Y-m-d H:i') }}
+                                        {{ adminka_matkas_action_row(action) }}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
-{#                <div class="card-body border-top border-light">#}
-{#                    {{ form_start(commentForm) }}#}
-{#                    {{ form_widget(commentForm) }}#}
-{#                    <button type="submit" class="btn btn-primary">Отправить</button>#}
-{#                    {{ form_end(commentForm) }}#}
-{#                </div>#}
+                <div class="card-body border-top border-light">
+                    {{ form_start(commentForm) }}
+                    {{ form_widget(commentForm) }}
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                    {{ form_end(commentForm) }}
+                </div>
             </div>
     </div>
 
@@ -368,7 +356,7 @@
                                 <img src="{{ gravatar(childmatka.author.email.value, 24) }}" class="img-circle" width="24" height="24" alt="" />
                             </td>
                             <td>
-                                <a href="{{ path('adminka.uchasties.show', {'id': childmatka.author.id}) }}">{{ childmatka.author.name.full }}</a>
+                                <a href="{{ path('adminka.uchasties.show', {'id': childmatka.author.id}) }}">{{ childmatka.author.nike }}</a>
                             </td>
                         </tr>
                     </tbody>
@@ -390,7 +378,7 @@
                                         <img src="{{ gravatar(executor.email.value, 24) }}" class="img-circle" width="24" height="24" alt="" />
                                     </td>
                                     <td>
-                                        <a href="{{ path('adminka.uchasties.show', {'id': executor.id}) }}">{{ executor.name.full }}</a>
+                                        <a href="{{ path('adminka.uchasties.show', {'id': executor.id}) }}">{{ executor.nike }}</a>
                                     </td>
                                     <td style="width: 22px">
                                         <form action="{{ path('adminka.matkas.childmatkas.revoke', {'plemmatka_id': plemmatka.id, 'id': childmatka.id, 'uchastie_id': executor.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">

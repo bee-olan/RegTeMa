@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ТестМатки{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+{#        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>#}
+{#        <li class="breadcrumb-item"><a href="{{ path('work') }}">Work</a></li>#}
+{#        <li class="breadcrumb-item"><a href="{{ path('work.plemmatkas') }}">Projects</a></li>#}
+        {% if plemmatka %}
+            <li class="breadcrumb-item"><a href="{{ path('adminka.matkas.plemmatka.show', {'plem_id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
+        {% endif %}
+        <li class="breadcrumb-item active">Действие</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+{#    {% if plemmatka %}#}
+{#        {% include 'app/work/plemmatkas/plemmatka/_tabs.html.twig' %}#}
+{#    {% else %}#}
+{#        {% include 'app/work/_tabs.html.twig' %}#}
+{#    {% endif %}#}
+
+    <div class="box">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    {% if not plemmatka %}
+                        <th>племМатка</th>
+                    {% endif %}
+                    <th>тестМатка</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for action in pagination %}
+                    <tr>
+                        <td>{{ action.date|date('Y-m-d H:i:s') }}</td>
+                        {% if not plemmatka %}
+                            <td>
+                                <a href="{{ path('adminka.matkas.plemmatka.show', {'plem_id':  action.plemmatka_id}) }}">{{ action.plemmatka_name }}</a>
+                            </td>
+                        {% endif %}
+                        <td>
+                            {% if action.childmatka_id %}
+                                <a href="{{ path('adminka.matkas.childmatkas.show', {'id':  action.childmatka_id}) }}">{{ action.childmatka_name }}</a>
+                            {% endif %}
+                        </td>
+                        <td>{{ adminka_matkas_action_row(action) }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+{% endblock %}

@@ -267,7 +267,7 @@ class ChildMatkasController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
+// revoke отменять
     /**
      * @Route("/{id}/revoke/{uchastie_id}", name=".revoke", methods={"POST"})
      * @ParamConverter("uchastie", options={"id" = "uchastie_id"})
@@ -600,10 +600,10 @@ class ChildMatkasController extends AbstractController
             }
         }
 
-//        $feed = new Feed(
-//            $actions->allForChildMatka($childmatka->getId()->getValue()),
-//            $comments->allForChildMatka($childmatka->getId()->getValue())
-//        );
+        $feed = new Feed(
+            $actions->allForChildMatka($childmatka->getId()->getValue()),
+            $comments->allForChildMatka($childmatka->getId()->getValue())
+        );
 
 
         return $this->render('app/adminka/matkas/childmatkas/show.html.twig', [
@@ -611,8 +611,8 @@ class ChildMatkasController extends AbstractController
             'childmatka' => $childmatka,
             'uchastie' => $uchastie,
             'children' => $childmatkas->childrenOf($childmatka->getId()->getValue()),
-            'comments' => $comments->allForChildMatka($childmatka->getId()->getValue()),
-//            'feed' => $feed,
+//            'comments' => $comments->allForChildMatka($childmatka->getId()->getValue()),
+            'feed' => $feed,
             'statusForm' => $statusForm->createView(),
             'typeForm' => $typeForm->createView(),
             'priorityForm' => $priorityForm->createView(),

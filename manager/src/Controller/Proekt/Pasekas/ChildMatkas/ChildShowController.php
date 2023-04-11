@@ -12,6 +12,7 @@ use App\Model\Adminka\UseCase\Matkas\ChildMatka\Priority;
 use App\Model\Adminka\UseCase\Matkas\ChildMatka\Status;
 use App\Model\Adminka\UseCase\Matkas\ChildMatka\Type;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatka;
+use App\ReadModel\Adminka\Matkas\Actions\ActionFetcher;
 use App\ReadModel\Adminka\Matkas\ChildMatka\ChildMatkaFetcher;
 use App\ReadModel\Adminka\Matkas\ChildMatka\CommentFetcher;
 use App\ReadModel\Adminka\Uchasties\Uchastie\UchastieFetcher;
@@ -46,6 +47,7 @@ class ChildShowController extends AbstractController
      * @param UchastieFetcher $uchasties
      * @param ChildMatkaFetcher $childmatkas
      * @param CommentFetcher $comments
+     * @param ActionFetcher $actions,
      * @param Status\Handler $statusHandler
      * @param Type\Handler $typeHandler
      * @param Priority\Handler $priorityHandler
@@ -58,6 +60,7 @@ class ChildShowController extends AbstractController
         UchastieFetcher $uchasties,
         ChildMatkaFetcher $childmatkas,
         CommentFetcher $comments,
+        ActionFetcher $actions,
         Status\Handler $statusHandler,
         Type\Handler $typeHandler,
         Priority\Handler $priorityHandler,
@@ -135,6 +138,7 @@ class ChildShowController extends AbstractController
             'uchastie' => $uchastie,
             'children' => $childmatkas->childrenOf($childmatka->getId()->getValue()),
             'comments' => $comments->allForChildMatka($childmatka->getId()->getValue()),
+            'actions' => $actions->allForChildMatka($childmatka->getId()->getValue()),
             'statusForm' => $statusForm->createView(),
             'typeForm' => $typeForm->createView(),
             'priorityForm' => $priorityForm->createView(),

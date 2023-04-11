@@ -567,12 +567,12 @@ pre {
   color: #155799;
 }
 .btnn--col-child {
-  box-shadow: inset 0px 0px 10px rgba(142, 57, 198, 0.9);
+  box-shadow: 0px 0px 10px rgba(142, 57, 198, 0.6);
   border: 1px solid #8e39c6;
   font-size: 1.5rem;
 }
 .btnn--col-child:hover {
-  box-shadow: 0px 0px 10px rgba(142, 57, 198, 0.6);
+  box-shadow: inset 0px 0px 10px rgba(142, 57, 198, 0.9);
   background: none;
   text-decoration: none;
   color: #8e39c6;
@@ -1050,11 +1050,12 @@ pre {
   display: block;
   padding: 0.45rem 1.2rem;
   font-size: 1.3rem;
-  color: #f6f6f6;
+  color: #a78c16;
   text-decoration: none;
   transition: background-color 0.2s ease-in-out;
 }
 .subnavv__link:hover {
+  color: #f6f6f6;
   background-color: rgb(151, 144, 93);
   text-decoration: none;
 }

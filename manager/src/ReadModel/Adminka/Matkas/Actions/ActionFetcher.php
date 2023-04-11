@@ -27,7 +27,7 @@ class ActionFetcher
         $qb = $this->createQb();
 
         if ($filter->uchastie) {
-            $qb->innerJoin('plemmatka', 'paseka_matkas_plemmatka_uchastniks', 'uchastnik', 'plemmatka.id = uchastnik.plemmatka_id');
+            $qb->innerJoin('plemmatka', 'adminka_matkas_plemmatka_uchastniks', 'uchastnik', 'plemmatka.id = uchastnik.plemmatka_id');
             $qb->andWhere('uchastnik.uchastie_id = :uchastie');
             $qb->setParameter(':uchastie', $filter->uchastie);
         }
@@ -60,19 +60,22 @@ class ActionFetcher
                 'c.*',
                 'childmatka.name AS childmatka_name',
                 'TRIM(CONCAT(actor.name_first, \' \', actor.name_last)) AS actor_name',
+                'actor.nike AS actor_nike',
                 'plemmatka.id AS plemmatka_id',
                 'plemmatka.name AS plemmatka_name',
                 'TRIM(CONCAT(set_executor.name_first, \' \', set_executor.name_last)) AS set_executor_name',
+                'set_executor.nike AS set_executor_nike',
                 'TRIM(CONCAT(set_revoked_executor.name_first, \' \', set_revoked_executor.name_last)) AS set_revoked_executor_name',
+                'set_revoked_executor.nike AS set_revoked_executor_nike',
                 'set_plemmatka.name AS set_plemmatka_name'
             )
-            ->from('paseka_matkas_child_changes', 'c')
-            ->leftJoin('c', 'paseka_uchasties_uchasties', 'actor', 'c.actor_id = actor.id')
-            ->leftJoin('c', 'paseka_uchasties_uchasties', 'set_executor', 'c.set_executor_id = set_executor.id')
-            ->leftJoin('c', 'paseka_uchasties_uchasties', 'set_revoked_executor', 'c.set_revoked_executor_id = set_executor.id')
-            ->leftJoin('c', 'paseka_matkas_childmatkas', 'childmatka', 'c.childmatka_id = childmatka.id')
-            ->leftJoin('childmatka', 'paseka_matkas_plemmatkas', 'plemmatka', 'childmatka.plemmatka_id = plemmatka.id')
-            ->leftJoin('c', 'paseka_matkas_plemmatkas', 'set_plemmatka', 'c.set_plemmatka_id = set_plemmatka.id');
+            ->from('admin_matkas_child_changes', 'c')
+            ->leftJoin('c', 'admin_uchasties_uchasties', 'actor', 'c.actor_id = actor.id')
+            ->leftJoin('c', 'admin_uchasties_uchasties', 'set_executor', 'c.set_executor_id = set_executor.id')
+            ->leftJoin('c', 'admin_uchasties_uchasties', 'set_revoked_executor', 'c.set_revoked_executor_id = set_executor.id')
+            ->leftJoin('c', 'admin_matkas_childmatkas', 'childmatka', 'c.childmatka_id = childmatka.id')
+            ->leftJoin('childmatka', 'admin_matkas_plemmatkas', 'plemmatka', 'childmatka.plemmatka_id = plemmatka.id')
+            ->leftJoin('c', 'admin_matkas_plemmatkas', 'set_plemmatka', 'c.set_plemmatka_id = set_plemmatka.id');
     }
 
 
@@ -87,12 +90,12 @@ class ActionFetcher
 //                'TRIM(CONCAT(set_revoked_executor.name_first, \' \', set_revoked_executor.name_last)) AS set_revoked_executor_name',
 //                'set_plemmatka.name AS set_plemmatka_name'
 //            )
-//            ->from('paseka_matkas_child_changes', 'c')
-//            ->leftJoin('c', 'paseka_uchasties_uchasties', 'actor', 'c.actor_id = actor.id')
-//            ->leftJoin('c', 'paseka_uchasties_uchasties', 'set_executor', 'c.set_executor_id = set_executor.id')
-//            ->leftJoin('c', 'paseka_uchasties_uchasties', 'set_revoked_executor', 'c.set_revoked_executor_id = set_executor.id')
-//            ->leftJoin('c', 'paseka_matkas_childmatkas', 'childmatka', 'c.childmatka_id = childmatka.id')
-//            ->leftJoin('c', 'paseka_matkas_plemmatkas', 'set_plemmatka', 'c.set_plemmatka_id = set_plemmatka.id')
+//            ->from('admin_matkas_child_changes', 'c')
+//            ->leftJoin('c', 'admin_uchasties_uchasties', 'actor', 'c.actor_id = actor.id')
+//            ->leftJoin('c', 'admin_uchasties_uchasties', 'set_executor', 'c.set_executor_id = set_executor.id')
+//            ->leftJoin('c', 'admin_uchasties_uchasties', 'set_revoked_executor', 'c.set_revoked_executor_id = set_executor.id')
+//            ->leftJoin('c', 'admin_matkas_childmatkas', 'childmatka', 'c.childmatka_id = childmatka.id')
+//            ->leftJoin('c', 'admin_matkas_plemmatkas', 'set_plemmatka', 'c.set_plemmatka_id = set_plemmatka.id')
 //            ->andWhere('childmatka.id = :childmatka_id')
 //            ->setParameter(':childmatka_id', $id)
 //            ->orderBy('c.date', 'asc')

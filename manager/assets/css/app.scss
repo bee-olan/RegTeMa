@@ -149,6 +149,12 @@ pre {
 }
 
 @import "chat";
+
+.direct-chat-action {
+    padding: 0 0 10px 50px;
+    font-size: .8rem;
+}
+
 @import "strongo";
 @import "teni-text";
 @import "btnn";

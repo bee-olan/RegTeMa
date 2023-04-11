@@ -5,23 +5,18 @@
 .btnn {
     display: inline-block; // чтобы падинги корректно работали
     vertical-align: top;
-     padding: 1.1em 1.6em;
-   
-    // падинги сделаем в em -эначит будут зависить от шрифта
-    // меняем size шрифта - автоматом изменится падинги
-
-   // background: linear-gradient( $grad1, $grad2);
-   border: 1px solid $border-kroxi;
+    padding: 1.1em 1.6em;
+    border: 1px solid $border-kroxi;
 
     cursor: pointer;
-     border-radius: 3em; // скругляем
-     background-color: $primary;
+    border-radius: 3em; 
+    background-color: $primary;
     font-family: inherit; //шрифт наследуется у родителя
     font-size: 1.7rem;
-    line-height: 1.1; // 
+    line-height: 1.1; 
     font-weight: 500;
     color: $border-kroxi;
-    text-decoration: none; //убираем подчеркивание
+    text-decoration: none; 
     // плавное изменение цвета
     transition: background-color .3s linear;
     margin-bottom: 3rem;
@@ -61,13 +56,14 @@
           color: $grad1;
         }
       }
-        &--col-child { 
-            box-shadow: inset 0px 0px 10px rgba($child-text, 0.9);     
+        &--col-child {
+            box-shadow:  0px 0px 10px rgba($child-text, 0.6);
             border: 1px solid $child-text;
             font-size: 1.5rem;
+            
             &:hover {
-                box-shadow:  0px 0px 10px rgba($child-text, 0.6);
-                 background: none;
+                box-shadow: inset 0px 0px 10px rgba($child-text, 0.9);
+                background: none;
                 text-decoration: none;
                 color: $child-text;
             }

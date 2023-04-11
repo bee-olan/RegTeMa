@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Proekt\Pasekas\ChildMatkas;
 
+use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Adminka\UseCase\Matkas\ChildMatka\Executor;
 use App\Model\Adminka\UseCase\Matkas\ChildMatka\Plan;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatka;
@@ -65,5 +66,39 @@ class ChildAssignController extends AbstractController
             'childmatka' => $childmatka,
             'form' => $form->createView(),
         ]);
+    }
+
+    // revoke отменять
+    /**
+     * @Route("/{id}/revoke/{uchastie_id}", name=".revoke", methods={"POST"})
+     * @ParamConverter("uchastie", options={"id" = "uchastie_id"})
+     * @param ChildMatka $childmatka
+     * @param Uchastie $uchastie
+     * @param Request $request
+     * @param Executor\Revoke\Handler $handler
+     * @return Response
+     */
+    public function revoke(ChildMatka $childmatka, Uchastie $uchastie, Request $request, Executor\Revoke\Handler $handler): Response
+    {
+        if (!$this->isCsrfTokenValid('revoke', $request->request->get('token'))) {
+            return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
+        }
+
+        // $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
+
+        $command = new Executor\Revoke\Command(
+            $this->getUser()->getId(),
+            $childmatka->getId()->getValue(),
+            $uchastie->getId()->getValue()
+        );
+
+        try {
+            $handler->handle($command);
+        } catch (\DomainException $e) {
+            $this->errors->handle($e);
+            $this->addFlash('error', $e->getMessage());
+        }
+
+        return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
     }
 }

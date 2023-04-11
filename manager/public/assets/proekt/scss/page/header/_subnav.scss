@@ -26,14 +26,15 @@
      padding: .45rem 1.2rem;
 
      font-size: 1.3rem;
-     color: $white;
+     color: $text;
      text-decoration: none;
 
      transition: background-color .2s ease-in-out;
 
     &:hover {
         //background-color: darken($header-color, 5%);
-      background-color: $header-color;
+      color: $white;
+        background-color: $header-color;
         text-decoration: none;    
     }
 
