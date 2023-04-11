@@ -32,8 +32,6 @@ class Handler
         $actor = $this->uchasties->get(new UchastieId($command->actor));
         $childmatka = $this->childmatkas->get(new Id($command->id));
 
-//        $childmatka->changeType($actor, new \DateTimeImmutable(),new Type($command->type));
-
         $childmatka->changeType(
             $actor,
             new \DateTimeImmutable(),

@@ -60,16 +60,25 @@ class Set
      * @ORM\Column(type="admin_matkas_childmatka_status", nullable=true)
      */
     private $status;
-//    /**
-//     * @var int|null
-//     * @ORM\Column(type="smallint", nullable=true)
-//     */
-//    private $progress;
+
     /**
      * @var int|null
      * @ORM\Column(type="smallint", nullable=true)
      */
     private $priority;
+
+    /**
+     * @var int|null
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $kolChild;
+
+    /**
+     * @var int|null
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $godaVixod;
+
     /**
      * @var ChildMatkaId
      * @ORM\Column(type="admin_matkas_childmatka_id", nullable=true)
@@ -105,6 +114,18 @@ class Set
      */
     private $revokedExecutorId;
 
+    /**
+     * @var string|null
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $sezonPlem;
+
+    /**
+     * @var string|null
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $sezonChild;
+
     private function __construct()
     {
 
@@ -112,7 +133,12 @@ class Set
 
     public static function forNewChildMatka(PlemMatkaId $plemmatka,
                                             string $name, ?string $content,
-                                            Type $type, int $priority): self
+                                            Type $type, int $priority,
+                                             int $kolChild,
+                                            int $godaVixod,
+                                            string $sezonPlem,
+                                            ?string $sezonChild
+                                        ): self
     {
         $set = new self();
         $set->plemmatkaId = $plemmatka;
@@ -120,6 +146,36 @@ class Set
         $set->content = $content;
         $set->type = $type;
         $set->priority = $priority;
+        $set->kolChild = $kolChild;
+        $set->godaVixod= $godaVixod;
+        $set->sezonPlem= $sezonPlem;
+        $set->sezonChild = $sezonChild;
+        return $set;
+    }
+    public static function fromSezonChild(string $sezonChild): self
+    {
+        $set = new self();
+        $set->sezonChild = $sezonChild;
+        return $set;
+    }
+    public static function fromSezonPlem(string $sezonPlem): self
+    {
+        $set = new self();
+        $set->sezonPlem = $sezonPlem;
+        return $set;
+    }
+
+    public static function fromGodaVixod(int $godaVixod): self
+    {
+        $set = new self();
+        $set->godaVixod = $godaVixod;
+        return $set;
+    }
+
+    public static function fromKolChild(int $kolChild): self
+    {
+        $set = new self();
+        $set->kolChild = $kolChild;
         return $set;
     }
 
@@ -164,13 +220,6 @@ class Set
         $set->status = $status;
         return $set;
     }
-
-//    public static function fromProgress(int $progress): self
-//    {
-//        $set = new self();
-//        $set->progress = $progress;
-//        return $set;
-//    }
 
     public static function fromPriority(int $priority): self
     {

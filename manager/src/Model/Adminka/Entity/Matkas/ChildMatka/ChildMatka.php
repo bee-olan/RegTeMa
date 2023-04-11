@@ -205,7 +205,8 @@ class ChildMatka
         $this->sezonChild = $sezonChild;
         $this->executors = new ArrayCollection();
         $this->changes = new ArrayCollection();
-        $this->addChange($author, $date, Set::forNewChildMatka($plemmatka->getId(), $name, $content, $type, $priority));
+        $this->addChange($author, $date, Set::forNewChildMatka($plemmatka->getId(), $name, $content, $type, $priority,
+                                                                $kolChild, $godaVixod, $sezonPlem, $sezonChild ));
     }
 
 
@@ -315,7 +316,9 @@ class ChildMatka
     }
 
 //изменить тип
-    public function changeType(Uchastie $actor, \DateTimeImmutable $date,Type $type): void
+    public function changeType(Uchastie $actor,
+                               \DateTimeImmutable $date,
+                               Type $type): void
     {
         if ($this->type->isEqual($type)) {
             throw new \DomainException('Тип уже тот же самый.');

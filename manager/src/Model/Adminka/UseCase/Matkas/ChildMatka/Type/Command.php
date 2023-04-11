@@ -29,7 +29,8 @@ class Command
         $this->id = $id;
     }
 
-    public static function fromChildMatka(string $actor, ChildMatka $childmatka): self
+    public static function fromChildMatka(string $actor,
+                                          ChildMatka $childmatka): self
     {
         $command = new self($actor, $childmatka->getId()->getValue());
         $command->type = $childmatka->getType()->getName();

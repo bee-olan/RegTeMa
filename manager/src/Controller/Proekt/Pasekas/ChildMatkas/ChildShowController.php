@@ -90,7 +90,8 @@ class ChildShowController extends AbstractController
         if ($typeForm->isSubmitted() && $typeForm->isValid()) {
             try {
                 $typeHandler->handle($typeCommand);
-                return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
+                return $this->redirectToRoute('proekt.pasekas.childmatkas.show',
+                                                    ['id' => $childmatka->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
