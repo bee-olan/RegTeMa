@@ -260,118 +260,6 @@ class ChildSideFetcher
 
 
 
-//    /**
-//     * @param Filter $filter
-//     * @param int $page
-//     * @param int $size
-//     * @param string $sort
-//     * @param string $direction
-//     * @return PaginationInterface
-//     */
-//    public function all(Filter $filter, int $page, int $size, string $sort, string $direction): PaginationInterface
-//    {
-//
-//        $qb = $this->connection->createQueryBuilder()
-//            ->select(
-//                't.id',
-//                't.date',
-//                't.author_id',
-//                'm.name_nike AS  author_name',
-//                't.plemmatka_id',
-//                'p.name AS plemmatka_name',
-//                'p.name_kateg AS plemmatka_kat',
-//                't.name',
-//                't.parent_id AS parent',
-//                't.type',
-//                't.priority',
-//                't.progress',
-//                't.plan_date',
-//                't.status',
-//                'r.nomer AS mesto',
-//                'u.nomer AS  author_persona'
-//
-//            )
-//            ->from('admin_matkas_childmatkas', 't')
-//            ->innerJoin('t', 'admin_uchasties_uchasties', 'm', 't.author_id = m.id')
-//            ->innerJoin('t', 'admin_matkas_plemmatkas', 'p', 't.plemmatka_id = p.id')
-//            ->innerJoin('t', 'mesto_mestonomers', 'r', 't.author_id = r.id')
-//            ->innerJoin('t', 'adminka_uchasties_personas', 'u', 't.author_id = u.id')
-//                    ;
-//        if ($filter->uchastie) {
-//            $qb->innerJoin('t', 'adminka_matkas_plemmatka_uchastniks', 'ms', 't.plemmatka_id = ms.plemmatka_id');
-//            $qb->andWhere('ms.uchastie_id = :uchastie');
-//            $qb->setParameter(':uchastie', $filter->uchastie);
-//        }
-//
-//        if ($filter->plemmatka) {
-//            $qb->andWhere('t.plemmatka_id = :plemmatka');
-//            $qb->setParameter(':plemmatka', $filter->plemmatka);
-//        }
-//
-//        if ($filter->author) {
-//            $qb->andWhere('t.author_id = :author');
-//            $qb->setParameter(':author', $filter->author);
-//        }
-//
-//        if ($filter->text) {
-//            $vector = "(setweight(to_tsvector(t.name),'A') || setweight(to_tsvector(coalesce(t.content,'')), 'B'))";
-//            $query = 'plainto_tsquery(:text)';
-//            $qb->andWhere($qb->expr()->orX(
-//                $qb->expr()->like('LOWER(CONCAT(t.name, \' \', coalesce(t.content, \'\')))', ':text'),
-//                "$vector @@ $query"
-//            ));
-//            $qb->setParameter(':text', '%' . mb_strtolower($filter->text) . '%');
-//            if (empty($sort)) {
-//                $sort = "ts_rank($vector, $query)";
-//                $direction = 'desc';
-//            }
-//
-//        }
-//
-//        if ($filter->type) {
-//            $qb->andWhere('t.type = :type');
-//            $qb->setParameter(':type', $filter->type);
-//        }
-//
-//        if ($filter->priority) {
-//            $qb->andWhere('t.priority = :priority');
-//            $qb->setParameter(':priority', $filter->priority);
-//        }
-//
-//        if ($filter->status) {
-//            $qb->andWhere('t.status = :status');
-//            $qb->setParameter(':status', $filter->status);
-//        }
-//
-//         if ($filter->executor) {
-//             $qb->innerJoin('t', 'admin_matkas_childmatkas_executors', 'e', 'e.childmatka_id = t.id');
-//             $qb->andWhere('e.uchastie_id = :executor');
-//             $qb->setParameter(':executor', $filter->executor);
-//         }
-//       // , 'author_name'
-//        if (!\in_array($sort, ['t.id', 't.date', 'plemmatka_name', 'name', 't.type', 't.plan_date', 't.priority', 't.status'], true)) {
-//            throw new \UnexpectedValueException('Cannot sort by ' . $sort);
-//        }
-//
-//        $qb->orderBy($sort ?: 't.id', $direction === 'desc' ? 'desc' : 'asc');
-//
-//        /** @var SlidingPagination $pagination */
-//        $pagination = $this->paginator->paginate($qb, $page, $size);
-//
-//        $childmatkas = $pagination->getItems();
-//        $executors = $this->batchLoadExecutors(array_column($childmatkas, 'id'));
-//
-//        $pagination->setItems(array_map(static function (array $childmatka) use ($executors) {
-//            return array_merge($childmatka, [
-//                'executors' => array_filter($executors, static function (array $executor) use ($childmatka) {
-//                    return $executor['childmatka_id'] === $childmatka['id'];
-//                }),
-//            ]);
-//        }, $childmatkas));
-//
-//        return $pagination;
-//    }
-
      public function childrenOf(int $childmatka): array
      {
          $stmt = $this
@@ -413,7 +301,8 @@ class ChildSideFetcher
          $stmt = $this->connection->createQueryBuilder()
              ->select(
                  'e.childmatka_id',
-                 'TRIM(CONCAT(m.name_first, \' \', m.name_last)) AS name'
+//                 'TRIM(CONCAT(m.name_first, \' \', m.name_last)) AS name'
+                 'm.nike AS name'
              )
              ->from('admin_matkas_childmatkas_executors', 'e')
              ->innerJoin('e', 'admin_uchasties_uchasties', 'm', 'm.id = e.uchastie_id')

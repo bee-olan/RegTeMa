@@ -310,7 +310,8 @@ class ChildMatkaFetcher
          $stmt = $this->connection->createQueryBuilder()
              ->select(
                  'e.childmatka_id',
-                 'TRIM(CONCAT(m.name_first, \' \', m.name_last)) AS name'
+//                 'TRIM(CONCAT(m.name_first, \' \', m.name_last)) AS name'
+                 'm.nike AS name'
              )
              ->from('admin_matkas_childmatkas_executors', 'e')
              ->innerJoin('e', 'admin_uchasties_uchasties', 'm', 'm.id = e.uchastie_id')
