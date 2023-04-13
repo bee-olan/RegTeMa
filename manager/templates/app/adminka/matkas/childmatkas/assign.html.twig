@@ -10,7 +10,7 @@
         <li class="breadcrumb-item"><a href="{{ path('work.projects.project.show', {'id': project.id}) }}">{{ project.name }}</a></li>
         <li class="breadcrumb-item"><a href="{{ path('work.projects.project.tasks', {'project_id': project.id}) }}">Tasks</a></li>
         <li class="breadcrumb-item"><a href="{{ path('work.projects.tasks.show', {'id': task.id}) }}">{{ task.name }}</a></li> #}
-        <li class="breadcrumb-item active">Assign</li>
+        <li class="breadcrumb-item active">Объявить</li>
     </ol>
 {% endblock %}
 
@@ -18,7 +18,7 @@
 
     <h1 class="mt-0 mb-3 font-xl">
         {% if childmatka.parent %}
-            <a href="{{ path('work.projects.tasks.show', {'id': task.parent.id}) }}">{{ task.parent.name }}</a> /
+            <a href="{{ path('adminka.matkas.childmatkas.show', {'id': childmatka.parent.id}) }}">{{ childmatka.parent.name }}</a> /
         {% endif %}
         {{ childmatka.name }}
     </h1>

@@ -567,8 +567,8 @@ pre {
   color: #155799;
 }
 .btnn--col-child {
-  box-shadow: 0px 0px 10px rgba(142, 57, 198, 0.6);
-  border: 1px solid #8e39c6;
+  box-shadow: 0px 0px 10px rgba(142, 57, 198, 0.5);
+  border: 1px solid #565656;
   font-size: 1.5rem;
 }
 .btnn--col-child:hover {
@@ -1027,7 +1027,7 @@ pre {
 
 .subnavv {
   display: none;
-  width: 16.5rem;
+  width: 20rem;
   padding: 0.5rem 0;
   background-color: rgba(151, 144, 93, 0.2);
   border-radius: 0 0 5px 5px;
@@ -1049,9 +1049,10 @@ pre {
 .subnavv__link {
   display: block;
   padding: 0.45rem 1.2rem;
-  font-size: 1.3rem;
-  color: #a78c16;
+  font-size: 1.6rem;
+  color: #155799;
   text-decoration: none;
+  opacity: 1;
   transition: background-color 0.2s ease-in-out;
 }
 .subnavv__link:hover {
@@ -3517,7 +3518,7 @@ tr {
 th {
   padding: 0.55rem;
   text-align: inherit;
-  font-weight: 600;
+  font-weight: 500;
   color: #565656;
 }
 
@@ -3533,7 +3534,7 @@ tr {
 }
 
 .tabl-hover-child tbody tr:hover {
-  background-color: rgba(167, 140, 22, 0.4);
+  background-color: rgba(167, 140, 22, 0.2);
 }
 
 .tabl-child {

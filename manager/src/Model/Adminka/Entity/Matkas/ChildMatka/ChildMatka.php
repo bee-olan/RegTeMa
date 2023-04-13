@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\Entity\Matkas\ChildMatka;
 
-use App\Model\Adminka\Entity\Matkas\Sparings\Sparing;
+use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id as DepartmentId;
 use App\Model\AggregateRoot;
 use App\Model\EventsTrait;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\Change\Change;
@@ -394,6 +394,17 @@ class ChildMatka
     }
 
 //------------- end Executor
+    public function idDepart($departmentFetcher): DepartmentId
+    {
+        foreach ($departmentFetcher as $key => $value) {
+            if ($value = $this->getSezonPlem()) {
+                $idDeppart = $key;
+                return new DepartmentId($idDeppart ) ;
+                break;
+            }
+            throw new \DomainException('сезон не найден.');
+        }
+    }
 
     public function isNew(): bool
     {

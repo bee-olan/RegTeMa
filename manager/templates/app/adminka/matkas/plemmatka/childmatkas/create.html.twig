@@ -8,16 +8,26 @@
         <li class="breadcrumb-item"><a href="{{ path('adminka.matkas') }}">ПлемМатки - список</a></li>
         <li class="breadcrumb-item"><a href="{{ path('adminka.matkas.plemmatka.show', {'id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
         <li class="breadcrumb-item"><a href="{{ path('adminka.matkas.plemmatka.childmatkas', {'plemmatka_id': plemmatka.id}) }}">ТестМатка</a></li>
-        <li class="breadcrumb-item active">Создать</li>
+        <li class="breadcrumb-item active">Создать дочернюю</li>
     </ol>
 {% endblock %}
 
 {% block body %}
+    <h1 class="mt-0 mb-3 font-xl">
+        {% if parent %}
+            <strong class="strongo strongo--kras"> Внимание!!!</strong>
+            Добавляем к маточке  <strong class="strongo strongo--kras">№  {{ parent }}</strong> - дочернюю
+{#            <a href="{{ path('adminka.matkas.childmatkas.show', {'id': childmatka.parent.id}) }}">{{ childmatka.parent.name }}</a> /#}
+        {% else %}
+           К ПлемМатке {{ sezonPlem }}   добавить<strong class="strongo strongo--kras">   ДочьМатку </strong>
+        {% endif %}
 
-    <div class="controls">
-         <h2>  К  <strong class="strongo strongo--kras">  {{ plemmatka.name }} </strong> сезон
-             {{ sezonPlem }}   добавить<strong class="strongo strongo--kras">   ДочьМатку </strong></h2>
-    </div>
+    </h1>
+
+{#    <div class="controls">#}
+{#         <h2>  К  <strong class="strongo strongo--kras">  {{ plemmatka.name }} </strong> сезон#}
+{#             {{ sezonPlem }}   добавить<strong class="strongo strongo--kras">   ДочьМатку </strong></h2>#}
+{#    </div>#}
 
     <div class="card">
         <div class="card-body">

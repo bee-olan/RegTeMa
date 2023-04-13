@@ -44,15 +44,17 @@ class PlemMatkaRepository
 //                ->getQuery()->getSingleScalarResult() > 0;
 //    }
 
-//    public function get(Id $id): PlemMatka
-//    {
-//        /** @var PlemMatka $plemmatka */
-//        if (!$plemmatka = $this->repo->find($id->getValue())) {
-//            throw new EntityNotFoundException('plemmatka is not found.');
-//        }
-//        return $plemmatka;
-//    }
+
     public function get(Id $id): PlemMatka
+    {
+        /** @var PlemMatka $plemmatka */
+        if (!$plemmatka = $this->repo->find($id->getValue())) {
+            throw new EntityNotFoundException('PlemMatka is not found.');
+        }
+        return $plemmatka;
+    }
+
+    public function getPlemSezon(Id $id, string $sezon): PlemMatka
     {
         /** @var PlemMatka $plemmatka */
         if (!$plemmatka = $this->repo->find($id->getValue())) {

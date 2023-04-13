@@ -1,0 +1,52 @@
+{% if children %}
+    <div class="card">
+        <div class="card-header">
+            <a href="{{ path('work.projects.project.tasks.create', {'project_id': project.id}) }}?parent={{ task.id }}" class="btn btn-sm btn-default py-0 pull-right"><span class="fa fa-plus"></span></a>
+            Subtasks
+        </div>
+        <table class="table table-bordered table-hover mb-0">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Project</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th><span class="fa fa-fire"></span></th>
+                <th>Executor</th>
+                <th>Status</th>
+                <th>Ready</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for child in children %}
+                <tr>
+                    <td>{{ child.date|date('Y-m-d') }}</td>
+                    <td>
+                        <a href="{{ path('work.projects.project.show', {'id': child.project_id}) }}">{{ child.project_name }}</a>
+                    </td>
+                    <td>
+                        <a href="{{ path('work.projects.tasks.show', {'id': child.id}) }}">{{ child.name }}</a>
+                    </td>
+                    <td>
+                        {% if child.type != 'none' %}
+                            {{ work_projects_task_type(child.type) }}
+                        {% endif %}
+                    </td>
+                    <td>{{ work_projects_task_priority(child.priority) }}</td>
+                    <td>
+                        {% for executor in child.executors %}
+                            <span class="badge badge-default" style="background: #eee">{{ executor.name }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>{{ work_projects_task_status(child.status) }}</td>
+                    <td>
+                        {% if child.progress %}
+                            {{ work_projects_task_progress(child.progress) }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}

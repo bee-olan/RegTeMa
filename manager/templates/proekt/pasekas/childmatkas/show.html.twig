@@ -302,7 +302,7 @@
                                 <img src="{{ gravatar(childmatka.author.email.value, 24) }}" class="img-circle" width="24" height="24" alt="" />
                             </td>
                             <td>
-                                <a href="{{ path('proekt.pasekas.uchasties.show', {'id': childmatka.author.id}) }}">{{ childmatka.author.name.full }}</a>
+                                <a href="{{ path('proekt.pasekas.uchasties.show', {'id': childmatka.author.id}) }}">{{ childmatka.author.nike }}</a>
                             </td>
                         </tr>
                     </tbody>
@@ -320,18 +320,20 @@
                             {% for executor in childmatka.executors %}
                                 <tr>
                                     <td style="width: 24px; box-sizing: content-box">
-                                        ========
-{#                                        <img src="{{ gravatar(executor.email.value, 24) }}" class="img-circle" width="24" height="24" alt="" />#}
+                                        <img src="{{ gravatar(executor.email.value, 24) }}" class="img-circle" width="24" height="24" alt="" />
                                     </td>
                                     <td>
-                                        <a href="{{ path('adminka.uchasties.show', {'id': executor.id}) }}">{{ executor.name.full }}</a>
+                                        <a href="{{ path('adminka.uchasties.show', {'id': executor.id}) }}">{{ executor.nike }}</a>
                                     </td>
 {#                         revoke отменять       #}
                                     <td style="width: 22px">
                                         <form action="{{ path('proekt.pasekas.childmatkas.revoke', {'plemmatka_id': plemmatka.id, 'id': childmatka.id, 'uchastie_id': executor.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                                             <input type="hidden" name="token" value="{{ csrf_token('revoke') }}" />
-                                            <button type="submit" class="btn btn-sm btn-default">
-                                                <span class="fa fa-times"></span>
+                                            <button type="submit"  class="btnn btnn--mb0 btnn--pt btnn--col-child">
+
+                                                <div class="karandash karandash--child">
+                                                    <img src="{{ asset('assets/proekt/images/delet.png') }}" alt="редактировать">
+                                                </div>
                                             </button>
                                         </form>
                                     </td>

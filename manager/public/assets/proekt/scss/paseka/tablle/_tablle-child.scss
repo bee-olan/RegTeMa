@@ -12,7 +12,7 @@
 th {
   padding: .55rem;
   text-align: inherit;
-  font-weight: 600;
+  font-weight: 500;
   color: $child-form;
 }
 td {
@@ -27,7 +27,7 @@ tr{
 
 .tabl-hover-child tbody tr:hover {
 
-  background-color: rgba($text, 0.4);
+  background-color: rgba($text, 0.2);
 }
 
 .tabl-child {

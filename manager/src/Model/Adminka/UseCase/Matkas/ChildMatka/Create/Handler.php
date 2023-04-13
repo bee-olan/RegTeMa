@@ -13,9 +13,6 @@ use App\Model\Adminka\Entity\Uchasties\Personas\Id as PersonaId;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
 
-use App\Model\Adminka\Entity\Matkas\Sparings\SparingRepository;
-use App\Model\Adminka\Entity\Matkas\Sparings\Id as SparingId;
-
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Id as PlemMatkaId;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatkaRepository;
 
@@ -52,8 +49,8 @@ class Handler
 
     public function handle(Command $command): void
     {
-
-        $parent = $command->parent ? $this->childmatkas->get(new Id($command->parent)) : null;
+//
+        $parent = $command->parent ? $this->childmatkas->get(new Id((int)$command->parent)) : null;
 
         $uchastie = $this->uchasties->get(new UchastieId($command->uchastie));
 
@@ -64,25 +61,27 @@ class Handler
         $plemmatka = $this->plemmatkas->get(new PlemMatkaId($command->plemmatka));
 
 
-        $command->parent = $plemmatka->getSort();
 
-        $plem=explode(" ",$plemmatka->getName() );
 
         $command->godaVixod = (int)$command->plan_date->format('Y');
-
 
         $date = new \DateTimeImmutable();
         $command->plan = $date;
 
-        $command->parent = $plemmatka->getSort();
-//      dd( $command->sezonPlem);
 
+        if ($parent) {
+            $nameParents=explode(" ",$parent->getName() );
+            $nameParent = $nameParents[0]."-".$parent->getId();
+        }else {
+            $plem=explode(" ",$plemmatka->getName() );
+            $nameParent = $plem[0] ;
+        }
 
        for ($i = 1; $i <= (int)$command->kolChild; $i++) {
 
             $childmatkaId = $this->childmatkas->nextId();
-            $sezonPlem = $command->sezonPlem;
-            $command->name = $plem[0]." : ".$childmatkaId."_пн-".$persona->getNomer()."_".$command->godaVixod;
+           $sezonPlem = $command->sezonPlem; // ??????
+            $command->name = $nameParent." : ".$childmatkaId."_пн-".$persona->getNomer()."_".$command->godaVixod;
 //dd($command->name);
 
         $childmatka = new ChildMatka(

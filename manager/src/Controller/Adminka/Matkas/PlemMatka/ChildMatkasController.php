@@ -5,17 +5,12 @@ declare(strict_types=1);
 namespace App\Controller\Adminka\Matkas\PlemMatka;
 
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id;
-//use App\Model\Adminka\UseCase\Matkas\ChildMatka\Files;
-use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatka;
 use App\Model\Adminka\UseCase\Matkas\ChildMatka\Create;
-
 use App\ReadModel\Adminka\Matkas\ChildMatka\Filter;
 use App\ReadModel\Adminka\Matkas\ChildMatka\ChildMatkaFetcher;
-
 use App\Controller\ErrorHandler;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 use App\Security\Voter\Adminka\Matkas\PlemMatkaAccess;
-use App\Service\Uploader\FileUploader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -59,8 +54,8 @@ class ChildMatkasController extends AbstractController
             $filter,
             $request->query->getInt('page', 1),
             self::PER_PAGE,
-            $request->query->get('sort', 't.date'),
-            $request->query->get('direction', 'desc')
+            $request->query->get('sort'),
+            $request->query->get('direction')
         );
 
         return $this->render('app/adminka/matkas/childmatkas/index.html.twig', [
@@ -173,6 +168,7 @@ class ChildMatkasController extends AbstractController
         }
 
         return $this->render('app/adminka/matkas/plemmatka/childmatkas/create.html.twig', [
+            'parent' => $parent,
             'plemmatka' => $plemmatka,
             'sezonPlem' => $sezonPlem,
             'form' => $form->createView(),

@@ -39,7 +39,7 @@ class Handler
             }
         }
 
-        $this->flusher->flush($childmatka);
+        $this->flusher->flush();
     }
 }
 

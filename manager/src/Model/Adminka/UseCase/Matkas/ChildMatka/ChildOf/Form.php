@@ -14,7 +14,10 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('parent', Type\IntegerType::class, ['required' => false]);
+            ->add('parent', Type\IntegerType::class, [
+                'label' => 'Номер матери (родителя ) ',
+                'required' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

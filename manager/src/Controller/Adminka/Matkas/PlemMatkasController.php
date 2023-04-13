@@ -6,16 +6,8 @@ namespace App\Controller\Adminka\Matkas;
 
 use App\Annotation\Guid;
 
-use App\Model\Mesto\Entity\InfaMesto\MestoNomerRepository;
-use App\Model\Mesto\Entity\InfaMesto\Id as MestoNomerId;
-
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 
-//use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id;
-//use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
-
-//use App\Model\Adminka\Entity\Uchasties\Personas\PersonaRepository;
-//use App\Model\Adminka\Entity\Uchasties\Personas\Id as PersonaId;
 
 use App\Model\Adminka\UseCase\Matkas\PlemMatka\Create;
 use App\Model\Adminka\UseCase\Matkas\PlemMatka\Remove;

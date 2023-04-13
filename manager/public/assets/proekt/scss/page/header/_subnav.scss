@@ -1,15 +1,15 @@
 .subnavv {
-     display: none; //скрыть nav
+    display: none; //скрыть nav
 
-     width: 16.5rem;
-     padding: .5rem 0;
+    width: 20rem;
+    padding: .5rem 0;
     background-color: rgba($header-color, .2);
-     border-radius: 0 0 5px 5px;
-     box-shadow: 0 6px 8px rgba($black, .2);
-     position: absolute; // родителя nav__item
-     top: 100%;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 6px 8px rgba($black, .2);
+    position: absolute; // родителя nav__item
+    top: 100%;
      //left: 15px;
-     left: 0;
+    left: 0;
 
      @include breakpoint($tablet-bp) {
         position: static;
@@ -22,14 +22,13 @@
 }
 
 .subnavv__link {
-     display: block;
-     padding: .45rem 1.2rem;
-
-     font-size: 1.3rem;
-     color: $text;
-     text-decoration: none;
-
-     transition: background-color .2s ease-in-out;
+        display: block;
+        padding: .45rem 1.2rem;
+        font-size: 1.6rem;
+        color: $kroxii;
+        text-decoration: none;
+        opacity: 1;
+        transition: background-color .2s ease-in-out;
 
     &:hover {
         //background-color: darken($header-color, 5%);
