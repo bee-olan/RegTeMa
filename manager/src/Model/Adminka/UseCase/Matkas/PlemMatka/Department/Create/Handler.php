@@ -29,7 +29,7 @@ class Handler
 
        $nach = $plemmatka->getGodaVixod()+ count($plemmatka->getDepartments());
 //        $nach =$command->name;
-            $name = $nach." - ".($nach +1);
+            $name = $nach."-".($nach +1);
 
             $plemmatka->addDepartment(
                 Id::next(),

@@ -27,9 +27,10 @@
 
                <a href="{{ path('proekt.pasekas.childmatkas.assign', {'id': childmatka.id}) }}" 
             class="btnn  btnn--pt btnn--col-child">Назначить исполнителя</a>
-     Добавить ДочьМатку??
-{#        <a href="{{ path('proekt.pasekas.childmatkas.create', {'plemmatka_id': plemmatka.id}) }}?parent={{ childmatka.id }}" #}
-{#            class="btnn  btnn--pt btnn--col-child">Добавить ДочьМатку</a>#}
+
+
+        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id, 'department_id' : departId }) }}?parent={{ childmatka.id }}"
+            class="btnn  btnn--pt btnn--col-child">Объявить дочернюю</a>
 
         <a href="{{ path('proekt.pasekas.childmatkas.edit', {'id': childmatka.id}) }}" 
             class="btnn  btnn--pt btnn--col-child">Редактировать характер-ку</a>

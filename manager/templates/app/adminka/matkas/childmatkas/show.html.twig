@@ -83,14 +83,15 @@
                     <tr>
                         <th>Дата</th>
                         <th>ПлемМатка</th>
-                        <th>Имя</th>
-                        <th>Состояние</th>
+                        <th>Дочернии</th>
+                        <th>Спаринг</th>
                         <th><span class="fa fa-fire"></span></th>
                         <th>Исполнитель</th>
                         <th>Статус</th>
 {#                        <th>Готов</th>#}
                     </tr>
                 </thead>
+
                 <tbody>
                     {% for child in children %}
                         <tr>
@@ -197,8 +198,23 @@
                                 </div>
                                 {{ form_end(priorityForm) }}
                             </td>
+{# --Сезон----------------------------------------- #}
+                            <th>Сезон</th>
+                            <td>
+{#                                {{ form_start(priorityForm) }}#}
+                                <div class="row">
+{#                                    <div class="col-sm-8">{{ form_widget(priorityForm.priority, {'attr': {'class': 'input-sm'}}) }}</div>#}
+{#                                    <div class="col-sm-4">#}
+{#                                        <button type="submit" class="btn btn-sm btn-default pull-right invisible">#}
+{#                                            <span class="fa fa-check"></span></button>#}
+{#                                    </div>#}
+                                </div>
+                                {{childmatka.sezonPlem  }}
+{#                                {{ form_end(priorityForm) }}#}
+                            </td>
 
                         </tr>
+{# --конец табл----------------------------------------- #}
                     </tbody>
                 </table>
             </div>

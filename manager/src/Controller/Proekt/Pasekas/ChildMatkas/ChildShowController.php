@@ -15,6 +15,7 @@ use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatka;
 use App\ReadModel\Adminka\Matkas\Actions\ActionFetcher;
 use App\ReadModel\Adminka\Matkas\ChildMatka\ChildMatkaFetcher;
 use App\ReadModel\Adminka\Matkas\ChildMatka\CommentFetcher;
+use App\ReadModel\Adminka\Matkas\PlemMatka\DepartmentFetcher;
 use App\ReadModel\Adminka\Uchasties\Uchastie\UchastieFetcher;
 
 use App\Controller\ErrorHandler;
@@ -48,6 +49,7 @@ class ChildShowController extends AbstractController
      * @param ChildMatkaFetcher $childmatkas
      * @param CommentFetcher $comments
      * @param ActionFetcher $actions,
+     * @param DepartmentFetcher $departmentFetchers,
      * @param Status\Handler $statusHandler
      * @param Type\Handler $typeHandler
      * @param Priority\Handler $priorityHandler
@@ -61,6 +63,7 @@ class ChildShowController extends AbstractController
         ChildMatkaFetcher $childmatkas,
         CommentFetcher $comments,
         ActionFetcher $actions,
+        DepartmentFetcher $departmentFetchers,
         Status\Handler $statusHandler,
         Type\Handler $typeHandler,
         Priority\Handler $priorityHandler,
@@ -72,6 +75,8 @@ class ChildShowController extends AbstractController
         if (!$uchastie = $uchasties->find($this->getUser()->getId())) {
             throw $this->createAccessDeniedException();
         }
+        $departmentFetcher = $departmentFetchers->listOfPlemMatka($childmatka->getPlemMatka()->getId()->getValue());
+
 
         $statusCommand = Status\Command::fromChildMatka($this->getUser()->getId(), $childmatka);
         $statusForm = $this->createForm(Status\Form::class, $statusCommand);
@@ -143,6 +148,7 @@ class ChildShowController extends AbstractController
             'typeForm' => $typeForm->createView(),
             'priorityForm' => $priorityForm->createView(),
             'commentForm' => $commentForm->createView(),
+            'departId' => $childmatka->idDepart($departmentFetcher)
         ]);
     }
 

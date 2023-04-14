@@ -541,18 +541,6 @@ class ChildMatkasController extends AbstractController
 
 
         $departmentFetcher = $departmentFetchers->listOfPlemMatka($childmatka->getPlemMatka()->getId()->getValue());
-//        dd();
-
-//        foreach($departmentFetcher as $key => $value) {
-//            if ($value == $childmatka->getSezonPlem()) {
-//                $idDeppart = $key;
-//                break;
-//            }
-//            throw new \DomainException('сезон не найден.');
-//        }
-//        dd($idDeppart);
-
-
 
         $statusCommand = Status\Command::fromChildMatka($this->getUser()->getId(), $childmatka);
 

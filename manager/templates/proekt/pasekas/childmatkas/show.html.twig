@@ -15,25 +15,32 @@
         <div class="inklud__img  ">
             <img class="" src="{{ asset('assets/proekt/images/matkas/p4ela1.jpg') }}" alt="">           
         </div>
-{% if not plemmatka %}
-        <div class="inklud__title  teni teni--kategor">
-            Список ПлемМаток и их ДочьМаток
-        </div> 
- {% else %}
+
     <div class="inklud__title  teni teni--kategor">
-            ДочьМатка от {{plemmatka.name}}
-    </div> 
- {% endif %}       
-</div>
-    <h1 class="mt-0 mb-3 font-xl">
+
         {% if childmatka.parent %}
-            <a href="{{ path('paseka.matkas.childmatkas.show', {'id': childmatka.parent.id}) }}">{{ childmatka.parent.name }}</a> /
+            <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.parent.id}) }}">{{ childmatka.parent.name }}</a>
+            <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/send.svg') }}" alt="редактировать">
+        {% else %}
+            {{plemmatka.name}}
+            <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/send.svg') }}" alt="редактировать">
         {% endif %}
         {{ childmatka.name }}
-    </h1>
- {% include('proekt/pasekas/childmatkas/show-inklud/_knopki.html.twig') %}
+    </div>
 
- {% include('proekt/pasekas/childmatkas/show-inklud/_if-children.html.twig') %}
+</div>
+
+{#    <h1 class="mt-0 mb-3 font-xl">#}
+{#        {% if childmatka.parent %}#}
+{#            <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.parent.id}) }}">{{ childmatka.parent.name }}</a> /#}
+{#        {% endif %}#}
+{#        {{ childmatka.name }}#}
+{#    </h1>#}
+    {% include('proekt/pasekas/childmatkas/show-inklud/_if-children.html.twig') %}
+
+    {% include('proekt/pasekas/childmatkas/show-inklud/_knopki.html.twig') %}
+
+
     <div class="row-m">
         <div class="col-m col-8-m">
             <div class="card-m">
@@ -62,6 +69,7 @@
                                     </div>
                             </td>
                         </tr>
+{#      ата выхода                               #}
                         <tr>
                             <th>Дата выхода</th>
                             <td>{{ childmatka.date|date('Y-m-d ') }}</td>
@@ -89,6 +97,7 @@
                                 </div>
                             </td>
                         </tr>
+  {# ----------  Категория                     #}
                         <tr>
                             <th>Категория</th>
                             <td>
@@ -103,6 +112,7 @@
                                 </div>
                                 {{ form_end(typeForm) }}
                             </td>
+{# ----------  Статус                      #}
                             <th>Статус</th>
                             <td>
                                 {{ form_start(statusForm) }}
@@ -116,6 +126,7 @@
                                 {{ form_end(statusForm) }}
                             </td>
                         </tr>
+{# ----------  Приоритет                      #}
                         <tr>
                             <th>Приоритет</th>
                             <td>

@@ -112,13 +112,26 @@
                         </td>
                     {% endif %}
 
-                        <td class="tabl-bord- tabl-bord-child">
+{#                    style="background-color: rgb(190, 186, 151)#}
                             {% if childmatka.parent %}
-                                <span class="fa fa-angle-double-right"></span>
+                    <td class="tabl-bord- tabl-bord-child "  style="background-color: rgba(167, 140, 22, 0.3);">
+                                <div>
+{#                                    <div class="mb-0">#}
+                                        <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/send.svg') }}" alt="редактировать">
+{#                                    </div>#}
+                                    <div class= "pull-right-m">
+                                        <a  href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.id}) }}">
+                                            {{ childmatka.name }}
+                                        </a>
+                                    </div>
+                                </div>
+                            {% else %}
+                    <td class="tabl-bord- tabl-bord-child "  >
+                                <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.id}) }}">
+                                    {{ childmatka.name }}
+                                </a>
                             {% endif %}
-                            <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.id}) }}">
-                                {{ childmatka.name }}
-                            </a>
+
                         </td>
                         <td class="tabl-bord- tabl-bord-child">{{ childmatka.date|date('Y-m-d') }}</td>
                         <td class="tabl-bord- tabl-bord-child">   {{ adminka_matkas_childmatka_type(childmatka.type) }}</td>

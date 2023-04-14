@@ -394,16 +394,24 @@ class ChildMatka
     }
 
 //------------- end Executor
+
+// равно Ли Имя
+    public function isDepartEqual(string $sezon): bool
+    {
+        return $this->getSezonPlem() === $sezon;
+    }
+
     public function idDepart($departmentFetcher): DepartmentId
     {
         foreach ($departmentFetcher as $key => $value) {
-            if ($value = $this->getSezonPlem()) {
+
+            if ($this->isDepartEqual($value)) {
                 $idDeppart = $key;
                 return new DepartmentId($idDeppart ) ;
                 break;
             }
-            throw new \DomainException('сезон не найден.');
         }
+        throw new \DomainException('сезон не найден.');
     }
 
     public function isNew(): bool

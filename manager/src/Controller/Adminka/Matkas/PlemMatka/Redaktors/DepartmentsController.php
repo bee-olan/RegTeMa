@@ -65,10 +65,6 @@ class DepartmentsController extends AbstractController
 
         $command = new Create\Command($plemmatka->getId()->getValue());
 
-//        $form = $this->createForm(Create\Form::class, $command);
-//        $form->handleRequest($request);
-
-//        if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
                 return $this->redirectToRoute('adminka.matkas.plemmatka.redaktors.departments', ['plemmatka_id' => $plemmatka->getId()]);
@@ -76,7 +72,6 @@ class DepartmentsController extends AbstractController
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
-//        }
 
         return $this->render('app/adminka/matkas/plemmatka/redaktors/departments/create.html.twig', [
             'plemmatka' => $plemmatka,
