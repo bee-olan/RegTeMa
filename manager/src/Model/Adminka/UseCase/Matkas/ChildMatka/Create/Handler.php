@@ -81,7 +81,7 @@ class Handler
 
             $childmatkaId = $this->childmatkas->nextId();
            $sezonPlem = $command->sezonPlem; // ??????
-            $command->name = $nameParent." : ".$childmatkaId."_пн-".$persona->getNomer()."_".$command->godaVixod;
+            $command->name = $nameParent." : ".$childmatkaId."-".$command->godaVixod."_пн-".$persona->getNomer();
 //dd($command->name);
 
         $childmatka = new ChildMatka(

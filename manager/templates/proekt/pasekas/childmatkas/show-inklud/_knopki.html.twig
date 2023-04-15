@@ -62,19 +62,19 @@
 
 
  
-        {# <div class="btn-group">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Перети&hellip;
-            </button>
+         <div class="btn-group">
+{#            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#                Перети&hellip;#}
+{#            </button>#}
             <div class="dropdown-menu" x-placement="bottom-start">
-                <a class="dropdown-item" href="{{ path('paseka.matkas.childmatkas.move', {'id': childmatka.id}) }}">Перейти к ПлемМатке&hellip;</a>
-               <a class="dropdown-item" href="{{ path('paseka.matkas.childmatkas.child', {'id': childmatka.id}) }}">Установлен как Дочерний элемент&hellip;</a>
-                Установлен как Дочерний элемент
-               <form class="dropdown-item" action="{{ path('paseka.matkas.childmatkas.delete', {'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
-                   <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
-                   <button type="submit" class="btn" style="padding: 0">Удалить</button>
-               </form>
-                <button type="submit" class="btn" style="padding: 0">Удалить</button>
+{#                <a class="dropdown-item" href="{{ path('paseka.matkas.childmatkas.move', {'id': childmatka.id}) }}">Перейти к ПлемМатке&hellip;</a>#}
+{#               <a class="dropdown-item" href="{{ path('paseka.matkas.childmatkas.child', {'id': childmatka.id}) }}">Установлен как Дочерний элемент&hellip;</a>#}
+{#                Установлен как Дочерний элемент#}
+{#               <form class="dropdown-item" action="{{ path('proekt.pasekas.childmatkas.delete', {'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">#}
+{#                   <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />#}
+{#                   <button type="submit" class="btn" style="padding: 0">Удалить</button>#}
+{#               </form>#}
+{#                <button type="submit" class="btn" style="padding: 0">Удалить</button>#}
             </div>
-        </div> #}
+        </div>
     </div>

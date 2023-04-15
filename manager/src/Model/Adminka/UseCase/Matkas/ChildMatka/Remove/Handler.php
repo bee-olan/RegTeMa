@@ -25,6 +25,6 @@ class Handler
 
         $this->childmatkas->remove($childmatka);
 
-        $this->flusher->flush($childmatka);
+        $this->flusher->flush();
     }
 }

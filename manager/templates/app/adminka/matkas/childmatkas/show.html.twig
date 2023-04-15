@@ -57,17 +57,17 @@
         <a href="{{ path('adminka.matkas.childmatkas.edit', {'id': childmatka.id}) }}" class="btn btn-primary">Редактировать</a>
         <div class="btn-group">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Перети&hellip;
+                Перейти&hellip;
             </button>
             <div class="dropdown-menu" x-placement="bottom-start">
 {#                <a class="dropdown-item" href="{{ path('adminka.matkas.childmatkas.move', {'id': childmatka.id}) }}">Перейти к ПлемМатке&hellip;</a>#}
 {#                <a class="dropdown-item" href="{{ path('adminka.matkas.childmatkas.child', {'id': childmatka.id}) }}">Установлен как Дочерний элемент&hellip;</a>#}
-                Установлен как Дочерний элемент
-{#                <form class="dropdown-item" action="{{ path('adminka.matkas.childmatkas.delete', {'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">#}
-{#                    <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />#}
-{#                    <button type="submit" class="btn" style="padding: 0">Удалить</button>#}
-{#                </form>#}
-                <button type="submit" class="btn" style="padding: 0">Удалить</button>
+{#                Установлен как Дочерний элемент#}
+                <form class="dropdown-item" action="{{ path('adminka.matkas.childmatkas.delete', {'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                    <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+                    <button type="submit" class="btn" style="padding: 0">Удалить</button>
+                </form>
+
             </div>
         </div>
     </div>

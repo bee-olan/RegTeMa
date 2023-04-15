@@ -13,19 +13,21 @@
 <div  class="proekts proekts--childmatka">
     <div class="inklud inklud--child">
         <div class="inklud__img  ">
-            <img class="" src="{{ asset('assets/proekt/images/matkas/p4ela1.jpg') }}" alt="">           
+            <img class="" src="{{ asset('assets/proekt/images/matkas/wetochka.png') }}" alt="">           
         </div>
 
     <div class="inklud__title  teni teni--kategor">
 
         {% if childmatka.parent %}
-            <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.parent.id}) }}">{{ childmatka.parent.name }}</a>
-            <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/send.svg') }}" alt="редактировать">
+         <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka.png') }}" alt="редактировать"> 
+            <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.parent.id}) }}"
+            style="color: #155799;; " > {{ childmatka.parent.name }} </a>
+            <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka.png') }}" alt="редактировать">
         {% else %}
-            {{plemmatka.name}}
-            <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/send.svg') }}" alt="редактировать">
+           <span style="color: #155799;; "> {{plemmatka.name}}</span>
+            <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka.png') }}" alt="редактировать">
         {% endif %}
-        {{ childmatka.name }}
+       <span style="color: rgba(255,0,0,0.63); "> {{ childmatka.name }} </span>
     </div>
 
 </div>

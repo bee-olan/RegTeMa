@@ -567,15 +567,15 @@ pre {
   color: #155799;
 }
 .btnn--col-child {
-  box-shadow: 0px 0px 10px rgba(142, 57, 198, 0.5);
+  box-shadow: 0px 0px 10px rgba(2, 90, 2, 0.5);
   border: 1px solid #565656;
   font-size: 1.5rem;
 }
 .btnn--col-child:hover {
-  box-shadow: inset 0px 0px 10px rgba(142, 57, 198, 0.9);
+  box-shadow: inset 0px 0px 10px rgba(2, 90, 2, 0.9);
   background: none;
   text-decoration: none;
-  color: #8e39c6;
+  color: #025a02;
 }
 .btnn--col-sezon {
   box-shadow: inset 0px 0px 10px rgba(2, 90, 2, 0.9);
@@ -679,7 +679,7 @@ pre {
 }
 
 .kroxii-xl .aktiv {
-  color: #ccb44b;
+  color: red;
 }
 
 .aktiv-kras {
@@ -919,6 +919,10 @@ pre {
 
 .ma-bo-2 {
   margin-bottom: 2rem;
+}
+
+.ma-bo_2 {
+  margin-bottom: -2rem;
 }
 
 .ma-le-0 {
@@ -1753,10 +1757,10 @@ img.hover-shadow {
   max-width: 100%;
   margin-left: 0;
   margin-right: 2rem;
-  color: #8e39c6;
+  color: #025a02;
   background-color: #efe9cd;
-  box-shadow: inset 0px 0px 10px rgba(142, 57, 198, 0.9), 0 15px 25px rgba(246, 246, 246, 0.35);
-  border-bottom: 2px solid #8e39c6;
+  box-shadow: inset 0px 0px 10px rgba(2, 90, 2, 0.9), 0 15px 25px rgba(246, 246, 246, 0.35);
+  border-bottom: 2px solid #025a02;
 }
 .proekts--kategor {
   max-width: 100%;
@@ -2782,7 +2786,7 @@ legend {
   text-align: center;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid #8e39c6;
+  border: 1px solid #025a02;
   border-radius: 0.25rem;
 }
 
@@ -2790,8 +2794,8 @@ legend {
   padding: 0.6rem 0.7rem;
   margin-bottom: 0;
   background-color: #efe9cd;
-  box-shadow: inset 0px 0px 10px rgba(142, 57, 198, 0.9);
-  border-bottom: 1px solid #8e39c6;
+  box-shadow: inset 0px 0px 10px rgba(2, 90, 2, 0.9);
+  border-bottom: 1px solid #025a02;
 }
 
 .controls-m {
@@ -2842,10 +2846,10 @@ legend {
   border: none;
 }
 .child-form-comment form div div input::-moz-placeholder {
-  color: rgba(142, 57, 198, 0.5);
+  color: rgba(2, 90, 2, 0.5);
 }
 .child-form-comment form div div input::placeholder {
-  color: rgba(142, 57, 198, 0.5);
+  color: rgba(2, 90, 2, 0.5);
 }
 
 .child-form {
@@ -2908,13 +2912,13 @@ legend {
   box-shadow: none;
   font-family: inherit;
   font-size: 1.4rem;
-  color: #8e39c6;
+  color: #025a02;
 }
 .child-form form div div input::-moz-placeholder {
-  color: rgba(142, 57, 198, 0.5);
+  color: rgba(2, 90, 2, 0.5);
 }
 .child-form form div div input::placeholder {
-  color: rgba(142, 57, 198, 0.5);
+  color: rgba(2, 90, 2, 0.5);
 }
 .child-form form div div input > :focus {
   width: 60%;
@@ -3338,8 +3342,9 @@ legend {
   border-bottom: 2px solid #025a02;
 }
 .inklud--child {
-  box-shadow: inset 0px 0px 10px rgba(142, 57, 198, 0.9);
-  border-bottom: 2px solid #8e39c6;
+  background-color: #efe9cd;
+  box-shadow: inset 0px 0px 10px rgba(2, 90, 2, 0.9);
+  border-bottom: 2px solid #025a02;
 }
 .inklud--mb0 {
   margin-bottom: 0;
@@ -3384,7 +3389,7 @@ legend {
   background-clip: text;
 }
 .teni--child {
-  background-color: #8e39c6;
+  background-color: #025a02;
 }
 .teni--rasa {
   background-color: green;
@@ -3552,7 +3557,7 @@ tr {
 
 .tabl-col-child {
   padding: 0.5rem 0.5rem 0.5rem 1rem;
-  color: #8e39c6;
+  color: #025a02;
 }
 
 .tabl-bord- th, .tabl-bord- td {
@@ -3581,6 +3586,6 @@ tr {
 }
 
 .tabl-bord-child {
-  border: 1px solid rgba(142, 57, 198, 0.5);
-  color: #8e39c6;
+  border: 1px solid rgba(2, 90, 2, 0.5);
+  color: #025a02;
 }/*# sourceMappingURL=proekt.css.map */
