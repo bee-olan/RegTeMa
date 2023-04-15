@@ -43,7 +43,9 @@ class ChildMatkasController extends AbstractController
     public function index(PlemMatka $plemmatka, Request $request): Response
     {
         $this->denyAccessUnlessGranted(PlemMatkaAccess::VIEW, $plemmatka);
-//        dd($plemmatka->getDepartment());
+
+        $korotkoName = $plemmatka->getKorotkoName();
+//dd($korotkoName);
         $filter = Filter\Filter::forPlemMatka($plemmatka->getId()->getValue());
 
         $form = $this->createForm(Filter\Form::class, $filter);
@@ -60,6 +62,7 @@ class ChildMatkasController extends AbstractController
 
         return $this->render('app/adminka/matkas/childmatkas/index.html.twig', [
             'plemmatka' => $plemmatka,
+            'korotkoName' => "$korotkoName",
             'sezons' => $plemmatka->getDepartments(),
             'pagination' => $pagination,
             'form' => $form->createView(),

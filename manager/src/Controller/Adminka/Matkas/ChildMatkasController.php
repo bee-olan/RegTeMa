@@ -612,8 +612,10 @@ class ChildMatkasController extends AbstractController
         );
 
 
+
         return $this->render('app/adminka/matkas/childmatkas/show.html.twig', [
             'plemmatka' => $childmatka->getPlemMatka(),
+            'korotkoName' => $childmatka->getPlemMatka()->getKorotkoName() ,
             'childmatka' => $childmatka,
             'uchastie' => $uchastie,
             'children' => $childmatkas->childrenOf($childmatka->getId()->getValue()),

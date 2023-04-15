@@ -97,7 +97,12 @@
                     {% if not plemmatka %}
                         <td>
 {#                            <a href="{{ path('adminka.matkas.plemmatka.show', {'id': childmatka.project_id}) }}">{{ childmatka.project_name }}</a>#}
-                            <a href="{{ path('adminka.matkas.plemmatka.show', {'id': childmatka.plemmatka_id}) }}">{{ childmatka.plemmatka_sort }}</a>
+                            <a href="{{ path('adminka.matkas.plemmatka.show', {'id': childmatka.plemmatka_id}) }}">
+                                {% set foos = childmatka.plemmatka_name|split(' ') %}
+                                {{ foos[0] }}-{{ childmatka.plemmatka_god }}
+
+{#                                {{ childmatka.plemmatka_name }}#}
+                            </a>
                             {#                        {{ childmatka.plemmatka_name }}#}
                         </td>
                     {% endif %}

@@ -108,7 +108,11 @@
 
                     {% if not plemmatka %}
                         <td class="tabl-bord- tabl-bord-plem ">
-                            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka', {'plemmatka_id': childmatka.plemmatka_id}) }}" >{{ childmatka.plemmatka_sort }}</a>
+                            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka', {'plemmatka_id': childmatka.plemmatka_id}) }}" >
+                                {% set foos = childmatka.plemmatka_name|split(' ') %}
+                                {{ foos[0] }}-
+                              {{ childmatka.plemmatka_god}} 
+                            </a>
                         </td>
                     {% endif %}
 
@@ -121,14 +125,14 @@
 {#                                    </div>#}
                                     <div class= "pull-right-m">
                                         <a  href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.id}) }}">
-                                            {{ childmatka.name }}
+                                            {{ childmatka.name }}  ( {{ childmatka.content }} )
                                         </a>
                                     </div>
                                 </div>
                             {% else %}
                     <td class="tabl-bord- tabl-bord-child "  >
                                 <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.id}) }}">
-                                    {{ childmatka.name }}
+                                    {{ childmatka.name }} ( {{ childmatka.content }} )
                                 </a>
                             {% endif %}
 

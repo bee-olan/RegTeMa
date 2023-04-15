@@ -9,9 +9,10 @@
 {#                <div class="card-header-m">#}
                 <thead class="card-header-m">
                     <tr>
-                        <th>Дата</th>
+
                         <th>ПлемМатка</th>
                         <th>Дочернии</th>
+                        <th>Дата</th>
                         <th>Спаринг</th>
                         <th><span class="fa fa-fire"></span></th>
                         <th>Исполнитель</th>
@@ -23,13 +24,16 @@
                 <tbody>
                     {% for child in children %}
                         <tr>
+
+                            <td>
+                                <a href="{{ path('proekt.pasekas.matkas', {'id': child.plemmatka_id}) }}">{{ korotkoName }}</a>
+                            </td>
+                            <td>
+                                <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': child.id}) }}">
+                                    {{ child.name }}  ( {{ child.content }} )
+                                </a>
+                            </td>
                             <td>{{ child.date|date('Y-m-d') }}</td>
-                            <td>
-                                <a href="{{ path('proekt.pasekas.matkas', {'id': child.plemmatka_id}) }}">{{ child.plemmatka_name }}</a>
-                            </td>
-                            <td>
-                                <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': child.id}) }}">{{ child.name }}</a>
-                            </td>
                             <td>
                                 {% if child.type != 'none' %}
                                     {{ adminka_matkas_childmatka_type(child.type) }}

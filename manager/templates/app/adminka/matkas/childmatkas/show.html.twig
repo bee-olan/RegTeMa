@@ -7,7 +7,7 @@
         <li class="breadcrumb-item"><a href="{{ path('home') }}">На главную</a></li>
         <li class="breadcrumb-item"><a href="{{ path('adminka') }}">Пасека</a></li>
         <li class="breadcrumb-item"><a href="{{ path('adminka.matkas') }}">ПлемМатки</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('adminka.matkas.plemmatka.show', {'id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.matkas.plemmatka.show', {'id': plemmatka.id}) }}">{{ korotkoName }}</a></li>
         <li class="breadcrumb-item"><a href="{{ path('adminka.matkas.plemmatka.childmatkas', {'plemmatka_id': plemmatka.id}) }}">ДочьМатки</a></li>
         <li class="breadcrumb-item active">{{ childmatka.name }}</li>
     </ol>

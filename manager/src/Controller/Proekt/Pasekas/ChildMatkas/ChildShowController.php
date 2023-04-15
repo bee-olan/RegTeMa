@@ -139,6 +139,7 @@ class ChildShowController extends AbstractController
 // dd($childmatkas->childrenOf($childmatka->getId()->getValue()));
         return $this->render('proekt/pasekas/childmatkas/show.html.twig', [
             'plemmatka' => $childmatka->getPlemMatka(),
+            'korotkoName' => $childmatka->getPlemMatka()->getKorotkoName() ,
             'childmatka' => $childmatka,
             'uchastie' => $uchastie,
             'children' => $childmatkas->childrenOf($childmatka->getId()->getValue()),

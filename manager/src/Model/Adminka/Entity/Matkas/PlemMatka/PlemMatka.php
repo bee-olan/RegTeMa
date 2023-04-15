@@ -320,10 +320,18 @@ class PlemMatka
         return $this->id;
     }
 
-
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getKorotkoName(): string
+    {
+
+        $korotkoNames= explode(" ",$this->getName() );
+
+//        dd(  $this->godaVixod);
+        return $this->korotkoName = $korotkoNames[0]."-".$this->godaVixod;
     }
 
     public function getTitle(): string
