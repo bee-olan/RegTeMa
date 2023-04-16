@@ -39,7 +39,12 @@ class Form extends AbstractType
                 'тф-90' => ChildMatkaType::TF90,
                 'тф-50' => ChildMatkaType::TF50,
                 
-            ], 'required' => false, 'placeholder' => 'Спаринг', 'attr' => ['onchange' => 'this.form.submit()']])
+            ],
+                'required' => false,
+                'placeholder' => 'Спаринг',
+                'attr' => [
+                    'onchange' => 'this.form.submit()']
+            ])
             ->add('status', Type\ChoiceType::class, ['choices' => [
                 'Новая' => Status::NEW,
                 'Заказана' => Status::ZAKAZ ,
@@ -49,17 +54,31 @@ class Form extends AbstractType
                 'Тест завершено' => Status::DONE,
             ], 
             'required' => false,
-            'expanded' => true,
-            'multiple' => false, 
             'placeholder' => 'Статусы', 
             'attr' => ['onchange' => 'this.form.submit()']
             ])
-            ->add('priority', Type\ChoiceType::class, ['choices' => [
-                'Низкий' => 1,
-                'Обычный' => 2,
-                'Высокий' => 3,
-                'Срочный' => 4
-            ], 'required' => false, 'placeholder' => 'Приоритеты', 'attr' => ['onchange' => 'this.form.submit()']])
+
+            ->add('urowni', Type\ChoiceType::class, [
+                'choices' => [
+                    'Все уровни' => 0,
+                    'уровень >= 1' => 1,
+                    'уровень >= 2' => 2,
+                    'уровень >= 3' => 3,
+                    'уровень >= 4' => 4,
+                    'уровень >= 5' => 5
+                ],
+                'required' => false,
+                'placeholder' => 'Уровень влож',
+                'attr' => ['onchange' => 'this.form.submit()']
+            ])
+
+//            ->add('priority', Type\ChoiceType::class, ['choices' => [
+//                'Низкий' => 1,
+//                'Обычный' => 2,
+//                'Высокий' => 3,
+//                'Срочный' => 4
+//            ], 'required' => false, 'placeholder' => 'Приоритеты', 'attr' => ['onchange' => 'this.form.submit()']])
+//
             ->add('author', Type\ChoiceType::class, [
                 'choices' => $uchasties,
                 'required' => false,
@@ -72,12 +91,13 @@ class Form extends AbstractType
                 'placeholder' => 'Исполнитель',
                 'attr' => ['onchange' => 'this.form.submit()']
             ])
-             ->add('roots', Type\ChoiceType::class, ['choices' => [
-                 'Только родители' => Status::NEW,
-             ], 'required' => false,
-            'placeholder' => 'Все уровни',
-            'attr' => ['onchange' => 'this.form.submit()']
-        ]);
+//             ->add('roots', Type\ChoiceType::class, ['choices' => [
+//                 'Только родители' => Status::NEW,
+//             ], 'required' => false,
+//            'placeholder' => 'Все уровни',
+//            'attr' => ['onchange' => 'this.form.submit()']
+//        ])
+        ;
      }
 
     public function configureOptions(OptionsResolver $resolver): void

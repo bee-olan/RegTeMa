@@ -16,6 +16,7 @@ class Filter
     public $executor;
     public $name;
     public $roots; /// верхний уровень без дочерних
+    public $urowni;
 
     private function __construct(?string $plemmatka)
     {

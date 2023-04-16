@@ -62,7 +62,7 @@ class ChildMatkasController extends AbstractController
 
         return $this->render('app/adminka/matkas/childmatkas/index.html.twig', [
             'plemmatka' => $plemmatka,
-            'korotkoName' => "$korotkoName",
+//            'korotkoName' => "$korotkoName",
             'sezons' => $plemmatka->getDepartments(),
             'pagination' => $pagination,
             'form' => $form->createView(),
@@ -156,6 +156,7 @@ class ChildMatkasController extends AbstractController
         if ($parent = $request->query->get('parent')) {
             $command->parent = $parent;
         }
+
 //dd($command->parent);
         $form = $this->createForm(Create\Form::class, $command);
         $form->handleRequest($request);

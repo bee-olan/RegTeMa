@@ -55,7 +55,7 @@ class ChildSideFetcher
                 't.parent_id AS parent',
                 't.type',
                 't.priority',
-//                't.progress',
+                't.urowni',
                 't.plan_date',
                 't.status',
                 'r.nomer AS mesto',
@@ -84,20 +84,20 @@ class ChildSideFetcher
             $qb->setParameter(':author', $filter->author);
         }
 
-//        if ($filter->name) {
-//            $qb->andWhere($qb->expr()->like('LOWER(t.name)', ':name'));
-//            $qb->setParameter(':name', '%' . mb_strtolower($filter->name) . '%');
-//        }
+        if ($filter->urowni) {
+            $qb->andWhere('t.urowni >= :urowni');
+            $qb->setParameter(':urowni', $filter->urowni);
+        }
 
         if ($filter->type) {
             $qb->andWhere('t.type = :type');
             $qb->setParameter(':type', $filter->type);
         }
 
-        if ($filter->priority) {
-            $qb->andWhere('t.priority = :priority');
-            $qb->setParameter(':priority', $filter->priority);
-        }
+//        if ($filter->priority) {
+//            $qb->andWhere('t.priority = :priority');
+//            $qb->setParameter(':priority', $filter->priority);
+//        }
 
         if ($filter->status) {
             $qb->andWhere('t.status = :status');
@@ -164,6 +164,7 @@ class ChildSideFetcher
                 't.priority',
                 't.plan_date',
                 't.status',
+                't.urowni',
                 't.sezon_plem',
                 'r.nomer AS mesto',
                 'u.nomer AS  author_persona'
@@ -211,10 +212,15 @@ class ChildSideFetcher
             $qb->setParameter(':type', $filter->type);
         }
 
-        if ($filter->priority) {
-            $qb->andWhere('t.priority = :priority');
-            $qb->setParameter(':priority', $filter->priority);
-        }
+//        if ($filter->priority) {
+//            $qb->andWhere('t.priority = :priority');
+//            $qb->setParameter(':priority', $filter->priority);
+//        }
+
+       if ($filter->urowni) {
+           $qb->andWhere('t.urowni >= :urowni');
+           $qb->setParameter(':urowni', $filter->urowni);
+       }
 
         if ($filter->status) {
             $qb->andWhere('t.status = :status');
@@ -227,9 +233,9 @@ class ChildSideFetcher
             $qb->setParameter(':executor', $filter->executor);
         }
 
-        if ($filter->roots) {
-            $qb->andWhere('t.parent_id IS NULL');
-        }
+//        if ($filter->roots) {
+//            $qb->andWhere('t.parent_id IS NULL');
+//        }
 
         if (!$sort) {
             $sort = 't.id';
@@ -273,6 +279,7 @@ class ChildSideFetcher
                  't.plemmatka_id',
                  'p.name AS plemmatka_name',
                  'p.goda_vixod AS plemmatka_god',
+                 'p.urowni AS urowni',
                  't.name',
                  't.content',
                  't.parent_id AS parent',

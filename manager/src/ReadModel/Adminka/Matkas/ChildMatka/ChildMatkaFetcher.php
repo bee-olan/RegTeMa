@@ -154,7 +154,7 @@ class ChildMatkaFetcher
      */
     public function all(Filter $filter, int $page, int $size, ?string $sort, ?string $direction): PaginationInterface
     {
-        if (!\in_array($sort, [null, 't.id', 't.date',  'author_name', 'plemmatka_name', 'name', 't.type', 't.plan_date', 't.priority', 't.status'], true)) {
+        if (!\in_array($sort, [null, 't.id', 't.date',  'author_name', 'plemmatka_name', 'name', 't.type', 't.plan_date', 't.priority','t.urowni', 't.status'], true)) {
             throw new \UnexpectedValueException('Cannot sort by ' . $sort);
         }
 
@@ -176,6 +176,7 @@ class ChildMatkaFetcher
                 't.plan_date',
                 't.status',
                 't.sezon_plem ',
+                't.urowni',
                 'r.nomer AS mesto',
                 'u.nomer AS  author_persona'
             )
@@ -202,10 +203,6 @@ class ChildMatkaFetcher
             $qb->setParameter(':author', $filter->author);
         }
 
-//         if ($filter->name) {
-//             $qb->andWhere($qb->expr()->like('LOWER(t.name)', ':name'));
-//             $qb->setParameter(':name', '%' . mb_strtolower($filter->name) . '%');
-//         }
 
         if ($filter->text) {
             $vector = "(setweight(to_tsvector(t.name),'A') || setweight(to_tsvector(coalesce(t.content,'')), 'B'))";
@@ -244,6 +241,11 @@ class ChildMatkaFetcher
 
         if ($filter->roots) {
             $qb->andWhere('t.parent_id IS NULL');
+        }
+
+        if ($filter->urowni) {
+            $qb->andWhere('t.urowni >= :urowni');
+          $qb->setParameter(':urowni', $filter->urowni);
         }
 
         if (!$sort) {

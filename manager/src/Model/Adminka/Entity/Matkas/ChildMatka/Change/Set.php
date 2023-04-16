@@ -126,6 +126,12 @@ class Set
      */
     private $sezonChild;
 
+    /**
+     * @var int|null
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $urowni;
+
     private function __construct()
     {
 
@@ -137,7 +143,8 @@ class Set
                                              int $kolChild,
                                             int $godaVixod,
                                             string $sezonPlem,
-                                            ?string $sezonChild
+                                            ?string $sezonChild,
+                                            int $urowni
                                         ): self
     {
         $set = new self();
@@ -150,6 +157,7 @@ class Set
         $set->godaVixod= $godaVixod;
         $set->sezonPlem= $sezonPlem;
         $set->sezonChild = $sezonChild;
+        $set->urowni = $urowni;
         return $set;
     }
     public static function fromSezonChild(string $sezonChild): self

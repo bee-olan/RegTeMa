@@ -110,24 +110,23 @@
                         <td class="tabl-bord- tabl-bord-plem ">
                             <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka', {'plemmatka_id': childmatka.plemmatka_id}) }}" >
                                 {% set foos = childmatka.plemmatka_name|split(' ') %}
-                                {{ foos[0] }}-
-                              {{ childmatka.plemmatka_god}} 
+                                {{ foos[0] }}-{{ childmatka.plemmatka_god}}
                             </a>
                         </td>
                     {% endif %}
-
+        {% set  urowni = childmatka.urowni %}
 {#                    style="background-color: rgb(190, 186, 151)#}
                             {% if childmatka.parent %}
-                    <td class="tabl-bord- tabl-bord-child "  style="background-color: rgba(167, 140, 22, 0.3);">
+                    <td class="tabl-bord- tabl-bord-child "  >
                                 <div>
-{#                                    <div class="mb-0">#}
-                                        <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/send.svg') }}" alt="редактировать">
-{#                                    </div>#}
-                                    <div class= "pull-right-m">
+                                    {% for i in 1..urowni %}
+                                    <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka-m.png') }}" alt="редактировать">
+                                    {% endfor %}
+{#                                    <div class= "pull-right-m">#}
                                         <a  href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.id}) }}">
                                             {{ childmatka.name }}  ( {{ childmatka.content }} )
                                         </a>
-                                    </div>
+{#                                    </div>#}
                                 </div>
                             {% else %}
                     <td class="tabl-bord- tabl-bord-child "  >

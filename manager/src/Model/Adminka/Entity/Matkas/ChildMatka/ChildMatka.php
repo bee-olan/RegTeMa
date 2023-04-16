@@ -156,6 +156,12 @@ class ChildMatka
      */
     private $sezonChild;
 
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    private $urowni;
+
      /**
      * @var Uchastie[]|ArrayCollection
      * @ORM\ManyToMany(targetEntity="App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie")
@@ -186,7 +192,8 @@ class ChildMatka
         int $kolChild,
         int $godaVixod,
         string $sezonPlem,
-        ?string $sezonChild
+        ?string $sezonChild,
+        int $urowni
     )
     {
         $this->id = $id;
@@ -203,10 +210,11 @@ class ChildMatka
         $this->godaVixod = $godaVixod;
         $this->sezonPlem = $sezonPlem;
         $this->sezonChild = $sezonChild;
+        $this->urowni = $urowni;
         $this->executors = new ArrayCollection();
         $this->changes = new ArrayCollection();
         $this->addChange($author, $date, Set::forNewChildMatka($plemmatka->getId(), $name, $content, $type, $priority,
-                                                                $kolChild, $godaVixod, $sezonPlem, $sezonChild ));
+                                                                $kolChild, $godaVixod, $sezonPlem, $sezonChild, $urowni ));
     }
 
 
@@ -534,6 +542,13 @@ class ChildMatka
     {
         return $this->sezonChild;
     }
+
+
+    public function getUrowni(): int
+    {
+        return $this->urowni;
+    }
+
 
 
     /**

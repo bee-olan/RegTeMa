@@ -14,12 +14,12 @@
                 <img src="{{ asset('assets/proekt/images/lupa.png') }}" alt="">
               </div>
               <div >
-                <a  class=" btnn btnn--mb0 btnn--pt" href="{{ path('proekt.pasekas.matkas') }}" >Сбросить</a>
+                <a  class=" btnn btnn--mb0 btnn--pt" href="{{ path('proekt.pasekas.childmatkas') }}" >Сбросить</a>
               </div>
             </li>
 
             <li class="side-title__li">
-              Поискт в выпад. меню по
+              Поискт по нику
             </li>
             <li class="fil-chi-li fil-chi-li--centr">
               <a class="sideefiltr__link " > {{ form_widget(form.author) }}</a> 
@@ -28,10 +28,19 @@
               <a class="sideefiltr__link " > {{ form_widget(form.executor) }}</a> 
             </li>
             <li class="side-title__li">
-              В каком статусе ДочьМатка 
+               по названию свойств
             </li>
-            <li class="fil-chi-li fil-chi-li--wid20">
+            <li class="fil-chi-li fil-chi-li--centr">
               <a class="sideefiltr__link ">{{ form_widget(form.status) }}</a>
+            </li>
+            <li class="fil-chi-li fil-chi-li--centr">
+                <a class="sideefiltr__link ">{{ form_widget(form.urowni) }}</a>
+            </li>
+            <li class="fil-chi-li fil-chi-li--centr">
+                <a class="sideefiltr__link ">{{ form_widget(form.type) }}</a>
+            </li>
+            <li class="fil-chi-li fil-chi-li--centr">
+                <a class="sideefiltr__link ">{{ form_widget(form.text) }}</a>
             </li>
             {# <li class="side-title__li">
               Поиск по ПерсонНомеру

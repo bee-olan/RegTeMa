@@ -72,9 +72,14 @@ class Handler
         if ($parent) {
             $nameParents=explode(" ",$parent->getName() );
             $nameParent = $nameParents[0]."-".$parent->getId();
+
+           $urowni = mb_substr_count($nameParent,'-');
+
         }else {
             $plem=explode(" ",$plemmatka->getName() );
             $nameParent = $plem[0] ;
+
+            $urowni = 0;
         }
 
        for ($i = 1; $i <= (int)$command->kolChild; $i++) {
@@ -96,7 +101,8 @@ class Handler
             $command->kolChild ,
             $command->godaVixod,
             $sezonPlem,
-            $command->sezonChild=null
+            $command->sezonChild=null,
+            $command->urowni = $urowni
         );
 
 
