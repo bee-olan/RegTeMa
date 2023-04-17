@@ -7,7 +7,7 @@
     <a href="{{ path('proekt') }}">Главная</a>
     <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
     <a href="{{ path('proekt.pasekas.matkas') }}">Список ПлемМаток</a>
-    <span class="aktiv ">Добавить ДочьМатку</span>
+    <span class="aktiv ">Добавить ДочьМатку!</span>
 {% endblock %}   
 
 {% block bodyy %}
@@ -24,8 +24,13 @@
         </div>
 
         <div class="inklud__title teni--">
-    Добавить ДочьМатку к   {{ plemmatka.name }}  сезон
-            <strong class="strongo strongo--kras strongo--sizee" >  {{ sezonPlem }} </strong>
+{#            {% if childmatka.parent %}#}
+{#                <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.parent.id}) }}"#}
+{#                   style="color: #155799;; " > {{ childmatka.parent.name }} </a>#}
+{#            {% else %}#}
+{#                <span style="color: rgba(255,0,0,0.63); "> {{ childmatka.name }} </span>#}
+{#            {% endif %}#}
+
             </div>
         </div>
 

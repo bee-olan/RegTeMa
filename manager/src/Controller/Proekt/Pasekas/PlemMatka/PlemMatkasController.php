@@ -55,9 +55,9 @@ class PlemMatkasController extends AbstractController
     public function index(Request $request, PlemSideFetcher $fetcher): Response
     {
 
-        if ($this->isGranted('ROLE_PASEKA_MANAGE_PLEMMATKAS')) {
+        if ($this->isGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS')) {
             $filter = Filter\Filter::all();
-//            dd($filter);
+
         } else {
             $filter = Filter\Filter::forUchastie($this->getUser()->getId());
         }

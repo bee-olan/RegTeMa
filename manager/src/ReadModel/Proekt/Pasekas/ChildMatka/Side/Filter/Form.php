@@ -29,7 +29,7 @@ class Form extends AbstractType
 
         $builder
             ->add('text', Type\TextType::class, ['required' => false, 'attr' => [
-                'placeholder' => 'Search...',
+                'placeholder' => 'Поиск...',
                 'onchange' => 'this.form.submit()',
             ]])
             ->add('type', Type\ChoiceType::class, ['choices' => [
@@ -50,7 +50,7 @@ class Form extends AbstractType
                 'Заказана' => Status::ZAKAZ ,
                 'Тестируется' => Status::WORKING,
                 'Вопрос' => Status::HELP,
-                'Отклонена' => Status::REJECTED,
+                'ПлемМатка' => Status::REJECTED,
                 'Тест завершено' => Status::DONE,
             ], 
             'required' => false,
@@ -60,7 +60,7 @@ class Form extends AbstractType
 
             ->add('urowni', Type\ChoiceType::class, [
                 'choices' => [
-                    'Все уровни' => 0,
+                    'Уровни все' => 0,
                     'уровень >= 1' => 1,
                     'уровень >= 2' => 2,
                     'уровень >= 3' => 3,
@@ -68,7 +68,7 @@ class Form extends AbstractType
                     'уровень >= 5' => 5
                 ],
                 'required' => false,
-                'placeholder' => 'Уровень влож',
+                'placeholder' => 'Уровни больше ..',
                 'attr' => ['onchange' => 'this.form.submit()']
             ])
 
@@ -91,12 +91,18 @@ class Form extends AbstractType
                 'placeholder' => 'Исполнитель',
                 'attr' => ['onchange' => 'this.form.submit()']
             ])
-//             ->add('roots', Type\ChoiceType::class, ['choices' => [
-//                 'Только родители' => Status::NEW,
-//             ], 'required' => false,
-//            'placeholder' => 'Все уровни',
-//            'attr' => ['onchange' => 'this.form.submit()']
-//        ])
+             ->add('roots', Type\ChoiceType::class, [
+                 'choices' => [
+                     'уровень = 0' => 0,
+                     'уровень <= 1' => 1,
+                     'уровень <= 2' => 2,
+                     'уровень <= 3' => 3,
+                     'уровень <= 4' => 4,
+                     'уровень <= 5' => 5
+             ], 'required' => false,
+            'placeholder' => 'Уровни меньше ..',
+            'attr' => ['onchange' => 'this.form.submit()']
+        ])
         ;
      }
 

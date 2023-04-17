@@ -1,13 +1,13 @@
 {% if status == 'Новая' %}
-    <span class="badge badge-primary">Новая</span>
+    <span class="badge badge-secondary">Новая</span>
 {% elseif status == 'Заказана' %}
     <span class="badge badge-info">Заказана</span>
 {% elseif status == 'В работе' %}
     <span class="badge badge-primary">В работе</span>
 {% elseif status == 'Вопрос' %}
     <span class="badge badge-warning">Вопрос</span>
-{% elseif status == 'Отклонена' %}
-    <span class="badge badge-danger">Отклонена</span>
+{% elseif status == 'ПлемМатка' %}
+    <span class="badge badge-danger">ПлемМатка</span>
 {% elseif status == 'Тест завершено' %}
     <span class="badge badge-success">Завершено</span>
 {% elseif status == 'archived' %}

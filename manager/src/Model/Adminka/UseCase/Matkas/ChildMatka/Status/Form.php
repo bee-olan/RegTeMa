@@ -20,7 +20,7 @@ class Form extends AbstractType
                 'Заказана' => Status::ZAKAZ ,
                 'В работе' => Status::WORKING,
                 'Вопрос' => Status::HELP,
-                'Отклонена' => Status::REJECTED,
+                'ПлемМатка' => Status::REJECTED,
                 'Тест завершено' => Status::DONE,
             ], 'attr' => ['onchange' => 'this.form.submit()']]);
     }

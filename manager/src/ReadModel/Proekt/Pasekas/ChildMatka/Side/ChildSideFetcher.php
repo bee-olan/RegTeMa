@@ -233,9 +233,10 @@ class ChildSideFetcher
             $qb->setParameter(':executor', $filter->executor);
         }
 
-//        if ($filter->roots) {
-//            $qb->andWhere('t.parent_id IS NULL');
-//        }
+        if ($filter->roots) {
+            $qb->andWhere('t.urowni <= :roots');
+            $qb->setParameter(':roots', $filter->roots);
+        }
 
         if (!$sort) {
             $sort = 't.id';

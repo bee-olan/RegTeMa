@@ -12,7 +12,7 @@ class Status
     public const ZAKAZ = 'Заказана';
     public const WORKING = 'В работе';
     public const HELP = 'Вопрос';
-    public const REJECTED = 'Отклонена';
+    public const REJECTED = 'ПлемМатка';
     public const DONE = 'Тест завершено';
 
     private $name;
