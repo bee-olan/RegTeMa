@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\UseCase\MatTests\Remove;
+namespace App\Model\Adminka\UseCase\MatTests\PlemTest\Remove;
 
 use Symfony\Component\Validator\Constraints as Assert;
 

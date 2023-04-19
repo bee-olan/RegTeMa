@@ -52,11 +52,11 @@ class PlemTest
     private $title;
 
 
-    /**
-     * @var int
-     * @ORM\Column(type="integer")
-     */
-    private $sort;
+//    /**
+//     * @var int
+//     * @ORM\Column(type="integer")
+//     */
+//    private $sort;
 
     /**
      * @var Status
@@ -84,7 +84,6 @@ class PlemTest
 
     public function __construct( Id $id,
                                  string $name,
-                                 int $sort,
                                  string $title,
                                  int $godaVixod,
                                  string $star_linia,
@@ -94,7 +93,7 @@ class PlemTest
     {
         $this->id = $id;
         $this->name = $name;
-        $this->sort = $sort;
+//        $this->sort = $sort;
         $this->title = $title;
         $this->godaVixod = $godaVixod;
         $this->star_linia = $star_linia;
@@ -192,10 +191,10 @@ class PlemTest
         return $this->title;
     }
 
-    public function getSort(): int
-    {
-        return $this->sort;
-    }
+//    public function getSort(): int
+//    {
+//        return $this->sort;
+//    }
 
     public function getStatus(): Status
     {

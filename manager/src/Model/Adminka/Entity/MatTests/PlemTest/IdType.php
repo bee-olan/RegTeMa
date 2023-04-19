@@ -6,8 +6,9 @@ namespace App\Model\Adminka\Entity\MatTests\PlemTest;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\GuidType;
+use Doctrine\DBAL\Types\IntegerType;
 
-class IdType extends GuidType
+class IdType extends IntegerType
 {
     public const NAME = 'admin_mattest_plemtest_id';
 

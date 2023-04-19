@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\UseCase\Matkas\PlemMatka\Edit;
+namespace App\Model\Adminka\UseCase\MatTests\PlemTest\Edit;
 
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 

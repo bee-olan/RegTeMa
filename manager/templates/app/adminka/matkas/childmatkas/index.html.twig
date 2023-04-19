@@ -56,7 +56,7 @@
                     <th>{{ knp_pagination_sortable(pagination, 'ПлемМатка', 'plemmatka_name') }}</th>
                 {% endif %}
                  <th>{{ knp_pagination_sortable(pagination, 'ДочьМатка', 'name') }}</th>
-
+<td></td>
                 <th>{{ knp_pagination_sortable(pagination, 'Выход', 't.date') }}</th>
                 <th></th>
                 <th>{{ knp_pagination_sortable(pagination, 'Автор', 'author_name') }}</th>
@@ -79,6 +79,7 @@
                                 <td>
                                     {{ childmatka.sezon_plem }}
                                 </td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -115,7 +116,11 @@
                         {{ childmatka.name }}
                         </a>
                     </td>
-
+<td>
+    <a href="{{ path('adminka.mattests.create', {'childmatka_id': childmatka.id}) }}">
+       тестировать
+    </a>
+</td>
                     <td>{{ childmatka.date|date('Y-m-d') }}</td>
                     <td>{{ adminka_matkas_childmatka_type(childmatka.type) }} </td>
                     <td>{{ childmatka.author_name }}</td>

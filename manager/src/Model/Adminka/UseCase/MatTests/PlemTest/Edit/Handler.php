@@ -2,15 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\UseCase\MatTests\Remove;
+namespace App\Model\Adminka\UseCase\MatTests\PlemTest\Edit;
 
 use App\Model\Flusher;
-
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Id;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatkaRepository;
+//use App\Model\Adminka\Entity\Matkas\Sparings\Id as SparingId;
 
-//use App\Model\Work\Entity\Projects\Project\Id;
-//use App\Model\Work\Entity\Projects\Project\ProjectRepository;
 
 class Handler
 {
@@ -25,9 +23,13 @@ class Handler
 
     public function handle(Command $command): void
     {
+       // dd($command);
+       // $sparing = $this->sparings->get(new SparingId($command->sparing));
         $plemmatka = $this->plemmatkas->get(new Id($command->id));
 
-        $this->plemmatkas->remove($plemmatka);
+        $plemmatka->edit(
+            $command->title
+        );
 
         $this->flusher->flush();
     }

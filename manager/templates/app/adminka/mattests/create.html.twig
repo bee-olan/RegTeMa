@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ПлемТест{% endblock %}
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.matkas') }}">Админка</a></li>
+        <li class="breadcrumb-item active">Добавить новую ПлемМатку</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+{#    {{ include('app/adminka/_tabs.html.twig') }}#}
+<div class="card">
+    <div class="card-body">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btn-my btn-my--sm">Добавить в БД</button>
+            <a href="{{ path('adminka.mattests') }}"
+                class="btn-my btn-my--sm"> Выйти из режима "Добавить"</a>
+            {{ form_end(form) }}
+    </div>
+</div>
+
+
+
+{% endblock %}

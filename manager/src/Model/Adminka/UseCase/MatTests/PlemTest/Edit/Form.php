@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\UseCase\MatTests\Edit;
+namespace App\Model\Adminka\UseCase\MatTests\PlemTest\Edit;
 
 
 

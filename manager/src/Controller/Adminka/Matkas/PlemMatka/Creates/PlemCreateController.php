@@ -12,14 +12,10 @@ use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 
 use App\Model\Adminka\UseCase\Matkas\PlemMatka\Create;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id as NomerId;
 
-use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
-use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
-use App\Model\Adminka\Entity\Uchasties\Uchastie\Id;
+
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
-use App\ReadModel\Adminka\Matkas\KategoriaFetcher;
+
 use App\ReadModel\Adminka\Matkas\PlemMatka\PlemMatkaFetcher;
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
