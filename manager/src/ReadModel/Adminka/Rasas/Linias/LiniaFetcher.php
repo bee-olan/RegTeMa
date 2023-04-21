@@ -34,7 +34,8 @@ class LiniaFetcher
                 'name',
                 'name_star',
                 'title',
-				'sort_linia'
+				'sort_linia',
+                'vetka_id'
             )
             ->from('adminka_rasa_linias')
             ->andWhere('rasa_id = :rasas')
@@ -57,6 +58,7 @@ class LiniaFetcher
                 'l.name_star',
                 'l.title',
                 'l.sort_linia',
+                'l.vetka_id',
                 '(SELECT COUNT(*) FROM adminka_rasa_linia_nomers n WHERE n.linia_id = l.id) AS nomers'
                 // '(
                 //     SELECT COUNT(ms.member_id)
@@ -86,9 +88,11 @@ class LiniaFetcher
                 'l.name_star',
                 'l.title',
 				'l.sort_linia',
+                'l.vetka_id',
 				'n.sort_nomer as sort_nomer',
 				'n.name_star as nomers',
 				'n.name_star as nomers'
+
                 // '(
                 //     SELECT COUNT(ms.member_id)
                 //     FROM work_projects_project_memberships ms

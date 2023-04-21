@@ -48,11 +48,11 @@
 
 
 
-{#                     <li>#}
-{#                        <a href="{{ path('adminka.matkas.create', { 'id': nomer.id}) }}"#}
-{#							class="btnn btnn--mb0 btnn--pt">Добавить как<strong class="strongo strongo--kras"> ПлемМатку</strong>#}
-{#                        </a>#}
-{#                     </li>#}
+                     <li>
+                        <a href="{{ path('adminka.rasas.linias.nomer_linia.create', { 'linia_id': linia.id, 'id': nomer.id}) }}?vetka={{ linia.id }}"
+							class="btnn btnn--mb0 btnn--pt">Взять за основу <strong class="strongo strongo--kras"> для ветки</strong>
+                        </a>
+                     </li>
                 </ul>  
                 {% endfor %}
             </div>

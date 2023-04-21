@@ -67,6 +67,13 @@ class Linia
      */
     private $sortLinia;
 
+    /**
+     * @var Linia|null
+     * @ORM\ManyToOne(targetEntity="Linia")
+     * @ORM\JoinColumn(name="vetka_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     */
+    private $vetka;  // родитель
+
     public function __construct(Rasa $rasa, Id $id, 
                                 string $name,
                                 string $nameStar,
@@ -197,5 +204,12 @@ class Linia
     {
         return $this->rasa;
     }
+
+
+    public function getVetka(): ?Linia
+    {
+        return $this->vetka;
+    }
+
 
 }

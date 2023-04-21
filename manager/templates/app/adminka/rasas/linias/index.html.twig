@@ -24,10 +24,16 @@
 
           {% set token = csrf_token('delete') %}
                 {% for linia in linias %}
-
+                    {% if linia.vetka_id %}
+                        есть ветка
+                    {% else %}
+                        нет ветки
+                    {% endif %}
 
                 <ul class="rasa__data">
-                    <li class="rasa__name rasa__name--wid15">{{ linia.name_star }} </li>
+                    <li class="rasa__name rasa__name--wid15">
+                        {{ linia.name_star }}
+                    </li>
                     <li class="rasa__name  ">{{ linia.name }} ( {{ linia.nomers }} )</li>
                     <li>
                         <a href="{{ path('adminka.rasas.linias.nomers', {'linia_id': linia.id}) }}"

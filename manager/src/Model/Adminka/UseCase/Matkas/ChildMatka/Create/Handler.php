@@ -51,7 +51,7 @@ class Handler
     {
 //
         $parent = $command->parent ? $this->childmatkas->get(new Id((int)$command->parent)) : null;
-
+dd( $parent );
         $uchastie = $this->uchasties->get(new UchastieId($command->uchastie));
 
         $persona = $this->personas->get(new PersonaId($command->uchastie));

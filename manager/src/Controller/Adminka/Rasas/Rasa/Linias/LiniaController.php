@@ -43,10 +43,7 @@ class LiniaController extends AbstractController
     public function index( Rasa $rasa, Request $request,  LiniaFetcher $linias): Response
     {
         //$this->denyAccessUnlessGranted(MateriAccess::MANAGE_MEMBERS, $materi);
-//dd($linias->allOfRasa($rasa->getId()->getValue()));
-        //dd($rasa);
-//        $linia= ;
-//        dd($rasa->getLinias());
+
         return $this->render('app/adminka/rasas/linias/index.html.twig', [
             'rasa' => $rasa,
             'linias' => $linias->allOfRasa($rasa->getId()->getValue()),
@@ -117,9 +114,7 @@ class LiniaController extends AbstractController
 
         $command = Edit\Command::fromLinia($rasa, $linia);
 
-//$command->title = $rasas->getName();
-//$command->title = $command->title."_".$command->name;
-//dd($command);
+
         $form = $this->createForm(Edit\Form::class, $command);
         $form->handleRequest($request);
 
@@ -127,7 +122,7 @@ class LiniaController extends AbstractController
             try {
                 $command->title = $rasa->getName();
                 $command->title = $command->title."_".$command->name;
-                // dd($command->title);
+//                 dd($command->title);
                 $handler->handle($command);
                 return $this->redirectToRoute('adminka.rasas.linias.show',
 									['id' => $rasa->getId(), 'linia_id' => $linia_id]);

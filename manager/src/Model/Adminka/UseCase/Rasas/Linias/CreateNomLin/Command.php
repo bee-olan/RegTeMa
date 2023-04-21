@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\UseCase\Rasas\Linias\Create;
+namespace App\Model\Adminka\UseCase\Rasas\Linias\CreateNomLin;
 
+use App\Model\Adminka\Entity\Rasas\Linias\Linia;
 use App\Model\Adminka\Entity\Rasas\Rasa;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -34,24 +35,29 @@ class Command
      */
     public $sortLinia;
 
-//    /**
-//     * @Assert\NotBlank()
-//     */
-//    public $vetka;
+    /**
+     * @Assert\NotBlank()
+     */
+    public $vetka;
 
     public function __construct( string $rasa)
     {
         $this->rasa = $rasa;
+//        $this->linia = $linia;
     }
 
-    public static function fromRasa(Rasa $rasa, int $maxSort): self
+    public static function fromRasa(Rasa $rasa, Linia $linia, int $maxSort, string $nomNameStar): self
     {
-
+//dd($linia);
         $command = new self($rasa->getId()->getValue());
         $command->sortLinia = $maxSort;
         $command->name = "л-".$maxSort;
-        $command->title = $rasa->getName()."_".$command->name;
-        //dd($command);
+        $title = explode("_",$linia->getTitle() );
+        $command->title =  $title[0]."_".$command->name;
+        $nomNameStar = explode("-",$nomNameStar );
+       $command->nameStar =  $linia->getNameStar()."-".$nomNameStar[0];
+//       $command->name;
+//       dd($command);
         return $command;
     }
 }
