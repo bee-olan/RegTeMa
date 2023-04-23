@@ -36,13 +36,17 @@ class InfoRasaController extends AbstractController
 
     /**
      * @Route("/info_rasa", name=".info_rasa")
+     * @param Request $request,
      * @param RasaFetcher $fetcher
+//     * @param Rasa $rasaR
      * @return Response
      */
-    public function infoRasa(RasaFetcher $fetcher): Response
+    public function infoRasa(Request $request, RasaFetcher $fetcher): Response
     {
-		
+        $rasass = $fetcher->all();
+
     $rasas = $fetcher->allRasaLinNom();
+
     $rasaLsNs = [];
     foreach ($rasas as $item) {       
          $rasaLsNs[$item['name']][$item['linias']][$item['nomers']][$item['nomer_id']] = $item['nomer_title'];
@@ -52,7 +56,7 @@ class InfoRasaController extends AbstractController
 
 //dd($rasaLsNs);
     return $this->render('app/adminka/rasas/info_rasa.html.twig',
-								compact('rasaLsNs'));
+								compact('rasaLsNs','rasass'));
     }
 	
 	 /**
@@ -69,7 +73,7 @@ class InfoRasaController extends AbstractController
         $liniaa = $linias->allOfRasLin($rasa->getId()->getValue());
         $liniaaa = [];
         foreach ($liniaa as $item) {
-            $liniaaa[$item['name']][$item['nomers']] = $item['id'];
+            $liniaaa[$item['name_star']][$item['nomers']] = $item['id'];
         }
 //dd($liniaa);
         return $this->render('app/adminka/rasas/info_linia.html.twig', [

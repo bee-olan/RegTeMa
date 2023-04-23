@@ -86,7 +86,7 @@ class RasaFetcher
             ->from('adminka_rasas', 'r')
             ->innerJoin('r', 'adminka_rasa_linias', 'l', 'l.rasa_id = r.id')
             ->innerJoin('l', 'adminka_rasa_linia_nomers', 'n', 'n.linia_id = l.id')
-            ->orderBy('name')
+            ->orderBy('sort_linia')
             ->orderBy('title')
             ->execute();
 

@@ -78,7 +78,8 @@ class Linia
                                 string $name,
                                 string $nameStar,
                                 string $title,
-								int $sortLinia
+								int $sortLinia,
+                                Linia $vetka
                                 )
     {
         $this->rasa = $rasa;
@@ -87,6 +88,7 @@ class Linia
         $this->nameStar = $nameStar;
         $this->title = $title;
 		$this->sortLinia = $sortLinia;
+		$this->vetka = $vetka;
 		$this->nomers = new ArrayCollection();
     }
 
@@ -100,6 +102,20 @@ class Linia
 
     }
 
+//    public function setVetkaChildOf(?Linia $vetka): void
+//    {
+//        if ($vetka) {
+//            $current = $vetka;
+//            do {
+//                if ($current === $this) {
+//                    throw new \DomainException('Cyclomatic children.');
+//                }
+//            }
+//            while ($current && $current = $current->getVetka());
+//        }
+//
+//        $this->vetka = $vetka;
+//    }
 
     public function addNomer(NomerId $id,
                                 string $name,

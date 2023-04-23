@@ -29,14 +29,22 @@ class Handler
 
         $vetka = $command->vetka ? $this->linias->get(new Id($command->vetka)) : null;
 //dd($vetka);
+
+        if ($command->vetka) {
+            $vetka = $this->linias->get(new Id($command->vetka));
+            $rasa->setVetkaChildOf($vetka);
+        }
+//        dd($vetka);
+
      $rasa->addLinia(
             Id::next(),
             $command->name ,
 			$command->nameStar,
 			$command->title,
-			$command->sortLinia
-
+			$command->sortLinia,
+            $vetka
         );
+
         $this->flusher->flush();
     }
 }

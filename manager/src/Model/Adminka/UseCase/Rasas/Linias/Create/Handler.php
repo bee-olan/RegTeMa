@@ -31,7 +31,8 @@ class Handler
             $command->name ,
 			$command->nameStar,
 			$command->title,
-			$command->sortLinia
+			$command->sortLinia,
+            $vetka
         );
         $this->flusher->flush();
     }

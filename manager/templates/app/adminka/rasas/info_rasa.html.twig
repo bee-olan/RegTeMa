@@ -15,11 +15,24 @@
 
 	
 <article class="info_rasa">
+	<div class="info_rasa__header  ">
+		{% for  rasa in rasass %}
+			<ul class="info_rasa__ul">
+				<li class="linia__li ">
+
+					<a href="{{ path('adminka.rasas.info_linia', {'id': rasa.id}) }}"
+					   class="btn btn--sm"> {{ rasa.title }}
+					</a>
+				</li>
+			</ul>
+		{% endfor %}
+	</div>
 	
    <div class="info_rasa__header  ">
-      <h1 class="info_rasa__title  ">Информация о структуре данных <strong class="stro stro--ras"><i> Раса_Линия_Номер </i></strong>  в БД</h1>
+      <h1 class="info_rasa__title  ">Информация о структуре данных <strong class="stro stro--ras"><i> Раса_Линия_Ветка-Номер </i></strong>  в БД</h1>
               
-		{% for keyR, rasa in rasaLsNs %}           
+		{% for keyR, rasa in rasaLsNs %}
+{#			{{ rasaLsNs }}#}
          <ul class="info_rasa__ul info-ul-flex">                      
             	<li class="rasa__li ">
 					<strong class="stro stro--ras">Раса : </strong>
@@ -42,9 +55,6 @@
 											{{ keyN }}  <strong class="stro--lin"></strong> 
 										</li>
 
-										<li class="nomer__li ">
-											Добавить как<strong class="stro stro--kras"> ПлемМатку</strong>
-										</li>
 									</ul>
 								{% endfor %}
 							</div>
@@ -70,19 +80,13 @@
 				<div class="info-sdvig" >
 					{% for keyL, rasaLs in rasa %}
 						<ul >
-							<li > Линия:  {{ keyL }}
-								.............................................
-								
-							</li>
+							<li > Линия:  {{ keyL }}</li>
 
 							<div class="info-sdvig" >
 								{% for keyN, rasaLsN in rasaLs %}
 									<ul >
 										<li >Номер: {{ keyN }}  </li>
-										<div class="info-sdvig10" >
-												<li >Добавить как ПлемМатку:   </li>
-												{# {{ rasaLsN }} #}
-										</div>
+
 									</ul>
 								{% endfor %}
 							</div>

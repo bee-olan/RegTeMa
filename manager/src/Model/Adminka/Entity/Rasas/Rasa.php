@@ -59,11 +59,28 @@ class Rasa
         $this->title = $title;
     }
 
+    public function setVetkaChildOf(?Linia $vetka): void
+    {
+        if ($vetka) {
+            $current = $vetka;
+            do {
+                if ($current === $this) {
+                    throw new \DomainException('Cyclomatic children.');
+                }
+            }
+            while ($current && $current = $current->getVetka());
+        }
+
+        $this->vetka = $vetka;
+    }
+
     public function addLinia(LiniaId $id,
                                 string $name,
                                 string $nameStar,
                                 string $title,
-								int $sortLinia): void
+								int $sortLinia,
+                             ?Linia $vetka
+                                ): void
     {
 //        dd($this->linias);
         foreach ($this->linias as $linia) {
@@ -78,7 +95,9 @@ class Rasa
 									$name,
 									$nameStar,
 									$title,
-									$sortLinia));
+									$sortLinia,
+                                    $vetka
+                                    ));
     }
 
     public function editLinia(LiniaId $id,

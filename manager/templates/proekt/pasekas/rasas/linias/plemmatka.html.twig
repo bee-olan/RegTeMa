@@ -39,10 +39,10 @@
 
                         {% for linia in linias %}
                             <ul class="ras__data">
-                                <li  class="ras__name  ">  {{ linia.name_star }} </li>
+                                <li  class="ras__name  ">  {{ linia.name_star }}   ( {{ linia.nomers }} )</li>
                                 <li >
                                     <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', {'ras': rasa.id, 'linia_id': linia.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
-                                       линия  <strong class="strongo strongo--kras">  {{ linia.name }} </strong>
+                                       ветка  <strong class="strongo strongo--kras">  {{ linia.name }} </strong>
                                     </a>
                                 </li>
                                
