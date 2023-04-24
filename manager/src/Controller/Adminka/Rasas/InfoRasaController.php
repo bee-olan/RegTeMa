@@ -75,7 +75,7 @@ class InfoRasaController extends AbstractController
         foreach ($liniaa as $item) {
             $liniaaa[$item['name_star']][$item['nomers']] = $item['id'];
         }
-//dd($liniaa);
+dd($liniaa);
         return $this->render('app/adminka/rasas/info_linia.html.twig', [
             'rasas' => $rasa,
 			'liniaaa' => $liniaaa,

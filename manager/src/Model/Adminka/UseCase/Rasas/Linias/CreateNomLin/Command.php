@@ -55,9 +55,17 @@ class Command
         $title = explode("_",$linia->getTitle() );
         $command->title =  $title[0]."_".$command->name;
         $nomNameStar = explode("-",$nomNameStar );
-       $command->nameStar =  $linia->getNameStar()."-".$nomNameStar[0];
-//       $command->name;
-//       dd($command);
+        $command->nameStar =  $linia->getNameStar()."-".$nomNameStar[0];
+//dd($command->title );
+//        $command = new self($rasa->getId()->getValue());
+//        $command->sortLinia = $maxSort;
+//        $command->name = "л-".$maxSort;
+//        $title = explode("_",$linia->getTitle() );
+//        $command->title =  $title[0]."_".$command->name;
+//        $nomNameStar = explode("-",$nomNameStar );
+//       $command->nameStar =  $linia->getNameStar()."-".$nomNameStar[0];
+
+       dd($command);
         return $command;
     }
 }

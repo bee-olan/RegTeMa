@@ -59,6 +59,8 @@ class LiniaController extends AbstractController
      */
     public function plemmatka( Rasa $rasa, Request $request,  LiniaFetcher $linias ): Response
     {
+//        dd( $linias->allOfRasa($rasa->getId()->getValue()));
+
         return $this->render('app/adminka/rasas/linias/plemmatka.html.twig', [
             'rasa' => $rasa,
             'linias' => $linias->allOfRasa($rasa->getId()->getValue()),

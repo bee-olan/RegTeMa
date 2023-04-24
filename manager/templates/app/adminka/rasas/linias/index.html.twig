@@ -24,16 +24,36 @@
 
           {% set token = csrf_token('delete') %}
                 {% for linia in linias %}
+                    <ul class="rasa__data">
+
                     {% if linia.vetka_id %}
-                        есть ветка
+                        {% set foos = linia.name_star|split('-') %}
+                              {% for i in 1..foos|length-1 %}
+                                  <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka-mw.png') }}" alt="редактировать">
+                              {% endfor %}
+                              {#                                    <div class= "pull-right-m">#}
+                              <li class="rasa__name rasa__name--wid15">
+                                  {{ linia.name_star }}
+                              </li>
+                              {#                                    </div>#}
+
                     {% else %}
-                        нет ветки
+                        <li class="rasa__name rasa__name--wid15">
+                            {{ linia.name_star }}
+                        </li>
                     {% endif %}
 
-                <ul class="rasa__data">
-                    <li class="rasa__name rasa__name--wid15">
-                        {{ linia.name_star }}
-                    </li>
+{#                        {% if linia.vetka_id %}#}
+
+
+{#                            {% set foos = linia.name_star|split('-') %}#}
+{#                           ========= {{ foos|length  }}#}
+{#                        {% else %}#}
+{#                            нет ветки#}
+{#                        {% endif %}#}
+
+
+
                     <li class="rasa__name  ">{{ linia.name }} ( {{ linia.nomers }} )</li>
                     <li>
                         <a href="{{ path('adminka.rasas.linias.nomers', {'linia_id': linia.id}) }}"

@@ -79,7 +79,7 @@ class Linia
                                 string $nameStar,
                                 string $title,
 								int $sortLinia,
-                                Linia $vetka
+                                ?Linia $vetka
                                 )
     {
         $this->rasa = $rasa;
