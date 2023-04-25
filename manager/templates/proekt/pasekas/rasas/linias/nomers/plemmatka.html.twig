@@ -32,8 +32,8 @@
           </svg>
         </li>
         <li class="ras__name">
-          <strong class="strongo strongo--kras">{{ linia.title }}_</strong> -- это
-          Раса_л-.._
+          Раса_Линия : <strong class="strongo strongo--kras">{{ linia.title }}_</strong>
+
         </li>
       </ul>
     </div>
@@ -58,17 +58,15 @@
           </svg>
         </li>
         <li class="ras__name">
-          <strong class="strongo strongo--kras">{{ linia.name }}</strong> - {{
-            linia.nameStar
-          }}
+         Ветка : <strong class="strongo strongo--kras">{{ linia.nameStar }}</strong>
         </li>
       </ul>
 
       <div class="nome">
         <div class="lini-margin">
           <h1 class="ras__title">
-            <strong>Номера</strong> зарегистрированные в БД
-            <strong>для</strong> линии <strong>{{ linia.name }}</strong>
+            <strong class="strongo ">Номера,</strong> зарегистрированные в БД, для
+            данной <strong  class="strongo " > ветки </strong>
           </h1>
 
           {% for nomer in nomers %}
@@ -83,8 +81,7 @@
 
               <li class="ras__name--widt10">
                 <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates.plemmatka',{ id: nomer.id} ) }}"
-                  class="btnn btnn--pt btnn--mb0 btnn--col-ras">
-                  номер <strong class="strongo strongo--kras">н-{{ nomer.sort_nomer }}</strong>
+                  class="btnn btnn--pt btnn--mb0 ">  <strong class="strongo strongo--kras">выбрать номер</strong>
                 </a>
               </li>
             </ul>

@@ -83,7 +83,7 @@ class LiniaController extends AbstractController
             }
         }
 
-//        $liniasS = $linias->allOfRasa($rasa->getId()->getValue());
+//       dd( $linias->allOfRasa($rasa->getId()->getValue()));
 
 //        foreach ($liniasS as $key => $value) {
 //        echo "<br>".$key." =>  ".$value;

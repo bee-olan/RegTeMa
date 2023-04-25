@@ -77,6 +77,7 @@ class PlemCreateController extends AbstractController
 //                                MestoNomerFetcher $mestoNomers,
                             Create\Handler $handler): Response
     {
+
 //        $this->denyAccessUnlessGranted('ROLE_MANAGE_PLEMMATKAS');
 
 //        if (!$plemmatkas->existsPerson($this->getUser()->getId())) {

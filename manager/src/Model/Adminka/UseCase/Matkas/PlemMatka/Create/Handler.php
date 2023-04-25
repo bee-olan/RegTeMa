@@ -32,7 +32,7 @@ use App\Model\Adminka\Entity\Sezons\Godas\GodaRepository;
 class Handler
 {
     private $plemmatkas;
-    private $godas;
+//    private $godas;
     private $kategorias;
     private $personas;
     private $nomerRepository; //  основа для плем матки
@@ -41,13 +41,13 @@ class Handler
     public function __construct(PlemMatkaRepository $plemmatkas,
                                     PersonaFetcher $personas,
                                     MestoNomerFetcher $mestoNomers,
-                                    GodaRepository $godas,
+//                                    GodaRepository $godas,
                                     KategoriaRepository $kategorias,
                                     NomerRepository $nomerRepository,
                                     Flusher $flusher)
     {
         $this->plemmatkas = $plemmatkas;
-        $this->godas = $godas;
+//        $this->godas = $godas;
         $this->kategorias = $kategorias;
         $this->personas=$personas;
         $this->mestoNomers=$mestoNomers;
@@ -59,17 +59,22 @@ class Handler
     {
         $persona = $this->personas->find($command->uchastieId);
         $mesto = $this->mestoNomers->find($command->uchastieId);
-        $goda = $this->godas->get(new GodaId($command->goda));
+//        $goda = $this->godas->get(new GodaId($command->goda));
         $kategoria = $this->kategorias->get(new KategoriaId($command->kategoria));
 
 //        if ($this->plemmatkas->hasSortPerson($sort, $command->persona)) {
 //            throw new \DomainException('ТАКОЙ номер есть в БД.');
 //        }
         $nomer = $this->nomerRepository->get(new NomerId($command->nomer));
+
+        $nameStar = explode("-", $nomer->getNameStar());
+
+        $command->godaVixod = (int) $nameStar[1];
+       dd(   $command->godaVixod);
         $nom = explode("_", $nomer->getTitle());
 
 
-        $command->godaVixod = (int)$goda->getGod();
+
 
         $command->name = $nom[0]."_".$kategoria->getName()."_".$command->sort." : ".
                             $nom[1]."-".$nom[2].

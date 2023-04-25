@@ -40,9 +40,9 @@ class LiniaFetcher
             ->from('adminka_rasa_linias')
             ->andWhere('rasa_id = :rasas')
             ->setParameter(':rasas', $rasa)
-            ->orderBy('name')
+//            ->orderBy('name')
             ->orderBy('name_star')
-            ->orderBy('title')
+//            ->orderBy('title')
 			->orderBy('sort_linia')
             ->execute();
 
@@ -70,10 +70,10 @@ class LiniaFetcher
             ->from('adminka_rasa_linias', 'l')
             ->andWhere('rasa_id = :rasas')
             ->setParameter(':rasas', $rasa)
-            ->orderBy('name')
-            ->orderBy('name_star')
-            ->orderBy('title')
-			->orderBy('sort_linia')
+//            ->orderBy('name')
+            ->orderBy('l.name_star')
+//            ->orderBy('title')
+//			->orderBy('sort_linia')
             ->execute();
 
             return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
@@ -104,9 +104,9 @@ class LiniaFetcher
             ->andWhere('rasa_id = :rasas')
             ->setParameter(':rasas', $rasa)
 ->innerJoin('l', 'adminka_rasa_linia_nomers', 'n', 'n.linia_id = l.id')
-            ->orderBy('name')
+//            ->orderBy('name')
             ->orderBy('name_star')
-            ->orderBy('title')
+//            ->orderBy('title')
 			->orderBy('sort_linia')
             ->execute();
 

@@ -44,7 +44,7 @@ class Handler
 			$command->sortLinia,
             $vetka
         );
-
+//dd($command);
         $this->flusher->flush();
     }
 }

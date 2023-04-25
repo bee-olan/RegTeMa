@@ -49,9 +49,11 @@ class Command
 
         $command = new self($rasa->getId()->getValue());
         $command->sortLinia = $maxSort;
-        $command->name = "л-".$maxSort;
-        $command->title = $rasa->getName()."_".$command->name;
-        //dd($command);
+        $command->name =  $rasa->getName();
+        $command->title = $rasa->getName();
+//        $command->name = "л-".$maxSort;
+//        $command->title = $rasa->getName()."_".$command->name;
+//        dd($rasa->getName());
         return $command;
     }
 }

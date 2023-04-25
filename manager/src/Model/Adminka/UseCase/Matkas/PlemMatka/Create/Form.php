@@ -14,18 +14,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class Form extends AbstractType
 {
-    private $godaFetchers;
+//    private $godaFetchers;
     private $kategorias;
 
-    public function __construct(KategoriaFetcher $kategorias, GodaFetcher $godaFetchers)
+    public function __construct(KategoriaFetcher $kategorias)
     {
-        $this->godaFetchers = $godaFetchers;
+//        $this->godaFetchers = $godaFetchers;
         $this->kategorias = $kategorias;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-//        dd($this->godaFetchers->assocGod());
         $builder
             ->add('kategoria', Type\ChoiceType::class, [
                 'label' => 'Категория ПлемМатки',
@@ -33,12 +32,12 @@ class Form extends AbstractType
                 'expanded' => true,
                 'multiple' => false
             ])
-            ->add('goda', Type\ChoiceType::class, [
-                'label' => 'Год выхода матки',
-                'choices' => array_flip($this->godaFetchers->assocGod()),
-                'expanded' => false,
-                'multiple' => false,
-            ])
+//            ->add('goda', Type\ChoiceType::class, [
+//                'label' => 'Год выхода матки',
+//                'choices' => array_flip($this->godaFetchers->assocGod()),
+//                'expanded' => false,
+//                'multiple' => false,
+//            ])
 
             ->add('title', Type\TextType::class, array(
                 'label' => ' Внутренняя нумерация',

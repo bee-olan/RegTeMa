@@ -27,6 +27,9 @@ class Handler
     {
 
         $linia = $this->linias->get(new LiniaId($command->linia));
+        $name = explode("-",$command->nameStar );
+        $command->name = $name[0] ;
+        $command->title = $linia->getTitle()."-".$command->name;
 
         $linia->addNomer(
             Id::next(),
@@ -35,6 +38,7 @@ class Handler
             $command->title,
             $command->sortNomer
         );
+//        dd($command);
         $this->flusher->flush();
     }
 }

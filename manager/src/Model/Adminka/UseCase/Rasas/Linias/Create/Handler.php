@@ -24,6 +24,8 @@ class Handler
     {
         $rasa = $this->rasas->get(new RasaId($command->rasa));
 
+        $command->name =  $command->nameStar;
+        $command->title = $command->title."_".$command->nameStar;
         $vetka = $command->vetka = null;
 
      $rasa->addLinia(
@@ -34,6 +36,7 @@ class Handler
 			$command->sortLinia,
             $vetka
         );
+//     dd($command);
         $this->flusher->flush();
     }
 }

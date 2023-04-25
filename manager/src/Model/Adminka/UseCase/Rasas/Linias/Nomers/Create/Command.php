@@ -15,10 +15,10 @@ class Command
     public $linia;
 
 	
-    /**
-     * @Assert\NotBlank()
-     */
-    public $name;
+//    /**
+//     * @Assert\NotBlank()
+//     */
+//    public $name;
 	
      /**
      * @Assert\NotBlank()
@@ -44,9 +44,9 @@ class Command
 
         $command = new self($linia->getId()->getValue());
         $command->sortNomer = $maxSort;
-        $command->name = "н-".$maxSort;
-        $command->title = $linia->getTitle()."_".$command->name;
-
+//        $command->name = "";
+        $command->title = $linia->getTitle();
+//dd($command);
         return $command;
     }
 }
