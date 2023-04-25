@@ -14,9 +14,9 @@ class Command
      */
     public $name;
 	
-	 /**
-     * @var string
-     * @Assert\NotBlank()
-     */
-    public $title;
+//	 /**
+//     * @var string
+//     * @Assert\NotBlank()
+//     */
+//    public $title;
 }

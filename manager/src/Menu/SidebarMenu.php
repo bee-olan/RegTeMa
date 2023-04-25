@@ -103,6 +103,15 @@ class SidebarMenu
             ->setLinkAttribute('class', 'nav-link');
 
         $menu
+            ->addChild('Отцовская-Линия-Номер', ['route' => 'adminka.otec-for-ras'])
+            ->setExtra('routes', [
+                ['route' => 'adminka.matkas.otec-for-ras'],
+                ['pattern' => '/^adminka.matkas.otec-for-ras\..+/']
+            ])
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
+
+        $menu
             ->addChild('Схема Р-Л-В-Н', ['route' => 'adminka.rasas.info_rasa'])
             ->setExtra('routes', [
                 ['route' => 'adminka.matkas.rasas.info_rasa'],

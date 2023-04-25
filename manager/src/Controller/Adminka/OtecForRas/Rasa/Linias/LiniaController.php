@@ -6,7 +6,8 @@ namespace App\Controller\Adminka\OtecForRas\Rasa\Linias;
 
 use App\Annotation\Guid;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Id;
-use App\Model\Adminka\Entity\OtecForRas\Rasa;
+//use App\Model\Adminka\Entity\OtecForRas\Rasa;
+use App\Model\Adminka\Entity\Rasas\Rasa;
 use App\Model\Adminka\UseCase\OtecForRas\Linias\Create;
 use App\Model\Adminka\UseCase\OtecForRas\Linias\Edit;
 use App\Model\Adminka\UseCase\OtecForRas\Linias\Remove;
@@ -21,7 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/adminka/rasas/{id}/linias", name="adminka.rasas.linias")
+ * @Route("/adminka/otec-for-ras/{id}/linias", name="adminka.otec-for-ras.linias")
  */
 class LiniaController extends AbstractController
 {
@@ -44,28 +45,12 @@ class LiniaController extends AbstractController
     {
         //$this->denyAccessUnlessGranted(MateriAccess::MANAGE_MEMBERS, $materi);
 
-        return $this->render('app/adminka/rasas/linias/index.html.twig', [
+        return $this->render('app/adminka/otec-for-ras/linias/index.html.twig', [
             'rasa' => $rasa,
             'linias' => $linias->allOfRasa($rasa->getId()->getValue()),
         ]);
     }
 
-    /**
-     * @Route("/plemmatka", name=".plemmatka")
-     * @param Rasa $rasa
-     * @param Request $request
-     * @param LiniaFetcher $linias
-     * @return Response
-     */
-    public function plemmatka( Rasa $rasa, Request $request,  LiniaFetcher $linias ): Response
-    {
-//        dd( $linias->allOfRasa($rasa->getId()->getValue()));
-
-        return $this->render('app/adminka/rasas/linias/plemmatka.html.twig', [
-            'rasa' => $rasa,
-            'linias' => $linias->allOfRasa($rasa->getId()->getValue()),
-        ]);
-    }
 
     /**
      * @Route("/create", name=".create")
@@ -77,7 +62,7 @@ class LiniaController extends AbstractController
      */
     public function create(Rasa $rasa, LiniaFetcher $linias, Request $request, Create\Handler $handler): Response
    {
-       $maxSort = $linias->getMaxSortLinia($rasa->getId()->getValue()) + 1;
+//       $maxSort = $linias->getMaxSortLinia($rasa->getId()->getValue()) + 1;
 
        $command = Create\Command::fromRasa($rasa, $maxSort);// заполнение  значениями из Rasa
 
@@ -87,13 +72,13 @@ class LiniaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('adminka.rasas.linias', ['id' => $rasa->getId()]);
+                return $this->redirectToRoute('adminka.otec-for-ras.linias', ['id' => $rasa->getId()]);
             } catch (\DomainException $e) {
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
                 $this->addFlash('error', $e->getMessage());
             }
         }
-        return $this->render('app/adminka/rasas/linias/create.html.twig', [
+        return $this->render('app/adminka/otec-for-ras/linias/create.html.twig', [
             'rasa' => $rasa,
             'form' => $form->createView(),
             'name' => $command->title,
@@ -126,7 +111,7 @@ class LiniaController extends AbstractController
                 $command->title = $command->title."_".$command->name;
 //                 dd($command->title);
                 $handler->handle($command);
-                return $this->redirectToRoute('adminka.rasas.linias.show',
+                return $this->redirectToRoute('adminka.otec-for-ras.linias.show',
 									['id' => $rasa->getId(), 'linia_id' => $linia_id]);
             } catch (\DomainException $e) {
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
@@ -134,7 +119,7 @@ class LiniaController extends AbstractController
             }
         }
 
-        return $this->render('app/adminka/rasas/linias/edit.html.twig', [
+        return $this->render('app/adminka/otec-for-ras/linias/edit.html.twig', [
             'rasa' => $rasa,
             'linia' => $linia,
             'form' => $form->createView(),
@@ -154,7 +139,7 @@ class LiniaController extends AbstractController
         //$this->denyAccessUnlessGranted(MateriAccess::MANAGE_MEMBERS, $materi);
 
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
-            return $this->redirectToRoute('adminka.rasas.linias', ['id' => $rasa->getId()]);
+            return $this->redirectToRoute('adminka.otec-for-ras.linias', ['id' => $rasa->getId()]);
         }
 
         $linia = $rasa->getLinia(new Id($linia_id));
@@ -168,7 +153,7 @@ class LiniaController extends AbstractController
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('adminka.rasas.linias',
+        return $this->redirectToRoute('adminka.otec-for-ras.linias',
 					['id' => $rasa->getId()]);
     }
 
@@ -179,7 +164,7 @@ class LiniaController extends AbstractController
      */
     public function show(Rasa $rasa): Response
     {
-        return $this->redirectToRoute('adminka.rasas.linias',
+        return $this->redirectToRoute('adminka.otec-for-ras.linias',
 				['id' => $rasa->getId()]);
     }
 }

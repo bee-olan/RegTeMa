@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/adminka/rasas/linias/{linia_id}/nomers", name="adminka.rasas.linias.nomers")
+ * @Route("/adminka/otec-for-ras/linias/{linia_id}/nomers", name="adminka.otec-for-ras.linias.nomers")
  * @ParamConverter("linia", options={"id" = "linia_id"})
  */
 class NomerController extends AbstractController
@@ -47,22 +47,7 @@ class NomerController extends AbstractController
 
         // $this->denyAccessUnlessGranted(LiniaAccess::MANAGE_MEMBERS, $linia);
 //dd( $nomers->allOfLinia($linia->getId()->getValue()));
-        return $this->render('app/adminka/rasas/linias/nomers/index.html.twig', [
-            'linia' => $linia,
-            'nomers' => $nomers->allOfLinia($linia->getId()->getValue()),
-        ]);
-    }
-
-    /**
-     * @Route("/plemmatka", name=".plemmatka")
-     * @param Linia $linia
-     * @param NomerFetcher $nomers
-     * @return Response
-     */
-    public function plemmatka(Linia $linia, NomerFetcher $nomers): Response
-    {
-
-        return $this->render('app/adminka/rasas/linias/nomers/plemmatka.html.twig', [
+        return $this->render('app/adminka/otec-for-ras/linias/nomers/index.html.twig', [
             'linia' => $linia,
             'nomers' => $nomers->allOfLinia($linia->getId()->getValue()),
         ]);
@@ -91,13 +76,13 @@ class NomerController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('adminka.rasas.linias.nomers', ['linia_id' => $linia->getId()]);
+                return $this->redirectToRoute('adminka.otec-for-ras.linias.nomers', ['linia_id' => $linia->getId()]);
             } catch (\DomainException $e) {
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
                 $this->addFlash('error', $e->getMessage());
             }
         }
-        return $this->render('app/adminka/rasas/linias/nomers/create.html.twig', [
+        return $this->render('app/adminka/otec-for-ras/linias/nomers/create.html.twig', [
             'linia' => $linia,
             'form' => $form->createView(),
             'name' => $command->title,
@@ -126,7 +111,7 @@ class NomerController extends AbstractController
             try {
 				$command->title = "????????";
                 $handler->handle($command);
-                return $this->redirectToRoute('adminka.rasas.linias.nomers.show',
+                return $this->redirectToRoute('adminka.otec-for-ras.linias.nomers.show',
 											['linia_id' => $linia->getId(), 'id' => $id]);
             } catch (\DomainException $e) {
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
@@ -134,7 +119,7 @@ class NomerController extends AbstractController
             }
         }
 
-        return $this->render('app/adminka/rasas/linias/nomers/edit.html.twig', [
+        return $this->render('app/adminka/otec-for-ras/linias/nomers/edit.html.twig', [
             'linia' => $linia,
             'nomer' => $nomer,
             'form' => $form->createView(),
@@ -154,7 +139,7 @@ class NomerController extends AbstractController
         //$this->denyAccessUnlessGranted(MateriAccess::MANAGE_MEMBERS, $materi);
 
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
-            return $this->redirectToRoute('adminka.rasas.linias.nomers', ['linia_id' => $linia->getId()]);
+            return $this->redirectToRoute('adminka.otec-for-ras.linias.nomers', ['linia_id' => $linia->getId()]);
         }
 
         $nomer= $linia->getNomer(new Id($id));
@@ -168,19 +153,10 @@ class NomerController extends AbstractController
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('adminka.rasas.linias.nomers',
+        return $this->redirectToRoute('adminka.otec-for-ras.linias.nomers',
 					['linia_id' => $linia->getId()]);
     }
 
-    // /**
-    //  * @Route("/{id}", name=".show", requirements={"id"=Guid::PATTERN}))
-    //  * @param Nomer $nomer
-    //  * @return Response
-    //  */
-    // public function show(Nomer $nomer): Response
-    // {
-    //     return $this->redirectToRoute('Adminka.materis.rasas.linia.nomer', ['nomer_id' => $nomer->getId()]);
-    // }
 
 	 /**
      * @Route("/{id}", name=".show", requirements={"id"=Guid::PATTERN}))
@@ -189,7 +165,7 @@ class NomerController extends AbstractController
      */
     public function show(Linia $linia): Response
     {
-        return $this->redirectToRoute('adminka.rasas.linias.nomers',
+        return $this->redirectToRoute('adminka.otec-for-ras.linias.nomers',
 				['linia_id' => $linia->getId()]);
     }
 }

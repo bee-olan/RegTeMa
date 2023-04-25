@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/adminka/rasas", name="adminka.rasas")
+ * @Route("/adminka/otec-for-ras", name="adminka.otec-for-ras")
  */
 // @IsGranted("ROLE_Adminka_MANAGE_MATERIS")
 
@@ -44,24 +44,10 @@ class RasasController extends AbstractController
  //dd($rasas);      
   
 
-        return $this->render('app/adminka/rasas/index.html.twig',
+        return $this->render('app/adminka/otec-for-ras/index.html.twig',
                                 compact('rasas'));
     }
 
-    /**
-     * @Route("/plemmatka", name=".plemmatka")
-     * @param RasaFetcher $fetcher
-     * @return Response
-     */
-    public function plemmatka(RasaFetcher $fetcher): Response
-    {
-        $rasas = $fetcher->all();
-        //dd($rasas);
-
-
-        return $this->render('app/adminka/rasas/plemmatka.html.twig',
-            compact('rasas'));
-    }
 
     /**
      * @Route("/create", name=".create")
@@ -79,14 +65,14 @@ class RasasController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('adminka.rasas');
+                return $this->redirectToRoute('adminka.otec-for-ras');
             } catch (\DomainException $e) {
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 
-        return $this->render('app/adminka/rasas/create.html.twig', [
+        return $this->render('app/adminka/otec-for-ras/create.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -115,7 +101,7 @@ class RasasController extends AbstractController
             }
         }
 
-        return $this->render('app/adminka/rasas/edit.html.twig', [
+        return $this->render('app/adminka/otec-for-ras/edit.html.twig', [
             'rasas' => $rasa,
             'form' => $form->createView(),
         ]);
@@ -131,20 +117,20 @@ class RasasController extends AbstractController
     public function delete(Rasa $rasa, Request $request, Remove\Handler $handler): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
-            return $this->redirectToRoute('adminka.rasas.show', ['id' => $rasa->getId()]);
+            return $this->redirectToRoute('adminka.otec-for-ras.show', ['id' => $rasa->getId()]);
         }
 
         $command = new Remove\Command($rasa->getId()->getValue());
 
         try {
             $handler->handle($command);
-            return $this->redirectToRoute('adminka.rasas');
+            return $this->redirectToRoute('adminka.otec-for-ras');
         } catch (\DomainException $e) {
             $this->logger->warning($e->getMessage(), ['exception' => $e]);
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('adminka.rasas.show', ['id' => $rasa->getId()]);
+        return $this->redirectToRoute('adminka.otec-for-ras.show', ['id' => $rasa->getId()]);
     }
 
     /**
@@ -153,6 +139,6 @@ class RasasController extends AbstractController
      */
     public function show(): Response
     {
-        return $this->redirectToRoute('adminka.rasas');
+        return $this->redirectToRoute('adminka.otec-for-ras');
     }
 }

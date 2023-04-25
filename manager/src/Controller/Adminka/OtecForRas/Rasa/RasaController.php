@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/adminka/{rasa_id}/rasas", name="adminka.rasas")
+ * @Route("/adminka/{rasa_id}/otec-for-ras", name="adminka.otec-for-ras")
  */
 class RasaController extends AbstractController
 {
@@ -39,7 +39,7 @@ class RasaController extends AbstractController
       {
           $linias = $fetcher->allOfRasa($rasa->getId()->getValue());
 
-        return $this->render('app/adminka/rasas/linias/index.html.twig',
+        return $this->render('app/adminka/otec-for-ras/linias/index.html.twig',
                                             compact('rasa', 'linias')); 
     
     }
@@ -54,7 +54,7 @@ class RasaController extends AbstractController
     public function delete(Rasa $rasa, Request $request, Remove\Handler $handler): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
-            return $this->redirectToRoute('adminka.rasas', ['id' => $rasa->getId()]);
+            return $this->redirectToRoute('adminka.otec-for-ras', ['id' => $rasa->getId()]);
         }
 
         //$this->denyAccessUnlessGranted(MateriAccess::EDIT, $rasas);
@@ -68,7 +68,7 @@ class RasaController extends AbstractController
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('adminka.rasas');
+        return $this->redirectToRoute('adminka.otec-for-ras');
     }	
 
 

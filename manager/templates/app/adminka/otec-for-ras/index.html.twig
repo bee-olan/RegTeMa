@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Раса{% endblock %}
+
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item active">Расы из БД</li>
+    </ol>
+{% endblock %}    
+
+{% block body %}
+
+    {{ include('app/adminka/rasas/_tabs.html.twig') }}
+
+<article class="info_rasa">
+	
+      <div class="rasa__header  ">
+         <h3 class="rasa__title  ">Расы из БД </h3>
+
+          {% set token = csrf_token('delete') %}
+                {% for rasa in rasas %}
+                      
+           
+                <ul class="rasa__data">
+                    <li class="rasa__name rasa__name--wid15 ">  {{ rasa.title }}  </li>
+                    <li class="rasa__name  ">{{ rasa.name }} ( {{ rasa.linias }} ) </li>
+                    <li class=" rasa__name--wid15">
+                        <a href="{{ path('adminka.otec-for-ras.linias',{'id': rasa.id}) }}"
+                           class="btnn btnn--mb0 btnn--pt btnn--rasa">См/Добавить
+                            <strong class="strongo strongo--kras"> линии </strong>
+                        </a>
+                    </li>
+                    <li class=" rasa__name--wid5 ">
+                        <a href="{{ path('adminka.otec-for-ras.edit', {'id': rasa.id}) }}"
+                            class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
+                    </li>
+                    <li class="rasa__name--wid5">
+                        <form action="{{ path('adminka.otec-for-ras.delete', {'id': rasa.id}) }}"
+                              method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
+                            <input type="hidden" name="token" value="{{ token }}" />
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa "><span class="fa fa-trash"></span></button>
+                        </form>
+                    </li>
+
+
+                </ul>  
+         {% endfor %}                
+    </div>
+    <div class = "rasa__content"  >
+        <a href="{{ path('adminka.otec-for-ras.create') }}"
+           class="btnn btnn--mb0 btnn--pt btnn--rasa">Выбрать название  <strong class=" strongo--kras"> расы </strong>  из БД</a>
+    </div>
+    </article><!-- rasas -->
+
+{% endblock %}
