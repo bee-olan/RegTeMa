@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\Entity\OtecForRas\Linias;
 
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Matka;
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Otec;
 use App\Model\Adminka\Entity\OtecForRas\Rasa;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Nomer;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Id as NomerId;
@@ -39,30 +41,13 @@ class Linia
      */
     private $name;
 
-     /**
-     * @var string
-     * @ORM\Column(type="string")
-     */
-    private $matka;
 
     /**
-     * @var string
-     * @ORM\Column(type="string")
-     */
-    private $otec;
-
-     /**
      * @var string
      * @ORM\Column(type="string")
      */
     private $title;
 
-    /**
-     * @var string
-     * @ORM\Column(type="string")
-     */
-    private $oblet;
-	
 	 /**
      * @var ArrayCollection|Nomer[]
      * @ORM\OneToMany(
@@ -77,41 +62,33 @@ class Linia
 
     public function __construct(Rasa $rasa, Id $id, 
                                 string $name,
-                                string $matka,
-                                string $otec,
-                                string $title,
-							    string $oblet
+                                string $title
                                 )
     {
         $this->rasa = $rasa;
         $this->id = $id;
         $this->name = $name;
-        $this->matka = $matka;
-        $this->otec = $otec;
-        $this->title = $title;
-        $this->oblet = $oblet;
+
 		$this->nomers = new ArrayCollection();
     }
 
-	public function edit(string $name, 
-                        string $matka,
-                         string $otec,
-                         string $title,
-                         string $oblet
+	public function edit(string $name,
+                         string $title
                         ): void
     {
         $this->name = $name;
-		$this->matka = $matka;
-        $this->otec = $otec;
         $this->title = $title;
-        $this->oblet = $oblet;
+
 
     }
 
 
     public function addNomer(NomerId $id,
-                                string $name,
-                                string $title
+                             string $name,
+                             ?Matka $matka,
+                             ?Otec $otec,
+                             ?string $oblet,
+                             string $title
                                 ): void
     {
         foreach ($this->nomers as $nomer) {
@@ -120,14 +97,31 @@ class Linia
             }
 
         }
-        $this->nomers->add(new Nomer($this, $id, $name,  $title));
+        $this->nomers->add(new Nomer($this,
+                                    $id,
+                                    $name,
+                                    $matka,
+                                    $otec,
+                                    $oblet,
+                                    $title
+                                ));
     }
 
-    public function editNomer(NomerId $id, string $name, string $title): void
+    public function editNomer(NomerId $id,
+                              string $name,
+                              ?Matka $matka,
+                              ?Otec $otec,
+                              ?string $oblet,
+                              string $title): void
     {
         foreach ($this->nomers as $current) {
             if ($current->getId()->isEqual($id)) {
-                $current->edit($name, $title);
+                $current->edit($name,
+                                $matka,
+                                $otec,
+                                $oblet,
+                                $title
+                            );
                 return;
             }
         }
@@ -151,10 +145,6 @@ class Linia
         return $this->name === $name;
     }
 
-    public function isNameStarEqual(string $matka): bool
-    {
-        return $this->matka === $matka;
-    }
 
 
     public function getId(): Id
@@ -167,26 +157,10 @@ class Linia
         return $this->name;
     }
 
-    public function getMatka(): string
-    {
-        return $this->matka;
-    }
 
     public function getTitle(): string
     {
         return $this->title;
-    }
-
-
-    public function getOtec(): string
-    {
-        return $this->otec;
-    }
-
-
-    public function getOblet(): string
-    {
-        return $this->oblet;
     }
 
 

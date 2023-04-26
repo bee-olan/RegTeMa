@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\Entity\OtecForRas;
 
-use App\Model\Adminka\Entity\Rasas\Id;
+use App\Model\Adminka\Entity\OtecForRas\Id;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Linia;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Id as LiniaId;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,7 +20,7 @@ class Rasa
 {
     /**
      * @var Id
-     * @ORM\Column(type="adminka_rasa_id")
+     * @ORM\Column(type="adminka_otec_ras_id")
      * @ORM\Id
      */
     private $id;

@@ -51,6 +51,7 @@ doctrine:
             adminka_rasa_id: 'App\Model\Adminka\Entity\Rasas\IdType'
             adminka_rasa_linia_id: 'App\Model\Adminka\Entity\Rasas\Linias\IdType'
             adminka_rasa_linia_nomer_id: 'App\Model\Adminka\Entity\Rasas\Linias\Nomers\IdType'
+            adminka_otec_ras_id: 'App\Model\Adminka\Entity\OtecForRas\IdType'
             adminka_otec_ras_linia_id: 'App\Model\Adminka\Entity\OtecForRas\Linias\IdType'
             adminka_otec_ras_linia_nomer_id: 'App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\IdType'
 

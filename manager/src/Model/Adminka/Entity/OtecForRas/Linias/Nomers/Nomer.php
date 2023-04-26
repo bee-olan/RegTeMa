@@ -35,6 +35,23 @@ class Nomer
      */
     private $name;
 
+    /**
+     * @var Matka
+     * @ORM\Embedded(class="Matka")
+     */
+    private $matka;
+
+    /**
+     * @var Otec
+     * @ORM\Embedded(class="Otec")
+     */
+    private $otec;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private $oblet;
 
 
      /**
@@ -44,25 +61,35 @@ class Nomer
     private $title;
 
 
-
     public function __construct(Linia $linia, Id $id,
                                 string $name,
+                                ?Matka $matka,
+                                ?Otec $otec,
+                                ?string $oblet,
                                 string $title
-
                                 )
     {
         $this->linia = $linia;
         $this->id = $id;
         $this->name = $name;
+        $this->matka = $matka;
+        $this->otec = $otec;
+        $this->oblet = $oblet;
         $this->title = $title;
     }
-	
-		public function edit(string $name, 
-                        string $title): void
+
+    public function edit(string $name,
+                         ?Matka $matka,
+                         ?Otec $otec,
+                         ?string $oblet,
+                         string $title
+                    ): void
     {
         $this->name = $name;
-		$this->title = $title;
-
+        $this->matka = $matka;
+        $this->otec = $otec;
+        $this->oblet = $oblet;
+        $this->title = $title;
 
     }
 
@@ -73,10 +100,6 @@ class Nomer
         return $this->name === $name;
     }
 
-    public function isNameStarEqual(string $nameStar): bool
-    {
-        return $this->nameStar === $nameStar;
-    }
 
 
     public function getId(): Id
@@ -88,6 +111,23 @@ class Nomer
     public function getName(): string
     {
         return $this->name;
+    }
+
+
+    public function getMatka(): Matka
+    {
+        return $this->matka;
+    }
+
+
+    public function getOtec(): Otec
+    {
+        return $this->otec;
+    }
+
+    public function getOblet(): string
+    {
+        return $this->oblet;
     }
 
 
