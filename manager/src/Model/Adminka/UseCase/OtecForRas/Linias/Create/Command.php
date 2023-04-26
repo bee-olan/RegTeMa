@@ -18,26 +18,11 @@ class Command
      * @Assert\NotBlank()
      */
     public $name;
-	
-     /**
-     * @Assert\NotBlank()
-     */
-    public $matka;
 
-    /**
-     * @Assert\NotBlank()
-     */
-    public $otec;
-	
-	 /**
-     * @Assert\NotBlank()
-     */
-    public $title;
-	
-	/**
-     * @Assert\NotBlank()
-     */
-    public $oblet;
+//	 /**
+//     * @Assert\NotBlank()
+//     */
+//    public $title;
 
 
     public function __construct( string $rasa)
@@ -50,7 +35,7 @@ class Command
 
         $command = new self($rasa->getId()->getValue());
 //        $command->name =  $rasa->getName();
-//        $command->title = $rasa->getName();
+        $command->title = $rasa->getName();
         return $command;
     }
 }

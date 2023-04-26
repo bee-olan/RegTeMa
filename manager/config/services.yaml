@@ -42,6 +42,8 @@ services:
     App\Model\Adminka\Entity\Rasas\Linias\LiniaRepository: ~
     App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository: ~
     App\Model\Adminka\Entity\OtecForRas\RasaOtecRepository: ~
+    App\Model\Adminka\Entity\OtecForRas\Linias\LiniaRepository: ~
+    App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\NomerRepository: ~
 
     App\Model\Adminka\Entity\Sezons\Godas\GodaRepository: ~
 

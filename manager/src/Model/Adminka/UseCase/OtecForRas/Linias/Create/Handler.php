@@ -6,7 +6,7 @@ namespace App\Model\Adminka\UseCase\OtecForRas\Linias\Create;
 
 use App\Model\Flusher;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Id;
-use App\Model\Adminka\Entity\Rasas\Id as RasaId;
+use App\Model\Adminka\Entity\OtecForRas\Id as RasaId;
 use App\Model\Adminka\Entity\OtecForRas\RasaOtecRepository;
 
 class Handler
@@ -24,18 +24,14 @@ class Handler
     {
         $rasa = $this->rasas->get(new RasaId($command->rasa));
 
-
+        $command->title= $rasa->getName();
 
      $rasa->addLinia(
             Id::next(),
             $command->name ,
-			$command->matka,
-			$command->otec,
-			$command->title,
-			$command->oblet
-
+			$command->title
         );
-
+//dd($rasa);
         $this->flusher->flush();
     }
 }

@@ -12,25 +12,58 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class Form extends AbstractType
 {
 
-//    private $sparings;
-//
-//    public function __construct(SparingFetcher $sparings)
-//    {
-//        $this->sparings = $sparings;
-//    }
-
-//            ->add('sparing', Type\ChoiceType::class, ['choices' => array_flip($this->sparings->assoc())])
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
 
-            ->add('nameStar', Type\TextType::class, array(
-                'label' => 'Добавить название номераааа из документов или личных архивных данных',
+            ->add('name', Type\TextType::class, array(
+                'label' => 'Добавить  номер',
                 'attr' => [
-                    'placeholder' => 'Введите название линии ....'
+                    'placeholder' => 'Введите название номера ....'
                 ]
             ))
+            ->add('matkaLinia', Type\TextType::class, array(
+                'label' => 'Добавить  линию отцовской матки',
+                'attr' => [
+                    'placeholder' => 'Введите линию матки ....'
+                ]
+            ))
+            ->add('matkaNomer', Type\TextType::class, array(
+                'label' => 'Добавить номер отцовской матки',
+                'attr' => [
+                    'placeholder' => 'Введите номер матки ....'
+                ]
+            ))
+
+            ->add('otecLinia', Type\TextType::class, array(
+                'label' => 'Добавить название отцовской линию',
+                'attr' => [
+                    'placeholder' => 'Введите название  ....'
+                ]
+            ))
+
+            ->add('otecNomer', Type\TextType::class, array(
+                'label' => 'Добавить номер отцовской линию',
+                'attr' => [
+                    'placeholder' => 'Введите номер  ....'
+                ]
+            ))
+
+            ->add('oblet', Type\TextType::class, array(
+                'label' => 'Вид спаривания',
+                'attr' => [
+                    'placeholder' => 'Введите текст ....'
+                ]
+            ))
+
+            ->add('title', Type\TextType::class, array(
+                'label' => 'От кого материал или просто ком-рий',
+                'attr' => [
+                    'placeholder' => 'Введите текст ....'
+                ]
+            ))
+
+
 
         ;
     }

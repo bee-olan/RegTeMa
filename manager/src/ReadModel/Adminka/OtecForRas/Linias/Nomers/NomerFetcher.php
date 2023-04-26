@@ -45,7 +45,10 @@ class NomerFetcher
             ->select(
                 'd.id',
                 'd.name',
-                'd.title'
+                'TRIM(CONCAT(d.matka_linia, \' \',d.matka_nomer )) AS matka',
+                'TRIM(CONCAT(d.otec_linia, \' \', d.otec_nomer )) AS otec',
+                'd.title',
+                'd.oblet'
             )
             ->from('adminka_otec_ras_linia_nomers', 'd')
             ->andWhere('linia_id = :linia')

@@ -62,24 +62,20 @@ class Linia
 
     public function __construct(Rasa $rasa, Id $id, 
                                 string $name,
-                                string $title
+                                ?string $title
                                 )
     {
         $this->rasa = $rasa;
         $this->id = $id;
         $this->name = $name;
-
+        $this->title = $title;
 		$this->nomers = new ArrayCollection();
     }
 
-	public function edit(string $name,
-                         string $title
-                        ): void
+	public function edit(string $name,string $title): void
     {
         $this->name = $name;
         $this->title = $title;
-
-
     }
 
 
@@ -87,7 +83,7 @@ class Linia
                              string $name,
                              ?Matka $matka,
                              ?Otec $otec,
-                             ?string $oblet,
+                             string $oblet,
                              string $title
                                 ): void
     {
@@ -111,7 +107,7 @@ class Linia
                               string $name,
                               ?Matka $matka,
                               ?Otec $otec,
-                              ?string $oblet,
+                              string $oblet,
                               string $title): void
     {
         foreach ($this->nomers as $current) {

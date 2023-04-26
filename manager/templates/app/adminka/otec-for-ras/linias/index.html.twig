@@ -19,8 +19,8 @@
 	<h4 class="rasa__title  "><strong class="strongo"> Раса  </strong>:  {{ rasa.name }} | {{ rasa.title }}</h4>
 	<div class="linia linia--otec">
       <div class="rasa__header  ">
-         <h4 class="rasa__title "> <strong class="strongo">  Линии </strong> зарегистрированные в
-             БД для  расы : <strong class="strongo"> {{ rasa.title }} </strong></h4>
+         <h4 class="rasa__title "> <strong class="strongo"> Отцовские Линии </strong> зарегистрированные в
+             БД для  расы : <strong class="strongo"> {{ rasa.name }} </strong></h4>
 
           {% set token = csrf_token('delete') %}
                 {% for linia in linias %}
@@ -29,11 +29,6 @@
                         <li class="rasa__name rasa__name--wid15">
                             {{ linia.name }}
                         </li>
-
-
-
-
-
 
                     <li class="rasa__name  ">( {{ linia.nomers }} )</li>
                     <li>

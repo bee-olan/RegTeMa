@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\OtecForRas\Linias\Nomers\Create;
 
-use App\Model\Adminka\Entity\OtecForRas\Linias\Linia;
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Matka;
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Otec;
 use App\Model\Flusher;
 
 use App\Model\Adminka\Entity\OtecForRas\Linias\LiniaRepository;
@@ -19,7 +20,6 @@ class Handler
 
     public function __construct( LiniaRepository $linias, Flusher $flusher)
     {
-        $this->linia = $linias;
         $this->linias = $linias;
         $this->flusher = $flusher;
     }
@@ -27,18 +27,22 @@ class Handler
     {
 
         $linia = $this->linias->get(new LiniaId($command->linia));
-        $name = explode("-",$command->nameStar );
-        $command->name = $name[0] ;
-        $command->title = $linia->getTitle()."-".$command->name;
 
         $linia->addNomer(
             Id::next(),
             $command->name ,
-            $command->nameStar,
-            $command->title,
-            $command->sortNomer
+            new Matka(
+                $command->matkaLinia,
+                $command->matkaNomer
+            ),
+            new Otec(
+                $command->otecLinia,
+                $command->otecNomer
+            ),
+            $command->oblet,
+            $command->title
         );
-//        dd($command);
+
         $this->flusher->flush();
     }
 }

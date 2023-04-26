@@ -14,39 +14,59 @@ class Command
      */
     public $linia;
 
-	
-//    /**
-//     * @Assert\NotBlank()
-//     */
-//    public $name;
-	
-     /**
+
+    /**
+     * @var string
      * @Assert\NotBlank()
      */
-    public $nameStar;
-	
-	 /**
+    public $name;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    public $matkaLinia;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    public $matkaNomer;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    public $otecLinia;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    public $otecNomer;
+
+
+    /**
+     * @var string
      * @Assert\NotBlank()
      */
     public $title;
 
     /**
+     * @var string
      * @Assert\NotBlank()
      */
-    public $sortNomer;
+    public $oblet;
 
     public function __construct(string $linia)
     {
         $this->linia = $linia;
     }
-    public static function fromLinia(Linia $linia, int $maxSort): self
+
+    public static function fromLinia(Linia $linia): self
     {
 
         $command = new self($linia->getId()->getValue());
-        $command->sortNomer = $maxSort;
-//        $command->name = "";
-        $command->title = $linia->getTitle();
-//dd($command);
         return $command;
     }
 }

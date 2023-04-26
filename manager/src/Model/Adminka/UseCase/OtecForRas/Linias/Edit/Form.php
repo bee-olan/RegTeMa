@@ -15,7 +15,7 @@ class Form extends AbstractType
     {
         $builder
             ->add('name', Type\TextType::class)
-            ->add('nameStar', Type\TextType::class);
+            ->add('title', Type\TextType::class);
             //->add('title', Type\TextType::class)
     }
 

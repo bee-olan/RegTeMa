@@ -94,7 +94,7 @@ class RasasController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('adminka.rasas.show', ['id' => $rasa->getId()]);
+                return $this->redirectToRoute('adminka.otec-for-ras.show', ['id' => $rasa->getId()]);
             } catch (\DomainException $e) {
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
                 $this->addFlash('error', $e->getMessage());

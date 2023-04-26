@@ -7,26 +7,25 @@
 {% block breadcrumbs %}
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-		<li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Раса </a></li>
-		<li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Линия -- {{ linia.name }}</a></li>
+		<li class="breadcrumb-item"><a href="{{ path('adminka.otec-for-ras') }}">Раса </a></li>
+		<li class="breadcrumb-item"><a href="{{ path('adminka.otec-for-ras') }}">Линия -- {{ linia.name }}</a></li>
 		<li class="breadcrumb-item active">Добавить другую лини</li>
 	</ol>
 {% endblock %}
 
 {% block body %}
-<article class="rasa">
+<article class="rasa rasa--otec">
 	<h4 class="rasa__title  "><strong>Раса </strong>:   {{ linia.title }}</h4>
-	<div class="linia ">
+	<div class="linia linia--otec">
 		<h4 class="rasa__title  "><strong>Линия </strong>:  {{ linia.name }}</h4>
-		<h5 class="rasa__title"> <strong  class="strongo strongo--kras">{{ name }} </strong> - таким будет сокращенное название <strong> линия_номер </strong>,
-			оно формируется автоматически с учетом данных из БД</h5>
-		<div class="nomer ">
-			<h4 class="rasa__title  ">Добавить другой <strong> номер </strong> для <strong> линии </strong></h4>
+
+		<div class="nomer nomer--otec">
+			<h4 class="rasa__title  ">Добавить  <strong> номер </strong> и все остальное для <strong> линии </strong></h4>
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <div>
                 <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить номер</button>
-				<a href="{{ path('adminka.rasas.linias.nomers',{'linia_id': linia.id}) }}"
+				<a href="{{ path('adminka.otec-for-ras.linias.nomers',{'linia_id': linia.id}) }}"
 				   class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Добавить"</a>
             </div>
             {{ form_end(form) }}

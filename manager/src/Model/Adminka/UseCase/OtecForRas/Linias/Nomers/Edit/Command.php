@@ -14,25 +14,55 @@ class Command
      * @Assert\NotBlank()
      */
     public $linia;
+
     /**
+     * @var string
      * @Assert\NotBlank()
      */
     public $id;
 
     /**
+     * @var string
      * @Assert\NotBlank()
      */
     public $name;
 
-         /**
+    /**
+     * @var string
      * @Assert\NotBlank()
      */
-    public $nameStar;
-	
-	 /**
+    public $matkaLinia;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    public $matkaNomer;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    public $otecLinia;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    public $otecNomer;
+
+
+    /**
+     * @var string
      * @Assert\NotBlank()
      */
     public $title;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    public $oblet;
 
     public function __construct(string $linia, string $id)
     {
@@ -46,7 +76,11 @@ class Command
         //dd($linia);
         $command = new self($linia->getId()->getValue(), $nomer->getId()->getValue());
         $command->name = $nomer->getName();
-		$command->nameStar = $nomer->getNameStar();
+        $command->matkaLinia = $nomer->getMatka()->getLinia();
+		$command->matkaNomer = $nomer->getMatka()->getNomer();
+		$command->otecLinia = $nomer->getOtec()->getLinia();
+        $command->otecNomer = $nomer->getOtec()->getNomer();
+        $command->oblet = $nomer->getOblet();
 		$command->title = $nomer->getTitle();
         return $command;
     }

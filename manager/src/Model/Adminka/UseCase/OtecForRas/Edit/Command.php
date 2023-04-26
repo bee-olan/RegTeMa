@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\OtecForRas\Edit;
 
-use App\Model\Adminka\Entity\Rasas\Rasa;
+use App\Model\Adminka\Entity\OtecForRas\Rasa;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Command

@@ -63,14 +63,11 @@ class Rasa
 
     public function addLinia(LiniaId $id,
                              string $name,
-                             string $matka,
-                             string $otec,
-                             string $title,
-                             string $oblet
+                             ?string $title
                                 ): void
     {
         foreach ($this->linias as $linia) {
-            if ($linia->isNameStarEqual($name)) {
+            if ($linia->isNameEqual($name)) {
                 throw new \DomainException('Линия уже существует. Попробуйте для
                 этой линии добавить свой номер');
             }
@@ -79,28 +76,18 @@ class Rasa
         $this->linias->add(new Linia($this,
                                         $id,
                                         $name,
-                                        $matka,
-                                        $otec,
-                                        $title,
-                                        $oblet
+                                        $title
                                     ));
     }
 
     public function editLinia(LiniaId $id,
                               string $name,
-                              string $matka,
-                              string $otec,
-                              string $title,
-                              string $oblet
+                              string $title
                                 ): void
     {
         foreach ($this->linias as $current) {
             if ($current->getId()->isEqual($id)) {
-                $current->edit($name,
-                                $matka,
-                                $otec,
-                                $title,
-                                $oblet );
+                $current->edit($name, $title);
                 return;
             }
         }

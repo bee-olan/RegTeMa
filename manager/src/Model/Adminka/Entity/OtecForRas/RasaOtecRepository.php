@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\Entity\OtecForRas;
 
-use App\Model\Adminka\Entity\Rasas\Id;
+use App\Model\Adminka\Entity\OtecForRas\Id;
 use App\Model\EntityNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 

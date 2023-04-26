@@ -5,8 +5,8 @@
 {% block breadcrumbs %}
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Расы </a></li>
-        <li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Линия -- {{ linia.name }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.otec-for-ras') }}">Расы </a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.otec-for-ras') }}">Линия -- {{ linia.name }}</a></li>
         <li class="breadcrumb-item active">Номера зарегистрированные</li>
     </ol>
 {% endblock %}
@@ -16,31 +16,42 @@
 
     {{ include('app/adminka/rasas/_tabs.html.twig') }}
 
-<article class="rasa">
+<article class="rasa rasa--otec">
 	<h4 class="rasa__title  "><strong class="strongo"> Раса </strong> :   {{ linia.title }}</h4>
-	<div class="linia ">
+	<div class="linia linia--otec">
 		<h4 class="rasa__title  "><strong class="strongo"> Линия </strong> :  {{ linia.name }} </h4>
-		<div class="nomer ">
+		<div class="nomer nomer--otec">
 			<div class="rasa__header  ">
 				<h5 class="rasa__title  "><strong class="strongo"> Номера </strong> зарегистрированные в БД
 										 для линии <strong class="strongo"> {{ linia.name }} </strong></h5>
 				{% set token = csrf_token('delete') %}
-                {% for nomer in nomers %}
-                      
-           
                 <ul class="rasa__data">
-                    <li class="rasa__name rasa__name--wid15">{{ nomer.name_star }}</li>
+                    <li>________________</li>
+                    <li>______________</li>
+                    <li>_______________</li>
+                    <li>________________-</li>
+                    <li>_______</li>
+                    <li>______-</li>
+                </ul>
+                {% for nomer in nomers %}
 
-                    <li class="rasa__name rasa__name--wid5">н-{{ nomer.sort_nomer }}</li>
+
+                    <ul class="rasa__data">
+                    <li class="rasa__name ">{{ nomer.name }}</li>
+
+
                     <li class="rasa__name rasa__name--wid10 b-color ">{{ nomer.title }}</li>
-                                  
+
+                    <li class="rasa__name ">{{ nomer.matka }}</li>
+                    <li class="rasa__name ">{{ nomer.otec }}</li>
+
                     <li class="  ma-ri-0 ">
-                        <a href="{{ path('adminka.rasas.linias.nomers.edit', {'linia_id': linia.id, 'id': nomer.id}) }}"
+                        <a href="{{ path('adminka.otec-for-ras.linias.nomers.edit', {'linia_id': linia.id, 'id': nomer.id}) }}"
                             class="btnn btnn--karandash btnn--pt btnn--rasa"><span class="fa fa-pencil"></span>
                         </a>
                     </li>
                     <li class="  ma-le-0">
-                        <form action="{{ path('adminka.rasas.linias.nomers.delete', {'linia_id': linia.id, 'id': nomer.id}) }}" method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
+                        <form action="{{ path('adminka.otec-for-ras.linias.nomers.delete', {'linia_id': linia.id, 'id': nomer.id}) }}" method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
                             <input type="hidden" name="token" value="{{ token }}" />
                             <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-trash"></span></button>
                         </form>
@@ -48,17 +59,17 @@
 
 
 
-                     <li>
-                        <a href="{{ path('adminka.rasas.linias.nomer_linia.create', { 'linia_id': linia.id, 'id': nomer.id}) }}?vetka={{ linia.id }}"
-							class="btnn btnn--mb0 btnn--pt">Взять за основу <strong class="strongo strongo--kras"> для ветки</strong>
-                        </a>
-                     </li>
+{#                     <li>#}
+{#                        <a href="{{ path('adminka.otec-for-ras.linias.nomer_linia.create', { 'linia_id': linia.id, 'id': nomer.id}) }}?vetka={{ linia.id }}"#}
+{#							class="btnn btnn--mb0 btnn--pt">Взять за основу <strong class="strongo strongo--kras"> для ветки</strong>#}
+{#                        </a>#}
+{#                     </li>#}
                 </ul>  
                 {% endfor %}
             </div>
 
             <div class = "rasa__content"  >
-                <a href="{{ path('adminka.rasas.linias.nomers.create', {'linia_id': linia.id}) }}"
+                <a href="{{ path('adminka.otec-for-ras.linias.nomers.create', {'linia_id': linia.id}) }}"
                     class="btnn btnn--mb0 btnn--pt btnn--rasa">Добавить другой
                      <strong class="strongo strongo--kras"> номер </strong> в БД</a>
             </div>

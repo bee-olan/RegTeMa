@@ -11,10 +11,10 @@
 {% endblock %}
 
 {% block body %}
-<article class="rasa">
+<article class="rasa rasa--otec">
 <h1 	class="rasa__title  "><strong> Раса </strong>:  {{ rasa.name }} | {{ rasa.title }}</h1>
-	<div class="linia ">
-		<h1 class="rasa__title  ">Редактировать <strong>линию</strong> : {{ linia.name }} | {{linia.nameStar }}</h1>
+	<div class="linia linia--otec">
+		<h1 class="rasa__title  ">Редактировать <strong>линию</strong> : {{ linia.name }} </h1>
 
             {{ form_start(form) }}
             {{ form_widget(form) }}

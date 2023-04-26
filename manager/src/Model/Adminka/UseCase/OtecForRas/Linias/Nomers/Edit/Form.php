@@ -14,13 +14,52 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-//            ->add('name', Type\TextType::class, array(
-//                    'label' => 'Название номера ',
-//                ) )
-            ->add('nameStar', Type\TextType::class, array(
-                    'label' => 'Название номера из документов или личных архивных данных',
-                ));
-          //  ->add('title', Type\TextType::class)
+            ->add('name', Type\TextType::class, array(
+                'label' => 'Добавить  номер',
+                'attr' => [
+                    'placeholder' => 'Введите название номера ....'
+                ]
+            ))
+            ->add('matkaLinia', Type\TextType::class, array(
+                'label' => 'Добавить  линию отцовской матки',
+                'attr' => [
+                    'placeholder' => 'Введите линию матки ....'
+                ]
+            ))
+            ->add('matkaNomer', Type\TextType::class, array(
+                'label' => 'Добавить номер отцовской матки',
+                'attr' => [
+                    'placeholder' => 'Введите номер матки ....'
+                ]
+            ))
+
+            ->add('otecLinia', Type\TextType::class, array(
+                'label' => 'Добавить название отцовской линию',
+                'attr' => [
+                    'placeholder' => 'Введите название  ....'
+                ]
+            ))
+
+            ->add('otecNomer', Type\TextType::class, array(
+                'label' => 'Добавить номер отцовской линию',
+                'attr' => [
+                    'placeholder' => 'Введите номер  ....'
+                ]
+            ))
+
+            ->add('oblet', Type\TextType::class, array(
+                'label' => 'Вид спаривания',
+                'attr' => [
+                    'placeholder' => 'Введите текст ....'
+                ]
+            ))
+
+            ->add('title', Type\TextType::class, array(
+                'label' => 'От кого материал или просто ком-рий',
+                'attr' => [
+                    'placeholder' => 'Введите текст ....'
+                ]
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver): void

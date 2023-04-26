@@ -61,12 +61,11 @@ class NomerController extends AbstractController
      * @param Create\Handler $handler
      * @return Response
      */
-    public function create( Create\Handler $handler, Linia $linia,  NomerFetcher $nomers, Request $request): Response
+    public function create( Request $request,  Linia $linia, Create\Handler $handler, NomerFetcher $nomers): Response
     {
-        $rasa =
-        $maxSort = $nomers->getMaxSortNomer($linia->getId()->getValue()) + 1;
 
-        $command = Create\Command::fromLinia($linia, $maxSort);// заполнение  значениями из
+//dd($linia);
+        $command = Create\Command::fromLinia($linia);// заполнение  значениями из
 
 
         $form = $this->createForm(Create\Form::class, $command);
@@ -109,7 +108,6 @@ class NomerController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {
-				$command->title = "????????";
                 $handler->handle($command);
                 return $this->redirectToRoute('adminka.otec-for-ras.linias.nomers.show',
 											['linia_id' => $linia->getId(), 'id' => $id]);

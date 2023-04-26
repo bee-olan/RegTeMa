@@ -25,10 +25,6 @@ class Command
      */
     public $name;
 
-         /**
-     * @Assert\NotBlank()
-     */
-    public $nameStar;
 	
 	 /**
      * @Assert\NotBlank()
@@ -45,7 +41,6 @@ class Command
     {
         $command = new self($rasa->getId()->getValue(), $linia->getId()->getValue());
         $command->name = $linia->getName();
-        $command->nameStar = $linia->getNameStar();
         $command->title = $linia->getTitle();
         return $command;
     }

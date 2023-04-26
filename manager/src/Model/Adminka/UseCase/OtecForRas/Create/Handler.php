@@ -6,7 +6,8 @@ namespace App\Model\Adminka\UseCase\OtecForRas\Create;
 
 use App\Model\Flusher;
 use App\Model\Adminka\Entity\OtecForRas\Rasa;
-use App\Model\Adminka\Entity\Rasas\Id;
+use App\Model\Adminka\Entity\Rasas\Id as RasaId;
+use App\Model\Adminka\Entity\OtecForRas\Id;
 use App\Model\Adminka\Entity\OtecForRas\RasaOtecRepository;
 use App\Model\Adminka\Entity\Rasas\RasaRepository;
 
@@ -25,7 +26,8 @@ class Handler
 
     public function handle(Command $command): void
     {
-        $rasaa = $this->rasas->get(new Id($command->name)) ;
+        $rasaa = $this->rasas->get(new RasaId($command->name)) ;
+
         $id = new Id($command->name);
 
         $rasa = new Rasa(

@@ -46,11 +46,9 @@ class LiniaFetcher
         $stmt = $this->connection->createQueryBuilder()
             ->select(
                 'l.id',
+                'l.rasa_id',
                 'l.name',
-                'l.matka',
-                'l.otec',
                 'l.title',
-                'l.oblet',
                 '(SELECT COUNT(*) FROM adminka_otec_ras_linia_nomers n WHERE n.linia_id = l.id) AS nomers'
             )
             ->from('adminka_otec_ras_linias', 'l')

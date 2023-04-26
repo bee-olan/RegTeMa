@@ -5,17 +5,17 @@
 {% block breadcrumbs %}
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-		<li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Раса </a></li>
-		<li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Линия -- {{ linia.name }}</a></li>
+		<li class="breadcrumb-item"><a href="{{ path('adminka.otec-for-ras') }}">Раса </a></li>
+		<li class="breadcrumb-item"><a href="{{ path('adminka.otec-for-ras') }}">Линия -- {{ linia.name }}</a></li>
 		<li class="breadcrumb-item active">редактировать</li>
 	</ol>
 {% endblock %}
 
 {% block body %}
 
-<article class="rasa">
+<article class="rasa rasa--otec">
 	<h4 class="rasa__title  ">Раса :   {{ linia.title }}</h4>
-	<div class="linia ">
+	<div class="linia linia--otec">
 		<h4 class="rasa__title  ">Линия :  {{ linia.name }}</h4>
 		<div class="nomer ">
 
