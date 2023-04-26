@@ -15,59 +15,39 @@
 
     {{ include('app/adminka/rasas/_tabs.html.twig') }}
 
-<article class="rasa">
+<article class="rasa rasa--otec">
 	<h4 class="rasa__title  "><strong class="strongo"> Раса  </strong>:  {{ rasa.name }} | {{ rasa.title }}</h4>
-	<div class="linia ">
+	<div class="linia linia--otec">
       <div class="rasa__header  ">
          <h4 class="rasa__title "> <strong class="strongo">  Линии </strong> зарегистрированные в
              БД для  расы : <strong class="strongo"> {{ rasa.title }} </strong></h4>
 
           {% set token = csrf_token('delete') %}
                 {% for linia in linias %}
-                    <ul class="rasa__data">
+                    <ul class="rasa__data ">
 
-                    {% if linia.vetka_id %}
-                        {% set foos = linia.name_star|split('-') %}
                         <li class="rasa__name rasa__name--wid15">
-                              {% for i in 1..foos|length-1 %}
-                                  <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka-w.png') }}" alt="редактировать">
-                              {% endfor %}
-
-
-                                  {{ linia.name_star }}
-                              </li>
-
-
-                    {% else %}
-                        <li class="rasa__name rasa__name--wid15">
-                            {{ linia.name_star }}
+                            {{ linia.name }}
                         </li>
-                    {% endif %}
-
-{#                        {% if linia.vetka_id %}#}
 
 
-{#                            {% set foos = linia.name_star|split('-') %}#}
-{#                           ========= {{ foos|length  }}#}
-{#                        {% else %}#}
-{#                            нет ветки#}
-{#                        {% endif %}#}
+
 
 
 
                     <li class="rasa__name  ">( {{ linia.nomers }} )</li>
                     <li>
-                        <a href="{{ path('adminka.rasas.linias.nomers', {'linia_id': linia.id}) }}"
+                        <a href="{{ path('adminka.otec-for-ras.linias.nomers', {'linia_id': linia.id}) }}"
                            class="btnn btnn--mb0 btnn--pt btnn--rasa">Добавить <strong class="strongo strongo--kras"> номер </strong>
                         </a>
                     </li>
 
                     <li >
-                        <a href="{{ path('adminka.rasas.linias.edit', {'id': rasa.id, 'linia_id': linia.id}) }}"
+                        <a href="{{ path('adminka.otec-for-ras.linias.edit', {'id': rasa.id, 'linia_id': linia.id}) }}"
                             class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
                     </li>
                     <li >
-                        <form action="{{ path('adminka.rasas.linias.delete', {'id': rasa.id, 'linia_id': linia.id}) }}" method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
+                        <form action="{{ path('adminka.otec-for-ras.linias.delete', {'id': rasa.id, 'linia_id': linia.id}) }}" method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
                             <input type="hidden" name="token" value="{{ token }}" />
                             <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-trash"></span></button>
                         </form>
@@ -79,7 +59,7 @@
     </div>
 
     <div class = "rasa__content"  >
-        <a href="{{ path('adminka.rasas.linias.create', {'id': rasa.id}) }}"
+        <a href="{{ path('adminka.otec-for-ras.linias.create', {'id': rasa.id}) }}"
             class="btnn btnn--mb0 btnn--pt btnn--rasa">Добавить другую
               <strong class="strongo strongo--kras"> линию </strong> в БД</a>
     </div>

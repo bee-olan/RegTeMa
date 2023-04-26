@@ -9,6 +9,9 @@
   box-shadow: 0 15px 25px rgba($black, .35);
   border-radius: 5px;
 
+   &--otec{
+     background-color: #187777c5;
+   }
 }
 
 .active-ras {
@@ -52,6 +55,7 @@
   font-size: 1rem;
   color: $col-text;
   line-height: 2.0;
+
 
   a {
     padding: .6rem 1.6rem;
@@ -100,6 +104,10 @@
   //background-color: transparent;
   box-shadow: 0 15px 25px rgba($black, .35);
   border-radius: 5px;
+
+     &--otec{
+      background-color: #117575;
+    }
 }
 
 .nomer {
@@ -111,6 +119,10 @@
   //background-color: transparent;
   box-shadow: 0 15px 25px rgba($black, .35);
   border-radius: 5px;
+
+  &--otec{
+    background-color:  #187777e5;;
+  }
 }
 
 .b-color {

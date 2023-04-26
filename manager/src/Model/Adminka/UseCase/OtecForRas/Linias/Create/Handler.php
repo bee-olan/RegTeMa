@@ -7,14 +7,14 @@ namespace App\Model\Adminka\UseCase\OtecForRas\Linias\Create;
 use App\Model\Flusher;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Id;
 use App\Model\Adminka\Entity\Rasas\Id as RasaId;
-use App\Model\Adminka\Entity\Rasas\RasaRepository;
+use App\Model\Adminka\Entity\OtecForRas\RasaOtecRepository;
 
 class Handler
 {
     private $rasas;
     private $flusher;
 
-    public function __construct(RasaRepository $rasas, Flusher $flusher)
+    public function __construct(RasaOtecRepository $rasas, Flusher $flusher)
     {
         $this->rasas = $rasas;
         $this->flusher = $flusher;
@@ -24,19 +24,18 @@ class Handler
     {
         $rasa = $this->rasas->get(new RasaId($command->rasa));
 
-        $command->name =  $command->nameStar;
-        $command->title = $command->title."_".$command->nameStar;
-        $vetka = $command->vetka = null;
+
 
      $rasa->addLinia(
             Id::next(),
             $command->name ,
-			$command->nameStar,
+			$command->matka,
+			$command->otec,
 			$command->title,
-			$command->sortLinia,
-            $vetka
+			$command->oblet
+
         );
-//     dd($command);
+
         $this->flusher->flush();
     }
 }

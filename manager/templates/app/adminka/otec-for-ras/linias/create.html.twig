@@ -13,12 +13,11 @@
 
 {% block body %}
 
-<article class="rasa">
+<article class="rasa rasa--otec">
 <h3 	class="rasa__title  "><strong> Раса </strong>:  {{ rasa.name }} | {{ rasa.title }}</h3>
-	<div class="linia ">
+	<div class="linia linia--otec">
 
-<h4 class="rasa__title"> <strong>{{ name }} </strong> - таким будет сокращенное название <strong> раса_линия </strong>,
-     оно формируется автоматически с учетом данных из БД</h4>
+<h4 class="rasa__title"> Для <strong>{{ name }} </strong> - определяемся с отцовскили <strong> линиями </strong></h4>
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить в БД</button>

@@ -22,7 +22,12 @@ class Command
      /**
      * @Assert\NotBlank()
      */
-    public $nameStar;
+    public $matka;
+
+    /**
+     * @Assert\NotBlank()
+     */
+    public $otec;
 	
 	 /**
      * @Assert\NotBlank()
@@ -32,28 +37,20 @@ class Command
 	/**
      * @Assert\NotBlank()
      */
-    public $sortLinia;
+    public $oblet;
 
-//    /**
-//     * @Assert\NotBlank()
-//     */
-//    public $vetka;
 
     public function __construct( string $rasa)
     {
         $this->rasa = $rasa;
     }
 
-    public static function fromRasa(Rasa $rasa, int $maxSort): self
+    public static function fromRasa(Rasa $rasa): self
     {
 
         $command = new self($rasa->getId()->getValue());
-        $command->sortLinia = $maxSort;
-        $command->name =  $rasa->getName();
-        $command->title = $rasa->getName();
-//        $command->name = "л-".$maxSort;
-//        $command->title = $rasa->getName()."_".$command->name;
-//        dd($rasa->getName());
+//        $command->name =  $rasa->getName();
+//        $command->title = $rasa->getName();
         return $command;
     }
 }

@@ -2972,6 +2972,9 @@ legend {
 .ras__name--widt10 {
   width: 15rem;
 }
+.ras__name--widt30 {
+  width: 30rem;
+}
 
 .ras-nomer {
   box-shadow: inset 0px 0px 10px rgba(0, 128, 0, 0.9);

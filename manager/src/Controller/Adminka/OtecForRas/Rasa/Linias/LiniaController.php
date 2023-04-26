@@ -7,7 +7,7 @@ namespace App\Controller\Adminka\OtecForRas\Rasa\Linias;
 use App\Annotation\Guid;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Id;
 //use App\Model\Adminka\Entity\OtecForRas\Rasa;
-use App\Model\Adminka\Entity\Rasas\Rasa;
+use App\Model\Adminka\Entity\OtecForRas\Rasa;
 use App\Model\Adminka\UseCase\OtecForRas\Linias\Create;
 use App\Model\Adminka\UseCase\OtecForRas\Linias\Edit;
 use App\Model\Adminka\UseCase\OtecForRas\Linias\Remove;
@@ -62,9 +62,9 @@ class LiniaController extends AbstractController
      */
     public function create(Rasa $rasa, LiniaFetcher $linias, Request $request, Create\Handler $handler): Response
    {
-//       $maxSort = $linias->getMaxSortLinia($rasa->getId()->getValue()) + 1;
+//dd($rasa);
 
-       $command = Create\Command::fromRasa($rasa, $maxSort);// заполнение  значениями из Rasa
+       $command = Create\Command::fromRasa($rasa);// заполнение  значениями из Rasa
 
         $form = $this->createForm(Create\Form::class, $command);
         $form->handleRequest($request);
