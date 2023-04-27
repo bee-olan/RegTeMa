@@ -31,6 +31,15 @@ class RasaOtecRepository
         return $rasa;
     }
 
+    public function has(Id $id): bool
+    {
+        return $this->repo->createQueryBuilder('t')
+                ->select('COUNT(t.id)')
+                ->andWhere('t.id = :id')
+                ->setParameter(':id', $id->getValue())
+                ->getQuery()->getSingleScalarResult() > 0;
+    }
+
     public function add(Rasa $rasa): void
     {
         $this->em->persist($rasa);

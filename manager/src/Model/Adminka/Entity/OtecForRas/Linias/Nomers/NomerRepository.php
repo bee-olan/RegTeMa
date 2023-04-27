@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\Entity\OtecForRas\Linias\Nomers;
 
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Nomer as OtNomer;
 use App\Model\EntityNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -17,7 +18,7 @@ class NomerRepository
 
     public function __construct(EntityManagerInterface $em)
     {
-        $this->repo = $em->getRepository(Nomer::class);
+        $this->repo = $em->getRepository(OtNomer::class);
         $this->em = $em;
     }
 
@@ -30,16 +31,27 @@ class NomerRepository
                 ->getQuery()->getSingleScalarResult() > 0;
     }
 
-    public function get(Id $id): Nomer
+
+    public function get(Id $id): OtNomer
     {
-        /** @var Nomer $nomer */
+        /** @var OtNomer $nomer */
         if (!$nomer = $this->repo->find($id->getValue())) {
-            throw new EntityNotFoundException('Nomer is not found.');
+            throw new EntityNotFoundException('nomer is not found.');
         }
         return $nomer;
     }
+//    public function get(Id $id): OtNomer
+//    {
+////        dd($id);
+//        /** @var OtNomer $nomer */
+//        if (!$nomer = $this->repo->find($id->getValue())) {
+////         dd($id->getValue());
+//            throw new EntityNotFoundException('Nomer is not found.?????????');
+//        }
+//        return $nomer;
+//    }
 
-    public function add(Nomer $nomer): void
+    public function add(OtNomer $nomer): void
     {
         $this->em->persist($nomer);
     }

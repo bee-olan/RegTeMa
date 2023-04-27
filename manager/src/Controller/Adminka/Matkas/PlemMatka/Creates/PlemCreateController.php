@@ -18,6 +18,7 @@ use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
 
 use App\ReadModel\Adminka\Matkas\PlemMatka\PlemMatkaFetcher;
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,13 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PlemCreateController extends AbstractController
 {
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
     /**
      * @Route("/", name="")
      * @return Response
@@ -93,7 +101,7 @@ class PlemCreateController extends AbstractController
         $command = new Create\Command($this->getUser()->getId(), $sort, $nomer->getId()->getValue());
 
 
-        $form = $this->createForm(Create\Form::class, $command);
+        $form = $this->createForm(Create\Form::class, $command, ['rasa_id' => $nomer->getLinia()->getRasa()->getId()->getValue()]);
         $form->handleRequest($request);
 
 

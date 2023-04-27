@@ -96,7 +96,7 @@ class PlemCreateController extends AbstractController
         $command = new Create\Command($this->getUser()->getId(), $sort, $nomer->getId()->getValue());
 
 
-        $form = $this->createForm(Create\Form::class, $command);
+        $form = $this->createForm(Create\Form::class, $command, ['rasa_id' => $nomer->getLinia()->getRasa()->getId()->getValue()]);
         $form->handleRequest($request);
 
 

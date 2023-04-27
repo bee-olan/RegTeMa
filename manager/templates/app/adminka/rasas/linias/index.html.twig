@@ -28,19 +28,19 @@
 
                     {% if linia.vetka_id %}
                         {% set foos = linia.name_star|split('-') %}
-                        <li class="rasa__name rasa__name--wid15">
+                        <li class="rasa__name rasa__name--wid35">
                               {% for i in 1..foos|length-1 %}
                                   <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka-w.png') }}" alt="редактировать">
                               {% endfor %}
 
 
-                                  {{ linia.name_star }}
-                              </li>
+                                  {{ linia.name_star }} ( {{ linia.nomers }} )
+                        </li>
 
 
                     {% else %}
                         <li class="rasa__name rasa__name--wid15">
-                            {{ linia.name_star }}
+                            {{ linia.name_star }} ( {{ linia.nomers }} )
                         </li>
                     {% endif %}
 
@@ -55,7 +55,7 @@
 
 
 
-                    <li class="rasa__name  ">( {{ linia.nomers }} )</li>
+{#                    <li class="rasa__name  ">( {{ linia.nomers }} )</li>#}
                     <li>
                         <a href="{{ path('adminka.rasas.linias.nomers', {'linia_id': linia.id}) }}"
                            class="btnn btnn--mb0 btnn--pt btnn--rasa">Добавить <strong class="strongo strongo--kras"> номер </strong>

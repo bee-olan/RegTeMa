@@ -5,10 +5,6 @@ declare(strict_types=1);
 namespace App\Model\Adminka\UseCase\Matkas\PlemMatka\Create;
 
 use App\Model\Flusher;
-//use App\Model\Mesto\Entity\InfaMesto\Id as MestoNomerId;
-//use App\Model\Mesto\Entity\InfaMesto\MestoNomerRepository;
-//
-//use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id as DepartmentId;
 
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Id;
@@ -18,21 +14,17 @@ use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
 
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id as NomerId;
-
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\NomerRepository as OtNomerRepository;
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Id as OtecNomerId;
 //
-use App\Model\Adminka\Entity\Matkas\Kategoria\KategoriaRepository;
+use App\Model\Adminka\Entity\Matkas\Kategoria\KategoriaRepository as KategoriaRepository;
 use App\Model\Adminka\Entity\Matkas\Kategoria\Id as KategoriaId;
-//
-use App\Model\Adminka\Entity\Sezons\Godas\Id as GodaId;
-use App\Model\Adminka\Entity\Sezons\Godas\GodaRepository;
 
-//use App\Model\Adminka\Entity\Uchasties\Personas\Id as PersonaId;
-//use App\Model\Adminka\Entity\Uchasties\Personas\PersonaRepository;
 
 class Handler
 {
     private $plemmatkas;
-//    private $godas;
+    private $otecNomers;
     private $kategorias;
     private $personas;
     private $nomerRepository; //  основа для плем матки
@@ -41,13 +33,13 @@ class Handler
     public function __construct(PlemMatkaRepository $plemmatkas,
                                     PersonaFetcher $personas,
                                     MestoNomerFetcher $mestoNomers,
-//                                    GodaRepository $godas,
                                     KategoriaRepository $kategorias,
+                                    OtNomerRepository $otecNomers,
                                     NomerRepository $nomerRepository,
                                     Flusher $flusher)
     {
         $this->plemmatkas = $plemmatkas;
-//        $this->godas = $godas;
+        $this->otecNomers = $otecNomers;
         $this->kategorias = $kategorias;
         $this->personas=$personas;
         $this->mestoNomers=$mestoNomers;
@@ -59,8 +51,9 @@ class Handler
     {
         $persona = $this->personas->find($command->uchastieId);
         $mesto = $this->mestoNomers->find($command->uchastieId);
-//        $goda = $this->godas->get(new GodaId($command->goda));
+
         $kategoria = $this->kategorias->get(new KategoriaId($command->kategoria));
+        $otecNomer = $this->otecNomers->get(new OtecNomerId($command->otecNomer));
 
 //        if ($this->plemmatkas->hasSortPerson($sort, $command->persona)) {
 //            throw new \DomainException('ТАКОЙ номер есть в БД.');
@@ -68,18 +61,17 @@ class Handler
         $nomer = $this->nomerRepository->get(new NomerId($command->nomer));
 
         $nameStar = explode("-", $nomer->getNameStar());
-
+//dd();
         $command->godaVixod = (int) $nameStar[1];
-       dd(   $command->godaVixod);
+//
         $nom = explode("_", $nomer->getTitle());
 
 
 
 
-        $command->name = $nom[0]."_".$kategoria->getName()."_".$command->sort." : ".
-                            $nom[1]."-".$nom[2].
-                            " : пн-".$persona->getNomer()."_".
-                            $mesto->getNomer()."_".$command->godaVixod;
+        $command->name = $nom[0]."_".$command->sort." : ".
+            $nomer->getLinia()->getNameStar()."-".$nomer->getNameStar().
+                            " : ".$mesto->getNomer()."_пн-".$persona->getNomer();
 
         $plemmatka = new PlemMatka(
             Id::next(),
@@ -90,10 +82,10 @@ class Handler
             $mesto,
             $nomer,
             $persona,
-            $kategoria
-
+            $kategoria,
+            $otecNomer
         );
-
+//dd($plemmatka);
         $this->plemmatkas->add($plemmatka);
 
 //        $nach = $plemmatka->getGodaVixod()+ count($plemmatka->getDepartments());

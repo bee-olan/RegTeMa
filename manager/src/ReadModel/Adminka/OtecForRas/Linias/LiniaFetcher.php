@@ -59,6 +59,29 @@ class LiniaFetcher
 
             return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
         }
+
+    public function otecLiniaNomerList(string $rasa): array
+    {
+        $stmt = $this->connection->createQueryBuilder()
+            ->select(
+                    'l.id',
+                    'l.rasa_id',
+                    'l.name AS linia',
+                    'l.title',
+                    'n.name AS nomer',
+                    'TRIM(CONCAT(n.matka_linia, \' \',n.matka_nomer )) AS matka',
+                    'TRIM(CONCAT(n.otec_linia, \' \', n.otec_nomer )) AS otec',
+                    'n.title',
+                    'n.id AS otnomer_id'
+            )
+            ->from('adminka_otec_ras_linias', 'l')
+            ->andWhere('rasa_id = :rasas')
+            ->setParameter(':rasas', $rasa)
+            ->innerJoin('l', 'adminka_otec_ras_linia_nomers', 'n', 'n.linia_id = l.id')
+            ->orderBy('l.name')
+            ->execute();
+        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
+    }
 		
 //	public function allOfRasLin(string $rasa): array
 //    {

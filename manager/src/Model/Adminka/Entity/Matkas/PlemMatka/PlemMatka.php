@@ -12,6 +12,7 @@ use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id as DepartmentId;
 
 use App\Model\Adminka\Entity\Matkas\Role\Role;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Nomer as OtecNomer;
 use App\Model\Adminka\Entity\Uchasties\Personas\Persona;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
@@ -39,16 +40,6 @@ class PlemMatka
      */
     private $name;
 
-//    /**
-//     * @var string
-//     * @ORM\Column(type="string", name="uchastie_id")
-//     */
-//    private $uchastieId;
-
-//    /**
-//     * @var string
-//     * @ORM\Column(type="string", name="rasa_nom_id")
-//     */
     /**
      * @var Nomer
      * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer")
@@ -56,10 +47,6 @@ class PlemMatka
      */
     private $nomer;
 
-//    /**
-//     * @var string
-//     * @ORM\Column(type="string")
-//     */
     /**
      * @var MestoNomer
      * @ORM\ManyToOne(targetEntity="App\Model\Mesto\Entity\InfaMesto\MestoNomer")
@@ -73,10 +60,6 @@ class PlemMatka
      */
     private $title;
 
-//    /**
-//     * @var int
-//     * @ORM\Column(type="integer")
-//     */
     /**
      * @var Persona
      * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Uchasties\Personas\Persona")
@@ -111,6 +94,13 @@ class PlemMatka
     private $kategoria;
 
     /**
+     * @var OtecNomer
+     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Nomer")
+     * @ORM\JoinColumn(name="otec_nomer_id", referencedColumnName="id", nullable=false)
+     */
+    private $otecNomer;
+
+    /**
      * @var ArrayCollection|Department[]
      * @ORM\OneToMany(
      *     targetEntity="App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Department",
@@ -126,11 +116,6 @@ class PlemMatka
      */
     private $uchastniks;
 
-// string $uchastieId,
-
-//                                 string $nameKateg,
-//
-//
     public function __construct( Id $id,
                                  string $name,
                                  int $sort,
@@ -139,7 +124,8 @@ class PlemMatka
                                  MestoNomer  $mesto,
                                  Nomer $nomer,
                                  Persona  $persona,
-                                 Kategoria $kategoria
+                                 Kategoria $kategoria,
+                                 OtecNomer $otecNomer
                                   )
     {
         $this->id = $id;
@@ -148,6 +134,7 @@ class PlemMatka
         $this->title = $title;
         $this->godaVixod = $godaVixod;
         $this->kategoria = $kategoria;
+        $this->otecNomer = $otecNomer;
         $this->mesto = $mesto;
         $this->persona = $persona;
         $this->nomer = $nomer;
@@ -376,6 +363,14 @@ class PlemMatka
     {
         return $this->kategoria;
     }
+
+
+    public function getOtecNomer(): OtecNomer
+    {
+        return $this->otecNomer;
+    }
+
+
 
     public function getMesto(): MestoNomer
     {

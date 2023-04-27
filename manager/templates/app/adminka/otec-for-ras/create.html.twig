@@ -14,13 +14,13 @@
 
     {{ include('app/adminka/rasas/_tabs.html.twig') }}
 
-<article class="rasa rasa--otec">
+<article class="rasa linia--otec">
     <h1 class="rasa__title  ">Выбрать названия  расы </h1>
 
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <button type="submit" class="btn-my btn-my--sm">Добавить в БД</button>
-            <a href="{{ path('adminka.rasas') }}"
+            <a href="{{ path('adminka.otec-for-ras') }}"
                 class="btn-my btn-my--sm"> Выйти из режима "Добавить"</a>
             {{ form_end(form) }}
 

@@ -26,9 +26,15 @@ class Handler
 
     public function handle(Command $command): void
     {
+        $id = new Id($command->name);
+
+        if ($this->rasaOt->has($id)) {
+            throw new \DomainException('Линия  уже существует !!. Выходим из режима Добавить');
+        }
+
         $rasaa = $this->rasas->get(new RasaId($command->name)) ;
 
-        $id = new Id($command->name);
+
 
         $rasa = new Rasa(
             $id,

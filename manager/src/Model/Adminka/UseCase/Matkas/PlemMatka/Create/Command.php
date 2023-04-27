@@ -8,10 +8,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class Command
 {
-//    /**
-//     * @Assert\NotBlank()
-//     */
-//    public $name;
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    public $otecNomer;
 
     /**
      * @Assert\NotBlank()
@@ -24,11 +25,6 @@ class Command
      */
     public $uchastieId;
 
-//    /**
-//     * @var string
-//     * @Assert\NotBlank()
-//     */
-//    public $rasaNomId;
 
     /**
      * @var string
@@ -42,16 +38,6 @@ class Command
      */
     public $nomer;
 
-//    /**
-//     * @Assert\NotBlank()
-//     */
-//    public $persona;
-
-//    /**
-//     * @var string
-//     * @Assert\NotBlank()
-//     */
-//    public $goda;
 
     /**
      * @Assert\NotBlank()
