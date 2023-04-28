@@ -23,12 +23,13 @@
 
     <div class="proekts-plr  ">
 
-        <h1 class="plem__title  ">Автоматически сформируется новое название   : 
-         <strong class="strongo strongo--kras"> {{command.sort}}</strong> -  номер этой ПлемМатки. <br>
-         Внимание!!!<strong class="strongo strongo--kras"> Внутренняя нумерация </strong>-- Ваша нумерация или то, что придумаете для идентификации<br>  .
+        <h1 class="plem__title  ">Компоненты  названия  ПлемМатки :<br>
+         <strong class="strongo strongo--kras"> {{command.sort}}</strong> - программный номер   <br>
+           ветка - номер <strong class="strongo strongo--kras">  {{ kakToTak }} </strong><br>
+{#         Внимание!!!<strong class="strongo strongo--kras"> Внутренняя нумерация </strong>-- Ваша нумерация или то, что придумаете для идентификации<br>  .#}
         </h1>
 
-        <h1 class="plem__title  ">Заполняем еще две позиции:</h1>
+        <h1 class="plem__title  ">Заполняем еще три позиции:</h1>
         <div class="plem-form__header  "> 
             <div class="plem-form ">
                 {{ form_start(form) }}

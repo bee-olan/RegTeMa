@@ -16,10 +16,10 @@
     {{ include('app/adminka/rasas/_tabs.html.twig') }}
 
 <article class="rasa">
-	<h4 class="rasa__title  "><strong class="strongo"> Раса  </strong>:  {{ rasa.name }} | {{ rasa.title }}</h4>
+	<h4 class="rasa__title  ">Раса : <strong  class="stro--kras" >  {{ rasa.name }} </strong>   - {{ rasa.title }}</h4>
 	<div class="linia ">
       <div class="rasa__header  ">
-         <h4 class="rasa__title "> <strong class="strongo">  Линии </strong> зарегистрированные в
+         <h4 class="rasa__title "> <strong class="strongo">  Линии, </strong> зарегистрированные в
              БД для  расы : <strong class="strongo"> {{ rasa.title }} </strong></h4>
 
           {% set token = csrf_token('delete') %}

@@ -31,33 +31,36 @@
             <li class = "uch-tabl__list-li" >
                Ник
             </li>
-            {# <li class = "tabll__list-li tabll__linia">  {{ u4astnik.mesto }} </li> #}
+            <li class = "uch-tabl__list-li uch-tabl__linia">  ПерсНомер </li>
+            <li class = "uch-tabl__list-li uch-tabl__linia"> Место  </li>
             <li class = "uch-tabl__list-li uch-tabl__linia"> email  </li>
             <li class = "uch-tabl__list-li uch-tabl__linia">Группа</li>
             <li class = "uch-tabl__list-li uch-tabl__linia" >ПлемМатки</li>
             <li class = "uch-tabl__list-li uch-tabl__linia" >Сезонов</li>
             <li class = "uch-tabl__list-li uch-tabl__linia">
                 Статус
-                {# {{ member_status(u4astnik.status) }}  #}
+                {# {{ member_status(uchastie.status) }}  #}
             </li>
 
         </ul>    
                    
-            {% for u4astnik in pagination %}
+            {% for uchastie in pagination %}
         
                 <ul class = "uch-tabl__list">
                         <li class = " uch-tabl__list-li" >
-                             <a class="uch-tabl__link" href="{{ path('proekt.pasekas.uchasties.show', {'id': u4astnik.id}) }}"> 
-                            {{ u4astnik.name }} </a> 
+                             <a class="uch-tabl__link" href="{{ path('proekt.pasekas.uchasties.show', {'id': uchastie.id}) }}">
+                            {{ uchastie.nike }} </a>
                         </li>
-                        {# <li class = "tabll__list-li tabll__linia">  {{ u4astnik.mesto }} </li> #}
-                        <li class = "uch-tabl__list-li uch-tabl__linia"> {{ u4astnik.email }} </li>
-                        <li class = "uch-tabl__list-li uch-tabl__linia">{{ u4astnik.group }}</li>
-                    <li class = "uch-tabl__list-li uch-tabl__linia">{{ u4astnik.uchastniks_count }}</li>
-                        <li class = "uch-tabl__list-li uch-tabl__linia">{{ u4astnik.uchasgodas_count }}</li>
+                        <li class = "uch-tabl__list-li uch-tabl__linia">  {{ uchastie.persona }} </li>
+                        <li class = "uch-tabl__list-li uch-tabl__linia">  {{ uchastie.mesto }} </li>
+                        <li class = "uch-tabl__list-li uch-tabl__linia"> {{ uchastie.email }} </li>
+                        <li class = "uch-tabl__list-li uch-tabl__linia">{{ uchastie.group }}</li>
+                        <li class = "uch-tabl__list-li uch-tabl__linia">{{ uchastie.uchastniks_count }}</li>
+                        <li  class = "uch-tabl__list-li uch-tabl__linia" > ..... </li>
+{#                        <li class = "uch-tabl__list-li uch-tabl__linia">{{ uchastie.uchasgodas_count }}</li>#}
                         <li class = "uch-tabl__list-li uch-tabl__linia">
-                            {# {{u4astnik.status}} #}
-                            {{ uchastiee_status(u4astnik.status) }} 
+                             {{uchastie.status}}
+{#                            {{ uchastiee_status(uchastie.status) }}#}
                         </li>
                  </ul>
         

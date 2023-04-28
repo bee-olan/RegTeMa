@@ -25,7 +25,7 @@ class Form extends AbstractType
     {
         $builder
 
-            ->add('nameStar', Type\TextType::class, array(
+            ->add('name', Type\TextType::class, array(
                 'label' => 'Добавить название номераааа из документов или личных архивных данных',
                 'attr' => [
                     'placeholder' => 'Введите название линии ....'

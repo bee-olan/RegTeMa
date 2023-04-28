@@ -15,13 +15,11 @@
 
 {% block body %}
 <article class="rasa">
-	<h4 class="rasa__title  "><strong>Раса </strong>:   {{ linia.title }}</h4>
+	<h4 class="rasa__title  ">Раса : <strong  class="stro--kras" >  {{ linia.title }} </strong>  </h4>
 	<div class="linia ">
-		<h4 class="rasa__title  "><strong>Линия </strong>:  {{ linia.name }}</h4>
-		<h5 class="rasa__title"> <strong  class="strongo strongo--kras">{{ name }} </strong> - таким будет сокращенное название <strong> линия_номер </strong>,
-			оно формируется автоматически с учетом данных из БД</h5>
+		<h4 class="rasa__title  ">Линия : <strong  class="stro--kras" >  {{ linia.name }} </strong> </h4>
 		<div class="nomer ">
-			<h4 class="rasa__title  ">Добавить другой <strong> номер </strong> для <strong> линии </strong></h4>
+			<h4 class="rasa__title  ">Добавить другой <strong class="stro" > номер </strong> для <strong class="stro" > линии </strong></h4>
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <div>

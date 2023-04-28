@@ -6,17 +6,16 @@ namespace App\Controller\Proekt\Pasekas\Uchasties;
 
 use App\Annotation\Guid;
 
-// use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
-// use App\Model\Mesto\Entity\InfaMesto\Id;
-// use App\Model\Mesto\Entity\InfaMesto\MestoNomerRepository;
-use App\ReadModel\Proekt\Pasekas\Uchasties\Side\Filter;
-use App\ReadModel\Proekt\Pasekas\Uchasties\Side\SideFilterFetcher;
+
+
+//use App\ReadModel\Proekt\Pasekas\Uchasties\Side\SideFilterFetcher;
 
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 
 use App\ReadModel\Adminka\Matkas\PlemMatka\DepartmentFetcher;
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
-use App\ReadModel\Adminka\Uchasties\Uchastie\UchastieFetcher;
+use App\ReadModel\Proekt\Pasekas\Uchasties\Side\Filter;
+use App\ReadModel\Proekt\Pasekas\Uchasties\Side\SideFilterFetcher;
 
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -42,32 +41,30 @@ class InformController extends AbstractController
         $this->logger = $logger;
     }
 
-  /**
-    * @Route("", name="")
-    * @param Request $request
-    * @param UchastieFetcher $fetcher
-    * @return Response
-    */
-    public function index(Request $request, UchastieFetcher $fetcher): Response
+    /**
+     * @Route("", name="")
+     * @param Request $request
+     * @param SideFilterFetcher $fetcher
+     * @return Response
+     */
+    public function index(Request $request, SideFilterFetcher $fetcher): Response
     {
- 
-        $filter = new Filter\Filter;
- 
+        $filter = new Filter\Filter();
+
         $form = $this->createForm(Filter\Form::class, $filter);
         $form->handleRequest($request);
- //dd($form);
+
         $pagination = $fetcher->all(
             $filter,
             $request->query->getInt('page', 1),
             self::PER_PAGE,
-            $request->query->get('sort', 'name'),
+            $request->query->get('sort', 'nike'),
             $request->query->get('direction', 'asc')
         );
- //dd($pagination);
+//dd($pagination);
         return $this->render('proekt/pasekas/uchasties/index.html.twig', [
             'pagination' => $pagination,
             'form' => $form->createView(),
-
         ]);
     }
  

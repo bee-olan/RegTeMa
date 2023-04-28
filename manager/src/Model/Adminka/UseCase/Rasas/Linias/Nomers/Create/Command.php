@@ -23,7 +23,7 @@ class Command
      /**
      * @Assert\NotBlank()
      */
-    public $nameStar;
+    public $name;
 	
 	 /**
      * @Assert\NotBlank()

@@ -14,11 +14,11 @@
 {% block body %}
 
 <article class="rasa">
-<h3 	class="rasa__title  "><strong> Раса </strong>:  {{ rasa.name }} | {{ rasa.title }}</h3>
+<h3 	class="rasa__title  ">Раса : <strong  class="stro--kras">  {{ rasa.name }}</strong>  -  {{ rasa.title }}</h3>
 	<div class="linia ">
 
-<h4 class="rasa__title"> <strong>{{ name }} </strong> - таким будет сокращенное название <strong> раса_линия </strong>,
-     оно формируется автоматически с учетом данных из БД</h4>
+<h4 class="rasa__title"><strong class="stro--kras">Линия </strong> - определяемся с названием линии
+     для БД</h4>
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить в БД</button>

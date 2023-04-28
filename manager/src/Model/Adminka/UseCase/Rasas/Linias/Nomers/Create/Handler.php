@@ -27,9 +27,10 @@ class Handler
     {
 
         $linia = $this->linias->get(new LiniaId($command->linia));
-        $name = explode("-",$command->nameStar );
-        $command->name = $name[0] ;
-        $command->title = $linia->getTitle()."-".$command->name;
+        $names = explode("-",$command->name );
+        $command->nameStar  = $linia->getNameStar()."-".$names[0];
+
+        $command->title = $linia->getTitle();
 
         $linia->addNomer(
             Id::next(),

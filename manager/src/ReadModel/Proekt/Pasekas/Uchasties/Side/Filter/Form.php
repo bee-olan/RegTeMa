@@ -24,14 +24,14 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', Type\TextType::class, ['required' => false, 'attr' => [
-                'placeholder' => 'Здесь напишите Ник',
+            ->add('nike', Type\TextType::class, ['required' => false, 'attr' => [
+                'placeholder' => 'Ник',
                 'onchange' => 'this.form.submit()',
             ]])
-//             ->add('email', Type\TextType::class, ['required' => false, 'attr' => [
-//                 'placeholder' => 'Email',
-//                 'onchange' => 'this.form.submit()',
-//             ]])
+             ->add('email', Type\TextType::class, ['required' => false, 'attr' => [
+                 'placeholder' => 'Email',
+                 'onchange' => 'this.form.submit()',
+             ]])
             ->add('group', Type\ChoiceType::class, [
                 'choices' => array_flip($this->groups->assoc()),
                 'expanded' => true,

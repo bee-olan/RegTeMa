@@ -47,27 +47,25 @@ class SideFilterFetcher
         $qb = $this->connection->createQueryBuilder()
             ->select(
                 'm.id',
-                'TRIM(CONCAT( m.name_nike)) AS name',
+//                'TRIM(CONCAT( m.name_nike)) AS name',
                  'm.email',
-                //  'm.name_kateg as name_kateg',
+                'm.nike',
                 'g.name as group',
-//                'uchkak',
                  'm.status',
-                '(SELECT COUNT(*) FROM paseka_matkas_plemmatka_uchastniks ms WHERE ms.uchastie_id = m.id) as uchastniks_count',
-                '(SELECT COUNT(*) FROM paseka_sezons_uchasgodas ug WHERE ug.uchastie_id = m.id) as uchasgodas_count'            )
-            ->from('paseka_uchasties_uchasties', 'm')
-            ->innerJoin('m', 'paseka_uchasties_groups', 'g', 'm.group_id = g.id');
-           // ->innerJoin('m', 'paseka_uchasties_personas', 'p', 'm.id = p.id');
+                'n.nomer AS mesto',
+                'p.nomer AS persona',
+                '(SELECT COUNT(*) FROM adminka_matkas_plemmatka_uchastniks ms WHERE ms.uchastie_id = m.id) as uchastniks_count' )
+//                '(SELECT COUNT(*) FROM paseka_sezons_uchasgodas ug WHERE ug.uchastie_id = m.id) as uchasgodas_count'            )
+            ->from('admin_uchasties_uchasties', 'm')
+            ->innerJoin('m', 'admin_uchasties_groups', 'g', 'm.group_id = g.id')
+            ->innerJoin('m', 'mesto_mestonomers', 'n', 'm.id = n.id')
+            ->innerJoin('m', 'adminka_uchasties_personas', 'p', 'm.id = p.id');
 
-        if ($filter->name) {
-            $qb->andWhere($qb->expr()->like('LOWER(CONCAT( m.name_nike))', ':name'));
-            $qb->setParameter(':name', '%' . mb_strtolower($filter->name) . '%');
+        if ($filter->nike) {
+            $qb->andWhere($qb->expr()->like('LOWER( m.nike))', ':nike'));
+            $qb->setParameter(':nike', '%' . mb_strtolower($filter->nike) . '%');
         }
 
-        // if ($filter->name_kateg) {
-        //     $qb->andWhere($qb->expr()->like('LOWER(m.name_kateg)', ':name_kateg'));
-        //     $qb->setParameter(':name_kateg', '%' . mb_strtolower($filter->name_kateg) . '%');
-        // }
 
          if ($filter->status) {
              $qb->andWhere('m.status = :status');
@@ -79,12 +77,8 @@ class SideFilterFetcher
             $qb->setParameter(':group', $filter->group);
         }
 
-        if ($filter->uchkak) {
-            $qb->andWhere('uchkak = :uchkak');
-            $qb->setParameter(':uchkak', $filter->uchkak);
-        }
 
-        if (!\in_array($sort, ['name', 'uchkak', 'group'], true)) {
+        if (!\in_array($sort, ['nike', 'email', 'group', 'status'], true)) {
             throw new \UnexpectedValueException('Cannot sort by ' . $sort);
         }
 
@@ -97,7 +91,7 @@ class SideFilterFetcher
     {
         return $this->connection->createQueryBuilder()
                 ->select('COUNT (id)')
-                ->from('paseka_uchasties_uchasties')
+                ->from('admin_uchasties_uchasties')
                 ->where('id = :id')
                 ->setParameter(':id', $id)
                 ->execute()->fetchColumn() > 0;

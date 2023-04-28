@@ -9,8 +9,8 @@ use App\Model\Adminka\Entity\Uchasties\Uchastie\Status;
 class Filter
 {
     public $name;
-    // public $email;
+     public $email;
     public $group;
     public $status = Status::ACTIVE;
-    public $uchkak;
+    public $nike;
 }

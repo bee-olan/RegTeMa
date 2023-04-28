@@ -43,7 +43,7 @@ class LiniaController extends AbstractController
     public function index( Rasa $rasa, Request $request,  LiniaFetcher $linias): Response
     {
         //$this->denyAccessUnlessGranted(MateriAccess::MANAGE_MEMBERS, $materi);
-
+//dd($linias->allOfRasa($rasa->getId()->getValue()));
         return $this->render('app/adminka/rasas/linias/index.html.twig', [
             'rasa' => $rasa,
             'linias' => $linias->allOfRasa($rasa->getId()->getValue()),
