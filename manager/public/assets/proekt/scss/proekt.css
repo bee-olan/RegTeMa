@@ -1799,7 +1799,7 @@ img.hover-shadow {
   max-width: 100%;
   overflow: hidden;
   background-color: transparent;
-  box-shadow: 0 15px 25px rgba(246, 246, 246, 0.35);
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.35);
   border-radius: 5px;
 }
 @media screen and (max-width: 575px) {

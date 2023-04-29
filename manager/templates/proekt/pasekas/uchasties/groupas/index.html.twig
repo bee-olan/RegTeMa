@@ -1,0 +1,50 @@
+{% extends 'proekt/base.html.twig' %}
+
+{% block title %}Группы{% endblock %}
+
+
+
+{% block kroxii %}
+    <a href="{{ path('proekt') }}">Главная</a>
+    <a href="{{ path('proekt.pasekas.uchasties.uchastiee') }}">Стать участником</a>
+    <a href="{{ path('proekt.pasekas.uchasties') }}">Список участников</a>
+    <span class="aktiv">Группы</span>
+
+{% endblock %}
+
+
+{% block bodyy %}
+
+
+
+    <div  class="proekts-uch">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th> Название </th>
+                    <th> Кол-во участников </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for group in groups %}
+                    <tr>
+                        <td>
+                            {% if group.uchasties %}
+                                <a href="{{ path('adminka.uchasties', {'form': {'group': group.id}}) }}">{{ group.name }}</a>
+                            {% else %}
+                                {{ group.name }}
+                            {% endif %}
+                        </td>
+                        <td>        
+                                {{ group.uchasties }}
+                        </td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
