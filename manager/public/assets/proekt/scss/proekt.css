@@ -1808,6 +1808,20 @@ img.hover-shadow {
   }
 }
 
+.proekts-group {
+  margin-bottom: 3rem;
+  max-width: 100%;
+  overflow: hidden;
+  background-color: transparent;
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.35);
+  border-radius: 5px;
+}
+@media screen and (max-width: 575px) {
+  .proekts-group {
+    padding: 1.5rem;
+  }
+}
+
 .proekts-plem {
   margin-bottom: 3rem;
   max-width: 100%;

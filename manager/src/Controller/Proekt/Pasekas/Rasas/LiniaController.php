@@ -83,12 +83,6 @@ class LiniaController extends AbstractController
             }
         }
 
-//       dd( $linias->allOfRasa($rasa->getId()->getValue()));
-
-//        foreach ($liniasS as $key => $value) {
-//        echo "<br>".$key." =>  ".$value;
-//            print_r($liniasS);
-//        }
         return $this->render('proekt/pasekas/rasas/linias/plemmatka.html.twig', [
             'rasa' => $rasa,
             'linias' => $linias->allOfRasa($rasa->getId()->getValue()),

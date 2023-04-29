@@ -34,8 +34,9 @@
     
     </div>    
     <div class="lini ">
-        <div class="lini-margin ">            
-                        <h1 class="ras__title "> <strong class="strongo " >Линии - Ветки   </strong>  : данные из БД  для   <strong class="strongo strongo--kras" >  {{ rasa.name }} </strong></h1>
+        <div class="lini-margin ">
+            {% if linias %}
+                <h1 class="ras__title "> <strong class="strongo " >Линии - Ветки   </strong>  : данные из БД  для   <strong class="strongo strongo--kras" >  {{ rasa.name }} </strong></h1>
 
                         {% for linia in linias %}
                             <ul class="ras__data">
@@ -83,6 +84,9 @@
                                
                             </ul>
                         {% endfor %}
+            {% else %}
+                <h1 class="ras__title "> <strong class="strongo strongo--kras " >Напишите запрос :   </strong> <strong class="strongo " > Раса - Линия - Ветка - Номер   </strong>  </h1>
+            {% endif %}
         </div>         
     </div>
     

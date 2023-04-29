@@ -61,7 +61,7 @@ class NomerController extends AbstractController
      */
     public function plemmatka(Linia $linia, NomerFetcher $nomers): Response
     {
-
+//dd($nomers->allOfLinia($linia->getId()->getValue()));
         return $this->render('proekt/pasekas/rasas/linias/nomers/plemmatka.html.twig', [
             'linia' => $linia,
             'nomers' => $nomers->allOfLinia($linia->getId()->getValue()),

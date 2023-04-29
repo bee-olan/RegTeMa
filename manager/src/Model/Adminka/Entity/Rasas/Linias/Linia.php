@@ -121,7 +121,8 @@ class Linia
                                 string $name,
                                 string $nameStar,
                                 string $title,
-                                int $sortNomer
+                                int $sortNomer,
+                                string $vetkaNomer
                                 ): void
     {
         foreach ($this->nomers as $nomer) {
@@ -130,10 +131,10 @@ class Linia
             }
 
             if ($nomer->isNameStarEqual($nameStar)) {
-                throw new \DomainException('Такая запись уже существует.');
+                throw new \DomainException('Такая запись уже существует. $nameStar add nomer');
             }
         }
-        $this->nomers->add(new Nomer($this, $id, $name, $nameStar, $title, $sortNomer));
+        $this->nomers->add(new Nomer($this, $id, $name, $nameStar, $title, $sortNomer, $vetkaNomer));
     }
 
     public function editNomer(NomerId $id, string $name, string $nameStar): void

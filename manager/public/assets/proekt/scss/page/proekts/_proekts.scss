@@ -89,9 +89,19 @@
   margin-bottom: 3rem;
   max-width: 100%;
   overflow: hidden; // в рамках размера -все лишнее скрылось overflow
-
   background-color: transparent;
+  box-shadow: 0 5px 22px rgba($black, .35);
+  border-radius: 5px;
 
+  @include breakpoint($mobile-bp) {
+    padding: 1.5rem;
+  }
+}
+.proekts-group {
+  margin-bottom: 3rem;
+  max-width: 100%;
+  overflow: hidden; // в рамках размера -все лишнее скрылось overflow
+  background-color: transparent;
   box-shadow: 0 5px 22px rgba($black, .35);
   border-radius: 5px;
 

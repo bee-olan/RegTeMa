@@ -52,13 +52,14 @@ class Command
         $command = new self($rasa->getId()->getValue());
 
         $command->sortLinia = $maxSort;
-//        dd($linia);
+//        dd($nomNameStar);
         $command->name = $linia->getName();
 //        $title = explode("_",$linia->getTitle() );
         $command->title =  $linia->getTitle();
 //        dd($linia->getTitle());
-        $nomNameStar = explode("-",$nomNameStar );
-        $command->nameStar =  $linia->getNameStar()."-".$nomNameStar[0];
+//        $nomNameStar = explode("-",$nomNameStar );
+        $command->nameStar = $nomNameStar;
+//        $command->nameStar =  $linia->getNameStar()."-".$nomNameStar[0];
 //dd($command->title );
 //        $command = new self($rasa->getId()->getValue());
 //        $command->sortLinia = $maxSort;

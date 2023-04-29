@@ -15,36 +15,39 @@
 
 {% block bodyy %}
 
+<div  class="proekts-group">
 
+    {% include('proekt/pasekas/uchasties/_uchastiess-includ.html.twig') %}
+    <div class="uchasties">
+        <div class="uchasties__left">
 
-    <div  class="proekts-uch">
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th> Название </th>
-                    <th> Кол-во участников </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
+            <div class="tabll">
+                <ul class = "uch-tabl__list uch-color">
+
+                    <li class = "uch-tabl__list-li uch-tabl__linia">Название</li>
+                    <li class = "uch-tabl__list-li uch-tabl__linia" >Кол-во участников</li>
+                </ul>
 
                 {% for group in groups %}
-                    <tr>
-                        <td>
+
+                    <ul class = "uch-tabl__list">
+
+                        <li class = "uch-tabl__list-li ">
                             {% if group.uchasties %}
-                                <a href="{{ path('adminka.uchasties', {'form': {'group': group.id}}) }}">{{ group.name }}</a>
+                                <a  class="uch-tabl__link" href="{{ path('proekt.pasekas.uchasties', {'form': {'group': group.id}}) }}">{{ group.name }}</a>
                             {% else %}
                                 {{ group.name }}
                             {% endif %}
-                        </td>
-                        <td>        
-                                {{ group.uchasties }}
-                        </td>
+                        </li>
+                        <li class = "uch-tabl__list-li uch-tabl__linia"> {{ group.uchasties }}</li>
 
-                    </tr>
+                    </ul>
+
                 {% endfor %}
-            </tbody>
-        </table>
+
+            </div>
+        </div>
     </div>
+</div>
 
 {% endblock %}

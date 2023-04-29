@@ -28,7 +28,7 @@ class Handler
         $rasa = $this->rasas->get(new RasaId($command->rasa));
 
         $vetka = $command->vetka ? $this->linias->get(new Id($command->vetka)) : null;
-//dd($vetka);
+//dd($vetka->getNomer(new Id($command->vetka)));
 
         if ($command->vetka) {
             $vetka = $this->linias->get(new Id($command->vetka));

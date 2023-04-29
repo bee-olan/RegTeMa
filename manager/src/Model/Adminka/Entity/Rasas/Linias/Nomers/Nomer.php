@@ -53,11 +53,18 @@ class Nomer
      */
     private $sortNomer;
 
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private $vetkaNomer;
+
     public function __construct(Linia $linia, Id $id,
                                 string $name,
                                 string $nameStar,
                                 string $title, 
-                                int $sortNomer
+                                int $sortNomer,
+                                string $vetkaNomer
                                 )
     {
         $this->linia = $linia;
@@ -66,6 +73,7 @@ class Nomer
         $this->nameStar = $nameStar;
         $this->title = $title;
         $this->sortNomer = $sortNomer;
+        $this->vetkaNomer = $vetkaNomer;
     }
 	
 		public function edit(string $name, 
@@ -120,6 +128,10 @@ class Nomer
         return $this->sortNomer;
     }
 
+    public function getVetkaNomer(): string
+    {
+        return $this->vetkaNomer;
+    }
 
     public function getLinia(): Linia
     {
