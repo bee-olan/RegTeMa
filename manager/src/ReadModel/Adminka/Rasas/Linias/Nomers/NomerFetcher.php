@@ -34,6 +34,7 @@ class NomerFetcher
                 'name',
                 'name_star',
                 'title',
+                'status',
                 'sort_nomer',
                 'vetka_nomer'
             )
@@ -57,6 +58,7 @@ class NomerFetcher
                 'd.name',
                 'd.name_star',
                 'd.title',
+                'd.status',
                 'd.sort_nomer',
                 'd.vetka_nomer'
                 // '(

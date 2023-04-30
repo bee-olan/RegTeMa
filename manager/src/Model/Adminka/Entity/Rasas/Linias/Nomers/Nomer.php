@@ -59,6 +59,12 @@ class Nomer
      */
     private $vetkaNomer;
 
+    /**
+     * @var Status
+     * @ORM\Column(type="adminka_rasa_linia_nomer_status", length=16)
+     */
+    private $status;
+
     public function __construct(Linia $linia, Id $id,
                                 string $name,
                                 string $nameStar,
@@ -74,6 +80,7 @@ class Nomer
         $this->title = $title;
         $this->sortNomer = $sortNomer;
         $this->vetkaNomer = $vetkaNomer;
+        $this->status = Status::active();
     }
 	
 		public function edit(string $name, 
@@ -85,7 +92,33 @@ class Nomer
 
     }
 
-	
+//------------------------------------------------------
+    public function archive(): void
+    {
+        if ($this->isArchived()) {
+            throw new \DomainException('Номер уже заархивирован.');
+        }
+        $this->status = Status::archived();
+    }
+
+    public function reinstate(): void
+    {
+        if ($this->isActive()) {
+            throw new \DomainException('Номер уже активен.');
+        }
+        $this->status = Status::active();
+    }
+
+    public function isArchived(): bool
+    {
+        return $this->status->isArchived();
+    }
+
+    public function isActive(): bool
+    {
+        return $this->status->isActive();
+    }
+// -----------------------------------------------------------
 // равно Ли Имя
     public function isNameEqual(string $name): bool
     {

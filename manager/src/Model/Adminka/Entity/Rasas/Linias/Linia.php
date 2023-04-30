@@ -67,6 +67,8 @@ class Linia
      */
     private $sortLinia;
 
+
+
     /**
      * @var Linia|null
      * @ORM\ManyToOne(targetEntity="Linia")
@@ -89,6 +91,7 @@ class Linia
         $this->title = $title;
 		$this->sortLinia = $sortLinia;
 		$this->vetka = $vetka;
+
 		$this->nomers = new ArrayCollection();
     }
 
