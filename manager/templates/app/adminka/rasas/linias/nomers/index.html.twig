@@ -19,20 +19,25 @@
 <article class="rasa">
 	<h4 class="rasa__title  "><strong class="strongo"> Раса </strong> :   {{ linia.title }}</h4>
 	<div class="linia ">
-		<h4 class="rasa__title  "><strong class="strongo"> Линия </strong> :  {{ linia.name }} </h4>
+		<h4 class="rasa__title  "><strong class="strongo"> Линия !</strong> :
+            <a href="{{ path('adminka.rasas.linias.show', {'id': linia.id}) }}"> {{ linia.name }}
+            </a>
+
+        </h4>
 		<div class="nomer ">
 			<div class="rasa__header  ">
-				<h5 class="rasa__title  "><strong class="strongo"> Номера </strong> зарегистрированные в БД
-										 для линии <strong class="strongo"> {{ linia.name }} </strong></h5>
+				<h5 class="rasa__title  "><strong class="strongo"> Номера </strong> зарегистрированные в БД на
+                    <strong class="stro" >ветке </strong> <strong class="stro--kras" > {{ linia.nameStar }} </strong>
+                </h5>
 				{% set token = csrf_token('delete') %}
                 {% for nomer in nomers %}
                       
            
                 <ul class="rasa__data">
-                    <li class="rasa__name rasa__name--wid15">{{ nomer.name }}</li>
+                    <li class="rasa__name rasa__name--wid10 b-color">{{ nomer.name }}</li>
 
 {#                    <li class="rasa__name rasa__name--wid5">н-{{ nomer.sort_nomer }}</li>#}
-                    <li class="rasa__name rasa__name--wid10 b-color ">{{ nomer.name_star }}</li>
+                    <li class="rasa__name rasa__name--wid15 ">{{ nomer.name_star }}</li>
                                   
                     <li class="  ma-ri-0 ">
                         <a href="{{ path('adminka.rasas.linias.nomers.edit', {'linia_id': linia.id, 'id': nomer.id}) }}"

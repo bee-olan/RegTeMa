@@ -108,7 +108,7 @@ class LiniaController extends AbstractController
      * @param Edit\Handler $handler
      * @return Response
      */
-    public function edit(Rasa $rasa, string $linia_id, Request $request, Edit\Handler $handler): Response
+    public function edit(Request $request,Rasa $rasa, string $linia_id,  Edit\Handler $handler): Response
     {
         //$this->denyAccessUnlessGranted(MateriAccess::MANAGE_MEMBERS, $materi);
 
@@ -172,14 +172,14 @@ class LiniaController extends AbstractController
 					['id' => $rasa->getId()]);
     }
 
-    /**
-     * @Route("/{linia_id}", name=".show", requirements={"linia_id"=Guid::PATTERN})
-     * @param Rasa $rasa
-     * @return Response
-     */
-    public function show(Rasa $rasa): Response
-    {
-        return $this->redirectToRoute('adminka.rasas.linias',
-				['id' => $rasa->getId()]);
-    }
+//    /**
+//     * @Route("/{linia_id}", name=".show", requirements={"linia_id"=Guid::PATTERN})
+//     * @param Rasa $rasa
+//     * @return Response
+//     */
+//    public function show(Rasa $rasa): Response
+//    {
+//        return $this->redirectToRoute('adminka.rasas.linias',
+//				['id' => $rasa->getId()]);
+//    }
 }
