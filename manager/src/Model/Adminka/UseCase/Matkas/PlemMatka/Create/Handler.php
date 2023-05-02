@@ -49,6 +49,7 @@ class Handler
 
     public function handle(Command $command): void
     {
+
         $persona = $this->personas->find($command->uchastieId);
         $mesto = $this->mestoNomers->find($command->uchastieId);
 
@@ -59,7 +60,7 @@ class Handler
 //            throw new \DomainException('ТАКОЙ номер есть в БД.');
 //        }
         $nomer = $this->nomerRepository->get(new NomerId($command->nomer));
-
+        dd($nomer);
         $nameStar = explode("-", $nomer->getNameStar());
 //dd();
         $command->godaVixod = (int) $nameStar[1];

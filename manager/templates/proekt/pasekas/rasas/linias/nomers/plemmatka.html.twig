@@ -77,7 +77,17 @@
                   {{ nomer.name }}
                 </div>
               </li>
+              {% if nomer.status == "active"   %}
+                  <li class="ras__name--widt10">
+                    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates.plemmatka',{ id: nomer.id} ) }}"
+                       class="btnn btnn--pt btnn--mb0 ">  <strong class="strongo strongo--kras">выбрать номер</strong>
+                    </a>
+                  </li>
+              {% else %}
+                <li class="ras__name--widt10">
 
+                </li>
+              {% endif %}
 
               <li>
                 <strong class="strongo strongo--kras"> {{ plemmatka_status(nomer.status) }} </strong>
@@ -100,19 +110,10 @@
                         <button type="submit" class="btnn btnn--pt btnn--mb0">Из архива</button>
                       </form>
                   </li>
-                <li class="ras__name--widt10">
-
-                </li>
-              {% endif %}
-
-              {% if nomer.status == "active"   %}
-                <li class="ras__name--widt10">
-                  <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates.plemmatka',{ id: nomer.id} ) }}"
-                     class="btnn btnn--pt btnn--mb0 ">  <strong class="strongo strongo--kras">выбрать номер</strong>
-                  </a>
-                </li>
 
               {% endif %}
+
+
 
             </ul>
           {% endfor %}

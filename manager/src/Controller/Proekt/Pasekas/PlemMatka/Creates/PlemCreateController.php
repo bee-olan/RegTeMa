@@ -50,7 +50,7 @@ class PlemCreateController extends AbstractController
                               PersonaFetcher $personas, MestoNomerFetcher $mestos,
                               Nomer $nomer): Response
     {
-
+//        dd($nomer);
         $persona = $personas->find($this->getUser()->getId());
 
         $mesto = $mestos->find($this->getUser()->getId());

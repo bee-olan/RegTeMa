@@ -35,10 +35,16 @@
            
                 <ul class="rasa__data">
                     <li class="rasa__name rasa__name--wid10 b-color">{{ nomer.name }}</li>
-
-{#                    <li class="rasa__name rasa__name--wid5">н-{{ nomer.sort_nomer }}</li>#}
                     <li class="rasa__name rasa__name--wid15 ">{{ nomer.name_star }}</li>
-                                  
+                    {% if nomer.kolvenka < 1 %}
+                        <li class=" rasa__name--wid10 " >
+                            <a href="{{ path('adminka.rasas.linias.nomer_linia.create', { 'linia_id': linia.id, 'id': nomer.id}) }}?vetka={{ linia.id }}"
+                               class="btnn btnn--mb0 btnn--pt btnn--rasa">- объявить <strong class="strongo strongo--kras">  ветку</strong>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="rasa__name rasa__name--wid10 " > - есть  ветка</li>
+                    {% endif %}
                     <li class="  ma-ri-0 ">
                         <a href="{{ path('adminka.rasas.linias.nomers.edit', {'linia_id': linia.id, 'id': nomer.id}) }}"
                             class="btnn btnn--karandash btnn--pt btnn--rasa"><span class="fa fa-pencil"></span>
@@ -52,13 +58,6 @@
                     </li>
 
 
-{#            {% if nomer.vetka_nomer === null %}#}
-                     <li>{{ nomer.vetka_nomer }}====== {{ nomer.kolvenka }}
-                        <a href="{{ path('adminka.rasas.linias.nomer_linia.create', { 'linia_id': linia.id, 'id': nomer.id}) }}?vetka={{ linia.id }}"
-							class="btnn btnn--mb0 btnn--pt">Взять за основу <strong class="strongo strongo--kras"> для ветки</strong>
-                        </a>
-                     </li>
-{#            {% endif %}#}
                 </ul>  
                 {% endfor %}
             </div>

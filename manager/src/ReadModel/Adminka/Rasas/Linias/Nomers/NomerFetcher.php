@@ -62,7 +62,7 @@ class NomerFetcher
                 'd.status',
                 'd.sort_nomer',
                 'd.vetka_nomer',
-                '(SELECT COUNT(*) FROM adminka_rasa_linias l WHERE l.id = :linia) AS kolvenka'
+                '(SELECT COUNT(*) FROM adminka_rasa_linias l WHERE  l.name_star = d.name_star) AS kolvenka'
                 // '(
                 //     SELECT COUNT(ms.member_id)
                 //     FROM work_projects_project_memberships ms

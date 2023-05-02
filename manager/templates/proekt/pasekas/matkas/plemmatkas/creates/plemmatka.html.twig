@@ -31,11 +31,14 @@
                             <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                         </svg>
                     </li>
-                    <li class="plem__name  ">Как-то так! Получили такие: Раса_л-.._н-..  -  это будут базовые данные </li>
+                    {% set rlvn = nomer.title ~' : ' ~  nomer.linia.nameStar ~ '-' ~ nomer.name %}
+                    {% set rlv = nomer.title ~' : ' ~  nomer.linia.nameStar %}
+                    <li class="plem__name  ">Как-то так! </li>
                     <li><div class = "plem-nomer  plem-nomer__wid8">
-                            {{ nomer.title }}
+                            {{ rlv }} <strong class="strongo strongo--kras">-{{ nomer.name }} </strong>
                         </div>
                     </li>
+                    <li class="plem__name  ">  -  это будут базовые данные </li>
                     <li></li>
                 {% else %}
                     <li class="plem__name" >1. Выбрать расу </li>
@@ -56,7 +59,7 @@
                     </li>
                     <li class="plem__name  ">С учетом Ваших данных: ПерсонНомера и НомерМеста.</li>
                     <li><div class = "plem-nomer plem-nomer__wid12">
-                            {{ nomer.title }} : {{ mesto.nomer }}_Пн-{{ persona.nomer }}
+                            {{ rlvn }} : <strong class="strongo strongo--kras">Пн-{{ persona.nomer }}_{{ mesto.nomer }} </strong>
                         </div></li>
                     <li></li>
                 {% else %}

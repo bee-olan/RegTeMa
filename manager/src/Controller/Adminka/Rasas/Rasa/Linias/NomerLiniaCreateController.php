@@ -63,7 +63,7 @@ class NomerLiniaCreateController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('adminka.rasas.linias', ['id' => $rasa->getId()]);
+                return $this->redirectToRoute('adminka.rasas.linias.nomers', ['linia_id' => $linia->getId()]);
             } catch (\DomainException $e) {
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
                 $this->addFlash('error', $e->getMessage());

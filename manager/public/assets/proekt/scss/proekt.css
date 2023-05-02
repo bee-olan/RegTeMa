@@ -1733,8 +1733,6 @@ img.hover-shadow {
 .proekts {
   margin-bottom: 3rem;
   padding-bottom: 3rem;
-  max-width: 90rem;
-  margin-left: 5rem;
   margin-right: 5rem;
   overflow: hidden;
   background-color: transparent;
@@ -3008,8 +3006,8 @@ legend {
 }
 
 .lini {
-  width: 80%;
-  margin-left: 18rem;
+  width: 88%;
+  margin-left: 10rem;
   padding: 1.5rem 1.5rem 2.5rem 1.5rem;
   overflow: hidden;
   box-shadow: inset 0px 0px 10px rgba(0, 128, 0, 0.9);
@@ -3021,8 +3019,8 @@ legend {
 }
 
 .nome {
-  width: 81%;
-  margin-left: 14rem;
+  width: 89%;
+  margin-left: 8rem;
   padding: 1.5rem;
   overflow: hidden;
   box-shadow: inset 0px 0px 10px rgba(0, 128, 0, 0.9);

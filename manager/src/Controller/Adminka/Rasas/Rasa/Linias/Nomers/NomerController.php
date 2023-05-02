@@ -45,12 +45,15 @@ class NomerController extends AbstractController
      */
     public function index(Linia $linia, NomerFetcher $nomers): Response
     {
-//dd($linia);
+//dd($linia->getVetka()->getName());
+
         // $this->denyAccessUnlessGranted(LiniaAccess::MANAGE_MEMBERS, $linia);
 //dd( $nomers->allOfLinia($linia->getId()->getValue()));
+
         return $this->render('app/adminka/rasas/linias/nomers/index.html.twig', [
             'linia' => $linia,
             'nomers' => $nomers->allOfLinia($linia->getId()->getValue()),
+            'no' => "нет!!!!",
         ]);
     }
 
