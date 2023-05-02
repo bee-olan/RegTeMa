@@ -46,12 +46,13 @@ class NomerLiniaCreateController extends AbstractController
     public function create(Request $request, Linia $linia, string $id, LiniaFetcher $linias,  CreateNomLin\Handler $handler): Response
    {
       $nameStar =  ($linia->getNomer(new NomerId($id)))->getNameStar();
-
+       $name =  ($linia->getNomer(new NomerId($id)));
+//       dd( $name);
         $rasa = $linia->getRasa();
        $maxSort = $linias->getMaxSortLinia($linia->getRasa()->getId()->getValue()) + 1;
-//dd($nameStar);
+//       $nameStar =  $nameStar."_".$name;
 
-       $command = CreateNomLin\Command::fromRasa($rasa, $linia, $maxSort, $nameStar);// заполнение  значениями из Rasa
+       $command = CreateNomLin\Command::fromRasa($rasa, $linia, $maxSort, $nameStar, $id);// заполнение  значениями из Rasa
 
         if ($vetka = $request->query->get('vetka')) {
             $command->vetka = $vetka;

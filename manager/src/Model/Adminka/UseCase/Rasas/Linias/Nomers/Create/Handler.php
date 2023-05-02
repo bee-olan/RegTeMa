@@ -37,6 +37,7 @@ class Handler
 //if ($linia->getVetka()){
 
     $names = explode("-",$command->name );
+    $command->vetkaNomer = $command->name;
     $command->vetkaNomer = $names[0];
     $command->nameStar  = $linia->getNameStar()."-".$command->vetkaNomer;
 //}else{

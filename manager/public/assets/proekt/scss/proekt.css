@@ -2954,7 +2954,7 @@ legend {
   display: flex;
   align-items: center;
   list-style: none;
-  max-width: 65%;
+  min-width: 75%;
   font-size: 1.6rem;
   line-height: 2;
 }

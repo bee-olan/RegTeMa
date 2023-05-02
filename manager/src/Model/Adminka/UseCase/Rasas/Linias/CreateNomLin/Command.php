@@ -46,30 +46,25 @@ class Command
 //        $this->linia = $linia;
     }
 
-    public static function fromRasa(Rasa $rasa, Linia $linia, int $maxSort, string $nomNameStar): self
+    public static function fromRasa(Rasa $rasa,
+                                    Linia $linia,
+                                    int $maxSort,
+                                    string $nomNameStar,
+                                    string $idNomer
+                            ): self
     {
-//dd($linia);
+
         $command = new self($rasa->getId()->getValue());
+        $command->idNomer = $idNomer;
 
         $command->sortLinia = $maxSort;
-//        dd($nomNameStar);
         $command->name = $linia->getName();
-//        $title = explode("_",$linia->getTitle() );
         $command->title =  $linia->getTitle();
-//        dd($linia->getTitle());
-//        $nomNameStar = explode("-",$nomNameStar );
-        $command->nameStar = $nomNameStar;
-//        $command->nameStar =  $linia->getNameStar()."-".$nomNameStar[0];
-//dd($command->title );
-//        $command = new self($rasa->getId()->getValue());
-//        $command->sortLinia = $maxSort;
-//        $command->name = "л-".$maxSort;
-//        $title = explode("_",$linia->getTitle() );
-//        $command->title =  $title[0]."_".$command->name;
-//        $nomNameStar = explode("-",$nomNameStar );
-//       $command->nameStar =  $linia->getNameStar()."-".$nomNameStar[0];
 
-//       dd($command);
+        $command->nameStar = $nomNameStar;
+
+//        $title = explode("_",$linia->getTitle() );
+
         return $command;
     }
 }

@@ -46,23 +46,22 @@
                                            <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka-p.png') }}" alt="редактировать">
 
                                         {% endfor %}
-                                          {{foos[0] }}-{{ foos|last}}
+{#                                          {{foos[0] }}-{{ foos|last}}#}
+                                         <strong class="strongo "> ветка </strong> {{ linia.name_star }}  ( {{ linia.nomers }} )
                                     </li>
-                                    <li class="rasa__name rasa__name--wid30" >
-
-                                        ( {{ linia.nomers }} )
-                                    </li>
-                                    <li  >
-                                        <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', {'ras': rasa.id, 'linia_id': linia.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
-                                           ветка  <strong class="strongo strongo--kras">
-                                                {{ linia.name_star }}
-                                            </strong>
-                                        </a>
+                                    <li >
+                                        {% if linia.nomers > 0.1 %}
+                                            <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', {'ras': rasa.id, 'linia_id': linia.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
+                                                 <strong class="strongo strongo--kras"> {{ linia.title }}</strong>
+                                            </a>
+                                        {% else %}
+                                            - - <strong class="strongo "> {{ linia.title }} </strong> -  дочерних <strong class="strongo strongo--kras">  нет! </strong> Пишите запрос.
+                                        {% endif %}
                                     </li>
 
                                 {% else %}
                                     <li class="ras__name ras__name--widt30">
-                                       {{ linia.name_star }}
+                                       {{ linia.name_star }} ( {{ linia.nomers }} )
                                     </li>
                                     <li>
                                         <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', {'ras': rasa.id, 'linia_id': linia.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >

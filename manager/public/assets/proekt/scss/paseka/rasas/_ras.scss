@@ -9,19 +9,15 @@
 
 .ras__data {
   display: flex; // добавляем т.к добаилась li-шка
-  //justify-content: center;
-  //justify-content: space-between;
-  // justify-content: start;
   align-items: center; // выравнивание по вертикали
   list-style: none; // убрала точку у li
-  max-width: 65%;
+  min-width: 75%;
   font-size: 1.6rem;
   line-height: 2.0;
 
   &--ras {
     max-width: 100%;
     justify-content: space-between;
-    //margin-left: 2rem;
   }
 
   a {
@@ -81,17 +77,12 @@
 }
 
 .lini {
-  // margin: 1rem ;
+
   width: 88%;
-  // margin-left: 18rem;
   margin-left: 10rem;
 
   padding: 1.5rem 1.5rem 2.5rem 1.5rem;
   overflow: hidden; // в рамках размера -все лишнее скрылось overflow
-  // background-color: #70a370;
-  //background-color: transparent;
-  // box-shadow: 0 15px 25px rgba($black, .35);
-  // border-radius: 5px;
   box-shadow: inset 0px 0px 10px rgba($rasa-color, 0.9); //тень внутри
   border-bottom: 2px solid $rasa-color; // linia
 }
@@ -104,18 +95,14 @@
 
   width: 89%;
   margin-left: 8rem;
-  // margin-left: 14rem;
   padding: 1.5rem;
   overflow: hidden; // в рамках размера -все лишнее скрылось overflow
-  //background-color: #7eb47e;
-  //background-color: transparent;
   box-shadow: inset 0px 0px 10px rgba($rasa-color, 0.9); //тень внутри
   border-bottom: 2px solid $rasa-color; // linia
 }
 
 .ras-color {
   padding: 0 1rem;
-  // padding-left: 1rem;
   background-color: #588557;
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
 }

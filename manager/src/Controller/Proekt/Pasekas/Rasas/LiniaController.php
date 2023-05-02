@@ -82,7 +82,7 @@ class LiniaController extends AbstractController
                 $this->addFlash('error', $e->getMessage());
             }
         }
-
+//dd($linias->allOfRasa($rasa->getId()->getValue()));
         return $this->render('proekt/pasekas/rasas/linias/plemmatka.html.twig', [
             'rasa' => $rasa,
             'linias' => $linias->allOfRasa($rasa->getId()->getValue()),
