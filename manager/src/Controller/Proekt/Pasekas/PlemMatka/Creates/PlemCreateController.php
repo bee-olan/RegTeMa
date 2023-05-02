@@ -54,7 +54,7 @@ class PlemCreateController extends AbstractController
         $persona = $personas->find($this->getUser()->getId());
 
         $mesto = $mestos->find($this->getUser()->getId());
-//        dd($persona);
+
         return $this->render('proekt/pasekas/matkas/plemmatkas/creates/plemmatka.html.twig',
             compact('nomer', 'persona', 'mesto') );
     }

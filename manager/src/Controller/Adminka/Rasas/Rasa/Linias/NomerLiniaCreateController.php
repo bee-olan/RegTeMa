@@ -51,13 +51,12 @@ class NomerLiniaCreateController extends AbstractController
        $maxSort = $linias->getMaxSortLinia($linia->getRasa()->getId()->getValue()) + 1;
 //dd($nameStar);
 
-
        $command = CreateNomLin\Command::fromRasa($rasa, $linia, $maxSort, $nameStar);// заполнение  значениями из Rasa
 
         if ($vetka = $request->query->get('vetka')) {
             $command->vetka = $vetka;
         }
-//dd($vetka);
+
         $form = $this->createForm(CreateNomLin\Form::class, $command);
         $form->handleRequest($request);
 //dd($command);

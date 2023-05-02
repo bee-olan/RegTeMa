@@ -69,19 +69,19 @@ class NomerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/active", name=".active", methods={"POST"})
+     * @Route("/{id}/archive", name=".archive", methods={"POST"})
      * @param Linia $linia
      * @param Nomer $nomer
      * @param Request $request
      * @param Archive\Handler $handler
      * @return Response
      */
-    public function active(Linia $linia, Nomer $nomer, Request $request, Archive\Handler $handler): Response
+    public function archive(Linia $linia, Nomer $nomer, Request $request, Archive\Handler $handler): Response
     {
         if (!$this->isCsrfTokenValid('archive', $request->request->get('token'))) {
             return $this->redirectToRoute('proekt.pasekas.rasas.linias.nomers.plemmatka', ['linia_id' => $linia->getId()->getValue()]);
         }
-dd($nomer);
+
 //        $this->denyAccessUnlessGranted(NomerAccess::EDIT, $nomer);
 
         $command = new Archive\Command($nomer->getId()->getValue());
@@ -93,7 +93,7 @@ dd($nomer);
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('proekt/pasekas/rasas/linias/nomers/plemmatka.html.twig', ['linia_id' => $linia->getId()->getValue()]);
+        return $this->redirectToRoute('proekt.pasekas.rasas.linias.nomers.plemmatka', ['linia_id' => $linia->getId()->getValue()]);
     }
 
     /**
@@ -107,7 +107,7 @@ dd($nomer);
     public function reinstate( Request $request, Linia $linia, Nomer $nomer, Reinstate\Handler $handler): Response
     {
         if (!$this->isCsrfTokenValid('reinstate', $request->request->get('token'))) {
-            return $this->redirectToRoute('proekt/pasekas/rasas/linias/nomers/plemmatka.html.twig', ['linia_id' => $linia->getId()->getValue()]);
+            return $this->redirectToRoute('proekt.pasekas.rasas.linias.nomers.plemmatka', ['linia_id' => $linia->getId()->getValue()]);
         }
 //        $this->denyAccessUnlessGranted(NomerAccess::EDIT, $nomer);
 //dd($nomer);

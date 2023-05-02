@@ -104,7 +104,7 @@ class Nomer
     public function reinstate(): void
     {
         if ($this->isActive()) {
-            throw new \DomainException('Номер уже активен.');
+            throw new \DomainException('Номер уже активен.?');
         }
         $this->status = Status::active();
     }

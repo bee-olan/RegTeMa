@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\Rasas\Linias\Nomers\Archive;
+
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
 use App\Model\Flusher;
@@ -10,7 +11,7 @@ use App\Model\Flusher;
 
 class Handler
 {
-    private $nomerss;
+    private $nomers;
     private $flusher;
 
     public function __construct(NomerRepository $nomers, Flusher $flusher)

@@ -37,6 +37,7 @@ class NomerFetcher
                 'status',
                 'sort_nomer',
                 'vetka_nomer'
+
             )
             ->from('adminka_rasa_linia_nomers')
             ->andWhere('linia_id = :linia')
@@ -60,7 +61,8 @@ class NomerFetcher
                 'd.title',
                 'd.status',
                 'd.sort_nomer',
-                'd.vetka_nomer'
+                'd.vetka_nomer',
+                '(SELECT COUNT(*) FROM adminka_rasa_linias l WHERE l.id = :linia) AS kolvenka'
                 // '(
                 //     SELECT COUNT(ms.member_id)
                 //     FROM work_projects_project_memberships ms

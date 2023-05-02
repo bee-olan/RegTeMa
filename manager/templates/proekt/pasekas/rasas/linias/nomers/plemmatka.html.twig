@@ -8,10 +8,10 @@
 
 {% block kroxii %}
   <a href="{{ path('proekt') }}">Главная</a>
-  <a href="#">Рег-ция ПлемМатки</a>
-{#  <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Пункты 1-3</a>#}
-  <a href="{{ path('proekt.pasekas.rasas.plemmatka') }}">{{ linia.title }}_</a>
-  <span class="aktiv">Выбор н-..</span>
+  <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
+  <a href="{{ path('proekt.pasekas.rasas.plemmatka') }}">Выбoр Расы</a>
+  <a href="{{ path('proekt.pasekas.rasas.linias.plemmatka' , {'id': linia.rasa.id} ) }}">Раса: {{ linia.title }} : Линии - Ветки</a>
+  <span class="aktiv">Выбор номера матки</span>
 {% endblock %}
 
 {% block bodyy %}
@@ -65,50 +65,55 @@
       <div class="nome">
         <div class="lini-margin">
           <h1 class="ras__title">
-            <strong class="strongo ">Номера,</strong> зарегистрированные в БД, для
-            данной <strong  class="strongo " > ветки </strong> <strong class="strongo strongo--kras">{{ linia.nameStar }}</strong>
+             Ветка : <strong class="strongo strongo--kras">{{ linia.nameStar }}</strong> и
+            <strong class="strongo ">номера,</strong> на ней зарегистрированные
           </h1>
 
           {% for nomer in nomers %}
             <ul class="ras__data ras__data--ras">
+              <li class="ras__name">{{ linia.nameStar }}<strong class="strongo strongo--kras">-{{ nomer.vetka_nomer }}</strong></li>
               <li>
                 <div class="ras-nomer ras-nomer--wid12">
                   {{ nomer.name }}
                 </div>
               </li>
+
+
               <li>
-                <div class="ras-nomer ras-nomer--wid12">
-                  {{ nomer.status }}
-                </div>
+                <strong class="strongo strongo--kras"> {{ plemmatka_status(nomer.status) }} </strong>
               </li>
 
-              <li class="ras__name">{{ linia.nameStar }}<strong class="strongo strongo--kras">-{{ nomer.vetka_nomer }}</strong></li>
+              {% if nomer.status == "active"   %}
 
-              <li class="ras__name--widt10">
-                <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates.plemmatka',{ id: nomer.id} ) }}"
-                  class="btnn btnn--pt btnn--mb0 ">  <strong class="strongo strongo--kras">выбрать номер</strong>
-                </a>
-              </li>
-              <li class="ras__name--widt10">
+                  <li class="ras__name--widt10">
+                      <form action="{{ path('proekt.pasekas.rasas.linias.nomers.archive',{ linia_id: linia.id, id: nomer.id} ) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                        <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
+                        <button type="submit" class="btnn btnn--pt btnn--mb0">В архив</button>
+                      </form>
+                  </li>
+              {% endif %}
 
-{#                {% if nomer.active   %}#}
-                  <form action="{{ path('proekt.pasekas.rasas.linias.nomers.reinstate',{ linia_id: linia.id, id: nomer.id} ) }}" method="post" onsubmit="return confirm('Вы уверены?')">
-                    <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
-                    <button type="submit" class="btn btn-danger">В архив</button>
-                  </form>
-{#                {% endif %}#}
+              {% if nomer.status == "archived" %}
+                  <li class="ras__name--widt10">
+                      <form action="{{ path('proekt.pasekas.rasas.linias.nomers.reinstate',{ linia_id: linia.id, id: nomer.id} ) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                        <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
+                        <button type="submit" class="btnn btnn--pt btnn--mb0">Из архива</button>
+                      </form>
+                  </li>
+                <li class="ras__name--widt10">
 
-{#                {% if nomer.archived %}#}
-                  <form action="{{ path('proekt.pasekas.rasas.linias.nomers.active',{ linia_id: linia.id, id: nomer.id} ) }}" method="post" onsubmit="return confirm('Вы уверены?')">
-                    <input type="hidden" name="token" value="{{ csrf_token('active') }}" />
-                    <button type="submit" class="btn btn-success">Из архива</button>
-                  </form>
-{#                {% endif %}#}
+                </li>
+              {% endif %}
 
-{#                <a href="{{ path('proekt.pasekas.rasas.linias.nomers.archive',{ linia_id: linia.id, id: nomer.id} ) }}"#}
-{#                   class="btnn btnn--pt btnn--mb0 ">  <strong class="strongo strongo--kras">В архив</strong>#}
-{#                </a>#}
-              </li>
+              {% if nomer.status == "active"   %}
+                <li class="ras__name--widt10">
+                  <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates.plemmatka',{ id: nomer.id} ) }}"
+                     class="btnn btnn--pt btnn--mb0 ">  <strong class="strongo strongo--kras">выбрать номер</strong>
+                  </a>
+                </li>
+
+              {% endif %}
+
             </ul>
           {% endfor %}
         </div>

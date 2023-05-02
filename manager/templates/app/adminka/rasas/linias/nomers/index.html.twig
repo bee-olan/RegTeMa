@@ -52,12 +52,13 @@
                     </li>
 
 
-
-                     <li>
+{#            {% if nomer.vetka_nomer === null %}#}
+                     <li>{{ nomer.vetka_nomer }}====== {{ nomer.kolvenka }}
                         <a href="{{ path('adminka.rasas.linias.nomer_linia.create', { 'linia_id': linia.id, 'id': nomer.id}) }}?vetka={{ linia.id }}"
 							class="btnn btnn--mb0 btnn--pt">Взять за основу <strong class="strongo strongo--kras"> для ветки</strong>
                         </a>
                      </li>
+{#            {% endif %}#}
                 </ul>  
                 {% endfor %}
             </div>

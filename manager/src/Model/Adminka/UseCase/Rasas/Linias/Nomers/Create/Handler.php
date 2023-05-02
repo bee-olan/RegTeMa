@@ -32,23 +32,24 @@ class Handler
 //    +sortNomer: 1
 
         $linia = $this->linias->get(new LiniaId($command->linia));
-//        dd($linia) ;
-//        Linia^ {#1202 ▼
-//        -rasa: Rasa^ {#1182 ▶}
-//            -id: Id^ {#879 ▶}
-//                -name: "Бикань"
-//                -nameStar: "Бикань"
-//                -title: "Як"
-//                -nomers: PersistentCollection^ {#1148 ▶}
-//                    -sortLinia: 1
-//                    -vetka: null
+
 //
+//if ($linia->getVetka()){
+
+    $names = explode("-",$command->name );
+    $command->vetkaNomer = $names[0];
+    $command->nameStar  = $linia->getNameStar()."-".$command->vetkaNomer;
+//}else{
+//    $command->nameStar  = $linia->getNameStar();
+//
+//    $command->vetkaNomer = "";
+//}
+//dd($command->nameStar);
+
         $command->title = $linia->getTitle();
 
-        $names = explode("-",$command->name );
-        $command->vetkaNomer = $names[0];
 
-        $command->nameStar  = $linia->getNameStar()."-".$command->vetkaNomer;
+
 
 
 
