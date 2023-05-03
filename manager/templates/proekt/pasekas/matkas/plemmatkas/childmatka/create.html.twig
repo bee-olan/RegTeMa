@@ -7,7 +7,8 @@
     <a href="{{ path('proekt') }}">Главная</a>
     <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
     <a href="{{ path('proekt.pasekas.matkas') }}">Список ПлемМаток</a>
-    <span class="aktiv ">Добавить ДочьМатку!</span>
+    <a href="{{ path('proekt.pasekas.matkas') }}">???Список ПлемМаток</a>
+    <span class="aktiv ">Добавить ДочьМаток</span>
 {% endblock %}   
 
 {% block bodyy %}
@@ -28,7 +29,8 @@
 {#                <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.parent.id}) }}"#}
 {#                   style="color: #155799;; " > {{ childmatka.parent.name }} </a>#}
 {#            {% else %}#}
-{#                <span style="color: rgba(255,0,0,0.63); "> {{ childmatka.name }} </span>#}
+            <strong class="strongo "> ПлемМатка </strong>    {{ plemmatka.name }}  <strong class="strongo "> сезон </strong> {{ sezonPlem }}
+
 {#            {% endif %}#}
 
             </div>

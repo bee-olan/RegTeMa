@@ -299,7 +299,7 @@ class ChildMatkaFetcher
              ->execute();
 
          $childmatkas = $stmt->fetchAll(FetchMode::ASSOCIATIVE);
-         dd($childmatkas);
+//         dd($childmatkas);
          $executors = $this->batchLoadExecutors(array_column($childmatkas, 'id'));
 
          return array_map(static function (array $childmatka) use ($executors) {

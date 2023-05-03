@@ -60,10 +60,10 @@ class Handler
 //            throw new \DomainException('ТАКОЙ номер есть в БД.');
 //        }
         $nomer = $this->nomerRepository->get(new NomerId($command->nomer));
-        dd($nomer);
-        $nameStar = explode("-", $nomer->getNameStar());
-//dd();
-        $command->godaVixod = (int) $nameStar[1];
+//        dd($nomer);
+        $nameG = explode("-", $nomer->getName());
+
+        $command->godaVixod = (int) $nameG[1];
 //
         $nom = explode("_", $nomer->getTitle());
 
@@ -71,7 +71,7 @@ class Handler
 
 
         $command->name = $nom[0]."_".$command->sort." : ".
-            $nomer->getLinia()->getNameStar()."-".$nomer->getNameStar().
+            $nomer->getLinia()->getNameStar()."-".$nomer->getName().
                             " : ".$mesto->getNomer()."_пн-".$persona->getNomer();
 
         $plemmatka = new PlemMatka(
