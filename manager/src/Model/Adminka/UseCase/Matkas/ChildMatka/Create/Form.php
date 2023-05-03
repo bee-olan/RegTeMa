@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\Matkas\ChildMatka\Create;
 
-use App\ReadModel\Adminka\Matkas\SparingFetcher;
+//use App\ReadModel\Adminka\Matkas\SparingFetcher;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\Type as ChildMatkaType;
+use App\ReadModel\Adminka\OtecForRas\Linias\LiniaFetcher;
 use App\ReadModel\Adminka\Uchasties\GroupFetcher;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type;
@@ -14,13 +15,24 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class Form extends AbstractType
 {
+    private $otecLinias;
 
+
+    public function __construct(LiniaFetcher $otecLinias)
+    {
+        $this->otecLinias = $otecLinias;
+    }
 
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $otecLinia = [];
+        foreach ($this->otecLinias->otecLiniaNomerList($options['rasa_id']) as $item) {
+            $otecLinia[$item['linia']][$item['nomer'].' ( '.$item['title'].' )'] = $item['otnomer_id'];
+        }
+
         $builder
-//            ->add('name', Type\TextType::class)
+
             ->add('content', Type\TextareaType::class, [
                 'label' => '1) Описание ДочьМатки  ',
                 'required' => false,
@@ -58,6 +70,12 @@ class Form extends AbstractType
                  'expanded' => true,
                  'multiple' => false,
              ])
+
+            ->add('otecNomer', Type\ChoiceType::class, [
+                'label' => 'Отцовская линия',
+                'choices' => $otecLinia,
+            ])
+
             ->add('priority', Type\ChoiceType::class, [
                 'label' => '5) Приоритеты для заказа на тестирование   ',
                 'choices' => [
@@ -76,5 +94,6 @@ class Form extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => Command::class,
         ));
+        $resolver->setRequired(['rasa_id']);
     }
 }

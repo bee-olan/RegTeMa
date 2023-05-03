@@ -26,7 +26,6 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $otecLinia = [];
-//dd($this->otecLinias->otecLiniaNomerList($options['rasa_id']));
         foreach ($this->otecLinias->otecLiniaNomerList($options['rasa_id']) as $item) {
             $otecLinia[$item['linia']][$item['nomer'].' ( '.$item['title'].' )'] = $item['otnomer_id'];
         }
@@ -51,7 +50,6 @@ class Form extends AbstractType
                     'placeholder' => 'Внутреняя нумрация или комментарий. Пример: рыжая красотка )))'
                 ]
             ));
-
     }
 
     public function configureOptions(OptionsResolver $resolver): void

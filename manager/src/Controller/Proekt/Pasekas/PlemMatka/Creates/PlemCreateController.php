@@ -99,7 +99,7 @@ class PlemCreateController extends AbstractController
         $form = $this->createForm(Create\Form::class, $command, ['rasa_id' => $nomer->getLinia()->getRasa()->getId()->getValue()]);
         $form->handleRequest($request);
 
-$kakToTak = $nomer->getLinia()->getNameStar()."-".$nomer->getName();
+        $kakToTak = $nomer->getLinia()->getNameStar()."-".$nomer->getName();
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {

@@ -163,7 +163,7 @@ class ChildMatkaController extends AbstractController
             $command->parent = $parent;
         }
 
-        $form = $this->createForm(Create\Form::class, $command);
+        $form = $this->createForm(Create\Form::class, $command, ['rasa_id' => $plemmatka->getNomer()->getLinia()->getRasa()->getId()->getValue()]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

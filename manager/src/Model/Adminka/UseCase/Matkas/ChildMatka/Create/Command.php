@@ -21,10 +21,11 @@ class Command
      */
     public $uchastie;
 
-//    /**
-//     * @Assert\NotBlank()
-//     */
-//    public $name;
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    public $otecNomer;
 
     /**
      * @var string

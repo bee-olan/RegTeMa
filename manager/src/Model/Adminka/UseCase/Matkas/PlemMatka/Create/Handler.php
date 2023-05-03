@@ -51,24 +51,21 @@ class Handler
     {
 
         $persona = $this->personas->find($command->uchastieId);
+
         $mesto = $this->mestoNomers->find($command->uchastieId);
 
         $kategoria = $this->kategorias->get(new KategoriaId($command->kategoria));
+
         $otecNomer = $this->otecNomers->get(new OtecNomerId($command->otecNomer));
 
-//        if ($this->plemmatkas->hasSortPerson($sort, $command->persona)) {
-//            throw new \DomainException('ТАКОЙ номер есть в БД.');
-//        }
+
         $nomer = $this->nomerRepository->get(new NomerId($command->nomer));
-//        dd($nomer);
+
         $nameG = explode("-", $nomer->getName());
 
         $command->godaVixod = (int) $nameG[1];
-//
+
         $nom = explode("_", $nomer->getTitle());
-
-
-
 
         $command->name = $nom[0]."_".$command->sort." : ".
             $nomer->getLinia()->getNameStar()."-".$nomer->getName().
@@ -86,16 +83,8 @@ class Handler
             $kategoria,
             $otecNomer
         );
-//dd($plemmatka);
-        $this->plemmatkas->add($plemmatka);
 
-//        $nach = $plemmatka->getGodaVixod()+ count($plemmatka->getDepartments());
-//
-//        $command->name = $nach." - ".($nach +1);
-//        $plemmatka->addDepartment(
-//            DepartmentId::next(),
-//            $command->name
-//        );
+        $this->plemmatkas->add($plemmatka);
 
         $this->flusher->flush();
     }

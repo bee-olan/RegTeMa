@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Model\Adminka\Entity\Matkas\ChildMatka;
 
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id as DepartmentId;
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Nomer as OtecNomer;
 use App\Model\AggregateRoot;
 use App\Model\EventsTrait;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\Change\Change;
@@ -180,6 +181,13 @@ class ChildMatka
      */
     private $changes;
 
+    /**
+     * @var OtecNomer
+     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Nomer")
+     * @ORM\JoinColumn(name="otec_nomer_id", referencedColumnName="id", nullable=false)
+     */
+    private $otecNomer;
+
     public function __construct(
         Id $id,
         PlemMatka $plemmatka,
@@ -193,7 +201,8 @@ class ChildMatka
         int $godaVixod,
         string $sezonPlem,
         ?string $sezonChild,
-        int $urowni
+        int $urowni,
+        OtecNomer $otecNomer
     )
     {
         $this->id = $id;
@@ -211,6 +220,7 @@ class ChildMatka
         $this->sezonPlem = $sezonPlem;
         $this->sezonChild = $sezonChild;
         $this->urowni = $urowni;
+        $this->otecNomer = $otecNomer;
         $this->executors = new ArrayCollection();
         $this->changes = new ArrayCollection();
         $this->addChange($author, $date, Set::forNewChildMatka($plemmatka->getId(), $name, $content, $type, $priority,
@@ -543,13 +553,15 @@ class ChildMatka
         return $this->sezonChild;
     }
 
-
     public function getUrowni(): int
     {
         return $this->urowni;
     }
 
-
+    public function getOtecNomer(): OtecNomer
+    {
+        return $this->otecNomer;
+    }
 
     /**
      * @return File[]
@@ -558,7 +570,6 @@ class ChildMatka
     {
         return $this->files->toArray();
     }
-
 
      /**
       * @return Change[]

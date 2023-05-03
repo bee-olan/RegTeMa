@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\Matkas\ChildMatka\Create;
 
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Id as OtecNomerId;
 use App\Model\Flusher;
 use App\Model\Mesto\Entity\InfaMesto\MestoNomerRepository;
 use App\Model\Mesto\Entity\InfaMesto\Id as MestoNomerId;
@@ -21,6 +22,8 @@ use App\Model\Adminka\Entity\Matkas\ChildMatka\Id;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatkaRepository;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\Type;
 
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\NomerRepository as OtNomerRepository;
+
 
 class Handler
 {
@@ -29,6 +32,7 @@ class Handler
     private $childmatkas;
     private $personas;
     private $mestonomers;
+    private $otecNomers;
     private $flusher;
 
     public function __construct(
@@ -37,6 +41,7 @@ class Handler
             ChildMatkaRepository $childmatkas,
             PersonaRepository $personas,
             MestoNomerRepository $mestonomers,
+            OtNomerRepository $otecNomers,
             Flusher $flusher)
     {
         $this->uchasties = $uchasties;
@@ -44,6 +49,7 @@ class Handler
         $this->childmatkas = $childmatkas;
         $this->personas=$personas;
         $this->mestonomers=$mestonomers;
+        $this->otecNomers = $otecNomers;
         $this->flusher = $flusher;
     }
 
@@ -60,7 +66,7 @@ class Handler
 
         $plemmatka = $this->plemmatkas->get(new PlemMatkaId($command->plemmatka));
 
-
+        $otecNomer = $this->otecNomers->get(new OtecNomerId($command->otecNomer));
 
 
         $command->godaVixod = (int)$command->plan_date->format('Y');
@@ -102,7 +108,8 @@ class Handler
             $command->godaVixod,
             $sezonPlem,
             $command->sezonChild=null,
-            $command->urowni = $urowni
+            $command->urowni = $urowni,
+            $otecNomer
         );
 
 
