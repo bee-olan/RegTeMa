@@ -1,12 +1,9 @@
 .proekts {
   margin-bottom: 3rem;
   padding-bottom: 3rem;
-  // max-width: 90rem;
-  // margin-left: 5rem;
+  max-width: 100%;
   margin-right: 5rem;
  
-
-  // max-width: 100%;
   overflow: hidden; // в рамках размера -все лишнее скрылось overflow
 
   background-color: transparent;
@@ -15,10 +12,11 @@
 
   &--uhastiee {
     background-color: $col-uchastie;
+    box-shadow: 0 5px 22px rgba($black, .35);
   }
 
   &--plemmatka {
-    // padding-bottom: 3rem;
+    box-shadow: inset 0px 0px 10px rgba($plem-color, 0.9);
     color: $plem-color;
     background-color: $white;
   }
@@ -69,8 +67,7 @@
     // padding-bottom: 3rem;
     color: $rasa-color;
     background-color: $white;
-    box-shadow: inset 0px 0px 10px rgba($rasa-color, 0.9), //тень внутри
-      0 15px 25px rgba($white, .35);
+    box-shadow: inset 0px 0px 10px rgba($rasa-color, 0.9);
     border-bottom: 2px solid $rasa-color; // linia
   }
 

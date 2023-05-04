@@ -1399,7 +1399,7 @@ pre {
 .side-title__li {
   margin: 0.5rem 0 0.5rem 0;
   padding-left: 1rem;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: #a78c16;
 }
 
@@ -1543,14 +1543,14 @@ pre {
   border-radius: 0;
   box-shadow: none;
   font-family: inherit;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #f6f6f6;
 }
 .formm__control::-moz-placeholder {
-  color: rgba(246, 246, 246, 0.2);
+  color: rgba(63, 63, 63, 0.7);
 }
 .formm__control::placeholder {
-  color: rgba(246, 246, 246, 0.2);
+  color: rgba(63, 63, 63, 0.7);
 }
 .formm__control:focus + .formm__line {
   width: 100%;
@@ -1733,6 +1733,7 @@ img.hover-shadow {
 .proekts {
   margin-bottom: 3rem;
   padding-bottom: 3rem;
+  max-width: 100%;
   margin-right: 5rem;
   overflow: hidden;
   background-color: transparent;
@@ -1740,9 +1741,11 @@ img.hover-shadow {
   border-radius: 5px;
 }
 .proekts--uhastiee {
-  background-color: #8e39c6;
+  background-color: #a050d6;
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.35);
 }
 .proekts--plemmatka {
+  box-shadow: inset 0px 0px 10px rgba(21, 87, 153, 0.9);
   color: #155799;
   background-color: #f6f6f6;
 }
@@ -1775,7 +1778,7 @@ img.hover-shadow {
   margin-right: 2rem;
   color: green;
   background-color: #f6f6f6;
-  box-shadow: inset 0px 0px 10px rgba(0, 128, 0, 0.9), 0 15px 25px rgba(246, 246, 246, 0.35);
+  box-shadow: inset 0px 0px 10px rgba(0, 128, 0, 0.9);
   border-bottom: 2px solid green;
 }
 @media screen and (max-width: 575px) {
@@ -2327,7 +2330,7 @@ img.hover-shadow {
   text-align: center;
 }
 .personaa__title--uchast {
-  color: #8e39c6;
+  color: #a050d6;
 }
 
 .personaa-ramka {
@@ -3097,8 +3100,11 @@ legend {
 }
 
 .uch-tabl__list-li {
-  width: 25%;
+  width: 12.5%;
   text-align: center;
+}
+.uch-tabl__list-li--group {
+  width: 25%;
 }
 
 .uch-tabl__link {
@@ -3109,7 +3115,7 @@ legend {
   border-bottom: 1px solid rgb(190, 186, 151);
   border-top: 1px solid rgb(190, 186, 151);
   border-radius: 4px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 1.2;
   text-decoration: none;
   transition: background-color 0.2s linear;
@@ -3121,7 +3127,8 @@ legend {
 
 .uch-tabl__linia {
   display: block;
-  padding-top: 1rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.5rem;
   background: none;
   border: none;
   border-bottom: 1px solid rgb(175, 169, 112);
@@ -3130,7 +3137,8 @@ legend {
 }
 
 .uch-color {
-  color: #a78c16;
+  color: rgb(175, 169, 112);
+  font-size: 1.6rem;
 }
 .uch-color--colorr {
   color: #a78c16;
@@ -3138,11 +3146,11 @@ legend {
 
 .uchastiee {
   overflow: hidden;
-  background-color: #8e39c6;
+  background-color: #a050d6;
 }
 
 .back-color-uch {
-  background-color: #8e39c6;
+  background-color: #a050d6;
   color: #f6f6f6;
   text-decoration: none;
 }

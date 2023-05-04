@@ -36,9 +36,13 @@
 }
 
 .uch-tabl__list-li {
-	width: 25%;
+	width: 12.5%;
 	//flex-grow: 1;
 	text-align: center;
+
+	&--group{
+		width: 25%;
+	}
 	
 }
 
@@ -55,7 +59,7 @@
 	border-top: 1px solid $border-linia;
 	border-radius: 4px;
 
-	font-size: 1.2rem; // шрифт - размер
+	font-size: 1.4rem; // шрифт - размер
 	line-height: 1.2;
 	
 	text-decoration: none;
@@ -70,10 +74,8 @@
 .uch-tabl__linia {
 	display: block;
 
-	padding-top: 1rem;
-
-	// color: $color-text;
-	
+	padding-top: .6rem;
+	padding-bottom: .5rem;
 	background: none;
 	border: none;
 	border-bottom: 1px solid $border-lin-nav;
@@ -82,7 +84,9 @@
 	
 }
 .uch-color{
-	color: $text;
+	color: $border-lin-nav;
+	font-size: 1.6rem;
+	
 	&--colorr{
 		color: $text;
 	}

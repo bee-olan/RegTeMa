@@ -24,22 +24,22 @@
             <div class="tabll">
                 <ul class = "uch-tabl__list uch-color">
 
-                    <li class = "uch-tabl__list-li uch-tabl__linia">Название</li>
-                    <li class = "uch-tabl__list-li uch-tabl__linia" >Кол-во участников</li>
+                    <li class = "uch-tabl__list-li uch-tabl__list-li--group  uch-tabl__linia">Название</li>
+                    <li class = "uch-tabl__list-li uch-tabl__list-li--group uch-tabl__linia" >Кол-во участников</li>
                 </ul>
 
                 {% for group in groups %}
 
                     <ul class = "uch-tabl__list">
 
-                        <li class = "uch-tabl__list-li ">
+                        <li class = "uch-tabl__list-li uch-tabl__list-li--group">
                             {% if group.uchasties %}
                                 <a  class="uch-tabl__link" href="{{ path('proekt.pasekas.uchasties', {'form': {'group': group.id}}) }}">{{ group.name }}</a>
                             {% else %}
                                 {{ group.name }}
                             {% endif %}
                         </li>
-                        <li class = "uch-tabl__list-li uch-tabl__linia"> {{ group.uchasties }}</li>
+                        <li class = "uch-tabl__list-li uch-tabl__list-li--group uch-tabl__linia"> {{ group.uchasties }}</li>
 
                     </ul>
 
