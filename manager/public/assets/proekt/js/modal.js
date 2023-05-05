@@ -45,7 +45,7 @@ modalClose.forEach(item => {
         let currentModal = event.currentTarget.closest('.modal');
         //ищим ближайшего родителя, для которого будем закрывать м.о.
         // ниже функция закрытия м.о.
-        closeModal(currentModal);
+        closeModall(currentModal);
     });
 });
 
@@ -54,12 +54,12 @@ modal.forEach(item => {
     item.addEventListener('click', event =>{
         let currentModal = event.currentTarget;
 
-        closeModal(currentModal);
+        closeModall(currentModal);
     });
 });
 
 //  функция закрытия м.о
-function closeModal(currentModal) {
+function closeModall(currentModal) {
     let modalContent = currentModal.querySelector('.modal__content');
     modalContent.removeAttribute('style');
 

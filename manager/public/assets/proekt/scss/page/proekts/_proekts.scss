@@ -3,11 +3,11 @@
   padding-bottom: 3rem;
   max-width: 100%;
   margin-right: 5rem;
- 
+  margin-left: 1rem;
   overflow: hidden; // в рамках размера -все лишнее скрылось overflow
 
   background-color: transparent;
-  box-shadow: 0 15px 25px rgba($white, .35);
+  box-shadow: 0 5px 22px rgba($white, .25);
   border-radius: 5px;
 
   &--uhastiee {
