@@ -1065,7 +1065,7 @@ pre {
   .subnavv {
     position: static;
     width: 100%;
-    padding-left: 1rem;
+    padding-left: 2rem;
     background-color: transparent;
     box-shadow: none;
   }
@@ -1089,7 +1089,7 @@ pre {
   .subnavv__link {
     padding-left: 0;
     padding-right: 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
   .subnavv__link:hover {
     background: none;
@@ -1200,6 +1200,11 @@ pre {
 .navv__list {
   display: flex;
 }
+@media screen and (max-width: 991px) {
+  .navv__list {
+    flex-direction: column;
+  }
+}
 
 .navv__item {
   position: relative;
@@ -1211,6 +1216,11 @@ pre {
 }
 .navv__item:hover > .subnavv {
   display: block;
+}
+@media screen and (max-width: 991px) {
+  .navv__item:hover .navv__link {
+    background: none;
+  }
 }
 
 .navv__link {
@@ -1238,6 +1248,13 @@ pre {
   right: 1.35rem;
   transform: translateY(-50%);
 }
+@media screen and (max-width: 991px) {
+  .navv__link {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 1.8rem;
+  }
+}
 
 .karandash {
   height: 2.2rem;
@@ -1263,6 +1280,7 @@ pre {
   top: 0;
   left: 0;
   z-index: 1000;
+  overflow: auto;
 }
 @media screen and (max-width: 991px) {
   .sidebarr {
@@ -1471,7 +1489,7 @@ pre {
   .profilee {
     margin-top: -1rem;
     position: relative;
-    border-bottom: 1px solid #1C1C1C;
+    border-bottom: 2px solid rgb(190, 186, 151);
   }
 }
 
@@ -1485,9 +1503,6 @@ pre {
   box-shadow: 0 7px 20px rgba(0, 0, 0, 0.25);
   border-radius: 10%;
 }
-.profilee__avatar--persona {
-  height: 7rem;
-}
 @media screen and (max-width: 991px) {
   .profilee__avatar {
     width: 5rem;
@@ -1497,6 +1512,9 @@ pre {
     position: absolute;
     left: 0;
   }
+}
+.profilee__avatar--persona {
+  height: 7rem;
 }
 
 .profilee__header {
@@ -1513,7 +1531,6 @@ pre {
 
 .profilee__name {
   font-size: 1.8rem;
-  text-align: center;
 }
 @media screen and (max-width: 991px) {
   .profilee__name {

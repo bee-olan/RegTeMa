@@ -5,7 +5,7 @@
         margin-top: -1rem;
         position: relative; ///---1 что бы дочернии были absolute
         
-        border-bottom: 1px solid #1C1C1C;
+        border-bottom: 2px solid $border-foto;
     }
 }
 
@@ -20,11 +20,7 @@
      box-shadow: 0 7px 20px rgba(0, 0, 0, .25);
      border-radius: 10%;
 
-     &--persona{
-       
-        height: 7rem;
-    }
-
+ 
      @include breakpoint($tablet-bp) {
         width: 5rem;
         height: 4.5rem;
@@ -35,11 +31,15 @@
         position: absolute; /// ---1 что бы фото и надпись были не в столбик
         left: 0;       
     }
+
+    &--persona{
+       
+        height: 7rem;
+    }
 }
 
 .profilee__header {
     margin-bottom: 2rem;
-    
     text-align: center;
     
     @include breakpoint($tablet-bp) {
@@ -52,7 +52,7 @@
 .profilee__name {
     
     font-size: 1.8rem;
-    text-align: center;
+    // text-align: center;
 
     @include breakpoint($tablet-bp) {
         font-size: 1.5rem;

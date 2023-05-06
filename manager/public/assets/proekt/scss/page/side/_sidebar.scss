@@ -1,11 +1,15 @@
 .sidebarr {
     width: $sidebar-width;
     height: 100vh;
+
     background: linear-gradient($grad2, $grad1);
+
     position: fixed;
     top: 0;
     left: 0;
     z-index: $z-index-sidebar;
+
+    overflow: auto;
 
 //-------проверка как работает миксин -----------------
     @include breakpoint($tablet-bp) {

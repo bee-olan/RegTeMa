@@ -9,11 +9,11 @@
 
             <img class="profilee__avatar" src="{{ asset('assets/proekt/images/profile/olan.jpg') }}" alt="">
             <div class="profilee__header">           
-                <div class="profilee__name">! Ольга Игоревна </div>
+                <div class="profilee__name"> Ольга Игоревна </div>
                 <div class="profilee__prof"> Пчеловод </div>
             </div>
-
-{# комментарий в modal.js  #}
+ 
+                                                {# комментарий в modal.js  #}
             <div class="profilee__text">
                 <button class="btnn  btnn--pt btnn--mb0 " type="button" data-modal="contact-modal">
                     Написать мне
@@ -26,7 +26,34 @@
             </div>
             
         </div><!-- /.profile -->
-    
+     <nav class="navv  navv--mobile">
+     <ul class="navv__list">
+                <li class="navv__item">
+                    <a class="navv__link"  href="/proekt">Главная</a>
+                </li>
+                <li class="navv__item">
+                    <a class="navv__link  has-subnavv" href="{{ path('proekt.pasekas.uchasties.uchastiee') }}">Участие</a> 
+                    <ul class="subnavv">
+							<li>
+								<a class="subnavv__link" href="{{ path('proekt.pasekas.uchasties.uchastiee') }} ">Стать участником</a>
+							</li>
+							<li>
+								<a class="subnavv__link" href="{{ path('proekt.pasekas.uchasties.groupas') }}">Список групп</a>
+							</li>
+							<li>
+								<a class="subnavv__link" href="{{ path('proekt.pasekas.uchasties') }}">Список участников</a>
+							</li>
+
+						</ul>                
+                </li>
+                <li class="navv__item">
+                    <a class="navv__link"  href="{{ path('proekt') }}">Матки</a>
+                </li>
+                <li class="navv__item">
+                    <a class="navv__link" href="#">Навигация</a>
+                </li>
+            </ul>
+  </nav>
        
     </div><!-- /.sidebar__content -->
     <div class="sidebarr__footer-text">
