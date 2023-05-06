@@ -13,6 +13,7 @@
     position: absolute;
     top: 50%;
     left: 1.5rem;
+    top: 3rem;;
     
     transform: translateY(-50%);
     
@@ -70,7 +71,7 @@
         }
     }
     
-    // @include breakpoint($tablet-bp) {
-    //     display: block;
-    // }
+    @include breakpoint($tablet-bp) {
+        display: block;
+    }
 }

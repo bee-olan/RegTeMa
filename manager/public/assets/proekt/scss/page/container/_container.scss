@@ -4,4 +4,10 @@
     padding-left: 3rem;
     padding-right: 5rem;
     padding-top: .5rem;
+
+
+    @include breakpoint($mobile-bp) {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
 }

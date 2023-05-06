@@ -5,13 +5,13 @@
         margin: 3rem 0;
     }
     
-    // @include breakpoint($tablet-bp) {
-    //     display: none;
+    @include breakpoint($tablet-bp) {
+        display: none;
         
-    //     &--mobile {
-    //         display: block;
-    //     }
-    // }
+        &--mobile {
+            display: block;
+        }
+    }
 }
 
 .navv__list {
