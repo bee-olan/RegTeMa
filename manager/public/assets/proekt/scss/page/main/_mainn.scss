@@ -3,6 +3,7 @@
 
     // добавляем миксин  - убираемпадинг слева
     @include breakpoint($tablet-bp) {
+        padding-top: 6rem; 
         padding-left: 0;
     }
 }

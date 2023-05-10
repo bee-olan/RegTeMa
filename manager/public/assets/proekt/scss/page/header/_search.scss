@@ -2,10 +2,25 @@
     width: 100%;
     max-width: 17rem;
 
-  background-color: $primary;
+    background-color: $primary;
     // background-image: url("./assets/images/sait/logo_sot.jpg") center no-repeat;
+    @include breakpoint($tablet-bp) {
+    max-width: 31rem;
+    }
 }
-
+.searchh_osnowa{
+    // padding-bottom: 5rem;
+     background-color: rgb(119,122,77);
+     background: -webkit-linear-gradient(-45deg, 
+     rgb(119,122,77) 25%,
+     rgb(175, 169, 112) 25%, 
+     #ccb44b 50%, 
+     rgb(119,122,77) 50%, 
+     rgb(119,122,77) 75%, 
+     rgb(175, 169, 112) 75%);
+     background-size:4px 4px;
+    }
+     
 .searchh__input {
      display: block;
      width: 100%;
@@ -24,6 +39,7 @@
     }
 
     @include breakpoint($tablet-bp) {
+       
         height: 4rem;
         padding-top: .9rem;
         padding-bottom: .9rem;

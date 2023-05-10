@@ -23,8 +23,7 @@
     {% include('proekt/mestoo/_mesto-includ.html.twig') %}
 
         <h2 class = "pagee__title ">Выбрали  Округ </h2>
-    {# <div class="mestoo">
-        <div class="mestoo__raspol"> #}
+   
             <ul class="mestoo__title mestoo--okru">
 
                  <li class="mestoo__title-item mestoo__nomer-text">{{ okrug.nomer }}</li>
@@ -35,8 +34,7 @@
                     </svg>
                 </li>
             </ul>
-        {# </div>
-    </div> #}
+ 
  <div class = "mestoo__linia-top "></div>
 
   <h2 class = "pagee__title pagee__title--obla ">
@@ -83,27 +81,7 @@
         </div>
     {% endfor %}
 
-{#    {% for raion in raions %}  #}
-{#        <div class="mestoo  mestoo--raio">#}
-{#            <div class="mestoo__raspol">#}
-{#                <ul class="mestoo__title">#}
-{#                    <li class="mestoo__title-item mestoo__nomer-red">#}
-{#                    <a href="{{ path('proekt.mestoo.mesto', {'raion_id': raion.id ,'okrug_id' : okrug.id , 'oblast_id':  oblast.id }) }}">#}
-{#                            {{ raion.mesto }}#}
-{#                    </a> #}
-{#                    #}
-{#                    </li>#}
-{#                    <li class="mestoo__title-item ">#}
-{#                        <a href="{{ path('proekt.mestoo.mesto', {'raion_id': raion.id ,'okrug_id' : okrug.id, 'oblast_id':  oblast.id }) }}">#}
-{#                            {{ raion.name }} #}
-{#                        </a>  #}
-{#                    </li>           #}
-{#                </ul>#}
-{#            </div>    #}
-{#        </div>#}
-{#    {% endfor %}#}
 
-{# </div>#}
     <div class = "mestoo__linia-top mestoo-ml"></div>
 
     <div  class="proekts proekts-plr">

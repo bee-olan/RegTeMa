@@ -15,8 +15,8 @@
 
 <title>Привер Проект</title>
 </head>
-<body class="show-sidebar" id="modalId" >
-
+<body  id="modalId" >
+{# class="show-sidebar" #}
 <div class="pagee">
   
     {% block header %}
@@ -29,24 +29,24 @@
 
     <!-- Main -->
     <main class="mainn">
-
-        <div class="kroxii kroxii-gradien ">
-            <div class="kroxii-xl">
-              {% block kroxii %} {% endblock %}
+        <div class="containerr">
+            <div class="kroxii kroxii-gradien ">
+                <div class="kroxii-xl">
+                {% block kroxii %} {% endblock %}
+                </div>
             </div>
-        </div>
 
-        {# <div class="containerr"> #}
+       
         {% include '_flashes-pr.html.twig' %}
 
-        {% block bodyy %}
-            {% if uchastie and  persona and mestoNomer %}
-                {{ include('proekt/base/_main-matkas.html.twig') }}
-            {% else %}
-                {{ include('proekt/base/_main-uchast.html.twig') }}
-            {% endif %}
-         {% endblock %}
-        {# </div> #}
+            {% block bodyy %}
+                {% if uchastie and  persona and mestoNomer %}
+                    {{ include('proekt/base/_main-matkas.html.twig') }}
+                {% else %}
+                    {{ include('proekt/base/_main-uchast.html.twig') }}
+                {% endif %}
+            {% endblock %}
+        </div>
     </main>
 </div>
 
@@ -54,9 +54,6 @@
    {{  include('proekt/base/_story-modal.html.twig')}}
     {{  include('proekt/base/_contact-modal.html.twig') }}
 {# {% endblock %} #}
-
-{# {{include('proekt/base/_story-modal.html.twig')}} #}
-{# {{include('proekt/base/_contact-modal.html.twig')}} #}
 
 <!-- JS -->
 <script src="../assets/proekt/js/modal.js"></script>

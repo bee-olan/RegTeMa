@@ -66,6 +66,11 @@ padding-bottom: 5rem;
     grid-column-gap: 10px;
     grid-template-rows: 140px;
     margin-bottom: 3rem;
+
+    @include breakpoint($mobile-bp) {
+        grid-template-columns: 110px 110px 110px 110px 110px;
+        overflow: auto;
+    }
 }
 
 .stories__item {

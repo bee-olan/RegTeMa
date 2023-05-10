@@ -3,6 +3,7 @@
     height: 100vh;
 
     background: linear-gradient($grad2, $grad1);
+    // box-shadow: 5px 0 15px rgba(#050505, .1);
 
     position: fixed;
     top: 0;
@@ -49,9 +50,6 @@
 
 .sidebarr__content {
     padding: 0 .2rem 0 .6rem; //отступ слева-справа
-   // поднять\опустить блок sidebar__content
-   //margin-top: 1rem;
-   //margin-top: -1rem; // пропадает бордюр - исправляем
 
    @include breakpoint($tablet-bp) {
     flex-grow: 1;

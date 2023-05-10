@@ -15,7 +15,7 @@ class Form extends AbstractType
     {
         $builder
             ->add('text', Type\TextareaType::class,[
-                'label' => 'Запрос :  ',
+                'label' => 'Запрос ',
                 'attr' => [
                     'rows' => 3,
                     'placeholder' => 'Округ - Регион/Область - Район '

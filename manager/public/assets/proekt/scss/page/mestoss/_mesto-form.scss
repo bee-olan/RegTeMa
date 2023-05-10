@@ -24,6 +24,8 @@
                 .form__group {
                     margin-bottom: 1.5rem;
                     position: relative;
+
+                   
                 }
                     
                 .form__control {
@@ -44,6 +46,11 @@
                     &::placeholder {
                         color: rgba($white, .2);
                     }
+
+                    @include breakpoint($tablet-bp){
+                        padding-right: 0;
+                        padding-left: 0; 
+                    }
                                                                
                 }               
                     
@@ -53,6 +60,12 @@
                     // margin-right: 1.5rem;
                     font-size: 1.8rem;
                     color: $border-kroxi; 
+
+                    @include breakpoint($tablet-bp){
+                       
+                        padding-right: 5rem;
+                         padding-left: 0; 
+                    }
                 }
 
                 textarea {
@@ -66,11 +79,19 @@
                     overflow: hidden;
                     resize: none;
 
-                
+                        @include breakpoint($tablet-bp){
+                            padding-right: 0;
+                            padding-left: 0; 
+                        }
                     }
             }                    
         }
-    }                
+    } 
+    
+    @include breakpoint($tablet-bp) {
+        padding-right: 0;
+        padding-left: 0;
+    }
 }       
 
 

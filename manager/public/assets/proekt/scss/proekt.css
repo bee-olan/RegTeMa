@@ -502,6 +502,22 @@ pre {
   background-attachment: fixed;
   overflow: hidden;
 }
+@media screen and (max-width: 991px) {
+  .show-sidebar .pagee {
+    position: relative;
+  }
+  .show-sidebar .pagee:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+}
 
 .pagee__title {
   padding-left: 3rem;
@@ -516,6 +532,14 @@ pre {
 }
 .pagee__title--raio {
   padding-left: 40rem;
+}
+@media screen and (max-width: 991px) {
+  .pagee__title--obla {
+    display: none;
+  }
+  .pagee__title--raio {
+    padding-left: 0.3rem;
+  }
 }
 
 .btnn {
@@ -644,6 +668,11 @@ pre {
   position: fixed;
   top: 60px;
   z-index: 900;
+}
+@media screen and (max-width: 991px) {
+  .kroxii {
+    display: none;
+  }
 }
 
 .kroxii-xl * {
@@ -1019,34 +1048,22 @@ pre {
 }
 
 .headerr__left {
-  width: 75%;
+  width: 70%;
 }
 @media screen and (max-width: 991px) {
   .headerr__left {
-    width: 40%;
+    width: 30%;
   }
 }
 
 .headerr__right {
-  width: 25%;
+  width: 30%;
   display: flex;
   justify-content: flex-end;
-  margin-right: 1rem;
 }
 @media screen and (max-width: 991px) {
   .headerr__right {
-    width: 60%;
-  }
-}
-
-.headerr-container {
-  max-width: 100%;
-  margin: 1rem 19rem 5rem 0rem;
-}
-@media screen and (max-width: 575px) {
-  .headerr-container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    width: 70%;
   }
 }
 
@@ -1054,7 +1071,7 @@ pre {
   display: none;
   width: 20rem;
   padding: 0.5rem 0;
-  background-color: rgba(151, 144, 93, 0.2);
+  background-color: rgba(151, 144, 93, 0.4);
   border-radius: 0 0 5px 5px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   position: absolute;
@@ -1082,7 +1099,9 @@ pre {
 }
 .subnavv__link:hover {
   color: #f6f6f6;
-  background-color: rgb(151, 144, 93);
+  background-color: rgb(119, 122, 77);
+  background: -webkit-linear-gradient(-45deg, rgb(119, 122, 77) 25%, rgb(175, 169, 112) 25%, #ccb44b 50%, rgb(119, 122, 77) 50%, rgb(119, 122, 77) 75%, rgb(175, 169, 112) 75%);
+  background-size: 4px 4px;
   text-decoration: none;
 }
 @media screen and (max-width: 991px) {
@@ -1100,6 +1119,17 @@ pre {
   width: 100%;
   max-width: 17rem;
   background-color: transparent;
+}
+@media screen and (max-width: 991px) {
+  .searchh {
+    max-width: 31rem;
+  }
+}
+
+.searchh_osnowa {
+  background-color: rgb(119, 122, 77);
+  background: -webkit-linear-gradient(-45deg, rgb(119, 122, 77) 25%, rgb(175, 169, 112) 25%, #ccb44b 50%, rgb(119, 122, 77) 50%, rgb(119, 122, 77) 75%, rgb(175, 169, 112) 75%);
+  background-size: 4px 4px;
 }
 
 .searchh__input {
@@ -1139,7 +1169,6 @@ pre {
   position: absolute;
   top: 50%;
   left: 1.5rem;
-  top: 3rem;
   transform: translateY(-50%);
 }
 .burgerr:before, .burgerr:after,
@@ -1147,7 +1176,7 @@ pre {
   display: block;
   width: 100%;
   height: 2px;
-  background-color: #f6f6f6;
+  background-color: #ccb44b;
   position: absolute;
   left: 0;
 }
@@ -1210,7 +1239,9 @@ pre {
   position: relative;
 }
 .navv__item:hover .navv__link {
-  background-color: rgb(151, 144, 93);
+  background-color: rgb(119, 122, 77);
+  background: -webkit-linear-gradient(-45deg, rgb(119, 122, 77) 25%, rgb(175, 169, 112) 25%, #ccb44b 50%, rgb(119, 122, 77) 50%, rgb(119, 122, 77) 75%, rgb(175, 169, 112) 75%);
+  background-size: 4px 4px;
   text-decoration: none;
   color: #f6f6f6;
 }
@@ -1250,7 +1281,6 @@ pre {
 }
 @media screen and (max-width: 991px) {
   .navv__link {
-    padding-left: 0;
     padding-right: 0;
     font-size: 1.8rem;
   }
@@ -1569,6 +1599,7 @@ pre {
 }
 @media screen and (max-width: 991px) {
   .mainn {
+    padding-top: 6rem;
     padding-left: 0;
   }
 }
@@ -1892,10 +1923,10 @@ img.hover-shadow {
 }
 
 .containerr {
-  max-width: 90rem;
+  max-width: 100%;
   margin: 0 auto;
   padding-left: 3rem;
-  padding-right: 5rem;
+  padding-right: 3rem;
   padding-top: 0.5rem;
 }
 @media screen and (max-width: 575px) {
@@ -1909,8 +1940,8 @@ img.hover-shadow {
   margin-bottom: 3rem;
   padding-bottom: 3rem;
   max-width: 100%;
-  margin-right: 4rem;
-  margin-left: 2rem;
+  margin-right: 0;
+  margin-left: 0;
   overflow: hidden;
   background-color: transparent;
   box-shadow: 0 5px 22px rgba(246, 246, 246, 0.25);
@@ -2102,6 +2133,12 @@ img.hover-shadow {
   grid-column-gap: 10px;
   grid-template-rows: 140px;
   margin-bottom: 3rem;
+}
+@media screen and (max-width: 575px) {
+  .stories {
+    grid-template-columns: 110px 110px 110px 110px 110px;
+    overflow: auto;
+  }
 }
 
 .stories__item {
@@ -2298,6 +2335,17 @@ img.hover-shadow {
 .mestoo--raio {
   padding-left: 36rem;
 }
+@media screen and (max-width: 991px) {
+  .mestoo {
+    padding: 0.3rem 0.3rem 0.4rem 0.5rem;
+  }
+  .mestoo--obla {
+    padding-left: 0.2rem;
+  }
+  .mestoo--raio {
+    padding-left: 0.3rem;
+  }
+}
 
 .mestoo__raspol {
   display: flex;
@@ -2326,6 +2374,11 @@ img.hover-shadow {
   font-size: 1.8rem;
   color: #ED3024;
 }
+@media screen and (max-width: 991px) {
+  .mestoo__nomer-red {
+    font-size: 2.1rem;
+  }
+}
 
 .mestoo__nomer-text {
   font-size: 1.8rem;
@@ -2335,6 +2388,11 @@ img.hover-shadow {
 .mestoo__name-text {
   font-size: 2.1rem;
   color: rgb(175, 169, 112);
+}
+@media screen and (max-width: 991px) {
+  .mestoo__name-text {
+    display: none;
+  }
 }
 
 .mestoo__name {
@@ -2351,13 +2409,28 @@ img.hover-shadow {
   margin-left: 0;
   padding-bottom: 2rem;
 }
+@media screen and (max-width: 991px) {
+  .mestoo__linia-top {
+    padding: 0;
+  }
+}
 
 .mestoo-ml20 {
   margin-left: 18rem;
 }
+@media screen and (max-width: 991px) {
+  .mestoo-ml20 {
+    margin-left: 0;
+  }
+}
 
 .mestoo-ml40 {
   margin-left: 42rem;
+}
+@media screen and (max-width: 991px) {
+  .mestoo-ml40 {
+    margin-left: 0;
+  }
 }
 
 .inform__avatar {
@@ -2425,10 +2498,22 @@ img.hover-shadow {
 .mesto-form form div div .form__control::placeholder {
   color: rgba(246, 246, 246, 0.2);
 }
+@media screen and (max-width: 991px) {
+  .mesto-form form div div .form__control {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
 .mesto-form form div div label {
   min-width: 10%;
   font-size: 1.8rem;
   color: #a78c16;
+}
+@media screen and (max-width: 991px) {
+  .mesto-form form div div label {
+    padding-right: 5rem;
+    padding-left: 0;
+  }
 }
 .mesto-form form div div textarea {
   min-width: 90%;
@@ -2440,6 +2525,18 @@ img.hover-shadow {
   color: #444444;
   overflow: hidden;
   resize: none;
+}
+@media screen and (max-width: 991px) {
+  .mesto-form form div div textarea {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+@media screen and (max-width: 991px) {
+  .mesto-form {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 .personaa-form div div div {
@@ -3344,6 +3441,12 @@ legend {
   margin: 0 0 2.5rem 2.5rem;
   padding-left: 2.5rem;
 }
+@media screen and (max-width: 991px) {
+  .uchastiee__header {
+    padding-left: 0;
+    margin: 0 0 2.5rem 0.5rem;
+  }
+}
 
 .uchastiee__title {
   margin-bottom: 1.5rem;
@@ -3483,6 +3586,11 @@ legend {
   height: 30px;
   overflow: hidden;
   resize: none;
+}
+@media screen and (max-width: 991px) {
+  .uchastiee-form form {
+    overflow: auto;
+  }
 }
 
 .filter-child {

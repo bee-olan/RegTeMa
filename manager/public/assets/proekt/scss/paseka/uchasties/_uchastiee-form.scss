@@ -21,30 +21,26 @@
                             margin-bottom: .6rem;
 
                             div {
-                                    // form-group{
-                                    
                                     input{
                                         margin-left: 4rem;
                                         box-sizing: border-box;
                                         height: 16px; 
                                         width: 16px;
-
-                                        // &:focus  { 
-                                        //     margin-left: -4rem;
-                                        //     box-sizing: border-box;
-                                        //     height: 16px; 
-                                        //     width: 16px; 
-                                        // }
+                                        
                                     }
                                     label{
                                         // margin-left: 2rem;
                                         // margin-right: 1.5rem;
                                         font-size: 1.6rem;
                                         color: inherit;
-                                    }
-                            }    
-                        }
-            }    
+                                    }   
+                                }
+            
+                               
+                        }         
+
+            } 
+            
             div {
                 // form-group 
                 display: flex;
@@ -108,71 +104,15 @@
                             resize: none;
                         }
 
-                        //.form__line {
-                            // width: 0; // если фокус не на вводе - полоска скывается т.е. длина ==0
-                            // height: 1px;
-                        
-                            // background-color: $grad1;
-                        
-                            // position: absolute;
-                            // left: 0;
-                            // bottom: 0;
-                            // z-index: 1;
-                        
-                            // transition: width .2s linear;
-                        //}
-                    }                    
+                    } 
+                                        
             }
-        }                
-    }       
+        }
+        
+        @include breakpoint($tablet-bp){       
+            overflow: auto;       
+      }    
+    } 
+       
 }
 
-//////////////////////////////////////
-
-
-
-//.form-control{
-    // display: block;
-    // width: 100%;
-    // padding: .5rem 0 .75rem;
-
-    // background: none;// убираем цвет
-    
-    // border: none;
-    // border-bottom: 1px solid $border-linia; //этот цвет полоски меняется при фокусе
-    // border-radius: 0;
-    // box-shadow: none;
-
-    // font-family: inherit;// наследуемся
-    // font-size: 1.4rem;
-    // color: $white;
-
-    // &::placeholder {
-    //     color: rgba( $text-uchastie, .7);// непрозрачность
-    // }
-
-    // &:focus + .form__line {  //когда фокус на полоске формы - длину увеличиваем
-    //     width: 100%;
-    // }
-
-    // &--textarea {
-    //     height: 30px; // уменьшаем текстовое поле по высоте
-    //     overflow: hidden;
-    //     resize: none;
-    //  }
-    
-//}
-
-// .form__line {
-//     width: 0; // если фокус не на вводе - полоска скывается т.е. длина ==0
-//     height: 1px;
-
-//     background-color: $grad1;
-
-//     position: absolute;
-//     left: 0;
-//     bottom: 0;
-//     z-index: 1;
-
-//     transition: width .2s linear;
-// }

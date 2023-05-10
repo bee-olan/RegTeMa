@@ -17,6 +17,11 @@
 .uchastiee__header {
   margin: 0 0 2.5rem 2.5rem;
   padding-left: 2.5rem;
+
+    @include breakpoint($tablet-bp){
+      padding-left: 0;
+      margin: 0 0 2.5rem .5rem;
+  }
 }
 
 .uchastiee__title {

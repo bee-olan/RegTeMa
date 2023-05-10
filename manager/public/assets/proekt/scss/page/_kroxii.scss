@@ -17,6 +17,10 @@
     top: 60px;
    // left:  $sidebar-width;
     z-index: $z-index-kroxii; 
+
+    @include breakpoint($tablet-bp) {
+        display: none;
+    }
 }
  .kroxii-xl * {
      box-sizing: border-box;

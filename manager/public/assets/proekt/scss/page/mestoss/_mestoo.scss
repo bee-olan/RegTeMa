@@ -28,6 +28,19 @@
         padding-left: 36rem;
         // max-width: 33%;
     }
+
+    @include breakpoint($tablet-bp) {
+
+        padding: .3rem .3rem .4rem .5rem;
+
+        &--obla {
+            padding-left: .2rem;           
+        }
+        &--raio {
+            padding-left: .3rem;
+           
+        } 
+    }
  }
 
 .mestoo__raspol {
@@ -53,34 +66,29 @@
 
 .mestoo__title-item {
     padding: 1rem;
-    // &:not(:last-child):after { // убираем точку у последнего эл-та
-    //     content: "";
-    //     display: inline-block;
-    //     width: 6px;// точка между элементами
-    //     height: 6px;
-    //     margin: 0 1.5rem; //отчтупы между точкой и элементами
-    //     position: relative;
-    //     top: -2px; // точка поднять вверх
 
-    //     border-radius: 50%;
-    //     background-color: $color-text;
-    // }
 }
 
 
 .mestoo__nomer-red{
     font-size: 1.8rem;
     color: $red; 
+    @include breakpoint($tablet-bp){
+        font-size: 2.1rem;
+    }
 }
 .mestoo__nomer-text{
     font-size: 1.8rem;
     color: $text; 
 }
-// .name-sait --- font-size: 2.1rem;
-   // color: $border-lin-nav;
+
 .mestoo__name-text {
     font-size: 2.1rem;
     color: $border-lin-nav;
+
+    @include breakpoint($tablet-bp){
+        display: none;
+    }
 }
 
 .mestoo__name {
@@ -101,117 +109,24 @@
     margin-left: 0;
     padding-bottom: 2rem;
 
+    @include breakpoint($tablet-bp){
+        padding: 0;
+    }
+
 }
 .mestoo-ml20{
     margin-left: 18rem;
+
+    @include breakpoint($tablet-bp){
+        margin-left: 0;
+    }
 }
 .mestoo-ml40{
     margin-left: 42rem;
+
+    @include breakpoint($tablet-bp){
+        margin-left: 0;
+    }
 }
 
-// .infoo-gradien {
-//     background-image: linear-gradient(
-//         to bottom,
-//         rgba($gradien, 0),
-//         rgba($gradien, .1) 25%,
-//         rgba($gradien, .2) 50%,
-//         rgba($gradien, .1) 75%,
-//         rgba($gradien, 0)
-//      );
-// }
-// .mar-bot-lef {
-//     margin-left: -3rem;
-//     margin-bottom: 5rem;
-// }
 
-// .marg-top {
-//     margin-top: -7rem;
-// }
-
-// .marg-top-6 {
-//     margin-top: 6rem;
-// }
-// .marg-bot-2 {
-//     margin-bottom: 2rem;
-// }
-
-// .mar-lef {
-//     margin-left: 15rem;
-// }
-// .mar-lef2 {
-//     margin-left: 30rem;
-// }
-
-
-// .mestos__title {
-//     margin-top: 2.5rem;
-//     margin-bottom: 1rem;
-//   padding-left: 2rem;
-//     font-size: 2.1rem;
-//     color: $white;
-  
-//     &--center {
-//         text-align: center;
-//     }
-//   }
-
-
-
-
-// .linia-top {
-//     border-top: 1px solid #beba97;
-// }
-
-// .nomer-sait-text,
-// .nomer-sait-red,
-// .nomer-sait {
-//     font-size: 1.8rem;
-// }
-// .nomer-sait {
-//     color: $text; 
-// }
-// .nomer-sait-red {
-//     color: red; 
-// }
-
-// .nomer-sait-text {
-//     $color: $grad1; 
-// }
-// .mestoo__read {
-//     font-size: 1.2rem;
-//     color: $text;
-// }
-
-// .mestoo-ramka {
-//     background-color: #588557;
-//       margin-bottom: 2rem;
-  
-//       display: flex;
-//       //justify-content: space-around;
-//       justify-content: flex-start;
-//       align-items: center;
-  
-//       flex-direction: row;
-//       flex-wrap: wrap;
-  
-//       width: 100%;
-//       background: transparent;
-//       padding: 5px;
-  
-//   }
-//   .mestoo-ramka__nomer {
-//       width: 8rem;
-//       box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
-//       background: transparent;
-//       font-size: 1.6rem;
-//       color: #fff;
-//       margin: 10px;
-//       padding: .5rem .5rem  .5rem  1.7rem;
-  
-//       transition: box-shadow .2s linear;
-
-//       &--persona {
-//         width: 4rem;
-//     }
-  
-//   }
