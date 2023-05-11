@@ -1,14 +1,6 @@
-// 1шаг - надо повесить обработчик события: клик вызова мод.ок
-// data-modal="mesto-modal" - дата-атрибут для идентификации мод.окна
-// "mesto-modal" - это id и назвние мод.окна, которого будем вызывать
-
-// выбираем все кнопки и пройдем циклом
-
-
-// 1 - выбираем все кнопки с селектором data-modal --  мод.окна
 const modalBtn = document.querySelectorAll('[data-modal]');
-//в body сохраняем документ body
-const body = document.body;
+// const body = document.body;
+const bod = document.body;
 
 //выбираем кнопки с классом modal__close - закрыть м.о.
 const modalClose = document.querySelectorAll('.modal__close');
@@ -30,7 +22,7 @@ modalBtn.forEach(item => {
         });
 
         modal.classList.add('show'); // это добавляет класс show для визуализации м.о.
-        body.classList.add('no-scroll');// это добавляет класс no-scroll для отмены скрола, когда открыто м.о..
+        bod.classList.add('no-scroll');// это добавляет класс no-scroll для отмены скрола, когда открыто м.о..
 
         setTimeout(() => {
             modalContent.style.transform = 'none' ;
@@ -65,7 +57,15 @@ function closeModall(currentModal) {
 
     setTimeout(() => {
         currentModal.classList.remove('show');
-        body.classList.remove('no-scroll');
+        bod.classList.remove('no-scroll');
     }, 200);
 
 }
+// 1шаг - надо повесить обработчик события: клик вызова мод.ок
+// data-modal="mesto-modal" - дата-атрибут для идентификации мод.окна
+// "mesto-modal" - это id и назвние мод.окна, которого будем вызывать
+
+// выбираем все кнопки и пройдем циклом
+
+
+// 1 - выбираем все кнопки с селектором data-modal --  мод.окна

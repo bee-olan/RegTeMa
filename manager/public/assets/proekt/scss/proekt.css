@@ -349,8 +349,13 @@ body {
   line-height: 1.5;
   color: #f6f6f6;
 }
-body.no-scroll, body.show-sidebar {
+body.no-scroll {
   overflow: hidden;
+}
+@media screen and (max-width: 991px) {
+  body.show-sidebar {
+    overflow: hidden;
+  }
 }
 
 *,
@@ -506,17 +511,6 @@ pre {
   .show-sidebar .pagee {
     position: relative;
   }
-  .show-sidebar .pagee:after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 100;
-  }
 }
 
 .pagee__title {
@@ -539,6 +533,19 @@ pre {
   }
   .pagee__title--raio {
     padding-left: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .pagee__mask {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
   }
 }
 

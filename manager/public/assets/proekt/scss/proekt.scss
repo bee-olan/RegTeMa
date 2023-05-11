@@ -17,11 +17,16 @@ body {
   font-size: 1.4rem;
   line-height: 1.5 ;
   color: $white;
-// скрываем скролл для body при модальном о.
-  &.no-scroll,
-  &.show-sidebar {
-    overflow: hidden;
-  }
+  // скрываем скролл для body при модальном о.
+    &.no-scroll{
+      overflow: hidden;
+    }
+
+    @include breakpoint($tablet-bp) {
+        &.show-sidebar {
+          overflow: hidden;
+        }
+    }
 }
 *,
 *:before,

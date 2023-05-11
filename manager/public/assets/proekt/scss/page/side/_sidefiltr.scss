@@ -27,6 +27,13 @@
         .show-sidebar & {
             transform: translateX(0);
         }
+
+      .sideemenu__ul {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+
+      }
     }
 }
 .sid__header {
@@ -65,7 +72,7 @@
         height: 100%;
         //padding: 0 .2rem;
           margin-top: .4rem;
-       margin-left: .4;
+       margin-left: .4rem;
       // margin: 1.5rem 1rem;
         object-fit: cover; // если картинка не по размеру
        
@@ -75,6 +82,16 @@
 .sideefiltr{
     display: block;   
 }
+
+//.sideemenu__ul {
+//   display: none;
+//
+//  @include breakpoint($tablet-bp) {
+//      display: flex;
+//      flex-wrap: wrap;
+//      align-items: center;
+//      }
+//}
 
 .sideefiltr__ul { 
     display: flex;
@@ -90,7 +107,7 @@
     padding-left: 6px;
       //flex: 0 0 16.66667%;
     height:  15.5rem;
-    width: calc($sidebar-width - 4rem);
+    //width: calc($sidebar_width - 4rem);
 
     box-shadow: 0 5px 22px rgba($black, .25);
 
