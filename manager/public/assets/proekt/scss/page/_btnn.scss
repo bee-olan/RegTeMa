@@ -28,6 +28,7 @@
             background: linear-gradient( $grad1-o, $grad2-o);
             text-decoration: none;
             color: $grad2;
+            
         }
 
         &--plus{
@@ -35,6 +36,12 @@
             padding: 0 .7rem;
             margin: 0;
         }
+
+        &--break {
+            margin: 0 3.5rem -2rem 0;
+            vertical-align:text-top; 
+            font-size: 1.8rem;
+          }
 
         &--col {      
             border: 1px solid $plem-color;
@@ -45,17 +52,17 @@
             }
         }
 
-      &--col-golub {
-        box-shadow: inset 0px 0px 10px rgba($grad1, 0.9);
-        border: 1px solid $grad1;
-        font-size: 1.5rem;
-        &:hover {
-          box-shadow:  0px 0px 10px rgba($grad1, 0.6);
-          background: none;
-          text-decoration: none;
-          color: $grad1;
+        &--col-golub {
+            box-shadow: inset 0px 0px 10px rgba($grad1, 0.9);
+            border: 1px solid $grad1;
+            font-size: 1.5rem;
+            &:hover {
+            box-shadow:  0px 0px 10px rgba($grad1, 0.6);
+            background: none;
+            text-decoration: none;
+            color: $grad1;
+            }
         }
-      }
         &--col-child {
             box-shadow:  0px 0px 10px rgba($child-text, 0.5);
             border: 1px solid $child-form;
@@ -69,28 +76,25 @@
             }
         }
 
-  &--col-sezon {
-    box-shadow: inset 0px 0px 10px rgba($sezon-teni, 0.9);
-    border: 1px solid $sezon-teni;
-    font-size: 1.6rem;
-    &:hover {
-      box-shadow:  0px 0px 10px rgba($sezon-teni, 0.6);
-      background: none;
-      text-decoration: none;
-      color: $sezon-teni;
-    }
-  }
+        &--col-sezon {
+            box-shadow: inset 0px 0px 10px rgba($sezon-teni, 0.9);
+            border: 1px solid $sezon-teni;
+            font-size: 1.6rem;
+            &:hover {
+            box-shadow:  0px 0px 10px rgba($sezon-teni, 0.6);
+            background: none;
+            text-decoration: none;
+            color: $sezon-teni;
+            }
+        }
         &--col-ras {
         
             border: 1px solid $rasa-color;
         }
         &--mt {
             margin-top: 2rem;
-            // margin-left: 3rem;
-            // margin-bottom: -1.5rem;
+ 
         }
-
-     
 
         &--ml3 {
             margin-bottom: 0rem;
@@ -113,6 +117,7 @@
         &--mb-1 {
           margin-bottom: -1rem;
         }
+
         &--pt {
             padding: 0.2rem 1rem 0.3rem 1rem;
         }
@@ -146,5 +151,14 @@
      }
 // уменьшаем кнопку
  
-  
+    @include breakpoint($mobile-bp){
+
+        &:hover {
+            background: linear-gradient( $grad1-o, $grad2-o);
+            text-decoration: none;
+           
+             color: $red;
+        }
+       
+    } 
 }

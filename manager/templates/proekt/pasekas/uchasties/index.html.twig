@@ -65,6 +65,44 @@
             </div>
         </div>
     </div>
+
+    <div class="uchasties_break">
+        <div class="uchasties__left">
+
+            <div class="tabll">
+                <ul class = "uch-tabl__list uch-color">
+                    <li class = "uch-tabl__list-li" >
+                        Ник
+                    </li>
+                    <li class = "uch-tabl__list-li uch-tabl__linia">  ПерсНомер </li>
+                    <li class = "uch-tabl__list-li uch-tabl__linia"> Место  </li>
+{#                    <li class = "uch-tabl__list-li uch-tabl__linia"> email  </li>#}
+{#                    <li class = "uch-tabl__list-li uch-tabl__linia">Группа</li>#}
+                    <li class = "uch-tabl__list-li uch-tabl__linia" >ПлемМатки</li>
+{#                    <li class = "uch-tabl__list-li uch-tabl__linia" >Сезонов</li>#}
+{#                    <li class = "uch-tabl__list-li uch-tabl__linia">#}
+{#                        Статус#}
+{#                        #}{# {{ member_status(uchastie.status) }}  #}
+{#                    </li>#}
+
+                </ul>
+
+                {% for uchastie in pagination %}
+                    <ul class = "uch-tabl__list">
+                        <li class = " uch-tabl__list-li" >
+                            <a class="uch-tabl__link" href="{{ path('proekt.pasekas.uchasties.show', {'id': uchastie.id}) }}">
+                                {{ uchastie.nike }} </a>
+                        </li>
+                        <li class = "uch-tabl__list-li uch-tabl__linia">  {{ uchastie.persona }} </li>
+                        <li class = "uch-tabl__list-li uch-tabl__linia">  {{ uchastie.mesto }} </li>                   
+                        <li class = "uch-tabl__list-li uch-tabl__linia">{{ uchastie.uchastniks_count }}</li>
+                       
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
     <div class="navigation">
             {{ knp_pagination_render(pagination) }}
     </div>

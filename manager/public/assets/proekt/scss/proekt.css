@@ -366,7 +366,7 @@ body.no-scroll {
 
 a {
   color: inherit;
-  opacity: 0.6;
+  opacity: 0.8;
   transition: opacity 0.2s linear;
   text-decoration: none;
 }
@@ -578,6 +578,11 @@ pre {
   padding: 0 0.7rem;
   margin: 0;
 }
+.btnn--break {
+  margin: 0 3.5rem -2rem 0;
+  vertical-align: text-top;
+  font-size: 1.8rem;
+}
 .btnn--col {
   border: 1px solid #155799;
 }
@@ -663,6 +668,13 @@ pre {
 }
 .btnn--rounded {
   border-radius: 0.41em;
+}
+@media screen and (max-width: 575px) {
+  .btnn:hover {
+    background: linear-gradient(#ccb44b, #d4ca9a);
+    text-decoration: none;
+    color: #ED3024;
+  }
 }
 
 /*=====хлебные крошки ======================*/
@@ -1115,7 +1127,7 @@ pre {
   .subnavv__link {
     padding-left: 0;
     padding-right: 0;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
   .subnavv__link:hover {
     background: none;
@@ -1277,10 +1289,10 @@ pre {
 .navv__link.has-subnavv:after {
   content: "";
   display: block;
-  margin-top: 2px;
+  margin-top: 1px;
   border-style: solid;
-  border-width: 6px 5px 0 5px;
-  border-color: #f6f6f6 transparent transparent transparent;
+  border-width: 9px 5px 0 5px;
+  border-color: #ED3024 transparent transparent transparent;
   position: absolute;
   top: 50%;
   right: 1.35rem;
@@ -1441,13 +1453,24 @@ pre {
   width: 100%;
   height: 100%;
   margin-top: 0.4rem;
-  margin-left: 0.4;
+  margin-left: 0.4rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
 .sideefiltr {
   display: block;
+}
+
+.sideemenu {
+  display: none;
+}
+@media screen and (max-width: 991px) {
+  .sideemenu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 }
 
 .sideefiltr__ul {
@@ -1995,6 +2018,12 @@ img.hover-shadow {
   box-shadow: inset 0px 0px 10px rgba(0, 128, 0, 0.9);
   border-bottom: 2px solid green;
 }
+@media screen and (max-width: 991px) {
+  .proekts {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
 @media screen and (max-width: 575px) {
   .proekts {
     padding: 1.5rem;
@@ -2007,6 +2036,11 @@ img.hover-shadow {
 
 .proekts-plr {
   padding: 0 3rem;
+}
+@media screen and (max-width: 575px) {
+  .proekts-plr {
+    padding: 0 1rem;
+  }
 }
 
 .proekts-uch {
@@ -2817,6 +2851,21 @@ legend {
   margin-bottom: 0;
 }
 
+@media screen and (max-width: 575px) {
+  .no_break {
+    display: none;
+  }
+}
+
+.break {
+  display: none;
+}
+@media screen and (max-width: 575px) {
+  .break {
+    display: block;
+  }
+}
+
 .plem {
   display: flex;
   align-items: center;
@@ -2872,6 +2921,12 @@ legend {
   opacity: 1;
   text-decoration: none;
   color: #a78c16;
+}
+@media screen and (max-width: 575px) {
+  .plem__data {
+    font-size: 2rem;
+    line-height: 2.4;
+  }
 }
 
 .plem-ramka {
@@ -2936,6 +2991,12 @@ legend {
 }
 .plem-nomer--wid28 {
   width: 28rem;
+}
+@media screen and (max-width: 575px) {
+  .plem-nomer {
+    font-size: 1.8rem;
+    line-height: 2.2;
+  }
 }
 
 .plem-form__header {
@@ -3279,6 +3340,11 @@ legend {
 .ras__name--widt30 {
   width: 30rem;
 }
+@media screen and (max-width: 991px) {
+  .ras__name--widt, .ras__name--widt30 {
+    width: 50%;
+  }
+}
 
 .ras-nomer {
   box-shadow: inset 0px 0px 10px rgba(0, 128, 0, 0.9);
@@ -3305,9 +3371,21 @@ legend {
   box-shadow: inset 0px 0px 10px rgba(0, 128, 0, 0.9);
   border-bottom: 2px solid green;
 }
+@media screen and (max-width: 991px) {
+  .lini {
+    width: 100%;
+    margin-left: 1rem;
+    margin-left: 0.5rem;
+  }
+}
 
 .lini-margin {
   margin-bottom: 2rem;
+}
+@media screen and (max-width: 991px) {
+  .lini-margin {
+    margin-bottom: 0.5rem;
+  }
 }
 
 .nome {
@@ -3317,6 +3395,16 @@ legend {
   overflow: hidden;
   box-shadow: inset 0px 0px 10px rgba(0, 128, 0, 0.9);
   border-bottom: 2px solid green;
+}
+@media screen and (max-width: 991px) {
+  .nome {
+    width: 100%;
+    margin-left: 1rem;
+    margin-left: 0.5rem;
+  }
+  .nome .break {
+    display: none;
+  }
 }
 
 .ras-color {
@@ -3368,6 +3456,22 @@ legend {
   width: 100%;
   background-color: transparent;
 }
+@media screen and (max-width: 991px) {
+  .uchasties {
+    display: none;
+  }
+}
+
+.uchasties_break {
+  display: none;
+}
+@media screen and (max-width: 991px) {
+  .uchasties_break {
+    display: flex;
+    width: 100%;
+    background-color: transparent;
+  }
+}
 
 .uchasties__left {
   width: 100%;
@@ -3394,6 +3498,11 @@ legend {
 }
 .uch-tabl__list-li--group {
   width: 25%;
+}
+@media screen and (max-width: 991px) {
+  .uch-tabl__list-li {
+    width: 24.5%;
+  }
 }
 
 .uch-tabl__link {
@@ -3671,6 +3780,14 @@ legend {
 }
 .inklud--mb0 {
   margin-bottom: 0;
+}
+@media screen and (max-width: 991px) {
+  .inklud {
+    display: none;
+  }
+  .inklud--rasa {
+    display: none;
+  }
 }
 
 .inklud__img {

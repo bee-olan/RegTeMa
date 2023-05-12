@@ -71,15 +71,26 @@
     border-bottom: 2px solid $rasa-color; // linia
   }
 
+  @include breakpoint($tablet-bp) {   
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
   @include breakpoint($mobile-bp) {
     padding: 1.5rem;
+   
   }
 }
+
 .pb0{
   padding-bottom: 0;
 }
 .proekts-plr {
   padding: 0 3rem;
+
+  @include breakpoint($mobile-bp) {
+    padding: 0 1rem;
+  }
 }
 
 .proekts-uch {

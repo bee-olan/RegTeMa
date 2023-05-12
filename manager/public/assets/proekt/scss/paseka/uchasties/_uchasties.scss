@@ -3,19 +3,25 @@
 	display: flex;
 	width: 100%;
 	background-color: transparent;   
-	//padding-left: 2rem;
-	//margin-top: 4rem;
-}
 
+	@include breakpoint($tablet-bp){
+		display: none;
+	}
+}
+.uchasties_break {
+
+	display: none;
+
+	@include breakpoint($tablet-bp){
+		display: flex;
+		width: 100%;
+		background-color: transparent;
+	}
+
+}
 .uchasties__left {
 	width: 100%;
 }
-
-// .u4astniki__right {
-// 	width: 40%;
-//    display: flex; // оба эл-ты в header__right -в линию
-//    justify-content: flex-end; // прижали к правой стороне
-// }
 
 .uch-tabl__list {
 	display: flex;
@@ -43,7 +49,9 @@
 	&--group{
 		width: 25%;
 	}
-	
+	@include breakpoint($tablet-bp){
+		width: 24.5%;
+	}
 }
 
 // стилизация ссылок

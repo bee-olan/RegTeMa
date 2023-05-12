@@ -16,6 +16,19 @@
     margin-bottom: 0;
   }
 }
+.no_break{
+
+  @include breakpoint($mobile-bp) {
+    display: none;
+  }
+}
+
+.break{
+  display: none;
+  @include breakpoint($mobile-bp) {
+   display: block;
+  }
+}
 
 .plem{
     display: flex;
@@ -83,7 +96,14 @@
           color: $text;          
         }
     }
+
+    @include breakpoint($mobile-bp) {
+      font-size: 2rem;
+      line-height: 2.4;
+     }
+
 }
+
 .plem-ramka{
   padding-top: 1.5rem;
   transition: box-shadow .2s linear;
@@ -164,5 +184,8 @@
     width: 28.0rem;
   }
   
-
+  @include breakpoint($mobile-bp) {
+    font-size: 1.8rem;
+    line-height: 2.2;
+   }
 }

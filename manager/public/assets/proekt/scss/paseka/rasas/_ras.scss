@@ -51,7 +51,12 @@
       &--widt30 {
         width: 30.0rem;
       }
-
+      @include breakpoint($tablet-bp) {
+        &--widt,
+        &--widt30  {
+          width: 50%;
+        }
+      } 
 }
 
 .ras-nomer {
@@ -85,10 +90,21 @@
   overflow: hidden; // в рамках размера -все лишнее скрылось overflow
   box-shadow: inset 0px 0px 10px rgba($rasa-color, 0.9); //тень внутри
   border-bottom: 2px solid $rasa-color; // linia
+
+  @include breakpoint($tablet-bp){
+    width: 100%;
+    margin-left: 1rem;
+    margin-left: .5rem;
+    // padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+  }
 }
 
 .lini-margin {
   margin-bottom: 2rem;
+
+  @include breakpoint($tablet-bp){
+    margin-bottom: .5rem;
+  }
 }
 
 .nome {
@@ -99,6 +115,16 @@
   overflow: hidden; // в рамках размера -все лишнее скрылось overflow
   box-shadow: inset 0px 0px 10px rgba($rasa-color, 0.9); //тень внутри
   border-bottom: 2px solid $rasa-color; // linia
+
+  @include breakpoint($tablet-bp){
+    width: 100%;
+    margin-left: 1rem;
+    margin-left: .5rem;
+    
+   .break{
+    display: none;
+   }
+  }
 }
 
 .ras-color {

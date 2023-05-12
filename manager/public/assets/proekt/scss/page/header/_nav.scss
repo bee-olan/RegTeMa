@@ -11,7 +11,7 @@
         display: none;
         
         &--mobile {
-            display: block;
+            display: block;        
         }
     }
 }
@@ -21,6 +21,7 @@
 
     @include breakpoint($tablet-bp) {
         flex-direction: column; // что бы навигация шла друг под другом
+        
     }
 }
 
@@ -43,8 +44,6 @@
             color: $white
          }
 
-//если есть наведение на li эл-т - 
-// показываем дочерний эл-т subnav
          > .subnavv {
             display: block;
         }
@@ -82,11 +81,11 @@
          &:after {
              content: "";
              display: block;
-             margin-top: 2px;
+             margin-top: 1px;
 
              border-style: solid;
-            border-width: 6px 5px 0 5px;
-            border-color: $white transparent transparent transparent;
+            border-width: 9px 5px 0 5px;
+            border-color: $red transparent transparent transparent;
 
             position: absolute;
             top: 50%;
