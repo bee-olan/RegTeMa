@@ -125,12 +125,16 @@
   margin-right: 2rem;
   overflow: hidden; // в рамках размера -все лишнее скрылось overflow
 
-  // background-color: transparent;
-  box-shadow: 0 15px 25px rgba($white, .35);
+  box-shadow: inset 0px 0px 10px rgba($plem-color, 0.9);
   border-radius: 5px;
 
   color: $plem-color;
   background-color: $white;
+
+  @include breakpoint($spisok-bp) {   
+    margin-left: 0;
+    margin-right: 0;
+  }
 
   @include breakpoint($mobile-bp) {
     padding: 1.5rem;

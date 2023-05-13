@@ -2077,10 +2077,16 @@ img.hover-shadow {
   margin-left: 1rem;
   margin-right: 2rem;
   overflow: hidden;
-  box-shadow: 0 15px 25px rgba(246, 246, 246, 0.35);
+  box-shadow: inset 0px 0px 10px rgba(21, 87, 153, 0.9);
   border-radius: 5px;
   color: #155799;
   background-color: #f6f6f6;
+}
+@media screen and (max-width: 1100px) {
+  .proekts-plem {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 @media screen and (max-width: 575px) {
   .proekts-plem {

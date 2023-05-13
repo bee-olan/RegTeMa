@@ -34,15 +34,18 @@
         </div> 
     </div>
         {# ------------------------- #}
-    <div class="proekts-plr  ">
+    <div class="proekts-plr  "> 
+        <div class = "no_break" >    
                 <ul class = "plem__data plem__data--col">
                     <li></li>
                     <li class = "plem__name plem__name--wid34 plem__name-list--wid" >
                     ПлемМатка (по ссылке -расшифровка)
                     </li> 
-                    <li class = "plem__name">Кат-рия</li>
-                    <li class = "plem__name">Сезоны/дочки</li>
-                    <li class = "plem__name">Сезоны</li>
+                   
+                        <li class = "plem__name">Кат-рия</li>
+                        <li class = "plem__name">Сезоны/дочки</li>
+                        <li class = "plem__name">Сезоны</li>
+                  
                     <li class = "plem__name"> ДочьМатки</li>
                     <li class = "plem__name"> Статус</li>
                 </ul>
@@ -57,15 +60,14 @@
                     </li>
 
 
-                    <li class = "plem__name-list">  {{ plemmatka_kategoria(plemmatka.kategoria) }} </li>
-                    <li class = "plem__name-list">
+                        <li class = "plem__name-list">  {{ plemmatka_kategoria(plemmatka.kategoria) }} </li>
+                        <li class = "plem__name-list">
 
-                        <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka', {'plemmatka_id': plemmatka.id}) }}"  title = "Список дочерних от этой маточки" >
-                            {{ plemmatka.departments_count }} /  {{ plemmatka.child_count }}
-                        </a>
-                    </li>
-{#                    <li class = "plem__name-list"> {{ plemmatka.goda_vixod }} </li>#}
-
+                            <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka', {'plemmatka_id': plemmatka.id}) }}"  title = "Список дочерних от этой маточки" >
+                                {{ plemmatka.departments_count }} /  {{ plemmatka.child_count }}
+                            </a>
+                        </li>
+                                   
 
                     <li class = "plem__name-list">
                         <a   href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id}) }}"  class="btnn btnn--mb1 "
@@ -87,7 +89,7 @@
                 </ul>
 
                 {% endfor %}
-
+        </div> 
         <ul class="plem__data plem__data--mt2">
             <li>
                 <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}"
