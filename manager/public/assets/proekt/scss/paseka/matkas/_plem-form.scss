@@ -21,17 +21,22 @@
                     div {
                             display: flex;
                             justify-content: flex-start;
+                            
                             align-items: baseline; // выравнивание по вертикали
                             margin-bottom: .6rem;
-
+                           
                             div {
-                                    // form-group{
-                                    
+                               
+                                    display: block;       
+                                    width: 20%;
+    
                                     input{
-                                        margin-left: 4rem;
+                                        // margin-left: 4rem;
                                         box-sizing: border-box;
                                         height: 16px; 
                                         width: 16px;
+                                        
+                                          
 
                                         // &:focus  { 
                                         //     margin-left: -4rem;

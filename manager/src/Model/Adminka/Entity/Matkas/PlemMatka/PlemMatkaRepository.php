@@ -63,6 +63,16 @@ class PlemMatkaRepository
         return $plemmatka;
     }
 
+    public function hasByName(string $name): bool
+    {
+        return $this->repo->createQueryBuilder('t')
+                ->select('COUNT(t.name)')
+                ->andWhere('t.name = :name')
+                ->setParameter(':name', $name)
+                ->getQuery()->getSingleScalarResult() > 0;
+    }
+
+
     public function hasBySort(int $sort): bool
     {
         return $this->repo->createQueryBuilder('t')

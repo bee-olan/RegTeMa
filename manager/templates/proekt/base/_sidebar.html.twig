@@ -24,46 +24,47 @@
         </div><!-- /.profile -->
         <nav class="navv  navv--mobile ">
             <ul class="navv__list">
-                <li class="navv__item">
+                <li class="na__item">
                     <a class="navv__link"  href="/proekt">Главная</a>
                 </li>
-                <li class="navv__item">
-                    <a class="navv__link  has-subnavv" href="{{ path('proekt.pasekas.uchasties.uchastiee') }}">Участие</a> 
+                <li class="na__item">
+                    <a class="navv__link  has-subnavv" href="#">Участие</a> 
                     
                     <ul class="subnavv">
                             <li>
-                                <a class="subnavv__link" href="{{ path('proekt.pasekas.uchasties.uchastiee') }} ">Стать участником</a>
+                                <a class="sub-navv__link" href="{{ path('proekt.pasekas.uchasties.uchastiee') }} ">Стать участником</a>
                             </li>
                             <li>
-                                <a class="subnavv__link" href="{{ path('proekt.pasekas.uchasties.groupas') }}">Список групп</a>
+                                <a class="sub-navv__link" href="{{ path('proekt.pasekas.uchasties.groupas') }}">Список групп</a>
                             </li>
                             <li>
-                                <a class="subnavv__link" href="{{ path('proekt.pasekas.uchasties') }}">Список участников</a>
+                                <a class="sub-navv__link" href="{{ path('proekt.pasekas.uchasties') }}">Список участников</a>
                             </li>
 
                         </ul>                
                 </li>
-                <li class="navv__item">
-                    <a class="navv__link"  href="{{ path('proekt') }}">Матки</a>
-                    <ul class="subnavv">
-						<li>
-							<a class="subnavv__link " href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
-						</li>
-						<li>
-							<a class="subnavv__link" href="{{ path('proekt.pasekas.matkas.kategor.kategor') }}">Категории ПлемМаток</a>
-						</li>
-						<li>
-							<a class="subnavv__link" href="{{ path('proekt.pasekas.rasas.plemmatka') }}"> Раса_Линия_Номер</a>
-						</li>
-						<li>
-							<a class="subnavv__link" href="{{ path('proekt.pasekas.matkas') }}">Список ПлемМаток</a>
-						</li>
-						<li>
-							<a class="subnavv__link" href="{{ path('proekt.pasekas.childmatkas') }}">Список ДочьМаток </a>
-						</li>
-					</ul>
+                <li class="na__item">
+                    <a class="navv__link"  href="{{ path('proekt') }}">ПлемМатки-картинки</a>
+                </li>    
+
+                <li>
+                    <a class="sub-navv__link " href="{{ path('proekt.pasekas.matkas.plemmatkas.creates') }}">Регистрация </a>
                 </li>
-                <li class="navv__item">
+                <li>
+                    <a class="sub-navv__link" href="{{ path('proekt.pasekas.matkas.kategor.kategor') }}">Категории </a>
+                </li>
+                <li>
+                    <a class="sub-navv__link" href="{{ path('proekt.pasekas.rasas.plemmatka') }}"> Раса_Линия_Номер</a>
+                </li>
+                <li>
+                    <a class="sub-navv__link" href="{{ path('proekt.pasekas.matkas') }}">Список ...</a>
+                </li>
+                {# <li>
+                    <a class="sub-navv__link" href="{{ path('proekt.pasekas.childmatkas') }}">Список ДочьМаток </a>
+                </li> #}
+
+               
+                <li class="na__item">
                     <a class="navv__link" href="#">Навигация</a>
                 </li>
             </ul>

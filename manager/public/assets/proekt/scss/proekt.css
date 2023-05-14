@@ -1107,6 +1107,32 @@ pre {
   }
 }
 
+.sub-navv__link {
+  display: block;
+  padding: 0.45rem 0 0.45rem 2rem;
+  margin-left: 2.2rem;
+  font-size: 2rem;
+  color: #202020;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: background-color 0.2s ease-in-out;
+}
+.sub-navv__link:hover {
+  color: #202020;
+  opacity: 1;
+  text-decoration: none;
+}
+@media screen and (max-width: 991px) {
+  .sub-navv__link {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 1.8rem;
+  }
+  .sub-navv__link:hover {
+    background: none;
+  }
+}
+
 .subnavv__link {
   display: block;
   padding: 0.45rem 1.2rem;
@@ -1254,6 +1280,22 @@ pre {
   }
 }
 
+.na__item {
+  position: relative;
+}
+.na__item:hover .navv__link {
+  background-color: rgb(151, 144, 93);
+  text-decoration: none;
+}
+.na__item:hover > .subnavv {
+  display: block;
+}
+@media screen and (max-width: 991px) {
+  .na__item:hover .navv__link {
+    background: none;
+  }
+}
+
 .navv__item {
   position: relative;
 }
@@ -1300,6 +1342,7 @@ pre {
 }
 @media screen and (max-width: 991px) {
   .navv__link {
+    padding-left: 0;
     padding-right: 0;
     font-size: 1.8rem;
   }
@@ -1489,6 +1532,11 @@ pre {
   margin-bottom: 1rem;
   margin-left: 1.5rem;
 }
+.sideefiltr__li--wid10 {
+  height: 10rem;
+  padding-right: 5px;
+  padding-left: 5px;
+}
 .sideefiltr__li--wid100 {
   height: 5rem;
   padding-right: 5px;
@@ -1527,8 +1575,15 @@ pre {
 .side-title__li {
   margin: 0.5rem 0 0.5rem 0;
   padding-left: 1rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #a78c16;
+}
+@media screen and (max-width: 991px) {
+  .side-title__li {
+    font-size: 1.8rem;
+    color: #ED3024;
+    padding-left: 2.5rem;
+  }
 }
 
 .sideefiltr__link {
@@ -2022,6 +2077,7 @@ img.hover-shadow {
   .proekts {
     margin-left: 0;
     margin-right: 0;
+    padding: 1.5rem;
   }
 }
 @media screen and (max-width: 575px) {
@@ -2074,18 +2130,15 @@ img.hover-shadow {
 .proekts-plem {
   margin-bottom: 3rem;
   max-width: 100%;
-  margin-left: 1rem;
-  margin-right: 2rem;
   overflow: hidden;
-  box-shadow: inset 0px 0px 10px rgba(21, 87, 153, 0.9);
   border-radius: 5px;
+  box-shadow: inset 0px 0px 10px rgba(21, 87, 153, 0.9);
   color: #155799;
   background-color: #f6f6f6;
 }
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1200px) {
   .proekts-plem {
-    margin-left: 0;
-    margin-right: 0;
+    margin-right: -4rem;
   }
 }
 @media screen and (max-width: 575px) {
@@ -2900,6 +2953,22 @@ legend {
   color: #a78c16;
 }
 
+@media screen and (max-width: 1200px) {
+  .plem_break_no {
+    display: none;
+  }
+}
+
+.plem_break {
+  display: none;
+}
+@media screen and (max-width: 1200px) {
+  .plem_break {
+    display: block;
+    margin-left: -2rem;
+  }
+}
+
 .plem__data {
   display: flex;
   justify-content: space-between;
@@ -2911,7 +2980,7 @@ legend {
 }
 .plem__data--mt2 {
   margin-bottom: 2rem;
-  padding-bottom: 2rem;
+  padding: 2rem 0;
 }
 .plem__data--col {
   color: #a78c16;
@@ -2928,10 +2997,15 @@ legend {
   text-decoration: none;
   color: #a78c16;
 }
+@media screen and (max-width: 1200px) {
+  .plem__data {
+    line-height: 2.4;
+    padding: 1.5rem;
+  }
+}
 @media screen and (max-width: 575px) {
   .plem__data {
-    font-size: 2rem;
-    line-height: 2.4;
+    padding: 1.5rem 0;
   }
 }
 
@@ -2953,6 +3027,22 @@ legend {
 .plem__name-list--wid {
   min-width: 34%;
   padding: 0;
+}
+@media screen and (max-width: 1200px) {
+  .plem__name-list {
+    min-width: 16%;
+  }
+  .plem__name-list--wid {
+    min-width: 63%;
+  }
+}
+@media screen and (max-width: 575px) {
+  .plem__name-list {
+    min-width: 10%;
+  }
+  .plem__name-list--wid {
+    min-width: 70%;
+  }
 }
 
 .plem__name {
@@ -2976,6 +3066,22 @@ legend {
 .plem__name--wid5 {
   width: 5rem;
 }
+@media screen and (max-width: 1200px) {
+  .plem__name {
+    min-width: 16%;
+  }
+  .plem__name--wid34 {
+    min-width: 63%;
+  }
+}
+@media screen and (max-width: 575px) {
+  .plem__name {
+    min-width: 10%;
+  }
+  .plem__name--wid34 {
+    min-width: 70%;
+  }
+}
 
 .plem-nomer {
   box-shadow: inset 0px 0px 10px rgba(21, 87, 153, 0.9);
@@ -2998,12 +3104,6 @@ legend {
 .plem-nomer--wid28 {
   width: 28rem;
 }
-@media screen and (max-width: 575px) {
-  .plem-nomer {
-    font-size: 1.8rem;
-    line-height: 2.2;
-  }
-}
 
 .plem-form__header {
   margin: 0 0 2.5rem 0;
@@ -3023,8 +3123,11 @@ legend {
   align-items: baseline;
   margin-bottom: 0.6rem;
 }
+.plem-form form div fieldset div div {
+  display: block;
+  width: 20%;
+}
 .plem-form form div fieldset div div input {
-  margin-left: 4rem;
   box-sizing: border-box;
   height: 16px;
   width: 16px;

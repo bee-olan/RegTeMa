@@ -59,7 +59,26 @@
           text-decoration: none;
           color: $text;          
         }
-    }   
+    }  
+    
+   
+}
+.plem_break_no{
+  // display: none;
+
+  @include breakpoint($spisok-bp) {
+    display: none;
+    // margin-left: -2rem;
+   }
+}
+
+.plem_break{
+    display: none;
+
+    @include breakpoint($spisok-bp) {
+      display: block;
+      margin-left: -2rem;
+     }
 }
 
 .plem__data {
@@ -74,7 +93,10 @@
 
       &--mt2{
           margin-bottom: 2rem;     
-          padding-bottom: 2rem;
+          // padding-bottom: 2rem;
+          // padding-right: 2rem;
+          // padding-left: 2rem;
+          padding: 2rem 0;
       }
 
       &--col{
@@ -97,9 +119,14 @@
         }
     }
 
-    @include breakpoint($mobile-bp) {
-      font-size: 2rem;
+    @include breakpoint($spisok-bp){
       line-height: 2.4;
+      padding: 1.5rem;
+    }
+
+    @include breakpoint($mobile-bp) {
+     padding: 1.5rem 0;
+      // line-height: 2.4;
      }
 
 }
@@ -120,12 +147,31 @@
   display: flex;
   padding: .6rem;
   min-width: 10%;
+
     &--wid{
-       min-width: 34%;
-    padding: 0;
+      min-width: 34%;
+      padding: 0;
     }
 
+    @include breakpoint($spisok-bp){
+      min-width: 16%;
+  
+        &--wid {
+          min-width: 63%;
+        
+        }
+      }
+
+      @include breakpoint($mobile-bp) {
+          min-width: 10%;
+    
+          &--wid {
+            min-width: 70%;
+          
+          }
+       }
 }
+
 .plem__name {
    display: flex; // добавляем т.к добаилась li-шка
   min-width: 10%;
@@ -155,6 +201,23 @@
     width: 5.0rem;
   }
 
+   @include breakpoint($spisok-bp){
+    min-width: 16%;
+
+      &--wid34 {
+        min-width: 63%;
+      
+      }
+    }
+
+    @include breakpoint($mobile-bp) {
+      min-width: 10%;
+
+      &--wid34 {
+        min-width: 70%;
+      
+      }
+   }
 }
 
 .plem-nomer {
@@ -184,8 +247,8 @@
     width: 28.0rem;
   }
   
-  @include breakpoint($mobile-bp) {
-    font-size: 1.8rem;
-    line-height: 2.2;
-   }
+  // @include breakpoint($mobile-bp) {
+  //   font-size: 1.4rem;
+  //   line-height: 2.2;
+  //  }
 }

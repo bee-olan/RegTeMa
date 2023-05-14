@@ -17,22 +17,19 @@ class Form extends AbstractType
     {
         $builder
             ->add('name', Type\TextType::class, ['required' => false, 'attr' => [
-                'placeholder' => 'Введите часть названия',
+                'placeholder' => ' части названия ..',
                 'onchange' => 'this.form.submit()',
             ]])
             ->add('kategoria', Type\TextType::class, ['required' => false, 'attr' => [
-                'placeholder' => 'Обозначение кат-рии ',
+                'placeholder' => ' категории ..',
                 'onchange' => 'this.form.submit()', // отправляет форму
             ]])
             ->add('goda_vixod', Type\TextType::class, ['required' => false, 'attr' => [
-                'placeholder' => 'Поле для ввода года',
+                'placeholder' => 'году выхода ..',
                 'onchange' => 'this.form.submit()',
             ]])
 
-//            ->add('persona', Type\TextType::class, ['required' => false, 'attr' => [
-//                'placeholder' => 'Поле для ввода номера',
-//                'onchange' => 'this.form.submit()',
-//            ]])
+
             ->add('status', Type\ChoiceType::class, ['choices' => [
                 'Активные' => Status::ACTIVE,
                 'В архиве' => Status::ARCHIVED,

@@ -25,6 +25,30 @@
     }
 }
 
+.na__item {
+    position: relative; // позиционирование для
+
+    &:hover {
+        .navv__link {
+           background-color: $header-color;
+           text-decoration: none; 
+        //    color: $white
+        }
+
+        > .subnavv {
+           display: block;
+       }
+    }
+
+    @include breakpoint($tablet-bp) {
+       &:hover {
+           .navv__link {
+               background: none;
+           }
+       }
+   }
+}
+
 .navv__item {
      position: relative; // позиционирование для
      &:hover {
@@ -62,14 +86,13 @@
  .navv__link {
     display: block; // ссылки - блочные
     padding: .6rem 1.35rem .6rem 1.35rem;
-     // это border сверху\снизу у текста
-    //border-bottom: 2px solid $border-linia;
 
      font-size: 1.6rem; // шрифт - размер
      line-height: 1.6;
      color: $header-color;
     //  color: $white;// цвет
      text-decoration: none;
+    // text-transform: uppercase;
 
      transition: background-color .2s linear;
      
@@ -95,7 +118,7 @@
      }
      
      @include breakpoint($tablet-bp) {
-        // padding-left: 0;
+        padding-left: 0;
         padding-right: 0;
         
         font-size: 1.8rem;

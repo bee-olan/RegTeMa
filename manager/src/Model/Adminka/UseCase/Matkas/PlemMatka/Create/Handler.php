@@ -28,6 +28,7 @@ class Handler
     private $kategorias;
     private $personas;
     private $nomerRepository; //  основа для плем матки
+    private $mestoNomers;
     private $flusher;
 
     public function __construct(PlemMatkaRepository $plemmatkas,
@@ -63,20 +64,25 @@ class Handler
 
         $nameG = explode("-", $nomer->getName());
 
-        $command->godaVixod = (int) $nameG[1];
+        $godaVixod = (int) $nameG[1];
 
         $nom = explode("_", $nomer->getTitle());
 
-        $command->name = $nom[0]."_".$command->sort." : ".
+        $namee = $nom[0]."_".$command->sort." : ".
             $nomer->getLinia()->getNameStar()."-".$nomer->getName().
                             " : ".$mesto->getNomer()."_пн-".$persona->getNomer();
+        $command->name = $namee;
+        if ($this->plemmatkas->hasByName($namee)) {
+            throw new \DomainException('ПлемМатка  уже существует.');
+        }
 
-        $plemmatka = new PlemMatka(
+       
+$plemmatka = new PlemMatka(
             Id::next(),
             $command->name,
             $command->sort,
             $command->title,
-            $command->godaVixod,
+            $godaVixod,
             $mesto,
             $nomer,
             $persona,

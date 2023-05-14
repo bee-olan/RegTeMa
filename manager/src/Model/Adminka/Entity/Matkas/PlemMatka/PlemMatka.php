@@ -40,6 +40,8 @@ class PlemMatka
      */
     private $name;
 
+    private $korotkoName;
+
     /**
      * @var Nomer
      * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer")

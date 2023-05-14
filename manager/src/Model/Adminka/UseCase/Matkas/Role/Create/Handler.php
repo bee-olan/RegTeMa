@@ -23,7 +23,7 @@ class Handler
     public function handle(Command $command): void
     {
         if ($this->roles->hasByName($command->name)) {
-            throw new \DomainException('Role already exists.');
+            throw new \DomainException('Роль уже существует.');
         }
 
         $role = new Role(

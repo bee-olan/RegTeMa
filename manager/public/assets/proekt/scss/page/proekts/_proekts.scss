@@ -74,6 +74,7 @@
   @include breakpoint($tablet-bp) {   
     margin-left: 0;
     margin-right: 0;
+    padding: 1.5rem;
   }
   
   @include breakpoint($mobile-bp) {
@@ -121,19 +122,18 @@
 .proekts-plem {
   margin-bottom: 3rem;
   max-width: 100%;
-  margin-left: 1rem;
-  margin-right: 2rem;
+  // margin-left: 1rem;
+  // margin-right: 2rem;
   overflow: hidden; // в рамках размера -все лишнее скрылось overflow
-
-  box-shadow: inset 0px 0px 10px rgba($plem-color, 0.9);
+  
   border-radius: 5px;
-
+  box-shadow: inset 0px 0px 10px rgba($plem-color, 0.9);
   color: $plem-color;
   background-color: $white;
 
   @include breakpoint($spisok-bp) {   
-    margin-left: 0;
-    margin-right: 0;
+    // margin-left: -4rem;
+    margin-right: -4rem;
   }
 
   @include breakpoint($mobile-bp) {

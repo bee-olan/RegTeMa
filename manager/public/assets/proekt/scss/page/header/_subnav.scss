@@ -14,12 +14,47 @@
    
 
      @include breakpoint($tablet-bp) {
+        // position: static;
         position: static;
         width: 100%;
-        padding-left: 2rem;       
+        padding-left: 2rem; 
+              
         background-color: transparent;
         box-shadow: none;
     }
+}
+
+.sub-navv__link {
+    display: block;
+    padding: .45rem 0 .45rem 2rem ;
+    margin-left: 2.2rem;
+    font-size: 2rem;
+    color: $primary-modal;
+    text-decoration: none;
+    opacity: .6;
+    transition: background-color .2s ease-in-out;
+
+&:hover {
+    //background-color: darken($header-color, 5%);
+    color:$primary-modal;
+    opacity: 1;
+    // transition: background-color .2s ease-in-out;
+
+    // background-color: rgb(119,122,77);
+
+    text-decoration: none;    
+}
+
+@include breakpoint($tablet-bp) {
+    padding-left: 0;
+    padding-right: 0;
+    
+    font-size: 1.8rem;
+    
+    &:hover {
+        background: none;
+    }
+}
 }
 
 .subnavv__link {
