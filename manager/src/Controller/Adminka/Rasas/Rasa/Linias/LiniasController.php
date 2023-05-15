@@ -8,6 +8,7 @@ use App\Annotation\Guid;
 use App\Model\Adminka\Entity\Rasas\Linias\Id;
 use App\Model\Adminka\Entity\Rasas\Linias\Linia;
 
+use App\Model\Adminka\Entity\Rasas\Linias\LiniaRepository;
 use App\ReadModel\Adminka\Rasas\Linias\LiniaFetcher;
 //use App\Security\Voter\Adminka\Rasas\MateriAccess;
 use App\Controller\ErrorHandler;
@@ -19,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/adminka/rasas/linias", name="adminka.rasas.linias")
+ * @Route("/adminka/rasas/{id}/linias", name="adminka.rasas.linias")
  */
 class LiniasController extends AbstractController
 {
@@ -31,14 +32,16 @@ class LiniasController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/show", name=".show", requirements={"id"=Guid::PATTERN})
+     * @Route("/show", name=".show")
      * @param Request $request
-     * @param Linia $linia
+//     *  @param Linia $linia
+     * @param LiniaRepository $linias
      * @return Response
      */
-    public function show(Request $request, Linia $linia): Response
+    public function show(Request $request, LiniaRepository $linias, string $id): Response
     {
-//        dd();
+        $linia = $linias->get(new Id($id)) ;
+        dd($linia);
         return $this->redirectToRoute('adminka.rasas.linias',
 				['id' => $linia->getRasa()->getId()->getValue()]);
     }

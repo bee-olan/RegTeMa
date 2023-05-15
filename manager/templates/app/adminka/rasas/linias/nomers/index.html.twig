@@ -29,13 +29,26 @@
 				<h5 class="rasa__title  "><strong class="strongo"> Номера </strong> зарегистрированные в БД на
                     <strong class="stro" >ветке </strong> <strong class="stro--kras" > {{ linia.nameStar }} </strong>
                 </h5>
-				{% set token = csrf_token('delete') %}
+                <div  class="shapka-nomer ">
+                    <ul class="rasa__data">
+
+                        <li class="shapka-name  ">Ветка</li>
+                        <li class="shapka-name  ">Номер матки</li>
+                        <li class="shapka-name  " > Действие </li>
+    {#                    <li class=" rasa__name ma-ri-0 "> </li>#}
+                        <li class=" shapka-name ">Ред-ть\удалить</li>
+
+                    </ul>
+                </div>
+{#----------------------------#}
+                {% set token = csrf_token('delete') %}
                 {% for nomer in nomers %}
                       
            
                 <ul class="rasa__data">
-                    <li class="rasa__name rasa__name--wid10 b-color">{{ nomer.name }}</li>
                     <li class="rasa__name rasa__name--wid15 ">{{ nomer.name_star }}</li>
+                    <li class="rasa__name rasa__name--wid10 b-color">{{ nomer.name }}</li>
+
                     {% if nomer.kolvenka < 1 %}
                         <li class=" rasa__name--wid10 " >
                             <a href="{{ path('adminka.rasas.linias.nomer_linia.create', { 'linia_id': linia.id, 'id': nomer.id}) }}?vetka={{ linia.id }}"
@@ -43,7 +56,11 @@
                             </a>
                         </li>
                     {% else %}
-                        <li class="rasa__name rasa__name--wid10 " > - есть  ветка</li>
+                        <li class="rasa__name rasa__name--wid10 " >
+                            <a href="{{ path('adminka.rasas.linias.nomer_linia.vetka', { 'linia_id': linia.id, 'name_star': nomer.name_star}) }}"
+                               class="btnn btnn--mb0 btnn--pt btnn--rasa"> <strong class="strongo strongo--kras">на </strong> ветку</strong>
+                            </a>
+                        </li>
                     {% endif %}
                     <li class="  ma-ri-0 ">
                         <a href="{{ path('adminka.rasas.linias.nomers.edit', {'linia_id': linia.id, 'id': nomer.id}) }}"

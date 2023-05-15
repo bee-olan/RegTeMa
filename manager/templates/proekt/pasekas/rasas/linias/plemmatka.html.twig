@@ -35,7 +35,7 @@
     <div class="lini ">
         <div class="lini-margin ">
             {% if linias %}
-                <h1 class="ras__title "> <strong class="strongo " >Линии - Ветки   </strong>  : данные из БД  для   <strong class="strongo strongo--kras" >  {{ rasa.name }} </strong></h1>
+                <h1 class="ras__title "> <strong class="strongo " >Линии  </strong>  для   <strong class="strongo strongo--kras" >  {{ rasa.name }} : </strong> данные из БД  </h1>
 
                         {% for linia in linias %}
                             <ul class="ras__data">
@@ -65,9 +65,14 @@
                                     </li>
                                     <li>
                                         <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', {'ras': rasa.id, 'linia_id': linia.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
-                                           линия
+                                            Ветки  <strong class="strongo strongo--kras">=> </strong> Номера
                                         </a>
                                     </li>
+{#                                    <li>#}
+{#                                        <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', {'ras': rasa.id, 'linia_id': linia.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >#}
+{#                                           Ветки  <strong class="strongo strongo--kras">=> </strong> Номера#}
+{#                                        </a>#}
+{#                                    </li>#}
                                 {% endif %}
                                
                             </ul>

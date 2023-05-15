@@ -30,25 +30,6 @@ class LiniaController extends AbstractController
         $this->logger = $logger;
     }
 
-
-//    /**
-//     * @Route("", name="")
-//     * @param Rasa $rasa
-//     * @param Request $request
-//     * @param LiniaFetcher $linias
-//     * @return Response
-//     */
-//    public function index( Rasa $rasa, Request $request,  LiniaFetcher $linias): Response
-//    {
-//        //$this->denyAccessUnlessGranted(MateriAccess::MANAGE_MEMBERS, $materi);
-////dd($linias->allOfRasa($rasa->getId()->getValue()));
-//        //dd($rasa);
-//        return $this->render('proekt/pasekas/rasas/linias/index.html.twig', [
-//            'rasa' => $rasa,
-//            'linias' => $linias->allOfRasa($rasa->getId()->getValue()),
-//        ]);
-//    }
-
     /**
      * @Route("/plemmatka", name=".plemmatka")
      * @param Rasa $rasa

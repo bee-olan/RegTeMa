@@ -129,8 +129,21 @@
     background-color:  #187777c5;
   }
 }
+.shapka-nomer{
+  width: 100%;
+  height: 3rem;
+  box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 1);
+}
+.shapka-name {
+  width: 25%;
+  font-size: 1.2rem;
+  color: $col-text;
+  text-align: center;
+  padding: .6rem 0 ;
 
-.b-color {
+}
+
+  .b-color {
   padding: 0 1rem;
   // padding-left: 1rem;
   background-color: #588557;

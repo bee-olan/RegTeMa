@@ -19,6 +19,20 @@
       <div class="rasa__header  ">
          <h3 class="rasa__title  ">Расы зарегистрированные в БД </h3>
 
+          <ul class="rasa__data">
+              <li class="rasa__name rasa__name--wid15 "> Название расы  </li>
+              <li class="rasa__name  "> ( кол-во линий ) </li>
+              <li class=" rasa__name--wid15">
+                  Смотреть\добавить линию
+              </li>
+              <li class=" rasa__name--wid5 ">
+                  редактировать
+              </li>
+              <li class="rasa__name--wid5">
+                  удалить
+              </li>
+          </ul>
+
           {% set token = csrf_token('delete') %}
                 {% for rasa in rasas %}
                       

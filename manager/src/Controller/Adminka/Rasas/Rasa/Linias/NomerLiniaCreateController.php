@@ -32,8 +32,33 @@ class NomerLiniaCreateController extends AbstractController
     }
 
     /**
+     * @Route("/vetka/{name_star}", name=".vetka" , requirements={"id"=Guid::PATTERN})
+     * @ParamConverter("linia", options={"id" = "linia_id"})
+     * @param Rasa $rasa
+     * @param Linia $linia
+     * @param LiniaFetcher $linias
+     * @param string $name_star
+     * @return Response
+     */
+    public function vetka(Request $request, Linia $linia, string $name_star, LiniaFetcher $linias): Response
+    {
+        $rasa = $linia->getRasa();
+//        $liniaa = $linias->allOfVetka($linia->getId()->getValue());
+//        dd($name_star );
+        return $this->render('app/adminka/rasas/linias/index.html.twig', [
+            'rasa' => $rasa,
+            'linias' => $linias->allOfVetka($linia->getId()->getValue(), $name_star),
+        ]);
+    }
+
+
+//        return $this->render('app/adminka/rasas/linias/vetka.html.twig', [
+//
+//            'linias' => $linias->allOfRasa($rasa->getId()->getValue()),
+//        ]);
+//    }
+    /**
      * @Route("/create/{id}", name=".create" , requirements={"id"=Guid::PATTERN})
-//     * @ParamConverter("nomer", options={"id" = "nomer_id"})
      * @ParamConverter("linia", options={"id" = "linia_id"})
      * @param Rasa $rasa
      * @param Linia $linia

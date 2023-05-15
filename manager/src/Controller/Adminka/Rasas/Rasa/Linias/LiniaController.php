@@ -127,7 +127,8 @@ class LiniaController extends AbstractController
 //                 dd($command->title);
                 $handler->handle($command);
                 return $this->redirectToRoute('adminka.rasas.linias.show',
-									['id' => $rasa->getId(), 'linia_id' => $linia_id]);
+                    [ 'id' => $linia_id]);
+//									['id' => $rasa->getId(), 'linia_id' => $linia_id]);
             } catch (\DomainException $e) {
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
                 $this->addFlash('error', $e->getMessage());

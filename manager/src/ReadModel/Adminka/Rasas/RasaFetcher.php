@@ -37,7 +37,7 @@ class RasaFetcher
                 'g.id',
                 'g.name',
                 'g.title',
-                '(SELECT COUNT(*) FROM adminka_rasa_linias l WHERE l.rasa_id = g.id) AS linias'
+                '(SELECT COUNT(*) FROM adminka_rasa_linias l WHERE (l.rasa_id = g.id AND  l.vetka_id IS NULL ) ) AS linias'
             )
             ->from('adminka_rasas', 'g')
             ->orderBy('name')

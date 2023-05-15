@@ -15,7 +15,38 @@ class LiniaFetcher
     {
         $this->connection = $connection;
     }
-	
+
+    public function allOfVetka(string $linia, string $name_star): array
+    {
+        $stmt = $this->connection->createQueryBuilder()
+            ->select(
+                'l.id',
+                'l.name',
+                'l.name_star',
+                'l.title',
+                'l.sort_linia',
+                'l.vetka_id',
+                '(SELECT COUNT(*) FROM adminka_rasa_linia_nomers n WHERE n.linia_id = l.id) AS nomers'
+            // '(
+            //     SELECT COUNT(ms.member_id)
+            //     FROM work_projects_project_memberships ms
+            //     INNER JOIN work_projects_project_membership_departments md ON ms.id = md.membership_id
+            //     WHERE md.department_id = d.id AND ms.materi_id = :materi
+            // ) AS members_count'
+            )
+            ->from('adminka_rasa_linias', 'l')
+            ->andWhere('vetka_id = :linias AND  l.name_star = :stname')
+            ->setParameter(':linias', $linia)
+            ->setParameter(':stname', $name_star)
+//            ->orderBy('name')
+            ->orderBy('l.name_star')
+//            ->orderBy('title')
+//			->orderBy('sort_linia')
+            ->execute();
+
+        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
+    }
+
     public function getMaxSortLinia(string $rasa): int
     {
         return (int)$this->connection->createQueryBuilder()
@@ -68,7 +99,7 @@ class LiniaFetcher
                 // ) AS members_count'
             )
             ->from('adminka_rasa_linias', 'l')
-            ->andWhere('rasa_id = :rasas')
+            ->andWhere('rasa_id = :rasas AND  l.vetka_id IS NULL')
             ->setParameter(':rasas', $rasa)
 //            ->orderBy('name')
             ->orderBy('l.name_star')

@@ -71,7 +71,22 @@
 
           {% for nomer in nomers %}
             <ul class="ras__data ras__data--ras">
+
+              {% if nomer.kolvenka < 1 %}
+                  <li class="ras__name--widt9">
+                      <a href="#">
+                         ---- --- ---
+                      </a>
+                  </li>
+              {% else %}
+                  <li class="ras__name--widt9">
+                    <a href="{{ path('adminka.rasas.linias.nomer_linia.vetka', { 'linia_id': linia.id, 'name_star': nomer.name_star}) }}"
+                       class="btnn btnn--mb0 btnn--pt btnn--rasa"> <strong class="strongo strongo--kras">на </strong> ветку</strong>
+                    </a>
+                  </li>
+              {% endif %}
               <li class="ras__name">{{ linia.nameStar }}<strong class="strongo strongo--kras">-{{ nomer.vetka_nomer }}</strong></li>
+
               <li>
                 <div class="ras-nomer ras-nomer--wid12">
                   {{ nomer.name }}
@@ -88,7 +103,7 @@
 
                 </li>
               {% endif %}
-<div class = "break" >
+{#<div class = "break" >#}
               <li>
                 <strong class="strongo strongo--kras"> {{ plemmatka_status(nomer.status) }} </strong>
               </li>
@@ -113,7 +128,7 @@
 
               {% endif %}
 
-</div>
+{#</div>#}
 
             </ul>
           {% endfor %}

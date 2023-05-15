@@ -29,13 +29,10 @@
                         {% set foos = linia.name_star|split('-') %}
                         <li class="rasa__name rasa__name--wid35">
                               {% for i in 1..foos|length-1 %}
-                                  <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka-w.png') }}" alt="редактировать">
+                                  <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka_w.png') }}" alt="редактировать">
                               {% endfor %}
-
-
                                   {{ linia.name_star }} ( {{ linia.nomers }} )
                         </li>
-
 
                     {% else %}
                         <li class="rasa__name rasa__name--wid15">
@@ -43,21 +40,9 @@
                         </li>
                     {% endif %}
 
-{#                        {% if linia.vetka_id %}#}
-
-
-{#                            {% set foos = linia.name_star|split('-') %}#}
-{#                           ========= {{ foos|length  }}#}
-{#                        {% else %}#}
-{#                            нет ветки#}
-{#                        {% endif %}#}
-
-
-
-{#                    <li class="rasa__name  ">( {{ linia.nomers }} )</li>#}
                     <li>
                         <a href="{{ path('adminka.rasas.linias.nomers', {'linia_id': linia.id}) }}"
-                           class="btnn btnn--mb0 btnn--pt btnn--rasa">Новая <strong class="strongo strongo--kras">ветка</strong> \ Добавить <strong class="strongo strongo--kras"> номер </strong>
+                           class="btnn btnn--mb0 btnn--pt btnn--rasa">Ветки<strong class="strongo strongo--kras"> =></strong> Номера
                         </a>
                     </li>
 
