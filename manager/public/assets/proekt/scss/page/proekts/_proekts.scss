@@ -61,21 +61,21 @@
 
 
   &--rasa {
-    max-width: 100%;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    // padding-bottom: 3rem;
+    // max-width: 100%;
+    // margin-left: 0;
+    // margin-right: 0;
+ 
     color: $rasa-color;
     background-color: $white;
     box-shadow: inset 0px 0px 10px rgba($rasa-color, 0.9);
     border-bottom: 2px solid $rasa-color; // linia
   }
 
-  @include breakpoint($tablet-bp) {   
-    margin-left: 0;
-    margin-right: 0;
-    padding: 1.5rem;
-  }
+  // @include breakpoint($tablet-bp) {   
+  //   //margin-left: 0;
+  //   //margin-right: 0;
+  //   padding: 1.5rem;
+  // }
   
   @include breakpoint($mobile-bp) {
     padding: 1.5rem;
@@ -87,7 +87,7 @@
   padding-bottom: 0;
 }
 .proekts-plr {
-  padding: 0 3rem;
+  padding: 0 2rem;
 
   @include breakpoint($mobile-bp) {
     padding: 0 1rem;

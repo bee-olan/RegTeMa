@@ -65,6 +65,17 @@
       <div class="nome">
         <div class="lini-margin">
           <h1 class="ras__title">
+       
+          <svg width="2em"
+            height="2em"
+            viewBox="0 0 16 16"
+            class="bi bi-check2"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+          </svg>
+     
              Ветка : <strong class="strongo strongo--kras">{{ linia.nameStar }}</strong> и
             <strong class="strongo ">номера,</strong> на ней зарегистрированные
           </h1>
@@ -73,14 +84,14 @@
             <ul class="ras__data ras__data--ras">
 
               {% if nomer.kolvenka < 1 %}
-                  <li class="ras__name--widt9">
-                      <a href="#">
-                         ---- --- ---
+                  <li class=" ras__name--widt9">
+                      {# <a href="#"> #}
+                         ветки <strong class="strongo strongo--kras"> нет</strong>
                       </a>
-                  </li>
+                  {# </li> #}
               {% else %}
                   <li class="ras__name--widt9">
-                    <a href="{{ path('adminka.rasas.linias.nomer_linia.vetka', { 'linia_id': linia.id, 'name_star': nomer.name_star}) }}"
+                    <a href="{{ path('proekt.pasekas.rasas.linias.vetka', { 'linia_id': linia.id, 'name_star': nomer.name_star}) }}"
                        class="btnn btnn--mb0 btnn--pt btnn--rasa"> <strong class="strongo strongo--kras">на </strong> ветку</strong>
                     </a>
                   </li>
@@ -104,13 +115,13 @@
                 </li>
               {% endif %}
 {#<div class = "break" >#}
-              <li>
+              <li class="ras__name--widt9">
                 <strong class="strongo strongo--kras"> {{ plemmatka_status(nomer.status) }} </strong>
               </li>
 
               {% if nomer.status == "active"   %}
 
-                  <li class="ras__name--widt10">
+                  <li class="ras__name--wid12">
                       <form action="{{ path('proekt.pasekas.rasas.linias.nomers.archive',{ linia_id: linia.id, id: nomer.id} ) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                         <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
                         <button type="submit" class="btnn btnn--pt btnn--mb0">В архив</button>
@@ -119,7 +130,7 @@
               {% endif %}
 
               {% if nomer.status == "archived" %}
-                  <li class="ras__name--widt10">
+                  <li class="ras__name--wid12">
                       <form action="{{ path('proekt.pasekas.rasas.linias.nomers.reinstate',{ linia_id: linia.id, id: nomer.id} ) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                         <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
                         <button type="submit" class="btnn btnn--pt btnn--mb0">Из архива</button>

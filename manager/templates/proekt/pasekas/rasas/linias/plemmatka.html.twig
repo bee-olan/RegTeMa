@@ -20,6 +20,7 @@
     {% include('proekt/pasekas/rasas/_rasa-includ.html.twig') %}
 
     <div class="proekts-plr  "> 
+     {# <div >  #}
         <ul class="ras__data">
             <li >
                 <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -36,47 +37,73 @@
         <div class="lini-margin ">
             {% if linias %}
                 <h1 class="ras__title "> <strong class="strongo " >Линии  </strong>  для   <strong class="strongo strongo--kras" >  {{ rasa.name }} : </strong> данные из БД  </h1>
+                {% for linia in linias %}
+                    <ul class="ras__data lini-margin ">
+                        {% if linia.vetka_id %}
+                            {% set foos = linia.name_star|split('-') %}
+                            <li class="ras__name ras__name--wid30">
+                                {% for i in 1..foos|length-1 %}
+                                    <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka-p.png') }}" alt="редактировать">
+                                {% endfor %}
+                                    <strong class="strongo "> ветка </strong> {{ linia.name_star }}  ( {{ linia.nomers }} )
+                            </li>
+                            {% set foos = linia.title|split('_') %}
+                            <li  class="ras__name ras__name--wid30" >  
+                                <strong class="strongo "> от матки </strong> 
+                                 <strong class="strongo strongo--kras"> {{foos[1]}} </strong> 
+                              
+                            </li> 
 
-                        {% for linia in linias %}
-                            <ul class="ras__data">
-                                {% if linia.vetka_id %}
-                                    {% set foos = linia.name_star|split('-') %}
-                                    <li class="rasa__name rasa__name--wid30">
-                                        {% for i in 1..foos|length-1 %}
-                                           <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka-p.png') }}" alt="редактировать">
-
-                                        {% endfor %}
-{#                                          {{foos[0] }}-{{ foos|last}}#}
-                                         <strong class="strongo "> ветка </strong> {{ linia.name_star }}  ( {{ linia.nomers }} )
-                                    </li>
-                                    <li >
-                                        {% if linia.nomers > 0.1 %}
-                                            <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', {'ras': rasa.id, 'linia_id': linia.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
-                                                 <strong class="strongo strongo--kras"> {{ linia.title }}</strong>
-                                            </a>
-                                        {% else %}
-                                            - - <strong class="strongo "> {{ linia.title }} </strong> -  дочерних <strong class="strongo strongo--kras">  нет! </strong> Пишите запрос.
-                                        {% endif %}
-                                    </li>
-
-                                {% else %}
-                                    <li class="ras__name ras__name--widt30">
-                                       {{ linia.name_star }} ( {{ linia.nomers }} )
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', {'ras': rasa.id, 'linia_id': linia.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
-                                            Ветки  <strong class="strongo strongo--kras">=> </strong> Номера
-                                        </a>
-                                    </li>
-{#                                    <li>#}
-{#                                        <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', {'ras': rasa.id, 'linia_id': linia.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >#}
-{#                                           Ветки  <strong class="strongo strongo--kras">=> </strong> Номера#}
-{#                                        </a>#}
-{#                                    </li>#}
-                                {% endif %}
-                               
+                            {% if linia.nomers > 0.1 %} 
+                                <li class="ras__name ras__name--widt9">Перейти </li>
+                                <li>
+                                    <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', {'ras': rasa.id, 'linia_id': linia.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
+                                        Ветки  <strong class="strongo strongo--kras"> =>  </strong>Номера  
+                                    </a>
+                                </li>
                             </ul>
-                        {% endfor %}
+                            <ul class="ras__data">
+                               
+                                <li class = "ras__title" >   или вернитесь     
+                                    {# <a href="{{ path('proekt.pasekas.rasas.linias.vetka', { 'linia_id': linia.id,  'name_star' : linia.name_star}) }}"  #}
+                                     <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', { 'linia_id': linia.vetka_id}) }}" 
+                                    class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
+                                        на предыдущую страницу
+                                    </a>
+                                </li>  
+                            {% else %}
+                           
+                                <li class="ras__name ras__name--wid30" >
+                                -  -  дочерних <strong class="strongo strongo--kras">  нет! </strong> 
+                               </li> 
+
+                            </ul>
+                            <ul class="ras__data">
+                               
+                                <li class = "ras__title" >  Напишите запрос или вернитесь     
+                                    {# <a href="{{ path('proekt.pasekas.rasas.linias.vetka', { 'linia_id': linia.id,  'name_star' : linia.name_star}) }}"  #}
+                                     <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', { 'linia_id': linia.vetka_id}) }}" 
+                                    class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
+                                        на предыдущую страницу
+                                    </a>
+                                </li>  
+                               
+                                                                        
+                            {% endif %}
+                                    
+                        {% else %}
+                                <li class="ras__name ras__name--widt30">
+                                    {{ linia.name_star }} ( {{ linia.nomers }} )
+                                </li>
+                                <li>
+                                    <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', {'ras': rasa.id, 'linia_id': linia.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
+                                        Ветки  <strong class="strongo strongo--kras">=> </strong> Номера
+                                    </a>
+                                </li>
+                        {% endif %}
+                               
+                    </ul>
+                {% endfor %}
             {% else %}
                 <h1 class="ras__title "> <strong class="strongo strongo--kras " >Напишите запрос :   </strong> <strong class="strongo " > Раса - Линия - Ветка - Номер   </strong>  </h1>
             {% endif %}
@@ -91,7 +118,7 @@
 
     <div  class="proekts proekts--rasa">
         <div class="proekts-plr  ">
-            <h1 class="ras__title  ">Написать запрос на недостающие названия  Раса - Линия - Ветка - Номер</h1>
+            <h1 class="ras__title  ">Написать запрос </h1>
 
             <div class="mesto-form__header  ">
                 <div class="mesto-form ">

@@ -2065,20 +2065,10 @@ img.hover-shadow {
   border-bottom: 2px solid #f6f6f6;
 }
 .proekts--rasa {
-  max-width: 100%;
-  margin-left: 2rem;
-  margin-right: 2rem;
   color: green;
   background-color: #f6f6f6;
   box-shadow: inset 0px 0px 10px rgba(0, 128, 0, 0.9);
   border-bottom: 2px solid green;
-}
-@media screen and (max-width: 991px) {
-  .proekts {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 1.5rem;
-  }
 }
 @media screen and (max-width: 575px) {
   .proekts {
@@ -2091,7 +2081,7 @@ img.hover-shadow {
 }
 
 .proekts-plr {
-  padding: 0 3rem;
+  padding: 0 2rem;
 }
 @media screen and (max-width: 575px) {
   .proekts-plr {
@@ -3443,6 +3433,9 @@ legend {
 .ras__name--widt {
   width: 35rem;
 }
+.ras__name--widt9 {
+  width: 10rem;
+}
 .ras__name--widt10 {
   width: 15rem;
 }
@@ -3473,19 +3466,13 @@ legend {
 }
 
 .lini {
-  width: 88%;
-  margin-left: 10rem;
+  max-width: 100%;
+  margin-left: 4rem;
+  margin-right: 1rem;
   padding: 1.5rem 1.5rem 2.5rem 1.5rem;
   overflow: hidden;
   box-shadow: inset 0px 0px 10px rgba(0, 128, 0, 0.9);
   border-bottom: 2px solid green;
-}
-@media screen and (max-width: 991px) {
-  .lini {
-    width: 100%;
-    margin-left: 1rem;
-    margin-left: 0.5rem;
-  }
 }
 
 .lini-margin {
@@ -3498,8 +3485,8 @@ legend {
 }
 
 .nome {
-  width: 89%;
-  margin-left: 8rem;
+  max-width: 100%;
+  margin-left: 2rem;
   padding: 1.5rem;
   overflow: hidden;
   box-shadow: inset 0px 0px 10px rgba(0, 128, 0, 0.9);
@@ -3509,7 +3496,6 @@ legend {
   .nome {
     width: 100%;
     margin-left: 1rem;
-    margin-left: 0.5rem;
   }
   .nome .break {
     display: none;
