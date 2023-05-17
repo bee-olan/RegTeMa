@@ -2016,8 +2016,8 @@ img.hover-shadow {
 }
 @media screen and (max-width: 575px) {
   .containerr {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
 
@@ -2073,6 +2073,11 @@ img.hover-shadow {
 @media screen and (max-width: 575px) {
   .proekts {
     padding: 1.5rem;
+  }
+  .proekts--rasa {
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -3474,6 +3479,12 @@ legend {
   box-shadow: inset 0px 0px 10px rgba(0, 128, 0, 0.9);
   border-bottom: 2px solid green;
 }
+@media screen and (max-width: 575px) {
+  .lini {
+    padding-right: 0;
+    margin-left: -1rem;
+  }
+}
 
 .lini-margin {
   margin-bottom: 2rem;
@@ -3497,7 +3508,28 @@ legend {
     width: 100%;
     margin-left: 1rem;
   }
-  .nome .break {
+}
+@media screen and (max-width: 575px) {
+  .nome {
+    width: 100%;
+    margin-left: -1rem;
+  }
+}
+
+.break-nomer {
+  display: flex;
+}
+@media screen and (max-width: 1200px) {
+  .break-nomer {
+    display: none;
+  }
+}
+
+.break {
+  display: flex;
+}
+@media screen and (max-width: 575px) {
+  .break {
     display: none;
   }
 }

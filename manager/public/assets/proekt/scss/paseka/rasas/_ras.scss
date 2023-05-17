@@ -97,12 +97,13 @@
     box-shadow: inset 0px 0px 10px rgba($rasa-color, 0.9); //тень внутри
     border-bottom: 2px solid $rasa-color; // linia
 
-  // @include breakpoint($tablet-bp){
-  //   width: 100%;
-  //   margin-left: 1rem;
-  //   margin-left: .5rem;
-  //   // padding: 1.5rem 1.5rem 2.5rem 1.5rem;
-  // }
+  @include breakpoint($mobile-bp){
+    // min-width: 100%;
+    
+    padding-right: 0;
+    margin-left: -1rem;
+    // padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+  }
 }
 
 .lini-margin {
@@ -126,13 +127,34 @@
   @include breakpoint($tablet-bp){
     width: 100%;
     margin-left: 1rem;
-    // margin-right: .5rem;
-    
-   .break{
-    display: none;
-   }
+  }
+
+  @include breakpoint($mobile-bp){
+    width: 100%;
+    margin-left: -1rem;
+    // margin-right: -2rem;
+  
   }
 }
+
+.break-nomer{
+    display: flex;
+
+    @include breakpoint($spisok-bp){
+    display: none;
+  }
+
+}
+
+.break{
+  display: flex;
+
+  @include breakpoint($mobile-bp){
+    display: none;
+  }
+
+}
+
 
 .ras-color {
   padding: 0 1rem;

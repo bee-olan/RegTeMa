@@ -6,8 +6,8 @@
 {% block breadcrumbs %}
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Раса -- {{ rasa.title }}</a></li>
-        <li class="breadcrumb-item active">Добавить линию или добавить номер к линии</li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.rasas', {'id':rasa.id}) }}">Раса</a></li>
+        <li class="breadcrumb-item active">Добавить линию </li>
     </ol>
 {% endblock %}
 

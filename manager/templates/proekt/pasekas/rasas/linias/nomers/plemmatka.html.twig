@@ -38,12 +38,6 @@
       </ul>
     </div>
 
-    {# <h1 class="rasa__title  "><strong> Раса </strong> :   {{ linia.title }}
-            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-            </svg>
-        </h1> #}
-
     <div class="lini">
       <ul class="ras__data">
         <li>
@@ -84,11 +78,9 @@
             <ul class="ras__data ras__data--ras">
 
               {% if nomer.kolvenka < 1 %}
-                  <li class=" ras__name--widt9">
-                      {# <a href="#"> #}
+                  <li class=" ras__name--widt9">                   
                          ветки <strong class="strongo strongo--kras"> нет</strong>
-                      </a>
-                  {# </li> #}
+                  </li>
               {% else %}
                   <li class="ras__name--widt9">
                     <a href="{{ path('proekt.pasekas.rasas.linias.vetka', { 'linia_id': linia.id, 'name_star': nomer.name_star}) }}"
@@ -96,9 +88,9 @@
                     </a>
                   </li>
               {% endif %}
-              <li class="ras__name">{{ linia.nameStar }}<strong class="strongo strongo--kras">-{{ nomer.vetka_nomer }}</strong></li>
+              <li class="ras__name break" >{{ linia.nameStar }}<strong class="strongo strongo--kras">-{{ nomer.vetka_nomer }}</strong></li>
 
-              <li>
+              <li  >
                 <div class="ras-nomer ras-nomer--wid12">
                   {{ nomer.name }}
                 </div>
@@ -114,7 +106,7 @@
 
                 </li>
               {% endif %}
-{#<div class = "break" >#}
+<div class = "break-nomer" >
               <li class="ras__name--widt9">
                 <strong class="strongo strongo--kras"> {{ plemmatka_status(nomer.status) }} </strong>
               </li>
@@ -139,17 +131,12 @@
 
               {% endif %}
 
-{#</div>#}
+</div>
 
             </ul>
           {% endfor %}
         </div>
 
-        {# <div class = "rasa__content" > #}
-        {# <a href="{{ path('paseka.rasas.linias.nomers.create', {'linia_id': linia.id}) }}" #}
-        {# class="btn-my btn-my--sm">Добавить другой #}
-        {# <strong class="stro stro--kras"> номер </strong> в БД</a> #}
-        {# </div> #}
       </div>
     </div>
   </div>

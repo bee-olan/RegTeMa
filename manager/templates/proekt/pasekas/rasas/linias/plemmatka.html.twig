@@ -39,30 +39,33 @@
                 <h1 class="ras__title "> <strong class="strongo " >Линии  </strong>  для   <strong class="strongo strongo--kras" >  {{ rasa.name }} : </strong> данные из БД  </h1>
                 {% for linia in linias %}
                     <ul class="ras__data lini-margin ">
+                        
                         {% if linia.vetka_id %}
                             {% set foos = linia.name_star|split('-') %}
-                            <li class="ras__name ras__name--wid30">
+                            <li class="ras__name ">
                                 {% for i in 1..foos|length-1 %}
                                     <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka-p.png') }}" alt="редактировать">
                                 {% endfor %}
                                     <strong class="strongo "> ветка </strong> {{ linia.name_star }}  ( {{ linia.nomers }} )
                             </li>
                             {% set foos = linia.title|split('_') %}
-                            <li  class="ras__name ras__name--wid30" >  
+                            <li  class="ras__name " >  
                                 <strong class="strongo "> от матки </strong> 
                                  <strong class="strongo strongo--kras"> {{foos[1]}} </strong> 
                               
                             </li> 
 
                             {% if linia.nomers > 0.1 %} 
-                                <li class="ras__name ras__name--widt9">Перейти </li>
-                                <li>
+                            </ul>
+                            <ul class="ras__data">
+                                <li class="ras__title ">Перейти 
+                               
                                     <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', {'ras': rasa.id, 'linia_id': linia.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
                                         Ветки  <strong class="strongo strongo--kras"> =>  </strong>Номера  
                                     </a>
                                 </li>
-                            </ul>
-                            <ul class="ras__data">
+                                </ul>
+                                <ul class="ras__data">
                                
                                 <li class = "ras__title" >   или вернитесь     
                                     {# <a href="{{ path('proekt.pasekas.rasas.linias.vetka', { 'linia_id': linia.id,  'name_star' : linia.name_star}) }}"  #}
@@ -73,12 +76,12 @@
                                 </li>  
                             {% else %}
                            
-                                <li class="ras__name ras__name--wid30" >
+                                <li class="ras__name ras__name--widt30" >
                                 -  -  дочерних <strong class="strongo strongo--kras">  нет! </strong> 
                                </li> 
 
-                            </ul>
-                            <ul class="ras__data">
+                                </ul>
+                                <ul class="ras__data">
                                
                                 <li class = "ras__title" >  Напишите запрос или вернитесь     
                                     {# <a href="{{ path('proekt.pasekas.rasas.linias.vetka', { 'linia_id': linia.id,  'name_star' : linia.name_star}) }}"  #}

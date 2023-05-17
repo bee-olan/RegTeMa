@@ -79,8 +79,16 @@
   
   @include breakpoint($mobile-bp) {
     padding: 1.5rem;
+
+    &--rasa {
+      padding-right: 0;
+      margin-left: 0;
+      margin-right:0;
+   
+    }
    
   }
+
 }
 
 .pb0{

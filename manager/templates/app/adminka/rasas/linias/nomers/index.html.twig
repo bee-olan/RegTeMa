@@ -6,8 +6,9 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
         <li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Расы </a></li>
-        <li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Линия -- {{ linia.name }}</a></li>
-        <li class="breadcrumb-item active">Номера зарегистрированные</li>
+           <li class="breadcrumb-item"><a href="{{ path('adminka.rasas.linias.show', {'id':linia.id}) }}">{{ linia.rasa.title }} - все линии</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.rasas.linias.show', {'id':linia.id}) }}">Линии -Ветки {{ linia.name }}</a></li>
+        <li class="breadcrumb-item active"> {{ linia.name }} - номера </li>
     </ol>
 {% endblock %}
 

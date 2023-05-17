@@ -41,7 +41,7 @@ class LiniasController extends AbstractController
     public function show(Request $request, LiniaRepository $linias, string $id): Response
     {
         $linia = $linias->get(new Id($id)) ;
-        dd($linia);
+
         return $this->redirectToRoute('adminka.rasas.linias',
 				['id' => $linia->getRasa()->getId()->getValue()]);
     }
