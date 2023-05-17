@@ -579,8 +579,6 @@ pre {
   margin: 0;
 }
 .btnn--break {
-  margin: 0 3.5rem -2rem 0;
-  vertical-align: text-top;
   font-size: 1.8rem;
 }
 .btnn--col {
@@ -2905,21 +2903,6 @@ legend {
   margin-bottom: 0;
 }
 
-@media screen and (max-width: 575px) {
-  .no_break {
-    display: none;
-  }
-}
-
-.break {
-  display: none;
-}
-@media screen and (max-width: 575px) {
-  .break {
-    display: block;
-  }
-}
-
 .plem {
   display: flex;
   align-items: center;
@@ -2946,6 +2929,24 @@ legend {
   opacity: 1;
   text-decoration: none;
   color: #a78c16;
+}
+
+.break-plem-create {
+  display: block;
+}
+@media screen and (max-width: 575px) {
+  .break-plem-create {
+    display: none;
+  }
+}
+
+.break-plem-create-mobil {
+  display: none;
+}
+@media screen and (max-width: 575px) {
+  .break-plem-create-mobil {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -3001,6 +3002,7 @@ legend {
 @media screen and (max-width: 575px) {
   .plem__data {
     padding: 1.5rem 0;
+    justify-content: start;
   }
 }
 

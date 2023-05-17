@@ -24,8 +24,8 @@
     <div class="proekts-plr  ">
 
         <h1 class="plem__title  ">Компоненты  названия  ПлемМатки :<br>
-         <strong class="strongo strongo--kras"> {{command.sort}}</strong> - программный номер   <br>
-           ветка - номер <strong class="strongo strongo--kras">  {{ kakToTak }} </strong><br>
+         <strong class="strongo strongo--kras"> {{command.sort}}</strong> - программный номер.   <br>
+           Ветка - номер <strong class="strongo strongo--kras">  {{ kakToTak }} </strong><br>
 {#         Внимание!!!<strong class="strongo strongo--kras"> Внутренняя нумерация </strong>-- Ваша нумерация или то, что придумаете для идентификации<br>  .#}
         </h1>
 
@@ -34,17 +34,30 @@
             <div class="plem-form ">
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
-
-                <ul class="plem__data plem__data--mt2">
-                    <li>    
-                        <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--col">Добавить в БД</button>
-                    </li>
-                    <li> 
-                        <a href="{{ path('proekt.pasekas.matkas') }}"
-                            class="btnn btnn--mb0 btnn--col"> Выйти из "Добавить"</a>
-                    </li>
-                </ul> 
-                                
+                <div class = "break-plem-create">
+                    <ul class="plem__data plem__data--mt2">
+                        <li>    
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--col">Добавить в БД</button>
+                        </li>
+                        <li> 
+                            <a href="{{ path('proekt.pasekas.matkas') }}"
+                                class="btnn btnn--mb0 btnn--col"> Выйти из "Добавить"</a>
+                        </li>
+                    </ul> 
+                </div>
+                <div class = "break-plem-create-mobil">
+                    <ul class="plem__data ">
+                        <li>    
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--col">Добавить в БД</button>
+                        </li>
+                    </ul>
+                    <ul class="plem__data ">    
+                        <li> 
+                            <a href="{{ path('proekt.pasekas.matkas') }}"
+                                class="btnn btnn--mb0 btnn--col"> Выйти из "Добавить"</a>
+                        </li>
+                    </ul> 
+                </div>                                
                 {{ form_end(form) }}
             </div>                 
         </div>

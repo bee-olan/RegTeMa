@@ -33,7 +33,7 @@
                 <h1 class="plem__title "> Для регистрации ПлемМатки, надо последовательно заполнить пункты: 1 - 3 </h1>
             {% endif %}
 
-            <div class = "no_break">
+            <div class = "break-plem-create">
                 <ul class="plem__data">
                     {% if nomer %}
                         <li>
@@ -130,7 +130,7 @@
                 </ul>
             </div>
 
-            <div class = "break">
+            <div class = "break-plem-create-mobil">
                 <ul class="plem__data">
                     {% if nomer %}
                         <li>
@@ -198,15 +198,16 @@
                     {% endif %}
                 </ul>
 
-                <ul class="plem__data plem__data--mt2">
-                    <li class="plem__name"> Внимание!  </li>
-                    <li>
+                <ul class="plem__data ">
+                    <li class="plem__title plem__title--mb0"> Внимание!  
+                    {# </li>
+                    <li> #}
                         <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id' : plemmatka.id}  ) }}"
                         class="btnn btnn--break btnn--col">
                             <strong class="strongo strongo--kras">Перейти </strong> на страничку
                         </a>
                     </li>
-                    <li></li>
+                   
                 </ul>
                 <ul class="plem__data ">
                     <li>
