@@ -35,29 +35,24 @@
 
             <div class = "break-plem-create">
                 <ul class="plem__data">
-                    {% if nomer %}
+                    {% if plemmatka %}
                         <li>
                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                             </svg>
                         </li>
-                        <li class="plem__name  ">Раса - Линия - Номер</li>
+                        <li class="plem__name  ">Раса : Линия-Ветка : Номер</li>
                         <li><div class = "plem-nomer  plem-nomer__wid8">
-                                {{ nomer }}
+                            {# {{ nomer }} #}
+                         {{plemmatka.nomer.linia.rasa.name}}    : {{plemmatka.nomer.linia.nameStar}} : {{plemmatka.nomer.name}} 
                             </div></li>
                         <li></li>
-                    {% else %}
-                        <li class="plem__name" >1. Выбрать расу </li>
-                        <li>
-                            <a href="{{ path('paseka.rasas.plemmatka') }}"
-                            class="btn-my btn-my--sm">Выбрать <strong class="stro stro--kras">расу  </strong>
-                            </a>
-                        </li>
+                    
                     {% endif %}
                 </ul>
 
                 <ul class="plem__data">
-                    {% if mesto and persona %}
+                 
                         <li>
                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -65,18 +60,12 @@
                         </li>
                         <li class="plem__name  ">С учетом Ваших данных: ПерсонНомера и НомерМеста.</li>
                         <li><div class = "plem-nomer plem-nomer__wid12">
-                                {{ nomer }}: пн-{{ persona }}_{{ mesto }}
+                                {# {{ nomer }} #}
+                                {# : пн-{{ persona }}_{{ mesto }} #}
 
                             </div></li>
                         <li></li>
-                    {% else %}
-                        <li class="plem__name" >Упс! Вы не выбрали  ПерсонНомера и НомерМеста ?</li>
-                        <li>
-                            <a href="{{ path('paseka.uchasties.uchastie') }}"
-                            class="btn-my btn-my--sm"> Вернитесь к : <strong class="stro stro--kras">Стать участником </strong>
-                            </a>
-                        </li>
-                    {% endif %}
+                
                 </ul>
                 <ul class="plem__data">
                     {% if plemmatka %}
@@ -92,13 +81,7 @@
                         </li>
                         <li class="plem__name  ">эти данные берём за основу при регистрации ДочьМатки!  </li>
                         <li></li>
-                    {% else %}
-                    <li class="plem__name" >3. И Вам надо будет заполнить еще пару позиций:</li>
-                    <li>
-                        <a href="{{ path('paseka.matkas.create',{'id' : nomer.id}  ) }}"
-                        class="btnn btnn--mb0 btnn--col">Продолжить регистрацию <strong class="stro stro--kras">ПлемМатки  </strong>
-                        </a>
-                    </li>
+                   
                     {% endif %}
                 </ul>
 
@@ -132,7 +115,7 @@
 
             <div class = "break-plem-create-mobil">
                 <ul class="plem__data">
-                    {% if nomer %}
+                    {# {% if nomer %} #}
                         <li>
                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -140,21 +123,22 @@
                         </li>
                         <li class="plem__name  ">1.</li>
                         <li><div class = "plem-nomer  plem-nomer__wid8">
-                                {{ nomer }}
+                                {{ nomer }} :
+                                 {{plemmatka.nomer.linia.nameStar}}_{{plemmatka.nomer.name}} 
                             </div></li>
                         <li></li>
-                    {% else %}
+                    {# {% else %}
                         <li class="plem__name" >1. Выбрать расу </li>
                         <li>
                             <a href="{{ path('paseka.rasas.plemmatka') }}"
                             class="btn-my btn-my--sm">Выбрать <strong class="stro stro--kras">расу  </strong>
                             </a>
                         </li>
-                    {% endif %}
+                    {% endif %} #}
                 </ul>
 
                 <ul class="plem__data">
-                    {% if mesto and persona %}
+                    {# {% if mesto and persona %} #}
                         <li>
                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -162,18 +146,20 @@
                         </li>
                         <li class="plem__name  ">2.</li>
                         <li><div class = "plem-nomer plem-nomer__wid12">
-                                {{ nomer }}: пн-{{ persona }}_{{ mesto }}
+                       {{plemmatka.nomer.linia.rasa.name}} ====    
+                           {{ plemmatka.sort }} :{{plemmatka.nomer.linia.nameStar}}_{{plemmatka.nomer.name}} :
+                            {# пн-{{ persona }}_{{ mesto }} #}
 
                             </div></li>
                         <li></li>
-                    {% else %}
+                    {# {% else %}
                         <li class="plem__name" >Упс! Вы не выбрали  ПерсонНомера и НомерМеста ?</li>
                         <li>
                             <a href="{{ path('paseka.uchasties.uchastie') }}"
                             class="btn-my btn-my--sm"> Вернитесь к : <strong class="stro stro--kras">Стать участником </strong>
                             </a>
                         </li>
-                    {% endif %}
+                    {% endif %} #}
                 </ul>
                 <ul class="plem__data">
                     {% if plemmatka %}

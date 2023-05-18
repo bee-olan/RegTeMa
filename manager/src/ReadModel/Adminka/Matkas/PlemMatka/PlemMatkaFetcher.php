@@ -85,9 +85,10 @@ class PlemMatkaFetcher
 
     public function existsPerson(string $id): bool
     {
+      
         return $this->connection->createQueryBuilder()
                 ->select('COUNT (id)')
-                ->from('admin_uchasties_personas')
+                ->from('adminka_uchasties_personas')
                 ->where('id = :id')
                 ->setParameter(':id', $id)
                 ->execute()->fetchColumn() > 0;
@@ -95,6 +96,7 @@ class PlemMatkaFetcher
 
     public function existsMesto(string $id): bool
     {
+       
         return $this->connection->createQueryBuilder()
                 ->select('COUNT (id)')
                 ->from('mesto_mestonomers')

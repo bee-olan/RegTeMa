@@ -13,11 +13,13 @@ use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
 
 use App\Model\User\Entity\User\User;
 use App\Model\User\Entity\User\UserRepository;
+use App\ReadModel\Adminka\Matkas\PlemMatka\PlemMatkaFetcher;
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
 use App\ReadModel\Adminka\Uchasties\Uchastie\UchastieFetcher;
 use App\ReadModel\User\UserFetcher;
 use Psr\Log\LoggerInterface;
+use App\Controller\ErrorHandler;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,12 +31,19 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class UchastieControllr extends AbstractController
 {
-    private $logger;
+    // private $logger;
 
-    public function __construct(LoggerInterface $logger)
+    // public function __construct(LoggerInterface $logger)
+    // {
+    //     $this->logger = $logger;
+    // }
+    private $errors;
+
+    public function __construct( ErrorHandler $errors)
     {
-        $this->logger = $logger;
+        $this->errors = $errors;
     }
+
     /**
      * @Route("", name="")
      * @param Request $request
@@ -64,11 +73,28 @@ class UchastieControllr extends AbstractController
      * @Route("/create", name=".create")
      * @param Request $request
      * @param UserRepository $users
+     * @param PlemMatkaFetcher $plemmatkas
      * @param Create\Handler $handler
      * @return Response
      */
-    public function create( Request $request,  UserRepository $users, Create\Handler $handler): Response
+    public function create( Request $request,  
+                    UserRepository $users,
+                    PlemMatkaFetcher $plemmatkas, 
+                    Create\Handler $handler): Response
     {
+        if (!$plemmatkas->existsPerson($this->getUser()->getId())) {
+            
+            $this->addFlash('error', 'Внимание!!! Выбрать ПерсонНомер ');
+            return $this->redirectToRoute('proekt.personaa.diapazon');
+        }
+
+        if (!$plemmatkas->existsMesto($this->getUser()->getId())) {
+            // dd($this->getUser()->getId());
+           $this->addFlash('error', 'Пожалуйста, определитесь с номером места расположения Вашей пасеки ');
+           return $this->redirectToRoute('proekt.mestoo.okrugs');
+       } 
+       
+       
         $idUser = $this->getUser()->getId();
 //
 
@@ -89,7 +115,7 @@ class UchastieControllr extends AbstractController
                 $handler->handle($command);
                 return $this->redirectToRoute('proekt.pasekas.uchasties.uchastiee');
             } catch (\DomainException $e) {
-                $this->logger->warning($e->getMessage(), ['exception' => $e]);
+                $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }

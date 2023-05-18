@@ -16,6 +16,9 @@ use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
 use App\ReadModel\Adminka\Matkas\PlemMatka\PlemMatkaFetcher;
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
+use App\ReadModel\Adminka\Uchasties\Uchastie\UchastieFetcher;
+
+use App\Controller\ErrorHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,31 +29,61 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PlemCreateController extends AbstractController
 {
-    /**
-     * @Route("/", name="")
-     * @return Response
-     */
-    public function index(): Response
+
+    private $errors;
+
+    public function __construct( ErrorHandler $errors)
     {
+        $this->errors = $errors;
+    }
+
+
+    /**
+    * @Route("/", name="")
+    * @param Request $request
+    * @param PlemMatkaFetcher $plemmatkas
+    * @param UchastieFetcher $uchasties,
+    * @return Response
+    */
+    public function index( Request $request,
+                        UchastieFetcher $uchasties                     
+                        ): Response
+    { 
+
+        // $uchastie = $uchasties->find($this->getUser()->getId());
+
+        if (!$uchasties->find($this->getUser()->getId())) {
+            
+            $this->addFlash('error', 'Внимание!!! Пожалуйста, начните с этого! ');
+            return $this->redirectToRoute('proekt.pasekas.uchasties.uchastiee');
+        }
 
         return $this->render('proekt/pasekas/matkas/plemmatkas/creates/index.html.twig'
         );
     }
 
     /**
-     * @Route("/plemmatka/{id}", name=".plemmatka" , requirements={"id"=Guid::PATTERN})
-     * @param Request $request
-     *  @param Nomer $nomer
-     * @param PersonaFetcher $personas
-     * @param MestoNomerFetcher $mestoNomers
-//     * @param string $id
-     * @return Response
-     */
+    * @Route("/plemmatka/{id}", name=".plemmatka" , requirements={"id"=Guid::PATTERN})
+    * @param Request $request
+    * @param UchastieFetcher $uchasties 
+    *  @param Nomer $nomer
+    * @param PersonaFetcher $personas
+    * @param MestoNomerFetcher $mestoNomers
+    * @return Response
+    */
     public function plemmatka( Request $request,
-                              PersonaFetcher $personas, MestoNomerFetcher $mestos,
-                              Nomer $nomer): Response
+                            UchastieFetcher $uchasties,    
+                            PersonaFetcher $personas, 
+                            MestoNomerFetcher $mestos,
+                            Nomer $nomer): Response
     {
-//        dd($nomer);
+
+        if (!$uchasties->find($this->getUser()->getId())) {           
+            $this->addFlash('error', 'Внимание!!! Для продолжения нужно стать участником проекта! ');
+            return $this->redirectToRoute('proekt.pasekas.uchasties.uchastiee');
+        }
+       
+    //    dd($nomer);
         $persona = $personas->find($this->getUser()->getId());
 
         $mesto = $mestos->find($this->getUser()->getId());
@@ -107,7 +140,7 @@ class PlemCreateController extends AbstractController
                 return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.creates.sdelano', [ 'name' => $command->name]);
 //                dd($command->name);
             } catch (\DomainException $e) {
-                $this->logger->warning($e->getMessage(), ['exception' => $e]);
+                $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
@@ -140,12 +173,12 @@ class PlemCreateController extends AbstractController
                             PlemMatkaFetcher $plemmatkas): Response
     {
 
-
+    //    dd($plemmatka->getNomer()->getLinia()->getRasa()->getName());
         $nomer = $plemmatka->getNomer()->getTitle();
 
-        $persona = $plemmatka->getPersona()->getNomer();
+        // $persona = $plemmatka->getPersona()->getNomer();
 
-        $mesto = $plemmatka->getMesto()->getNomer();
+        // $mesto = $plemmatka->getMesto()->getNomer();
 //dd($mesto);
 //        $plemId = $plemmatkas->findIdByPlemMatka($plemmatka);
 
@@ -153,8 +186,8 @@ class PlemCreateController extends AbstractController
         return $this->render('proekt/pasekas/matkas/plemmatkas/creates/sdelano.html.twig',
           [
               'plemmatka' => $plemmatka,
-                'persona' => $persona,
-                'mesto' => $mesto,
+                // 'persona' => $persona,
+                // 'mesto' => $mesto,
                 'nomer' => $nomer,
           ])
            ;
@@ -178,7 +211,7 @@ class PlemCreateController extends AbstractController
     ): Response
     {
 
-        $plemmatka = $fetchers->find($plem_id);
+        // $plemmatka = $fetchers->find($plem_id);
         // dd( $plemmatka);
 
 //        $uchastie = $uchasties->get(new Id($plemmatka->getUchastieId()));
