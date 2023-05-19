@@ -59,24 +59,26 @@
           text-decoration: none;
           color: $text;          
         }
-    }     
+    } 
+    
+ 
 }
 
-.break-plem-create{
-  display: block;
+// .break-plem-create{
+//   display: block;
 
-  @include breakpoint($mobile-bp) {
-    display: none;
-    }
-}
-.break-plem-create-mobil{
-  display: none;
+//   @include breakpoint($mobile-bp) {
+//     display: none;
+//     }
+// }
+// .break-plem-create-mobil{
+//   display: none;
 
-  @include breakpoint($mobile-bp) {
-    display: block;
+//   @include breakpoint($mobile-bp) {
+//     display: block;
    
-    }
-}
+//     }
+// }
 
 
 
@@ -101,7 +103,8 @@
 
 .plem__data {
     display: flex; // добавляем т.к добаилась li-шка
-    //justify-content: center;
+    // justify-content: space-evenly;
+    // justify-content: center;
     justify-content: space-between;
     align-items: center; // выравнивание по вертикали
     list-style: none; // убрала точку у li
@@ -143,6 +146,7 @@
     }
 
     @include breakpoint($mobile-bp) {
+      display: block;
      padding: 1.5rem 0;
      justify-content: start;
      }
@@ -175,7 +179,7 @@
       min-width: 16%;
   
         &--wid {
-          min-width: 63%;
+          min-width: 52%;
         
         }
       }
@@ -223,7 +227,7 @@
     min-width: 16%;
 
       &--wid34 {
-        min-width: 63%;
+        min-width: 52%;
       
       }
     }

@@ -135,7 +135,10 @@ class PlemSideFetcher
                 'p.persona_id',
                 'p.status',
                 'p.sort',
-//                'p.rasa_id',
+                'p.otec_nomer_id',
+                'o.name AS otec_n',
+                'o.oblet AS otec_o',
+                'ol.name AS linia_o',
                 'p.kategoria_id',
                 'p.nomer_id',
                 'p.goda_vixod ',
@@ -147,6 +150,8 @@ class PlemSideFetcher
             ->from('admin_matkas_plemmatkas', 'p')
             ->innerJoin('p', 'adminka_uchasties_personas', 'pe', 'p.persona_id = pe.id')
             ->innerJoin('p', 'admin_matkas_kategorias', 'k', 'p.kategoria_id = k.id')
+            ->innerJoin('p', 'adminka_otec_ras_linia_nomers', 'o', 'p.otec_nomer_id = o.id')
+            ->innerJoin('o', 'adminka_otec_ras_linias', 'ol', 'ol.id = o.linia_id')
         ;
 
         if ($filter->uchastie) {

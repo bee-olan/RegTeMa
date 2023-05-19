@@ -33,7 +33,7 @@
                 <h1 class="plem__title "> Для регистрации ПлемМатки, надо последовательно заполнить пункты: 1 - 3 </h1>
             {% endif %}
 
-            <div class = "break-plem-create">
+            {# <div class = "break-plem-create"> #}
                 <ul class="plem__data">
                     {% if plemmatka %}
                         <li>
@@ -41,11 +41,12 @@
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                             </svg>
                         </li>
-                        <li class="plem__name  ">Раса : Линия-Ветка : Номер</li>
+                      
                         <li><div class = "plem-nomer  plem-nomer__wid8">
-                            {# {{ nomer }} #}
+                          
                          {{plemmatka.nomer.linia.rasa.name}}    : {{plemmatka.nomer.linia.nameStar}} : {{plemmatka.nomer.name}} 
                             </div></li>
+                              <li class="plem__name  ">Раса : Линия-Ветка : Номер</li>
                         <li></li>
                     
                     {% endif %}
@@ -58,46 +59,77 @@
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                             </svg>
                         </li>
-                        <li class="plem__name  ">С учетом Ваших данных: ПерсонНомера и НомерМеста.</li>
-                        <li><div class = "plem-nomer plem-nomer__wid12">
-                                {# {{ nomer }} #}
-                                {# : пн-{{ persona }}_{{ mesto }} #}
+                        <li>
+                            <div class = "plem-nomer plem-nomer__wid12">
+                              {{plemmatka.nomer.linia.rasa.name}}    : {{plemmatka.nomer.linia.nameStar}} : {{plemmatka.nomer.name}} : пн-{{plemmatka.persona.nomer}}_{{plemmatka.mesto.nomer}}
 
-                            </div></li>
+                            </div>
+                        </li>
+                        <li class="plem__name  ">С учетом Ваших данных: ПерсонНомера и НомерМеста.</li>
+                        
                         <li></li>
                 
                 </ul>
+            {% if plemmatka %}
+            <ul class="plem__data">
+                <li>
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                </li>
+ {% if nomerOtec.linia.name != "-"%}
+                    <li  >
+                        <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id}) }}"  title = "Расшифровка названия" >
+                        <div class = "plem-nomer plem-nomer__wid12">     
+                        <strong class="strongo strongo--kras"> {{nomerOtec.linia.name}}_{{nomerOtec.name}}_ {{nomerOtec.oblet}}  </strong>               
+                    </div> 
+                        </a>
+                    </li>
+                     <li class="plem__name  ">Отцовская линия-номер-облет  </li>
+  {% else %}
+                        <li class = "plem__name-list">  {{ plemmatka_kategoria(plemmatka.kategoria.name ) }} </li>
+                         <li class="plem__name  ">Категория  </li>
+    {% endif %}     
+
+
+{# 
+               <li > 
+                    <div class = "plem-nomer plem-nomer__wid12">     
+                        <strong class="strongo strongo--kras"> {{nomerOtec.linia.name}}_{{nomerOtec.name}}_ {{nomerOtec.oblet}}  </strong>               
+                    </div> 
+                </li> #}
+               
+                <li></li>
+            </ul>
                 <ul class="plem__data">
-                    {% if plemmatka %}
+                    
                         <li>
                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                             </svg>
                         </li>
-                        {# <li class="plem__name  ">Добавили категорию  {{kategoria}} и внутреннюю нумерацию</li> #}
                         <li > <div class = "plem-nomer plem-nomer__wid12">     
-                                <strong class="strongo strongo--kras"> {{ plemmatka.name }}  </strong>
+                                <strong class="strongo strongo--kras"> {{ plemmatka.name }}  </strong> 
+                               
                                 </div> 
-                        </li>
+                        </li>                     
                         <li class="plem__name  ">эти данные берём за основу при регистрации ДочьМатки!  </li>
                         <li></li>
                    
-                    {% endif %}
+                   
                 </ul>
-
+        {% endif %}
                 <ul class="plem__data plem__data--mt2">
-                    <li class="plem__name"> <strong class="strongo strongo--kras">Внимание!!! ..... </strong>
-                        Заявка на сезон -   обязательно перейти и написать !!!
-
-
-                    </li>
-                    <li>
+                <li class="plem__title plem__title--mb0"> Внимание!  
                         <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id' : plemmatka.id}  ) }}"
-                        class="btnn btnn--mb0 btnn--col">
+                        class="btnn btnn--break btnn--col">
                             <strong class="strongo strongo--kras">Перейти </strong> на страничку
                         </a>
                     </li>
-                    <li></li>
+                    
+                     <li class="plem__name"> 
+                        Заявка на сезон -   обязательно перейти и написать !!!
+                    </li>
                 </ul>
                 <ul class="plem__data plem__data--mt2">
                     <li>
@@ -105,17 +137,18 @@
                         class="btnn btnn--mb0 btnn--col">Посмотреть  <strong class="strongo strongo--kras"> расшифровку  </strong> названия ПлемМатки.
                         </a>
                     </li>
+
                     <li>
                         <a href="{{ path('proekt.pasekas.matkas'  ) }}"
                         class="btnn btnn--mb0 btnn--col">Список Ваших <strong class="strongo strongo--kras">ПлемМаток  </strong> с выбранным сезоном.
                         </a>
                     </li>
                 </ul>
-            </div>
+            {# </div> #}
 
-            <div class = "break-plem-create-mobil">
+            {# <div class = "break-plem-create-mobil">
+
                 <ul class="plem__data">
-                    {# {% if nomer %} #}
                         <li>
                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -127,18 +160,9 @@
                                  {{plemmatka.nomer.linia.nameStar}}_{{plemmatka.nomer.name}} 
                             </div></li>
                         <li></li>
-                    {# {% else %}
-                        <li class="plem__name" >1. Выбрать расу </li>
-                        <li>
-                            <a href="{{ path('paseka.rasas.plemmatka') }}"
-                            class="btn-my btn-my--sm">Выбрать <strong class="stro stro--kras">расу  </strong>
-                            </a>
-                        </li>
-                    {% endif %} #}
                 </ul>
 
                 <ul class="plem__data">
-                    {# {% if mesto and persona %} #}
                         <li>
                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -146,23 +170,31 @@
                         </li>
                         <li class="plem__name  ">2.</li>
                         <li><div class = "plem-nomer plem-nomer__wid12">
-                       {{plemmatka.nomer.linia.rasa.name}} ====    
-                           {{ plemmatka.sort }} :{{plemmatka.nomer.linia.nameStar}}_{{plemmatka.nomer.name}} :
-                            {# пн-{{ persona }}_{{ mesto }} #}
+                       {{plemmatka.nomer.linia.rasa.name}}   
+                           :{{plemmatka.nomer.linia.nameStar}}_{{plemmatka.nomer.name}}  : пн-{{plemmatka.persona.nomer}}_{{plemmatka.mesto.nomer}}
 
                             </div></li>
                         <li></li>
-                    {# {% else %}
-                        <li class="plem__name" >Упс! Вы не выбрали  ПерсонНомера и НомерМеста ?</li>
-                        <li>
-                            <a href="{{ path('paseka.uchasties.uchastie') }}"
-                            class="btn-my btn-my--sm"> Вернитесь к : <strong class="stro stro--kras">Стать участником </strong>
-                            </a>
-                        </li>
-                    {% endif %} #}
-                </ul>
+                </ul> 
+            {% if plemmatka %}
+
+            <ul class="plem__data">
+                <li>
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                </li>
+               <li > 
+                    <div class = "plem-nomer plem-nomer__wid12">     
+                        <strong class="strongo strongo--kras"> {{nomerOtec.linia.name}}_{{nomerOtec.name}}_ {{nomerOtec.oblet}}  </strong>               
+                    </div> 
+                </li>
+               
+                <li class="plem__name  ">Отцовская линия-номер-облет  </li>
+       
+            </ul>
                 <ul class="plem__data">
-                    {% if plemmatka %}
+                   
                         <li>
                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -174,20 +206,11 @@
                                 </div> 
                         </li>
                         <li></li>
-                    {% else %}
-                    <li class="plem__name" >3. И Вам надо будет заполнить еще пару позиций:</li>
-                    <li>
-                        <a href="{{ path('paseka.matkas.create',{'id' : nomer.id}  ) }}"
-                        class="btnn btnn--mb0 btnn--col">Продолжить регистрацию <strong class="stro stro--kras">ПлемМатки  </strong>
-                        </a>
-                    </li>
-                    {% endif %}
+                   
                 </ul>
-
+ {% endif %}
                 <ul class="plem__data ">
                     <li class="plem__title plem__title--mb0"> Внимание!  
-                    {# </li>
-                    <li> #}
                         <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id' : plemmatka.id}  ) }}"
                         class="btnn btnn--break btnn--col">
                             <strong class="strongo strongo--kras">Перейти </strong> на страничку
@@ -209,7 +232,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> #}
 
 
         </div>

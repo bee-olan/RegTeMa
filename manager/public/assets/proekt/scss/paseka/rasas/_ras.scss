@@ -152,7 +152,14 @@
   @include breakpoint($mobile-bp){
     display: none;
   }
+}
 
+.no-break{
+  display: none;
+
+  @include breakpoint($mobile-bp){
+    display: flex;
+  }
 }
 
 

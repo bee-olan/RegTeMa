@@ -6,9 +6,13 @@ namespace App\Controller\Proekt\Pasekas\PlemMatka\Creates;
 
 use App\Annotation\Guid;
 
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Id;
+
 use App\Model\Adminka\Entity\Matkas\Kategoria\Permission;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\NomerRepository;
 use App\ReadModel\Adminka\Matkas\KategoriaFetcher;
+use App\ReadModel\Adminka\OtecForRas\Linias\Nomers\NomerFetcher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use App\Model\Adminka\UseCase\Matkas\PlemMatka\Create;
@@ -155,18 +159,18 @@ class PlemCreateController extends AbstractController
     }
 
     /**
-     * @Route("/sdelano/{name}", name=".sdelano" )
-     * @ParamConverter("name", options={"id" = "name"})
-     * @param Request $request
-//     * @param NomerRepository $nomers
-     * @param PlemMatka $plemmatka
-     * @param MestoNomerFetcher $mestoNomers
+    * @Route("/sdelano/{name}", name=".sdelano" )
+    * @ParamConverter("name", options={"id" = "name"})
+    * @param Request $request
+    * @param NomerRepository  $nomerOtecs
+    * @param PlemMatka $plemmatka
+    * @param MestoNomerFetcher $mestoNomers
 //     * @param string $name
      * @param PlemMatkaFetcher $plemmatkas
      * @return Response
      */
     public function sdelano( PlemMatka $plemmatka,
-//        string $name,
+                             NomerRepository  $nomerOtecs,
                              Request $request,
                             PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
 //                            NomerRepository $nomers,
@@ -176,17 +180,18 @@ class PlemCreateController extends AbstractController
     //    dd($plemmatka->getNomer()->getLinia()->getRasa()->getName());
         $nomer = $plemmatka->getNomer()->getTitle();
 
-        // $persona = $plemmatka->getPersona()->getNomer();
-
+        $nomerOtec = $nomerOtecs->get(new Id($plemmatka->getOtecNomer()->getId()->getValue()));
+//dd($nomerOtec->getLinia()->getName());
+//        dd($nomerOtec->getName());
         // $mesto = $plemmatka->getMesto()->getNomer();
-//dd($mesto);
+// dd($plemmatka->getOtecNomer()->getLinia()->getNomers(new Id($plemmatka->getOtecNomer()->getId()->getValue())));
 //        $plemId = $plemmatkas->findIdByPlemMatka($plemmatka);
 
 
         return $this->render('proekt/pasekas/matkas/plemmatkas/creates/sdelano.html.twig',
           [
               'plemmatka' => $plemmatka,
-                // 'persona' => $persona,
+                'nomerOtec' => $nomerOtec,
                 // 'mesto' => $mesto,
                 'nomer' => $nomer,
           ])

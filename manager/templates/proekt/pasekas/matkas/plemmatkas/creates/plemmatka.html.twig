@@ -24,7 +24,7 @@
         <div class="proekts-plr  ">
 
            <h1 class="plem__title  ">Продолжаем регистрацию.  Пункт:  3 !</h1>
-            <div class = "break-plem-create">
+            {# <div class = "break-plem-create"> #}
                 <ul class="plem__data">
                     {% if nomer %}
                         <li>
@@ -35,20 +35,14 @@
                         {% set rlvn = nomer.linia.rasa.name ~' : ' ~  nomer.linia.nameStar ~ ' : ' ~ nomer.name %}
                         {% set rlv = nomer.linia.rasa.name ~' : ' ~  nomer.linia.nameStar %}
 
-                        <li class="plem__name  ">Как-то так! </li>
+                       
                         <li><div class = "plem-nomer  plem-nomer__wid8">
                                 {{ rlv }} : <strong class="strongo strongo--kras">{{ nomer.name }} </strong>
                             </div>
                         </li>
-                        <li class="plem__name  ">  -  это будут базовые данные </li>
+                        <li class="plem__name  ">Как-то так!  Это будут базовые данные </li>
                         <li></li>
-                    {# {% else %}
-                        <li class="plem__name" >1. Выбрать расу </li>
-                        <li>
-                            <a href="{{ path('paseka.rasas.plemmatka') }}"
-                            class="btnn btnn--mb0 btnn--col">Выбрать <strong class="strongo strongo--kras">расу  </strong>
-                            </a>
-                        </li> #}
+                    
                     {% endif %}
                 </ul>
 
@@ -58,22 +52,24 @@
                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                             </svg>
-                        </li>
-                        <li class="plem__name  ">С учетом Ваших данных: ПерсонНомера и НомерМеста.</li>
+                        </li> 
                         <li><div class = "plem-nomer plem-nomer__wid12">
                                 {{ rlvn }} : <strong class="strongo strongo--kras">пн-{{ persona.nomer }}_{{ mesto.nomer }} </strong>
                             </div></li>
+                        <li class="plem__name  ">С учетом Ваших данных: ПерсонНомера и НомерМеста.</li>
+                       
                         <li></li>
                    
                    
                 </ul>
-                <ul class="plem__data">
-                    <li class="plem__name" >3.  Вам нужно заполнить еще пару позиций:</li>
+                <ul class="plem__data"> 
                     <li>
                         <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates.create',{'id' : nomer.id}  ) }}"
                             class="btnn btnn--mb0 btnn--col">Продолжить регистрацию <strong class="stro stro--kras">ПлемМатки  </strong>
                         </a>
                     </li>
+                    <li class="plem__name" >3.  Вам нужно заполнить еще пару позиций:</li>
+                   
                
                     {% else %}
                         <li class="plem__name" >Упс! Вы не выбрали  ПерсонНомера и НомерМеста ?</li>
@@ -83,10 +79,11 @@
                             </a>
                         </li>
                     {% endif %}
+                     <li></li>
                  </ul> 
-            </div>
+            {# </div> #}
 
-            <div class = "break-plem-create-mobil">
+            {# <div class = "break-plem-create-mobil">
                 <ul class="plem__data">
                     {% if nomer %}
                         <li>
@@ -143,7 +140,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> #}
 
         </div>
 

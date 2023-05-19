@@ -24,11 +24,18 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class NomerLiniaCreateController extends AbstractController
 {
-    private $logger;
+    // private $logger;
 
-    public function __construct(LoggerInterface $logger)
+    // public function __construct(LoggerInterface $logger)
+    // {
+    //     $this->logger = $logger;
+    // }
+
+    private $errors;
+
+    public function __construct(ErrorHandler $errors)
     {
-        $this->logger = $logger;
+        $this->errors = $errors;
     }
 
     /**
@@ -52,11 +59,6 @@ class NomerLiniaCreateController extends AbstractController
     }
 
 
-//        return $this->render('app/adminka/rasas/linias/vetka.html.twig', [
-//
-//            'linias' => $linias->allOfRasa($rasa->getId()->getValue()),
-//        ]);
-//    }
     /**
      * @Route("/create/{id}", name=".create" , requirements={"id"=Guid::PATTERN})
      * @ParamConverter("linia", options={"id" = "linia_id"})
@@ -86,19 +88,21 @@ class NomerLiniaCreateController extends AbstractController
         $form = $this->createForm(CreateNomLin\Form::class, $command);
         $form->handleRequest($request);
 //dd($command);
-        if ($form->isSubmitted() && $form->isValid()) {
+        // if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
                 return $this->redirectToRoute('adminka.rasas.linias.nomers', ['linia_id' => $linia->getId()]);
             } catch (\DomainException $e) {
-                $this->logger->warning($e->getMessage(), ['exception' => $e]);
+                $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
+                // $this->logger->warning($e->getMessage(), ['exception' => $e]);
+                // $this->addFlash('error', $e->getMessage());
             }
-        }
+        // }
         return $this->render('app/adminka/rasas/linias/create.html.twig', [
             'vetka' => $vetka,
             'rasa' => $rasa,
-            'form' => $form->createView(),
+            // 'form' => $form->createView(),
             'name' => $command->title,
         ]);
    }

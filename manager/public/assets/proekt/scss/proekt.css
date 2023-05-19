@@ -1354,6 +1354,16 @@ pre {
   height: 1.4rem;
   width: 1.4rem;
 }
+.karandash--plem {
+  margin: 0 0.5rem;
+  height: 3.6rem;
+  width: 3.6rem;
+}
+.karandash--sezon {
+  margin: 0 0.5rem;
+  height: 4rem;
+  width: 4.6rem;
+}
 .karandash img {
   display: flex;
   width: 100%;
@@ -2931,24 +2941,6 @@ legend {
   color: #a78c16;
 }
 
-.break-plem-create {
-  display: block;
-}
-@media screen and (max-width: 575px) {
-  .break-plem-create {
-    display: none;
-  }
-}
-
-.break-plem-create-mobil {
-  display: none;
-}
-@media screen and (max-width: 575px) {
-  .break-plem-create-mobil {
-    display: block;
-  }
-}
-
 @media screen and (max-width: 1200px) {
   .plem_break_no {
     display: none;
@@ -3001,6 +2993,7 @@ legend {
 }
 @media screen and (max-width: 575px) {
   .plem__data {
+    display: block;
     padding: 1.5rem 0;
     justify-content: start;
   }
@@ -3030,7 +3023,7 @@ legend {
     min-width: 16%;
   }
   .plem__name-list--wid {
-    min-width: 63%;
+    min-width: 52%;
   }
 }
 @media screen and (max-width: 575px) {
@@ -3068,7 +3061,7 @@ legend {
     min-width: 16%;
   }
   .plem__name--wid34 {
-    min-width: 63%;
+    min-width: 52%;
   }
 }
 @media screen and (max-width: 575px) {
@@ -3533,6 +3526,15 @@ legend {
 @media screen and (max-width: 575px) {
   .break {
     display: none;
+  }
+}
+
+.no-break {
+  display: none;
+}
+@media screen and (max-width: 575px) {
+  .no-break {
+    display: flex;
   }
 }
 
