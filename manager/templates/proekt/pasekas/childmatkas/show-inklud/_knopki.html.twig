@@ -31,6 +31,10 @@
 
         <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id, 'department_id' : departId }) }}?parent={{ childmatka.id }}"
             class="btnn  btnn--pt btnn--col-child">Объявить дочернюю</a>
+        
+        {# <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates.iz_child_plem', {'plemmatka_id' : plemmatka.id, 'department_id' : departId }) }}" #}
+        <a href="{{ path('proekt.pasekas.rasas.linias.izChildLinia', {'plemmatka_id' : plemmatka.id, 'department_id' : departId }) }}?vetka={{ childmatka.id }} "
+            class="btnn  btnn--pt btnn--col-child">Перевести в ПлемМатку</a>    
 
         <a href="{{ path('proekt.pasekas.childmatkas.edit', {'id': childmatka.id}) }}" 
             class="btnn  btnn--pt btnn--col-child">Редактировать характер-ку</a>

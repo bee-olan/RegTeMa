@@ -88,14 +88,15 @@
                     </a>
                   </li>
               {% endif %}
+           <div class = "break-nomer" >    
               <li class="ras__name " >{{ linia.nameStar }}<strong class="strongo strongo--kras">-{{ nomer.vetka_nomer }}</strong></li>
-
+ </div>
               <li  class="ras-nomer ras-nomer--wid12">
-{#                <div >#}
+
                   {{ nomer.name }}
-{#                </div>#}
+               
               </li>
-              <div class = "break-nomer" >
+              {# <div class = "break-nomer" > #}
                   <li class="ras__name--widt9">
                     <strong class="strongo strongo--kras"> {{ nomer_status(nomer.status) }} </strong>
                   </li>
@@ -129,7 +130,7 @@
 
                   {% endif %}
 
-                </div>
+                {# </div> #}
 
             </ul>
           {% endfor %}

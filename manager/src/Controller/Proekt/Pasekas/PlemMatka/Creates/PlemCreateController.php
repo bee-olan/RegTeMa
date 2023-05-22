@@ -100,8 +100,6 @@ class PlemCreateController extends AbstractController
      * @Route("/create/{id}", name=".create" , requirements={"id"=Guid::PATTERN})
      * @param Request $request
      * @param Nomer $nomer
-    //     * @param PersonaFetcher $personas
-    //     * @param MestoNomerFetcher $mestoNomers
      * @param PlemMatkaFetcher $plemmatkas
      * @param KategoriaFetcher $kategoria
      * @param Create\Handler $handler
@@ -110,22 +108,11 @@ class PlemCreateController extends AbstractController
     public function create( Request $request, Nomer $nomer,
                             PlemMatkaFetcher $plemmatkas,
                             KategoriaFetcher $kategoria,
-//                                PersonaFetcher $personas,
-//                                MestoNomerFetcher $mestoNomers,
                             Create\Handler $handler): Response
     {
 
-//        $this->denyAccessUnlessGranted('ROLE_MANAGE_PLEMMATKAS');
+        //        $this->denyAccessUnlessGranted('ROLE_MANAGE_PLEMMATKAS');
 
-//        if (!$plemmatkas->existsPerson($this->getUser()->getId())) {
-//            $this->addFlash('error', 'Начните с выбора ПерсонНомера ');
-//            return $this->redirectToRoute('proekt/pasekas.uchasties.personas.diapazon');
-//        }
-
-//        if (!$plemmatkas->existsMesto($this->getUser()->getId())) {
-//            $this->addFlash('error', 'Пожалуйста, определитесь с номером места расположения Вашей пасеки ');
-//            return $this->redirectToRoute('mesto.infamesto.okrugs');
-//        }
         $kategorias = $kategoria->all();
         $permissions = Permission::names();
 
@@ -142,7 +129,6 @@ class PlemCreateController extends AbstractController
             try {
                 $handler->handle($command);
                 return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.creates.sdelano', [ 'name' => $command->name]);
-//                dd($command->name);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
@@ -199,38 +185,48 @@ class PlemCreateController extends AbstractController
     }
 //
 
-//                'plemmatkaa' => $plemmatka->getName(),
+
     /**
      * @Route("/{plemmatka_id}", name=".show", requirements={"plemmatka_id"=Guid::PATTERN})
      * @param PlemMatka $plemmatka
-//     * @param   string $plem_id
      * @param PlemMatkaFetcher $fetchers
-//     * @param UchastieRepository $uchasties
-//     * @param KategoriaFetcher $kategoria
      * @return Response
      */
     public function show(  PlemMatkaFetcher $fetchers,
                           PlemMatka $plemmatka
-//                          UchastieRepository $uchasties ,
-//                          KategoriaFetcher $kategoria
     ): Response
     {
 
         // $plemmatka = $fetchers->find($plem_id);
         // dd( $plemmatka);
 
-//        $uchastie = $uchasties->get(new Id($plemmatka->getUchastieId()));
-
-//        $kategorias = $kategoria->all();
-//        $permissions = Permission::names();
-
-//        $infaRasaNom = $fetchers->infaRasaNom($plemmatka->getRasaNomId());
-
-//        $infaMesto = $fetchers->infaMesto($plemmatka->getMesto());
 
         return $this->render('app/proekt/pasekas/matkas/plemmatkas/redaktorss/show.html.twig',
-            compact('plemmatka'
-//                'infaRasaNom', 'uchastie','kategorias', 'permissions'
+            compact('plemmatka'               
             ));
     }
+
+    /**
+    * @Route("/{plemmatka_id}/{department_id}/iz_child_plem", name=".iz_child_plem", requirements={"plemmatka_id"=Guid::PATTERN})
+    * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
+    * @param Request $request
+    * @param PlemMatka $plemmatka
+    * @param PlemMatkaFetcher $fetchers
+    * @return Response
+    */
+    public function izChildPlem( Request $request, PlemMatkaFetcher $fetchers,
+                          PlemMatka $plemmatka
+    ): Response
+    {
+
+        // $plemmatka = $fetchers->find($plemmatka_id);
+        dd( $plemmatka);
+
+
+        return $this->render('app/proekt/pasekas/matkas/plemmatkas/redaktorss/iz_child_plem.html.twig',
+            compact('plemmatka'               
+            ));
+    }
+
+
 }

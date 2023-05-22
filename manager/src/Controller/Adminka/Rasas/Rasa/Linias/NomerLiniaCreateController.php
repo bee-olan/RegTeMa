@@ -58,6 +58,7 @@ class NomerLiniaCreateController extends AbstractController
         ]);
     }
 
+    
 
     /**
      * @Route("/create/{id}", name=".create" , requirements={"id"=Guid::PATTERN})
@@ -74,10 +75,9 @@ class NomerLiniaCreateController extends AbstractController
    {
       $nameStar =  ($linia->getNomer(new NomerId($id)))->getNameStar();
        $name =  ($linia->getNomer(new NomerId($id)));
-//       dd( $name);
+        //       dd( $name);
         $rasa = $linia->getRasa();
        $maxSort = $linias->getMaxSortLinia($linia->getRasa()->getId()->getValue()) + 1;
-//       $nameStar =  $nameStar."_".$name;
 
        $command = CreateNomLin\Command::fromRasa($rasa, $linia, $maxSort, $nameStar, $id);// заполнение  значениями из Rasa
 
@@ -87,7 +87,6 @@ class NomerLiniaCreateController extends AbstractController
 
         $form = $this->createForm(CreateNomLin\Form::class, $command);
         $form->handleRequest($request);
-        //dd($command);
         // if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
