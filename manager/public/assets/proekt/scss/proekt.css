@@ -611,6 +611,19 @@ pre {
   text-decoration: none;
   color: #025a02;
 }
+.btnn--col-uchas {
+  background-color: rgb(224, 231, 231);
+  box-shadow: 0px 0px 10px rgba(224, 231, 231, 0.5);
+  border: 1px solid #a050d6;
+  font-size: 1.8rem;
+  color: #a050d6;
+}
+.btnn--col-uchas:hover {
+  box-shadow: inset 0px 0px 10px rgba(224, 231, 231, 0.9);
+  background: none;
+  text-decoration: none;
+  color: rgb(224, 231, 231);
+}
 .btnn--col-sezon {
   box-shadow: inset 0px 0px 10px rgba(2, 90, 2, 0.9);
   border: 1px solid #025a02;
@@ -2397,13 +2410,13 @@ img.hover-shadow {
 }
 
 .ramka__mesto-nomer {
-  width: 8rem;
+  width: 8.5rem;
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgb(255, 255, 255);
   background: transparent;
   font-size: 1.6rem;
   color: #fff;
   margin: 10px;
-  padding: 0.5rem 0.5rem 0.5rem 1.7rem;
+  padding: 0.5rem 0 0.5rem 0.7rem;
   transition: box-shadow 0.2s linear;
 }
 
@@ -3442,6 +3455,9 @@ legend {
 .ras__name--widt30 {
   width: 30rem;
 }
+.ras__name--widt16 {
+  width: 16rem;
+}
 @media screen and (max-width: 991px) {
   .ras__name--widt, .ras__name--widt30 {
     width: 50%;
@@ -3462,7 +3478,7 @@ legend {
   width: 8rem;
 }
 .ras-nomer--wid12 {
-  width: 10rem;
+  width: 12rem;
 }
 
 .lini {

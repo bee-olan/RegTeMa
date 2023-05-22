@@ -88,50 +88,48 @@
                     </a>
                   </li>
               {% endif %}
-              <li class="ras__name break" >{{ linia.nameStar }}<strong class="strongo strongo--kras">-{{ nomer.vetka_nomer }}</strong></li>
+              <li class="ras__name " >{{ linia.nameStar }}<strong class="strongo strongo--kras">-{{ nomer.vetka_nomer }}</strong></li>
 
-              <li  >
-                <div class="ras-nomer ras-nomer--wid12">
+              <li  class="ras-nomer ras-nomer--wid12">
+{#                <div >#}
                   {{ nomer.name }}
+{#                </div>#}
+              </li>
+              <div class = "break-nomer" >
+                  <li class="ras__name--widt9">
+                    <strong class="strongo strongo--kras"> {{ nomer_status(nomer.status) }} </strong>
+                  </li>
+
+                  {% if nomer.status == "active"   %}
+
+                      <li class="ras__name--widt16">
+                         <form action="{{ path('proekt.pasekas.rasas.linias.nomers.archive',{ linia_id: linia.id, id: nomer.id} ) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                           <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
+                           <button type="submit" class="btnn btnn--pt btnn--mb0">В архив</button>
+                         </form>
+                      </li>
+                  {% endif %}
+
+                  {% if nomer.status == "archived" %}
+                      <li class="ras__name--widt16">
+                          <form action="{{ path('proekt.pasekas.rasas.linias.nomers.reinstate',{ linia_id: linia.id, id: nomer.id} ) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                            <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
+                            <button type="submit" class="btnn btnn--pt btnn--mb0">Из архива</button>
+                          </form>
+                      </li>
+
+                  {% endif %}
+
+                  {% if nomer.status == "ojidaet" %}
+                    <li class="ras__name--widt16">
+                       <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates.plemmatka',{ id: nomer.id} ) }}"
+                          class="btnn btnn--pt btnn--mb0 ">  <strong class="strongo strongo--kras">выбрать номер </strong>
+                        </a> 
+                    </li>
+
+                  {% endif %}
+
                 </div>
-              </li>
-              {% if nomer.status == "active"   %}
-                  <li class="ras__name--widt10">
-                    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates.plemmatka',{ id: nomer.id} ) }}"
-                       class="btnn btnn--pt btnn--mb0 ">  <strong class="strongo strongo--kras">выбрать номер</strong>
-                    </a>
-                  </li>
-              {% else %}
-                <li class="ras__name--widt10">
-
-                </li>
-              {% endif %}
-<div class = "break-nomer" >
-              <li class="ras__name--widt9">
-                <strong class="strongo strongo--kras"> {{ plemmatka_status(nomer.status) }} </strong>
-              </li>
-
-              {% if nomer.status == "active"   %}
-
-                  <li class="ras__name--wid12">
-                      <form action="{{ path('proekt.pasekas.rasas.linias.nomers.archive',{ linia_id: linia.id, id: nomer.id} ) }}" method="post" onsubmit="return confirm('Вы уверены?')">
-                        <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
-                        <button type="submit" class="btnn btnn--pt btnn--mb0">В архив</button>
-                      </form>
-                  </li>
-              {% endif %}
-
-              {% if nomer.status == "archived" %}
-                  <li class="ras__name--wid12">
-                      <form action="{{ path('proekt.pasekas.rasas.linias.nomers.reinstate',{ linia_id: linia.id, id: nomer.id} ) }}" method="post" onsubmit="return confirm('Вы уверены?')">
-                        <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
-                        <button type="submit" class="btnn btnn--pt btnn--mb0">Из архива</button>
-                      </form>
-                  </li>
-
-              {% endif %}
-
-</div>
 
             </ul>
           {% endfor %}

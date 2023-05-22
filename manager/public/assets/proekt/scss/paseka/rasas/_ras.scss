@@ -56,6 +56,11 @@
       &--widt30 {
         width: 30.0rem;
       }
+
+      &--widt16 {
+        width: 16.0rem;
+      }
+
       @include breakpoint($tablet-bp) {
         &--widt,
         &--widt30  {
@@ -81,7 +86,7 @@
   }
 
   &--wid12 {
-    width: 10.0rem;
+    width: 12.0rem;
   }
 
 }

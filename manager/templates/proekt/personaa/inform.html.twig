@@ -54,16 +54,14 @@
                 </div>
             </div> 
         </div>
-        <div class="proekts-plr">
-            <div class="ramka">  
-                <h2 class = "personaa__title  back-color-uch  ">Перейти на страничку
-                    <a class="pa-le-3 " href= "{{ path('proekt.pasekas.uchasties.uchastiee') }}">
-                           Стать участником !!!
+         <div class="proekts-plr">
+                <div class="wstavka wstavka--uch back-color-uch">  
+                    <h2 class = "personaa__title    ">Стать участником !!!  </h2>  
+                    <a class="btnn btnn--ml btnn--pt btnn--col-uchas"  href= "{{ path('proekt.pasekas.uchasties.uchastiee') }}">
+                          продолжить
                     </a>
-                 </h2>       
-                
-            </div> 
-        </div>            
+                </div> 
+            </div>           
     {% else %} 
    
         <h2 class = "pagee__title ">Вам, для участия в проекте,  нужно выбрать ПерсонНомер. <br>

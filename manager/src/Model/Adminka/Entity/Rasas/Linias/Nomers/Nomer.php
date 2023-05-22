@@ -80,7 +80,7 @@ class Nomer
         $this->title = $title;
         $this->sortNomer = $sortNomer;
         $this->vetkaNomer = $vetkaNomer;
-        $this->status = Status::active();
+        $this->status = Status::ojidaet();
     }
 	
 		public function edit(string $name, 
@@ -109,6 +109,24 @@ class Nomer
         $this->status = Status::active();
     }
 
+    public function ojidaetActive(): void
+    {
+        if ($this->isActive()) {
+            throw new \DomainException('Номер уже активен.?');
+        }
+        $this->status = Status::active();
+       
+    }
+
+    public function activeOjidaet(): void
+    {
+        if ($this->isOjidaet()) {
+            throw new \DomainException('Номер уже ожидает');
+        }
+        $this->status = Status::ojidaet();
+       
+    }
+
     public function isArchived(): bool
     {
         return $this->status->isArchived();
@@ -117,6 +135,11 @@ class Nomer
     public function isActive(): bool
     {
         return $this->status->isActive();
+    }
+
+    public function isOjidaet(): bool
+    {
+        return $this->status->isOjidaet();
     }
 // -----------------------------------------------------------
 // равно Ли Имя

@@ -45,10 +45,6 @@ class NomerController extends AbstractController
      */
     public function index(Linia $linia, NomerFetcher $nomers): Response
     {
-//dd($linia->getVetka()->getName());
-
-        // $this->denyAccessUnlessGranted(LiniaAccess::MANAGE_MEMBERS, $linia);
-//dd( $nomers->allOfLinia($linia->getId()->getValue()));
 
         return $this->render('app/adminka/rasas/linias/nomers/index.html.twig', [
             'linia' => $linia,
@@ -172,25 +168,16 @@ class NomerController extends AbstractController
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('adminka.rasas.linias.nomers',
+            return $this->redirectToRoute('adminka.rasas.linias.nomers',
 					['linia_id' => $linia->getId()]);
     }
 
-    // /**
-    //  * @Route("/{id}", name=".show", requirements={"id"=Guid::PATTERN}))
-    //  * @param Nomer $nomer
-    //  * @return Response
-    //  */
-    // public function show(Nomer $nomer): Response
-    // {
-    //     return $this->redirectToRoute('Adminka.materis.rasas.linia.nomer', ['nomer_id' => $nomer->getId()]);
-    // }
-
-	 /**
-     * @Route("/{id}", name=".show", requirements={"id"=Guid::PATTERN}))
-     * @param Linia $linia
-     * @return Response
-     */
+ 
+	/**
+    * @Route("/{id}", name=".show", requirements={"id"=Guid::PATTERN}))
+    * @param Linia $linia
+    * @return Response
+    */
     public function show(Linia $linia): Response
     {
         return $this->redirectToRoute('adminka.rasas.linias.nomers',

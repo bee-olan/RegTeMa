@@ -77,6 +77,21 @@
             }
         }
 
+        &--col-uchas {
+            background-color: $text-uchastie;
+            box-shadow:  0px 0px 10px rgba($text-uchastie, 0.5);
+            border: 1px solid $col-uchastie;
+            font-size: 1.8rem;
+            color: $col-uchastie;
+            
+            &:hover {
+                box-shadow: inset 0px 0px 10px rgba( $text-uchastie, 0.9);
+                background: none;
+                text-decoration: none;
+                color: $text-uchastie;
+            }
+        }
+
         &--col-sezon {
             box-shadow: inset 0px 0px 10px rgba($sezon-teni, 0.9);
             border: 1px solid $sezon-teni;

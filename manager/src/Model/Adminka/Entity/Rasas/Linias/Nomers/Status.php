@@ -9,6 +9,7 @@ class Status
 {
     public const ACTIVE = 'active';
     public const ARCHIVED = 'archived';
+    public const OJIDAET = 'ojidaet';
 
     private $name;
 
@@ -17,6 +18,7 @@ class Status
         Assert::oneOf($name, [
             self::ACTIVE,
             self::ARCHIVED,
+            self::OJIDAET,
         ]);
 
         $this->name = $name;
@@ -32,6 +34,11 @@ class Status
         return new self(self::ARCHIVED);
     }
 
+    public static function ojidaet(): self
+    {
+        return new self(self::OJIDAET);
+    }
+    
     public function isEqual(self $other): bool
     {
         return $this->getName() === $other->getName();
@@ -50,6 +57,11 @@ class Status
     public function isArchived(): bool
     {
         return $this->name === self::ARCHIVED;
+    }
+
+    public function isOjidaet(): bool
+    {
+        return $this->name === self::OJIDAET;
     }
 }
 

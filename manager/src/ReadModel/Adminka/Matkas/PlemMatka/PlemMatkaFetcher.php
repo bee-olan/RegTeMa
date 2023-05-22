@@ -181,8 +181,9 @@ class PlemMatkaFetcher
                 'p.kategoria_id',
                 's.name AS kategoria',
                 'p.otec_nomer_id',
-                'o.nane AS otec_n',
+                'o.name AS otec_n',
                 'o.oblet AS otec_o',
+                'ol.name AS linia_o',
                 '(SELECT COUNT(*) FROM admin_matkas_plemmatka_departments d WHERE d.plemmatka_id = p.id) AS departments_count',
                 '(SELECT COUNT(*) FROM admin_matkas_childmatkas c WHERE c.plemmatka_id = p.id) AS child_count'
             )
@@ -190,6 +191,7 @@ class PlemMatkaFetcher
             ->innerJoin('p', 'adminka_uchasties_personas', 'pe', 'p.persona_id = pe.id')
             ->innerJoin('p', 'admin_matkas_kategorias', 's', 'p.kategoria_id = s.id')
             ->innerJoin('p', 'adminka_otec_ras_linia_nomers', 'o', 'p.otec_nomer_id = o.id')
+            ->innerJoin('o', 'adminka_otec_ras_linias', 'ol', 'ol.id = o.linia_id')
         ;
         if ($filter->uchastie) {
             $qb->andWhere('EXISTS (

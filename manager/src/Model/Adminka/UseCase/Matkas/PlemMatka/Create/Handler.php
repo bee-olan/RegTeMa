@@ -92,6 +92,8 @@ $plemmatka = new PlemMatka(
 
         $this->plemmatkas->add($plemmatka);
 
+        $nomer->ojidaetActive();
+
         $this->flusher->flush();
     }
 }
