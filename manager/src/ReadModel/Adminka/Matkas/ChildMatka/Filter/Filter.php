@@ -10,6 +10,7 @@ class Filter
     public $author;
     public $plemmatka;
     public $text;
+    public $goda_vixod;
     public $type;
     public $status;
     public $priority;

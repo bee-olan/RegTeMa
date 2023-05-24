@@ -19,13 +19,25 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:64321/app</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="appreg@localhost" uuid="b42105b0-ca7f-4e3e-837a-7df483c43a2a">
+    <data-source source="LOCAL" name="PostgreSQL - appreg@localhost" uuid="b42105b0-ca7f-4e3e-837a-7df483c43a2a">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:64321/appreg</jdbc-url>
     </data-source>
     <data-source source="LOCAL" name="postgres@localhost" uuid="2372187e-944f-405f-b297-5e509e1c2f1e">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - postgres@localhost" uuid="1cb4eb24-13a4-4e1b-b3c2-599d4043ac08">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="postgres@localhost [2]" uuid="1a181a60-d44e-403d-87a7-d7eaece2376e">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>

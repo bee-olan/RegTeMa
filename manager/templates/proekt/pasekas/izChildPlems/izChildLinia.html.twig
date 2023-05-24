@@ -16,12 +16,12 @@
 
 {% block bodyy %}
 
-<div  class="proekts proekts--rasa">
+{# <div  class="proekts proekts--rasa">
 
     {% include('proekt/pasekas/rasas/_rasa-includ.html.twig') %}
 
     <div class="proekts-plr  "> 
-     {# <div >  #}
+    
         <ul class="ras__data">
             <li >
                 <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -69,7 +69,6 @@
                                 <ul class="ras__data">
                                
                                 <li class = "ras__title" >   или вернитесь     
-                                    {# <a href="{{ path('proekt.pasekas.rasas.linias.vetka', { 'linia_id': linia.id,  'name_star' : linia.name_star}) }}"  #}
                                      <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', { 'linia_id': linia.vetka_id}) }}" 
                                     class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
                                         на предыдущую страницу
@@ -85,7 +84,6 @@
                                 <ul class="ras__data">
                                
                                 <li class = "ras__title" >  Напишите запрос или вернитесь     
-                                    {# <a href="{{ path('proekt.pasekas.rasas.linias.vetka', { 'linia_id': linia.id,  'name_star' : linia.name_star}) }}"  #}
                                      <a href="{{ path('proekt.pasekas.rasas.linias.nomers.plemmatka', { 'linia_id': linia.vetka_id}) }}" 
                                     class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
                                         на предыдущую страницу
@@ -116,7 +114,7 @@
     
 </div><!-- rasas -->
 
-    {# ----------------------- #}
+   
 
 
 
@@ -181,5 +179,5 @@
                 </div>
             {% endif %}
         </div>
-    </div>
+    </div> #}
 {% endblock %}

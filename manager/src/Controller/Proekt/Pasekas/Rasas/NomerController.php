@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\Controller\Proekt\Pasekas\Rasas;
 
 use App\Annotation\Guid;
+
+use App\Model\Adminka\UseCase\Rasas\Linias\Nomers\CreateChildNomer;
+
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id;
 use App\Model\Adminka\Entity\Rasas\Linias\Linia;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
@@ -125,15 +128,7 @@ class NomerController extends AbstractController
 
         return $this->redirectToRoute('proekt.pasekas.rasas.linias.nomers.plemmatka', ['linia_id' => $linia->getId()->getValue()]);
     }
-//
-//	 /**
-//     * @Route("/{id}", name=".show", requirements={"id"=Guid::PATTERN}))
-//     * @param Linia $linia
-//     * @return Response
-//     */
-//    public function show(Linia $linia): Response
-//    {
-//        return $this->redirectToRoute('paseka.rasas.linias.nomers',
-//				['linia_id' => $linia->getId()]);
-//    }
+
+
+
 }

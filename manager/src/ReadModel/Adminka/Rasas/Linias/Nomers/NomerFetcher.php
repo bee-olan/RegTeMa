@@ -15,6 +15,32 @@ class NomerFetcher
     {
         $this->connection = $connection;
     }
+    public function newNomer(string $linia, string $name_star): array
+    {
+        $stmt = $this->connection->createQueryBuilder()
+            ->select(
+                'd.id',
+                'd.linia_id',
+                'd.name',
+                'd.name_star',
+                'd.title',
+                'd.status',
+                'd.sort_nomer',
+                'd.vetka_nomer'
+
+            )
+            ->from('adminka_rasa_linia_nomers', 'd')
+            ->andWhere('linia_id = :linias AND  d.name_star = :stname')
+            ->setParameter(':linias', $linia)
+            ->setParameter(':stname', $name_star)
+//            ->orderBy('name')
+            ->orderBy('d.name_star')
+//            ->orderBy('title')
+//			->orderBy('sort_linia')
+            ->execute();
+
+        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
+    }
 
     public function getMaxSortNomer(string $linia): int
     {
@@ -82,24 +108,5 @@ class NomerFetcher
             return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
         }
     
-        // public function allOfMember(string $member): array
-        // {
-        //     $stmt = $this->connection->createQueryBuilder()
-        //         ->select(
-        //             'p.id AS materi_id',
-        //             'p.name AS project_name',
-        //             'd.id AS department_id',
-        //             'd.name AS department_name'
-        //         )
-        //         ->from('work_projects_project_memberships', 'ms')
-        //         ->innerJoin('ms', 'work_projects_project_membership_departments', 'msd', 'ms.id = msd.membership_id')
-        //         ->innerJoin('msd', 'rabota_materis_materi_linias', 'd', 'msd.department_id = d.id')
-        //         ->innerJoin('d', 'work_projects_projects', 'p', 'd.materi_id = p.id')
-        //         ->andWhere('ms.member_id = :member')
-        //         ->setParameter(':member', $member)
-        //         ->orderBy('p.sort')->addOrderBy('d.name')
-        //         ->execute();
-    
-        //     return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
-        // }
+
     }

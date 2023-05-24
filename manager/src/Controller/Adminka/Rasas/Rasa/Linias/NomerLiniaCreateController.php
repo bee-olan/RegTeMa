@@ -84,7 +84,7 @@ class NomerLiniaCreateController extends AbstractController
         if ($vetka = $request->query->get('vetka')) {
             $command->vetka = $vetka;
         }
-
+// dd($vetka);
         $form = $this->createForm(CreateNomLin\Form::class, $command);
         $form->handleRequest($request);
         // if ($form->isSubmitted() && $form->isValid()) {

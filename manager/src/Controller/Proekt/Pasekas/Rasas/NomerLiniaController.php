@@ -56,7 +56,8 @@ class NomerLiniaController extends AbstractController
                         CommentLiniaFetcher $comments,
                         Comment\AddLinia\Handler $commentHandler
                         ): Response
-    { 
+    {
+        dd($name_star);
         $rasa = $linia->getRasa();
 
         $commentCommand = new Comment\AddLinia\Command(

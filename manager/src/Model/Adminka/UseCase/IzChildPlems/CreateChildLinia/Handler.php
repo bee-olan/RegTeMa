@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\UseCase\Rasas\Linias\CreateNomLin;
+namespace App\Model\Adminka\UseCase\IzChildPlems\CreateChildLinia;
 
 use App\Model\Adminka\Entity\Rasas\Linias\LiniaRepository;
 
@@ -34,7 +34,7 @@ class Handler
 
     public function handle(Command $command): void
     {
-//dd("handle -- CreateNomLin");
+//dd("handle -- CreateChildLinia");
         $nomer = $this->nomerRepas->get(new NomerId($command->idNomer));
         $command->nameStar = $nomer->getNameStar();
         $rasa = $this->rasas->get(new RasaId($command->rasa));

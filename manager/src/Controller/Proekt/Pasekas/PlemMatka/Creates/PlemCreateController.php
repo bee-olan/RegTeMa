@@ -151,7 +151,6 @@ class PlemCreateController extends AbstractController
     * @param NomerRepository  $nomerOtecs
     * @param PlemMatka $plemmatka
     * @param MestoNomerFetcher $mestoNomers
-//     * @param string $name
      * @param PlemMatkaFetcher $plemmatkas
      * @return Response
      */
@@ -206,27 +205,6 @@ class PlemCreateController extends AbstractController
             ));
     }
 
-    /**
-    * @Route("/{plemmatka_id}/{department_id}/iz_child_plem", name=".iz_child_plem", requirements={"plemmatka_id"=Guid::PATTERN})
-    * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
-    * @param Request $request
-    * @param PlemMatka $plemmatka
-    * @param PlemMatkaFetcher $fetchers
-    * @return Response
-    */
-    public function izChildPlem( Request $request, PlemMatkaFetcher $fetchers,
-                          PlemMatka $plemmatka
-    ): Response
-    {
-
-        // $plemmatka = $fetchers->find($plemmatka_id);
-        dd( $plemmatka);
-
-
-        return $this->render('app/proekt/pasekas/matkas/plemmatkas/redaktorss/iz_child_plem.html.twig',
-            compact('plemmatka'               
-            ));
-    }
 
 
 }

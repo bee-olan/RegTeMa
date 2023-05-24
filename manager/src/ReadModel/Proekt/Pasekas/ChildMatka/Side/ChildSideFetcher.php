@@ -49,6 +49,7 @@ class ChildSideFetcher
                 't.author_id',
                 'm.name_nike AS  author_name',
                 't.plemmatka_id',
+                't.goda_vixod AS vixod',
                 'p.name plemmatka_name',
                 't.name',
                 't.content',
