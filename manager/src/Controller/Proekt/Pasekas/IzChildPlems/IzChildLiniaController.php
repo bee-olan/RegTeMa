@@ -58,7 +58,7 @@ class IzChildLiniaController extends AbstractController
         $idL= (new Id($linia_id))->getValue();
 
 //
-        $liniass = $linias->allOfVetka($idL, "A-1");
+        $liniass = $linias->allOfVetka($idL, "B-1");
 
 //        foreach ($liniass as $liniaa) {
 //            if ($liniaa) {

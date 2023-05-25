@@ -53,6 +53,24 @@ class PlemMatkaRepository
         }
         return $plemmatka;
     }
+//    public function getPlemName( string $name): PlemMatka
+//    {
+//        /** @var PlemMatka $plemmatka */
+//        if (!$plemmatka = $this->repo->find($name)) {
+//            throw new EntityNotFoundException('.');
+//        }
+//
+//        return $plemmatka;
+//    }
+
+    public function getPlemName(string $name): PlemMatka
+    {
+        /** @var PlemMatka $plemmatka */
+        if (!$plemmatka = $this->repo->findOneBy(['name' => $name])) {
+            throw new EntityNotFoundException('Нет такой ПлемМатки.');
+        }
+        return $plemmatka;
+    }
 
     public function getPlemSezon(Id $id, string $sezon): PlemMatka
     {

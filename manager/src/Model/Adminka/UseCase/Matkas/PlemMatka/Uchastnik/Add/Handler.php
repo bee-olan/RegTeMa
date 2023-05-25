@@ -43,6 +43,7 @@ class Handler
 
         $uchastie = $this->uchasties->get(new UchastieId($command->uchastie));
 
+
         $departments = array_map(static function (string $id): DepartmentId {
             return new DepartmentId($id);
         }, $command->departments);

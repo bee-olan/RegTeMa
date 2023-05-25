@@ -54,9 +54,9 @@ class IzNomerPlemController extends AbstractController
                                 ): Response
     {
         $nomerId = (new Id($id))->getValue();
-//        $nomer = $nomers->get(new Id($id));
-//        $child = explode("-",$nomer->getName() );
-//        $childId = (int)$child[0];
+        $nomer = $nomers->get(new Id($id));
+        $child = explode("-",$nomer->getName() );
+        $childId = (int)$child[0];
 //        $childmatka = $childRepo->get(new ChildId($childId));
 
 //        dd($childmatka);
@@ -67,8 +67,9 @@ class IzNomerPlemController extends AbstractController
 
         try {
                 $handler->handle($command);
-                dd("stopee");
-                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.creates.sdelano', [ 'name' => $command->name]);
+//                dd("stopee");
+                return $this->redirectToRoute('proekt.pasekas.izChildPlems.createDepart',
+                    [ 'name' => $command->name, 'childId' =>$childId ]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());

@@ -18,6 +18,25 @@ class DepartmentFetcher
         $this->connection = $connection;
     }
 
+    public function allPlemSezon(string $plemmatka, string $sezon): array
+    {
+        $stmt = $this->connection->createQueryBuilder()
+            ->select(
+                'd.id',
+                'd.plemmatka_id',
+                'd.name'
+            )
+            ->from('admin_matkas_plemmatka_departments', 'd')
+            ->andWhere('d.plemmatka_id = :plemmatka AND d.name = :sezon')
+            ->setParameter(':plemmatka', $plemmatka)
+            ->setParameter(':sezon', $sezon)
+            ->orderBy('d.name')
+            ->execute();
+
+        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
+    }
+
+
     public function listOfPlemMatka(string $plemmatka): array
     {
 
