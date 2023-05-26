@@ -36,7 +36,7 @@ class IzChildLiniaController extends AbstractController
     }
 
     /**
-     * @Route("/izVetka/{linia_id},{name_star}", name=".izVetka" , requirements={"id"=Guid::PATTERN})
+     * @Route("/izVetka/{linia_id},{name_star},{nomerNameStar}", name=".izVetka" , requirements={"id"=Guid::PATTERN})
 //     * @ParamConverter("linia", options={"id" = "linia_id"})
      * @param Rasa $rasa
      * @param Linia $linia
@@ -44,21 +44,23 @@ class IzChildLiniaController extends AbstractController
      * @param LiniaRepository $liniaRep
      * @param string $name_star
      * @param string $linia_id
+     * @param string $nomerNameStar
      * @return Response
      */
     public function izVetka(Request $request,
 //                            Linia $linia,
                             string $name_star,
                             string $linia_id,
+                            string $nomerNameStar,
                             LiniaFetcher $linias,
                             LiniaRepository $liniaRep
     ): Response
     {
 
         $idL= (new Id($linia_id))->getValue();
-
+//dd($name_star);
 //
-        $liniass = $linias->allOfVetka($idL, "B-1");
+        $liniass = $linias->allOfVetka($idL,  $nomerNameStar);
 
 //        foreach ($liniass as $liniaa) {
 //            if ($liniaa) {
@@ -78,7 +80,6 @@ class IzChildLiniaController extends AbstractController
 
         return $this->redirectToRoute('proekt.pasekas.izChildPlems.createLiniaNomer',
             [
-//            'rasa' => $rasa,
                 'linia_id' => $linia->getId()->getValue(),
                 'name_star'  => $name_star,
             ]);
@@ -104,6 +105,7 @@ class IzChildLiniaController extends AbstractController
                                         LiniaFetcher $linias,
                                        CreateChildLinia\Handler $handler): Response
    {
+
     $linia = $plemmatka->getNomer()->getLinia();
 
     $nameStar = $linia->getNameStar();
@@ -111,6 +113,8 @@ class IzChildLiniaController extends AbstractController
     $rasa = $linia->getRasa(); 
 
     $name = $plemmatka->getNomer()->getName();
+
+    $nomerNameStar = $plemmatka->getNomer()->getNameStar();
         
     $idn =  $plemmatka->getNomer()->getId()->getValue();
 
@@ -132,7 +136,7 @@ class IzChildLiniaController extends AbstractController
                 $handler->handle($command);
 //                dd( $vetka);
                 return $this->redirectToRoute('proekt.pasekas.izChildPlems.izVetka',
-                    ['linia_id' => $linia->getId()->getValue(), 'name_star' => $vetka ]);
+                    ['linia_id' => $linia->getId()->getValue(), 'name_star' => $vetka , 'nomerNameStar' => $nomerNameStar]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());

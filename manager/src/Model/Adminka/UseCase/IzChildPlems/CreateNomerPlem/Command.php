@@ -38,6 +38,11 @@ class Command
      */
     public $nomer;
 
+    /**
+     * @var \DateTimeImmutable
+     */
+    private $date;
+
 
 //    /**
 //     * @Assert\NotBlank()

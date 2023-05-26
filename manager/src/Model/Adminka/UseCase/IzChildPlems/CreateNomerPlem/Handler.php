@@ -6,6 +6,8 @@ namespace App\Model\Adminka\UseCase\IzChildPlems\CreateNomerPlem;
 
 use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatkaRepository;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\Id as ChildId;
+use App\Model\Adminka\Entity\Matkas\ChildMatka\Status;
+use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
 use App\Model\Flusher;
 
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
@@ -59,7 +61,8 @@ class Handler
 
         $otecNomer = $childmatka->getOtecNomer();
 
-
+//        $status = $childmatka->changeType()
+//        getStatus();
 
 
 //        $nameG = explode("-", $nomer->getName());
@@ -93,7 +96,14 @@ $plemmatka = new PlemMatka(
 
         $this->plemmatkas->add($plemmatka);
 
-//        $nomer->ojidaetActive();
+//        $uchaste = $this->uchastes->get(new UchastieId($command->uchaste));
+//
+//        if (!$childmatka->hasExecutor($uchaste->getId())) {
+//            $childmatka->assignExecutor($uchaste);
+//        }
+//        $actor = (new UchastieId($command->uchastieId));
+
+//    !!!!!!!!!!!    $childmatka->changeStatus($actor, new \DateTimeImmutable() , Status::REJECTED);
 
         $nomer->ojidaetActive();
 

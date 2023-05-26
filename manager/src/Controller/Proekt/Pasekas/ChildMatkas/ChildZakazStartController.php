@@ -56,59 +56,5 @@ class ChildZakazStartController extends AbstractController
         return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
     }
 
-    // /**
-    //  * @Route("/{id}/take/start", name=".take_and_start", methods={"POST"})
-    //  * @param ChildMatka $childmatka
-    //  * @param Request $request
-    //  * @param TakeAndStart\Handler $handler
-    //  * @return Response
-    //  */
-    // public function takeAndStart(ChildMatka $childmatka, Request $request, TakeAndStart\Handler $handler): Response
-    // {
-    //     if (!$this->isCsrfTokenValid('take-and-start', $request->request->get('token'))) {
-    //         return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
-    //     }
-
-        // $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
-
-    //     $command = new TakeAndStart\Command($this->getUser()->getId(), $childmatka->getId()->getValue());
-
-    //     try {
-    //         $handler->handle($command);
-    //     } catch (\DomainException $e) {
-    //         $this->errors->handle($e);
-    //         $this->addFlash('error', $e->getMessage());
-    //     }
-
-    //     return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
-    // }
-
-    // /**
-    //  * @Route("/{id}/start", name=".start", methods={"POST"})
-    //  * @param ChildMatka $childmatka
-    //  * @param Request $request
-    //  * @param Start\Handler $handler
-    //  * @return Response
-    //  */
-    // public function start(ChildMatka $childmatka, Request $request, Start\Handler $handler): Response
-    // {
-    //     if (!$this->isCsrfTokenValid('start', $request->request->get('token'))) {
-    //         return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
-    //     }
-
-        // $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
-
-    //     $command = new Start\Command($this->getUser()->getId(), $childmatka->getId()->getValue());
-
-    //     try {
-    //         $handler->handle($command);
-    //     } catch (\DomainException $e) {
-    //         $this->errors->handle($e);
-    //         $this->addFlash('error', $e->getMessage());
-    //     }
-
-    //     return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
-    // }   
-
 }
 
