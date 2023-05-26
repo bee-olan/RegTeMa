@@ -55,7 +55,8 @@ class CreateDepartController extends AbstractController
         try {
             $handler->handle($command);
 //            dd("из depart");
-            return $this->redirectToRoute('proekt.pasekas.matkas');
+            return $this->redirectToRoute('proekt.pasekas.izChildPlems.perewodPlem', [ 'childId' =>$childId ]);
+//            return $this->redirectToRoute('proekt.pasekas.matkas');
 //                                    ['plemmatka_id' => $plemmatka->getId(), 'childId' =>$childId ]);
         } catch (\DomainException $e) {
             $this->errors->handle($e);

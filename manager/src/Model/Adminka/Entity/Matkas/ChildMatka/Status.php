@@ -36,6 +36,11 @@ class Status
         return new self(self::NEW);
     }
 
+    public static function perewodPlem(): self
+    {
+        return new self(self::REJECTED);
+    }
+
     public static function zakaz(): self
     {
         return new self(self::ZAKAZ);
@@ -64,6 +69,11 @@ class Status
     public function isNew(): bool
     {
         return $this->name === self::NEW;
+    }
+
+    public function isPerewodPlem(): bool
+    {
+        return $this->name === self::REJECTED;
     }
 
     public function isZakaz(): bool

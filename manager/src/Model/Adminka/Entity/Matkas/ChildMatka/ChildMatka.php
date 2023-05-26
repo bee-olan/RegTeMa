@@ -272,6 +272,18 @@ class ChildMatka
 
     }
 
+    public function perewodPlem(Uchastie $actor, \DateTimeImmutable $date): void
+    {
+        // dd($date);
+        if (!$this->isNew() and !$this->isPerewodPlem()) {
+            throw new \DomainException('Матку перевели в ПлемМатку.');
+        }
+        if (!$this->executors->count()) {
+            throw new \DomainException('У матки нет исполнителя.');
+        }
+        $this->changeStatus($actor, $date, Status::perewodPlem());
+    }
+
     public function start(Uchastie $actor, \DateTimeImmutable $date): void
     {
        // dd($date);
@@ -435,6 +447,11 @@ class ChildMatka
     public function isNew(): bool
     {
         return $this->status->isNew();
+    }
+
+    public function isPerewodPlem(): bool
+    {
+        return $this->status->isPerewodPlem();
     }
 
     public function isZakaz(): bool

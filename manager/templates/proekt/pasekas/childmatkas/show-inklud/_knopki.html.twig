@@ -4,14 +4,14 @@
            {% if childmatka.hasExecutor(uchastie.id) %}
         
             {% if childmatka.isNew() %}
-                <form action="{{ path('paseka.matkas.childmatkas.start', {'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Вы точно решили?')">
+                <form action="{{ path('proekt.pasekas.childmatkas.start', {'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Вы точно решили?')">
                     <input type="hidden" name="token" value="{{ csrf_token('start') }}" />
                     <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--col-child">
                     Начало</button>
                 </form>
             {% endif %}
         {% else %}
-            <form action="{{ path('adminka.matkas.childmatkas.take', {'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+            <form action="{{ path('proekt.pasekas.childmatkas.take', {'id': childmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                 <input type="hidden" name="token" value="{{ csrf_token('take') }}" />
                 <button type="submit" 
                 class="btnn btnn--mb0 btnn--pt btnn--col-child">Бери</button>
