@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\IzChildPlems\CreateChildLinia;
 
+use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 use App\Model\Adminka\Entity\Rasas\Linias\Linia;
 use App\Model\Adminka\Entity\Rasas\Rasa;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -13,7 +14,12 @@ class Command
     /**
      * @Assert\NotBlank()
      */
-    public $rasa;
+    public $plemmatkaId;
+
+    /**
+     * @Assert\NotBlank()
+     */
+    public $parent;
 	
     /**
      * @Assert\NotBlank()
@@ -40,31 +46,27 @@ class Command
      */
     public $vetka;
 
-    public function __construct( string $rasa)
+    public function __construct(int $parent)
     {
-        $this->rasa = $rasa;
-//        $this->linia = $linia;
+        // $this->plemmatkaId = $plemmatkaId;
+        $this->parent = $parent;
     }
 
-    public static function fromRasa(Rasa $rasa,
-                                    Linia $linia,
-                                    int $maxSort,
-                                    string $nomNameStar,
-                                    string $idNomer
-                            ): self
-    {
+    // public static function fromRasa(PlemMatka $plemmatka,
+    //                                 int $parent
+                                    
+    //                         ): self
+    // {
 
-        $command = new self($rasa->getId()->getValue());
-        $command->idNomer = $idNomer;
+    //     $command = new self($rasa->getId()->getValue());
+    //     $command->idNomer = $idNomer;
 
-        $command->sortLinia = $maxSort;
-        $command->name = $linia->getName();
-        $command->title =  $linia->getTitle();
+    //     $command->sortLinia = $maxSort;
+    //     $command->name = $linia->getName();
+    //     $command->title =  $linia->getTitle();
 
-        $command->nameStar = $nomNameStar;
+    //     $command->nameStar = $nomNameStar;
 
-//        $title = explode("_",$linia->getTitle() );
-//dd($command);
-        return $command;
-    }
+    //     return $command;
+    // }
 }

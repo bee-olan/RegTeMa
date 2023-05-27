@@ -28,11 +28,13 @@ class Handler
 //        $command->title = $command->title."_".$command->nameStar;
         $vetka = $command->vetka = null;
 
+
      $rasa->addLinia(
             Id::next(),
             $command->name ,
 			$command->nameStar,
 			$command->title,
+			$command->idVetka= "",
 			$command->sortLinia,
             $vetka
         );

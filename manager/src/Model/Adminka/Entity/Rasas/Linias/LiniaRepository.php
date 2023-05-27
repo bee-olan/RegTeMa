@@ -21,6 +21,19 @@ class LiniaRepository
         $this->em = $em;
     }
 
+    public function getByLinia(string $name_star, string $idVetka ): Linia
+    {
+        /** @var Linia $linia */
+        if (!$linia = $this->repo->findOneBy([
+                'nameStar' => $name_star,
+                'idVetka' => $idVetka
+
+        ]))
+        {
+            throw new EntityNotFoundException('Linia не найдена.');
+        }
+        return $linia;
+    }
 
     public function has(Id $id): bool
     {

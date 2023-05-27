@@ -78,6 +78,7 @@ class Rasa
                                 string $name,
                                 string $nameStar,
                                 string $title,
+								?string $idVetka,
 								int $sortLinia,
                              ?Linia $vetka
                                 ): void
@@ -95,6 +96,7 @@ class Rasa
 									$name,
 									$nameStar,
 									$title,
+                                    $idVetka,
 									$sortLinia,
                                     $vetka
                                     ));

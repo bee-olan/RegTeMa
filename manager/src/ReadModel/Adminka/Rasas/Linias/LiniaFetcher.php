@@ -24,6 +24,7 @@ class LiniaFetcher
                 'l.name',
                 'l.name_star',
                 'l.title',
+                'l.id_vetka',
                 'l.sort_linia',
                 'l.vetka_id',
                 '(SELECT COUNT(*) FROM adminka_rasa_linia_nomers n WHERE n.linia_id = l.id) AS nomers'
@@ -65,6 +66,7 @@ class LiniaFetcher
                 'name',
                 'name_star',
                 'title',
+                'id_vetka',
 				'sort_linia',
                 'vetka_id'
             )
@@ -88,6 +90,7 @@ class LiniaFetcher
                 'l.name',
                 'l.name_star',
                 'l.title',
+                'l.id_vetka',
                 'l.sort_linia',
                 'l.vetka_id',
                 '(SELECT COUNT(*) FROM adminka_rasa_linia_nomers n WHERE n.linia_id = l.id) AS nomers'
@@ -118,6 +121,7 @@ class LiniaFetcher
                 'l.name',
                 'l.name_star',
                 'l.title',
+                'l.id_vetka',
 				'l.sort_linia',
                 'l.vetka_id',
 				'n.sort_nomer as sort_nomer',

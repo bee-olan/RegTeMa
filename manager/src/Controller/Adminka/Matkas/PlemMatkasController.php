@@ -98,14 +98,14 @@ class PlemMatkasController extends AbstractController
 //        }
 
 //        $nomer = $nomers->get(new Id($id));
-
+       
         $uchastieId =  $this->getUser()->getId();
 //        $persona = $personas->get(new PersonaId($uchastieId));
 //        $mestonomer = $mestonomers->get(new MestoNomerId($uchastieId));
 
-
-        $command = new Create\Command();
-        $command->sort = $plemmatkas->getMaxSort() + 1;
+        $sort = $plemmatkas->getMaxSort() + 1;
+        $command = new Create\Command($uchastieId, $sort );
+        $command->sort = $sort;
 //        $command->rasaNomId = $id;
 //
 //        $command->uchastieId = $uchastieId;

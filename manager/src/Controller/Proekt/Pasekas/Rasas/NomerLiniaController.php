@@ -26,12 +26,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class NomerLiniaController extends AbstractController
 {
-    // private $logger;
-
-    // public function __construct(LoggerInterface $logger)
-    // {
-    //     $this->logger = $logger;
-    // }
 
     private $errors;
 
@@ -57,7 +51,7 @@ class NomerLiniaController extends AbstractController
                         Comment\AddLinia\Handler $commentHandler
                         ): Response
     {
-        dd($name_star);
+
         $rasa = $linia->getRasa();
 
         $commentCommand = new Comment\AddLinia\Command(

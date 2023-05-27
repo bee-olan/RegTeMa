@@ -282,7 +282,7 @@ class PlemMatka
         throw new \DomainException('Участие не найдено.');
     }
 
-// если есть у пользователя разрешение
+// если есть у пользователя разрешение !!!!!!!!!!!!!!!!!!!!!!!!!
     public function isUchastieGranted(UchastieId $id, string $permission): bool
     {
         foreach ($this->uchastniks as $uchastnik) {

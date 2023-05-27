@@ -34,7 +34,7 @@
         
         {# <a href="{{ path('proekt.pasekas.matkas.plemmatkas.creates.iz_child_plem', {'plemmatka_id' : plemmatka.id, 'department_id' : departId }) }}" #}
         <a href="{{ path('proekt.pasekas.izChildPlems.izChildLinia',
-                    {'plemmatka_id' : plemmatka.id, 'department_id' : departId }) }}?vetka={{ childmatka.id }}-{{ childmatka.godaVixod}}"
+                    {'plemmatka_id' : plemmatka.id, 'department_id' : departId }) }}?parent={{ childmatka.id }}"
             class="btnn  btnn--pt btnn--col-child">Перевести в ПлемМатку</a>    
 
         <a href="{{ path('proekt.pasekas.childmatkas.edit', {'id': childmatka.id}) }}" 

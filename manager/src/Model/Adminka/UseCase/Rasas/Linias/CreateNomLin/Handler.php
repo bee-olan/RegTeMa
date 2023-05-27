@@ -43,6 +43,8 @@ class Handler
         $vetka = $command->vetka ? $this->linias->get(new Id($command->vetka)) : null;
 
         if ($command->vetka) {
+            $command->idVetka = $command->vetka;
+//            dd( $command->idVetka);
             $vetka = $this->linias->get(new Id($command->vetka));
             $rasa->setVetkaChildOf($vetka);
         }
@@ -55,6 +57,7 @@ class Handler
             $command->name ,
 			$command->nameStar,
 			$command->title,
+			$command->idVetka,
 			$command->sortLinia,
             $vetka
         );

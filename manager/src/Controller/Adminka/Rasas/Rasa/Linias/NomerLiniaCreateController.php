@@ -50,8 +50,7 @@ class NomerLiniaCreateController extends AbstractController
     public function vetka(Request $request, Linia $linia, string $name_star, LiniaFetcher $linias): Response
     {
         $rasa = $linia->getRasa();
-//        $liniaa = $linias->allOfVetka($linia->getId()->getValue());
-//        dd($name_star );
+
         return $this->render('app/adminka/rasas/linias/index.html.twig', [
             'rasa' => $rasa,
             'linias' => $linias->allOfVetka($linia->getId()->getValue(), $name_star),

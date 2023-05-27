@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\IzChildPlems\CreateChildLinia;
 
+use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatkaRepository;
+use App\Model\Adminka\Entity\Matkas\ChildMatka\Id as ChildId;
 use App\Model\Adminka\Entity\Rasas\Linias\LiniaRepository;
 
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
@@ -13,48 +15,55 @@ use App\Model\Flusher;
 use App\Model\Adminka\Entity\Rasas\Linias\Id;
 use App\Model\Adminka\Entity\Rasas\Id as RasaId;
 use App\Model\Adminka\Entity\Rasas\RasaRepository;
+use App\ReadModel\Adminka\Rasas\Linias\LiniaFetcher;
 
 class Handler
 {
+    private $childRepo;
     private $rasas;
     private $linias;
     private $nomerRepas;
     private $flusher;
 
-    public function __construct(RasaRepository $rasas,
-                                LiniaRepository $linias,
+    public function __construct(ChildMatkaRepository $childRepo,
+                                RasaRepository $rasas,
+                                LiniaFetcher $linias,
                                 NomerRepository $nomerRepas,
                                 Flusher $flusher)
     {
-        $this->rasas = $rasas;
+        $this->childRepo = $childRepo;
+//        $this->rasas = $rasas;
         $this->linias = $linias;
-        $this->nomerRepas = $nomerRepas;
+//        $this->nomerRepas = $nomerRepas;
         $this->flusher = $flusher;
     }
 
     public function handle(Command $command): void
     {
-//dd("handle -- CreateChildLinia");
-        $nomer = $this->nomerRepas->get(new NomerId($command->idNomer));
-        $command->nameStar = $nomer->getNameStar();
-        $rasa = $this->rasas->get(new RasaId($command->rasa));
+       $childmatka = $this->childRepo->get(new ChildId($command->parent));
 
-        $command->title = $rasa->getName()."_".$nomer->getName();
-        $vetka = $command->vetka ? $this->linias->get(new Id($command->vetka)) : null;
+       $linia = $childmatka->getPlemMatka()->getNomer()->getLinia();
+       $rasa = $linia->getRasa();
+       $vetka = $linia;
+       $command->idVetka = $linia->getId()->getValue();
+       $command->name = $linia->getName();
 
-        if ($command->vetka) {
-            $vetka = $this->linias->get(new Id($command->vetka));
-            $rasa->setVetkaChildOf($vetka);
-        }
+       $nomer= $childmatka->getPlemMatka()->getNomer();
+       $command->nameStar = $nomer->getNameStar();
 
-//        $command->title =
-//        dd($vetka);
+       $command->title = $nomer->getTitle()."_".$nomer->getName();
+
+
+        $command->sortLinia = $this->linias->getMaxSortLinia($rasa->getId()->getValue()) + 1;
+
+
 
      $rasa->addLinia(
             Id::next(),
             $command->name ,
 			$command->nameStar,
 			$command->title,
+            $command->idVetka,
 			$command->sortLinia,
             $vetka
         );

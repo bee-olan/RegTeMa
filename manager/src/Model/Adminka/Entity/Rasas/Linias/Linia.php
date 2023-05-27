@@ -50,6 +50,12 @@ class Linia
      * @ORM\Column(type="string")
      */
     private $title;
+
+    /**
+     * @var string|null
+     * @ORM\Column(type="string",  nullable=true)
+     */
+    private $idVetka;
 	
 	 /**
      * @var ArrayCollection|Nomer[]
@@ -80,6 +86,7 @@ class Linia
                                 string $name,
                                 string $nameStar,
                                 string $title,
+								?string $idVetka,
 								int $sortLinia,
                                 ?Linia $vetka
                                 )
@@ -89,6 +96,7 @@ class Linia
         $this->name = $name;
         $this->nameStar = $nameStar;
         $this->title = $title;
+        $this->idVetka = $idVetka;
 		$this->sortLinia = $sortLinia;
 		$this->vetka = $vetka;
 
@@ -229,6 +237,12 @@ class Linia
     public function getVetka(): ?Linia
     {
         return $this->vetka;
+    }
+
+
+    public function getIdVetka(): ?string
+    {
+        return $this->idVetka;
     }
 
 
