@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Proekt\Pasekas\IzChildPlems;
 
+use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatkaRepository;
+use App\Model\Adminka\Entity\Matkas\ChildMatka\Id as ChildId;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 use App\Annotation\Guid;
 use App\Model\Adminka\Entity\Rasas\Linias\Id;
@@ -12,9 +14,8 @@ use App\Model\Adminka\Entity\Rasas\Linias\LiniaRepository;
 use App\Model\Adminka\Entity\Rasas\Rasa;
 use App\Model\Adminka\UseCase\IzChildPlems\CreateChildLinia;
 use App\ReadModel\Adminka\Rasas\Linias\LiniaFetcher;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id as NomerId;
+
 use App\Controller\ErrorHandler;
-use App\ReadModel\Adminka\Rasas\Linias\Nomers\NomerFetcher;
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -77,51 +78,76 @@ class IzChildLiniaController extends AbstractController
     }
 
     /**
-     * @Route("/izChildLinia/{plemmatka_id},{department_id}", name=".izChildLinia" , requirements={"department_id"=Guid::PATTERN})
+     * @Route("/izChildLinia/{plemmatka_id}", name=".izChildLinia" , requirements={"department_id"=Guid::PATTERN})
      * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
     * @param PlemMatka $plemmatka
     * @param Rasa $rasa
-    * @param Linia $linia
+//    * @param Linia $linia
+    * @param ChildMatkaRepository $childRepo
 	* @param LiniaRepository $linias
-    * @param string $department_id
+    * @param LiniaFetcher $liniaFet
     * @param Request $request
     * @param CreateChildLinia\Handler $handler
     * @return Response
     */
     public function izChildLiniaCreate(Request $request,
-                                        PlemMatka $plemmatka, 
-                                        // Linia $linia, 
-                                        string $department_id, 
+                                        PlemMatka $plemmatka,
+                                        ChildMatkaRepository $childRepo,
+//                                         Linia $linia,
+                                       LiniaFetcher $liniaFet,
                                         LiniaRepository $linias,
                                        CreateChildLinia\Handler $handler): Response
    {
 
-    
-    if ($parent = $request->query->get('parent')) {
+       if ($parent = (int)$request->query->get('parent')) {}
 
-    }
-//     dd($parent);
+       $childmatka = $childRepo->get(new ChildId($parent));
+
+       ;
+
+       $liniaa = $childmatka->getPlemMatka()->getNomer()->getLinia();
+//
+//       $nomer = $childmatka->getPlemMatka()->getNomer()->getNameStar();
+//
+       $nomerNameStar =$parent."-".$childmatka->getGodaVixod();
+//dd($nomerNameStar);
+
+
+       $rasa = $liniaa->getRasa();
+
+       $liniass = $liniaFet->listOfRasa($rasa->getId()->getValue());
+//dd($liniass);
+       foreach ($liniass as $key => $lini) {
+
+           if ($lini == $liniaa->getId()->getValue()) {
+//               dd($key);
+               return $this->redirectToRoute('proekt.pasekas.izChildPlems.createLiniaNomer',
+                   [
+                       'linia_id' => $key,
+                       'nomerNameStar' => $nomerNameStar,
+                   ]);
+           }
+       }
 
     $command =new CreateChildLinia\Command((int)$parent);
 
             try {
                 $handler->handle($command);
-//                dd($command);
-                $linia = $linias->getByLinia($command->nameStar, $command->idVetka );
-                dd($linia);
+                dd("стор 1");
+//                $linia = $linias->getByLinia($command->nameStar, $command->idVetka );
+//                dd($linia);
                 return $this->redirectToRoute('proekt.pasekas.izChildPlems.izVetka',
-                    ['linia_id' => $command->vetka, 'name_star' =>$command->nameStar ]);
+                    ['linia_id' => $command->idVetka, 'name_star' =>$command->nameStar ]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
               
             }
-            dd($command->vetka);
-        return $this->render('proekt/pasekas/izChildPlems/izChildLinia.html.twig', [
-//            'vetka' => $vetka,
-//            'rasa' => $rasa,
-            'name' => $command->title,
-        ]);
+//
+//        return $this->render('proekt/pasekas/izChildPlems/izChildLinia.html.twig', [
+//
+//            'name' => $command->title,
+//        ]);
    }
 }
 

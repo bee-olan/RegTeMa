@@ -15,32 +15,7 @@ class NomerFetcher
     {
         $this->connection = $connection;
     }
-    public function newNomer(string $linia, string $name_star): array
-    {
-        $stmt = $this->connection->createQueryBuilder()
-            ->select(
-                'd.id',
-                'd.linia_id',
-                'd.name',
-                'd.name_star',
-                'd.title',
-                'd.status',
-                'd.sort_nomer',
-                'd.vetka_nomer'
 
-            )
-            ->from('adminka_rasa_linia_nomers', 'd')
-            ->andWhere('linia_id = :linias AND  d.name_star = :stname')
-            ->setParameter(':linias', $linia)
-            ->setParameter(':stname', $name_star)
-//            ->orderBy('name')
-            ->orderBy('d.name_star')
-//            ->orderBy('title')
-//			->orderBy('sort_linia')
-            ->execute();
-
-        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
-    }
 
     public function getMaxSortNomer(string $linia): int
     {

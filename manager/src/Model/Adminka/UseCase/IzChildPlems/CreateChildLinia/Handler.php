@@ -43,7 +43,21 @@ class Handler
        $childmatka = $this->childRepo->get(new ChildId($command->parent));
 
        $linia = $childmatka->getPlemMatka()->getNomer()->getLinia();
-       $rasa = $linia->getRasa();
+
+        $rasa = $linia->getRasa();
+
+        $liniass = $this->linias->allOfRasLin($rasa->getId()->getValue());
+
+        foreach ($liniass as $lini) {
+
+            if ($lini['id_vetka'] == $linia->getId()->getValue()) {
+                throw new \DomainException('Линия уже существует. Попробуйте для
+                этой линии добавить свой номер!  из hand..');
+                dd($lini);
+            }
+        }
+
+
        $vetka = $linia;
        $command->idVetka = $linia->getId()->getValue();
        $command->name = $linia->getName();

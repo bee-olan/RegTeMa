@@ -8,6 +8,7 @@ use App\Annotation\Guid;
 
 use App\Model\Adminka\Entity\Matkas\ChildMatka\Id as ChildId;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatkaRepository;
+use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatkaRepository;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id;
 
@@ -39,7 +40,7 @@ class IzNomerPlemController extends AbstractController
     * @Route("/{id}/izNomerPlem", name=".izNomerPlem")
     * @param Request $request
     * @param NomerRepository $nomers
-    * @param ChildMatkaRepository $childRepo
+    * @param PlemMatkaRepository $plemRepo
     * @param PlemMatkaFetcher $plemFet
     * @param string $id
     * @param CreateNomerPlem\Handler $handler
@@ -49,14 +50,17 @@ class IzNomerPlemController extends AbstractController
                                  CreateNomerPlem\Handler $handler,
                                  string $id,
                                  NomerRepository $nomers,
-                                 ChildMatkaRepository $childRepo,
-                                 PlemMatkaFetcher $plemFet
+//                                 ChildMatkaRepository $childRepo,
+                                 PlemMatkaFetcher $plemFet,
+                                PlemMatkaRepository $plemRepo
                                 ): Response
     {
         $nomerId = (new Id($id))->getValue();
-        $nomer = $nomers->get(new Id($id));
-        $child = explode("-",$nomer->getName() );
-        $childId = (int)$child[0];
+//        $nomer = $nomers->get(new Id($id));
+//
+//        dd($nomer->getVetkaNomer());
+//
+//        $childId = (int)$nomer->getVetkaNomer();
 //        $childmatka = $childRepo->get(new ChildId($childId));
 
 //        dd($childmatka);
@@ -68,8 +72,10 @@ class IzNomerPlemController extends AbstractController
         try {
                 $handler->handle($command);
 //                dd("stopee");
+            $plemmatka_id = $plemRepo->getPlemId($command->name);
+
                 return $this->redirectToRoute('proekt.pasekas.izChildPlems.createDepart',
-                    [ 'name' => $command->name, 'childId' =>$childId ]);
+                    [ 'plemmatka_id' => $plemmatka_id ]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());

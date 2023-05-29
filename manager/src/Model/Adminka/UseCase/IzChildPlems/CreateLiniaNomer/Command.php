@@ -39,14 +39,14 @@ class Command
     {
         $this->linia = $linia;
     }
-    public static function fromLinia(Linia $linia, int $maxSort, string $name_star): self
+    public static function fromLinia(Linia $linia, int $maxSort, string $nomerNameStar): self
     {
 
         $command = new self($linia->getId()->getValue());
         $command->sortNomer = $maxSort;
-       $command->name = $name_star;
+       $command->name = $nomerNameStar;
         $command->title = $linia->getTitle();
-//dd($command);
+
         return $command;
     }
 }

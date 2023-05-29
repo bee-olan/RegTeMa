@@ -63,12 +63,13 @@ class LiniaFetcher
         $stmt = $this->connection->createQueryBuilder()
             ->select(
                 'id',
-                'name',
-                'name_star',
-                'title',
-                'id_vetka',
-				'sort_linia',
-                'vetka_id'
+//                'rasa_id',
+//                'name',
+//                'name_star',
+//                'title',
+                'id_vetka'
+//				'sort_linia',
+//                'vetka_id'
             )
             ->from('adminka_rasa_linias')
             ->andWhere('rasa_id = :rasas')
@@ -76,7 +77,7 @@ class LiniaFetcher
 //            ->orderBy('name')
             ->orderBy('name_star')
 //            ->orderBy('title')
-			->orderBy('sort_linia')
+//			->orderBy('sort_linia')
             ->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_KEY_PAIR);

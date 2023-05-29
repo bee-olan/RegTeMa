@@ -260,7 +260,7 @@ class ChildMatka
 
 
 
-    public function zakaz(\DateTimeImmutable $date): void
+    public function zakaz(Uchastie $actor, \DateTimeImmutable $date): void
     {
         if (!$this->isNew()) {
             throw new \DomainException('Матка уже заказана.');
@@ -268,7 +268,7 @@ class ChildMatka
          if (!$this->executors->count()) {
              throw new \DomainException('У матки нет исполнителя.');
          }
-        $this->changeStatus(Status::zakaz(), $date);
+        $this->changeStatus($actor, $date, Status::zakaz());
 
     }
 
@@ -278,9 +278,9 @@ class ChildMatka
         if (!$this->isNew() and !$this->isPerewodPlem()) {
             throw new \DomainException('Матку перевели в ПлемМатку.');
         }
-        if (!$this->executors->count()) {
-            throw new \DomainException('У матки нет исполнителя.');
-        }
+//        if (!$this->executors->count()) {
+//            throw new \DomainException('У матки нет исполнителя.');
+//        }
         $this->changeStatus($actor, $date, Status::perewodPlem());
     }
 

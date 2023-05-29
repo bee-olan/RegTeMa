@@ -52,21 +52,4 @@ class Command
         $this->parent = $parent;
     }
 
-    // public static function fromRasa(PlemMatka $plemmatka,
-    //                                 int $parent
-                                    
-    //                         ): self
-    // {
-
-    //     $command = new self($rasa->getId()->getValue());
-    //     $command->idNomer = $idNomer;
-
-    //     $command->sortLinia = $maxSort;
-    //     $command->name = $linia->getName();
-    //     $command->title =  $linia->getTitle();
-
-    //     $command->nameStar = $nomNameStar;
-
-    //     return $command;
-    // }
 }

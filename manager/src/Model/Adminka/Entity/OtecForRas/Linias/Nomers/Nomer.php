@@ -30,8 +30,8 @@ class Nomer
 
 
     /**
-     * @var string
-     * @ORM\Column(type="string")
+     * @var string|null
+     * @ORM\Column(type="string",  nullable=true)
      */
     private $name;
 
@@ -48,15 +48,15 @@ class Nomer
     private $otec;
 
     /**
-     * @var string
-     * @ORM\Column(type="string")
+     * @var string|null
+     * @ORM\Column(type="string",  nullable=true)
      */
     private $oblet;
 
 
-     /**
-     * @var string
-     * @ORM\Column(type="string")
+    /**
+     * @var string|null
+     * @ORM\Column(type="string",  nullable=true)
      */
     private $title;
 
@@ -75,7 +75,7 @@ class Nomer
         $this->matka = $matka;
         $this->otec = $otec;
         $this->oblet = $oblet;
-        $this->title = $title;
+        $this->title = $title = null;
     }
 
     public function edit(string $name,

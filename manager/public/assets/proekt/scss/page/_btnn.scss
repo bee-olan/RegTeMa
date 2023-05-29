@@ -65,12 +65,15 @@
             }
         }
         &--col-child {
+            background-color: $text-uchastie;
             box-shadow:  0px 0px 10px rgba($child-text, 0.5);
             border: 1px solid $child-form;
+            color:$child-form ;
             font-size: 1.5rem;
             
             &:hover {
-                box-shadow: inset 0px 0px 10px rgba($child-text, 0.9);
+                box-shadow: inset 0px 0px 10px rgba($text-uchastie, 0.9);
+                border: 1px solid $text-uchastie;
                 background: none;
                 text-decoration: none;
                 color: $child-text;

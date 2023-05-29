@@ -601,12 +601,15 @@ pre {
   color: #155799;
 }
 .btnn--col-child {
+  background-color: rgb(224, 231, 231);
   box-shadow: 0px 0px 10px rgba(2, 90, 2, 0.5);
   border: 1px solid #565656;
+  color: #565656;
   font-size: 1.5rem;
 }
 .btnn--col-child:hover {
-  box-shadow: inset 0px 0px 10px rgba(2, 90, 2, 0.9);
+  box-shadow: inset 0px 0px 10px rgba(224, 231, 231, 0.9);
+  border: 1px solid rgb(224, 231, 231);
   background: none;
   text-decoration: none;
   color: #025a02;

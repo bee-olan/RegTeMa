@@ -47,9 +47,9 @@ class Handler
     {
         $nomer = $this->nomerRepository->get(new NomerId($command->nomer));
 
-        $child = explode("-",$nomer->getName() );
-        $childId = (int)$child[0];
-      $childmatka = $this->childmatkas->get(new ChildId( $childId));
+        $childId = (int)$nomer->getVetkaNomer();
+
+        $childmatka = $this->childmatkas->get(new ChildId( $childId));
 
 
 

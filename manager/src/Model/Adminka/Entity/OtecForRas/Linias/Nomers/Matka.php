@@ -13,13 +13,13 @@ use Webmozart\Assert\Assert;
 class Matka
 {
     /**
-     * @var string
-     * @ORM\Column(type="string")
+     * @var string|null
+     * @ORM\Column(type="string",  nullable=true)
      */
     private $linia;
     /**
-     * @var string
-     * @ORM\Column(type="string")
+     * @var string|null
+     * @ORM\Column(type="string",  nullable=true)
      */
     private $nomer;
 

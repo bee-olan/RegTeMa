@@ -21,6 +21,20 @@ class NomerRepository
         $this->em = $em;
     }
 
+    public function getByNomer(string $name_star, string $linia_id ): Nomer
+    {
+        /** @var Nomer $nomer */
+        if (!$nomer = $this->repo->findOneBy([
+            'nameStar' => $name_star,
+            'linia' => $linia_id
+
+        ]))
+        {
+            throw new EntityNotFoundException('Nomer не найдена.');
+        }
+        return $nomer;
+    }
+
     public function has(Id $id): bool
     {
         return $this->repo->createQueryBuilder('t')

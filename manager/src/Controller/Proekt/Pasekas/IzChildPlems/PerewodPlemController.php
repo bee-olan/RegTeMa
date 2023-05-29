@@ -8,6 +8,7 @@ use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatkaRepository;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\Id;
 
 
+use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 use App\Model\Adminka\UseCase\Matkas\ChildMatka\Executor;
 use App\Model\Adminka\UseCase\Matkas\ChildMatka\Plan;
 use App\Model\Adminka\UseCase\Matkas\ChildMatka\PerewodPlem;
@@ -26,7 +27,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/proekt/pasekas/izChildPlems", name="proekt.pasekas.izChildPlems")
-// * @ParamConverter("childmatka", options={"id" = "childId"})
+ * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
  */
 class PerewodPlemController extends AbstractController
 {
@@ -41,20 +42,20 @@ class PerewodPlemController extends AbstractController
 
 //, methods={"POST"}) ?????????????????????????????????////
     /**
-     * @Route("/{childId}/perewodPlem", name=".perewodPlem")
+     * @Route("/{plemmatka_id}/perewodPlem", name=".perewodPlem")
      * @param Request $request
-     * @param ChildMatkaRepository $childRepo
-     * @param int $childId
+     * @param PlemMatka $plemmatka
+//     * @param int $childId
      * @param PerewodPlem\Handler $handler
      * @return Response
      */
     public function perewodPlem(Request $request,
-                                ChildMatkaRepository $childRepo,
-                                int $childId,
+                                PlemMatka $plemmatka,
+//                                int $childId,
                                 PerewodPlem\Handler $handler): Response
     {
-
-        $childmatka = $childRepo->get(new Id($childId));
+        $childmatka_id = (int)$plemmatka->getNomer()->getVetkaNomer();
+//        $childmatka = $childRepo->get(new Id($childId));
 //        dd($childmatka);
 
 //        if (!$this->isCsrfTokenValid('perewodPlem', $request->request->get('token'))) {
@@ -63,11 +64,11 @@ class PerewodPlemController extends AbstractController
 
         // $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
 
-        $command = new PerewodPlem\Command($this->getUser()->getId(), $childmatka->getId()->getValue());
-
+        $command = new PerewodPlem\Command($this->getUser()->getId(), $childmatka_id);
+//dd($command);
         try {
             $handler->handle($command);
-//            return $this->redirectToRoute('proekt.pasekas.matkas');
+            return $this->redirectToRoute('proekt.pasekas.matkas');
         } catch (\DomainException $e) {
             $this->errors->handle($e);
             $this->addFlash('error', $e->getMessage());

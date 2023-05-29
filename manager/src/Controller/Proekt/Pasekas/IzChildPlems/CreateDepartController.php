@@ -36,37 +36,29 @@ class CreateDepartController extends AbstractController
 
 
     /**
-     * @Route("/{name},{childId}/createDepart", name=".createDepart")
+     * @Route("/{plemmatka_id}/createDepart", name=".createDepart")
      * @param Request $request
-     * @param PlemMatkaRepository $plemRepo
-     * @param string $name
-     * @param string $childId
+     * @param PlemMatka $plemmatka
      * @param CreadDepart\Handler $handler
      * @return Response
      */
-    public function createDepart(Request $request, string $name, string  $childId, PlemMatkaRepository $plemRepo,  CreadDepart\Handler $handler): Response
+    public function createDepart(Request $request, PlemMatka $plemmatka,  CreadDepart\Handler $handler): Response
     {
-//        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
-
-    $plemmatka = $plemRepo->getPlemName($name);
-
         $command = new CreadDepart\Command($plemmatka->getId()->getValue());
 
         try {
             $handler->handle($command);
 //            dd("из depart");
-            return $this->redirectToRoute('proekt.pasekas.izChildPlems.perewodPlem', [ 'childId' =>$childId ]);
-//            return $this->redirectToRoute('proekt.pasekas.matkas');
-//                                    ['plemmatka_id' => $plemmatka->getId(), 'childId' =>$childId ]);
+            return $this->redirectToRoute('proekt.pasekas.izChildPlems.perewodPlem', [ 'plemmatka_id' => $plemmatka->getId()->getValue() ]);
+
         } catch (\DomainException $e) {
             $this->errors->handle($e);
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->render('proekt/pasekas/izChildPlems/createDepart.html.twig', [
-            'plemmatka' => $plemmatka,
-//            'form' => $form->createView(),
-        ]);
+//        return $this->render('proekt/pasekas/izChildPlems/createDepart.html.twig', [
+//            'plemmatka' => $plemmatka,
+//        ]);
     }
 }
 

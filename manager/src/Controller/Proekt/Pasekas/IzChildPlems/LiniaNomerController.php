@@ -6,6 +6,7 @@ namespace App\Controller\Proekt\Pasekas\IzChildPlems;
 
 use App\Annotation\Guid;
 
+use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
 use App\Model\Adminka\UseCase\IzChildPlems\CreateLiniaNomer;
 
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id;
@@ -25,7 +26,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/pasekas/izChildPlems/{linia_id}", name="proekt.pasekas.izChildPlems")
+ * @Route("/proekt/pasekas/izChildPlems", name="proekt.pasekas.izChildPlems")
  * @ParamConverter("linia", options={"id" = "linia_id"})
  */
 class LiniaNomerController extends AbstractController
@@ -38,49 +39,41 @@ class LiniaNomerController extends AbstractController
     }
 
     /**
-     * @Route("/{name_star}/createLiniaNomer", name=".createLiniaNomer")
+     * @Route("/{linia_id},{nomerNameStar}/createLiniaNomer", name=".createLiniaNomer")
      * @param Request $request
      * @param Linia $linia
+     * @param NomerRepository $nomerRepo
      * @param NomerFetcher $nomers
-     * @param string $name_star
+     * @param string $nomerNameStar
      * @param CreateLiniaNomer\Handler $handler
      * @return Response
      */
-    public function createLiniaNomer( Request $request, string $name_star,
+    public function createLiniaNomer( Request $request, string $nomerNameStar,
                                       CreateLiniaNomer\Handler $handler,
-                                        Linia $linia,  
+                                        Linia $linia,
+                                        NomerRepository $nomerRepo,
                                         NomerFetcher $nomers): Response
     {
-
 
         $maxSort = $nomers->getMaxSortNomer($linia->getId()->getValue()) + 1;
 
         $command = CreateLiniaNomer\Command::fromLinia($linia,
                                     $maxSort,
-                                    $name_star);// заполнение  значениями из
+                                    $nomerNameStar);// заполнение  значениями из
 
-        // $form = $this->createForm(CreateChildNomer\Form::class, $command);
-
-        // $form->handleRequest($request);
-
-        // if ($form->isSubmitted() && $form->isValid()) {
             try {
                  $handler->handle($command);
-                $nomer  = $nomers->newNomer($command->linia, $command->nameStar);
-//                dd($nomer[0]['id']);
-                $id = (new Id($nomer[0]['id']))->getValue();
-//                dd("стоп !!!");
-                return $this->redirectToRoute('proekt.pasekas.izChildPlems.izNomerPlem', ['id' => (new Id($nomer[0]['id']))->getValue()]);
+                $nomer  = $nomerRepo->getByNomer($command->nameStar, $command->linia );
+                return $this->redirectToRoute('proekt.pasekas.izChildPlems.izNomerPlem', ['id' => $nomer->getId()->getValue()]);
             } catch (\DomainException $e) {
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
                 $this->addFlash('error', $e->getMessage());
             }
-        // }
-        return $this->render('proekt/pasekas/izChildPlems/createLiniaNomer.html.twig', [
-            'linia' => $linia,
-            // 'form' => $form->createView(),
-            'name' => $command->title,
-        ]);
+//        return $this->render('proekt/pasekas/izChildPlems/createLiniaNomer.html.twig', [
+//            'linia' => $linia,
+//            // 'form' => $form->createView(),
+//            'name' => $command->title,
+//        ]);
     }
 
 }
