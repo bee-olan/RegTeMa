@@ -56,14 +56,6 @@ class IzNomerPlemController extends AbstractController
                                 ): Response
     {
         $nomerId = (new Id($id))->getValue();
-//        $nomer = $nomers->get(new Id($id));
-//
-//        dd($nomer->getVetkaNomer());
-//
-//        $childId = (int)$nomer->getVetkaNomer();
-//        $childmatka = $childRepo->get(new ChildId($childId));
-
-//        dd($childmatka);
 
         $sort = $plemFet->getMaxSort() + 1;
 
@@ -71,7 +63,6 @@ class IzNomerPlemController extends AbstractController
 
         try {
                 $handler->handle($command);
-//                dd("stopee");
             $plemmatka_id = $plemRepo->getPlemId($command->name);
 
                 return $this->redirectToRoute('proekt.pasekas.izChildPlems.createDepart',
@@ -81,10 +72,10 @@ class IzNomerPlemController extends AbstractController
                 $this->addFlash('error', $e->getMessage());
             }
 
-
-        return $this->render('proekt/pasekas/izChildPlems/izNomerPlem.html.twig',
-            compact('plemmatka'               
-            ));
+//
+//        return $this->render('proekt/pasekas/izChildPlems/izNomerPlem.html.twig',
+//            compact('plemmatka'
+//            ));
     }
 
 

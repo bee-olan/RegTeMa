@@ -133,7 +133,7 @@ class IzChildLiniaController extends AbstractController
 
             try {
                 $handler->handle($command);
-                dd("стор 1");
+
 //                $linia = $linias->getByLinia($command->nameStar, $command->idVetka );
 //                dd($linia);
                 return $this->redirectToRoute('proekt.pasekas.izChildPlems.izVetka',

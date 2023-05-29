@@ -26,8 +26,8 @@ class Handler
     private $plemmatkas;
     private $otecNomers;
     private $kategorias;
-    private $personas;
     private $nomerRepository; //  основа для плем матки
+    private $personas;
     private $mestoNomers;
     private $flusher;
 

@@ -30,6 +30,20 @@ class ChildMatkaFetcher
         return $this->repository->find($id);
     }
 
+    public function AllExecutorChild(): array
+    {
+        $stmt = $this->connection->createQueryBuilder()
+            ->select(
+                'childmatka_id',
+                'uchastie_id'
+            )
+            ->from('admin_matkas_childmatkas_executors')
+            ->orderBy('childmatka_id')
+            ->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_KEY_PAIR);
+    }
+
     public function listZakazForTochka(string $uchastie): array
     {
         $stmt = $this->connection->createQueryBuilder()
@@ -328,4 +342,5 @@ class ChildMatkaFetcher
 
          return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
      }
+
 }

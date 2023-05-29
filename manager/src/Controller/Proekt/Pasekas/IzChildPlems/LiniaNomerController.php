@@ -9,14 +9,10 @@ use App\Annotation\Guid;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
 use App\Model\Adminka\UseCase\IzChildPlems\CreateLiniaNomer;
 
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id;
 use App\Model\Adminka\Entity\Rasas\Linias\Linia;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
-
-
 
 use App\ReadModel\Adminka\Rasas\Linias\Nomers\NomerFetcher;
-//use App\Security\Voter\Paseka\Materis\Linia\LiniaAccess;
+
 use App\Controller\ErrorHandler;
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -69,11 +65,7 @@ class LiniaNomerController extends AbstractController
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
                 $this->addFlash('error', $e->getMessage());
             }
-//        return $this->render('proekt/pasekas/izChildPlems/createLiniaNomer.html.twig', [
-//            'linia' => $linia,
-//            // 'form' => $form->createView(),
-//            'name' => $command->title,
-//        ]);
+
     }
 
 }

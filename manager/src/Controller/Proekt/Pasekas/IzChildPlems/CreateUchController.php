@@ -33,14 +33,13 @@ class CreateUchController extends AbstractController
 
 
     /**
-     * @Route("/{plemmatka_id},{childId}/assign", name=".assign")
+     * @Route("/{plemmatka_id}/assign", name=".assign")
      * @param PlemMatka $plemmatka
      * @param Request $request
-     * @param int $childId
      * @param CreateAssign\Handler $handler
      * @return Response
      */
-    public function assign(Request $request, PlemMatka $plemmatka, int $childId, CreateAssign\Handler $handler): Response
+    public function assign(Request $request, PlemMatka $plemmatka, CreateAssign\Handler $handler): Response
     {
         // Привязывает к проекту-ПлемМатка - нового  сотрудника
 //        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
@@ -51,22 +50,17 @@ class CreateUchController extends AbstractController
             return $this->redirectToRoute('adminka.matkas.plemmatka.redaktors.uchasties', ['plemmatka_id' => $plemmatka->getId()]);
         }
 
-        $command = new CreateAssign\Command($plemmatka->getId()->getValue(), $childId);
-
+//        $command = new CreateAssign\Command($plemmatka->getId()->getValue(), $childId);
+        $command = new CreateAssign\Command($plemmatka->getId()->getValue());
             try {
                 $handler->handle($command);
-                dd("стор assign");
-                return $this->redirectToRoute('adminka.matkas.plemmatka.redaktors.uchasties', ['plemmatka_id' => $plemmatka->getId()]);
+//                dd("стор assign");
+                return $this->redirectToRoute('proekt.pasekas.matkas');
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
 
-
-//        return $this->render('app/adminka/matkas/plemmatka/redaktors/uchasties/assign.html.twig', [
-//            'plemmatka' => $plemmatka,
-//
-//        ]);
     }
 
 }

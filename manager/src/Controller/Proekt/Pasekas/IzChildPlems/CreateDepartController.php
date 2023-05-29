@@ -22,8 +22,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/proekt/pasekas/izChildPlems", name="proekt.pasekas.izChildPlems")
-// * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
- * @IsGranted("ROLE_ADMINKA_MANAGE_PLEMMATKAS")
  */
 class CreateDepartController extends AbstractController
 {
@@ -38,27 +36,28 @@ class CreateDepartController extends AbstractController
     /**
      * @Route("/{plemmatka_id}/createDepart", name=".createDepart")
      * @param Request $request
-     * @param PlemMatka $plemmatka
+//     * @param PlemMatka $plemmatka
+     * @param string $plemmatka_id
      * @param CreadDepart\Handler $handler
      * @return Response
      */
-    public function createDepart(Request $request, PlemMatka $plemmatka,  CreadDepart\Handler $handler): Response
+    public function createDepart(Request $request, string $plemmatka_id,
+//                                 PlemMatka $plemmatka,
+                                 CreadDepart\Handler $handler): Response
     {
-        $command = new CreadDepart\Command($plemmatka->getId()->getValue());
+//        dd($plemmatka_id);
+        $command = new CreadDepart\Command($plemmatka_id);
 
         try {
             $handler->handle($command);
 //            dd("из depart");
-            return $this->redirectToRoute('proekt.pasekas.izChildPlems.perewodPlem', [ 'plemmatka_id' => $plemmatka->getId()->getValue() ]);
+            return $this->redirectToRoute('proekt.pasekas.izChildPlems.perewodPlem', [ 'plemmatka_id' => $plemmatka_id ]);
 
         } catch (\DomainException $e) {
             $this->errors->handle($e);
             $this->addFlash('error', $e->getMessage());
         }
 
-//        return $this->render('proekt/pasekas/izChildPlems/createDepart.html.twig', [
-//            'plemmatka' => $plemmatka,
-//        ]);
     }
 }
 

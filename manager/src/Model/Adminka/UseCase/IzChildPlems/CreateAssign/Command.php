@@ -27,14 +27,14 @@ class Command
      */
     public $roles;
 
-    /**
-     * @Assert\NotBlank()
-     */
-    public $childId;
+//    /**
+//     * @Assert\NotBlank()
+//     */
+//    public $childId;
 
-    public function __construct(string $plemmatka, int  $childId)
+    public function __construct(string $plemmatka)
     {
         $this->plemmatka = $plemmatka;
-        $this->childId = $childId;
+//        $this->childId = $childId;
     }
 }

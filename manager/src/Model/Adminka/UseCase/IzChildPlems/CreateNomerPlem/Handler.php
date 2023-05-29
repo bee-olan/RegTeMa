@@ -18,27 +18,29 @@ use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
 
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
 use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id as NomerId;
-use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\NomerRepository as OtNomerRepository;
-use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Id as OtecNomerId;
-//
-use App\Model\Adminka\Entity\Matkas\Kategoria\KategoriaRepository as KategoriaRepository;
-use App\Model\Adminka\Entity\Matkas\Kategoria\Id as KategoriaId;
+
 
 
 class Handler
 {
     private $plemmatkas;
     private $childmatkas;
+    private $personas;
+    private $mestoNomers;
     private $nomerRepository; //  основа для плем матки
     private $flusher;
 
     public function __construct(PlemMatkaRepository $plemmatkas,
                                     ChildMatkaRepository $childmatkas,
+                                    PersonaFetcher $personas,
+                                    MestoNomerFetcher $mestoNomers,
                                     NomerRepository $nomerRepository,
                                     Flusher $flusher)
     {
         $this->plemmatkas = $plemmatkas;
         $this->childmatkas = $childmatkas;
+        $this->personas=$personas;
+        $this->mestoNomers=$mestoNomers;
         $this->nomerRepository=$nomerRepository;
         $this->flusher = $flusher;
     }
@@ -51,21 +53,13 @@ class Handler
 
         $childmatka = $this->childmatkas->get(new ChildId( $childId));
 
+        $persona =  $this->personas->find($command->uchastieId);
 
-
-        $persona =  $childmatka->getPlemMatka()->getPersona();
-//        dd($persona);
-        $mesto = $childmatka->getPlemMatka()->getMesto();
+        $mesto = $this->mestoNomers->find($command->uchastieId);
 
         $kategoria =  $childmatka->getPlemMatka()->getKategoria();
 
         $otecNomer = $childmatka->getOtecNomer();
-
-//        $status = $childmatka->changeType()
-//        getStatus();
-
-
-//        $nameG = explode("-", $nomer->getName());
 
         $godaVixod =  $childmatka->getGodaVixod();
 

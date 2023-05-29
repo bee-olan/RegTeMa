@@ -41,6 +41,7 @@ class Handler
 
 //        $uchastie = $this->uchasties->get(new UchastieId($plemmatka->getUchastieId()));
 
+
         $uchastie = $this->uchasties->get(new UchastieId($command->uchastie));
 
 
@@ -48,10 +49,11 @@ class Handler
             return new DepartmentId($id);
         }, $command->departments);
 
+
         $roles = array_map(function (string $id): Role {
             return $this->roles->get(new RoleId($id));
         }, $command->roles);
-
+//dd($command->roles);
         $plemmatka->addUchastie($uchastie, $departments, $roles);
 
         $this->flusher->flush();
