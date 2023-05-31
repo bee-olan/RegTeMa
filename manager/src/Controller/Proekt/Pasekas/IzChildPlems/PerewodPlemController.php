@@ -68,15 +68,15 @@ class PerewodPlemController extends AbstractController
 //dd($command);
         try {
             $handler->handle($command);
-            return $this->redirectToRoute('proekt.pasekas.izChildPlems.assign', [ 'plemmatka_id' => $plemmatka->getId()->getValue() ]);
+//            return $this->redirectToRoute('proekt.pasekas.izChildPlems.assign', [ 'plemmatka_id' => $plemmatka->getId()->getValue() ]);
 
-//            return $this->redirectToRoute('proekt.pasekas.matkas');
+            return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.show', [ 'plemmatka_id' => $plemmatka->getId()->getValue() ]);
         } catch (\DomainException $e) {
             $this->errors->handle($e);
             $this->addFlash('error', $e->getMessage());
         }
 
-//        return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
+        return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka_id]);
     }   
 
 }

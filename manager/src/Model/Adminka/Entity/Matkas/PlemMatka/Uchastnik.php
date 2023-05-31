@@ -158,6 +158,18 @@ class Uchastnik
         return $this->uchastie;
     }
 
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+
+    public function getPlemmatka(): PlemMatka
+    {
+        return $this->plemmatka;
+    }
+
     /**
      * @return Role[]
      */

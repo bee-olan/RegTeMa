@@ -24,6 +24,7 @@
         </div> 
     </div>
 
+
         <div class="plem plem__jus-se">
             <a href="{{ path('proekt.pasekas.matkas'  ) }}"
                class="btnn btnn--mb0 btnn--col"> Список ПлемМаток с <strong class="strongo strongo--kras"> выбранным сезоном </strong> .
@@ -41,8 +42,12 @@
 
         <div class="proekts-plr" >
             <h1 class="plem__title  ">{{ plemmatka.name }} :  названия данных ПлемМатки, которые берём за основу</h1>
-       
 
+            {% if sesMessages %}
+                {% for sesMessage in sesMessages %}
+                    {{ sesMessage }}
+                {% endfor %}
+            {% endif %}
             <ul class="plem plem__jus-st ">
                 <li class="plem__name plem-nomer" >{{plemmatka.nomer.linia.rasa.name}}_</li>
                 <li class="plem__name plem__name--wid20"> Раса : &nbsp; &nbsp;   <strong class="strongo "> {{plemmatka.nomer.linia.rasa.title}}</strong></li>

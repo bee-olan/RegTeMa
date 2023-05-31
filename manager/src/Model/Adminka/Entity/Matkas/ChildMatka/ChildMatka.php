@@ -275,7 +275,7 @@ class ChildMatka
     public function perewodPlem(Uchastie $actor, \DateTimeImmutable $date): void
     {
         // dd($date);
-        if (!$this->isNew() and !$this->isPerewodPlem()) {
+        if (!$this->isNew() and $this->isPerewodPlem()) {
             throw new \DomainException('Матку перевели в ПлемМатку.');
         }
 //        if (!$this->executors->count()) {

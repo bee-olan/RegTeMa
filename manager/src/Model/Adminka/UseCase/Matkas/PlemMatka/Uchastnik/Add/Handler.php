@@ -53,7 +53,7 @@ class Handler
         $roles = array_map(function (string $id): Role {
             return $this->roles->get(new RoleId($id));
         }, $command->roles);
-//dd($command->roles);
+//dd($roles);
         $plemmatka->addUchastie($uchastie, $departments, $roles);
 
         $this->flusher->flush();

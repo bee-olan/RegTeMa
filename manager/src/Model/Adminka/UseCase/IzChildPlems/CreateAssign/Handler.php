@@ -18,6 +18,7 @@ use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id as DepartmentId;
 use App\ReadModel\Adminka\Matkas\ChildMatka\ChildMatkaFetcher;
 use App\ReadModel\Adminka\Matkas\PlemMatka\DepartmentFetcher;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class Handler
 {
@@ -50,6 +51,11 @@ class Handler
 
     public function handle(Command $command): void
     {
+        $session = new Session();
+        $childSs =  $session->get('childS');
+
+//        dd(  $plemmatka->getUchastnik(new Id($this->getUser()->getId()))->getRoles());
+//        dd(  $plemmatka->getUchastnik(new Id($this->getUser()->getId()))->getDepartments());
 
         $plemmatka = $this->plemmatkas->get(new Id($command->plemmatka));
 
@@ -68,20 +74,29 @@ class Handler
 //        $command->departments = [2 => "aaaaaaa"];
 //        dd($command->departments);
 //        0 => "def630e2-407f-43ce-847f-09cb715d32f3"
-        $godaVixod = $plemmatka->getGodaVixod();
-        $sezon =  $godaVixod."-".($godaVixod+1);
-        $deparIds = $this->departFetcher->allPlemSezon($plemmatka->getId()->getValue(), $sezon);
+//        $godaVixod = $plemmatka->getGodaVixod();
+//        $sezon =  $godaVixod."-".($godaVixod+1);
+
+        $deparIds = $this->departFetcher->allPlemSezon($childSs['plemId'], $childSs['sezonPlem']);
         $command->departments = [0 => $deparIds[0]['id']];
         $departments = array_map(static function (string $id): DepartmentId {
             return new DepartmentId($id);
         }, $command->departments);
+//        dd($childSs['departments']);
+//        $departments = $childSs['departments'];
 
         $command->roles =  [0 => "f1aee78b-58a6-4581-ad66-be3e65f83d78"];
         $roles = array_map(function (string $id): Role {
             return $this->roles->get(new RoleId($id));
         }, $command->roles);
+//        $roles = $childSs['roles'];
 
-        $plemmatka->addUchastie($uchastie, $departments, $roles);
+//        dd($roles);
+        $plemmatka->addUchastie(
+            $uchastie,
+            $departments,
+            $roles
+        );
 
         $this->flusher->flush();
     }

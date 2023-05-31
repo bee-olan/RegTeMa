@@ -33,6 +33,7 @@ class OkrugsController extends AbstractController
      */
     public function okrugs(OkrugFetcher $fetcher, MestoNomerFetcher $mestonomers): Response
     {
+
         if ($mestonomers->exists($this->getUser()->getId())) {
             $this->addFlash('error', 'Ваш номер места расположения пасеки уже записан в БД');
             return $this->redirectToRoute('proekt.mestoo.inform');

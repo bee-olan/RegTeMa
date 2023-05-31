@@ -23,6 +23,7 @@ use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
@@ -57,8 +58,11 @@ class PlemMatkaController extends AbstractController
                             PlemMatkaFetcher $fetchers
                         ): Response
    {
-//dd( $plemmatka->getMesto()->getNomer());
-// $plemmatka = $fetchers->find($plem_id);
+       $session = new Session();
+       $sesMessages  = $session->getFlashBag()->get('notice', []);
+//       foreach ($session->getFlashBag()->get('notice', []) as $message) {
+//
+//       }
 
 
 //       $uchastie = $uchasties->get(new Id($plemmatka->getUchastieId()));
@@ -72,6 +76,9 @@ class PlemMatkaController extends AbstractController
       $infaMesto = $fetchers->infaMesto($plemmatka->getMesto()->getNomer());
 //       dd($infaMesto);
        return $this->render('proekt/pasekas/matkas/plemmatkas/show.html.twig',
-           compact('plemmatka', 'infaMesto','kategorias', 'permissions'));
+           compact('plemmatka', 'infaMesto',
+               'kategorias', 'permissions',
+                'sesMessages'
+           ));
    }
 }

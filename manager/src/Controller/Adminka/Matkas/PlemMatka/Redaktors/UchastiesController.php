@@ -40,6 +40,8 @@ class UchastiesController extends AbstractController
     {
         $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
 // выводит из проекта uchastniks - учстников
+
+
         return $this->render('app/adminka/matkas/plemmatka/redaktors/uchasties/index.html.twig', [
             'plemmatka' => $plemmatka,
             'uchastniks' => $plemmatka->getUchastniks(),

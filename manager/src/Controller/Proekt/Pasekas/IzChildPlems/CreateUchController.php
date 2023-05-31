@@ -16,6 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -43,6 +44,8 @@ class CreateUchController extends AbstractController
     {
         // Привязывает к проекту-ПлемМатка - нового  сотрудника
 //        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
+        $session = new Session();
+        $childSs =  $session->get('childS');
 
         //Проверка на : Если попытается привязать сотрудника, но еще нет департ-сообщества, то соотв. сообщение
         if (!$plemmatka->getDepartments()) {
@@ -54,6 +57,7 @@ class CreateUchController extends AbstractController
         $command = new CreateAssign\Command($plemmatka->getId()->getValue());
             try {
                 $handler->handle($command);
+                $session->clear();
 //                dd("стор assign");
                 return $this->redirectToRoute('proekt.pasekas.matkas');
             } catch (\DomainException $e) {
