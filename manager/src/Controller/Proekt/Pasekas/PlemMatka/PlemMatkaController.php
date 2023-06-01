@@ -60,17 +60,14 @@ class PlemMatkaController extends AbstractController
    {
        $session = new Session();
        $sesMessages  = $session->getFlashBag()->get('notice', []);
-//       foreach ($session->getFlashBag()->get('notice', []) as $message) {
-//
-//       }
 
+//dd($plemmatka->getOtecNomer()->getLinia()->getName());
 
 //       $uchastie = $uchasties->get(new Id($plemmatka->getUchastieId()));
 //
        $kategorias = $kategoria->all();
        $permissions = Permission::names();
-//
-//       $infaRasaNom = $fetchers->infaRasaNom($plemmatka->getMesto()->getRaionId() );
+
 
 //
       $infaMesto = $fetchers->infaMesto($plemmatka->getMesto()->getNomer());

@@ -37,12 +37,13 @@
                     <li class = "plem__name plem__name--wid34 plem__name-list--wid" >
                     ПлемМатка (по ссылке -расшифровка)
                     </li> 
-                   <li class = "plem__name">Отцов_лин</li>
+
                         {# <li class = "plem__name">Кат-рия</li> #}
                         <li class = "plem__name">Сезоны/дочки</li>
                         <li class = "plem__name">Сезон</li>
                   
                     <li class = "plem__name"> Дочь</li>
+                    <li class = "plem__name">Отцов_лин</li>
                     <li class = "plem__name"> Статус</li>
                 </ul>
                 {% for plemmatka in pagination %}
@@ -53,15 +54,7 @@
                              {{ plemmatka.name }} 
                         </a>
                     </li>
-                {% if plemmatka.linia_o != "-"%}
-                    <li class = "plem__name-list " >
-                        <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id}) }}"  title = "Расшифровка названия" >
-                        {{plemmatka.linia_o}}  {{plemmatka.otec_n}}
-                        </a>
-                    </li>
-                {% else %}
-                        <li class = "plem__name-list">  {{ plemmatka_kategoria(plemmatka.kategoria) }} </li>
-                {% endif %}                     
+
                         <li class = "plem__name-list">
 
                             <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka', {'plemmatka_id': plemmatka.id}) }}"  title = "Список дочерних от этой маточки" >
@@ -86,6 +79,15 @@
                             </div>
                         </a>
                     </li>
+                    {% if plemmatka.linia_o != "-"%}
+                        <li class = "plem__name-list " >
+                            <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id}) }}"  title = "Расшифровка названия" >
+                                {{plemmatka.linia_o}}  {{plemmatka.otec_n}}
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class = "plem__name-list">  {{ plemmatka_kategoria(plemmatka.kategoria) }} </li>
+                    {% endif %}
                     <li class = "plem__name-list">{{  plemmatka_status(plemmatka.status) }}</li>
                 </ul>
 
@@ -97,11 +99,11 @@
                    
                     <li class = "plem__name plem__name--wid34 plem__name-list--wid" >
                         ПлемМатка (ссылка-расшифровка)
-                    </li> 
-                     <li class = "plem__name break">Отцов_лин</li>
+                    </li>
                     <li class = "plem__name break">Сезон</li>
-                  
                     <li class = "plem__name  break"> Дочь</li>
+                     <li class = "plem__name break">Отцов_лин</li>
+
                 </ul>
                 {% for plemmatka in pagination %}
 
@@ -112,15 +114,7 @@
                            <strong class="strongo strongo--kras"> {{ plemmatka.name }} </strong>  
                         </a>
                     </li>
-                    {% if plemmatka.linia_o != "-"%}
-                    <li class = "plem__name-list " >
-                        <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id}) }}"  title = "Расшифровка названия" >
-                        {{plemmatka.linia_o}}  {{plemmatka.otec_n}}
-                        </a>
-                    </li>
-                {% else %}
-                        <li class = "plem__name-list ">  {{ plemmatka_kategoria(plemmatka.kategoria) }} </li>
-                {% endif %} 
+
                     <li class = "plem__name-list break">
                         <a   href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id}) }}"  class="btnn btnn--mb1 "
                              title = "Редактировать, архивировать, добавить новый сезон" >
@@ -158,6 +152,15 @@
                              От этой маточки <strong class="strongo strongo--kras">объявить</strong>  ДочьМаток
                         </a>
                     </li>
+                    {% if plemmatka.linia_o != "-"%}
+                        <li class = "plem__name-list " >
+                            <a class="" href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id}) }}"  title = "Расшифровка названия" >
+                                {{plemmatka.linia_o}}  {{plemmatka.otec_n}}
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class = "plem__name-list ">  {{ plemmatka_kategoria(plemmatka.kategoria) }} </li>
+                    {% endif %}
                     <li class = "no-break plem__name "></li>
                 </ul>
 

@@ -121,7 +121,7 @@ class IzChildLiniaController extends AbstractController
          $session->set('childS', $childS);
        }
        // устанавливать флеш-сообщения
-       $session->getFlashBag()->add('notice', 'устанавливать флеш-сообщения');
+       $session->getFlashBag()->add('notice', 'Внимание! <br>Вы первели данную маточку в ПлемМатки, можно объявлять её дочерних (ДочьМаток)');
 // извлекать сообщения
 
 

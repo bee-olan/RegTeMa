@@ -111,6 +111,7 @@
                             <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka', {'plemmatka_id': childmatka.plemmatka_id}) }}" >
                                 {% set foos = childmatka.plemmatka_name|split(' ') %}
                                 {{ foos[0] }}-{{ childmatka.plemmatka_god}}
+
                             </a>
                         </td>
                     {% endif %}
