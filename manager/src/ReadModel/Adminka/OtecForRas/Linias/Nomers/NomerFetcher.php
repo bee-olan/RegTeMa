@@ -59,4 +59,6 @@ class NomerFetcher
             return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
         }
 
+
+
     }

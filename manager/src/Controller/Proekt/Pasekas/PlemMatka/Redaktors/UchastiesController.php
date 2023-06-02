@@ -112,7 +112,7 @@ class UchastiesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.uchastiess', ['plemmatka_id' => $plemmatka->getId()]);
+                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.childmatka.show', ['plemmatka_id' => $plemmatka->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());

@@ -8,18 +8,12 @@ use App\Annotation\Guid;
 
 use App\Model\Adminka\Entity\Matkas\Kategoria\Permission;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
-//use App\Model\Adminka\Entity\Matkas\Sparings\SparingRepository;
-//use App\Model\Adminka\Entity\Matkas\Sparings\Id as SparingId;
 
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id as NomerId;
-
-use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
-use App\Model\Adminka\Entity\Uchasties\Uchastie\Id;
-use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Id;
+use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\NomerRepository as OtNomerRepository;
 use App\ReadModel\Adminka\Matkas\KategoriaFetcher;
 use App\ReadModel\Adminka\Matkas\PlemMatka\PlemMatkaFetcher;
-use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,31 +45,30 @@ class PlemMatkaController extends AbstractController
     * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
     * @param PlemMatka $plemmatka
     * @param PlemMatkaFetcher $fetchers
+    * @param OtNomerRepository $nomerRepo
     * @return Response
     */
    public function show(  PlemMatka $plemmatka,
                             KategoriaFetcher $kategoria,
-                            PlemMatkaFetcher $fetchers
+                            PlemMatkaFetcher $fetchers,
+                            OtNomerRepository $nomerRepo
                         ): Response
    {
        $session = new Session();
        $sesMessages  = $session->getFlashBag()->get('notice', []);
 
-//dd($plemmatka->getOtecNomer()->getLinia()->getName());
+$otecNomer = $nomerRepo->get(new Id($plemmatka->getOtecNomer()->getId()->getValue()));
+//dd($otecNomer->getMatka());
 
-//       $uchastie = $uchasties->get(new Id($plemmatka->getUchastieId()));
-//
        $kategorias = $kategoria->all();
        $permissions = Permission::names();
 
-
-//
       $infaMesto = $fetchers->infaMesto($plemmatka->getMesto()->getNomer());
 //       dd($infaMesto);
        return $this->render('proekt/pasekas/matkas/plemmatkas/show.html.twig',
            compact('plemmatka', 'infaMesto',
                'kategorias', 'permissions',
-                'sesMessages'
+                'sesMessages', 'otecNomer'
            ));
    }
 }

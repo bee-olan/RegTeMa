@@ -81,8 +81,23 @@
             </ul>
             {% if  plemmatka.otecNomer.linia.name  %}
                 <ul class="plem plem__jus-st ">
-                    <li class="plem__name plem-nomer" >{{ plemmatka.otecNomer.linia.name }}</li>
-                    <li class="plem__name plem__name--wid20"> отцовская линия</li>
+                    <li class="plem__name plem-nomer" >{{ otecNomer.linia.name }}_{{ otecNomer.name }}</li>
+                    <li class="plem__name plem__name--wid20"><strong class="strongo strongo--kras"> отцовская линия </strong> </li>
+                    <li class="plem__name plem__name--wid20"> {{ otecNomer.oblet }}</li>
+                    <li>
+                        <ul class="plem plem__jus-st ">
+                            <li class="plem__name plem__name--wid20" >
+                                <strong class="strongo "> {{ otecNomer.matka.linia }}_{{ otecNomer.matka.nomer }}</strong>
+                            </li>
+                            <li class="plem__name plem__name--wid20"> материнская линия_номер</li>
+                        </ul>
+                        <ul class="plem plem__jus-st ">
+                            <li class="plem__name plem__name--wid20" >
+                                <strong class="strongo "> {{ otecNomer.otec.linia }}_{{ otecNomer.otec.nomer }}</strong>
+                            </li>
+                            <li class="plem__name plem__name--wid20"> отецовская линия_номер</li>
+                        </ul>
+                    </li>
                 </ul>
             {% else %}
                 <ul class="plem plem__jus-st ">

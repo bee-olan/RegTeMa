@@ -28,109 +28,44 @@
     <div class="proekts-plr" >
     <h1 class="plem__title  "><strong class="strongo ">{{ plemmatka.name }} </strong> --   ПлемМатка и её рабочие сезоны</h1>
 
+            {% for uchastnik in uchastniks %}
 
-        {% for uchastnik in uchastniks %}
-            
+                <ul class="plem plem__jus-st ">
+                    <li > <strong class="strongo strongo--kras">{{ uchastnik.uchastie.nike }} </strong>, внимательно выбирайте
+
+                     <strong class="strongo strongo--kras"> сезон </strong>  : </li>
+                 </ul>
+                <ul class="plem plem__jus-st ">
+                    <li class="ma-le-2 " >
+                        <ul class="list-unstyled my-0">
+                            {% for department in uchastnik.departments %}
+                                <li   >
+                                    {% if plemmatka %}
+
+                                        <div class="controls">
+                                            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id, 'department_id' : department.id  } ) }}"
+                                               class="btnn btnn--mb0 btnn--pt  "><strong class="strongo strongo--kras">{{ department.name }}</strong> - добавить ДочьМаток
+                                            </a>
+                                        </div>
+                                    {% endif %}
+
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            {% endfor %}
+
             <ul class="plem plem__jus-st ">
-                <li > <strong class="strongo strongo--kras">{{ uchastnik.uchastie.nike }} </strong>, внимательно выбирайте 
-
-                 <strong class="strongo strongo--kras"> сезон </strong>  : </li>
-             </ul>
-            <ul class="plem plem__jus-st ">    
-                <li class="ma-le-2 " >   
-                    <ul class="list-unstyled my-0">
-                        {% for department in uchastnik.departments %}
-                            <li   >
-                                {% if plemmatka %}
-                                    
-                                    <div class="controls">
-                                        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id, 'department_id' : department.id  } ) }}"
-                                           class="btnn btnn--mb0 btnn--pt  "><strong class="strongo strongo--kras">{{ department.name }}</strong> - добавить ДочьМаток  
-                                        </a>
-                                    </div>
-                                {% endif %}
-
-                            </li>
-                        {% endfor %}
-                    </ul>
+                <li >  &nbsp; &nbsp;
+                    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.uchastiess.edit',
+                        {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0  btnn--pt ">Можно добавить новый сезон!!!!</a>
                 </li>
             </ul>
-        {% endfor %}
-        <ul class="plem plem__jus-st ">
-            <li >  &nbsp; &nbsp;  
-                <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.departmentss',
-                    {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0  btnn--pt ">Можно добавить новый сезон</a>
-            </li>
-        </ul>
+
     </div>
 </div>
 
-    -----------------------
-{# {% if uchastniks %}
-    <h3 class="form__title">Для добавления  очередного сезона  для ПлемМатки, перейдите по ссылке</h3>
-{% else %}
-    <div  class="proekts proekts-plr">
-        <h3 class="form__title">Написать запрос  на первый сезон  данной ПлемМатки по предоставлению ДочьМаток в проект</h3>
-
-        <div class="mesto-form__header  ">
-            <div class="mesto-form ">
-                {{ form_start(commentForm) }}
-
-                {{ form_widget(commentForm) }}
-
-                <button type="submit" class="btnn  btnn--mb0 btnn--pt">Отправить</button>
-                {{ form_end(commentForm) }}
-
-            </div>
-        </div>
-    </div>
-
-    <div  class="proekts proekts-plr">
-        <div class="card-mesto">
-            <h3 class="form__title">Запрос на первый сезон в проекте  данной ПлемМатки, </h3>
-            {% if comments|length %}
-                <div class="card-body">
-                    <div class="direct-chat">
-                        <div class="direct-chat-messages">
-                            {% for comment in comments %}
-                                <div class="direct-chat-msg">
-                                    <div class="direct-chat-info clearfix">
-                                        <span class="direct-chat-name pull-left">{{ comment.author_nike }}</span>
-                                        <span class="direct-chat-timestamp pull-right">{{ comment.date|date('Y-m-d H:i:s') }}</span>
-                                    </div>
-                                    <img class="direct-chat-img" src="{{ gravatar(comment.author_email, 40) }}" alt="">
-                                    <div class="direct-chat-text">
-                                        {{ comment.text|markdown|purify|adminka_processor }}
-                                        {% if is_granted('manage', comment) %}
-                                            <div class="controls-m ">
-                                                <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.comment.edit',
-                                                    {'plemmatka_id': plemmatka.id, 'id': comment.id}) }}"
-                                                   class="btnn btnn--mb0 btnn--pt btnn--col-child">
-                                                    <div class="karandash karandash--child">
-                                                        <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="редактировать">
-                                                    </div>
-                                                </a>
-                                                <form action="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.comment.delete', {'plemmatka_id': plemmatka.id, 'id': comment.id}) }}" method="post" onsubmit="return confirm('Вы  уверены? Удалить?')">
-                                                    <input type="hidden" name="token" value="{{ csrf_token('delete-comment') }}" />
-                                                    <button type="submit"  class="btnn  btnn--ml3 btnn--pt btnn--col-child">
-
-                                                        <div class="karandash karandash--child">
-                                                            <img src="{{ asset('assets/proekt/images/delet.png') }}" alt="удалить">
-                                                        </div>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-        </div>
-    </div>
-{% endif %} #}
 
 
 {% endblock %}

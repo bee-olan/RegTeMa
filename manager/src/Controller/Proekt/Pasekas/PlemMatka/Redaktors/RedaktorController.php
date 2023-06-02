@@ -14,7 +14,7 @@ use App\Model\Comment\UseCase\Comment;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 use App\ReadModel\Adminka\Matkas\PlemMatka\CommentPlemFetcher;
 use App\Security\Voter\Adminka\Matkas\PlemMatkaAccess;
-use Psr\Log\LoggerInterface;
+use App\Controller\ErrorHandler;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,11 +27,11 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class RedaktorController extends AbstractController
 {
-    private $logger;
+    private $errors;
 
-    public function __construct(LoggerInterface $logger)
+    public function __construct(ErrorHandler $errors)
     {
-        $this->logger = $logger;
+        $this->errors = $errors;
     }
 
     /**
@@ -97,7 +97,7 @@ class RedaktorController extends AbstractController
                 $handler->handle($command);
                 return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
             } catch (\DomainException $e) {
-                $this->logger->warning($e->getMessage(), ['exception' => $e]);
+                $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
@@ -128,7 +128,7 @@ class RedaktorController extends AbstractController
         try {
             $handler->handle($command);
         } catch (\DomainException $e) {
-            $this->logger->warning($e->getMessage(), ['exception' => $e]);
+            $this->errors->handle($e);
             $this->addFlash('error', $e->getMessage());
         }
 
@@ -155,7 +155,7 @@ class RedaktorController extends AbstractController
         try {
             $handler->handle($command);
         } catch (\DomainException $e) {
-            $this->logger->warning($e->getMessage(), ['exception' => $e]);
+            $this->errors->handle($e);
             $this->addFlash('error', $e->getMessage());
         }
 
