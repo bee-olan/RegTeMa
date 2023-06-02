@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Proekt\Pasekas\PlemMatka;
+namespace App\Controller\Proekt\Pasekas\Matkas;
 
 use App\Annotation\Guid;
 
+use App\Controller\ErrorHandler;
 use App\Model\Adminka\Entity\Matkas\Kategoria\Permission;
 use App\ReadModel\Adminka\Matkas\KategoriaFetcher;
 
@@ -39,11 +40,11 @@ class PlemMatkasController extends AbstractController
 {
     private const PER_PAGE = 10;
 
-    private $logger;
+    private $errors;
 
-    public function __construct(LoggerInterface $logger)
+    public function __construct(ErrorHandler $errors)
     {
-        $this->logger = $logger;
+        $this->errors = $errors;
     }
 
     /**
@@ -60,6 +61,11 @@ class PlemMatkasController extends AbstractController
 
         } else {
             $filter = Filter\Filter::forUchastie($this->getUser()->getId());
+dd($filter);
+            if (!$filter->uchastie ) {
+                $this->addFlash('error', 'Внимание!!!  У Вас нет зарегистрированных ПлемМаток. Сейчас Вы на страничке для регистрации');
+                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.creates');
+            }
         }
 
         $form = $this->createForm(Filter\Form::class, $filter);
