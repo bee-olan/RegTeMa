@@ -33,17 +33,6 @@ class PlemMatkaRepository
                 ->getQuery()->getSingleScalarResult() > 0;
     }
 
-//    public function hasUchastiesWithKatigoria(KatigoriaId $id): bool
-//    {
-//        return $this->repo->createQueryBuilder('p')
-//                ->select('COUNT(p.id)')
-//                ->innerJoin('p.uchastniks', 'ms')
-//                ->innerJoin('ms.roles', 'r')
-//                ->andWhere('r.id = :role')
-//                ->setParameter(':role', $id->getValue())
-//                ->getQuery()->getSingleScalarResult() > 0;
-//    }
-
 
     public function get(Id $id): PlemMatka
     {

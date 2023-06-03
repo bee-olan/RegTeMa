@@ -7,27 +7,11 @@ namespace App\Controller\Proekt\Pasekas\Matkas;
 use App\Annotation\Guid;
 
 use App\Controller\ErrorHandler;
-use App\Model\Adminka\Entity\Matkas\Kategoria\Permission;
-use App\ReadModel\Adminka\Matkas\KategoriaFetcher;
 
-use App\Model\Mesto\Entity\InfaMesto\MestoNomerRepository;
-use App\Model\Mesto\Entity\InfaMesto\Id as MestoNomerId;
-
-use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
-
-use App\Model\Adminka\Entity\Uchasties\Personas\PersonaRepository;
-use App\Model\Adminka\Entity\Uchasties\Personas\Id as PersonaId;
-
-use App\Model\Adminka\UseCase\Matkas\PlemMatka\Create;
-use App\Model\Adminka\UseCase\Matkas\PlemMatka\Remove;
 
 use App\ReadModel\Proekt\Pasekas\PlemMatka\Side\Filter;
 use App\ReadModel\Proekt\Pasekas\PlemMatka\Side\PlemSideFetcher;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -61,11 +45,7 @@ class PlemMatkasController extends AbstractController
 
         } else {
             $filter = Filter\Filter::forUchastie($this->getUser()->getId());
-dd($filter);
-            if (!$filter->uchastie ) {
-                $this->addFlash('error', 'Внимание!!!  У Вас нет зарегистрированных ПлемМаток. Сейчас Вы на страничке для регистрации');
-                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.creates');
-            }
+
         }
 
         $form = $this->createForm(Filter\Form::class, $filter);
@@ -79,6 +59,10 @@ dd($filter);
             $request->query->get('direction', 'asc')
         );
 
+        if (!$pagination->getItems() ) {
+            $this->addFlash('error', 'Внимание!!!  У Вас нет зарегистрированных ПлемМаток. Сейчас Вы на страничке для регистрации');
+            return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.creates');
+        }
         return $this->render('proekt/pasekas/matkas/index.html.twig', [
             'pagination' => $pagination,
             'form' => $form->createView(),
