@@ -36,7 +36,16 @@
                     {{ form_start(form) }}
                     {{ form_widget(form) }}
                     <div>
-                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                         <ul class="plem plem__jus-st ">
+
+                            <li >
+                                <button type="submit" class="btnn  btnn--mb0 btnn--pt">Сохранить</button>
+                            </li>
+                            <li class="plem__name--wid20">  &nbsp; &nbsp;
+                                <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show',
+                                    {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Или вернуться на страничку</a>
+                            </li>
+                        </ul>
                     </div>
                     {{ form_end(form) }}
 

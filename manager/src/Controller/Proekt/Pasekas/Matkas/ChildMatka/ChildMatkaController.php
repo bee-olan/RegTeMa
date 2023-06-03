@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Proekt\Pasekas\PlemMatka\ChildMatka;
+namespace App\Controller\Proekt\Pasekas\Matkas\ChildMatka;
 
 use App\Annotation\Guid;
 
@@ -211,6 +211,7 @@ class ChildMatkaController extends AbstractController
         //         $this->addFlash('error', $e->getMessage());
         //     }
         // }
+//        dd( $plemmatka->getUchastniks());
         return $this->render('proekt/pasekas/matkas/plemmatkas/childmatka/show.html.twig', [
             'plemmatka' => $plemmatka,
             'uchastniks' => $plemmatka->getUchastniks(),

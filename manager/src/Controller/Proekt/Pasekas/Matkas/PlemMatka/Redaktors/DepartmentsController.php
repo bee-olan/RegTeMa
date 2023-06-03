@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Proekt\Pasekas\PlemMatka\Redaktors;
+namespace App\Controller\Proekt\Pasekas\Matkas\PlemMatka\Redaktors;
 
 use App\Annotation\Guid;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id;

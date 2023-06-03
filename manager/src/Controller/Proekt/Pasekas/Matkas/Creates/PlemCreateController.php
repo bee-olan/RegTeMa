@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Proekt\Pasekas\PlemMatka\Creates;
+namespace App\Controller\Proekt\Pasekas\Matkas\Creates;
 
 use App\Annotation\Guid;
 

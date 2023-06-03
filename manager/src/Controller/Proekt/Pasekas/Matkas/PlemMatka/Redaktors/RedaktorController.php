@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Proekt\Pasekas\PlemMatka\Redaktors;
+namespace App\Controller\Proekt\Pasekas\Matkas\PlemMatka\Redaktors;
 
 use App\Annotation\Guid;
 
@@ -36,20 +36,19 @@ class RedaktorController extends AbstractController
 
     /**
      * @Route("/show", name=".show", requirements={"id"=Guid::PATTERN})
-     * @param PlemMatka $plemmatka
      * @param Request $request
+     * @param PlemMatka $plemmatka
      * @param CommentPlemFetcher $comments
      * @param Comment\AddSezon\Handler $commentHandler
      * @return Response
      */
-    public function show(PlemMatka $plemmatka,
-                         Request $request,
+    public function show(Request $request,
+                         PlemMatka $plemmatka,
                          CommentPlemFetcher $comments,
                          Comment\AddSezon\Handler $commentHandler
     ): Response
     {
-//dd($plemmatka);
-//        $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
+
         $commentCommand = new Comment\AddSezon\Command(
             $this->getUser()->getId(),
             PlemMatka::class,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Proekt\Pasekas\PlemMatka\Redaktors;
+namespace App\Controller\Proekt\Pasekas\Matkas\PlemMatka\Redaktors;
 
 use App\Annotation\Guid;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id;
@@ -112,7 +112,7 @@ class UchastiesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.childmatka.show', ['plemmatka_id' => $plemmatka->getId()]);
+                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());

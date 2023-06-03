@@ -348,6 +348,7 @@ body {
   font-size: 1.4rem;
   line-height: 1.5;
   color: #f6f6f6;
+  overflow-y: scroll;
 }
 body.no-scroll {
   overflow: hidden;
@@ -3924,7 +3925,7 @@ legend {
   border-bottom: 2px solid #025a02;
 }
 .inklud--child {
-  background-color: #efe9cd;
+  background-color: rgba(255, 255, 255, 0.15);
   box-shadow: inset 0px 0px 10px rgba(2, 90, 2, 0.9);
   border-bottom: 2px solid #025a02;
 }

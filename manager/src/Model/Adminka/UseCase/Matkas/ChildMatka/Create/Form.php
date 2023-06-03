@@ -72,12 +72,12 @@ class Form extends AbstractType
              ])
 
             ->add('otecNomer', Type\ChoiceType::class, [
-                'label' => 'Отцовская линия',
+                'label' => '5) Отцовская линия . .  ',
                 'choices' => $otecLinia,
             ])
 
             ->add('priority', Type\ChoiceType::class, [
-                'label' => '5) Приоритеты для заказа на тестирование   ',
+                'label' => '6) Приоритеты для заказа на тестирование   ',
                 'choices' => [
                 'Низкий' => 1,
                 'Обычный' => 2,

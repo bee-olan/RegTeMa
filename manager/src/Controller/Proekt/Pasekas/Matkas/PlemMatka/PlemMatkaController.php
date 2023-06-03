@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Proekt\Pasekas\PlemMatka;
+namespace App\Controller\Proekt\Pasekas\Matkas\PlemMatka;
 
 use App\Annotation\Guid;
 
@@ -26,19 +26,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
  */
 class PlemMatkaController extends AbstractController
 {
-//    /**
-//     * @Route("/", name="")
-//     * @return Response
-//     */
-//    public function index(): Response
-//    {
-//
-//        return $this->render('proekt/pasekas/matkas/plemmatkas/index.html.twig'
-////            ,
-////            compact('rasas')
-//        );
-//    }
-
 
    /**
     * @Route("/{plemmatka_id}", name=".show", requirements={"plemmatka_id"=Guid::PATTERN})
@@ -57,14 +44,14 @@ class PlemMatkaController extends AbstractController
        $session = new Session();
        $sesMessages  = $session->getFlashBag()->get('notice', []);
 
-$otecNomer = $nomerRepo->get(new Id($plemmatka->getOtecNomer()->getId()->getValue()));
-//dd($otecNomer->getMatka());
+        $otecNomer = $nomerRepo->get(new Id($plemmatka->getOtecNomer()->getId()->getValue()));
+
 
        $kategorias = $kategoria->all();
        $permissions = Permission::names();
 
       $infaMesto = $fetchers->infaMesto($plemmatka->getMesto()->getNomer());
-//       dd($infaMesto);
+
        return $this->render('proekt/pasekas/matkas/plemmatkas/show.html.twig',
            compact('plemmatka', 'infaMesto',
                'kategorias', 'permissions',

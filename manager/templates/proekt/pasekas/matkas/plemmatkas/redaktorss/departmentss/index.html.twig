@@ -22,14 +22,15 @@
         </div>
 
         <div class="inklud__title inklud__title--plem teni">
-            Добавить новый рабочий сезон для ПлемМатки!!!
+            Добавить новый рабочий сезон для ПлемМатки!!!<br>
+            Пока удалили часть стр
         </div>
     </div>
 
     <div class="proekts-plr" >
     <h1 class="plem__title  "><strong class="strongo ">{{ plemmatka.name }} </strong> --   ПлемМатка, берём за основу для ТестМаток</h1>
         <h1 class="plem__title  "><strong class="strongo strongo--kras">{{ plemmatka_status(plemmatka.status.name) }} </strong> --  статус  ПлемМатки на данный момент</h1>
-    {% if departmentss %}
+    {# {% if departmentss %}
         {% for department in departmentss %}
             <ul class="plem plem__jus-st ">
                 <li class="plem__name " ><strong class="strongo ">Сезон: </strong></li>
@@ -44,7 +45,7 @@
         {% endfor %}
     {% else %}
      <h1 class="plem__title  "><strong class="strongo ">Пока сезонов нет </strong> --  напишите мне, исправлю</h1>
-    {% endif %}
+    {% endif %} #}
     </div>
 </div>
 

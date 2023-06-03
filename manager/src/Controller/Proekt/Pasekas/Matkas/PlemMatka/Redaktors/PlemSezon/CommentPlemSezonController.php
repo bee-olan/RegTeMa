@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Proekt\Pasekas\PlemMatka\Redaktors\PlemSezon;
+namespace App\Controller\Proekt\Pasekas\Matkas\PlemMatka\Redaktors\PlemSezon;
 
 use App\Controller\ErrorHandler;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;

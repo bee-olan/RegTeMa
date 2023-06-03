@@ -60,7 +60,7 @@ class PlemMatkasController extends AbstractController
         );
 
         if (!$pagination->getItems() ) {
-            $this->addFlash('error', 'Внимание!!!  У Вас нет зарегистрированных ПлемМаток. Сейчас Вы на страничке для регистрации');
+            $this->addFlash('error', 'Внимание!!!  У Вас нет зарегистрированных или Активных ПлемМаток. Сейчас Вы на страничке для регистрации');
             return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.creates');
         }
         return $this->render('proekt/pasekas/matkas/index.html.twig', [

@@ -45,7 +45,8 @@
                                         <div class="controls">
                                             <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id, 'department_id' : department.id  } ) }}"
                                                class="btnn btnn--mb0 btnn--pt  "><strong class="strongo strongo--kras">{{ department.name }}</strong> - добавить ДочьМаток
-                                            </a>
+                                            </a> 
+                                            {# {{ plemmatka.child_count }} #}
                                         </div>
                                     {% endif %}
 

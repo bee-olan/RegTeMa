@@ -17,6 +17,7 @@ body {
   font-size: 1.4rem;
   line-height: 1.5 ;
   color: $white;
+  overflow-y: scroll;
   // скрываем скролл для body при модальном о.
     &.no-scroll{
       overflow: hidden;

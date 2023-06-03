@@ -60,49 +60,46 @@
 
         <ul class="plem plem__jus-st ">
             {% if uchastniks %}
-                <li class="plem__name " ><strong class="strongo ">Заявленные сезоны данной ПлемМатки: </strong></li>
+                <li class="plem__name " >
+                    <strong class="strongo ">Заявленные сезоны : </strong>
+                 </li>    
+                <li class="plem__name--wid20">    
+                     {% for uchastnik in uchastniks %}
+                        <ul class="plem plem__jus-st ">
+                            <li class="ma-le-2 " >
+                                
+                            </li>
+                            <li class="ma-le-2 " >
+                                <ul class="list-unstyled my-0">
+                                    {% for department in uchastnik.departments %}
+                                        <li>{{ department.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                    {% endfor %}
+                </li>
 
                 <li class="plem__name--wid20">  &nbsp; &nbsp;
-                    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.departmentss',
+                    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.uchastiess.edit',
                         {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Добавить сезон</a>
                 </li>
                 <li>
                 </li>
             {% else %}
-                <li class="plem__name " ><strong class="strongo strongo--kras">Заявленных сезонов - нет!..</strong> Написать заявку на первый сезон (см ниже) </li>
+                <li class="plem__name " >
+                    <strong class="strongo strongo--kras">Заявленных сезонов - нет!..</strong> 
+                    Написать заявку на первый сезон (см ниже) 
+                </li>
             {% endif %}
         </ul>
-
-
-        {# {% for uchastnik in uchastniks %}
-            <ul class="plem plem__jus-st ">
-                <li>
-                    <h1 class="plem__title strongo--kras "> Внимание !!!  Объявляем ДочьМаток   </h1>
-                </li>
-            </ul>
-            <ul class="plem plem__jus-st ">
-                <li class="plem__name " > {{ uchastnik.uchastie.nike }}  ( {{ uchastnik.uchastie.name.full }} )</li>
-
-                <li  class=  "strongo " >Выбрать сезон для новых ДочьМаток : </li>
-                <li class="ma-le-2 " >   
-                    <ul class="list-unstyled my-0">
-                        {% for department in uchastnik.departments %}
-                            <li   >
-                                {% if plemmatka %}
-                                    
-                                    <div class="controls">
-                                        <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id, 'department_id' : department.id  } ) }}"
-                                           class="btnn btnn--mb0 btnn--pt  ">{{ department.name }} -<strong class="strongo strongo--kras"> добавить ДочьМаток  </strong>
-                                        </a>
-                                    </div>
-                                {% endif %}
-
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </li>
-            </ul>
-        {% endfor %} #}
+        <ul class="plem plem__jus-st ">
+           
+            <li class="plem__name--wid20">  &nbsp; &nbsp;
+                <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.show',
+                    {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col"> - перейти на страничку добавления ДочьМаток</a>
+            </li>
+        </ul>
 
     </div>
 </div>
