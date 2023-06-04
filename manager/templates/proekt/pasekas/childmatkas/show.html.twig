@@ -19,13 +19,15 @@
     <div class="inklud__title  teni teni--kategor">
 
         {% if childmatka.parent %}
-         <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka.png') }}" alt="редактировать"> 
+            ->
+{#         <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka.png') }}" alt="редактировать"> #}
             <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.parent.id}) }}"
-            style="color: #155799;; " > {{ childmatka.parent.name }} </a>
-            <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka.png') }}" alt="редактировать">
+            style="color: #155799;; " > {{ childmatka.parent.name }} -></a>
+
+{#            <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka_w.png') }}" alt="редактировать">#}
         {% else %}
-           <span style="color: #155799;; "> {{korotkoName}}</span>
-            <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka.png') }}" alt="редактировать">
+           <span style="color: #155799;; "> {{korotkoName}}   >  </span>
+{#            <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka_w.png') }}" alt="редактировать">#}
         {% endif %}
        <span style="color: rgba(255,0,0,0.63); "> {{ childmatka.name }} </span>
     </div>

@@ -35,7 +35,7 @@
         <li class="plem__name " >{{plemmatka.title}}</li>
         <li class="plem__name--wid20">  &nbsp; &nbsp;
             <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.edit',
-                {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Редактировать</a>
+                {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 ">Редактировать</a>
         </li>
     </ul>
 
@@ -58,48 +58,44 @@
             </li>
         </ul>
 
-        <ul class="plem plem__jus-st ">
-            {% if uchastniks %}
+        {% if uchastniks %}
+            <ul class="plem plem__jus-st ">
                 <li class="plem__name " >
                     <strong class="strongo ">Заявленные сезоны : </strong>
                  </li>    
-                <li class="plem__name--wid20">    
+                <li class="plem__name--wid20">
                      {% for uchastnik in uchastniks %}
-                        <ul class="plem plem__jus-st ">
-                            <li class="ma-le-2 " >
-                                
-                            </li>
-                            <li class="ma-le-2 " >
-                                <ul class="list-unstyled my-0">
-                                    {% for department in uchastnik.departments %}
-                                        <li>{{ department.name }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                        </ul>
+                            <ul class="list-unstyled my-0">
+
+                                {% for department in uchastnik.departments %}
+                                    <li class="ma-le-2 ">{{ department.name }}</li>
+                                {% endfor %}
+                            </ul>
                     {% endfor %}
                 </li>
 
                 <li class="plem__name--wid20">  &nbsp; &nbsp;
                     <a href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.uchastiess.edit',
-                        {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Добавить сезон</a>
+                        {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 ">Добавить сезон</a>
                 </li>
                 <li>
                 </li>
-            {% else %}
+            </ul>
+            <ul class="plem plem__jus-st ">
+
+                <li class="plem__name--wid20">  &nbsp; &nbsp;
+                    <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.show',
+                        {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 "> - перейти на страничку добавления ДочьМаток</a>
+                </li>
+            </ul>
+        {% else %}
+            <ul class="plem plem__jus-st ">
                 <li class="plem__name " >
                     <strong class="strongo strongo--kras">Заявленных сезонов - нет!..</strong> 
-                    Написать заявку на первый сезон (см ниже) 
+                    Написать запрос на первый сезон (см ниже)
                 </li>
-            {% endif %}
-        </ul>
-        <ul class="plem plem__jus-st ">
-           
-            <li class="plem__name--wid20">  &nbsp; &nbsp;
-                <a href="{{ path('proekt.pasekas.matkas.plemmatkas.childmatka.show',
-                    {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col"> - перейти на страничку добавления ДочьМаток</a>
-            </li>
-        </ul>
+            </ul>
+        {% endif %}
 
     </div>
 </div>

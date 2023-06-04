@@ -799,6 +799,10 @@ pre {
   font-size: 3rem;
   color: #ED3024;
 }
+.strongo--size-2 {
+  font-size: 2rem;
+  color: #ED3024;
+}
 .strongo--name-nike {
   font-weight: 600;
   font-size: 2rem;
@@ -3224,6 +3228,14 @@ legend {
   color: #a78c16;
 }
 
+.colo-child {
+  color: #3ea662;
+}
+
+.colo-white {
+  color: #f6f6f6;
+}
+
 .row-m {
   display: flex;
   flex-wrap: wrap;
@@ -3981,6 +3993,9 @@ legend {
 }
 .teni--child {
   background-color: #025a02;
+}
+.teni--size {
+  font-size: 1.7rem;
 }
 .teni--rasa {
   background-color: green;

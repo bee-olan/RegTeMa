@@ -25,7 +25,8 @@
     }
 
     &--child {
-        // background-color:  #efe9cd;
+    //    color:  #efe9cd;
+     
         background-color: $col-child-inklud ;
         box-shadow: inset 0px 0px 10px rgba($child-text, 0.9); //тень внутри
         border-bottom: 2px solid $child-text; // linia
@@ -87,8 +88,15 @@
     background-clip: text;
 
     &--child {
+        // color: $child-text;
+        // font-size: 1.8rem;
         background-color: $child-text;
     }
+
+    &--size {       
+        font-size: 1.7rem;     
+    }
+
     &--rasa {
         background-color: $rasa-color;
     }

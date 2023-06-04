@@ -81,9 +81,9 @@
                             </a>
                         </li>
                     {% else %}
-                        <a   href="{{ path('proekt.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id}) }}"  class="btnn btnn--mb1 ">
-                             добавить сезон
-                        </a>
+                        <li class = "plem__name-list">
+                           <strong class="strongo strongo--size-2"> <---</strong>
+                        </li>
                     {% endif %}
                     {% if plemmatka.linia_o != "-"%}
                         <li class = "plem__name-list " >
