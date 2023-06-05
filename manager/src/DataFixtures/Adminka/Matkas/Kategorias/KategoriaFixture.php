@@ -23,6 +23,12 @@ class KategoriaFixture extends Fixture
 
         $manager->persist($bre);
 
+        $net = $this->createKategoria('-', [
+//            Permission::KATEGORIA_DOKUM,
+//            Permission::KATEGORIA_F_0,
+        ]);
+        $manager->persist($net);
+
         $eli = $this->createKategoria('э', [
             Permission::KATEGORIA_DOKUM,
             Permission::KATEGORIA_F_0,

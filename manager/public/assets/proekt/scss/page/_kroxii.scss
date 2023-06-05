@@ -52,7 +52,7 @@
      position: relative;
      font-size: 14px;
     
-     box-shadow: 0 10px 15px rgba($black, .25); //тень
+     box-shadow: 0 10px 15px rgba($black, .2); //тень
 
      border: 1px solid $kroxii;
      border-right: 0;
@@ -82,7 +82,8 @@
 
  .kroxii-xl a:hover {
      background: $kroxii;
-     color: $white;
+     color:  $header-color;
+    //  color: $white;
  }
 
  .kroxii-xl a:hover:after {
@@ -97,10 +98,10 @@
      right: -10px;
      width: 24px;
      height: 24px;
-     box-shadow: 0 10px 15px rgba($black, .45); //тень
+    //  box-shadow: 0 10px 15px rgba($black, .45); //тень
      transform: scale(0.7) rotate(45deg);
      z-index: 1;
-     box-shadow: 1px -1px 0 1px $color-text;
+     box-shadow: 1px -1px 0 1px $header-color;
      border-radius: 0 5px 0 50px;
      background: $kroxii;
      transition: all 0.5s;

@@ -51,21 +51,22 @@
 
 .navv__item {
      position: relative; // позиционирование для
+     color:  $grad1;
      &:hover {
          .navv__link {
             // background-color: $header-color;
             background-color: rgb(119,122,77);
-            background: -webkit-linear-gradient(-45deg, 
+            background: -webkit-linear-gradient(-45deg,
             rgb(119,122,77) 25%,
-            rgb(175, 169, 112) 25%, 
-            #ccb44b 50%, 
-            rgb(119,122,77) 50%, 
-            rgb(119,122,77) 75%, 
+            rgb(175, 169, 112) 25%,
+            #ccb44b 50%,
+            rgb(119,122,77) 50%,
+            rgb(119,122,77) 75%,
             rgb(175, 169, 112) 75%);
             background-size:4px 4px;
 
             text-decoration: none; 
-            color: $white
+            color: $grad1;
          }
 
          > .subnavv {
@@ -85,11 +86,11 @@
 // стилизация ссылок
  .navv__link {
     display: block; // ссылки - блочные
-    padding: .6rem 1.35rem .6rem 1.35rem;
+    padding: 0 1.35rem ;
 
-     font-size: 1.6rem; // шрифт - размер
-     line-height: 1.6;
-     color: $header-color;
+    //  font-size: 1.6rem; // шрифт - размер
+     line-height: 2;
+    //  color: $header-color;
     //  color: $white;// цвет
      text-decoration: none;
     // text-transform: uppercase;
