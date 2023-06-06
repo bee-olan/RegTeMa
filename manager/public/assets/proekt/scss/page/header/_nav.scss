@@ -1,3 +1,50 @@
+@import url(http://fonts.googleapis.com/css?family=Oleo+Script);
+
+.navv-teni{
+    text-align: center;
+    font-family: 'Oleo Script', cursive;
+    opacity: 1;
+    font-size: 2.6rem;
+    font-weight: 500;
+    color: transparent; /*это скроет текст*/
+    letter-spacing: 0.1em;
+    text-shadow: 0 1px 5px #ccb44b ,
+    /*это реальный цвет текста - просто размытый*/
+   //  0 1px 5px rgb(88,92,42),
+     
+    /* это темные тени для вставки
+   , вторая из которых придает более четкий вид и глубину верхней части букв*/
+    0 1px 0 rgba(0,0,0,0.7),
+    0 -1px 0 rgba(0,0,0,0.25),
+     
+    /* это основные моменты - используя rgba, вы можете изменить последнее значение, если они слишком (или слишком мало) яркие */
+    0 .4px 0 rgba(255,255,255,1),
+    0 .5px .8px rgba(255,255,255,0.2);
+   
+     &--em4{
+       font-size: 3.750em;
+    
+     }
+   
+     @include breakpoint($tablet-bp) {
+       font-size: 3.25em;
+   
+       text-shadow: 0 1px 5px #ccb44b ,
+           0 -.5px 0 rgba(0,0,0,1),
+           0 -1.5px 0 rgba(0,0,0,0.25),
+        
+           0 .5px 0 rgba(255,255,255,0.5),
+           0 1px 1px rgba(255,255,255,0.2);
+      
+        &--em4{
+          font-size: 2.250em;
+       
+        }
+   
+   
+       }
+   }
+
 .navv {
      
 
@@ -89,7 +136,7 @@
     padding: 0 1.35rem ;
 
     //  font-size: 1.6rem; // шрифт - размер
-     line-height: 2;
+    //  line-height: 2;
     //  color: $header-color;
     //  color: $white;// цвет
      text-decoration: none;

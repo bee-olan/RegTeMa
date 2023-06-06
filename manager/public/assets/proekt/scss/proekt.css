@@ -4,6 +4,7 @@
    License: none (public domain)
 */
 @import url(http://fonts.googleapis.com/css?family=Oleo+Script);
+@import url(http://fonts.googleapis.com/css?family=Oleo+Script);
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -1070,8 +1071,10 @@ pre {
   display: flex;
   width: calc(100% - 270px);
   background-color: #155799;
-  box-shadow: 0 5px 22px rgba(246, 246, 246, 0.25);
-  border-bottom: 2px solid rgb(175, 169, 112);
+  box-shadow: 0 5px 10px rgba(32, 32, 32, 0.2);
+  border-left: 2px solid #d4ca9a;
+  border-top: 2px solid #d4ca9a;
+  border-bottom: 2px solid #d4ca9a;
   position: fixed;
   top: 0;
   right: 0;
@@ -1160,7 +1163,6 @@ pre {
   transition: background-color 0.2s ease-in-out;
 }
 .subnavv__link:hover {
-  color: #f6f6f6;
   background-color: rgb(119, 122, 77);
   background: -webkit-linear-gradient(-45deg, rgb(119, 122, 77) 25%, rgb(175, 169, 112) 25%, #ccb44b 50%, rgb(119, 122, 77) 50%, rgb(119, 122, 77) 75%, rgb(175, 169, 112) 75%);
   background-size: 4px 4px;
@@ -1197,7 +1199,7 @@ pre {
 .searchh__input {
   display: block;
   width: 100%;
-  padding: 1.2rem 2rem;
+  padding: 0.5rem 2rem 0.4rem 2rem;
   background: transparent;
   border: none;
   font-family: inherit;
@@ -1275,6 +1277,29 @@ pre {
   }
 }
 
+.navv-teni {
+  text-align: center;
+  font-family: "Oleo Script", cursive;
+  opacity: 1;
+  font-size: 2.6rem;
+  font-weight: 500;
+  color: transparent; /*это скроет текст*/
+  letter-spacing: 0.1em;
+  text-shadow: 0 1px 5px #ccb44b, 0 1px 0 rgba(0, 0, 0, 0.7), 0 -1px 0 rgba(0, 0, 0, 0.25), 0 0.4px 0 rgb(255, 255, 255), 0 0.5px 0.8px rgba(255, 255, 255, 0.2);
+}
+.navv-teni--em4 {
+  font-size: 3.75em;
+}
+@media screen and (max-width: 991px) {
+  .navv-teni {
+    font-size: 3.25em;
+    text-shadow: 0 1px 5px #ccb44b, 0 -0.5px 0 rgb(0, 0, 0), 0 -1.5px 0 rgba(0, 0, 0, 0.25), 0 0.5px 0 rgba(255, 255, 255, 0.5), 0 1px 1px rgba(255, 255, 255, 0.2);
+  }
+  .navv-teni--em4 {
+    font-size: 2.25em;
+  }
+}
+
 .navv--mobile {
   display: none;
   margin: 3rem 0;
@@ -1336,7 +1361,6 @@ pre {
 .navv__link {
   display: block;
   padding: 0 1.35rem;
-  line-height: 2;
   text-decoration: none;
   transition: background-color 0.2s linear;
 }
@@ -1418,6 +1442,7 @@ pre {
 
 .sidebarr__header {
   height: 4.5rem;
+  box-shadow: 0 5px 10px rgba(32, 32, 32, 0.2);
 }
 .sidebarr__header img {
   display: block;
@@ -3993,7 +4018,7 @@ legend {
   font-size: 1.7rem;
 }
 .teni--size-2 {
-  font-size: 2rem;
+  font-size: 1.9rem;
 }
 .teni--col-nav {
   color: #155799;
