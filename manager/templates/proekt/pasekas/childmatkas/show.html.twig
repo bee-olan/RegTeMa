@@ -11,28 +11,33 @@
 
 {% block bodyy %}
 <div  class="proekts proekts--childmatka">
-    <div class="inklud inklud--child">
-        <div class="inklud__img  ">
-            <img class="" src="{{ asset('assets/proekt/images/matkas/wetochka.png') }}" alt="">           
-        </div>
+        <div class="inklud inklud--child">
+            <div class="inklud__img  ">
+                <img class="" src="{{ asset('assets/proekt/images/matkas/wetochka.png') }}" alt="">
+            </div>
+            <div class="inklud__title  teni teni--kategor">
+                {% if  childmatka.status.name != "ПлемМатка"%}
 
-    <div class="inklud__title  teni teni--kategor">
+                    {% if childmatka.parent %}
+                        ->
+                        <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.parent.id}) }}"
+                           style="color: #155799; " > {{ childmatka.parent.name }} ->
+                        </a>
+                    {% else %}
+                        <span style="color: #155799; "> {{korotkoName}}   >  </span>
+                    {% endif %}
+                        <span style="color: rgba(255,0,0,0.63); "> {{ childmatka.name }} </span>
+{#                </div>#}
+                {% else %}
+                    Перевели в   <a href="{{ path('proekt.pasekas.matkas') }}"
+                       style="color: #155799; " > ПлемМатку  ->
+                </a>
 
-        {% if childmatka.parent %}
-            ->
-{#         <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka.png') }}" alt="редактировать"> #}
-            <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.parent.id}) }}"
-            style="color: #155799;; " > {{ childmatka.parent.name }} -></a>
 
-{#            <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka_w.png') }}" alt="редактировать">#}
-        {% else %}
-           <span style="color: #155799;; "> {{korotkoName}}   >  </span>
-{#            <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka_w.png') }}" alt="редактировать">#}
-        {% endif %}
-       <span style="color: rgba(255,0,0,0.63); "> {{ childmatka.name }} </span>
-    </div>
-
+            {% endif  %}
 </div>
+
+        </div>
 
 {#    <h1 class="mt-0 mb-3 font-xl">#}
 {#        {% if childmatka.parent %}#}
@@ -48,7 +53,10 @@
     <div class="row-m">
         <div class="col-m col-8-m">
             <div class="card-m">
-                <div class="card-header-m "> <strong class="strongo  strongo--kras " > {{ childmatka.id }} --- </strong> ДочьМатка {{childmatka.name}}</div>
+{#                {% if  childmatka.status.name != "ПлемМатка"%}#}
+                    <div class="card-header-m ">
+                        <strong class="strongo  strongo--kras " > {{ childmatka.id }} --- </strong> ДочьМатка {{childmatka.name}}
+                    </div>
                 
                 <table class="tabl-child tabl-bord- tabl-bord-child mb-0">
                     <tbody>
@@ -62,6 +70,7 @@
                                     {% endif %}
                             </td>
                             <td>
+                                {% if  childmatka.status.name != "ПлемМатка"%}
                                     <div class="controls-m  pull-right-m" style="margin-bottom: 0">
                                         <a href="{{ path('proekt.pasekas.childmatkas.edit', {'plemmatka_id': plemmatka.id, 'id': childmatka.id}) }}"
                                            class="btnn btnn--mb0 btnn--pt btnn--col-child pa-to-5">
@@ -69,19 +78,19 @@
                                                 <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="редактировать">
                                             </div>
                                         </a>
-
                                     </div>
+                                {%  endif %}
                             </td>
                         </tr>
-{#      ата выхода                               #}
+                        {#      ата выхода                               #}
                         <tr>
                             <th>Дата выхода</th>
                             <td>{{ childmatka.date|date('Y-m-d ') }}</td>
                             <th>Дата реализации</th>
                             <td>
                                 {{ childmatka.planDate ? childmatka.planDate|date('Y-m-d') : '' }}
-
-                                <div class="controls-m pull-right-m" style="margin-bottom: 0">
+                                {% if  childmatka.status.name != "ПлемМатка"%}
+                                    <div class="controls-m pull-right-m" style="margin-bottom: 0">
                                     <a href="{{ path('proekt.pasekas.childmatkas.plan', {'plemmatka_id': plemmatka.id, 'id': childmatka.id}) }}"
                                        class="btnn btnn--mb0 btnn--pt btnn--col-child">
                                         <div class="karandash karandash--child">
@@ -99,50 +108,67 @@
                                        </form>
                                     {% endif %}
                                 </div>
+                                {% endif  %}
                             </td>
                         </tr>
-  {# ----------  Категория                     #}
+                        {# ----------  Категория                     #}
                         <tr>
                             <th>Категория</th>
                             <td>
-                                {{ form_start(typeForm) }}
-                                <div class="row">
-                                    <div class="col-8-m">{{ form_widget(typeForm.type, {'attr': {'class': 'input-sm'}}) }}</div>
-{#                                    <div class="col-4-m">#}
-{#                                        <button type="submit" class="btn btn-sm btn-default pull-right invisible">#}
-{#                                            <span class="fa fa-check"></span>#}
-{#                                        </button>#}
-{#                                    </div>#}
-                                </div>
-                                {{ form_end(typeForm) }}
+                                {% if  childmatka.status.name != "ПлемМатка"%}
+                                    {{ form_start(typeForm) }}
+                                    <div class="row">
+                                        <div class="col-8-m">{{ form_widget(typeForm.type, {'attr': {'class': 'input-sm'}}) }}</div>
+
+                                    </div>
+                                    {{ form_end(typeForm) }}
+                                {% else %}
+                                    {{ childmatka.type.name }}
+                                {% endif %}
                             </td>
-{# ----------  Статус                      #}
+                            {# ----------  Статус                      #}
                             <th>Статус</th>
                             <td>
-                                {{ form_start(statusForm) }}
-                                <div class="row-m">
-                                    <div class="col-8-m">{{ form_widget(statusForm.status, {'attr': {'class': 'input-sm'}}) }}</div>
-{#                                    <div class="col-4-m">#}
-{#                                        <button type="submit" class="btn btn-sm btn-default pull-right invisible">#}
-{#                                            <span class="fa fa-check"></span></button>#}
-{#                                    </div>#}
-                                </div>
-                                {{ form_end(statusForm) }}
+                                {% if  childmatka.status.name != "ПлемМатка"%}
+                                    {{ form_start(statusForm) }}
+                                    <div class="row-m">
+                                        <div class="col-8-m">{{ form_widget(statusForm.status, {'attr': {'class': 'input-sm'}}) }}</div>
+
+                                    </div>
+                                    {{ form_end(statusForm) }}
+                                {% else %}
+                                <strong class="strongo  strongo--kras " > {{ childmatka.status.name }} </strong >
+                                {% endif %}
                             </td>
                         </tr>
-{# ----------  Приоритет                      #}
+                        {# ----------  Приоритет                      #}
                         <tr>
                             <th>Приоритет</th>
                             <td>
-                                {{ form_start(priorityForm) }}
-                                <div class="row">
-                                    <div class="col-8-m">{{ form_widget(priorityForm.priority, {'attr': {'class': 'input-sm'}}) }}</div>
-{#                                    <div class="col-4-m">#}
-{#                                        <button type="submit" class="btn btn-sm btn-default pull-right invisible">#}
-{#                                            <span class="fa fa-check"></span></button>#}
-{#                                    </div>#}
-                                </div>
-                                {{ form_end(priorityForm) }}
+                                {% if  childmatka.status.name != "ПлемМатка"%}
+                                    {{ form_start(priorityForm) }}
+                                    <div class="row">
+                                        <div class="col-8-m">{{ form_widget(priorityForm.priority, {'attr': {'class': 'input-sm'}}) }}</div>
+
+                                    </div>
+                                    {{ form_end(priorityForm) }}
+                                {% else %}
+                                    {{ childmatka.priority }}
+                                {% endif %}
+                            </td>
+
+                            <th>Отцовская</th>
+                            <td>
+                                {% if  childmatka.status.name != "ПлемМатка"%}
+                                    {{ form_start(priorityForm) }}
+                                    <div class="row">
+                                        <div class="col-8-m">{{ form_widget(priorityForm.priority, {'attr': {'class': 'input-sm'}}) }}</div>
+
+                                    </div>
+                                    {{ form_end(priorityForm) }}
+                                {% else %}
+{#                                    {{otec.name }}#}
+                                {% endif %}
                             </td>
 
                         </tr>
@@ -308,7 +334,7 @@
         </div>
         <div class="col-m col-4-m">
             <div class="card-m">
-                <div class="card-header-m">Заводчик</div>
+                <div class="card-header-m">Матковод</div>
                 <table class="tabl tabl-col-child mb-0">
                     <tbody>
                         <tr>

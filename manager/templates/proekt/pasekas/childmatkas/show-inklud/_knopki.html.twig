@@ -1,6 +1,8 @@
-    <div class="controls-m">
- {% if  childmatka.author.id == uchastie.id %}
- {# Это автор  #}
+<div class="controls-m">
+
+    {% if  childmatka.status.name != "ПлемМатка"%}
+        {% if  childmatka.author.id == uchastie.id %}
+            {# Это автор  #}
            {% if childmatka.hasExecutor(uchastie.id) %}
         
             {% if childmatka.isNew() %}
@@ -68,11 +70,12 @@
            
         {% endif %}
 
- {% endif %}
+        {% endif %}
 
-
+    {% endif %}     {#  Перевели в Плем #}
  
          <div class="btn-group">
+
 {#            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
 {#                Перети&hellip;#}
 {#            </button>#}
@@ -87,4 +90,4 @@
 {#                <button type="submit" class="btn" style="padding: 0">Удалить</button>#}
             </div>
         </div>
-    </div>
+</div>

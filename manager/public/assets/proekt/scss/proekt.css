@@ -1074,7 +1074,6 @@ pre {
   box-shadow: 0 5px 10px rgba(32, 32, 32, 0.2);
   border-left: 2px solid #d4ca9a;
   border-top: 2px solid #d4ca9a;
-  border-bottom: 2px solid #d4ca9a;
   position: fixed;
   top: 0;
   right: 0;
@@ -1281,7 +1280,7 @@ pre {
   text-align: center;
   font-family: "Oleo Script", cursive;
   opacity: 1;
-  font-size: 2.6rem;
+  font-size: 2.7rem;
   font-weight: 500;
   color: transparent; /*это скроет текст*/
   letter-spacing: 0.1em;
@@ -2243,6 +2242,7 @@ img.hover-shadow {
 
 .storie-main {
   margin-top: -6.7rem;
+  margin-left: -3rem;
 }
 
 .osnowa {
@@ -2356,7 +2356,7 @@ img.hover-shadow {
   align-items: center;
   margin-bottom: 2rem;
   box-shadow: 0 5px 22px rgba(246, 246, 246, 0.25);
-  border-bottom: 2px solid rgb(175, 169, 112);
+  border-bottom: 2px solid #a78c16;
 }
 .wstavka--uch {
   box-shadow: 0 5px 22px rgba(0, 0, 0, 0.35);
@@ -2365,7 +2365,7 @@ img.hover-shadow {
 .wstavka__title {
   width: calc(100% - 80px);
   font-size: 2.1rem;
-  color: rgb(175, 169, 112);
+  color: #a78c16;
 }
 
 .wstavka__kartinka {
@@ -3702,7 +3702,7 @@ legend {
   transition: background-color 0.2s linear;
 }
 .uch-tabl__link:hover {
-  background-color: #159957;
+  background-color: #a78c16;
   text-decoration: none;
 }
 
@@ -3712,13 +3712,13 @@ legend {
   padding-bottom: 0.5rem;
   background: none;
   border: none;
-  border-bottom: 1px solid rgb(175, 169, 112);
+  border-bottom: 1px solid #a78c16;
   border-radius: 0;
   box-shadow: none;
 }
 
 .uch-color {
-  color: rgb(175, 169, 112);
+  color: #a78c16;
   font-size: 1.6rem;
 }
 .uch-color--colorr {

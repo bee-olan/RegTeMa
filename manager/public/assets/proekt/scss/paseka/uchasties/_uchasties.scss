@@ -74,7 +74,7 @@
 
 	transition: background-color .2s linear;
      &:hover {
-        background-color: $grad2;
+        background-color: $text;
         text-decoration: none; 
      }
 }
@@ -86,13 +86,13 @@
 	padding-bottom: .5rem;
 	background: none;
 	border: none;
-	border-bottom: 1px solid $border-lin-nav;
+	border-bottom: 1px solid $text;
 	border-radius: 0;
 	box-shadow: none;
 	
 }
 .uch-color{
-	color: $border-lin-nav;
+	color: $text;
 	font-size: 1.6rem;
 	
 	&--colorr{

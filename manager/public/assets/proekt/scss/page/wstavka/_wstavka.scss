@@ -7,7 +7,7 @@
     margin-bottom: 2rem;
 
     box-shadow: 0 5px 22px rgba($white, .25); 
-    border-bottom: 2px solid $border-lin-nav; // linia
+    border-bottom: 2px solid $text; // linia
 
     &--uch{
         box-shadow: 0 5px 22px rgba($black, .35);
@@ -17,7 +17,7 @@
 .wstavka__title {
     width: calc(100% - #{80px});
     font-size: 2.1rem;
-    color: $border-lin-nav;
+    color: $text;
 
 }
 
