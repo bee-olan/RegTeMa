@@ -22,12 +22,13 @@ class Form extends AbstractType
             ]
         ))
 
-//        ->add('title', Type\TextType::class, array(
-//            'label' => 'От кого материал или просто ком-рий',
-//            'attr' => [
-//                'placeholder' => 'Введите текст ....'
-//            ]
-//        ))
+        ->add('title', Type\TextType::class, array(
+
+            'label' => 'Не обязательный  ком-рий',
+            'attr' => [
+                'placeholder' => 'Введите текст ....'
+            ]
+        ))
         ;
     }
 

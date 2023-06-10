@@ -30,32 +30,32 @@ class Nomer
 
 
     /**
-     * @var string|null
+     * @var string
      * @ORM\Column(type="string",  nullable=true)
      */
     private $name;
 
     /**
      * @var Matka
-     * @ORM\Embedded(class="Matka")
+     * @ORM\Embedded(class="Matka" )
      */
     private $matka;
 
     /**
      * @var Otec
-     * @ORM\Embedded(class="Otec")
+     * @ORM\Embedded(class="Otec" )
      */
     private $otec;
 
     /**
-     * @var string|null
+//     * @var string
      * @ORM\Column(type="string",  nullable=true)
      */
     private $oblet;
 
 
     /**
-     * @var string|null
+//     * @var string
      * @ORM\Column(type="string",  nullable=true)
      */
     private $title;
@@ -63,10 +63,10 @@ class Nomer
 
     public function __construct(Linia $linia, Id $id,
                                 string $name,
-                                ?Matka $matka,
-                                ?Otec $otec,
+                                Matka $matka,
+                                Otec $otec,
                                 ?string $oblet,
-                                string $title
+                                ?string $title
                                 )
     {
         $this->linia = $linia;
@@ -75,14 +75,15 @@ class Nomer
         $this->matka = $matka;
         $this->otec = $otec;
         $this->oblet = $oblet;
-        $this->title = $title = null;
+        $this->title = $title ;
     }
 
-    public function edit(string $name,
-                         ?Matka $matka,
-                         ?Otec $otec,
+    public function edit(
+                        string $name,
+                         Matka $matka,
+                         Otec $otec,
                          ?string $oblet,
-                         string $title
+                         ?string $title
                     ): void
     {
         $this->name = $name;
@@ -93,14 +94,11 @@ class Nomer
 
     }
 
-	
 // равно Ли Имя
     public function isNameEqual(string $name): bool
     {
         return $this->name === $name;
     }
-
-
 
     public function getId(): Id
     {
@@ -125,13 +123,13 @@ class Nomer
         return $this->otec;
     }
 
-    public function getOblet(): string
+    public function getOblet(): ?string
     {
         return $this->oblet;
     }
 
 
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }

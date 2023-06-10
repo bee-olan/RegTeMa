@@ -36,19 +36,19 @@ class Otec
     }
 
 
-    public function getLinia(): string
+    public function getLinia(): ?string
     {
         return $this->linia;
     }
 
 
-    public function getNomer(): string
+    public function getNomer(): ?string
     {
         return $this->nomer;
     }
 
 
-    public function getFull(): string
+    public function getFull(): ?string
     {
         return $this->linia . ' ' . $this->nomer;
     }

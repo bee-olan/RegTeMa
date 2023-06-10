@@ -62,7 +62,7 @@ class Rasa
 
 
     public function addLinia(LiniaId $id,
-                             string $name,
+                             ?string $name,
                              ?string $title
                                 ): void
     {

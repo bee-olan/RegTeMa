@@ -37,14 +37,14 @@ class Linia
 
     /**
      * @var string
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" , nullable=true)
      */
     private $name;
 
 
     /**
      * @var string
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" , nullable=true)
      */
     private $title;
 
@@ -60,8 +60,8 @@ class Linia
 
 
 
-    public function __construct(Rasa $rasa, Id $id, 
-                                string $name,
+    public function __construct(Rasa $rasa, Id $id,
+                                ?string $name,
                                 ?string $title
                                 )
     {
@@ -81,10 +81,10 @@ class Linia
 
     public function addNomer(NomerId $id,
                              string $name,
-                             ?Matka $matka,
-                             ?Otec $otec,
-                             string $oblet,
-                             string $title
+                             Matka $matka,
+                             Otec $otec,
+                             ?string $oblet,
+                             ?string $title
                                 ): void
     {
         foreach ($this->nomers as $nomer) {
@@ -105,14 +105,15 @@ class Linia
 
     public function editNomer(NomerId $id,
                               string $name,
-                              ?Matka $matka,
-                              ?Otec $otec,
+                              Matka $matka,
+                              Otec $otec,
                               string $oblet,
-                              string $title): void
+                              string $title
+    ): void
     {
         foreach ($this->nomers as $current) {
             if ($current->getId()->isEqual($id)) {
-                $current->edit($name,
+                $current->edit( $name,
                                 $matka,
                                 $otec,
                                 $oblet,
@@ -148,13 +149,13 @@ class Linia
         return $this->id;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
 
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }

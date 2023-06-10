@@ -23,20 +23,27 @@ class Form extends AbstractType
                 ]
             ))
             ->add('matkaLinia', Type\TextType::class, array(
-                'label' => 'Добавить  линию отцовской матки',
+
+                'label' => 'Добавить  линию отцовской матки  required => false,',
+                'required' => false,
                 'attr' => [
+
                     'placeholder' => 'Введите линию матки ....'
                 ]
             ))
             ->add('matkaNomer', Type\TextType::class, array(
+
                 'label' => 'Добавить номер отцовской матки',
+                'required' => false,
                 'attr' => [
+
                     'placeholder' => 'Введите номер матки ....'
                 ]
             ))
 
             ->add('otecLinia', Type\TextType::class, array(
                 'label' => 'Добавить название отцовской линию',
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Введите название  ....'
                 ]
@@ -44,6 +51,7 @@ class Form extends AbstractType
 
             ->add('otecNomer', Type\TextType::class, array(
                 'label' => 'Добавить номер отцовской линию',
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Введите номер  ....'
                 ]
@@ -51,20 +59,20 @@ class Form extends AbstractType
 
             ->add('oblet', Type\TextType::class, array(
                 'label' => 'Вид спаривания',
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Введите текст ....'
                 ]
             ))
 
-            ->add('title', Type\TextType::class, array(
+            ->add('title', Type\TextType::class,
+                array(
                 'label' => 'От кого материал или просто ком-рий',
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Введите текст ....'
                 ]
             ))
-
-
-
         ;
     }
 

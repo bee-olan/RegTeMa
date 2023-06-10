@@ -19,10 +19,10 @@ class Command
      */
     public $name;
 
-//	 /**
-//     * @Assert\NotBlank()
-//     */
-//    public $title;
+	 /**
+     * @Assert\NotBlank()
+     */
+    public $title;
 
 
     public function __construct( string $rasa)
@@ -35,7 +35,7 @@ class Command
 
         $command = new self($rasa->getId()->getValue());
 //        $command->name =  $rasa->getName();
-        $command->title = $rasa->getName();
+//        $command->title = $rasa->getName();
         return $command;
     }
 }

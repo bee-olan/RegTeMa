@@ -50,10 +50,10 @@
         </main>
     </div>
 
-    {# {% block modall %} #}
+     {% block modall %}
     {{  include('proekt/base/_story-modal.html.twig')}}
     {{  include('proekt/base/_contact-modal.html.twig') }}
-    {# {% endblock %} #}
+     {% endblock %}
 
 {#    {% block javascripts %}#}
 {#         <script src="../assets/proekt/js/mobileNavs.js"></script>#}
@@ -61,8 +61,11 @@
 {#        <script src="../assets/proekt/js/fotomodal.js"></script>#}
 {#    {% endblock %}#}
     {% block javascripts %}
+        <script src="{{ asset('../assets/proekt/js/fotomodal.js') }}"></script>
         <script src="{{ asset('../assets/proekt/js/mobileNavs.js') }}"></script>
         <script src="{{ asset('../assets/proekt/js/textarea.js') }}"></script>
+        <script src="{{ asset('../assets/proekt/js/modal.js') }}"></script>
+
     {% endblock %}
 </body>
 </html>
