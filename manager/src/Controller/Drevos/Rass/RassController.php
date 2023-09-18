@@ -48,20 +48,6 @@ class RassController extends AbstractController
                                 compact('rasas'));
     }
 
-//    /**
-//     * @Route("/plemmatka", name=".plemmatka")
-//     * @param RasFetcher $fetcher
-//     * @return Response
-//     */
-//    public function plemmatka(RasFetcher $fetcher): Response
-//    {
-//        $rasas = $fetcher->all();
-//        //dd($rasas);
-//
-//
-//        return $this->render('app/drevos/rass/plemmatka.html.twig',
-//            compact('rasas'));
-//    }
 
     /**
      * @Route("/create", name=".create")
@@ -116,7 +102,7 @@ class RassController extends AbstractController
         }
 
         return $this->render('app/drevos/rass/edit.html.twig', [
-            'rasas' => $rasa,
+            'rasa' => $rasa,
             'form' => $form->createView(),
         ]);
     }

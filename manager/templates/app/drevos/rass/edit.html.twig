@@ -1,17 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Раса{% endblock %}
+{% block title %}Редактировать{% endblock %}
 
-{% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        <li class="breadcrumb-item active">Расы зарегистрированные</li>
-    </ol>
+{% block kroxii %}
+    <a href="{{ path('home') }}">Главная</a>
+    <a href="{{ path('drevos.rass') }}">Родословная</a>
+    <a href="{{ path('drevos.rass', {'id':rasa.id} ) }}">Раса - {{ rasa.title }}</a>
+    <span class="aktiv ">Редактировать</span>
 {% endblock %}
+
+
 
 {% block body %}
 
-    {{ include('app/drevos/rass/_tabs.html.twig') }}
+    {{ include('app/drevos/_tabs.html.twig') }}
 
 	<article class="rasa">
     <h1 class="rasa__title  ">Редактировать данные расы</h1>

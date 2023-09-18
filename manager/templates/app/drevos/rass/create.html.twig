@@ -2,17 +2,16 @@
 
 {% block title %}Раса{% endblock %}
 
-{% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        <li class="breadcrumb-item active">Расы зарегистрированные</li>
-    </ol>
+{% block kroxii %}
+    <a href="{{ path('home') }}">Главная</a>
+    <a href="{{ path('drevos.rass') }}">Родословная</a>
+    <span class="aktiv ">Раса - добавить </span>
 {% endblock %}
 
 
 {% block body %}
 
-    {{ include('app/drevos/rass/_tabs.html.twig') }}
+    {{ include('app/drevos/_tabs.html.twig') }}
 
 <article class="rasa">
     <h1 class="rasa__title  ">Добавление названия другой расы </h1>
