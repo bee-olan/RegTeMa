@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Страна{% endblock %}
+
+
+{% block body %}
+	<article class="sparing">
+    <h1 class="rasa__title  ">Добавить название страны в БД</h1>
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btn btn--sm">Сохранить в БД</button>
+            {{ form_end(form) }}
+
+</article><!-- sparing -->
+
+{% endblock %}

@@ -97,6 +97,9 @@ services:
     App\Menu\Adminka\MainMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_main }]
 
+    App\Menu\Drevos\RodosMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: drevos_rodos }]
+
     App\Menu\Adminka\Matkas\PlemMatkaMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_plemmatka }]
 

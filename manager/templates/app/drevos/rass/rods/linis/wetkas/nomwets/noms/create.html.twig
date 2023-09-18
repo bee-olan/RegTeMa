@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Создать{% endblock %}
+
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+{#        <li class="breadcrumb-item"><a href="{{ path('rodos.rasas') }}">Раса -- {{ rasa.title }}</a></li>#}
+        <li class="breadcrumb-item active">Добавить другую лини</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+    <h3 class="rasa__title  ">Родословная. Данные   из паспорта купленной матки</h3>
+
+    <div class="box">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th  class="fon_td_es" >Раса</th>
+                <th  class="fon_td_es" >Страна</th>
+                <th  class="fon_td_es" colspan="2" >Матковод(код)</th>
+                <th class="fon_td_es" >Линии</th>
+                <th class="fon_td_es" colspan="2"> Материнка</th>
+                <th> Материнка трутня</th>
+                <th colspan="2"> Матку купил </th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="fon_td_es">   {{ rasa.title }}</td>
+                <td class="fon_td_es">{{ stran.name }}</td>
+                <td class="fon_td_es">{{ rodo.nameMatkov }}</td>
+                <td class="fon_td_es">{{ rodo.kodMatkov }}</td>
+                <td class="fon_td_es" >{{ linia.name }}</td>
+                <td class="fon_td_es" >{{ wetka.nameW }}</td>
+                <td class="fon_td_es" > {{ nomwet.nomW }} </td>
+            <td ></td>
+                    <td ></td>
+                    <td ></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+<article class="rasa">
+{#<h3 	class="rasa__title  ">: <strong  class="stro--kras">  {{ rodo.nameMatkov }}</strong>  </h3>#}
+	<div class="linia ">
+
+<h4 class="rasa__title"><strong class="stro--kras">Ветка </strong> - определяемся с названием ветки
+     для БД</h4>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить в БД</button>
+{#            <a href="{{ path('drevos.rass.rods.linis.wetkas',{'id': linia.id}) }}"#}
+{#                class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Добавить"</a>#}
+        {{ form_end(form) }}
+	</div>
+</article>
+
+{% endblock %}

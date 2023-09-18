@@ -66,6 +66,24 @@ class SidebarMenu
             ->setExtra('icon', 'nav-icon icon-briefcase')
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
+
+//        $menu
+//            ->addChild('Страна-drevo', ['route' => 'drevos.strans'])
+//            ->setExtra('routes', [
+//                ['route' => 'drevos.strans'],
+//                ['pattern' => '/^drevos.strans\..+/']
+//            ])
+//            ->setAttribute('class', 'nav-item')
+//            ->setLinkAttribute('class', 'nav-link');
+
+        $menu
+            ->addChild('Родословная', ['route' => 'drevos.rass'])
+            ->setExtra('routes', [
+                ['route' => 'drevos'],
+                ['pattern' => '/^drevos\..+/']
+            ])
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
             
         $menu->addChild('Админка')->setAttribute('class', 'nav-title')
             ->setAttribute('class', 'nav-item')

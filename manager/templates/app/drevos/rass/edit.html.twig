@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Раса{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item active">Расы зарегистрированные</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+    {{ include('app/drevos/rass/_tabs.html.twig') }}
+
+	<article class="rasa">
+    <h1 class="rasa__title  ">Редактировать данные расы</h1>
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btn-my btn-my--sm">Сохранить изменения</button>
+            {{ form_end(form) }}
+
+</article><!-- rasas -->
+
+{% endblock %}

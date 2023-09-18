@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Линия{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('drevos.rass', {'id':rasa.id}) }}">Раса</a></li>
+        <li class="breadcrumb-item active">Смотрим </li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+    {{ include('app/drevos/rass/_tabs.html.twig') }}
+
+    {% set token = csrf_token('delete') %}
+    <h3 class="rasa__title  ">Родословная. Данные   из паспорта купленной матки</h3>
+
+    <div class="box">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th class="fon_td_es" >Раса</th>
+                <th class="fon_td_es">Страна</th>
+                <th class="fon_td_es" colspan="2">Матковод(код)</th>
+                <th  >Линии</th>
+                <th class="fon_td"></th>
+                <th class="fon_td_no" > Материнка</th>
+                <th class="fon_td_no"> Материнка трутня</th>
+                <th class="fon_td_no"> Матка </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="fon_td_es">   {{ rasa.title }}</td>
+                <td class="fon_td_es">{{ stran.name }}</td>
+                <td class="fon_td_es">{{ rodo.nameMatkov }}</td>
+                <td class="fon_td_es">{{ rodo.kodMatkov }}</td>
+                <td  >{{ linia.name }}</td>
+                <td  class="fon_td" >
+                    <a href="{{ path('drevos.rass.rods.linis.edit', {'id': rodo.id, 'linia_id': linia.id}) }}"
+                       class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
+                </td>
+                <td colspan="3" class="fon_td_no"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div   >
+        <a href="{{ path('drevos.rass.rods.linis.wetkas.create', {'id': linia.id}) }}"
+           class="btnn btnn--mb0 btnn--pt btnn--rasa">Продолжить - данные о
+            <strong class="strongo strongo--kras"> материнке - ветка </strong> </a>
+    </div>
+
+{% endblock %}

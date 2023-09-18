@@ -6,7 +6,7 @@
 @import "vendor/reset";
 
 body {
-    //background-color: $color-rasa;
+
     font-size: 1.0rem;
     line-height: 1.4;
     color: $border-linia;
@@ -148,21 +148,23 @@ pre {
     }
 }
 
-@import "chat";
+//@import "chat";
 
 .direct-chat-action {
     padding: 0 0 10px 50px;
     font-size: .8rem;
 }
+@import "drevos/drevo";
+@import "kroxis/kroxii";
 
-@import "strongo";
-@import "teni-text";
-@import "btnn";
-
-@import "adminka/uchastie/uchastie";
-@import "adminka/matkas/matka";
-
-@import "form/group-form";
-
-@import "rasas/rasa";
-@import "rasas/info_rasa";
+//@import "btnn";
+//@import "strongo";
+//@import "teni-text";
+//
+//@import "adminka/uchastie/uchastie";
+//@import "adminka/matkas/matka";
+//
+//@import "form/group-form";
+//
+//@import "rasas/rasa";
+//@import "rasas/info_rasa";

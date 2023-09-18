@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Страны{% endblock %}
+
+{% block kroxii %}
+    <a href="{{ path('home') }}">Главная</a>
+    <a href="{{ path('drevos.rass') }}">Родословная</a>
+    <span class="aktiv ">Страны</span>
+{% endblock %}
+
+{% block body %}
+
+    {{ include('app/drevos/_tabs.html.twig') }}
+
+    <div class="box">
+        <h3 class="rasa__title  ">Страны зарегистрированные в БД </h3>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+
+                <th> Название</th>
+                <th>Номер</th>
+                <th>Родословных (к-во)</th>
+
+                <th> редактировать</th>
+                <th> удалить</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% set token = csrf_token('delete') %}
+            {% for strana in stranas %}
+                <tr>
+                    <td title= {{ strana.name }}>  {{ strana.nomer }} </td>
+
+                    <td> {{ strana.name }}</td>
+
+                    <td>{{ strana.rodosl }}
+{#                        <a href="{{ path('drevos.strans.drevos', {'id': strana.id}) }}">{{ strana.title }}</a>#}
+                    </td>
+
+                    <td> <a href="{{ path('drevos.strans.edit', {'id': strana.id}) }}"
+                            class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
+                    </td>
+                    <td>
+                        <form action="{{ path('drevos.strans.delete', {'id': strana.id}) }}"
+                              method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
+                            <input type="hidden" name="token" value="{{ token }}" />
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa "><span class="fa fa-trash"></span></button>
+                        </form>
+                    </td>
+                    {#                    <td>{{ user_status(user.status) }}</td>#}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class = "rasa__content"  >
+        <a href="{{ path('drevos.strans.create') }}"
+           class="btn btn--sm">Добавить еще название в БД</a>
+    </div>
+
+
+{% endblock %}

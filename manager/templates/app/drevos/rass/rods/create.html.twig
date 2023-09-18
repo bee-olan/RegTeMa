@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Создать{% endblock %}
+
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('drevos.rass') }}">Раса -- {{ rasa.title }}</a></li>
+        <li class="breadcrumb-item active">Добавить родословную</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+    <h4 class="rasa__title"><strong class="stro--kras">Родословная </strong> - данные из паспорта или личных архивных данных</h4>
+    <div class="box">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th class="fon_td_es">Раса</th>
+                <th>Страна</th>
+                <th>Матковод(код)</th>
+                <th class="fon_td_no" >Линии</th>
+                <th class="fon_td_no" > Материнка</th>
+                <th class="fon_td_no"> Материнка трутня</th>
+                <th class="fon_td_no"> Матка </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="fon_td_es">   {{ rasa.title }}</td>
+                <td></td>
+                <td></td>
+                <td colspan="4" class="fon_td_no"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+<article class="rasa">
+
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить в БД</button>
+            <a href="{{ path('drevos.rass.rods',{'id': rasa.id}) }}"
+                class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Добавить"</a>
+        {{ form_end(form) }}
+	</div>
+</article>
+
+{% endblock %}

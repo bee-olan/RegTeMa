@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Родословная{% endblock %}
+
+{% block kroxii %}
+    <a href="{{ path('home') }}">Главная</a>
+    <a href="{{ path('drevos.rass') }}">Родословная</a>
+    <a href="{{ path('drevos.rass', {'id':rasa.id} ) }}">Раса - {{ rasa.title }}</a>
+    <span class="aktiv ">Добавить родословную</span>
+{% endblock %}
+
+
+
+{% block body %}
+
+    {{ include('app/drevos/_tabs.html.twig') }}
+
+    {% set token = csrf_token('delete') %}
+ <h3 class="rasa__title  ">Родословная. Данные   из паспорта купленной матки</h3>
+
+    <div class="box">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th class="fon_td_es" >Раса  : {{ rasa.title }}</th>
+{#                <th></th>#}
+{#                <th>Матковод(код)</th>#}
+{#                <th class="fon_td_no" >Линии</th>#}
+{#                <th class="fon_td_no" > Материнка</th>#}
+{#                <th class="fon_td_no"> Материнка трутня</th>#}
+{#                <th class="fon_td_no"> Матка </th>#}
+            </tr>
+            </thead>
+{#            <tbody>#}
+{#            <tr>#}
+{#                <td class="fon_td_es">   {{ rasa.title }}</td>#}
+{#                <td></td>#}
+{#                <td></td>#}
+{#                <td colspan="4" class="fon_td_no"></td>#}
+{#            </tr>#}
+{#            </tbody>#}
+        </table>
+    </div>
+
+    <div class="box">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+
+                <th>Страна</th>                
+                <th>Матковод / Код</th>
+                <th colspan="2"> редак-ть / удалить</th>
+                <th colspan="3" >Линии  (кол-во)</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for rodo in rodos %}
+                <tr>
+
+                    <td title = {{ rodo.strana }}> {{ rodo.str_nom}}  </td>               
+                    <td>   {{ rodo.name_matkov }} / {{ rodo.kod_matkov }}</td>                  
+                    <td>
+                        <a href="{{ path('drevos.rass.rods.edit', {'id': rasa.id, 'rodo_id': rodo.id}) }}"
+                           class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
+                    </td>
+                    <td>
+                        <form action="{{ path('drevos.rass.rods.delete', {'id': rasa.id, 'rodo_id': rodo.id}) }}"
+                              method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
+                            <input type="hidden" name="token" value="{{ token }}" />
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa "><span class="fa fa-trash"></span></button>
+                        </form>
+                    </td>
+                     <td> {{ rodo.linias }}  </td>
+                    <td>
+                        <a href="{{ path('drevos.rass.rods.linis', {'id': rodo.id}) }}">Смотреть линии</a>
+                    </td>
+                    <td>  
+                       <a href="{{ path('drevos.rass.rods.linis.create', {'id': rodo.id}) }}">Добавить линию</a>
+                   </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class = "rasa__content"  >
+        <a href="{{ path('drevos.rass.rods.create', {'id': rasa.id}) }}"
+           class="btnn btnn--mb0 btnn--pt btnn--rasa">Добавить матковода для
+            <strong class="strongo strongo--kras"> родословной </strong> в БД</a>
+    </div>
+
+
+
+{% endblock %}

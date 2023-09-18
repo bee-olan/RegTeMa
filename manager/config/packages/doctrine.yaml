@@ -48,6 +48,16 @@ doctrine:
             admin_matkas_kategoria_id: 'App\Model\Adminka\Entity\Matkas\Kategoria\IdType'
             admin_matkas_kategoria_permissions: 'App\Model\Adminka\Entity\Matkas\Kategoria\PermissionsType'
 
+            dre_stran_id: 'App\Model\Drevos\Entity\Strans\IdType'
+
+            dre_ras_id: 'App\Model\Drevos\Entity\Rass\IdType'
+            dre_ras_rod_id: 'App\Model\Drevos\Entity\Rass\Rods\IdType'
+            dre_ras_rod_lini_id: 'App\Model\Drevos\Entity\Rass\Rods\Linis\IdType'
+            dre_ras_rod_lini_wet_id: 'App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\IdType'
+            dre_ras_rod_lini_wet_nomw_id: 'App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\IdType'
+            dre_ras_rod_lini_wet_nomw_nom_stat: 'App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\StatuType'
+            dre_ras_rod_lini_wet_nomw_nom_id: 'App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\IdType'
+
             adminka_rasa_id: 'App\Model\Adminka\Entity\Rasas\IdType'
             adminka_rasa_linia_id: 'App\Model\Adminka\Entity\Rasas\Linias\IdType'
             adminka_rasa_linia_nomer_status: 'App\Model\Adminka\Entity\Rasas\Linias\Nomers\StatusType'
@@ -98,4 +108,11 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Model/Adminka/Entity'
                 prefix: 'App\Model\Adminka\Entity'
                 alias: Adminka
+
+            Drevos:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Model/Drevos/Entity'
+                prefix: 'App\Model\Drevos\Entity'
+                alias: Drevos
    
