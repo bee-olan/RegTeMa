@@ -12,7 +12,6 @@
 
     {{ include('app/drevos/_tabs.html.twig') }}
 
-    <h3 class="rasa__title  ">Родословная. Данные   из паспорта купленной матки</h3>
 
     <div class="box">
         <table class="table table-bordered table-hover">
@@ -44,9 +43,8 @@
         </table>
     </div>
 
-    <div class="box">
-        <b class="dre_title "><strong class="stro--kras">Ветка </strong> - определяемся с названием ветки
-     для БД</b>
+    <b class="dre_title  ">Родословная. Данные   из паспорта купленной матки</b>
+    <div class="box-edit">
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить в БД</button>
@@ -54,6 +52,6 @@
 {#                class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Добавить"</a>#}
         {{ form_end(form) }}
 	</div>
-</div>
+
 
 {% endblock %}

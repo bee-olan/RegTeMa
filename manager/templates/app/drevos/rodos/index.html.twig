@@ -2,19 +2,16 @@
 
 {% block title %}Раса{% endblock %}
 
-
-{{ include('app/drevos/_tabs.html.twig') }}
-
+  {% block kroxii %}
+      <a href="{{ path('home') }}">Главная</a>
+      <a href="{{ path('drevos.rass') }}">Родословная</a>
+      <span class="aktiv ">Список</span>
+  {% endblock %}
 
 {% block body %}
 
+    {{ include('app/drevos/_tabs.html.twig') }}
 
-
-    {% block kroxii %}
-        <a href="{{ path('home') }}">Главная</a>
-        <a href="{{ path('drevos.rass') }}">Родословная</a>
-        <span class="aktiv ">Список</span>
-    {% endblock %}
 
     <div class="box">
 
@@ -45,7 +42,7 @@
 
                     <td class="ot-lin ">{{nom.name_ot }}</td>
                     <td class="ot-lin ">{{nom.tit }}</td>
-                    <td class="ot-lin ">{{nom.status }}</td>
+{#                    <td class="ot-lin ">{{ nom_status(nom.status ) }}</td>#}
                 </tr>
             {% endfor %}
             </tbody>

@@ -9,8 +9,8 @@ use App\Model\Drevos\Entity\Rass\Rods\Linis\Id as LiniaId;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\Id;
 use App\Model\Flusher;
 
-use App\Model\Sezons\Entity\Godas\GodaRepository;
-use App\Model\Sezons\Entity\Godas\Id as GodaId;
+use App\Model\Adminka\Entity\Sezons\Godas\GodaRepository;
+use App\Model\Adminka\Entity\Sezons\Godas\Id as GodaId;
 
 class Handler
 {

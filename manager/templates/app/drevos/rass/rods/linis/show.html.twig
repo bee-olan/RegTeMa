@@ -5,7 +5,7 @@
     {% block kroxii %}
         <a href="{{ path('home') }}">Главная</a>
         <a href="{{ path('drevos.rass') }}">Родословная</a>
-        <span class="aktiv ">Расы</span>
+        <span class="aktiv ">Линия</span>
     {% endblock %}
 
 {% block body %}
@@ -13,9 +13,11 @@
     {{ include('app/drevos/_tabs.html.twig') }}
 
     {% set token = csrf_token('delete') %}
-    <h3 class="rasa__title  ">Родословная. Данные   из паспорта купленной матки</h3>
 
     <div class="box">
+        <b class="dre_title  ">Родословная. Смотрим, что получилось</b>
+    </div>
+    <div class="box-smotrim">
         <table class="table table-bordered table-hover">
             <thead>
             <tr>

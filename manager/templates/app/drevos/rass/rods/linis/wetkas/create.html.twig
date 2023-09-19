@@ -14,7 +14,7 @@
     {{ include('app/drevos/_tabs.html.twig') }}
 
 
-    <b class="dre_title  ">Родословная. Данные   из паспорта купленной матки</b>
+
 
     <div class="box">
         <table class="table table-bordered table-hover">
@@ -25,8 +25,8 @@
                 <th  class="fon_td_es" >Матковод(код)</th>
                 <th class="fon_td_es" >Линии</th>
                 <th colspan="2" > Материнка</th>
-                <th class="fon_td_no"> Материнка трутня</th>
-                <th class="fon_td_no"> Матка </th>
+                <th class="fon_td_no"  > Материнка трутня</th>
+                <th class="fon_td_no" > Матка </th>
             </tr>
             </thead>
             <tbody>
@@ -36,14 +36,14 @@
                 <td  class="fon_td_es">    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</td>
                 <td class="fon_td_es" >{{ linia.name }}</td>
                 <td >ветка...</td>
-                <td class="fon_td_no"></td>
+                <td ></td>
                 <td colspan="2" class="fon_td_no"></td>
             </tr>
             </tbody>
         </table>
     </div>
-
-	<div class="linia ">
+    <b class="dre_title  ">Родословная. Данные   из паспорта купленной матки</b>
+    <div class="box-edit">
 
             {{ form_start(form) }}
             {{ form_widget(form) }}
@@ -52,6 +52,6 @@
 {#                class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Добавить"</a>#}
         {{ form_end(form) }}
 	</div>
-</article>
+
 
 {% endblock %}

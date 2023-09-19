@@ -12,8 +12,6 @@ use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\WetkaRepository;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\Id as WetkaId;
 use App\Model\Flusher;
 
-//use App\Model\Sezons\Entity\Godas\GodaRepository;
-//use App\Model\Sezons\Entity\Godas\Id as GodaId;
 
 class Handler
 {

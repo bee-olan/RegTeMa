@@ -12,16 +12,15 @@
 
 	{{ include('app/drevos/_tabs.html.twig') }}
 
-<article class="rasa">
-
-	<div class="linia ">
-{#		<h1 class="rasa__title  ">Редактировать <strong>линию</strong> : {{ linia.name }} </h1>#}
+	<div class="box">
+	<b class="dre_title ">Редактировать</b>
+	<div class="box-edit">
 
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <button type="submit" class="btn-my btn-my--sm">Добавить измения в БД</button>
             {{ form_end(form) }}
 	</div>
-</article>
+</div>
 
 {% endblock %}

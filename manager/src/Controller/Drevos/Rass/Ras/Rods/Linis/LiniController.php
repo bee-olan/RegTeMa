@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/drevos/rass/rods/{id}linis", name="drevos.rass.rods.linis")
+ * @Route("/drevos/rass/rods/{id}/linis", name="drevos.rass.rods.linis")
  */
 class LiniController extends AbstractController
 {

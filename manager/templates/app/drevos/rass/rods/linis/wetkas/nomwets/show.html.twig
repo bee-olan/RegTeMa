@@ -14,9 +14,10 @@
 
     {% set token = csrf_token('delete') %}
 
-    <b class="dre_title  ">Родословная. Данные   из паспорта купленной матки</b>
-
     <div class="box">
+        <b class="dre_title  ">Родословная. Смотрим, что получилось</b>
+    </div>
+    <div class="box-smotrim">
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
@@ -51,8 +52,8 @@
 
     <div   >
         <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.noms.create', {'id': nomwet.id}) }}"
-           class="btnn btnn--mb0 btnn--pt btnn--rasa">Продолжить - данные о
-            <strong class="strongo strongo--kras">  номер </strong> </a>
+           class="btnn btnn--mb0 btnn--pt btnn--rasa">Продолжить -
+            <strong class="strongo strongo--kras">  материнка трутня </strong> </a>
     </div>
 
 {% endblock %}

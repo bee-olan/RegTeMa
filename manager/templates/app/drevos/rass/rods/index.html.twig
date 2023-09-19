@@ -27,8 +27,8 @@
                 <th class="fon_td_es" >Раса  </th>
                 <th>Страна</th>                
                 <th>Матковод / Код</th>
-                <th colspan="2"> редак-ть / удалить</th>
-                <th colspan="3" >Линии  (кол-во)</th>
+                <th class="fon_td" colspan="2"> редак-ть / удалить</th>
+                <th class="fon_td_nado" colspan="3" >Линии  (кол-во)</th>
 
             </tr>
             </thead>
@@ -38,22 +38,22 @@
                     <td class="fon_td_es" > {{ rasa.title }}</td>
                     <td title = {{ rodo.strana }}> {{ rodo.str_nom}}  </td>               
                     <td>   {{ rodo.name_matkov }} / {{ rodo.kod_matkov }}</td>                  
-                    <td>
+                    <td class="fon_td">
                         <a href="{{ path('drevos.rass.rods.edit', {'id': rasa.id, 'rodo_id': rodo.id}) }}"
                            class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
                     </td>
-                    <td>
+                    <td class="fon_td">
                         <form action="{{ path('drevos.rass.rods.delete', {'id': rasa.id, 'rodo_id': rodo.id}) }}"
                               method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
                             <input type="hidden" name="token" value="{{ token }}" />
                             <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa "><span class="fa fa-trash"></span></button>
                         </form>
                     </td>
-                     <td> {{ rodo.linias }}  </td>
-                    <td>
+                     <td > {{ rodo.linias }}  </td>
+                    <td  >
                         <a href="{{ path('drevos.rass.rods.linis', {'id': rodo.id}) }}">Смотреть линии</a>
                     </td>
-                    <td>  
+                    <td  >
                        <a href="{{ path('drevos.rass.rods.linis.create', {'id': rodo.id}) }}">Добавить линию</a>
                    </td>
                 </tr>
