@@ -3,22 +3,21 @@
 {% block title %}Ветка{% endblock %}
 
 
-{% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-{#        <li class="breadcrumb-item"><a href="{{ path('rodos.rasas', {'id':rasa.id}) }}">Раса</a></li>#}
-        <li class="breadcrumb-item active">Добавить ветку </li>
-    </ol>
-{% endblock %}
+    {% block kroxii %}
+        <a href="{{ path('home') }}">Главная</a>
+        <a href="{{ path('drevos.rass') }}">Родословная</a>
+        <span class="aktiv ">Расы</span>
+    {% endblock %}
 
 {% block body %}
 
-{#    {{ include('app/rods/rass/_tabs.html.twig') }}#}
+    {{ include('app/drevos/_tabs.html.twig') }}
 
 
     {% set token = csrf_token('delete') %}
 
-    <h3 class="rasa__title  ">Родословная. Данные   из паспорта купленной матки</h3>
+
+    <b class="dre_title   ">Родословная. Данные   из паспорта купленной матки</b>
 
     <div class="box">
         <table class="table table-bordered table-hover">

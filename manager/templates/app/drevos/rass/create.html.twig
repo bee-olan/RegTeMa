@@ -13,17 +13,18 @@
 
     {{ include('app/drevos/_tabs.html.twig') }}
 
-<article class="rasa">
-    <h1 class="rasa__title  ">Добавление названия другой расы </h1>
+    <div class="box">
+    <b class="dre_title  ">Добавление названия другой расы </b>
 
+        <div class="box-edit">
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <button type="submit" class="btn-my btn-my--sm">Добавить в БД</button>
             <a href="{{ path('drevos.rass') }}"
                 class="btn-my btn-my--sm"> Выйти из режима "Добавить"</a>
             {{ form_end(form) }}
-
-</article><!-- rasas -->
+        </div>
+</div>
 
 
 

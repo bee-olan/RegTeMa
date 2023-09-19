@@ -40,10 +40,7 @@ main {
     }
 }
 
-.box {
-    background: #fff;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-}
+
 
 .table {
 
@@ -157,6 +154,8 @@ pre {
 }
 @import "drevos/drevo";
 @import "kroxis/kroxii";
+
+@import "boxs/boxs";
 
 //@import "btnn";
 //@import "strongo";

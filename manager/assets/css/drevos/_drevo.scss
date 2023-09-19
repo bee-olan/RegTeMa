@@ -1,5 +1,5 @@
 .fon_td_no {
-  background-color: rgb(202, 198, 198);
+  background-color: $fon-ser;
 }
 
 .fon_td_es {
@@ -8,4 +8,10 @@
 
 .fon_td {
   background-color: rgb(238, 135, 147);
+}
+.dre_title {
+  //margin-bottom: 1.5rem;
+  padding: 1rem 0 1rem 1rem;
+  font-size: 1.6rem;
+  //color: $col-text;
 }

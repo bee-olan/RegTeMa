@@ -3,16 +3,17 @@
 {% block title %}Создать{% endblock %}
 
 
-{% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-{#        <li class="breadcrumb-item"><a href="{{ path('rodos.rasas') }}">Раса -- {{ rasa.title }}</a></li>#}
-        <li class="breadcrumb-item active">Добавить другую лини</li>
-    </ol>
-{% endblock %}
+    {% block kroxii %}
+        <a href="{{ path('home') }}">Главная</a>
+        <a href="{{ path('drevos.rass') }}">Родословная</a>
+        <span class="aktiv ">Расы</span>
+    {% endblock %}
 
 {% block body %}
-    <h3 class="rasa__title  ">Родословная. Данные   из паспорта купленной матки</h3>
+
+    {{ include('app/drevos/_tabs.html.twig') }}
+
+
 <div class="box">
     <table class="table table-bordered table-hover">
         <thead>
@@ -38,9 +39,8 @@
     </table>
 </div>
 
-<article class="rasa">
-	<div class="linia ">
-
+        <b class="dre_title  ">Родословная. Линия. Данные   из паспорта купленной матки</b>
+    <div class="box-edit">
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить в БД</button>
@@ -48,6 +48,6 @@
                 class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Добавить"</a>
         {{ form_end(form) }}
 	</div>
-</article>
+
 
 {% endblock %}

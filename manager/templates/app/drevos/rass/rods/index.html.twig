@@ -6,7 +6,7 @@
     <a href="{{ path('home') }}">Главная</a>
     <a href="{{ path('drevos.rass') }}">Родословная</a>
     <a href="{{ path('drevos.rass', {'id':rasa.id} ) }}">Раса - {{ rasa.title }}</a>
-    <span class="aktiv ">Добавить родословную</span>
+    <span class="aktiv ">Добавить страну, матковода</span>
 {% endblock %}
 
 
@@ -16,37 +16,15 @@
     {{ include('app/drevos/_tabs.html.twig') }}
 
     {% set token = csrf_token('delete') %}
- <h3 class="rasa__title  ">Родословная. Данные   из паспорта купленной матки</h3>
+
 
     <div class="box">
+        <b class="dre_title ">Родословная. Данные   из паспорта купленной матки</b>
+
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th class="fon_td_es" >Раса  : {{ rasa.title }}</th>
-{#                <th></th>#}
-{#                <th>Матковод(код)</th>#}
-{#                <th class="fon_td_no" >Линии</th>#}
-{#                <th class="fon_td_no" > Материнка</th>#}
-{#                <th class="fon_td_no"> Материнка трутня</th>#}
-{#                <th class="fon_td_no"> Матка </th>#}
-            </tr>
-            </thead>
-{#            <tbody>#}
-{#            <tr>#}
-{#                <td class="fon_td_es">   {{ rasa.title }}</td>#}
-{#                <td></td>#}
-{#                <td></td>#}
-{#                <td colspan="4" class="fon_td_no"></td>#}
-{#            </tr>#}
-{#            </tbody>#}
-        </table>
-    </div>
-
-    <div class="box">
-        <table class="table table-bordered table-hover">
-            <thead>
-            <tr>
-
+                <th class="fon_td_es" >Раса  </th>
                 <th>Страна</th>                
                 <th>Матковод / Код</th>
                 <th colspan="2"> редак-ть / удалить</th>
@@ -57,7 +35,7 @@
             <tbody>
             {% for rodo in rodos %}
                 <tr>
-
+                    <td class="fon_td_es" > {{ rasa.title }}</td>
                     <td title = {{ rodo.strana }}> {{ rodo.str_nom}}  </td>               
                     <td>   {{ rodo.name_matkov }} / {{ rodo.kod_matkov }}</td>                  
                     <td>

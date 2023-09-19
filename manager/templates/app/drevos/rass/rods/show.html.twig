@@ -2,22 +2,22 @@
 
 {% block title %}Смотрим{% endblock %}
 
-{% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('drevos.rass', {'id':rasa.id}) }}">Раса</a></li>
-        <li class="breadcrumb-item active">Смотрим </li>
-    </ol>
-{% endblock %}
+    {% block kroxii %}
+        <a href="{{ path('home') }}">Главная</a>
+        <a href="{{ path('drevos.rass') }}">Родословная</a>
+        <span class="aktiv ">Расы</span>
+    {% endblock %}
 
 {% block body %}
 
-    {{ include('app/drevos/rass/_tabs.html.twig') }}
+    {{ include('app/drevos/_tabs.html.twig') }}
 
     {% set token = csrf_token('delete') %}
-    <h3 class="rasa__title  ">Родословная. Данные   из паспорта купленной матки</h3>
 
     <div class="box">
+    <b class="dre_title  ">Родословная. Смотрим, что получилось</b>
+    </div>
+    <div class="box-smotrim">
         <table class="table table-bordered table-hover">
             <thead>
             <tr>
@@ -45,7 +45,8 @@
             </tr>
             </tbody>
         </table>
-    </div>
+
+    </div >
 
     <div   >
         <a href="{{ path('drevos.rass.rods.linis.create', {'id': rodo.id}) }}"

@@ -2,25 +2,24 @@
 
 {% block title %}Редактировать{% endblock %}
 
-{% block breadcrumbs %}
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-{#		<li class="breadcrumb-item"><a href="{{ path('rodos.rasas') }}">Раса -- {{ rasa.title }}</a></li>#}
-		<li class="breadcrumb-item active">Редактировать</li>
-	</ol>
-{% endblock %}
+    {% block kroxii %}
+		<a href="{{ path('home') }}">Главная</a>
+		<a href="{{ path('drevos.rass') }}">Родословная</a>
+		<span class="aktiv ">Расы</span>
+	{% endblock %}
 
 {% block body %}
-<article class="rasa">
 
-	<div class="linia ">
-		<h1 class="rasa__title  ">Редактировать <strong>номер материнки</strong> : {{ nomwet.titW }}</h1>
+	{{ include('app/drevos/_tabs.html.twig') }}
+
+	<div class="box">
+		<b class="dre_title  ">Редактировать <strong>номер материнки</strong> : {{ nomwet.titW }}</b>
 
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <button type="submit" class="btn-my btn-my--sm">Добавить измения в БД</button>
             {{ form_end(form) }}
 	</div>
-</article>
+
 
 {% endblock %}

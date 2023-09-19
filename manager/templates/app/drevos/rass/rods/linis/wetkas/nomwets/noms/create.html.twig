@@ -2,16 +2,15 @@
 
 {% block title %}Создать{% endblock %}
 
-
-{% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-{#        <li class="breadcrumb-item"><a href="{{ path('rodos.rasas') }}">Раса -- {{ rasa.title }}</a></li>#}
-        <li class="breadcrumb-item active">Добавить другую лини</li>
-    </ol>
-{% endblock %}
+    {% block kroxii %}
+        <a href="{{ path('home') }}">Главная</a>
+        <a href="{{ path('drevos.rass') }}">Родословная</a>
+        <span class="aktiv ">Расы</span>
+    {% endblock %}
 
 {% block body %}
+
+    {{ include('app/drevos/_tabs.html.twig') }}
 
     <h3 class="rasa__title  ">Родословная. Данные   из паспорта купленной матки</h3>
 
@@ -45,12 +44,9 @@
         </table>
     </div>
 
-<article class="rasa">
-{#<h3 	class="rasa__title  ">: <strong  class="stro--kras">  {{ rodo.nameMatkov }}</strong>  </h3>#}
-	<div class="linia ">
-
-<h4 class="rasa__title"><strong class="stro--kras">Ветка </strong> - определяемся с названием ветки
-     для БД</h4>
+    <div class="box">
+        <b class="dre_title "><strong class="stro--kras">Ветка </strong> - определяемся с названием ветки
+     для БД</b>
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить в БД</button>
@@ -58,6 +54,6 @@
 {#                class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Добавить"</a>#}
         {{ form_end(form) }}
 	</div>
-</article>
+</div>
 
 {% endblock %}

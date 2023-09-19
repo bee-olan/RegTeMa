@@ -2,15 +2,16 @@
 
 {% block title %}ветка{% endblock %}
 
-{% block breadcrumbs %}
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
-{#		<li class="breadcrumb-item"><a href="{{ path('rodos.rasas') }}">Раса -- {{ rasa.title }}</a></li>#}
-		<li class="breadcrumb-item active">Редактировать</li>
-	</ol>
-{% endblock %}
+    {% block kroxii %}
+		<a href="{{ path('home') }}">Главная</a>
+		<a href="{{ path('drevos.rass') }}">Родословная</a>
+		<span class="aktiv ">Расы</span>
+	{% endblock %}
 
 {% block body %}
+
+	{{ include('app/drevos/_tabs.html.twig') }}
+
 <article class="rasa">
 
 	<div class="linia ">
