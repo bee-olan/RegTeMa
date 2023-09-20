@@ -29,6 +29,16 @@ class SidebarMenu
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 
+        $menu->addChild('Проект-сайт', ['route' => 'proekts.base-pro'])
+            ->setExtra('routes', [
+                ['route' => 'proekts'],
+                ['pattern' => '/^proekts\..+/']
+            ])
+//            ->setExtra('icon', 'nav-icon icon-briefcase')
+//            ->setExtra('image', '../assets/images/uchastie.jpg')
+            ->setAttribute('class', 'nav-item')
+            ->setLinkAttribute('class', 'nav-link');
+
         $menu->addChild('Проект', ['route' => 'proekt'])
             ->setExtra('routes', [
                 ['route' => 'proekt'],
