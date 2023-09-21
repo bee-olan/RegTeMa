@@ -1,0 +1,22 @@
+{% extends 'probase.html.twig' %}
+
+{% block title %}Привер Проект{% endblock %}
+
+
+{#        {% block header %}#}
+{#            {{ include('app/proekts/base/_header.html.twig') }}#}
+{#        {% endblock %}#}
+
+{#        {% block sidebar %}#}
+{#            {{ include('app/proekts/base/_sidebar.html.twig') }}#}
+{#        {% endblock %}#}
+
+{% block kroxii %}
+    <a href="{{ path('home') }}">Главная</a>
+    <a href="{{ path('drevos.rass') }}">Родословная</a>
+    <span class="aktiv ">Страны</span>
+{% endblock %}
+
+{% block bodyy %}
+    Это body=====================
+{% endblock %}

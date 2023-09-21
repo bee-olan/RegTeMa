@@ -1,5 +1,5 @@
 .profile {
-    margin-top: -1rem;
+    margin-top: -.5rem;
     
     //@include breakpoint($tablet-bp) {
     //    margin-top: -1rem;
@@ -9,34 +9,34 @@
     //}
 }
 
-.profile__avatar {
-     display: block; // блочная
-     width: 7rem;  // 70х60
-     height: 6rem;
-     margin: 2rem auto 2rem;// выравниваем по центру
-     position: relative; //чтобы бордер не исчезал  под картинкой
-
-     border: 2px solid $border-foto;
-     box-shadow: 0 7px 20px rgba(0, 0, 0, .25);
-     border-radius: 10%;
-
- 
-    // @include breakpoint($tablet-bp) {
-    //    width: 5rem;
-    //    height: 4.5rem;
-    //
-    //    border: 1px solid $border-foto;
-    //
-    //    margin-left: 0;
-    //    position: absolute; /// ---1 что бы фото и надпись были не в столбик
-    //    left: 0;
-    //}
-
-    &--persona{
-       
-        height: 7rem;
-    }
-}
+//.profile__avatar {
+//     display: block; // блочная
+//     width: 7rem;  // 70х60
+//     height: 6rem;
+//     margin: 2rem auto 2rem;// выравниваем по центру
+//     position: relative; //чтобы бордер не исчезал  под картинкой
+//
+//     border: 2px solid $border-foto;
+//     box-shadow: 0 7px 20px rgba(0, 0, 0, .25);
+//     border-radius: 10%;
+//
+//
+//    // @include breakpoint($tablet-bp) {
+//    //    width: 5rem;
+//    //    height: 4.5rem;
+//    //
+//    //    border: 1px solid $border-foto;
+//    //
+//    //    margin-left: 0;
+//    //    position: absolute; /// ---1 что бы фото и надпись были не в столбик
+//    //    left: 0;
+//    //}
+//
+//    &--persona{
+//
+//        height: 7rem;
+//    }
+//}
 
 .profile__header {
     margin-bottom: 2rem;
@@ -51,7 +51,7 @@
 
 .profile__name {
     
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     // text-align: center;
 
     //@include breakpoint($tablet-bp) {
@@ -60,7 +60,7 @@
 }
 
 .profile__prof {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 300;
     color: #DEDEDE;
     

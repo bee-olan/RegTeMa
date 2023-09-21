@@ -13,7 +13,7 @@
 	{% endblock %}
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-{% block header %}
+{#{% block header %}#}
 <header class="app-header navbar">
 	<button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
 		<span class="navbar-toggler-icon"></span>
@@ -38,16 +38,16 @@
 		</li>
 	</ul>
 </header>
-{% endblock %}
+{#{% endblock %}#}
 <div class="app-body">
-	{% block sidebar %}
+
 		<div class="sidebar">
 		<nav class="sidebar-nav">
 			{{ knp_menu_render('sidebar', {'currentClass': 'active'}) }}
 		</nav>
 		<button class="sidebar-minimizer brand-minimizer" type="button"></button>
 	</div>
-	{% endblock %}
+
 	<main class="main">
 
 		{% include '_flashes.html.twig' %}
@@ -70,7 +70,6 @@
 </footer>
 {% block javascripts %}
 	{{ encore_entry_script_tags('app') }}
-{#	{{ encore_entry_script_tags('mobileNavs') }}#}
 {% endblock %}
 </body>
 </html>

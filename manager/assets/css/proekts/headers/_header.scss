@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  width: calc(100% - #{$sidebar-width});
+  width: calc(100% - #{$sidebarr-width});
 
   background-color: $grad1;
   box-shadow: 0 5px 10px rgba($primary-modal, .2);

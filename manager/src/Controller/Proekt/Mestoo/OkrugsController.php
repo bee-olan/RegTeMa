@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/mestoo/okrugs ", name="proekt.mestoo.okrugs")
+ * @Route("/app/proekts/mestos/okrugs ", name="app.proekts.mestos.okrugs")
  */
 class OkrugsController extends AbstractController
 {
@@ -36,10 +36,10 @@ class OkrugsController extends AbstractController
 
         if ($mestonomers->exists($this->getUser()->getId())) {
             $this->addFlash('error', 'Ваш номер места расположения пасеки уже записан в БД');
-            return $this->redirectToRoute('proekt.mestoo.inform');
+            return $this->redirectToRoute('app.proekts.mestos.inform');
         }
         $okrugs = $fetcher->all();
-        return $this->render('proekt/mestoo/okrugs.html.twig', compact('okrugs'));
+        return $this->render('app/proekts/mestos/okrugs.html.twig', compact('okrugs'));
     }
 
 }
