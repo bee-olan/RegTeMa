@@ -16,16 +16,16 @@
     &--okru {
         //padding: .8rem 6rem ;
         //  width: 33%;
-        padding-left: 6rem;
+        padding-left: 1rem;
      }
 
     &--obla {
-        padding-left: 18rem;
+        padding-left: 10rem;
         
     }
 
     &--raio {
-        padding-left: 36rem;
+        padding-left: 22rem;
         // max-width: 33%;
     }
     //
@@ -60,30 +60,30 @@
     a {    
         text-decoration: none;
         color: inherit; // что бы изменить цвет ссылки - на родительский ...        
-        font-size: 1.8rem; 
+        font-size: 1.4rem;
     }
 }
 
 .mestoo__title-item {
-    padding: 1rem;
+    padding: 0 1rem 0 1rem;
 
 }
 
 
 .mestoo__nomer-red{
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: $red; 
     //@include breakpoint($tablet-bp){
     //    font-size: 2.1rem;
     //}
 }
 .mestoo__nomer-text{
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: $text; 
 }
 
 .mestoo__name-text {
-    font-size: 2.1rem;
+    font-size: 1.4rem;
     color: $border-lin-nav;
 
     //@include breakpoint($tablet-bp){
@@ -107,7 +107,7 @@
     max-width: 34%;
     border-top: 1px solid #beba97;
     margin-left: 0;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
 
     //@include breakpoint($tablet-bp){
     //    padding: 0;
@@ -115,14 +115,14 @@
 
 }
 .mestoo-ml20{
-    margin-left: 18rem;
+    margin-left: 10rem;
 
     //@include breakpoint($tablet-bp){
     //    margin-left: 0;
     //}
 }
 .mestoo-ml40{
-    margin-left: 42rem;
+    margin-left: 22rem;
 
     //@include breakpoint($tablet-bp){
     //    margin-left: 0;

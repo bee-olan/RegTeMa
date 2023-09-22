@@ -1,11 +1,11 @@
-{% extends 'proekt/base.html.twig' %}
+{% extends 'probase.html.twig' %}
 
 {% block title %}Номер места{% endblock %}
 
 {% block kroxii %}
             <a href="{{ path('home') }}">Главная</a>
-            <a href="{{ path('sait.mestos.inform') }}">НомерМеста</a>
-            <a href="{{ path('sait.mestos.okrugs') }}">Номера Округов</a>
+            <a href="{{ path('app.proekts.mestos.inform') }}">НомерМеста</a>
+            <a href="{{ path('app.proekts.mestos') }}">Номера Округов</a>
             <a  href="#">Номера Областей</a>       
             <span class="aktiv" >Номера Районов</span> 
 {% endblock %}

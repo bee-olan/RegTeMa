@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/mestoo/{raion_id}", name="proekt.mestoo")
+ * @Route("/app/proekt/mestos/{raion_id}", name="app.proekts.mestos")
  * @ParamConverter("raion", options={"id" = "raion_id"})
  */
 class MestoController extends AbstractController
@@ -42,7 +42,7 @@ class MestoController extends AbstractController
         $oblast = $raion->getOblast()->getName();
 
         $okrug = $raion->getOblast()->getOkrug()->getName();
-        return $this->render('proekt/mestoo/mesto.html.twig', [
+        return $this->render('app/proekts/mestos/mesto.html.twig', [
             'okrug' => $raion->getOblast()->getOkrug(),
             'oblast' => $raion->getOblast(),
             'raion' => $raion,

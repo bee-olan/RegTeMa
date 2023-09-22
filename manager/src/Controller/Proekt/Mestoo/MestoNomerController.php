@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/mestoo", name="proekt.mestoo")
+ * @Route("/app/proekts/mestos", name="app.proekts.mestos")
  */
 class MestoNomerController  extends AbstractController
 {
@@ -46,7 +46,7 @@ class MestoNomerController  extends AbstractController
 
         if ($fetcher->exists($this->getUser()->getId())) {
             $this->addFlash('error', 'Ваш номер места расположения пасеки уже записан в БД');
-            return $this->redirectToRoute('proekt.mestoo.inform');
+            return $this->redirectToRoute('app.proekts.mestos.inform');
         }
 
         $command = new Create\Command($this->getUser()->getId() );
@@ -55,13 +55,13 @@ class MestoNomerController  extends AbstractController
 
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('proekt.mestoo.inform');
+                return $this->redirectToRoute('app.proekts.mestos.inform');
             } catch (\DomainException $e) {
                 $this->logger->warning($e->getMessage(), ['exception' => $e]);
                 $this->addFlash('error', $e->getMessage());
             }
 
-        return $this->render('proekt/mestoo/create.html.twig', [
+        return $this->render('app/proekts/mestos/create.html.twig', [
             'mestonomer' => $mestonomer,
         ]);
     }

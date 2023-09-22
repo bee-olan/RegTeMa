@@ -23,7 +23,7 @@ use App\Controller\ErrorHandler;
 
 
 /**
- * @Route("/proekt/mestoo", name="proekt.mestoo")
+ * @Route("/app/proekts/mestos", name="app.proekts.mestos")
  */
 class InformController extends AbstractController
 {
@@ -54,7 +54,7 @@ class InformController extends AbstractController
         $mestonomer = $fetchers ->find($this->getUser()->getId());
 
 
-        return $this->render('proekt/mestoo/inform.html.twig',
+        return $this->render('/app/proekts/mestos/inform.html.twig',
                                 compact('fetcher', 'mestonomer', 'last'));
     }
 

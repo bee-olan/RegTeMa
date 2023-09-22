@@ -19,17 +19,17 @@
 .pagee__title {
     // margin-bottom: 1rem;
     padding-left: 3rem;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     color: $white;
   
     &--center {
         text-align: center;
     }
     &--obla {
-        padding-left: 20rem;
+        padding-left: 10rem;
     }
     &--raio {
-        padding-left: 40rem;
+        padding-left: 20rem;
     }
 
     //@include breakpoint($tablet-bp) {

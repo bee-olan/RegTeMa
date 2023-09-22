@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/mestoo/{oblast_id}", name="proekt.mestoo")
+ * @Route("/app/proekts/mestos/{oblast_id}", name="app.proekts.mestos")
  * @ParamConverter("oblast", options={"id" = "oblast_id"})
  */
 class RaionsController extends AbstractController
@@ -60,14 +60,14 @@ class RaionsController extends AbstractController
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             try {
                 $commentHandler->handle($commentCommand);
-                return $this->redirectToRoute('proekt.mestoo.raions', ['oblast_id' => $oblast->getId()]);
+                return $this->redirectToRoute('app.proekts.mestos.raions', ['oblast_id' => $oblast->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 
-        return $this->render('proekt/mestoo/raions.html.twig', [
+        return $this->render('app/proekts/mestos/raions.html.twig', [
             'okrug' => $oblast->getOkrug(),
             'oblast' => $oblast,
             'raions' => $raions->allOfOblast($oblast->getId()->getValue()),

@@ -1,14 +1,14 @@
-{% extends 'proekt/base.html.twig' %}
+{% extends 'probase.html.twig' %}
 
 {% block title %}Информация{% endblock %}
 
 {% block sidebar %}
-    {{ include('proekt/mestoo/side/_sideinform.html.twig') }}
+    {{ include('/app/proekts/mestos/side/_sideinform.html.twig') }}
 {% endblock %}
 
 {% block kroxii %}
             <a href="{{ path('proekt') }}">Главная</a>
-            <a href="{{ path('proekt.mestoo.inform') }}">НомерМеста</a>
+{#            <a href="{{ path('proekt.mestoo.inform') }}">НомерМеста</a>#}
             <span class="aktiv">Информация</span>
 {% endblock %}
 
@@ -50,7 +50,7 @@
             <div class="proekts-plr">
                 <div class="wstavka wstavka--uch back-color-uch">  
                     <h2 class = "personaa__title    ">Стать участником !!!  </h2>  
-                    <a class="btnn btnn--ml btnn--pt btnn--col-uchas"  href= "{{ path('proekt.pasekas.uchasties.uchastiee') }}">
+                    <a class="btnn btnn--ml btnn--pt btnn--col-uchas"  href= "{{ path('app.proekts.pasekas.uchasties.uchastiee') }}">
                           продолжить
                     </a>
                 </div> 
@@ -58,7 +58,7 @@
         {% else %}
             <h2 class = "pagee__title ">Вам, для участия в проекте,  нужно определиться
             с номером места нахождения Вашей пасеки.<br> Можно отсюда
-            <a href="{{ path('proekt.mestoo.okrugs') }}">перейти по ссылке </a>
+            <a href="{{ path('app.proekts.mestos.okrugs') }}">перейти по ссылке </a>
               или <br>
             в верхнем меню выбрать:  <strong class = "strongo strongo--krox"  >НомерМеста ->Найти НомерМеста.</strong>
             </h2>

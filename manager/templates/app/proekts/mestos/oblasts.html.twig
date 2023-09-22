@@ -1,15 +1,15 @@
-{% extends 'proekt/base.html.twig' %}
+{% extends 'probase.html.twig' %}
 
 {% block title %}Регионы/Области{% endblock %}
 
 {% block sidebar %}
-    {{ include('proekt/mestoo/side/_sideoblast.html.twig') }}
+    {{ include('/app/proekts/mestos/side/_sideoblast.html.twig') }}
 {% endblock %}
 
 {% block kroxii %}
             <a href="{{ path('proekt') }}">Главная</a>
-            <a href="{{ path('proekt.mestoo.inform') }}">НомерМеста</a>
-            <a href="{{ path('proekt.mestoo.okrugs', {'okrug_id': okrug.id} ) }}">Номера Округов</a>
+{#            <a href="{{ path('app.proekts.mestos.inform') }}">НомерМеста</a>#}
+            <a href="{{ path('app.proekts.mestos.okrugs', {'okrug_id': okrug.id} ) }}">Номера Округов</a>
            
             <span class="aktiv">Номера Регионов/Областей</span> 
 {% endblock %}
@@ -19,10 +19,8 @@
 
 <div  class="proekts">
 
-    {% include('proekt/mestoo/_mesto-includ.html.twig') %}
-    <h2 class = "pagee__title ">Выбрали  Округ </h2>
-    {# <div class=" mestoo--okru "> #}
-        {# <div class="mestoo__raspol"> #}
+    {% include('/app/proekts/mestos/_mesto-includ.html.twig') %}
+
             <ul class="mestoo__title mestoo--okru">
                 
                 <li class="mestoo__title-item mestoo__nomer-text">{{ okrug.nomer }}</li>
@@ -33,8 +31,7 @@
                     </svg>
                 </li>
             </ul>
-        {# </div> #}
-    {# </div> #}
+
  <div class = "mestoo__linia-top"></div>
     <h2 class = "pagee__title pagee__title--center ">
     Выбираем название : Республики / Края / Области </h2>                     
@@ -52,7 +49,7 @@
                         {# </a>      #}
                     </li>
                     <li class="mestoo__title-item ">
-                        <a href="{{ path('proekt.mestoo.raions', {'oblast_id': oblast.id , 'okrug_id': okrug.id }) }}">
+                        <a href="{{ path('app.proekts.mestos.raions', {'oblast_id': oblast.id , 'okrug_id': okrug.id }) }}">
                             {{ oblast.name }} ( {{ oblast.raions }} )
                         </a> 
                     </li>           

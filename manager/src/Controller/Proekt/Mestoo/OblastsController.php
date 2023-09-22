@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
  /**
- * @Route("/proekt/mestoo/{okrug_id}/oblasts", name="proekt.mestoo.oblasts")
+ * @Route("/app/proekts/mestos/{okrug_id}/oblasts", name="app.proekts.mestos.oblasts")
  * @ParamConverter("okrug", options={"id" = "okrug_id"})
  */
 class OblastsController extends AbstractController
@@ -60,14 +60,14 @@ class OblastsController extends AbstractController
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             try {
                 $commentHandler->handle($commentCommand);
-                return $this->redirectToRoute('proekt.mestoo.oblasts', ['okrug_id' => $okrug->getId()]);
+                return $this->redirectToRoute('app.proekts.mestos.oblasts', ['okrug_id' => $okrug->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 
-        return $this->render('proekt/mestoo/oblasts.html.twig', [
+        return $this->render('app/proekts/mestos/oblasts.html.twig', [
             'okrug' => $okrug,
             'oblasts' => $oblasts->allOfOkrug($okrug->getId()->getValue()),
             'comments' => $comments->allForOblast($okrug->getId()->getValue()),

@@ -1,4 +1,4 @@
-.profile {
+.profilee {
     margin-top: -.5rem;
     
     //@include breakpoint($tablet-bp) {
@@ -9,7 +9,7 @@
     //}
 }
 
-//.profile__avatar {
+//.profilee__avatar {
 //     display: block; // блочная
 //     width: 7rem;  // 70х60
 //     height: 6rem;
@@ -38,7 +38,7 @@
 //    }
 //}
 
-.profile__header {
+.profilee__header {
     margin-bottom: 2rem;
     text-align: center;
     
@@ -49,9 +49,10 @@
     //}
 }
 
-.profile__name {
+.profilee__name {
     
     font-size: 1.4rem;
+    color: $beloe;
     // text-align: center;
 
     //@include breakpoint($tablet-bp) {
@@ -59,7 +60,7 @@
     //}
 }
 
-.profile__prof {
+.profilee__prof {
     font-size: 1.2rem;
     font-weight: 300;
     color: #DEDEDE;
@@ -69,7 +70,7 @@
     //}
 }
 
-.profile__text {
+.profilee__text {
     // это отступы сверху\снизу для padding и для margin у текста
     padding: 3rem 0;
     margin: 3rem 0;
