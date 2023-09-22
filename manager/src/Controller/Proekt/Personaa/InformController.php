@@ -21,7 +21,7 @@ use App\Controller\ErrorHandler;
 
 
 /**
- * @Route("/proekt/personaa", name="proekt.personaa")
+ * @Route("/app/proekts/personaa", name="app.proekts.personaa")
  */
 class InformController extends AbstractController
 {
@@ -50,7 +50,7 @@ class InformController extends AbstractController
         $personanom = $uchasties ->find($this->getUser()->getId());
 
 
-        return $this->render('proekt/personaa/inform.html.twig',
+        return $this->render('app/proekts/personaa/inform.html.twig',
                                 compact('personas', 'personanom', 'last'));
     }
 }

@@ -100,6 +100,9 @@ services:
     App\Menu\Drevos\RodosMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: drevos_rodos }]
 
+    App\Menu\Proekts\ProektMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: proekt_menu }]
+
     App\Menu\Adminka\Matkas\PlemMatkaMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_plemmatka }]
 

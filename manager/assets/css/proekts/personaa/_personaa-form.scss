@@ -1,16 +1,26 @@
 
 .personaa-form{
     div {
+        legend {
+            padding: 1rem 2rem 0 3rem;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: $border-kroxi;
+        }
         div {
+
             div {
                 display: flex;
                 justify-content: flex-start;
                 align-items: baseline; // выравнивание по вертикали
                 margin-bottom: .6rem;
 
+
+
                 label{
-                    margin-left: 7rem;
-                    font-size: 2rem;
+                    margin-left: 5rem;
+                    font-size: 1.4rem;
+                    color: $border-kroxi;
                 }
                 
                 input{

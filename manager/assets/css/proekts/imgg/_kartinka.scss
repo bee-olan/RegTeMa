@@ -32,3 +32,17 @@
   box-shadow: 0 7px 20px rgba(0, 0, 0, .25);
   border-radius: 10%;
 }
+.persona-kar {
+  display: block;
+  // растягивает\сжимает картину по размерам блока
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ image: url('../../../../assets/images/proekts/persona/personaa.png');
+
+  position: absolute;
+  top: 0; // начальная позиция
+  left: 0;
+  z-index: 1000;
+  transition: transform 1s ease-in-out;
+}
