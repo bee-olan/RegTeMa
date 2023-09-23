@@ -27,16 +27,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/pasekas/uchasties/uchastiee", name="proekt.pasekas.uchasties.uchastiee")
+ * @Route("/app/proekts/pasekas/uchasties/uchastiee", name="app.proekts.pasekas.uchasties.uchastiee")
  */
 class UchastieControllr extends AbstractController
 {
-    // private $logger;
 
-    // public function __construct(LoggerInterface $logger)
-    // {
-    //     $this->logger = $logger;
-    // }
     private $errors;
 
     public function __construct( ErrorHandler $errors)
@@ -64,7 +59,7 @@ class UchastieControllr extends AbstractController
 
         $uchastie = $uchasties->find($idUser);
 
-        return $this->render('proekt/pasekas/uchasties/uchastiee/index.html.twig',
+        return $this->render('app/proekts/pasekas/uchasties/uchastiee/index.html.twig',
             compact('uchastie', 'persona', 'mestoNomer')
         );
     }
@@ -85,13 +80,13 @@ class UchastieControllr extends AbstractController
         if (!$plemmatkas->existsPerson($this->getUser()->getId())) {
             
             $this->addFlash('error', 'Внимание!!! Выбрать ПерсонНомер ');
-            return $this->redirectToRoute('proekt.personaa.diapazon');
+            return $this->redirectToRoute('app.proekts.personaa.diapazon');
         }
 
         if (!$plemmatkas->existsMesto($this->getUser()->getId())) {
             // dd($this->getUser()->getId());
            $this->addFlash('error', 'Пожалуйста, определитесь с номером места расположения Вашей пасеки ');
-           return $this->redirectToRoute('proekt.mestoo.okrugs');
+           return $this->redirectToRoute('app.proekts.mestoo.okrugs');
        } 
        
        
@@ -113,14 +108,14 @@ class UchastieControllr extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('proekt.pasekas.uchasties.uchastiee');
+                return $this->redirectToRoute('app.proekts.pasekas.uchasties.uchastiee');
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 
-        return $this->render('proekt/pasekas/uchasties/uchastiee/create.html.twig', [
+        return $this->render('app/proekts/pasekas/uchasties/uchastiee/create.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -136,7 +131,7 @@ class UchastieControllr extends AbstractController
         $uchastie = $uchasties->get(new Id($id));
         //$infaMesto = $fetchers->infaMesto($plemmatka->getMesto());
        // dd($uchastie);
-        return $this->render('proekt/pasekas/uchasties/uchastiee/show.html.twig',
+        return $this->render('app/proekts/pasekas/uchasties/uchastiee/show.html.twig',
             compact('uchastie')
         );
     }

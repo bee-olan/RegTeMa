@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
-* @Route("/proekt/pasekas/uchasties", name="proekt.pasekas.uchasties")
+* @Route("/app/proekts/pasekas/uchasties", name="app.proekts.pasekas.uchasties")
 */
 class SideFilterController extends AbstractController
 {
@@ -51,7 +51,7 @@ class SideFilterController extends AbstractController
 //            $request->query->get('direction', 'asc')
 //        );
 // //dd($pagination);
-//        return $this->render('proekt/pasekas/uchasties/index.html.twig', [
+//        return $this->render('app/proekts/pasekas/uchasties/index.html.twig', [
 //            'pagination' => $pagination,
 //            'form' => $form->createView(),
 //        ]);

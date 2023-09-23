@@ -15,18 +15,18 @@
 }
 
 .uchastiee__header {
-  margin: 0 0 2.5rem 2.5rem;
-  padding-left: 2.5rem;
+  margin: 0 0 2.5rem 0;
+  padding: 0 1.5rem 0 1.5rem;
 
-    @include breakpoint($tablet-bp){
-      padding-left: 0;
-      margin: 0 0 2.5rem .5rem;
-  }
+  //  @include breakpoint($tablet-bp){
+  //    padding-left: 0;
+  //    margin: 0 0 2.5rem .5rem;
+  //}
 }
 
 .uchastiee__title {
   margin-bottom: 1.5rem;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 
   // color: $text-uchastie;
   //font-weight: 500;
@@ -76,7 +76,7 @@
 
 .uchastiee__name {
   // display: flex; // добавляем т.к добаилась li-шка
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   padding: 1.6rem .5rem .3rem .5rem;
 
 

@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 /**
- * @Route("/proekt/pasekas/uchasties/groupas", name="proekt.pasekas.uchasties.groupas")
+ * @Route("/app/proekts/pasekas/uchasties/groupas", name="app.proekts.pasekas.uchasties.groupas")
  */
 class GroupasController extends AbstractController
 {
@@ -36,7 +36,7 @@ class GroupasController extends AbstractController
     {
         $groups = $fetcher->all();
 //dd($groups);
-        return $this->render('proekt/pasekas/uchasties/groupas/index.html.twig', compact('groups'));
+        return $this->render('app/proekts/pasekas/uchasties/groupas/index.html.twig', compact('groups'));
     }
 
 }

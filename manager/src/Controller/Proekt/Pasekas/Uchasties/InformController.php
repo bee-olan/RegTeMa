@@ -28,7 +28,7 @@ use App\Controller\ErrorHandler;
 
 
 /**
- * @Route("/proekt/pasekas/uchasties", name="proekt.pasekas.uchasties")
+ * @Route("/app/proekt/pasekas/uchasties", name="app.proekts.pasekas.uchasties")
  */
 class InformController extends AbstractController
 {
@@ -62,29 +62,11 @@ class InformController extends AbstractController
             $request->query->get('direction', 'asc')
         );
 //dd($pagination);
-        return $this->render('proekt/pasekas/uchasties/index.html.twig', [
+        return $this->render('app/proekts/pasekas/uchasties/index.html.twig', [
             'pagination' => $pagination,
             'form' => $form->createView(),
         ]);
     }
- 
-//	/**
-//    * @Route("/inform", name=".inform")
-//    * @return Response
-//    * @param PersonaFetcher $uchasties
-//    */
-//   public function inform(PersonaFetcher $uchasties): Response
-//   {
-//
-//
-//       $personas = $uchasties->allPers();
-//
-//       $personanom = $uchasties ->find($this->getUser()->getId());
-//
-//
-//       return $this->render('proekt/pasekas/uchasties/inform.html.twig',
-//                               compact('personas', 'personanom'));
-//   }
 
     /**
      * @Route("/show/{id}", name=".show", requirements={"id"=Guid::PATTERN})
@@ -96,7 +78,7 @@ class InformController extends AbstractController
     {
         $departments = $fetcher->allOfUchastie($uchastie->getId()->getValue());
 
-        return $this->render('proekt/pasekas/uchasties/show.html.twig',
+        return $this->render('app/proekts/pasekas/uchasties/show.html.twig',
             compact('uchastie', 'departments'));
     }
 

@@ -109,9 +109,9 @@
             }
         }
         
-        @include breakpoint($tablet-bp){       
-            overflow: auto;       
-      }    
+      //  @include breakpoint($tablet-bp){
+      //      overflow: auto;
+      //}
     } 
        
 }
