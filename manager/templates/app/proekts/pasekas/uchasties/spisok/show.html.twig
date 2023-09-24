@@ -2,6 +2,9 @@
 
 {% block title %}Участник{% endblock %}
 
+{% block menupro %}
+    {{ include('app/proekts/_tabs.html.twig') }}
+{% endblock %}
 
 {% block kroxii %}
     <a href="{{ path('proekt') }}">Главная</a>
@@ -11,10 +14,6 @@
 {% endblock %}
 
 {% block bodyy %}
-
-    {# <div class="controls">
-        <a href="{{ path('users.show', {'id': uchastie.id}) }}" class="btn btn-primary">Смотреть как User</a>
-    </div> #}
 
     <div class="box">
         <table class="table table-bordered">

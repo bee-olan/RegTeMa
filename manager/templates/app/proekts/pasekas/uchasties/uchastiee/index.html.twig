@@ -2,6 +2,10 @@
 
 {% block title %}Стать участником{% endblock %}
 
+{% block menupro %}
+    {{ include('app/proekts/_tabs.html.twig') }}
+{% endblock %}
+
 {% block kroxii %}
     <a href="{{ path('proekt') }}">Главная</a>
     <a href="{{ path('app.proekts.pasekas.uchasties.groupas') }}">Группы</a>
@@ -12,8 +16,6 @@
 
 
 {% block bodyy %}
-
-    {{ include('app/proekts/_tabs.html.twig') }}
 
     <div class="proekts proekts--uhastiee">
 

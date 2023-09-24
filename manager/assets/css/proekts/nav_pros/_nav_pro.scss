@@ -11,7 +11,7 @@
 .nav_pro-link {
   display: block;
   padding: $nav-link-padding-y $nav-link-padding-x;
-
+  color: $lini-prof;
   @include hover-focus {
     text-decoration: none;
   }
@@ -24,13 +24,14 @@
   }
 
   a {
-    color: $link-color;
+    //color: $link-color;
 
     text-decoration: $link-decoration;
     background-color: transparent; // Remove the gray background on active links in IE 10.
 
     @include hover {
-      color: $link-hover-color;
+      //color: $link-hover-color;
+     color: red;
       text-decoration: $link-hover-decoration;
     }
   }
@@ -41,7 +42,7 @@
 //
 
 .nav_pro-tabs {
-  border-bottom:  $nav-tabs-border-width solid $grad1;
+  border-bottom:  $nav-tabs-border-width solid $lini-prof;
           //$nav-tabs-border-width solid $nav-tabs-border-color;
 
   .nav_pro-item {
@@ -65,9 +66,20 @@
 
   .nav_pro-link.active,
   .nav_pro-item.show .nav_pro-link {
-    color: $nav-tabs-link-active-color;
-    background-color: $nav-tabs-link-active-bg;
-    border-color: $nav-tabs-link-active-border-color;
+    //color: $nav-tabs-link-active-color;
+    color: $lini-prof;
+    background-color: $grad1;
+    //background-color: $nav-tabs-link-active-bg;
+    //border-color: $nav-tabs-link-active-border-color;
+    //border-color: red;
+    //border-top-color: rgb(200, 206, 211);
+    //border-right-color: rgb(200, 206, 211);
+    //border-bottom-color: rgb(246, 246, 246);
+    //border-left-color: rgb(200, 206, 211);
+    border-top-color: red;
+    border-right-color: rgb(200, 206, 211);
+    border-bottom-color: $grad1;
+    border-left-color: rgb(200, 206, 211);
   }
 
   .dropdown-menu {
@@ -126,5 +138,6 @@
   }
   > .active {
     display: block;
+    border-bottom-color: $grad1;
   }
 }

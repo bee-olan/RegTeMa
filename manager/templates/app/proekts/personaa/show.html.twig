@@ -2,6 +2,10 @@
 
 {% block title %}Персональный номер{% endblock %}
 
+{% block menupro %}
+    {{ include('app/proekts/_tabs.html.twig') }}
+{% endblock %}
+
 {% block kroxii %}
     <a href="{{ path('sait') }}">Главная</a>
     <span class="aktiv">ПевсонНомер</span>
@@ -9,8 +13,6 @@
 {% endblock %}
 
 {% block bodyy %}
-
- {{ include('app/proekts/_tabs.html.twig') }}
 
  <h2 class = "person__title ">Персональные   номера участников проекта !!!!!!!!</h2>
  <div class="person">

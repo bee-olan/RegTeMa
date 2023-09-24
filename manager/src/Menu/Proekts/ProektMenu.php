@@ -26,6 +26,15 @@ class ProektMenu
             ->setChildrenAttributes(['class' => 'nav_pro nav_pro-tabs mb-4']);
 
         $menu
+            ->addChild('Главная', ['route' => 'app.proekts.basepro'])
+            ->setExtra('routes', [
+                ['route' => 'app.proekts.basepro'],
+                ['pattern' => '/^app.proekts.basepro\..+/']
+            ])
+            ->setAttribute('class', 'nav_pro-item')
+            ->setLinkAttribute('class', 'nav_pro-link');
+
+        $menu
             ->addChild('Место', ['route' => 'app.proekts.mestos.okrugs'])
             ->setExtra('routes', [
                 ['route' => 'app.proekts.mestos'],

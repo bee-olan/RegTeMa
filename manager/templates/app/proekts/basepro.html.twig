@@ -3,13 +3,9 @@
 {% block title %}Привер Проект{% endblock %}
 
 
-{#        {% block header %}#}
-{#            {{ include('app/proekts/base/_header.html.twig') }}#}
-{#        {% endblock %}#}
-
-{#        {% block sidebar %}#}
-{#            {{ include('app/proekts/base/_sidebar.html.twig') }}#}
-{#        {% endblock %}#}
+{% block menupro %}
+ {{ include('app/proekts/_tabs.html.twig') }}
+{% endblock %}
 
 {% block kroxii %}
     <a href="{{ path('home') }}">Главная</a>
@@ -18,6 +14,6 @@
 {% endblock %}
 
 {% block bodyy %}
-    {{ include('app/proekts/_tabs.html.twig') }}
+
     Это body=====================
 {% endblock %}

@@ -2,6 +2,10 @@
 
 {% block title %}Округа{% endblock %}
 
+{% block menupro %}
+    {{ include('app/proekts/_tabs.html.twig') }}
+{% endblock %}
+
 {% block kroxii %}
             <a href="{{ path('app.proekts.basepro') }}">Главная</a>
 {#            <a href="{{ path('proekts.mestos.inform') }}">НомерМеста</a>#}
@@ -10,8 +14,6 @@
 
 
 {% block bodyy %}
-
-    {{ include('app/proekts/_tabs.html.twig') }}
 
 {% block sidebar %}
     {{ include('app/proekts/mestos/side/_sideokrug.html.twig') }}

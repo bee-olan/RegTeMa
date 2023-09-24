@@ -6,6 +6,10 @@
     {{ include('app.proekts/personaa/side/_sideinform.html.twig') }}
 {% endblock %}
 
+{% block menupro %}
+    {{ include('app/proekts/_tabs.html.twig') }}
+{% endblock %}
+
 {% block kroxii %}
             <a href="{{ path('proekt') }}">Главная</a>
             <span class="aktiv">Информация о ПерсонНомерах</span>   
@@ -13,8 +17,6 @@
 
 
 {% block bodyy %}
-
-    {{ include('app/proekts/_tabs.html.twig') }}
 
 <div  class="proekts">
     <div class="wstavka">

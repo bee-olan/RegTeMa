@@ -6,6 +6,10 @@
     {{ include('/app/proekts/mestos/side/_sideoblast.html.twig') }}
 {% endblock %}
 
+{% block menupro %}
+    {{ include('app/proekts/_tabs.html.twig') }}
+{% endblock %}
+
 {% block kroxii %}
             <a href="{{ path('proekt') }}">Главная</a>
 {#            <a href="{{ path('app.proekts.mestos.inform') }}">НомерМеста</a>#}
@@ -16,8 +20,6 @@
 
 
 {% block bodyy %}
-
-    {{ include('app/proekts/_tabs.html.twig') }}
 
 <div  class="proekts">
 
