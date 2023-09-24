@@ -17,6 +17,7 @@
 
 {% block bodyy %}
 
+    {{ include('app/proekts/_tabs.html.twig') }}
 
 <div  class="proekts-group">
 
@@ -46,7 +47,7 @@
                 {% for uchastie in pagination %}
                     <ul class = "uch-tabl__list">
                             <li class = " uch-tabl__list-li" >
-                                 <a class="uch-tabl__link" href="{{ path('app.proekts.pasekas.uchasties.show', {'id': uchastie.id}) }}">
+                                 <a class="uch-tabl__link" href="{{ path('app.proekts.pasekas.uchasties.spisok.show', {'id': uchastie.id}) }}">
                                 {{ uchastie.nike }} </a>
                             </li>
                             <li class = "uch-tabl__list-li uch-tabl__linia">  {{ uchastie.persona }} </li>
@@ -90,7 +91,7 @@
                 {% for uchastie in pagination %}
                     <ul class = "uch-tabl__list">
                         <li class = " uch-tabl__list-li" >
-                            <a class="uch-tabl__link" href="{{ path('app.proekts.pasekas.uchasties.show', {'id': uchastie.id}) }}">
+                            <a class="uch-tabl__link" href="{{ path('app.proekts.pasekas.uchasties.spisok.show', {'id': uchastie.id}) }}">
                                 {{ uchastie.nike }} </a>
                         </li>
                         <li class = "uch-tabl__list-li uch-tabl__linia">  {{ uchastie.persona }} </li>

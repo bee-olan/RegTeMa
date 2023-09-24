@@ -28,7 +28,7 @@ use App\Controller\ErrorHandler;
 
 
 /**
- * @Route("/app/proekt/pasekas/uchasties", name="app.proekts.pasekas.uchasties")
+ * @Route("/app/proekt/pasekas/uchasties/spisok", name="app.proekts.pasekas.uchasties.spisok")
  */
 class InformController extends AbstractController
 {
@@ -62,7 +62,7 @@ class InformController extends AbstractController
             $request->query->get('direction', 'asc')
         );
 //dd($pagination);
-        return $this->render('app/proekts/pasekas/uchasties/index.html.twig', [
+        return $this->render('app/proekts/pasekas/uchasties/spisok/index.html.twig', [
             'pagination' => $pagination,
             'form' => $form->createView(),
         ]);
@@ -78,7 +78,7 @@ class InformController extends AbstractController
     {
         $departments = $fetcher->allOfUchastie($uchastie->getId()->getValue());
 
-        return $this->render('app/proekts/pasekas/uchasties/show.html.twig',
+        return $this->render('app/proekts/pasekas/uchasties/spisok/show.html.twig',
             compact('uchastie', 'departments'));
     }
 

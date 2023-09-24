@@ -3,7 +3,7 @@
 {% block title %}Информация {% endblock %}
 
 {% block sidebar %}
-    {{ include('proekt/personaa/side/_sideinform.html.twig') }}
+    {{ include('app.proekts/personaa/side/_sideinform.html.twig') }}
 {% endblock %}
 
 {% block kroxii %}
@@ -59,7 +59,7 @@
          <div class="proekts-plr">
                 <div class="wstavka wstavka--uch back-color-uch">  
                     <h2 class = "personaa__title    ">Стать участником !!!  </h2>  
-                    <a class="btnn btnn--ml btnn--pt btnn--col-uchas"  href= "{{ path('proekt.pasekas.uchasties.uchastiee') }}">
+                    <a class="btnn btnn--ml btnn--pt btnn--col-uchas"  href= "{{ path('app.proekts.pasekas.uchasties.uchastiee') }}">
                           продолжить
                     </a>
                 </div> 

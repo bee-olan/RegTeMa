@@ -23,7 +23,7 @@ class ProektMenu
     {
 
         $menu = $this->factory->createItem('root')
-            ->setChildrenAttributes(['class' => 'nav nav-tabs mb-4']);
+            ->setChildrenAttributes(['class' => 'nav_pro nav_pro-tabs mb-4']);
 
         $menu
             ->addChild('Место', ['route' => 'app.proekts.mestos.okrugs'])
@@ -31,8 +31,8 @@ class ProektMenu
                 ['route' => 'app.proekts.mestos'],
                 ['pattern' => '/^app.proekts.mestos\..+/']
             ])
-            ->setAttribute('class', 'nav-item')
-            ->setLinkAttribute('class', 'nav-link');
+            ->setAttribute('class', 'nav_pro-item')
+            ->setLinkAttribute('class', 'nav_pro-link');
 
         $menu
             ->addChild('Персональный  номер', ['route' => 'app.proekts.personaa.diapazon'])
@@ -40,18 +40,26 @@ class ProektMenu
                 ['route' => 'app.proekts.personaa'],
                 ['pattern' => '/^app.proekts.personaa\..+/']
             ])
-            ->setAttribute('class', 'nav-item ')
-            ->setLinkAttribute('class', 'nav-link ');
+            ->setAttribute('class', 'nav_pro-item ')
+            ->setLinkAttribute('class', 'nav_pro-link ');
 
-//        $menu
-//            ->addChild('Список ПлемМаток', ['route' => 'app.proekts'])
-//            ->setExtra('routes', [
-//                ['route' => 'drevos.rodos'],
-//                ['pattern' => '/^drevos.rodos\..+/']
-//            ])
-//            ->setAttribute('class', 'nav-item ')
-//            ->setLinkAttribute('class', 'nav-link ');
+        $menu
+            ->addChild('Участие', ['route' => 'app.proekts.pasekas.uchasties.uchastiee'])
+            ->setExtra('routes', [
+                ['route' => 'app.proekts.pasekas.uchasties.uchastiee'],
+                ['pattern' => '/^app.proekts.pasekas.uchasties.uchastiee\..+/']
+            ])
+            ->setAttribute('class', 'nav_pro-item ')
+            ->setLinkAttribute('class', 'nav_pro-link ');
 
+        $menu
+            ->addChild('Список участников', ['route' => 'app.proekts.pasekas.uchasties.spisok'])
+            ->setExtra('routes', [
+                ['route' => 'app.proekts.pasekas.uchasties.spisok'],
+                ['pattern' => '/^app.proekts.pasekas.uchasties.spisok\..+/']
+            ])
+            ->setAttribute('class', 'nav_pro-item ')
+            ->setLinkAttribute('class', 'nav_pro-link ');
 
         return $menu;
     }

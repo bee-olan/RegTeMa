@@ -1,0 +1,130 @@
+
+.nav_pro {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  font-size: 1.2rem;
+}
+
+.nav_pro-link {
+  display: block;
+  padding: $nav-link-padding-y $nav-link-padding-x;
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+
+  // Отключенное состояние осветляет текст
+  &.disabled {
+    color: $nav-link-disabled-color;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  a {
+    color: $link-color;
+
+    text-decoration: $link-decoration;
+    background-color: transparent; // Remove the gray background on active links in IE 10.
+
+    @include hover {
+      color: $link-hover-color;
+      text-decoration: $link-hover-decoration;
+    }
+  }
+}
+
+//
+// Tabs
+//
+
+.nav_pro-tabs {
+  border-bottom:  $nav-tabs-border-width solid $grad1;
+          //$nav-tabs-border-width solid $nav-tabs-border-color;
+
+  .nav_pro-item {
+    margin-bottom: -$nav-tabs-border-width;
+  }
+
+  .nav_pro-link {
+    border: $nav-tabs-border-width solid transparent;
+    @include border-top-radius($nav-tabs-border-radius);
+
+    @include hover-focus {
+      border-color: $nav-tabs-link-hover-border-color;
+    }
+
+    &.disabled {
+      color: $nav-link-disabled-color;
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  .nav_pro-link.active,
+  .nav_pro-item.show .nav_pro-link {
+    color: $nav-tabs-link-active-color;
+    background-color: $nav-tabs-link-active-bg;
+    border-color: $nav-tabs-link-active-border-color;
+  }
+
+  .dropdown-menu {
+    // Сделайте так, чтобы выпадающая граница перекрывала границу вкладки
+    margin-top: -$nav-tabs-border-width;
+    // Уберите здесь верхние закругленные углы, так как над меню есть жесткий край
+    @include border-top-radius(0);
+  }
+}
+
+
+//
+// Таблетки
+//
+
+.nav_pro-pills {
+  .nav_pro-link {
+    @include border-radius($nav-pills-border-radius);
+  }
+
+  .nav_pro-link.active,
+  .show > .nav_pro-link {
+    color: $nav-pills-link-active-color;
+    background-color: $nav-pills-link-active-bg;
+  }
+}
+
+
+//
+// Обоснованные варианты
+//
+
+.nav_pro-fill {
+  .nav_pro-item {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
+
+.nav_pro-justified {
+  .nav_pro-item {
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+
+// Tabbable tabs
+//
+// Для начала скройте панели с вкладками, покажите их, когда `.active`
+
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
+  > .active {
+    display: block;
+  }
+}

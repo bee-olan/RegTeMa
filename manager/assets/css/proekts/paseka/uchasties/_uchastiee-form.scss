@@ -1,6 +1,6 @@
 
 .uchastiee-form{
-    margin-right: 4rem;
+    //margin-right: 4rem;
 
     form {
         div {
@@ -14,6 +14,12 @@
                 border-bottom: 1px solid $border-lin-nav;
                 // border-radius: 0;
                 // box-shadow: none;
+                legend {
+                    padding: 1rem 2rem 0 3rem;
+                    font-size: 1.5rem;
+                    margin-bottom: 1rem;
+                    color: $border-kroxi;
+                }
                     div {
                             display: flex;
                             justify-content: flex-start;
@@ -22,16 +28,17 @@
 
                             div {
                                     input{
-                                        margin-left: 4rem;
+                                        margin: .4rem 0 0 2rem;
+                                        //padding-top: 1rem;
                                         box-sizing: border-box;
-                                        height: 16px; 
-                                        width: 16px;
+                                        height: 15px;
+                                        width: 15px;
                                         
                                     }
                                     label{
                                         // margin-left: 2rem;
                                         // margin-right: 1.5rem;
-                                        font-size: 1.6rem;
+                                        font-size: 1.4rem;
                                         color: inherit;
                                     }   
                                 }
@@ -52,10 +59,10 @@
                 position: relative; // относительно этого будем позиционировать form__line                
 
                     label{
-                        min-width: 12rem;
+                        min-width: 9rem;
                         margin-left: 2rem;
-                        font-size: 1.8rem;                            
-                        color: $border-kroxi;                   
+                        font-size: 1.4rem;
+                        color:  $border-kroxi;
                     }
                     
                     input{
@@ -79,7 +86,8 @@
                         color: $white;
                     
                         &::placeholder {
-                            color: rgba( $text-uchastie, .7);// непрозрачность
+                            font-size: 1.2rem;
+                            color: rgba( $text-uchastie, .6);// непрозрачность
                         }
                     
                         & > :focus  {  //когда фокус на полоске формы - длину увеличиваем
