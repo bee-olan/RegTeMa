@@ -2,12 +2,14 @@
 
 {% block title %}Группы{% endblock %}
 
-
+{% block menupro %}
+    {{ include('app/proekts/_tabs.html.twig') }}
+{% endblock %}
 
 {% block kroxii %}
     <a href="{{ path('proekt') }}">Главная</a>
     <a href="{{ path('app.proekts.pasekas.uchasties.uchastiee') }}">Стать участником</a>
-    <a href="{{ path('app.proekts.pasekas.uchasties') }}">Список участников</a>
+    <a href="{{ path('app.proekts.pasekas.uchasties.spisok') }}">Список участников</a>
     <span class="aktiv">Группы</span>
 
 {% endblock %}
@@ -17,20 +19,19 @@
 
 <div  class="proekts-group">
 
-    {% include('proekt/pasekas/uchasties/_uchastiess-includ.html.twig') %}
     <div class="uchasties">
         <div class="uchasties__left">
 
             <div class="tabll">
                 <ul class = "uch-tabl__list uch-color">
 
-                    <li class = "uch-tabl__list-li uch-tabl__list-li--group  uch-tabl__linia">Название</li>
+                    <li class = "uch-tabl__list-li uch-tabl__list-li--group  uch-tabl__linia">Название группы</li>
                     <li class = "uch-tabl__list-li uch-tabl__list-li--group uch-tabl__linia" >Кол-во участников</li>
                 </ul>
 
                 {% for group in groups %}
 
-                    <ul class = "uch-tabl__list">
+                    <ul class = "uch-tabl__list uch-color-prof">
 
                         <li class = "uch-tabl__list-li uch-tabl__list-li--group">
                             {% if group.uchasties %}

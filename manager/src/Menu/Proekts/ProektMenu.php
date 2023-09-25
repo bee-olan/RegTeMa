@@ -70,6 +70,15 @@ class ProektMenu
             ->setAttribute('class', 'nav_pro-item ')
             ->setLinkAttribute('class', 'nav_pro-link ');
 
+        $menu
+            ->addChild('Группы', ['route' => 'app.proekts.pasekas.uchasties.groupas'])
+            ->setExtra('routes', [
+                ['route' => 'app.proekts.pasekas.uchasties.groupas'],
+                ['pattern' => '/^app.proekts.pasekas.uchasties.groupas\..+/']
+            ])
+            ->setAttribute('class', 'nav_pro-item ')
+            ->setLinkAttribute('class', 'nav_pro-link ');
+
         return $menu;
     }
 

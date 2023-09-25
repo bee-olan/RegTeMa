@@ -25,13 +25,12 @@
 
   a {
     //color: $link-color;
-
+    opacity: 0.9;
     text-decoration: $link-decoration;
     background-color: transparent; // Remove the gray background on active links in IE 10.
 
     @include hover {
-      //color: $link-hover-color;
-     color: red;
+      color: $link-hover-color;
       text-decoration: $link-hover-decoration;
     }
   }
@@ -54,7 +53,11 @@
     @include border-top-radius($nav-tabs-border-radius);
 
     @include hover-focus {
-      border-color: $nav-tabs-link-hover-border-color;
+      //border-color: $nav-tabs-link-hover-border-color;
+      border-top-color: $lini-prof;
+      border-right-color: $lini-prof;
+      border-bottom-color: $grad4;
+      border-left-color: $lini-prof;
     }
 
     &.disabled {
@@ -67,19 +70,16 @@
   .nav_pro-link.active,
   .nav_pro-item.show .nav_pro-link {
     //color: $nav-tabs-link-active-color;
-    color: $lini-prof;
+    //color: $lini-prof;
+    color: red;
     background-color: $grad1;
     //background-color: $nav-tabs-link-active-bg;
     //border-color: $nav-tabs-link-active-border-color;
-    //border-color: red;
-    //border-top-color: rgb(200, 206, 211);
-    //border-right-color: rgb(200, 206, 211);
-    //border-bottom-color: rgb(246, 246, 246);
-    //border-left-color: rgb(200, 206, 211);
-    border-top-color: red;
-    border-right-color: rgb(200, 206, 211);
+
+    border-top-color:  $lini-prof;
+    border-right-color: $lini-prof;
     border-bottom-color: $grad1;
-    border-left-color: rgb(200, 206, 211);
+    border-left-color: $lini-prof;
   }
 
   .dropdown-menu {
@@ -138,6 +138,5 @@
   }
   > .active {
     display: block;
-    border-bottom-color: $grad1;
   }
 }

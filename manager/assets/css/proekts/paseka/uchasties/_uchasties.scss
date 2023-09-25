@@ -48,6 +48,7 @@
 
 	&--group{
 		width: 25%;
+
 	}
 	//@include breakpoint($tablet-bp){
 	//	width: 24.5%;
@@ -67,7 +68,7 @@
 	border-top: 1px solid $border-linia;
 	border-radius: 4px;
 
-	font-size: 1.2rem; // шрифт - размер
+	font-size: 1.4rem; // шрифт - размер
 	line-height: 1.2;
 	
 	text-decoration: none;
@@ -86,14 +87,21 @@
 	padding-bottom: .5rem;
 	background: none;
 	border: none;
-	border-bottom: 1px solid $text;
+	border-bottom: 1px solid $grad1;
 	border-radius: 0;
 	box-shadow: none;
 	
 }
+
+.uch-color-prof{
+	color: $lini-prof;
+	font-size: 1.3rem;
+
+}
+
 .uch-color{
-	color: $text;
-	font-size: 1.2rem;
+	color: $color-text;
+	font-size: 1.4rem;
 	
 	&--colorr{
 		color: $text;

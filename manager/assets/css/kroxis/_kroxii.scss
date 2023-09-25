@@ -114,7 +114,7 @@
   //  box-shadow: 0 10px 15px rgba($black, .45); //тень
   transform: scale(0.7) rotate(45deg);
   z-index: 1;
-  box-shadow: 1px -1px 0 1px $header-color;
+  box-shadow: 1px -1px 0 1px $lini-prof;  //$header-color;
   border-radius: 0 5px 0 50px;
   background: $kroxii;
   transition: all 0.5s;
