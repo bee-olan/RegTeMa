@@ -21,11 +21,14 @@
 
 <div  class="proekts">
 
-    {% include('app/proekts/mestos/_mesto-includ.html.twig') %}
-    {# <div class="proekts-plr"> #}
+    <div class="wstavka">
+        <div class="wstavka__title nav-teni">
+            Место расположения пасеки: Округ
+        </div>
+    </div>
+
         <h2 class = "pagee__title ">Выбираем свой Округ </h2>
-    {# </div>       #}
-        {# <div class="saits__content"> #}
+
             {% for okrug in okrugs %}
                 <div class="mestoo ">
                     <div class="mestoo__raspol">

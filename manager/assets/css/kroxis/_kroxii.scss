@@ -63,7 +63,7 @@
   line-height: 24px;
   padding: 0 20px 0 20px;
   position: relative;
-  font-size: 16px;
+  font-size: 1.1rem;
 
   box-shadow: 0 10px 15px rgba($black, .2); //тень
 
@@ -76,12 +76,12 @@
 
 .kroxii-xl .aktiv {
   // background: #f1e9c2;
-  color: red;
+  color: $red2;
   // opacity: .5;
 }
 .aktiv-kras {
 
-  color: red;
+  color: $red2;
 
 }
 .kroxii-xl a:first-child {

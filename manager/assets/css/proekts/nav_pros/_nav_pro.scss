@@ -6,6 +6,18 @@
   margin-bottom: 0;
   list-style: none;
   font-size: 1.2rem;
+
+  a {
+    color: inherit;
+    opacity: 0.8;
+    transition: opacity .2s linear;
+
+    &:hover {
+      text-decoration: none;
+      color: inherit;
+      opacity: 1;
+    }
+  }
 }
 
 .nav_pro-link {
@@ -23,17 +35,7 @@
     cursor: default;
   }
 
-  a {
-    //color: $link-color;
-    opacity: 0.9;
-    text-decoration: $link-decoration;
-    background-color: transparent; // Remove the gray background on active links in IE 10.
 
-    @include hover {
-      color: $link-hover-color;
-      text-decoration: $link-hover-decoration;
-    }
-  }
 }
 
 //
@@ -71,7 +73,7 @@
   .nav_pro-item.show .nav_pro-link {
     //color: $nav-tabs-link-active-color;
     //color: $lini-prof;
-    color: red;
+    color: $red2;
     background-color: $grad1;
     //background-color: $nav-tabs-link-active-bg;
     //border-color: $nav-tabs-link-active-border-color;

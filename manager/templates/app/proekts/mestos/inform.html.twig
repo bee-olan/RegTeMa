@@ -2,7 +2,7 @@
 
 {% block title %}Информация{% endblock %}
 
-{% block sidebar %}
+{% block sidebarr %}
     {{ include('/app/proekts/mestos/side/_sideinform.html.twig') }}
 {% endblock %}
 
@@ -19,16 +19,8 @@
 {% block bodyy %}
 
 <div  class="proekts">
+
     <div class="wstavka">
-
-        <div class="wstavka__kartinka">
-            <div class="wstavka-stories" >
-                <div class="wstavka-stories__item" >
-                    <img class="wstavka-stories__preview" src="{{ asset('assets/proekt/images/mestos/mesto_.png') }}"  alt="Место">
-                </div>
-            </div>
-        </div>
-
        <div class = "wstavka__title ">
             Номера мест расположения пасек участников проекта
         </div>
@@ -45,7 +37,7 @@
         </div>
 
         {% if mestonomer %}
-            <h2 class = "pagee__title "><strong class = "strongo--name-nike">{{ last }},</strong>  Вы определились с НомерМестом - номер места расположения Вашей пасеки  </h2>
+            <h2 class = "pagee__title "><strong class = "strongo--name-nike">{{ last }},</strong>   номер места расположения Вашей пасеки  </h2>
             <div class="ramka">
                 <div class = "ramka__mesto-nomer mestoo__nomer-text">
                     {{ mestonomer.nomer }}
