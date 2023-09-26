@@ -188,14 +188,10 @@ pre {
 @import "proekts/paseka/uchasties/uchastiee-form";
 @import "proekts/paseka/uchasties/uchasties";
 
-//@import "btnn";
-//@import "strongo";
-//@import "teni-text";
-//
-//@import "adminka/uchastie/uchastie";
-//@import "adminka/matkas/matka";
-//
-//@import "form/group-form";
-//
-//@import "rasas/rasa";
-//@import "rasas/info_rasa";
+@import "proekts/paseka/matkas/plemmatka";
+@import "proekts/paseka/matkas/plem-form";
+@import "proekts/paseka/matkas/child-form";
+@import "proekts/paseka/matkas/childmatka";
+
+@import "proekts/paseka/inklud/inklud";
+@import "proekts/paseka/inklud/tabs-inkl";

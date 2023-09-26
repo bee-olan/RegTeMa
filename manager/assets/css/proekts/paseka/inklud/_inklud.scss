@@ -5,22 +5,22 @@
     align-items: center;
     background-color: #f0f3f5;
     margin-bottom: 2rem;
-    box-shadow: inset 0px 0px 10px rgba($plem-color, 0.9); //тень внутри
+    box-shadow: inset 0 0 10px rgba($plem-color, 0.9); //тень внутри
     // box-shadow: 0 5px 22px rgba($white, .25); 
     border-bottom: 2px solid $plem-color; // linia
 
     &--rasa {
-        box-shadow: inset 0px 0px 10px rgba($rasa-color, 0.9); //тень внутри
+        box-shadow: inset 0 0 10px rgba($rasa-color, 0.9); //тень внутри
         border-bottom: 2px solid $rasa-color; // linia
     }
 
     &--kategor {
-        box-shadow: inset 0px 0px 10px rgba($white, 0.9); //тень внутри
+        box-shadow: inset 0 0 10px rgba($white, 0.9); //тень внутри
         border-bottom: 2px solid $white; // linia
     }
 
     &--sezon {
-        box-shadow: inset 0px 0px 10px rgba($sezon-teni, 0.9); //тень внутри
+        box-shadow: inset 0 0 10px rgba($sezon-teni, 0.9); //тень внутри
         border-bottom: 2px solid $sezon-teni; // linia
     }
 
@@ -28,7 +28,7 @@
     //    color:  #efe9cd;
      
         background-color: $col-child-inklud ;
-        box-shadow: inset 0px 0px 10px rgba($child-text, 0.9); //тень внутри
+        box-shadow: inset 0 0 10px rgba($child-text, 0.9); //тень внутри
         border-bottom: 2px solid $child-text; // linia
 }
 
@@ -36,14 +36,14 @@
         margin-bottom: 0;
     }
 
-    @include breakpoint($tablet-bp) {
-        display: none;
-        
-        &--rasa {
-            display: none;
-        }
-        
-    }  
+    //@include breakpoint($tablet-bp) {
+    //    display: none;
+    //
+    //    &--rasa {
+    //        display: none;
+    //    }
+    //
+    //}
 }
 
 .inklud__img {
@@ -63,9 +63,9 @@
     }
 
 
-    @include breakpoint($tablet-bp) {
-        height: 4.6rem;
-    }
+    //@include breakpoint($tablet-bp) {
+    //    height: 4.6rem;
+    //}
 }
 
 .inklud__title {

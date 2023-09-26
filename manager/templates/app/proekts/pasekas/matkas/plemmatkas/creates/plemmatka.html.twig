@@ -2,8 +2,12 @@
 
 {% block title %}ПлемМатки{% endblock %}
 
-{% block sidebar %}              
+{% block sidebarr %}
     {% include('app/proekts/pasekas/matkas/side/_side_plem_plem.html.twig') %}
+{% endblock %}
+
+{% block menupro %}
+    {{ include('app/proekts/pasekas/matkas/_tabs.html.twig') }}
 {% endblock %}
 
 {% block kroxii %}
