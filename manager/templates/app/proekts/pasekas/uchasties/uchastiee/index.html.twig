@@ -16,8 +16,8 @@
 
 {% endblock %}
 
-{% block sidebar %}
-{#    {{ include('app/proekts/uchasties/side/_sideindex.html.twig') }}#}
+{% block sidebarr %}
+    {{ include('app/proekts/pasekas/uchasties/side/_sideindex.html.twig') }}
 {% endblock %}
 
 {% block bodyy %}
@@ -95,9 +95,9 @@
                         <li></li>
                     {% else %}
                         <li class="uchastiee__name  uch-tabl__linia" >3. Подтвердить Ваше участие с заполнением доп. данных</li>
-                        <li>
-                            <a href="{{ path('app.proekts.pasekas.uchasties.uchastiee.create') }}"
-                            class="btnn btnn--mb-1">Подтвердить <strong class="strongo strongo--kras">участие  </strong> в проекте
+                        <li class=" back-color-uch">
+                            <a class="btnn btnn--ml btnn--pt btnn--col-uchas"  href="{{ path('app.proekts.pasekas.uchasties.uchastiee.create') }}" >
+                                Продолжаем ...
                             </a>
                         </li>
                     {% endif %}

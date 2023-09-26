@@ -53,15 +53,16 @@
 
   a {
     padding: .6rem 1.6rem;
-    color: inherit;
+    color: $col-uchastie;
 
     opacity: 0.6;
     transition: opacity .2s linear;
 
     &:hover {
       opacity: 1;
+      color: $beloe;
       text-decoration: none;
-      background-color: sandybrown;
+      background-color: $col-uchastie;
     }
   }
 }

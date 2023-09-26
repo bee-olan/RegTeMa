@@ -2,8 +2,8 @@
 
 {% block title %}Информация {% endblock %}
 
-{% block sidebar %}
-    {{ include('app.proekts/personaa/side/_sideinform.html.twig') }}
+{% block sidebarr %}
+    {{ include('app/proekts/personaa/side/_sideinform.html.twig') }}
 {% endblock %}
 
 {% block menupro %}
@@ -20,16 +20,7 @@
 
 <div  class="proekts">
     <div class="wstavka">
-
-        <div class="wstavka__kartinka">
-            <div class="wstavka-stories wstavka-stories--person" >
-                <div class="wstavka-stories__item" data-modal="story-modal" >
-                    <img class="wstavka-stories__preview" src="{{ asset('assets/proekt/images/persona/personaa.png') }}"  alt="Участие">
-                </div>
-            </div>
-        </div>
-
-        <div class="wstavka__title">
+        <div class="wstavka__title nav-teni">
             Персональные Номера  участников проекта
         </div> 
     </div>

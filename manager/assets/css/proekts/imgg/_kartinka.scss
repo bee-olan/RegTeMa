@@ -44,6 +44,18 @@
   box-shadow: 0 7px 20px rgba(0, 0, 0, .25);
   border-radius: 10%;
 }
+.person-wse {
+  display: block; // блочная
+  background-image: url('../../../../assets/images/proekts/uchasties/grouppa.png');
+  width: 68px;
+  height: 68px;
+  margin: 2rem auto 1.5rem;
+  position: relative; //чтобы бордер не исчезал  под картинкой
+
+  border: 2px solid $border-foto;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, .25);
+  border-radius: 10%;
+}
 
 .bloknot-kar {
   display: block; // блочная
