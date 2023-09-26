@@ -2,8 +2,8 @@
 
 {% block title %}Место-округ{% endblock %}
 
-{% block sidebar %}
-    {{ include('proekt/mestoo/side/_sidemesto.html.twig') }}
+{% block sidebarr %}
+    {{ include('/app/proekts/mestos/side/_sidemesto.html.twig') }}
 {% endblock %}
 
 {% block menupro %}
@@ -13,12 +13,12 @@
 {% block kroxii %}   
             <a href="{{ path('proekt') }}">Главная</a>
 {#            <a href="{{ path('proekt.mestoo.inform') }}">НомерМеста</a>#}
-            <a href="{{ path('app.proekts.mestos.okrugs', {'okrug_id': okrug.id} ) }}">Номера Округов</a>
-            <a href="{{ path('app.proekts.mestos.oblasts', { 'oblast_id': oblast.id, 'okrug_id': okrug.id} ) }}">Номера Регионов/Областей</a>
+            <a href="{{ path('app.proekts.mestos.okrugs', {'okrug_id': okrug.id} ) }}"> Округ</a>
+            <a href="{{ path('app.proekts.mestos.oblasts', { 'oblast_id': oblast.id, 'okrug_id': okrug.id} ) }}">Регион/Область</a>
         
-             <a href="{{ path('app.proekts.mestos.raions', {'raion_id': raion.id, 'oblast_id': oblast.id, 'okrug_id': okrug.id } ) }}">Номера Районов</a>
+             <a href="{{ path('app.proekts.mestos.raions', {'raion_id': raion.id, 'oblast_id': oblast.id, 'okrug_id': okrug.id } ) }}">Район</a>
            
-            <span class="aktiv">Номер места расположения </span> 
+            <span class="aktiv">Номер места пасеки </span>
 {% endblock %}
 
 
