@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/pasekas/matkas", name="proekt.pasekas.matkas")
+ * @Route("/app/proekts/pasekas/matkas", name="app.proekts.pasekas.matkas")
  */
 class PlemMatkasController extends AbstractController
 {
@@ -61,9 +61,9 @@ class PlemMatkasController extends AbstractController
 
         if (!$pagination->getItems() ) {
             $this->addFlash('error', 'Внимание!!!  У Вас нет зарегистрированных или Активных ПлемМаток. Сейчас Вы на страничке для регистрации');
-            return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.creates');
+            return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.creates');
         }
-        return $this->render('proekt/pasekas/matkas/index.html.twig', [
+        return $this->render('app/proekts/pasekas/matkas/index.html.twig', [
             'pagination' => $pagination,
             'form' => $form->createView(),
         ]);

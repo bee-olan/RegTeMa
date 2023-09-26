@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/pasekas/matkas/plemmatkas/redaktorss/{plemmatka_id}/comment", name="proekt.pasekas.matkas.plemmatkas.redaktorss.comment")
+ * @Route("/app/proekts/pasekas/matkas/plemmatkas/redaktorss/{plemmatka_id}/comment", name="app.proekts.pasekas.matkas.plemmatkas.redaktorss.comment")
  * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
  */
 class CommentPlemSezonController extends AbstractController
@@ -56,14 +56,14 @@ class CommentPlemSezonController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
+                return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 
-        return $this->render('proekt/pasekas/matkas/plemmatkas/redaktorss/comment/edit.html.twig', [
+        return $this->render('app/proekts/pasekas/matkas/plemmatkas/redaktorss/comment/edit.html.twig', [
             'plemmatka' => $plemmatka,
 //            'oblast' => $plemmatka->getOblasts(),
             'form' => $form->createView(),
@@ -81,7 +81,7 @@ class CommentPlemSezonController extends AbstractController
     public function delete(PlemMatka $plemmatka, Comment $comment, Request $request, Remove\Handler $handler): Response
     {
         if (!$this->isCsrfTokenValid('delete-comment', $request->request->get('token'))) {
-            return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
+            return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
         }
 
 //        $this->denyAccessUnlessGranted(OblastAccess::VIEW, $oblast);
@@ -97,7 +97,7 @@ class CommentPlemSezonController extends AbstractController
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
+        return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
     }
 
     private function checkCommentIsForPlem(PlemMatka $plemmatka, Comment $comment): void

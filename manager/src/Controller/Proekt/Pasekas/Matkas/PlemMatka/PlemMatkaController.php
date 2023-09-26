@@ -22,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
- * @Route("/proekt/pasekas/matkas/plemmatkas", name="proekt.pasekas.matkas.plemmatkas")
+ * @Route("/app/proekts/pasekas/matkas/plemmatkas", name="app.proekts.pasekas.matkas.plemmatkas")
  */
 class PlemMatkaController extends AbstractController
 {
@@ -52,7 +52,7 @@ class PlemMatkaController extends AbstractController
 
       $infaMesto = $fetchers->infaMesto($plemmatka->getMesto()->getNomer());
 
-       return $this->render('proekt/pasekas/matkas/plemmatkas/show.html.twig',
+       return $this->render('app/proekts/pasekas/matkas/plemmatkas/show.html.twig',
            compact('plemmatka', 'infaMesto',
                'kategorias', 'permissions',
                 'sesMessages', 'otecNomer'

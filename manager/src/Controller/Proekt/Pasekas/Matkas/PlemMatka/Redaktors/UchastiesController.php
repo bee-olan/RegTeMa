@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/pasekas/matkas/{plemmatka_id}/redaktorss/uchastiess", name="proekt.pasekas.matkas.plemmatkas.redaktorss.uchastiess")
+ * @Route("/app/proekts/pasekas/matkas/{plemmatka_id}/redaktorss/uchastiess", name="app.proekts.pasekas.matkas.plemmatkas.redaktorss.uchastiess")
  * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
  */
 class UchastiesController extends AbstractController
@@ -39,7 +39,7 @@ class UchastiesController extends AbstractController
     {
 //        $this->denyAccessUnlessGranted(PlemMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
 // выводит из проекта uchastniks - учстников
-        return $this->render('proekt/pasekas/matkas/plemmatkas/redaktorss/uchastiess/index.html.twig', [
+        return $this->render('app/proekts/pasekas/matkas/plemmatkas/redaktorss/uchastiess/index.html.twig', [
             'plemmatka' => $plemmatka,
             'uchastniks' => $plemmatka->getUchastniks(),
         ]);
@@ -99,7 +99,7 @@ class UchastiesController extends AbstractController
         $uchastnikI = $plemmatka->getPersona()->getId()->getValue();
         if ($uchastnikI ==! $this->getUser()->getId()) {
             $this->addFlash('error', 'Эту матку зарегистрировали не Вы.');
-            return $this->redirectToRoute('proekt.pasekas.matkas');
+            return $this->redirectToRoute('app.proekts.pasekas.matkas');
         }
 //dd($this->getUser()->getId());
 //        $uchastnik = $plemmatka->getUchastnik(new Id($this->getUser()->getId()));
@@ -112,14 +112,14 @@ class UchastiesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
+                return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 
-        return $this->render('proekt/pasekas/matkas/plemmatkas/redaktorss/uchastiess/edit.html.twig', [
+        return $this->render('app/proekts/pasekas/matkas/plemmatkas/redaktorss/uchastiess/edit.html.twig', [
             'plemmatka' => $plemmatka,
             'uchastnik' => $uchastnik,
             'form' => $form->createView(),

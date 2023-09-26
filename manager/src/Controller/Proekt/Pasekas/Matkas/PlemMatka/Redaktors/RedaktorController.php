@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/pasekas/matkas/plemmatkas/{plemmatka_id}/redaktorss", name="proekt.pasekas.matkas.plemmatkas.redaktorss")
+ * @Route("/app/proekts/pasekas/matkas/plemmatkas/{plemmatka_id}/redaktorss", name="app.proekts.pasekas.matkas.plemmatkas.redaktorss")
  * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
  */
 class RedaktorController extends AbstractController
@@ -60,13 +60,13 @@ class RedaktorController extends AbstractController
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             try {
                 $commentHandler->handle($commentCommand);
-                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
+                return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
-        return $this->render('proekt/pasekas/matkas/plemmatkas/redaktorss/show.html.twig', [
+        return $this->render('app/proekts/pasekas/matkas/plemmatkas/redaktorss/show.html.twig', [
             'plemmatka' => $plemmatka,
             'uchastniks' => $plemmatka->getUchastniks(),
             'comments' => $comments->allForPlemMatka($plemmatka->getId()->getValue()),
@@ -94,14 +94,14 @@ class RedaktorController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
+                return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 
-        return $this->render('proekt/pasekas/matkas/plemmatkas/redaktorss/edit.html.twig', [
+        return $this->render('app/proekts/pasekas/matkas/plemmatkas/redaktorss/edit.html.twig', [
             'plemmatka' => $plemmatka,
             'form' => $form->createView(),
         ]);
@@ -131,7 +131,7 @@ class RedaktorController extends AbstractController
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
+        return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
     }
 
     /**
@@ -144,7 +144,7 @@ class RedaktorController extends AbstractController
     public function reinstate(PlemMatka $plemmatka, Request $request, Reinstate\Handler $handler): Response
     {
         if (!$this->isCsrfTokenValid('reinstate', $request->request->get('token'))) {
-            return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
+            return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
         }
 
         $this->denyAccessUnlessGranted(PlemMatkaAccess::EDIT, $plemmatka);
@@ -158,7 +158,7 @@ class RedaktorController extends AbstractController
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
+        return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
     }
 
 

@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/pasekas/matkas/kategor/kategor", name="proekt.pasekas.matkas.kategor.kategor")
+ * @Route("/app/proekts/pasekas/matkas/kategor/kategor", name="app.proekts.pasekas.matkas.kategor.kategor")
  */
 class KategorController extends AbstractController
 {
@@ -32,7 +32,7 @@ class KategorController extends AbstractController
         $kategorias = $kategoria->all();
        $permissions = Permission::names();
 
-        return $this->render('proekt/pasekas/matkas/kategor/kategor.html.twig',
+        return $this->render('app/proekts/pasekas/matkas/kategor/kategor.html.twig',
             compact('kategorias', 'permissions') );
     }
 

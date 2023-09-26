@@ -29,7 +29,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/pasekas/matkas/plemmatkas/creates", name="proekt.pasekas.matkas.plemmatkas.creates")
+ * @Route("/app/proekts/pasekas/matkas/plemmatkas/creates", name="app.proekts.pasekas.matkas.plemmatkas.creates")
  */
 class PlemCreateController extends AbstractController
 {
@@ -59,10 +59,10 @@ class PlemCreateController extends AbstractController
         if (!$uchasties->find($this->getUser()->getId())) {
             
             $this->addFlash('error', 'Внимание!!! Пожалуйста, начните с этого! ');
-            return $this->redirectToRoute('proekt.pasekas.uchasties.uchastiee');
+            return $this->redirectToRoute('app.proekts.pasekas.uchasties.uchastiee');
         }
 
-        return $this->render('proekt/pasekas/matkas/plemmatkas/creates/index.html.twig'
+        return $this->render('app/proekts/pasekas/matkas/plemmatkas/creates/index.html.twig'
         );
     }
 
@@ -84,7 +84,7 @@ class PlemCreateController extends AbstractController
 
         if (!$uchasties->find($this->getUser()->getId())) {           
             $this->addFlash('error', 'Внимание!!! Для продолжения нужно стать участником проекта! ');
-            return $this->redirectToRoute('proekt.pasekas.uchasties.uchastiee');
+            return $this->redirectToRoute('app.proekts.pasekas.uchasties.uchastiee');
         }
        
     //    dd($nomer);
@@ -92,7 +92,7 @@ class PlemCreateController extends AbstractController
 
         $mesto = $mestos->find($this->getUser()->getId());
 
-        return $this->render('proekt/pasekas/matkas/plemmatkas/creates/plemmatka.html.twig',
+        return $this->render('app/proekts/pasekas/matkas/plemmatkas/creates/plemmatka.html.twig',
             compact('nomer', 'persona', 'mesto') );
     }
 
@@ -128,14 +128,14 @@ class PlemCreateController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.creates.sdelano', [ 'name' => $command->name]);
+                return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.creates.sdelano', [ 'name' => $command->name]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 
-        return $this->render('proekt/pasekas/matkas/plemmatkas/creates/create.html.twig', [
+        return $this->render('app/proekts/pasekas/matkas/plemmatkas/creates/create.html.twig', [
             'form' => $form->createView(),
             'command' => $command,
             'kategorias' => $kategorias,
@@ -173,7 +173,7 @@ class PlemCreateController extends AbstractController
 //        $plemId = $plemmatkas->findIdByPlemMatka($plemmatka);
 
 
-        return $this->render('proekt/pasekas/matkas/plemmatkas/creates/sdelano.html.twig',
+        return $this->render('app/proekts/pasekas/matkas/plemmatkas/creates/sdelano.html.twig',
           [
               'plemmatka' => $plemmatka,
                 'nomerOtec' => $nomerOtec,
@@ -200,7 +200,7 @@ class PlemCreateController extends AbstractController
         // dd( $plemmatka);
 
 
-        return $this->render('app/proekt/pasekas/matkas/plemmatkas/redaktorss/show.html.twig',
+        return $this->render('app/proekts/pasekas/matkas/plemmatkas/redaktorss/show.html.twig',
             compact('plemmatka'               
             ));
     }

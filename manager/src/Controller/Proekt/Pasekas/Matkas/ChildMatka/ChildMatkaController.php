@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("proekt/pasekas/matkas/plemmatkas/{plemmatka_id}/childmatka", name="proekt.pasekas.matkas.plemmatkas.childmatka")
+ * @Route("app/proekts/pasekas/matkas/plemmatkas/{plemmatka_id}/childmatka", name="app.proekts.pasekas.matkas.plemmatkas.childmatka")
  * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
  */
 class ChildMatkaController extends AbstractController
@@ -65,7 +65,7 @@ class ChildMatkaController extends AbstractController
             $request->query->get('direction', 'desc')
         );
 
-        return $this->render('proekt/pasekas/childmatkas/index.html.twig', [
+        return $this->render('app/proekts/pasekas/childmatkas/index.html.twig', [
             'plemmatka' => $plemmatka,
             'sezons' => $plemmatka->getDepartments(),
             'pagination' => $pagination,
@@ -86,7 +86,7 @@ class ChildMatkaController extends AbstractController
         $filter = Filter\Filter::forPlemMatka($plemmatka->getId()->getValue());
 
         $form = $this->createForm(Filter\Form::class, $filter, [
-            'action' => $this->generateUrl('proekt.paekas.matkas.plemmatkas.childmatkas', ['plemmatka_id' => $plemmatka->getId()]),
+            'action' => $this->generateUrl('app.proekts.paekas.matkas.plemmatkas.childmatkas', ['plemmatka_id' => $plemmatka->getId()]),
         ]);
         $form = $this->createForm(Filter\Form::class, $filter);
         $form->handleRequest($request);
@@ -99,7 +99,7 @@ class ChildMatkaController extends AbstractController
             $request->query->get('direction', 'desc')
         );
 
-        return $this->render('proekt/pasekas/childmatkas/index.html.twig', [
+        return $this->render('app/proekts/pasekas/childmatkas/index.html.twig', [
             'plemmatka' => $plemmatka,
             'pagination' => $pagination,
             'form' => $form->createView(),
@@ -119,7 +119,7 @@ class ChildMatkaController extends AbstractController
         $filter = Filter\Filter::forPlemMatka($plemmatka->getId()->getValue());
 
         $form = $this->createForm(Filter\Form::class, $filter, [
-        'action' => $this->generateUrl('proekt.paekas.matkas.plemmatkas.childmatkas', ['plemmatka_id' => $plemmatka->getId()]),
+        'action' => $this->generateUrl('app.proekts.paekas.matkas.plemmatkas.childmatkas', ['plemmatka_id' => $plemmatka->getId()]),
         ]);
 
         $form->handleRequest($request);
@@ -132,7 +132,7 @@ class ChildMatkaController extends AbstractController
             $request->query->get('direction')
         );
 
-        return $this->render('proekt/pasekas/childmatkas/index.html.twig', [
+        return $this->render('app/proekts/pasekas/childmatkas/index.html.twig', [
             'plemmatka' => $plemmatka,
             'pagination' => $pagination,
             'form' => $form->createView(),
@@ -169,14 +169,14 @@ class ChildMatkaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('proekt.pasekas.childmatkas');
+                return $this->redirectToRoute('app.proekts.pasekas.childmatkas');
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 
-        return $this->render('proekt/pasekas/matkas/plemmatkas/childmatka/create.html.twig', [
+        return $this->render('app/proekts/pasekas/matkas/plemmatkas/childmatka/create.html.twig', [
             'plemmatka' => $plemmatka,
             'sezonPlem' => $sezonPlem,
             'form' => $form->createView(),
@@ -205,14 +205,14 @@ class ChildMatkaController extends AbstractController
         // if ($commentForm->isSubmitted() && $commentForm->isValid()) {
         //     try {
         //         $commentHandler->handle($commentCommand);
-        //         return $this->redirectToRoute('proekt.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
+        //         return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', ['plemmatka_id' => $plemmatka->getId()]);
         //     } catch (\DomainException $e) {
         //         $this->errors->handle($e);
         //         $this->addFlash('error', $e->getMessage());
         //     }
         // }
 //        dd( $plemmatka->getUchastniks());
-        return $this->render('proekt/pasekas/matkas/plemmatkas/childmatka/show.html.twig', [
+        return $this->render('app/proekts/pasekas/matkas/plemmatkas/childmatka/show.html.twig', [
             'plemmatka' => $plemmatka,
             'uchastniks' => $plemmatka->getUchastniks(),
             // 'comments' => $comments->allForPlemMatka($plemmatka->getId()->getValue()),
