@@ -42,16 +42,16 @@
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                             </svg>
                         </li>
-                        <li class="uchastiee__name  uch-tabl__linia">Ваш ПерсонНомер</li>
+                        <li class="uchastiee__name  uch-tabl__linia uch-tabl__linia--col">Ваш ПерсонНомер</li>
                         <li><div class = "uchastiee-nomer uchastiee-nomer__wid8">
                                 {{ persona.nomer }}
                             </div></li>
                         <li></li>
                     {% else %}
-                        <li class="uchastiee__name uch-tabl__linia" >1. Выбрать для себя персональный номер </li>
+                        <li class="uchastiee__name uch-tabl__linia uch-tabl__linia--col" >1. Выбрать для себя персональный номер </li>
                         <li>
                             <a href="{{ path('app.proekts.personaa.diapazon') }}"
-                            class="btnn btnn--mb-1">Выбрать <strong class="strongo strongo--kras">ПерсонНомер  </strong>
+                             class="btnn btnn--ml btnn--pt btnn--col-uchas"> Выбрать <strong class="strongo strongo--kras">ПерсонНомер  </strong>
                             </a>
                         </li>
                     {% endif %}
@@ -64,16 +64,16 @@
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                             </svg>
                         </li>
-                        <li class="uchastiee__name uch-tabl__linia ">Номер места распол.</li>
+                        <li class="uchastiee__name uch-tabl__linia uch-tabl__linia--col">Номер места распол.</li>
                         <li><div class = "uchastiee-nomer uchastiee-nomer__wid12">
                                 {{ mestoNomer.nomer }}
                             </div></li>
                         <li></li>
                     {% else %}
-                        <li class="uchastiee__name  uch-tabl__linia" >2. Определиться с номером места расположения пасеки </li>
+                        <li class="uchastiee__name  uch-tabl__linia uch-tabl__linia--col" >2. Определиться с номером места расположения пасеки </li>
                         <li>
-                            <a href="{{ path('app.proekts.mestos.okrugs') }}"
-                            class="btnn btnn--mb-1">Выбрать <strong class="strongo strongo--kras">НомерМеста  </strong>
+                            <a class="btnn btnn--ml btnn--pt btnn--col-uchas" href="{{ path('app.proekts.mestos.okrugs') }}" >
+                                НомерМеста
                             </a>
                         </li>
                     {% endif %}
@@ -87,15 +87,15 @@
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                             </svg>
                         </li>
-                        <li class="uchastiee__name uch-tabl__linia ">
+                        <li class="uchastiee__name uch-tabl__linia uch-tabl__linia--col">
                                <strong class = "strongo--name-nike"> {{ uchastie.nike }}</strong>
                                 , данные о Вашем участии записаны в БД.
                         </li>
                         <li></li>
                         <li></li>
                     {% else %}
-                        <li class="uchastiee__name  uch-tabl__linia" >3. Подтвердить Ваше участие с заполнением доп. данных</li>
-                        <li class=" back-color-uch">
+                        <li class="uchastiee__name  uch-tabl__linia uch-tabl__linia--col" >3. Подтвердить Ваше участие с заполнением доп. данных</li>
+                        <li >
                             <a class="btnn btnn--ml btnn--pt btnn--col-uchas"  href="{{ path('app.proekts.pasekas.uchasties.uchastiee.create') }}" >
                                 Продолжаем ...
                             </a>

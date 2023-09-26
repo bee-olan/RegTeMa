@@ -53,16 +53,16 @@
 
   a {
     padding: .6rem 1.6rem;
-    color: $col-uchastie;
+    //color: $col-uchastie;
 
     opacity: 0.6;
     transition: opacity .2s linear;
 
     &:hover {
       opacity: 1;
-      color: $beloe;
+      //color: $beloe;
       text-decoration: none;
-      background-color: $col-uchastie;
+      background-color: $beloe;
     }
   }
 }
@@ -98,9 +98,9 @@
   //width: 6rem;
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
   background: transparent;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #fff;
-  margin: 10px;
+  margin: 20px 10px 0 10px;
   padding: 0 1.2rem 0 1.2rem;
 
   transition: box-shadow .2s linear;
