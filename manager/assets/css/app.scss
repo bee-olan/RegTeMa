@@ -79,7 +79,7 @@ main {
 
 a {
     color: inherit;
-    opacity: 0.6;
+    opacity: 0.8;
     transition: opacity .2s linear;
   
     &:hover {
@@ -152,6 +152,9 @@ pre {
     padding: 0 0 10px 50px;
     font-size: .8rem;
 }
+
+@import "a-rasas/a_rasa";
+
 @import "drevos/drevo";
 @import "kroxis/kroxii";
 
@@ -160,6 +163,7 @@ pre {
 @import "proekts/probody";
 @import "proekts/pagee";
 @import "proekts/btnn";
+@import "proekts/strongo";
 
 @import "proekts/main/mainn";
 @import "proekts/container/container";
@@ -195,3 +199,6 @@ pre {
 
 @import "proekts/paseka/inklud/inklud";
 @import "proekts/paseka/inklud/tabs-inkl";
+
+@import "proekts/paseka/rasas/ras";
+@import "proekts/paseka/rasas/sparingg";
