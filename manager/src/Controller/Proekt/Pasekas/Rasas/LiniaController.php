@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/pasekas/rasas/{id}/linias", name="proekt.pasekas.rasas.linias")
+ * @Route("/app/proekts/pasekas/rasas/{id}/linias", name="app.proekts.pasekas.rasas.linias")
  */
 class LiniaController extends AbstractController
 {
@@ -58,14 +58,14 @@ class LiniaController extends AbstractController
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             try {
                 $commentHandler->handle($commentCommand);
-                return $this->redirectToRoute('proekt.pasekas.rasas.linias.plemmatka', ['id' => $rasa->getId()]);
+                return $this->redirectToRoute('app.proekts.pasekas.rasas.linias.plemmatka', ['id' => $rasa->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 //dd($linias->allOfRasa($rasa->getId()->getValue()));
-        return $this->render('proekt/pasekas/rasas/linias/plemmatka.html.twig', [
+        return $this->render('app/proekts/pasekas/rasas/linias/plemmatka.html.twig', [
             'rasa' => $rasa,
             'linias' => $linias->allOfRasa($rasa->getId()->getValue()),
             'comments' => $comments->allForLinia($rasa->getId()->getValue()),
@@ -80,7 +80,7 @@ class LiniaController extends AbstractController
      */
     public function show(Rasa $rasa): Response
     {
-        return $this->redirectToRoute('proekt.pasekas.rasas.linias',
+        return $this->redirectToRoute('app.proekts.pasekas.rasas.linias',
 				['id' => $rasa->getId()]);
     }
 }

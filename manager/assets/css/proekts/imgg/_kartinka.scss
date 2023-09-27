@@ -28,9 +28,9 @@
   margin: 2rem auto 1.5rem;
   position: relative; //чтобы бордер не исчезал  под картинкой
 
-  border: 2px solid $border-foto;
-  box-shadow: 0 7px 20px rgba(0, 0, 0, .25);
-  border-radius: 10%;
+  //border: 2px solid $border-foto;
+  //box-shadow: 0 7px 20px rgba(0, 0, 0, .25);
+  //border-radius: 10%;
 }
 .person-kar {
   display: block; // блочная
@@ -69,17 +69,12 @@
   box-shadow: 0 7px 20px rgba(0, 0, 0, .25);
   border-radius: 10%;
 }
-//.persona-kar {
-//  display: block;
-//  // растягивает\сжимает картину по размерам блока
-//  width: 100%;
-//  height: 100%;
-//  object-fit: cover;
-//  background-image: url('../../../../assets/images/proekts/persona/person.png');
-//
-//  position: absolute;
-//  top: 0; // начальная позиция
-//  left: 0;
-//  z-index: 1000;
-//  transition: transform 1s ease-in-out;
-//}
+.plem-ind {
+  display: block; // блочная
+  background-image: url('../../../../assets/images/proekts/matkas/matki_.png');
+  width: 64px;
+  height: 62px;
+  margin: 2rem auto 1.5rem;
+  position: relative; //чтобы бордер не исчезал  под картинкой
+
+}

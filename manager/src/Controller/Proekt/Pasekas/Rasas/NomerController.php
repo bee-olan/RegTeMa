@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/pasekas/rasas/linias/{linia_id}/nomers", name="proekt.pasekas.rasas.linias.nomers")
+ * @Route("/app/proekts/pasekas/rasas/linias/{linia_id}/nomers", name="app.proekts.pasekas.rasas.linias.nomers")
  * @ParamConverter("linia", options={"id" = "linia_id"})
  */
 class NomerController extends AbstractController
@@ -50,7 +50,7 @@ class NomerController extends AbstractController
     {
         // $this->denyAccessUnlessGranted(LiniaAccess::MANAGE_MEMBERS, $linia);
 
-        return $this->render('proekt/pasekas/rasas/linias/nomers/index.html.twig', [
+        return $this->render('app/proekts/pasekas/rasas/linias/nomers/index.html.twig', [
             'linia' => $linia,
             'nomers' => $nomers->allOfLinia($linia->getId()->getValue()),
         ]);
@@ -67,7 +67,7 @@ class NomerController extends AbstractController
     public function plemmatka(Linia $linia, NomerFetcher $nomers): Response
     {
 //dd($nomers->allOfLinia($linia->getId()->getValue()));
-        return $this->render('proekt/pasekas/rasas/linias/nomers/plemmatka.html.twig', [
+        return $this->render('app/proekts/pasekas/rasas/linias/nomers/plemmatka.html.twig', [
             'linia' => $linia,
             'nomers' => $nomers->allOfLinia($linia->getId()->getValue()),
         ]);
@@ -84,7 +84,7 @@ class NomerController extends AbstractController
     public function archive(Linia $linia, Nomer $nomer, Request $request, Archive\Handler $handler): Response
     {
         if (!$this->isCsrfTokenValid('archive', $request->request->get('token'))) {
-            return $this->redirectToRoute('proekt.pasekas.rasas.linias.nomers.plemmatka', ['linia_id' => $linia->getId()->getValue()]);
+            return $this->redirectToRoute('app.proekts.pasekas.rasas.linias.nomers.plemmatka', ['linia_id' => $linia->getId()->getValue()]);
         }
 
 //        $this->denyAccessUnlessGranted(NomerAccess::EDIT, $nomer);
@@ -98,7 +98,7 @@ class NomerController extends AbstractController
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('proekt.pasekas.rasas.linias.nomers.plemmatka', ['linia_id' => $linia->getId()->getValue()]);
+        return $this->redirectToRoute('app.proekts.pasekas.rasas.linias.nomers.plemmatka', ['linia_id' => $linia->getId()->getValue()]);
     }
 
     /**
@@ -112,7 +112,7 @@ class NomerController extends AbstractController
     public function reinstate( Request $request, Linia $linia, Nomer $nomer, Reinstate\Handler $handler): Response
     {
         if (!$this->isCsrfTokenValid('reinstate', $request->request->get('token'))) {
-            return $this->redirectToRoute('proekt.pasekas.rasas.linias.nomers.plemmatka', ['linia_id' => $linia->getId()->getValue()]);
+            return $this->redirectToRoute('app.proekts.pasekas.rasas.linias.nomers.plemmatka', ['linia_id' => $linia->getId()->getValue()]);
         }
 //        $this->denyAccessUnlessGranted(NomerAccess::EDIT, $nomer);
 //dd($nomer);
@@ -126,7 +126,7 @@ class NomerController extends AbstractController
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('proekt.pasekas.rasas.linias.nomers.plemmatka', ['linia_id' => $linia->getId()->getValue()]);
+        return $this->redirectToRoute('app.proekts.pasekas.rasas.linias.nomers.plemmatka', ['linia_id' => $linia->getId()->getValue()]);
     }
 
 

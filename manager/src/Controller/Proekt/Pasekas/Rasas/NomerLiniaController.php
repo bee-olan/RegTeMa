@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/pasekas/rasas/{linia_id}/linias", name="proekt.pasekas.rasas.linias")
+ * @Route("/app/proekts/pasekas/rasas/{linia_id}/linias", name="app.proekts.pasekas.rasas.linias")
  */
 class NomerLiniaController extends AbstractController
 {
@@ -65,7 +65,7 @@ class NomerLiniaController extends AbstractController
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             try {
                 $commentHandler->handle($commentCommand);
-                return $this->redirectToRoute('proekt.pasekas.rasas.linias.plemmatka', ['id' => $rasa->getId()]);
+                return $this->redirectToRoute('app.proekts.pasekas.rasas.linias.plemmatka', ['id' => $rasa->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
@@ -75,7 +75,7 @@ class NomerLiniaController extends AbstractController
        
     //   dd($linias->allOfVetka($linia->getId()->getValue(), $name_star));
 //      
-return $this->render('proekt/pasekas/rasas/linias/plemmatka.html.twig', [
+return $this->render('app/proekts/pasekas/rasas/linias/plemmatka.html.twig', [
             'rasa' => $rasa,
             'linias' => $linias->allOfVetka($linia->getId()->getValue(), $name_star),
             'comments' => $comments->allForLinia($rasa->getId()->getValue()),

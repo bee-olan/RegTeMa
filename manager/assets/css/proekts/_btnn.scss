@@ -43,13 +43,20 @@
             font-size: 1.8rem;
           }
 
-        &--col {      
+        &--col-plemm {
             border: 1px solid $plem-color;
-    
+            background-color: $beloe;
+            box-shadow: inset 0 0 10px rgba( $plem-color, 0.9);
+            opacity: 1;
+            font-size: 1.2rem;
+            color: $plem-color;
             &:hover {
-                background: linear-gradient( $grad1-o, $grad2-o);
+                border: 1px solid $beloe;
+                box-shadow:  inset 0 0 10px rgba($beloe, 0.8);
+                //background: none;
                 text-decoration: none;
-                color: $grad1;
+                color: $beloe;
+                background-color: $plem-color;
             }
         }
 
@@ -104,16 +111,13 @@
         border: 1px solid $beloe;
         font-size: 1.2rem;
         color: $beloe;
-
-
         &:hover {
-
             border: 1px solid $col-uchastie;
             box-shadow:  inset 0 0 10px rgba($col-uchastie, 0.8);
             //background: none;
             text-decoration: none;
             color: $col-uchastie;
-            background-color: $beloe;
+            background-color: #ffffff;
         }
     }
         &--col-sezon {

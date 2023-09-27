@@ -43,14 +43,14 @@ class MatkaMenu
             ->setAttribute('class', 'nav_pro-item')
             ->setLinkAttribute('class', 'nav_pro-link');
 
-//        $menu
-//            ->addChild('Персональный  номер', ['route' => 'app.proekts.personaa.diapazon'])
-//            ->setExtra('routes', [
-//                ['route' => 'app.proekts.personaa'],
-//                ['pattern' => '/^app.proekts.personaa\..+/']
-//            ])
-//            ->setAttribute('class', 'nav_pro-item ')
-//            ->setLinkAttribute('class', 'nav_pro-link ');
+        $menu
+            ->addChild('Раса', ['route' => 'app.proekts.pasekas.rasas.plemmatka'])
+            ->setExtra('routes', [
+                ['route' => 'app.proekts.pasekas.rasas'],
+                ['pattern' => '/^app.proekts.pasekas.rasas\..+/']
+            ])
+            ->setAttribute('class', 'nav_pro-item ')
+            ->setLinkAttribute('class', 'nav_pro-link ');
 //
 //        $menu
 //            ->addChild('Участие', ['route' => 'app.proekts.pasekas.uchasties.uchastiee'])

@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/pasekas/rasas", name="proekt.pasekas.rasas")
+ * @Route("/app/proekts/pasekas/rasas", name="app.proekts.pasekas.rasas")
  */
 // @IsGranted("ROLE_Paseka_MANAGE_MATERIS")
 
@@ -34,20 +34,20 @@ class RasasController extends AbstractController
     }
 
 
-    /**
-     * @Route("", name="")
-     * @param RasaFetcher $fetcher
-     * @return Response
-     */
-    public function index(RasaFetcher $fetcher): Response
-    {
-       $rasas = $fetcher->all();
- //dd($rasas);      
-  
-
-        return $this->render('proekt/pasekas/rasas/index.html.twig',
-                                compact('rasas'));
-    }
+//    /**
+//     * @Route("", name="")
+//     * @param RasaFetcher $fetcher
+//     * @return Response
+//     */
+//    public function index(RasaFetcher $fetcher): Response
+//    {
+//       $rasas = $fetcher->all();
+// //dd($rasas);
+//
+//
+//        return $this->render('app/proekts/pasekas/rasas/index.html.twig',
+//                                compact('rasas'));
+//    }
 
     /**
      * @Route("/plemmatka", name=".plemmatka")
@@ -60,7 +60,7 @@ class RasasController extends AbstractController
         $rasas = $fetcher->all();
 
 
-        return $this->render('proekt/pasekas/rasas/plemmatka.html.twig',
+        return $this->render('app/proekts/pasekas/rasas/plemmatka.html.twig',
             compact('rasas'));
     }
 
@@ -87,7 +87,7 @@ class RasasController extends AbstractController
             }
         }
 
-        return $this->render('proekt/pasekas/rasas/create.html.twig', [
+        return $this->render('app/proekts/pasekas/rasas/create.html.twig', [
             'form' => $form->createView(),
         ]);
     }

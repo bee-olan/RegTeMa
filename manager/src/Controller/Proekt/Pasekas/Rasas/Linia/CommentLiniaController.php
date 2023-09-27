@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/proekt/pasekas/rasas/linias/{rasa_id}/comment", name="proekt.pasekas.rasas.linias.comment")
+ * @Route("/app/proekts/pasekas/rasas/linias/{rasa_id}/comment", name="app.proekts.pasekas.rasas.linias.comment")
  * @ParamConverter("rasa", options={"id" = "rasa_id"})
  */
 class CommentLiniaController extends AbstractController
@@ -56,14 +56,14 @@ class CommentLiniaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('proekt.pasekas.rasas.linias.plemmatka', ['id' => $rasa->getId()]);
+                return $this->redirectToRoute('app.proekts.pasekas.rasas.linias.plemmatka', ['id' => $rasa->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 
-        return $this->render('proekt/pasekas/rasas/linias/comment/edit.html.twig', [
+        return $this->render('app/proekts/pasekas/rasas/linias/comment/edit.html.twig', [
             'rasa' => $rasa,
             'linia' => $rasa->getLinias(),
             'form' => $form->createView(),
@@ -81,7 +81,7 @@ class CommentLiniaController extends AbstractController
     public function delete(Rasa $rasa, Comment $comment, Request $request, Remove\Handler $handler): Response
     {
         if (!$this->isCsrfTokenValid('delete-comment', $request->request->get('token'))) {
-            return $this->redirectToRoute('proekt.pasekas.rasas.linias.plemmatka', ['id' => $rasa->getId()]);
+            return $this->redirectToRoute('app.proekts.pasekas.rasas.linias.plemmatka', ['id' => $rasa->getId()]);
         }
 
 //        $this->denyAccessUnlessGranted(LiniaAccess::VIEW, $linia);
@@ -97,7 +97,7 @@ class CommentLiniaController extends AbstractController
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('proekt.pasekas.rasas.linias.plemmatka', ['id' => $rasa->getId()]);
+        return $this->redirectToRoute('app.proekts.pasekas.rasas.linias.plemmatka', ['id' => $rasa->getId()]);
     }
 
     private function checkCommentIsForLinia(Rasa $rasa, Comment $comment): void
