@@ -51,6 +51,15 @@ class MatkaMenu
             ])
             ->setAttribute('class', 'nav_pro-item ')
             ->setLinkAttribute('class', 'nav_pro-link ');
+
+        $menu
+            ->addChild('Родословная', ['route' => 'app.proekts.drevo-rods.dre-rasa'])
+            ->setExtra('routes', [
+                ['route' => 'app.proekts.drevo-rods.dre-rasa'],
+                ['pattern' => '/^app.proekts.drevo-rods.dre-rasa\..+/']
+            ])
+            ->setAttribute('class', 'nav_pro-item ')
+            ->setLinkAttribute('class', 'nav_pro-link ');
 //
 //        $menu
 //            ->addChild('Участие', ['route' => 'app.proekts.pasekas.uchasties.uchastiee'])

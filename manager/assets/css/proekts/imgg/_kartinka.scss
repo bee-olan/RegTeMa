@@ -1,3 +1,4 @@
+
 .olan {
   display: block; // блочная
   background-image: url('../../../../assets/images/proekts/profile/olan.jpg');
@@ -20,6 +21,16 @@
   background-size: cover;
 }
 
+.karanda-kar {
+  display: block; // блочная
+  background-image: url('../../../../assets/images/proekts/karand.png');
+  width: 24px;
+  height: 24px;
+  // margin: 2rem auto 1.5rem;
+  position: relative; //чтобы бордер не исчезал  под картинкой
+
+}
+
 .mesto-kar {
   display: block; // блочная
   background-image: url('../../../../assets/images/proekts/mestos/mestos.png');
@@ -28,9 +39,6 @@
   margin: 2rem auto 1.5rem;
   position: relative; //чтобы бордер не исчезал  под картинкой
 
-  //border: 2px solid $border-foto;
-  //box-shadow: 0 7px 20px rgba(0, 0, 0, .25);
-  //border-radius: 10%;
 }
 .person-kar {
   display: block; // блочная

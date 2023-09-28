@@ -2,13 +2,16 @@
 
 {% block title %}Сезоны{% endblock %}
 
-{#  {% block kroxii %}#}
-{#      <a href="{{ path('proekt') }}">Главная</a>#}
-{#      <span class="aktiv ">Выбор сезона!</span>#}
-{#  {% endblock %}#}
+ {% block kroxii %}
+     <a href="{{ path('proekt') }}">Главная</a>
+     <span class="aktiv ">Выбор сезона!</span>
+  {% endblock %} 
 
 {% block body %}
-   
+
+{{ include('app/adminka/_tabs.html.twig') }}
+
+ <div class="box">   
     <div  class="proekts proekts--sezon pb0">
 
         <div class="inklud">
@@ -52,12 +55,12 @@
 {#                                <td> {{ goda.uchasgoda_count}} </td>#}
                                 <td> ---------- </td>
                                 <td> <a href="{{ path('adminka.sezons.godas.edit', {'id': goda.id}) }}" class="btnn btnn--mb0 btnn--pt btnn--col-sezon" >
-{#                                       <div class="karandash">#}
-{#                                            <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="">#}
-{#                                        </div> #}
-                                        <div class="karandash karandash--child">
+                                 <div class=" karandash karandash--child">
+                                   <div class="karanda-kar"> </div>
+                                </div>
+                                        {# <div class="karandash karandash--child">
                                             <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="редактировать">
-                                        </div>
+                                        </div> #}
                                     </a>
                                 </td>
                                 <td>
@@ -84,4 +87,6 @@
         </div>
 
     </div>
+</div>
+
 {% endblock %}

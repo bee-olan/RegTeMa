@@ -121,12 +121,12 @@
             background-color: #ffffff;
         }
     }
-        &--col-sezon {
-            box-shadow: inset 0 0 10px rgba($sezon-teni, 0.9);
-            border: 1px solid $sezon-teni;
-            font-size: 1.4rem;
-            &:hover {
-            box-shadow:  0 0 10px rgba($sezon-teni, 0.6);
+    &--col-sezon {
+            box-shadow: inset 0 0 10px rgba($beloe, 0.9);
+            border: 1px solid $beloe;
+            font-size: 1.2rem;
+        &:hover {
+            box-shadow: inset 0 0 10px rgba($sezon-teni, 0.7);
             background: none;
             text-decoration: none;
             color: $sezon-teni;
