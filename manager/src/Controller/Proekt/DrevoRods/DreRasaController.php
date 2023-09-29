@@ -22,7 +22,7 @@ class DreRasaController  extends AbstractController
     }
 
     /**
-     * @Route("/app/proekts/drevo-rods/dre-rasa", name="app.proekts.drevo-rods.dre-rasa")
+     * @Route("/app/proekts/drevorods/drerasa", name="app.proekts.drevorods.drerasa")
      * @param RasFetcher $fetcher
 
      * @return Response
@@ -32,7 +32,7 @@ class DreRasaController  extends AbstractController
         $rasas = $fetcher->all();
 
 // dd($rasas);
-        return $this->render('app/proekts/drevo-rods/dre-rasa.html.twig',
+        return $this->render('app/proekts/drevorods/drerasa.html.twig',
             compact('rasas'));
     }
 

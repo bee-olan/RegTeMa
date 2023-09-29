@@ -1,0 +1,49 @@
+{% extends 'probase.html.twig' %}
+
+{% block title %}Родословная{% endblock %}
+
+{#{% block sidebarr %}#}
+{#    {% include('app/proekts/pasekas/matkas/side/_side_plem_rasa.html.twig') %}#}
+{#{% endblock %}#}
+
+{% block menupro %}
+    {{ include('app/proekts/pasekas/matkas/_tabs.html.twig') }}
+{% endblock %}
+
+{% block kroxii %}
+    <a href="{{ path('proekt') }}">Главная</a>
+    <a href="{{ path('app.proekts.drevorods.drerasa') }}">Rasa</a>
+    <span class="aktiv ">Выбoр Расы</span> 
+{% endblock %}
+
+
+{% block bodyy %}
+
+
+ 
+    <div  class="proekts proekts--drev-rod">
+
+{#    {% include('app/proekts/pasekas/rasas/_rasa-includ.html.twig') %}#}
+        <div class="proekts-plr  ">
+            <div class="drev-rod">
+                <h1 class="dre_title ">Расы зарегистрированные в БД, жмём на нужную кнопку!</h1>
+
+                {% for rasa in rasas %}
+                    {% if rasa.rodos > 0 %}
+                    <ul class="drev-rod_ul">
+                        <li class=" drev-rod_li">
+                            <a href="{{ path('app.proekts.pasekas.rasas.linias.plemmatka',{'id': rasa.id}) }}"  >
+                                 {{ rasa.title }}
+                            </a>
+                            ( {{ rasa.rodos }} )
+                        </li>
+                    </ul>
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

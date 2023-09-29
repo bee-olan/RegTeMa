@@ -57,6 +57,12 @@
     border-bottom: 2px solid $white; // linia
   }
 
+  &--drev-rod {
+    color: $rasa-color;
+    background-color: $beloe; //   $fon-ser;
+    box-shadow: inset 0 0 10px rgba($fon-ser-bor, 0.9);
+    border-bottom: 2px solid $fon-ser-bor; //
+  }
 
   &--rasa {
     // max-width: 100%;

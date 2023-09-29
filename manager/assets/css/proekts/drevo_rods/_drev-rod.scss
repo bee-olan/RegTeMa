@@ -1,0 +1,35 @@
+.drev-rod {
+
+  a {
+    padding: .6rem 1.6rem;
+    color: $text;
+
+    opacity: 0.6;
+    transition: opacity .2s linear;
+
+    &:hover {
+      opacity: 1;
+      text-decoration: none;
+      color: $rasa-color;
+
+    }
+  }
+}
+
+.drev-rod_title{
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+.drev-rod_ul {
+  display: flex; // добавляем т.к добаилась li-шка
+  align-items: center; // выравнивание по вертикали
+  list-style: none; // убрала точку у li
+  min-width: 75%;
+  font-size: 1.2rem;
+  line-height: 2.0;
+}
+.drev-rod_li {
+  border-bottom: 1px solid $rasa-color; // linia
+  padding: .6rem 2rem;
+  width: 35.0rem;
+}
