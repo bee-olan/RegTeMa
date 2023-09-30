@@ -1,8 +1,7 @@
 .drev-rod {
-
+  color: $fon-ser-bor;
   a {
     padding: .6rem 1.6rem;
-    color: $text;
 
     opacity: 0.6;
     transition: opacity .2s linear;
@@ -10,9 +9,13 @@
     &:hover {
       opacity: 1;
       text-decoration: none;
-      color: $rasa-color;
+      color: $text;
 
     }
+  }
+  &--rodrod{
+    background-color:$fon-ser ;
+    padding: 1rem .3rem .3rem .3rem;
   }
 }
 

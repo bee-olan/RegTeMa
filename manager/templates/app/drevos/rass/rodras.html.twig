@@ -1,0 +1,83 @@
+{% extends 'probase.html.twig' %}
+
+{% block title %}Раса{% endblock %}
+
+{#{% block menupro %}#}
+{#    {{ include('app/drevos/_tabs.html.twig') }}#}
+{#{% endblock %}#}
+
+    {% block kroxii %}
+        <a href="{{ path('home') }}">Главная</a>
+        <a href="{{ path('drevos.rass') }}">Родословная</a>
+        <span class="aktiv ">Расы</span>
+    {% endblock %}
+
+{% block bodyy %}
+    <div  class="proekts proekts--drev-rod">
+
+        {#    {% include('app/proekts/pasekas/rasas/_rasa-includ.html.twig') %}#}
+        <div class="proekts-plr  ">
+            <h1 class="dre_title ">Родословная. Данные   из паспорта купленной матки</h1>
+            <div class="drev-rod">
+
+
+                {% for rasa in rasas %}
+                    {% if rasa.rodos > 0 %}
+                        <ul class="drev-rod_ul">
+                            <li class=" drev-rod_li">
+                                <a href="{{ path('app.drevos.rass.rods.rodrods',{'id': rasa.id}) }}"  >
+                                    {{ rasa.title }}
+                                </a>
+                                ( {{ rasa.rodos }} )
+                            </li>
+                        </ul>
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+
+    {#    {% set token = csrf_token('delete') %}#}
+
+{#    <div class="box">#}
+{#       #}
+{#        <b class="dre_title  ">Расы зарегистрированные в БД </b>#}
+{#        <table class="table table-bordered table-hover">#}
+{#            <thead>#}
+{#            <tr>#}
+
+{#                <th> Название расы</th>#}
+{#                <th>Сокращено</th>#}
+{#                <th colspan="2"> редак-ть / удалить</th>#}
+{#                <th colspan="3">Родословные (к-во)</th>#}
+
+
+{#            </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#            {% for raca in rasas %}#}
+{#                <tr>#}
+{#                {% if raca.rodos > 0  %}#}
+
+{#                    <td>{{ raca.title }}</td>#}
+
+{#                    <td>{{ raca.name }}</td>#}
+
+
+{#                    <td> ( {{ raca.rodos }} )</td>#}
+
+
+{#                {% endif %}#}
+{#                </tr>#}
+
+{#            {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    </div>#}
+
+
+
+
+{% endblock %}

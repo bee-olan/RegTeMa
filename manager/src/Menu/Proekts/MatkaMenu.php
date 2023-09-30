@@ -52,14 +52,14 @@ class MatkaMenu
             ->setAttribute('class', 'nav_pro-item ')
             ->setLinkAttribute('class', 'nav_pro-link ');
 
-        $menu
-            ->addChild('Родословная', ['route' => 'app.proekts.drevorods.drerasa'])
-            ->setExtra('routes', [
-                ['route' => 'app.proekts.drevorods'],
-                ['pattern' => '/^app.proekts.drevorods\..+/']
-            ])
-            ->setAttribute('class', 'nav_pro-item ')
-            ->setLinkAttribute('class', 'nav_pro-link ');
+        // $menu
+        //     ->addChild('Родословная', ['route' => 'app.proekts.drevorods.drerasa'])
+        //     ->setExtra('routes', [
+        //         ['route' => 'app.proekts.drevorods'],
+        //         ['pattern' => '/^app.proekts.drevorods\..+/']
+        //     ])
+        //     ->setAttribute('class', 'nav_pro-item ')
+        //     ->setLinkAttribute('class', 'nav_pro-link ');
 //
 //        $menu
 //            ->addChild('Участие', ['route' => 'app.proekts.pasekas.uchasties.uchastiee'])

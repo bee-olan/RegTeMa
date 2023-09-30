@@ -30,9 +30,9 @@
             {% set token = csrf_token('delete') %}
             {% for strana in stranas %}
                 <tr>
-                    <td title= {{ strana.name }}>  {{ strana.nomer }} </td>
+                    <td title= {{ strana.name }}>{{ strana.name }}   </td>
 
-                    <td> {{ strana.name }}</td>
+                    <td>{{ strana.nomer }} </td>
 
                     <td>{{ strana.rodosl }}
 {#                        <a href="{{ path('drevos.strans.drevos', {'id': strana.id}) }}">{{ strana.title }}</a>#}
