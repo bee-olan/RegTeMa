@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Drevos\Rass\Ras;
+namespace App\Controller\Proekt\DrevoRods;
 
 use App\Annotation\Guid;
 use App\Model\Drevos\Entity\Rass\Ras;
@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("app/drevos/rass", name="app.drevos.rass")
+ * @Route("app/proekts/drevorods/rodras", name="app.proekts.drevorods.rodras")
  */
 // @IsGranted("ROLE_Adminka_MANAGE_MATERIS")
 
@@ -34,7 +34,7 @@ class RodRasController extends AbstractController
 
 
     /**
-     * @Route("/rodras", name=".rodras")
+     * @Route("", name="")
      * @param RasFetcher $fetcher
      * @return Response
      */
@@ -44,7 +44,7 @@ class RodRasController extends AbstractController
  //dd($rasas);      
   
 
-        return $this->render('app/drevos/rass/rodras.html.twig',
+        return $this->render('app/proekts/drevorods/rodras.html.twig',
                                 compact('rasas'));
     }
 

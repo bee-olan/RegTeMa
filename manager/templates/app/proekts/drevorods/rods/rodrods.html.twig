@@ -2,6 +2,10 @@
 
 {% block title %}Родословная{% endblock %}
 
+{% block menupro %}
+    {{ include('app/proekts/drevorods/_tabs.html.twig') }}
+{% endblock %}
+
 {% block kroxii %}
     <a href="{{ path('home') }}">Главная</a>
 {#    <a href="{{ path('drevos.rass') }}">Родословная</a>#}
@@ -12,26 +16,25 @@
 {% block bodyy %}
     <div  class="proekts proekts--drev-rod">
 
-        {#    {% include('app/proekts/pasekas/rasas/_rasa-includ.html.twig') %}#}
-        <div class="proekts-plr  ">
             <h1 class="dre_title ">Родословная. Данные   из паспорта купленной матки</h1>
             <div class="drev-rod">
-               <b class="dre_title " > {{ rasa.title }}  </b>
+               <b class="drev-rod_title drev-red" > {{ rasa.title }}  </b>
                 <div class="drev-rod drev-rod--rodrod">
                     {% for rodo in rodos %}
-                    {% if rodo.linias > 0 %}
-                        <ul class="drev-rod_ul">
-                            <li class=" drev-rod_li"> {{ rodo.strana}} </li>
-                            <li class=" drev-rod_li">
-{#                                <a href="{{ path('app.drevos.rass.rods.rodrods.',{'id': rasa.id}) }}"  >#}
-                                    {{ rodo.name_matkov }} / {{ rodo.kod_matkov }}
-{#                                </a>#}
-                                ( {{ rodo.linias }} )
-                            </li>
-                        </ul>
-                    {% endif %}
+                        {% if rodo.linias > 0 %}
+                            <ul class="drev-rod_ul">
+                                <li class=" drev-rod_li"> {{ rodo.strana}} </li>
+                                <li class=" drev-rod_li">
+                                    <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis',{'id': rodo.id}) }}"  >
+                                        {{ rodo.name_matkov }} / {{ rodo.kod_matkov }}
+                                    </a>
+
+                                </li>
+                                <li> ( {{ rodo.linias }} ) </li>
+                            </ul>
+                        {% endif %}
                 {% endfor %}
-                </div>
+
             </div>
         </div>
     </div>

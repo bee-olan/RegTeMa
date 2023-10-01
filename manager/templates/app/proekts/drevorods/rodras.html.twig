@@ -2,13 +2,13 @@
 
 {% block title %}Раса{% endblock %}
 
-{#{% block menupro %}#}
-{#    {{ include('app/drevos/_tabs.html.twig') }}#}
-{#{% endblock %}#}
+{% block menupro %}
+    {{ include('app/proekts/drevorods/_tabs.html.twig') }}
+{% endblock %}
 
     {% block kroxii %}
         <a href="{{ path('home') }}">Главная</a>
-        <a href="{{ path('drevos.rass') }}">Родословная</a>
+        <a href="{{ path('app.proekts.drevorods.rodras') }}">Родословная</a>
         <span class="aktiv ">Расы</span>
     {% endblock %}
 
@@ -16,16 +16,16 @@
     <div  class="proekts proekts--drev-rod">
 
         {#    {% include('app/proekts/pasekas/rasas/_rasa-includ.html.twig') %}#}
-        <div class="proekts-plr  ">
-            <h1 class="dre_title ">Родословная. Данные   из паспорта купленной матки</h1>
-            <div class="drev-rod">
+{#        <div class="proekts-plr  ">#}
+            <h1 class="drev-rod_title ">Родословная. Данные   из паспорта купленной матки</h1>
+            <div class="drev-rod  drev-rod--rodrod">
 
 
                 {% for rasa in rasas %}
                     {% if rasa.rodos > 0 %}
                         <ul class="drev-rod_ul">
                             <li class=" drev-rod_li">
-                                <a href="{{ path('app.drevos.rass.rods.rodrods',{'id': rasa.id}) }}"  >
+                                <a href="{{ path('app.proekts.drevorods.rods.rodrods',{'id': rasa.id}) }}"  >
                                     {{ rasa.title }}
                                 </a>
                                 ( {{ rasa.rodos }} )
@@ -34,7 +34,7 @@
                     {% endif %}
                 {% endfor %}
 
-            </div>
+{#            </div>#}
         </div>
     </div>
 

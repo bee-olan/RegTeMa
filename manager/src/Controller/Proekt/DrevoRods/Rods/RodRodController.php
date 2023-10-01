@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Drevos\Rass\Ras\Rods;
+namespace App\Controller\Proekt\DrevoRods\Rods;
 
 use App\Annotation\Guid;
 
@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/app/drevos/rass/rods/{id}/rodrods", name="app.drevos.rass.rods.rodrods")
+ * @Route("/app/proekts/drevorods/rods/{id}/rodrods", name="app.proekts.drevorods.rods.rodrods")
  */
 class RodRodController extends AbstractController
 {
@@ -46,7 +46,7 @@ class RodRodController extends AbstractController
 
         //$this->denyAccessUnlessGranted(MateriAccess::MANAGE_MEMBERS, $materi);
 
-        return $this->render('app/drevos/rass/rods/rodrods.html.twig', [
+        return $this->render('app/proekts/drevorods/rods/rodrods.html.twig', [
             'rasa' => $rasa,
             'rodos' => $rodosf->allOfRasa($rasa->getId()->getValue()),
         ]);

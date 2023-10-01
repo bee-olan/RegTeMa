@@ -103,12 +103,14 @@ services:
     App\Menu\Proekts\ProektMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: proekt_menu }]
 
+    App\Menu\Proekts\DreRodoMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: drerodo_menu }]
+
     App\Menu\Proekts\MatkaMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: matka_menu }]
 
     App\Menu\Adminka\Matkas\PlemMatkaMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_plemmatka }]
-
 
     App\Menu\Adminka\Matkas\RedaktorsMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_plemmatka_redaktors }]

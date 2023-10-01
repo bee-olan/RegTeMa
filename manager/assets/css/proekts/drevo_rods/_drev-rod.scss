@@ -1,8 +1,7 @@
 .drev-rod {
   color: $fon-ser-bor;
   a {
-    padding: .6rem 1.6rem;
-
+    font-size: 1.2rem;
     opacity: 0.6;
     transition: opacity .2s linear;
 
@@ -14,25 +13,40 @@
     }
   }
   &--rodrod{
-    background-color:$fon-ser ;
+    //background-color: $beloe; //   $fon-ser;
+    box-shadow: inset 0 0 10px rgba($fon-ser-bor, 0.9);
+    border-bottom: 2px solid $fon-ser-bor; //
     padding: 1rem .3rem .3rem .3rem;
+    margin-left: 1rem;
+    margin-right: .3rem;
+  }
+  &--lini{
+    //background-color: $beloe; //   $fon-ser;
+    box-shadow: inset 0 0 10px rgba($fon-ser-bor, 0.9);
+    border-bottom: 2px solid $fon-ser-bor; //
+    padding: 2rem .6rem .6rem .6rem;
+    margin-left:2rem;
+    margin-right: .6rem;
   }
 }
-
+.drev-red{
+  font-size: 1.3rem;
+  color: $red;
+}
 .drev-rod_title{
-  margin-bottom: 1.5rem;
-  font-size: 1.4rem;
+  //margin-bottom: 1.5rem;
+  padding: .5rem 0 .5rem 1rem;
+  font-size: 1.2rem;
 }
 .drev-rod_ul {
   display: flex; // добавляем т.к добаилась li-шка
   align-items: center; // выравнивание по вертикали
   list-style: none; // убрала точку у li
-  min-width: 75%;
-  font-size: 1.2rem;
-  line-height: 2.0;
+  min-width: 100%;
+
 }
 .drev-rod_li {
-  border-bottom: 1px solid $rasa-color; // linia
-  padding: .6rem 2rem;
-  width: 35.0rem;
+
+  padding: .6rem 0 .6rem 1rem;
+  width: 20.0rem;
 }
