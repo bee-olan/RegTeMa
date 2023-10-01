@@ -48,7 +48,7 @@ class WetkaController extends AbstractController
         return $this->render('app/proekts/drevorods/rods/linis/wetkas/index.html.twig', [
             'linia' => $linia,
             'rodo' => $rodo,
-            'rasa' => $rodo->getRasa()->getTitle(),
+            'rasa' => $rodo->getRasa(),
             'stran' => $rodo->getStrana(),
             'wetkas' => $wetkas->allOfLinia($linia->getId()->getValue()),
         ]);

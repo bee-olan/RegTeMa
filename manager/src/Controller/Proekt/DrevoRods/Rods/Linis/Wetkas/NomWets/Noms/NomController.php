@@ -54,7 +54,7 @@ class NomController extends AbstractController
             'linia' => $linia,
             'rodo' => $rodo,
             'stran' => $rodo->getStrana(),
-            'rasa' => $rodo->getRasa()->getName(),
+            'rasa' => $rodo->getRasa(),
             'noms' => $noms->allOfNomWet($nomwet->getId()->getValue()),
         ]);
     }

@@ -51,7 +51,7 @@ class NomWetController extends AbstractController
             'linia' => $linia,
             'rodo' => $rodo,
             'stran' => $rodo->getStrana(),
-            'rasa' => $rodo->getRasa()->getName(),
+            'rasa' => $rodo->getRasa(),
             'nomwets' => $nomwets->allOfWetka($wetka->getId()->getValue()),
         ]);
     }

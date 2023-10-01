@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/app/proekts/drevorods/rods/rodrods/{id}/linis", name="app.proekts.drevorods.rods.rodrods.linis")
+ * @Route("/app/proekts/drevorods/rods/{id}/linis", name="app.proekts.drevorods.rods.linis")
  */
 class LiniController extends AbstractController
 {
@@ -45,10 +45,10 @@ class LiniController extends AbstractController
     public function index( Request $request, Rod $rodo,  LiniFetcher $liniasf): Response
     {
 //dd(allOfRodo($rodo->getId()->getValue()));
-        return $this->render('app/proekts/drevorods/rods/rodrods/linis/index.html.twig', [
+        return $this->render('app/proekts/drevorods/rods/linis/index.html.twig', [
             'rodo' => $rodo,
             'stran' => $rodo->getStrana(),
-            'rasa' => $rodo->getRasa()->getName(),
+            'rasa' => $rodo->getRasa(),
             'linias' => $liniasf->allOfRodo($rodo->getId()->getValue())
 //            allOfRodo($rodo->getId()->getValue()),
         ]);

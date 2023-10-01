@@ -1,0 +1,57 @@
+{% extends 'probase.html.twig' %}
+
+{% block title %}Ветка{% endblock %}
+
+{% block menupro %}
+    {{ include('app/proekts/drevorods/_tabs.html.twig') }}
+{% endblock %}
+
+    {% block kroxii %}
+        <a href="{{ path('home') }}">Главная</a>
+        <a href="{{ path('drevos.rass') }}">Родословная</a>
+        <span class="aktiv ">Ветки</span>
+    {% endblock %}
+
+{% block bodyy %}
+
+    <div  class="proekts proekts--drev-rod">
+
+        <h1 class="dre_title ">Родословная. Данные   из паспорта купленной матки</h1>
+        <div class="drev-rod">
+            <b class="drev-rod_title " > {{ rasa.title }}  </b>
+
+            <div class="drev-rod drev-rod--rodrod">
+                <b class="drev-rod_title " >
+                    {{ stran.name}} =>
+                    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</b>
+                <div class="drev-rod drev-rod--lini">
+                    <b class="drev-rod_title " >
+                        {% if linia.name == "-" %}
+                            названя нет
+                        {% else %}
+                            {{ linia.name }}
+                        {% endif %}
+                    </b>
+                    <div class="drev-rod drev-rod--lini">
+                        {% for wetka in wetkas %}
+                        {% if linia.wetkas > 0 %}
+                            <ul class="drev-rod_ul">
+                                <li class=" drev-rod_li">
+{#                                    <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas',{'id': linia.id}) }}"  >#}
+================
+{#                                            {{ wetka.name }}#}
+{#                                    </a>#}
+                                </li>
+{#                                <li> ( {{ linia.wetkas }} ) </li>#}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
