@@ -39,33 +39,4 @@
         </div>
     </div>
 
-    <div class="box">
-        <b class="dre_title ">Родословная. Данные   из паспорта купленной матки</b>
-        {{ rasa.title }}
-        <table class="table table-bordered table-hover">
-            <thead>
-            <tr>
-
-                <th>Страна</th>
-                <th>Матковод / Код</th>
-
-                <th class="fon_td_nado" colspan="3" >Линии  (кол-во)</th>
-
-            </tr>
-            </thead>
-            <tbody>
-            {% for rodo in rodos %}
-                <tr>
-
-                    <td title = {{ rodo.strana }}> {{ rodo.str_nom}}  </td>
-                    <td>   {{ rodo.name_matkov }} / {{ rodo.kod_matkov }}</td>
-<td>{{ rodo.linias }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-
-
 {% endblock %}

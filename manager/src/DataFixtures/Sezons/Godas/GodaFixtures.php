@@ -17,8 +17,8 @@ class GodaFixtures extends Fixture
 
         $sezon2015 = new Goda(
             Id::next(),
-            2015,
-            '2015-2016'
+            2018,
+            '2018-2019'
         );
         $manager->persist($sezon2015);
 

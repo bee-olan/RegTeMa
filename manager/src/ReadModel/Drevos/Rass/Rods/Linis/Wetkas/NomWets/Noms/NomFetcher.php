@@ -38,6 +38,7 @@ class NomFetcher
                 'w.nom',
                 'w.god',
                 'w.tit',
+                'w.status',
                 'w.name_ot',
                 'w.sort_nom'
 //                '(SELECT COUNT(*) FROM rod_rasa_rodo_nomwet_nomers n WHERE n.nomwet_id = w.id) AS nomers'

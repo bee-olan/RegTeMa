@@ -25,7 +25,7 @@
                     {{ stran.name}} =>
                     {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</b>
                 <div class="drev-rod drev-rod--lini">
-                    <b class="drev-rod_title " >
+                    <b class="drev-rod_title drev-red" >
                         {% if linia.name == "-" %}
                             названя нет
                         {% else %}
@@ -37,10 +37,10 @@
                         {% if linia.wetkas > 0 %}
                             <ul class="drev-rod_ul">
                                 <li class=" drev-rod_li">
-{#                                    <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas',{'id': linia.id}) }}"  >#}
-================
-{#                                            {{ wetka.name }}#}
-{#                                    </a>#}
+                                    <a href="{{ path('app.proekts.drevorods.rods.linis.wetkas.nomwets',{'id': wetka.id}) }}"  >
+
+                                            {{ wetka.name_w }}
+                                    </a>
                                 </li>
 {#                                <li> ( {{ linia.wetkas }} ) </li>#}
                             </ul>

@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/app/proekts/drevorods/rods/linis/wetkas/{id}/nomwets", name="app.proekts.drevorods.rods.rodrods.linis.wetkas.nomwets")
+ * @Route("/app/proekts/drevorods/rods/linis/wetkas/{id}/nomwets", name="app.proekts.drevorods.rods.linis.wetkas.nomwets")
  */
 class NomWetController extends AbstractController
 {
