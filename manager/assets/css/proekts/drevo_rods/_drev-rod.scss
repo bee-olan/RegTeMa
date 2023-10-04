@@ -2,13 +2,15 @@
   color: $fon-ser-bor;
   a {
     font-size: 1.2rem;
-    opacity: 0.6;
+    //opacity: 0.6;
     transition: opacity .2s linear;
 
     &:hover {
-      opacity: 1;
+      //background-color: #c8cacd;
+      opacity: .7;
       text-decoration: none;
-      color: $text;
+      //color: $text;
+      color: $red;
 
     }
   }
@@ -33,6 +35,16 @@
   font-size: 1.3rem;
   color: $red;
 }
+.drev-grad{
+  font-size: 1.3rem;
+  color: $grad1;
+}
+
+.drev-grad-si{
+  font-size: 1.2rem;
+  color: $grad1;
+}
+
 .drev-rod_title{
   //margin-bottom: 1.5rem;
   padding: .5rem 0 .5rem 1rem;
@@ -44,9 +56,13 @@
   list-style: none; // убрала точку у li
   min-width: 100%;
 
+  &:hover {
+    background-color: #e8eaee;
+  }
+
 }
 .drev-rod_li {
-
   padding: .6rem 0 .6rem 1rem;
   width: 20.0rem;
+
 }

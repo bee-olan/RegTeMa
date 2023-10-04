@@ -18,14 +18,17 @@
 
         <h1 class="dre_title ">Родословная. Данные   из паспорта купленной матки</h1>
         <div class="drev-rod">
-            <b class="drev-rod_title " > {{ rasa.title }}  </b>
+            <b class="drev-rod_title" >Paca ::  </b><b class="drev-rod_title drev-grad" > {{ rasa.title }}  </b>
 
             <div class="drev-rod drev-rod--rodrod">
                 <b class="drev-rod_title " >
-                    {{ stran.name}} =>
-                    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</b>
+                    Страна - матковод - код :: </b>
+                <b class="drev-rod_title drev-grad" >
+                    {{ stran.name}} - {{ rodo.nameMatkov }} - {{ rodo.kodMatkov }}</b>
                 <div class="drev-rod drev-rod--lini">
-                    <b class="drev-rod_title drev-red" >
+                    <b class="drev-rod_title " >
+                        Линия :: </b>
+                    <b class="drev-rod_title drev-grad" >
                         {% if linia.name == "-" %}
                             названя нет
                         {% else %}
@@ -33,6 +36,14 @@
                         {% endif %}
                     </b>
                     <div class="drev-rod drev-rod--lini">
+                        <ul class="drev-rod_ul drev-grad-si ">
+                            <li class=" drev-rod_li">
+                                Материнка - ветка
+                            </li>
+                            <li class=" drev-rod_li">
+                                Материнок - номеров
+                            </li>
+                        </ul>
                         {% for wetka in wetkas %}
                         {% if linia.wetkas > 0 %}
                             <ul class="drev-rod_ul">
@@ -42,7 +53,7 @@
                                             {{ wetka.name_w }}
                                     </a>
                                 </li>
-{#                                <li> ( {{ linia.wetkas }} ) </li>#}
+                                <li class=" drev-rod_li" >  {{ wetka.nomwets }}  </li>
                             </ul>
                         {% endif %}
                     {% endfor %}

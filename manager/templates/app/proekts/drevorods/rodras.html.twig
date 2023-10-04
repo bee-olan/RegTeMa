@@ -20,7 +20,14 @@
             <h1 class="drev-rod_title ">Родословная. Данные   из паспорта купленной матки</h1>
             <div class="drev-rod  drev-rod--rodrod">
 
+                <ul class="drev-rod_ul drev-grad-si ">
+                    <li class=" drev-rod_li">
+                        Paca
 
+                    </li>
+                    <li class=" drev-rod_li">Матководов из стран
+                    </li>
+                </ul>
                 {% for rasa in rasas %}
                     {% if rasa.rodos > 0 %}
                         <ul class="drev-rod_ul">
@@ -28,7 +35,11 @@
                                 <a href="{{ path('app.proekts.drevorods.rods.rodrods',{'id': rasa.id}) }}"  >
                                     {{ rasa.title }}
                                 </a>
-                                ( {{ rasa.rodos }} )
+                            </li>
+                            <li class=" drev-rod_li" >
+                                <a href="{{ path('app.proekts.drevorods.rods.rodrods',{'id': rasa.id}) }}"  >
+                                    {{ rasa.rodos }}
+                                </a>
                             </li>
                         </ul>
                     {% endif %}

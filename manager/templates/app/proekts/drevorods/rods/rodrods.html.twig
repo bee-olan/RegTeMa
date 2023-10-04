@@ -18,20 +18,31 @@
 
             <h1 class="dre_title ">Родословная. Данные   из паспорта купленной матки</h1>
             <div class="drev-rod">
-               <b class="drev-rod_title drev-red" > {{ rasa.title }}  </b>
+                <b class="drev-rod_title" >Paca ::  </b><b class="drev-rod_title drev-grad" > {{ rasa.title }}  </b>
                 <div class="drev-rod drev-rod--rodrod">
+                    <ul class="drev-rod_ul drev-grad-si ">
+                        <li class=" drev-rod_li">
+                           Страна
+                        </li>
+                        <li class=" drev-rod_li">Матковод</li>
+                        <li class=" drev-rod_li">Код</li>
+                        <li class=" drev-rod_li">Кол. линий</li>
+                    </ul>
                     {% for rodo in rodos %}
                         {% if rodo.linias > 0 %}
+                    <a href="{{ path('app.proekts.drevorods.rods.linis',{'id': rodo.id}) }}"  >
                             <ul class="drev-rod_ul">
-                                <li class=" drev-rod_li"> {{ rodo.strana}} </li>
-                                <li class=" drev-rod_li">
-                                    <a href="{{ path('app.proekts.drevorods.rods.linis',{'id': rodo.id}) }}"  >
-                                        {{ rodo.name_matkov }} / {{ rodo.kod_matkov }}
-                                    </a>
-
+                                <li class=" drev-rod_li"> {{ rodo.strana}}
                                 </li>
-                                <li> ( {{ rodo.linias }} ) </li>
+                                <li class=" drev-rod_li">
+                                        {{ rodo.name_matkov }}
+                                </li>
+                                <li class=" drev-rod_li">
+                                    {{ rodo.kod_matkov }}
+                                </li>
+                                <li class=" drev-rod_li" >  {{ rodo.linias }}  </li>
                             </ul>
+                    </a>
                         {% endif %}
                 {% endfor %}
 

@@ -18,14 +18,17 @@
 
         <h1 class="dre_title ">Родословная. Данные   из паспорта купленной матки</h1>
         <div class="drev-rod">
-            <b class="drev-rod_title " > {{ rasa.title }}  </b>
+            <b class="drev-rod_title" >Paca ::  </b><b class="drev-rod_title drev-grad" > {{ rasa.title }}  </b>
 
             <div class="drev-rod drev-rod--rodrod">
                 <b class="drev-rod_title " >
-                    {{ stran.name}} =>
-                    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</b>
+                    Страна - матковод - код :: </b>
+                <b class="drev-rod_title drev-grad" >
+                    {{ stran.name}} - {{ rodo.nameMatkov }} - {{ rodo.kodMatkov }}</b>
                 <div class="drev-rod drev-rod--lini">
                     <b class="drev-rod_title " >
+                        Линия :: </b>
+                    <b class="drev-rod_title drev-grad" >
                         {% if linia.name == "-" %}
                             названя нет
                         {% else %}
@@ -33,11 +36,19 @@
                         {% endif %}
                     </b>
                     <div class="drev-rod drev-rod--lini">
-                        <b class="drev-rod_title drev-red" >
-                            {{ wetka.nameW }}
-                        </b>
+                        <b class="drev-rod_title " >
+                            Материнка - ветка :: </b>
+                        <b class="drev-rod_title drev-grad" >
+                            {{ wetka.nameW }}</b>
                         <div class="drev-rod drev-rod--lini">
-
+                            <ul class="drev-rod_ul drev-grad-si ">
+                                <li class=" drev-rod_li">
+                                    Материнка - номер
+                                </li>
+                                <li class=" drev-rod_li">
+                                    Кол-во  номеров маток
+                                </li>
+                            </ul>
                             {% for nomwet in nomwets %}
 
                             {% if nomwet.nomers > 0 %}
@@ -48,7 +59,7 @@
                                                 {{ nomwet.tit_w }}
                                         </a>
                                     </li>
-                                    <li> ( {{ nomwet.nomers }} ) </li>
+                                    <li class=" drev-rod_li">  {{ nomwet.nomers }}  </li>
                                 </ul>
                             {% endif %}
                         {% endfor %}
