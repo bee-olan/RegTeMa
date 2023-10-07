@@ -40,7 +40,8 @@ class NomFetcher
                 'w.tit',
                 'w.status',
                 'w.name_ot',
-                'w.sort_nom'
+                'w.sort_nom',
+                'w.zakazal'
 //                '(SELECT COUNT(*) FROM rod_rasa_rodo_nomwet_nomers n WHERE n.nomwet_id = w.id) AS nomers'
                 // '(
                 //     SELECT COUNT(ms.member_id)
@@ -72,6 +73,7 @@ class NomFetcher
                 'w.name_ot',
                 'w.sort_nom',
                 'w.status',
+                'w.zakazal',
                 'n.tit_w',
                 'n.wetka_id',
                 'we.name_w',

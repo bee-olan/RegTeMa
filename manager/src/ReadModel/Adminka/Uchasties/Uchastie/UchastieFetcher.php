@@ -32,6 +32,19 @@ class UchastieFetcher
     }
 
 
+    public function assoc(): array
+    {
+        $stmt = $this->connection->createQueryBuilder()
+            ->select(
+                'id',
+                'TRIM(CONCAT(name_first, \' \', name_last, \'  - \', nike)) AS name'
+            )
+            ->from('admin_uchasties_uchasties')
+            ->orderBy('nike')
+            ->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_KEY_PAIR);
+    }
 
     /**
      * @param Filter $filter

@@ -103,7 +103,8 @@ class NomWet
                                 string $god,
                                 string $tit,
                                 string $nameOt,
-                                int $sortNom
+                                int $sortNom,
+                                string $zakazal
                                 ): void
     {
 
@@ -113,7 +114,7 @@ class NomWet
             }
 
         }
-        $this->nomers->add(new Nom($this, $id, $nom, $god, $tit, $nameOt, $sortNom));
+        $this->nomers->add(new Nom($this, $id, $nom, $god, $tit, $nameOt, $sortNom, $zakazal));
     }
 
  

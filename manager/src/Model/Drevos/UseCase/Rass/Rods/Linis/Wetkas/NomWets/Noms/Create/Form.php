@@ -26,16 +26,12 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
 
-        $uchasties = [];
-        foreach ($this->uchasties->activeGroupedList() as $item) {
-            $uchasties[$item['group']][$item['nike'].' ('.$item['persona'].')'] = $item['id'];
-        }
+//        $uchasties = [];
+//        foreach ($this->uchasties->activeGroupedList() as $item) {
+//            $uchasties[$item['group']][$item['nike'].' ('.$item['persona'].')'] = $item['id'];
+//        }
 
         $builder
-            ->add('uchastie', Type\ChoiceType::class, [
-                'label' => 'Участники',
-                'choices' => $uchasties,
-            ])
 
             ->add('nameOt', Type\TextType::class, array(
                 'label' => 'Название материнки трутня',
@@ -55,7 +51,10 @@ class Form extends AbstractType
                 'choices' => array_flip($this->godas->assocGod()),
             ])
 
-
+            ->add('zakazal', Type\ChoiceType::class, [
+                'label' => 'Заказал',
+                'choices' => array_flip($this->uchasties->assoc()),
+            ])
         ;
     }
 
