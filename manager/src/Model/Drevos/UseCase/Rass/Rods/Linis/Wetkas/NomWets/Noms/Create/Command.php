@@ -42,7 +42,7 @@ class Command
     /**
      * @Assert\NotBlank()
      */
-    public $zakazal;
+    public $zakaz;
 
 
     public function __construct( string $nomwet)

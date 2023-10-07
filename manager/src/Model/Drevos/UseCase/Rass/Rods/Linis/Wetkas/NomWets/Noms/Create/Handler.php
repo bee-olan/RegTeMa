@@ -20,17 +20,17 @@ class Handler
 {
     private $godas;
     private $nomwets;
-//    private $uchasties;
+    private $uchasties;
     private $flusher;
 
     public function __construct(NomWetRepository $nomwets,
                                 GodaRepository $godas,
-//                                UchastieRepository $uchasties,
+                                UchastieRepository $uchasties,
                                 Flusher $flusher)
     {
         $this->godas = $godas;
         $this->nomwets = $nomwets;
-//        $this->uchasties= $uchasties;
+        $this->uchasties= $uchasties;
         $this->flusher = $flusher;
     }
 
@@ -38,8 +38,8 @@ class Handler
     {
         $nomwet = $this->nomwets->get(new NomWetId($command->nomwet));
 
-//        $zakazal = $this->uchasties->get(new UchatieId($command->zakazal));
-//dd($zakazal->getName());
+        $zakazal = $this->uchasties->get(new UchatieId($command->zakaz));
+
         $goda = $this->godas->get(new GodaId($command->god));
 
         $god = (string)$goda->getGod();
@@ -53,7 +53,7 @@ class Handler
 			$command->tit,
 			$command->nameOt,
 			$command->sortNom,
-            $command->zakazal
+            $zakazal
         );
 
         $this->flusher->flush();

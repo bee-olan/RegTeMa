@@ -41,7 +41,8 @@ class NomFetcher
                 'w.status',
                 'w.name_ot',
                 'w.sort_nom',
-                'w.zakazal'
+                'w.zakazal_id',
+                'TRIM(CONCAT(u.name_first, \' \', u.name_last, \'  - \', u.nike)) AS nike'
 //                '(SELECT COUNT(*) FROM rod_rasa_rodo_nomwet_nomers n WHERE n.nomwet_id = w.id) AS nomers'
                 // '(
                 //     SELECT COUNT(ms.member_id)
@@ -51,6 +52,7 @@ class NomFetcher
                 // ) AS members_count'
             )
             ->from('dre_ras_rod_lini_wet_nomw_noms', 'w')
+            ->innerJoin('w', 'admin_uchasties_uchasties', 'u', 'w.zakazal_id = u.id')
             ->andWhere('nomwet_id = :nomwets ')
             ->setParameter(':nomwets', $nomwet)
             ->orderBy('sort_nom')
@@ -73,7 +75,7 @@ class NomFetcher
                 'w.name_ot',
                 'w.sort_nom',
                 'w.status',
-                'w.zakazal',
+                'w.zakazal_id',
                 'n.tit_w',
                 'n.wetka_id',
                 'we.name_w',

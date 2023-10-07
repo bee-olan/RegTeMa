@@ -70,16 +70,13 @@ class Nom
      */
     private $status;
 
-//    /**
-//     * @var ArrayCollection|Zakazal[]
-//     * @ORM\OneToMany(targetEntity="Zakazal", mappedBy="nom", orphanRemoval=true, cascade={"all"})
-//     */
-//    private $zakazals;
-
     /**
-     * @var string
-     * @ORM\Column(type="string")
+     * @var Uchastie
+     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie")
+     * @ORM\JoinColumn(name="zakazal_id", referencedColumnName="id", nullable=false)
      */
+//    private $uchastie;
+
     private $zakazal;
 
     public function __construct(NomWet $nomwet, Id $id,
@@ -88,7 +85,7 @@ class Nom
                                 string $tit,
 								string $nameOt,
 								int $sortNom,
-                                string $zakazal
+                                Uchastie $zakazal
                                 )
     {
         $this->nomwet = $nomwet;
@@ -272,27 +269,10 @@ class Nom
     }
 
 
-    public function getZakazal(): string
+    public function getZakazal(): Uchastie
     {
         return $this->zakazal;
     }
 
-
-
-//
-//    public function getZakazals()
-//    {
-//        return $this->zakazals->toArray();
-//    }
-//
-//    public function getZakazal(UchastieId $id): Zakazal
-//    {
-//        foreach ($this->zakazals as $zakazal) {
-//            if ($zakazal->isForUchastie($id)) {
-//                return $zakazal;
-//            }
-//        }
-//        throw new \DomainException('Такого участника  нет.');
-//    }
 
 }

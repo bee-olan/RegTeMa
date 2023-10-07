@@ -51,7 +51,7 @@ class Form extends AbstractType
                 'choices' => array_flip($this->godas->assocGod()),
             ])
 
-            ->add('zakazal', Type\ChoiceType::class, [
+            ->add('zakaz', Type\ChoiceType::class, [
                 'label' => 'Заказал',
                 'choices' => array_flip($this->uchasties->assoc()),
             ])

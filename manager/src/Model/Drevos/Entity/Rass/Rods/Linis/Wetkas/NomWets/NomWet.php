@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets;
 
+use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\Id  as NomId;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\Nom;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\Wetka;
@@ -104,7 +105,7 @@ class NomWet
                                 string $tit,
                                 string $nameOt,
                                 int $sortNom,
-                                string $zakazal
+                                Uchastie $zakazal
                                 ): void
     {
 
