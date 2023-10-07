@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms;
 
+use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
+
+use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\NomWet;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -67,12 +70,25 @@ class Nom
      */
     private $status;
 
+//    /**
+//     * @var ArrayCollection|Zakazal[]
+//     * @ORM\OneToMany(targetEntity="Zakazal", mappedBy="nom", orphanRemoval=true, cascade={"all"})
+//     */
+//    private $zakazals;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private $zakazal;
+
     public function __construct(NomWet $nomwet, Id $id,
 								string $nom,
                                 string $god,
                                 string $tit,
 								string $nameOt,
-								int $sortNom
+								int $sortNom,
+                                string $zakazal
                                 )
     {
         $this->nomwet = $nomwet;
@@ -82,15 +98,16 @@ class Nom
         $this->tit = $tit;
         $this->nameOt = $nameOt;
 		$this->sortNom = $sortNom;
+		$this->zakazal = $zakazal;
 
         $this->status = Statu::ojidaet();
-
+//        $this->zakazals = new ArrayCollection();
     }
 
-	public function edit( string $nom,
-                        string $god,
-                         string $tit,
-                        string $nameOt
+	public function edit(   string $nom,
+                            string $god,
+                            string $tit,
+                            string $nameOt
                             ): void
     {
         $this->nom = $nom;
@@ -98,6 +115,58 @@ class Nom
         $this->tit = $tit;
         $this->nameOt = $nameOt;
     }
+
+    //-------------------------------------
+
+//    public function hasUchastie(UchastieId $id): bool
+//    {
+//        foreach ($this->zakazals as $zakazal) {
+//            if ($zakazal->isForUchastie($id)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+//
+//
+//    /**
+//     * @param Uchastie $uchastie
+//     * @throws \Exception
+//     */
+//    public function addUchastie(Uchastie $uchastie): void
+//    {
+//        foreach ($this->zakazals as $zakazal) {
+//            if ($zakazal->isForUchastie($uchastie->getId())) {
+//                throw new \DomainException('Такой участник уже добавлен.');
+//            }
+//        }
+////        $departments = array_map([$this, 'getDepartment'], $departmentIds);
+//        $this->zakazals->add(new Zakazal($this, $uchastie));
+//    }
+//
+//    /**
+//     * @param UchastieId $uchastie
+//     */
+//    public function editUchastie(UchastieId $uchastie): void
+//    {
+//        foreach ($this->zakazals as $zakazal) {
+//            if ($zakazal->isForUchastie($uchastie)) {
+//                return;
+//            }
+//        }
+//        throw new \DomainException('Участие не найдено.');
+//    }
+//
+//    public function removeUchastie(UchastieId $uchastie): void
+//    {
+//        foreach ($this->zakazals as $zakazal) {
+//            if ($zakazal->isForUchastie($uchastie)) {
+//                $this->zakazal->removeElement($zakazal);
+//                return;
+//            }
+//        }
+//        throw new \DomainException('Участие не найдено.');
+//    }
 
 //------------------------------------------------------
     public function archive(): void
@@ -203,5 +272,27 @@ class Nom
     }
 
 
+    public function getZakazal(): string
+    {
+        return $this->zakazal;
+    }
+
+
+
+//
+//    public function getZakazals()
+//    {
+//        return $this->zakazals->toArray();
+//    }
+//
+//    public function getZakazal(UchastieId $id): Zakazal
+//    {
+//        foreach ($this->zakazals as $zakazal) {
+//            if ($zakazal->isForUchastie($id)) {
+//                return $zakazal;
+//            }
+//        }
+//        throw new \DomainException('Такого участника  нет.');
+//    }
 
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\Noms\Create;
 
-
+use App\ReadModel\Adminka\Uchasties\Uchastie\UchastieFetcher;
 use App\ReadModel\Adminka\Sezons\Godas\GodaFetcher;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type;
@@ -13,15 +13,29 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class Form extends AbstractType
 {
+
+    private $uchasties;
+
     private $godas;
 
-    public function __construct(GodaFetcher $godas)
+    public function __construct(GodaFetcher $godas, UchastieFetcher $uchasties)
     {
         $this->godas = $godas;
+        $this->uchasties = $uchasties;
     }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
+        $uchasties = [];
+        foreach ($this->uchasties->activeGroupedList() as $item) {
+            $uchasties[$item['group']][$item['nike'].' ('.$item['persona'].')'] = $item['id'];
+        }
+
         $builder
+            ->add('uchastie', Type\ChoiceType::class, [
+                'label' => 'Участники',
+                'choices' => $uchasties,
+            ])
 
             ->add('nameOt', Type\TextType::class, array(
                 'label' => 'Название материнки трутня',

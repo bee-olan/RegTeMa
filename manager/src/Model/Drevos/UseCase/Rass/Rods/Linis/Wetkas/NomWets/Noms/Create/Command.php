@@ -39,6 +39,11 @@ class Command
      */
     public $tit;
 
+    /**
+     * @Assert\NotBlank()
+     */
+    public $zakazal;
+
 
     public function __construct( string $nomwet)
     {
