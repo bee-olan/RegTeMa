@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Создать{% endblock %}
+
+    {% block kroxii %}
+        <a href="{{ path('home') }}">Главная</a>
+        <a href="{{ path('drevos.rass') }}">Родословная</a>
+        <span class="aktiv ">Расы</span>
+    {% endblock %}
+
+{% block body %}
+
+    {{ include('app/drevos/_tabs.html.twig') }}
+
+
+    <div class="box">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th  class="fon_td_es" >Раса</th>
+                <th  class="fon_td_es" >Страна</th>
+                <th  class="fon_td_es" colspan="2" >Матковод(код)</th>
+                <th class="fon_td_es" >Линии</th>
+                <th class="fon_td_es" colspan="2"> Материнка</th>
+                <th> Материнка трутня</th>
+                <th class="fon_td_no"> номер Матки  </th>
+                <th  class="fon_td_no"> Заказал </th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="fon_td_es">   {{ rasa.title }}</td>
+                <td class="fon_td_es">{{ stran.name }}</td>
+                <td class="fon_td_es">{{ rodo.nameMatkov }}</td>
+                <td class="fon_td_es">{{ rodo.kodMatkov }}</td>
+                <td class="fon_td_es" >{{ linia.name }}</td>
+                <td class="fon_td_es" >{{ wetka.nameW }}</td>
+                <td class="fon_td_es" > {{ nomwet.nomW }} </td>
+            <td ></td>
+                    <td class="fon_td_no"></td>
+                    <td class="fon_td_no"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <b class="dre_title  ">Родословная. Данные   из паспорта купленной матки</b>
+    <div class="box-edit">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить в БД</button>
+{#            <a href="{{ path('drevos.rass.rods.linis.wetkas',{'id': linia.id}) }}"#}
+{#                class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Добавить"</a>#}
+        {{ form_end(form) }}
+	</div>
+
+
+{% endblock %}

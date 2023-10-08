@@ -7,7 +7,7 @@ namespace App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Creat
 use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchatieId;
 
-use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\Id;
+use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Id;
 
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\NomWetRepository;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Id as NomWetId;
@@ -33,13 +33,7 @@ class Handler
     {
         $nomwet = $this->nomwets->get(new NomWetId($command->nomwet));
 
-//        $zakazal = $this->uchasties->get(new UchatieId($command->zakaz));
-//
-//        $goda = $this->godas->get(new GodaId($command->god));
-//
-//        $god = (string)$goda->getGod();
-//
-//        $command->tit = $command->nom."-".$god;
+
 
      $nomwet->addMatTrut(
          $command->id = Id::next(),

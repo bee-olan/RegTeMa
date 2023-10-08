@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts;
 
-use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 
+use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Nom;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Id  as NomId;
 
@@ -68,8 +68,10 @@ class MatTrut
                                 )
     {
         $this->nomwet = $nomwet;
+        $this->id = $id;
         $this->nameOt =$nameOt;
 		$this->sortTrut = $sortTrut;
+
 		$this->nomers = new ArrayCollection();
     }
 
@@ -149,6 +151,12 @@ class MatTrut
     public function getNomwet(): NomWet
     {
         return $this->nomwet;
+    }
+
+
+    public function getNomers()
+    {
+        return $this->nomers;
     }
 
 

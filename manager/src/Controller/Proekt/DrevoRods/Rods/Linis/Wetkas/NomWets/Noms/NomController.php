@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace App\Controller\Proekt\DrevoRods\Rods\Linis\Wetkas\NomWets\Noms;
 
 use App\Annotation\Guid;
-use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\Id;
+use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Id;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\NomWet;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\Wetka;
-use App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\Noms\Create;
-use App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\Noms\Edit;
-use App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\Noms\Remove;
+use App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Create;
+use App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Edit;
+use App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Remove;
 
 //use App\Security\Voter\Adminka\Rasas\MateriAccess;
 use App\Controller\ErrorHandler;
-use App\ReadModel\Drevos\Rass\Rods\Linis\Wetkas\NomWets\Noms\NomFetcher;
+use App\ReadModel\Drevos\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\NomFetcher;
 
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;

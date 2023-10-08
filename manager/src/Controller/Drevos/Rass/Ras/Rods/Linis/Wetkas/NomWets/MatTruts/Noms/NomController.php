@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Drevos\Rass\Ras\Rods\Linis\Wetkas\NomWets\Noms;
+namespace App\Controller\Drevos\Rass\Ras\Rods\Linis\Wetkas\NomWets\MatTruts\Noms;
 
 use App\Annotation\Guid;
-use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\Id;
-use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\NomWet;
-use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\Wetka;
-use App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\Noms\Create;
-use App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\Noms\Edit;
-use App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\Noms\Remove;
+use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\MatTrut;
+use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Id;
+
+use App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Create;
+use App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Edit;
+use App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Remove;
 
 //use App\Security\Voter\Adminka\Rasas\MateriAccess;
 use App\Controller\ErrorHandler;
-use App\ReadModel\Drevos\Rass\Rods\Linis\Wetkas\NomWets\Noms\NomFetcher;
+use App\ReadModel\Drevos\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\NomFetcher;
 
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/drevos/rass/rods/linis/wetkas/nomwets/{id}/noms", name="drevos.rass.rods.linis.wetkas.nomwets.noms")
+ * @Route("/drevos/rass/rods/linis/wetkas/nomwets/mattruts/{id}/noms", name="drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms")
  */
 class NomController extends AbstractController
 {
@@ -38,42 +38,43 @@ class NomController extends AbstractController
 
     /**
      * @Route("", name="")
-     * @param NomWet $nomwet
+     * @param MatTrut $mattrut
      * @param Request $request
      * @param NomFetcher $noms
      * @return Response
      */
-    public function index( Request $request, NomWet $nomwet,  NomFetcher $noms): Response
+    public function index( Request $request, MatTrut $mattrut,  NomFetcher $noms): Response
     {
+        $nomwet = $mattrut->getNomwet();
         $wetka = $nomwet->getWetka();
         $linia = $wetka->getLinia();
         $rodo =  $linia->getRodo();
-        return $this->render('app/drevos/rass/rods/linis/wetkas/nomwets/noms/index.html.twig', [
+        return $this->render('app/drevos/rass/rods/linis/wetkas/nomwets/mattruts/noms/index.html.twig', [
             'wetka' => $wetka,
-            'nomwet' => $nomwet,
+            'mattrut' => $mattrut,
             'linia' => $linia,
             'rodo' => $rodo,
             'stran' => $rodo->getStrana(),
             'rasa' => $rodo->getRasa()->getName(),
-            'noms' => $noms->allOfNomWet($nomwet->getId()->getValue()),
+            'noms' => $noms->allOfMatTrut($mattrut->getId()->getValue()),
         ]);
     }
 
 
     /**
      * @Route("/create", name=".create")
-     * @param NomWet $nomwet
+     * @param MatTrut $mattrut
 	 * @param NomFetcher $noms
      * @param Request $request
      * @param Create\Handler $handler
      * @return Response
      */
-    public function create(NomWet $nomwet, NomFetcher $noms, Request $request, Create\Handler $handler): Response
+    public function create(MatTrut $mattrut, NomFetcher $noms, Request $request, Create\Handler $handler): Response
    {
 
-       $maxSort = $noms->getMaxSortNom($nomwet->getId()->getValue()) + 1;
+       $maxSort = $noms->getMaxSortNom($mattrut->getId()->getValue()) + 1;
 
-       $command = Create\Command::fromNomWet($nomwet, $maxSort);// заполнение  значениями из Rasa
+       $command = Create\Command::fromMatTrut($mattrut, $maxSort);// заполнение  значениями из Rasa
 
         $form = $this->createForm(Create\Form::class, $command);
         $form->handleRequest($request);
@@ -81,19 +82,19 @@ class NomController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('drevos.rass.rods.linis.wetkas.nomwets.noms.show', ['id' => $nomwet->getId(),'nom_id'=>$command->id ]);
+                return $this->redirectToRoute('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms.show', ['id' => $mattrut->getId(),'nom_id'=>$command->id ]);
 
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
-        $wetka = $nomwet->getWetka();
+        $wetka = $mattrut->getWetka();
         $linia = $wetka->getLinia();
         $rodo =  $linia->getRodo();
 
-        return $this->render('app/drevos/rass/rods/linis/wetkas/nomwets/noms/create.html.twig', [
-            'nomwet' => $nomwet,
+        return $this->render('app/drevos/rass/rods/linis/wetkas/nomwets/mattruts/noms/create.html.twig', [
+            'mattrut' => $mattrut,
             'wetka' => $wetka,
             'linia' => $linia,
             'rodo' => $rodo,
@@ -105,19 +106,19 @@ class NomController extends AbstractController
 
     /**
      * @Route("/{nom_id}/edit", name=".edit")
-     * @param NomWet $nomwet
+     * @param MatTrut $mattrut
      * @param string $nom_id
      * @param Request $request
      * @param Edit\Handler $handler
      * @return Response
      */
-    public function edit(Request $request,NomWet $nomwet, string $nom_id,  Edit\Handler $handler): Response
+    public function edit(Request $request,MatTrut $mattrut, string $nom_id,  Edit\Handler $handler): Response
     {
         //$this->denyAccessUnlessGranted(MateriAccess::MANAGE_MEMBERS, $materi);
 
-        $nom = $nomwet->getNom(new Id($nom_id));
+        $nom = $mattrut->getNom(new Id($nom_id));
 
-        $command = Edit\Command::fromNomWet($nomwet, $nom);
+        $command = Edit\Command::fromMatTrut($mattrut, $nom);
 
 
         $form = $this->createForm(Edit\Form::class, $command);
@@ -126,7 +127,7 @@ class NomController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('drevos.rass.rods.linis.wetkas.nomwets.noms.show',	['id' => $nomwet->getId(), 'nom_id' => $nom_id]);
+                return $this->redirectToRoute('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms.show',	['id' => $mattrut->getId(), 'nom_id' => $nom_id]);
 
 
             } catch (\DomainException $e) {
@@ -135,32 +136,32 @@ class NomController extends AbstractController
             }
         }
 
-        return $this->render('app/drevos/rass/rods/linis/wetkas/nomwets/noms/edit.html.twig', [
+        return $this->render('app/drevos/rass/rods/linis/wetkas/nomwets/mattruts/noms/edit.html.twig', [
             'nom' => $nom,
-            'nomwet' => $nomwet,
+            'mattrut' => $mattrut,
             'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/{nom_id}/delete", name=".delete", methods={"POST"})
-     * @param NomWet $nomwet
+     * @param MatTrut $mattrut
      * @param string $nom_id
      * @param Request $request
      * @param Remove\Handler $handler
      * @return Response
      */
-    public function delete(NomWet $nomwet, string $nom_id, Request $request, Remove\Handler $handler): Response
+    public function delete(MatTrut $mattrut, string $nom_id, Request $request, Remove\Handler $handler): Response
     {
         //$this->denyAccessUnlessGranted(MateriAccess::MANAGE_MEMBERS, $materi);
 
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
-            return $this->redirectToRoute('drevos.rass.rods.linis.wetkas.nomwets.noms', ['id' => $nomwet->getId()]);
+            return $this->redirectToRoute('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms', ['id' => $mattrut->getId()]);
         }
 
-        $nom = $nomwet->getNom(new Id($nom_id));
+        $nom = $mattrut->getNom(new Id($nom_id));
 
-        $command = new Remove\Command($nomwet->getId()->getValue(), $nom->getId()->getValue());
+        $command = new Remove\Command($mattrut->getId()->getValue(), $nom->getId()->getValue());
 
         try {
             $handler->handle($command);
@@ -169,28 +170,28 @@ class NomController extends AbstractController
             $this->addFlash('error', $e->getMessage());
         }
 
-        return $this->redirectToRoute('drevos.rass.rods.linis.wetkas.nomwets.noms',
-					['id' => $nomwet->getId()]);
+        return $this->redirectToRoute('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms',
+					['id' => $mattrut->getId()]);
     }
 
     /**
      * @Route("/show/{nom_id}", name=".show", requirements={"nom_id"=Guid::PATTERN})
      * @param string $nom_id
      * @param Request $request
-     * @param NomWet $nomwet
+     * @param MatTrut $mattrut
      * @return Response
      */
-    public function show(Request $request, NomWet $nomwet, string $nom_id): Response
+    public function show(Request $request, MatTrut $mattrut, string $nom_id): Response
     {
-        $nomer = $nomwet->getNom(new Id($nom_id));
-        $nomwet = $nomer->getNomwet();
+        $nomer = $mattrut->getNom(new Id($nom_id));
+        $mattrut = $nomer->g();
         $wetka = $nomwet->getWetka();
         $linia = $wetka->getLinia();
         $rodo = $linia->getRodo();
 
-        return $this->render('app/drevos/rass/rods/linis/wetkas/nomwets/noms/show.html.twig', [
+        return $this->render('app/drevos/rass/rods/linis/wetkas/nomwets/mattruts/noms/show.html.twig', [
             'nom' => $nomer,
-            'nomwet' => $nomwet,
+            'mattrut' => $mattrut,
             'wetka' => $wetka,
             'rodo' => $rodo,
             'linia'=>$linia,

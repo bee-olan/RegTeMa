@@ -39,7 +39,7 @@ class NomWetFetcher
                 'w.god_w',
                 'w.tit_w',
                 'w.sort_nom_wet',
-                '(SELECT COUNT(*) FROM dre_ras_rod_lini_wet_nomw_noms n WHERE n.nomwet_id = w.id) AS nomers'
+                '(SELECT COUNT(*) FROM dre_ras_rod_lini_wet_nomw_truts n WHERE n.nomwet_id = w.id) AS truts'
                 // '(
                 //     SELECT COUNT(ms.member_id)
                 //     FROM work_projects_project_memberships ms

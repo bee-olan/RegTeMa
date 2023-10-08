@@ -25,10 +25,11 @@
                 <th class="fon_td_es">Страна</th>
                 <th class="fon_td_es" colspan="2">Матковод(код)</th>
                 <th class="fon_td_es" >Линии</th>
-                <th  class="fon_td_es" colspan="2"> Материнка</th>
+                <th class="fon_td_es" colspan="2"> Материнка</th>
+
+                <th > Материнка трутня</th>
+                <th colspan="2"> Матка </th>
                 <th class="fon_td"></th>
-                <th class="fon_td_no"> Материнка трутня</th>
-                <th class="fon_td_no"> Матка </th>
             </tr>
             </thead>
             <tbody>
@@ -39,21 +40,24 @@
                 <td class="fon_td_es">{{ rodo.kodMatkov }}</td>
                 <td class="fon_td_es" >{{ linia.name }}</td>
                 <td class="fon_td_es" >{{ wetka.nameW }}</td>
-                <td  > {{ nomwet.nomW }} </td>
+                <td class="fon_td_es" >{{ nomwet.nomW }}</td>
+                <td>{{ mattrut.nameOt }}</td>
+                <td></td>
+                <td></td>
                 <td class="fon_td">
-                    <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.edit', {'id': wetka.id, 'nomwet_id': nomwet.id}) }}"
+                    <a href="{{ path('drevos.rass.rods.linis.wetkas.edit', {'id': linia.id, 'wetka_id': wetka.id}) }}"
                        class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
                 </td>
-                <td colspan="2" class="fon_td_no"></td>
+                
             </tr>
             </tbody>
         </table>
     </div>
 
     <div   >
-        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.create', {'id': nomwet.id}) }}"
-           class="btnn btnn--mb0 btnn--pt btnn--rasa">Продолжить -
-            <strong class="strongo strongo--kras">  материнка трутня </strong> </a>
+        <a href="{{ path('drevos.rodos') }}"
+           class="btnn btnn--mb0 btnn--pt btnn--rasa">Смотреть все
+            <strong class="strongo strongo--kras"> родословные </strong> </a>
     </div>
 
 {% endblock %}

@@ -52,7 +52,12 @@ class NomWet
      */
     private $titW;
 
-	
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    private $sortNomWet;
+
 	 /**
      * @var ArrayCollection|MatTrut[]
      * @ORM\OneToMany(
@@ -63,11 +68,7 @@ class NomWet
      */
     private $mattruts;
 	
-	 /**
-     * @var int
-     * @ORM\Column(type="integer")
-     */
-    private $sortNomWet;
+
 
     public function __construct(Wetka $wetka, Id $id,
 								string $nomW,
@@ -106,11 +107,13 @@ class NomWet
     {
 
         foreach ($this->mattruts as $mattrut) {
+            dd($mattrut);
             if ($mattrut->isTrutEqual($nameOt)) {
                 throw new \DomainException('номер уже существует.');
             }
 
         }
+
         $this->mattruts->add(new MatTrut($this, $id,  $nameOt, $sortTrut));
     }
 

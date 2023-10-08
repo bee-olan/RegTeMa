@@ -14,15 +14,6 @@ class Command
      */
     public $nomwet;
 
-//    /**
-//     * @Assert\NotBlank()
-//     */
-//    public $nom;
-//
-//    /**
-//     * @Assert\NotBlank()
-//     */
-//    public $god;
 
     /**
      * @Assert\NotBlank()
@@ -33,16 +24,6 @@ class Command
      * @Assert\NotBlank()
      */
     public $sortTrut;
-
-//    /**
-//     * @Assert\NotBlank()
-//     */
-//    public $tit;
-
-//    /**
-//     * @Assert\NotBlank()
-//     */
-//    public $zakaz;
 
 
     public function __construct( string $nomwet)

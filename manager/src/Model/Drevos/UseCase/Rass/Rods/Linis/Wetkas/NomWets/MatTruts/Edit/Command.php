@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Edit;
 
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\MatTrut;
-use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\Nom;
+//use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\Nom;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\NomWet;
 use Symfony\Component\Validator\Constraints as Assert;
 

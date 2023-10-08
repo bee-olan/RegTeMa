@@ -73,7 +73,6 @@ class RodController extends AbstractController
             try {
                 $handler->handle($command);
                 return $this->redirectToRoute('drevos.rass.rods.show', ['id' => $rasa->getId(), 'rodo_id' => $command->id ]);
-//                return $this->redirectToRoute('drevos.rass.rods.linis.create', ['id' => $command->id]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());

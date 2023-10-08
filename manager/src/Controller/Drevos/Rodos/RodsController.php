@@ -8,7 +8,7 @@ use App\Annotation\Guid;
 
 use App\Controller\ErrorHandler;
 
-use App\ReadModel\Drevos\Rass\Rods\Linis\Wetkas\NomWets\Noms\NomFetcher;
+use App\ReadModel\Drevos\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\NomFetcher;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ветка{% endblock %}
+
+
+    {% block kroxii %}
+        <a href="{{ path('home') }}">Главная</a>
+        <a href="{{ path('drevos.rass') }}">Родословная</a>
+        <span class="aktiv ">Расы</span>
+    {% endblock %}
+
+{% block body %}
+
+    {{ include('app/drevos/_tabs.html.twig') }}
+
+
+    {% set token = csrf_token('delete') %}
+
+
+    <b class="dre_title   ">Родословная. Данные   из паспорта купленной матки</b>
+
+    <div class="box">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th  class="fon_td_es" >Раса</th>
+                <th  class="fon_td_es" >Страна</th>
+                <th  class="fon_td_es" >Матковод(код)</th>
+                <th class="fon_td_es" >Линии</th>
+                <th  colspan="2"  class="fon_td_es"> Материнка</th>
+                <th> Материнка трутня</th>
+                <th> Матка </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="fon_td_es">    {{ rasa }}</td>
+                <td title = {{ stran.nomer }}  class="fon_td_es">  {{ stran.name}}  </td>
+                <td  class="fon_td_es">    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</td>
+                <td class="fon_td_es" >{{ linia.name }}</td>
+                <td class="fon_td_es" >{{ wetka.nameW }}</td>
+                <td class="fon_td_es" >{{ nomwet.nomW }}-{{ nomwet.godW }}</td>
+                <td  class="fon_td"></td>
+                <td  class="fon_td"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="box">
+
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+
+                <th> Материнка трутня</th>
+                <th> Матка </th>
+                <th> Заказал </th>
+                <th> редактировать</th>
+                <th> удалить</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for mattrut in mattruts %}
+                <tr>
+                    <td>{{ mattrut.nameOt }}</td>
+
+                    <td> <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.edit', {'id': nomwet.id, 'mattrut_id': mattrut.id}) }}"
+                            class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
+                    </td>
+                    <td>
+                        <form action="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.delete', {'id': nomwet.id, 'mattrut_id': mattrut.id}) }}"
+                              method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
+                            <input type="hidden" name="token" value="{{ token }}" />
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa "><span class="fa fa-trash"></span></button>
+                        </form>
+                    </td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    <div class = "rasa__content"  >
+        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.create', {'id': nomwet.id}) }}"
+           class="btnn btnn--mb0 btnn--pt btnn--rasa">Добавить еще<strong class="strongo strongo--kras"> номер</strong> на
+             ветку  в БД</a>
+    </div>
+
+
+
+{% endblock %}
