@@ -86,7 +86,8 @@ class NomFetcher
                 'r.kod_matkov AS kod_m',
                 'r.rasa_id',
                 's.name AS strana',
-                'ra.name AS rasa'
+                'ra.name AS rasa',
+                'TRIM(CONCAT(u.name_first, \' \', u.name_last, \'  - \', u.nike)) AS nike'
 
 
             )
@@ -97,8 +98,7 @@ class NomFetcher
             ->innerJoin('l', 'dre_ras_rods', 'r', 'l.rodo_id = r.id')
             ->innerJoin('r', 'dre_strans', 's', 'r.strana_id = s.id')
             ->innerJoin('r', 'dre_rass', 'ra', 'r.rasa_id = ra.id')
-//            ->andWhere('nomwet_id = :nomwets ')
-//            ->setParameter(':nomwets', $nomwet)
+            ->innerJoin('w', 'admin_uchasties_uchasties', 'u', 'w.zakazal_id = u.id')
             ->orderBy('sort_nom')
             ->orderBy('sort_nom_wet')
             ->execute();

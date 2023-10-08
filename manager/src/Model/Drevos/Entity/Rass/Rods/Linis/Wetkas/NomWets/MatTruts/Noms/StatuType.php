@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms;
+namespace App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;

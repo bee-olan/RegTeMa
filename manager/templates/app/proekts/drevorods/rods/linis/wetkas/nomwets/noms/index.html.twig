@@ -46,12 +46,14 @@
                                 Материнка - номер :: </b>
                             <b class="drev-rod_title drev-grad" >{{ nomwet.titW }}</b>
 
-
                             <div class="drev-rod drev-rod--lini">
+
+
+
                                 <ul class="drev-rod_ul drev-grad-si ">
-                                    <li class=" drev-rod_li">
-                                        Материнка трутня
-                                    </li>
+{#                                    <li class=" drev-rod_li">#}
+{#                                        Материнка трутня#}
+{#                                    </li>#}
                                     <li class=" drev-rod_li">
                                           Номер матки
                                     </li>
@@ -64,23 +66,35 @@
                                 </ul>
                                 {% for nom in noms %}
 
+                                    <div class="drev-rod drev-rod--lini">
+                                        <b class="drev-rod_title " >
+                                            Материнка трутня :: </b>
+                                        <b class="drev-rod_title drev-grad" >{{ nom.name_ot }}</b>
+                                        <div class="drev-rod drev-rod--lini">
                                         <ul class="drev-rod_ul">
-                                            <li class=" drev-rod_li">
-                                                <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas.nomwets.noms',{'id': nomwet.id}) }}"  >
+{#                                            <li class=" drev-rod_li">#}
+{#                                                <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas.nomwets.noms',{'id': nomwet.id}) }}"  >#}
 
-                                                    {{ nom.name_ot }}
-                                                </a>
+{#                                                    {{ nom.name_ot }}#}
+{#                                                </a>#}
+{#                                            </li>#}
+                                            <li class=" drev-rod_li drev-grad-si">
+                                                Номер матки
                                             </li>
                                             <li  class=" drev-rod_li">
                                                 <b class="drev-rod_title drev-red" > {{ nom.tit }}</b>
-
                                             </li>
-                                            <li class=" drev-rod_li">  ---------  </li>
+                                            <li class=" drev-rod_li drev-grad-si">
+                                               Заказал
+                                            </li>
+                                            <li class=" drev-rod_li">  {{ nom.nike }}  </li>
                                             <li class=" drev-rod_li">  {{ nom_status(nom.status) }}  </li>
 
                                         </ul>
-
+                                    </div>
+                                    </div>
                                 {% endfor %}
+
                             </div>
                         </div>
                     </div>

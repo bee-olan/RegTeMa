@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms;
+namespace App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms;
 
 use Webmozart\Assert\Assert;
 

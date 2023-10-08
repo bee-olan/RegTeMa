@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\Noms\Edit;
+namespace App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Edit;
 
+use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\MatTrut;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\Nom;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\NomWet;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -21,15 +22,15 @@ class Command
     public $id;
 
 
-    /**
-     * @Assert\NotBlank()
-     */
-    public $nom;
-
-    /**
-     * @Assert\NotBlank()
-     */
-    public $god;
+//    /**
+//     * @Assert\NotBlank()
+//     */
+//    public $nom;
+//
+//    /**
+//     * @Assert\NotBlank()
+//     */
+//    public $god;
 
     /**
      * @Assert\NotBlank()
@@ -42,13 +43,11 @@ class Command
         $this->id = $id;
     }
 
-    public static function fromNomWet(NomWet $nomwet, Nom $nom): self
+    public static function fromNomWet(NomWet $nomwet, MatTrut $mattrut): self
     {
-        $command = new self($nomwet->getId()->getValue(), $nom->getId()->getValue());
-        $command->nom = $nom->getNom();
-        $command->god = $nom->getGod();
+        $command = new self($nomwet->getId()->getValue(), $mattrut->getId()->getValue());
 
-        $command->nameOt = $nom->getNameOt();
+        $command->nameOt = $mattrut->getNameOt();
         return $command;
     }
 }

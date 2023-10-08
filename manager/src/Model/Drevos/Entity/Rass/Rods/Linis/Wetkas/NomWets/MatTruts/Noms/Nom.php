@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms;
+namespace App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms;
 
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
 
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
-use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\NomWet;
+
+use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\MatTrut;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -20,11 +21,11 @@ class Nom
 {
 
     /**
-     * @var NomWet
-     * @ORM\ManyToOne(targetEntity="App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\NomWet", inversedBy="nomers")
-     * @ORM\JoinColumn(name="nomwet_id", referencedColumnName="id", nullable=false)
+     * @var MatTrut
+     * @ORM\ManyToOne(targetEntity="App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\MatTrut", inversedBy="nomers")
+     * @ORM\JoinColumn(name="mattrut_id", referencedColumnName="id", nullable=false)
      */
-    private $nomwet;
+    private $mattrut;
 	
     /**
      * @var Id
@@ -32,12 +33,6 @@ class Nom
      * @ORM\Id
      */
     private $id;
-
-     /**
-     * @var string
-     * @ORM\Column(type="string")
-     */
-    private $nameOt;
 
     /**
      * @var string
@@ -75,25 +70,22 @@ class Nom
      * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie")
      * @ORM\JoinColumn(name="zakazal_id", referencedColumnName="id", nullable=false)
      */
-//    private $uchastie;
 
     private $zakazal;
 
-    public function __construct(NomWet $nomwet, Id $id,
+    public function __construct(MatTrut $mattrut, Id $id,
 								string $nom,
                                 string $god,
                                 string $tit,
-								string $nameOt,
 								int $sortNom,
                                 Uchastie $zakazal
                                 )
     {
-        $this->nomwet = $nomwet;
+        $this->mattrut = $mattrut;
         $this->id = $id;
         $this->nom = $nom;
         $this->god = $god;
         $this->tit = $tit;
-        $this->nameOt = $nameOt;
 		$this->sortNom = $sortNom;
 		$this->zakazal = $zakazal;
 
@@ -103,67 +95,14 @@ class Nom
 
 	public function edit(   string $nom,
                             string $god,
-                            string $tit,
-                            string $nameOt
+                            string $tit
                             ): void
     {
         $this->nom = $nom;
         $this->god = $god;
         $this->tit = $tit;
-        $this->nameOt = $nameOt;
     }
 
-    //-------------------------------------
-
-//    public function hasUchastie(UchastieId $id): bool
-//    {
-//        foreach ($this->zakazals as $zakazal) {
-//            if ($zakazal->isForUchastie($id)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//
-//
-//    /**
-//     * @param Uchastie $uchastie
-//     * @throws \Exception
-//     */
-//    public function addUchastie(Uchastie $uchastie): void
-//    {
-//        foreach ($this->zakazals as $zakazal) {
-//            if ($zakazal->isForUchastie($uchastie->getId())) {
-//                throw new \DomainException('Такой участник уже добавлен.');
-//            }
-//        }
-////        $departments = array_map([$this, 'getDepartment'], $departmentIds);
-//        $this->zakazals->add(new Zakazal($this, $uchastie));
-//    }
-//
-//    /**
-//     * @param UchastieId $uchastie
-//     */
-//    public function editUchastie(UchastieId $uchastie): void
-//    {
-//        foreach ($this->zakazals as $zakazal) {
-//            if ($zakazal->isForUchastie($uchastie)) {
-//                return;
-//            }
-//        }
-//        throw new \DomainException('Участие не найдено.');
-//    }
-//
-//    public function removeUchastie(UchastieId $uchastie): void
-//    {
-//        foreach ($this->zakazals as $zakazal) {
-//            if ($zakazal->isForUchastie($uchastie)) {
-//                $this->zakazal->removeElement($zakazal);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('Участие не найдено.');
-//    }
 
 //------------------------------------------------------
     public function archive(): void
@@ -233,23 +172,17 @@ class Nom
     }
 
 
-
     public function getStatus(): Statu
     {
         return $this->status;
     }
 
 
-    public function getNomwet(): NomWet
-    {
-        return $this->nomwet;
-    }
+//    public function getNomwet(): MatTrut
+//    {
+//        return $this->mattrut;
+//    }
 
-
-    public function getNameOt(): string
-    {
-        return $this->nameOt;
-    }
 
     public function getNom(): string
     {

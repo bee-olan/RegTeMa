@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\Noms\Create;
+namespace App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Create;
 
 use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchatieId;
@@ -18,19 +18,14 @@ use App\Model\Adminka\Entity\Sezons\Godas\Id as GodaId;
 
 class Handler
 {
-    private $godas;
+
     private $nomwets;
-    private $uchasties;
     private $flusher;
 
     public function __construct(NomWetRepository $nomwets,
-                                GodaRepository $godas,
-                                UchastieRepository $uchasties,
                                 Flusher $flusher)
     {
-        $this->godas = $godas;
         $this->nomwets = $nomwets;
-        $this->uchasties= $uchasties;
         $this->flusher = $flusher;
     }
 
@@ -38,22 +33,18 @@ class Handler
     {
         $nomwet = $this->nomwets->get(new NomWetId($command->nomwet));
 
-        $zakazal = $this->uchasties->get(new UchatieId($command->zakaz));
+//        $zakazal = $this->uchasties->get(new UchatieId($command->zakaz));
+//
+//        $goda = $this->godas->get(new GodaId($command->god));
+//
+//        $god = (string)$goda->getGod();
+//
+//        $command->tit = $command->nom."-".$god;
 
-        $goda = $this->godas->get(new GodaId($command->god));
-
-        $god = (string)$goda->getGod();
-
-        $command->tit = $command->nom."-".$god;
-
-     $nomwet->addNom(
+     $nomwet->addMatTrut(
          $command->id = Id::next(),
-			$command->nom,
-			$god,
-			$command->tit,
 			$command->nameOt,
-			$command->sortNom,
-            $zakazal
+			$command->sortTrut
         );
 
         $this->flusher->flush();

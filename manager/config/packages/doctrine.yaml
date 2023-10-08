@@ -55,8 +55,9 @@ doctrine:
             dre_ras_rod_lini_id: 'App\Model\Drevos\Entity\Rass\Rods\Linis\IdType'
             dre_ras_rod_lini_wet_id: 'App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\IdType'
             dre_ras_rod_lini_wet_nomw_id: 'App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\IdType'
-            dre_ras_rod_lini_wet_nomw_nom_stat: 'App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\StatuType'
-            dre_ras_rod_lini_wet_nomw_nom_id: 'App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\IdType'
+            dre_ras_rod_lini_wet_nomw_trut_id: 'App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\IdType'
+            dre_ras_rod_lini_wet_nomw_nom_stat: 'App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\StatuType'
+            dre_ras_rod_lini_wet_nomw_nom_id: 'App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\IdType'
 
             adminka_rasa_id: 'App\Model\Adminka\Entity\Rasas\IdType'
             adminka_rasa_linia_id: 'App\Model\Adminka\Entity\Rasas\Linias\IdType'

@@ -2,15 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\Noms\Remove;
+namespace App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Edit;
 
+use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Id as MatTrutsId;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\NomWetRepository;
-use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Id;
-
-use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\Id as NomId;
+use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Id ;
 
 use App\Model\Flusher;
-
 
 
 class Handler
@@ -28,7 +26,10 @@ class Handler
     {
         $nomwet = $this->nomwets->get(new Id($command->nomwet));
 
-        $nomwet->removeNom(new NomId($command->id));
+
+        $nomwet->editNom(new MatTrutsId($command->id),
+                            $command->nameOt
+                            );
 
         $this->flusher->flush();
     }

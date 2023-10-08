@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\Noms\Remove;
+namespace App\Model\Drevos\UseCase\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Remove;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -11,16 +11,16 @@ class Command
     /**
      * @Assert\NotBlank()
      */
-    public $nomwet;
+    public $mattrut;
 
     /**
      * @Assert\NotBlank()
      */
     public $id;
 
-    public function __construct(string $nomwet, string $id)
+    public function __construct(string $mattrut, string $id)
     {
-        $this->nomwet = $nomwet;
+        $this->mattrut = $mattrut;
         $this->id = $id;
     }
 }

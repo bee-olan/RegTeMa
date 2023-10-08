@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets;
 
-use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
-use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\Id  as NomId;
-use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\Nom;
+use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\MatTrut;
+use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Id  as MatTrutId;
+
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\Wetka;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -54,14 +54,14 @@ class NomWet
 
 	
 	 /**
-     * @var ArrayCollection|Nom[]
+     * @var ArrayCollection|MatTrut[]
      * @ORM\OneToMany(
-     *     targetEntity="App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\Noms\Nom",
+     *     targetEntity="App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\MatTrut",
      *     mappedBy="nomwet", orphanRemoval=true, cascade={"all"}
      * )
-     * @ORM\OrderBy({"tit" = "ASC"})
+     * @ORM\OrderBy({"nameOt" = "ASC"})
      */
-    private $nomers;
+    private $mattruts;
 	
 	 /**
      * @var int
@@ -85,7 +85,7 @@ class NomWet
 		$this->sortNomWet = $sortNomWet;
 
 
-		$this->nomers = new ArrayCollection();
+		$this->mattruts = new ArrayCollection();
     }
 
 	public function edit( string $nomW,
@@ -99,43 +99,39 @@ class NomWet
     }
 
 
-    public function addNom(NomId $id,
-                                string $nom,
-                                string $god,
-                                string $tit,
+    public function addMatTrut(MatTrutId $id,
                                 string $nameOt,
-                                int $sortNom,
-                                Uchastie $zakazal
+                                int $sortTrut
                                 ): void
     {
 
-        foreach ($this->nomers as $nomer) {
-            if ($nomer->isTitEqual($tit)) {
+        foreach ($this->mattruts as $mattrut) {
+            if ($mattrut->isTrutEqual($nameOt)) {
                 throw new \DomainException('номер уже существует.');
             }
 
         }
-        $this->nomers->add(new Nom($this, $id, $nom, $god, $tit, $nameOt, $sortNom, $zakazal));
+        $this->mattruts->add(new MatTrut($this, $id,  $nameOt, $sortTrut));
     }
 
  
 
-    public function editNom(NomId $id, string $nom, string $god, string  $tit, string $nameOt): void
+    public function editNom(MatTrutId $id,  string $nameOt): void
     {
-        foreach ($this->nomers as $current) {
+        foreach ($this->mattruts as $current) {
             if ($current->getId()->isEqual($id)) {
-                $current->edit($nom, $god, $tit, $nameOt);
+                $current->edit( $nameOt);
                 return;
             }
         }
         throw new \DomainException('nom is not found.');
     }
 
-    public function removeNom(NomId $id): void
+    public function removeNom(MatTrutId $id): void
     {
-        foreach ($this->nomers as $nomer) {
-            if ($nomer->getId()->isEqual($id)) {
-                $this->nomers->removeElement($nomer);
+        foreach ($this->mattruts as $mattrut) {
+            if ($mattrut->getId()->isEqual($id)) {
+                $this->mattruts->removeElement($mattrut);
                 return;
             }
         }
@@ -187,19 +183,19 @@ class NomWet
 /////////////////////////
 
 
-    public function getNoms()
+    public function getMatTruts()
     {
-        return $this->nomers->toArray();
+        return $this->mattruts->toArray();
     }
 
-    public function getNom(NomId $id): Nom
+    public function getMatTrut(MatTrutId $id): MatTrut
     {
-        foreach ($this->nomers as $nomer) {
-            if ($nomer->getId()->isEqual($id)) {
-                return $nomer;
+        foreach ($this->mattruts as $mattrut) {
+            if ($mattrut->getId()->isEqual($id)) {
+                return $mattrut;
             }
         }
-        throw new \DomainException('Nomer is not found.');
+        throw new \DomainException('MatTrut is not found.');
     }
 
 
