@@ -15,7 +15,7 @@
     {% set token = csrf_token('delete') %}
 
     <div class="box">
-        <b class="dre_title  ">Родословная. Смотрим, что получилось</b>
+        <b class="dre_title  "> <strongo class="strongo--krox"> Материнка трутня. </strongo> Смотрим, что получилось</b>
     </div>
     <div class="box-smotrim">
         <table class="table table-bordered table-hover">
@@ -28,8 +28,10 @@
                 <th class="fon_td_es" colspan="2"> Материнка</th>
 
                 <th > Материнка трутня</th>
-                <th colspan="2"> Матка </th>
                 <th class="fon_td"></th>
+                <th class="fon_td_nado"> Номер мат </th>
+                <th class="fon_td_nado"> Заказал </th>
+
             </tr>
             </thead>
             <tbody>
@@ -42,22 +44,22 @@
                 <td class="fon_td_es" >{{ wetka.nameW }}</td>
                 <td class="fon_td_es" >{{ nomwet.nomW }}</td>
                 <td>{{ mattrut.nameOt }}</td>
-                <td></td>
-                <td></td>
+
                 <td class="fon_td">
                     <a href="{{ path('drevos.rass.rods.linis.wetkas.edit', {'id': linia.id, 'wetka_id': wetka.id}) }}"
-                       class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
+                       ><span class="fa fa-pencil"></span></a>
                 </td>
-                
+                <td></td>
+                <td></td>
             </tr>
             </tbody>
         </table>
     </div>
 
     <div   >
-        <a href="{{ path('drevos.rodos') }}"
-           class="btnn btnn--mb0 btnn--pt btnn--rasa">Смотреть все
-            <strong class="strongo strongo--kras"> родословные </strong> </a>
+        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms.create', {'id': mattrut.id}) }}"
+           class="btnn btnn--mb0 btnn--pt btnn--rasa">
+            <strong class="strongo strongo--kras">Продолжить -  </strong>Номер матки. Заказал </a>
     </div>
 
 {% endblock %}

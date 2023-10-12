@@ -16,35 +16,11 @@
     {% set token = csrf_token('delete') %}
 
 
-
-{#    <div class="box">#}
-{#        <b class="dre_title ">Родословная. Данные   из паспорта купленной матки</b>#}
-
-{#        <table class="table table-bordered table-hover">#}
-{#            <thead>#}
-{#                <tr>#}
-{#                    <th  class="fon_td_es" >Раса</th>#}
-{#                    <th  class="fon_td_es" >Страна</th>#}
-{#                    <th  class="fon_td_es" >Матковод(код)</th>#}
-{#                    <th class="fon_td" >Линии</th>#}
-{#                    <th  > Материнка</th>#}
-{#                    <th> Материнка трутня</th>#}
-{#                    <th> Матка </th>#}
-{#                </tr>#}
-{#            </thead>#}
-{#            <tbody>#}
-{#            <tr>#}
-{#                <td class="fon_td_es">    {{ rasa }}</td>#}
-{#                <td title = {{ stran.nomer }}  class="fon_td_es">  {{ stran.name}}  </td>#}
-{#                <td  class="fon_td_es">    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</td>#}
-{#                <td class="fon_td" ></td>#}
-{#                <td colspan="3" class="fon_td_no"></td>#}
-{#            </tr>#}
-{#            </tbody>#}
-{#        </table>#}
-{#    </div>#}
-
     <div class="box">
+
+        <b class="dre_title ">Родословная  - <strongo class="strongo--krox">данные из паспорта </strongo>или личных архивных данных</b>
+    </div>
+    <div class="box-smotrim">
 
         <table class="table table-bordered table-hover">
             <thead>
@@ -54,7 +30,7 @@
                 <th  class="fon_td_es" >Матковод(код)</th>
                 <th>Линии</th>
                 <th class="fon_td" colspan="2"> редак-ть / удалить</th>
-                <th class="fon_td_nado" colspan="3">Материнка - Ветка(к-во)</th>
+                <th class="fon_td_nado" colspan="2">Материнка - Ветка(к-во)</th>
 
 
             </tr>
@@ -67,7 +43,7 @@
                     <td  class="fon_td_es">    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</td>
                     <td>   {{ linia.name }}</td>
                     <td class="fon_td"> <a href="{{ path('drevos.rass.rods.linis.edit', {'id': rodo.id, 'linia_id': linia.id}) }}"
-                            class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
+                                           class="btnn btnn--mb0 btnn--pt btnn--rasa" ><span class="fa fa-pencil"></span></a>
                     </td>
                     <td class="fon_td">
                         <form action="{{ path('drevos.rass.rods.linis.delete', {'id': rodo.id, 'linia_id': linia.id}) }}"
@@ -76,12 +52,15 @@
                             <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa "><span class="fa fa-trash"></span></button>
                         </form>
                     </td>
-                    <td> ( {{ linia.wetkas }} )</td>
+{#                    <td> ( {{ linia.wetkas }} )</td>#}
                     <td>
-                        <a href="{{ path('drevos.rass.rods.linis.wetkas', {'id': linia.id}) }}">Смотреть - Материнка (ветка)</a>
+                        <a  class="btnn btnn--mb0 btnn--pt btnn--rasa" href="{{ path('drevos.rass.rods.linis.wetkas', {'id': linia.id}) }}">
+                            Смотреть -  {{ linia.wetkas }}
+                        </a>
                     </td>
                     <td>
-                        <a href="{{ path('drevos.rass.rods.linis.wetkas.create', {'id': linia.id}) }}">Продолжить - Материнка (ветка)</a>
+                        <a href="{{ path('drevos.rass.rods.linis.wetkas.create', {'id': linia.id}) }}">
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa ">  Продолжить </button>- </a>
                     </td>
                 </tr>
             {% endfor %}

@@ -15,7 +15,8 @@
     {% set token = csrf_token('delete') %}
 
     <div class="box">
-    <b class="dre_title  ">Родословная. Смотрим, что получилось</b>
+
+    <b class="dre_title  "><strongo class="strongo--krox">Родословная. </strongo> Смотрим, что получилось</b>
     </div>
     <div class="box-smotrim">
         <table class="table table-bordered table-hover">
@@ -23,9 +24,10 @@
             <tr>
                 <th class="fon_td_es" >Раса</th>
                 <th>Страна</th>
-                <th colspan="2">Матковод(код)</th>
+                <th >Матковод</th>
+                <th >Код</th>
                 <th class="fon_td"></th>
-                <th class="fon_td_no" >Линии</th>
+                <th class="fon_td_nado" >Линии</th>
                 <th class="fon_td_no" > Материнка</th>
                 <th class="fon_td_no"> Материнка трутня</th>
                 <th class="fon_td_no"> Матка </th>
@@ -39,7 +41,7 @@
                 <td>{{ rodo.kodMatkov }}</td>
                 <td class="fon_td">
                     <a href="{{ path('drevos.rass.rods.edit', {'id': rasa.id, 'rodo_id': rodo.id}) }}"
-                       class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
+                      ><span class="fa fa-pencil"></span></a>
                 </td>
                 <td colspan="4" class="fon_td_no"></td>
             </tr>

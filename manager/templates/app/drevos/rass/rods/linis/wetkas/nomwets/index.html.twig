@@ -15,37 +15,11 @@
 
     {% set token = csrf_token('delete') %}
 
-
-    <b class="dre_title  ">Родословная. Данные   из паспорта купленной матки</b>
-
-{#    <div class="box">#}
-{#        <table class="table table-bordered table-hover">#}
-{#            <thead>#}
-{#            <tr>#}
-{#                <th  class="fon_td_es" >Раса</th>#}
-{#                <th  class="fon_td_es" >Страна</th>#}
-{#                <th  class="fon_td_es" >Матковод(код)</th>#}
-{#                <th class="fon_td_es" >Линии</th>#}
-{#                <th  colspan="2"> Материнка</th>#}
-{#                <th class="fon_td_nado" > Материнка трутня</th>#}
-{#                <th> Матка </th>#}
-{#            </tr>#}
-{#            </thead>#}
-{#            <tbody>#}
-{#            <tr>#}
-{#                <td class="fon_td_es">    {{ rasa }}</td>#}
-{#                <td title = {{ stran.nomer }}  class="fon_td_es">  {{ stran.name}}  </td>#}
-{#                <td  class="fon_td_es">    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</td>#}
-{#                <td class="fon_td_es" >{{ linia.name }}</td>#}
-{#                <td class="fon_td_es" >{{ wetka.nameW }}</td>#}
-{#                <td class="fon_td" ></td>#}
-{#                <td colspan="2" class="fon_td_no"></td>#}
-{#            </tr>#}
-{#            </tbody>#}
-{#        </table>#}
-{#    </div>#}
-
     <div class="box">
+
+        <b class="dre_title ">Родословная  - <strongo class="strongo--krox">данные из паспорта </strongo>или личных архивных данных</b>
+    </div>
+    <div class="box-smotrim">
 
         <table class="table table-bordered table-hover">
             <thead>
@@ -54,11 +28,11 @@
                 <th  class="fon_td_es" >Страна</th>
                 <th  class="fon_td_es" >Матковод(код)</th>
                 <th class="fon_td_es" >Линии</th>
-                <th  colspan="2"> Материнка - номер</th>
-                <th colspan="2"> редак-ть / удалить</th>
-                <th colspan="2"> Материнка трутня</th>
-                <th > Номер матки</th>
-                <th > Заказал</th>
+                <th colspan="2"> Материнка - номер</th>
+                <th class="fon_td" colspan="2"> редак-ть / удалить</th>
+                <th class="fon_td_nado" colspan="2"> Материнка трутня</th>
+{#                <th > Номер матки</th>#}
+{#                <th > Заказал</th>#}
             </tr>
             </thead>
             <tbody>
@@ -68,26 +42,36 @@
                     <td title = {{ stran.nomer }}  class="fon_td_es">  {{ stran.name}}  </td>
                     <td  class="fon_td_es">    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</td>
                     <td class="fon_td_es" >{{ linia.name }}</td>
-                    <td> {{ wetka.nameW }}</td>
+                    <td class="fon_td_es"> {{ wetka.nameW }}</td>
                     <td> {{ nomwet.nom_w  }}-{{ nomwet.god_w  }}</td>
-                    <td> <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.edit', {'id': wetka.id, 'nomwet_id': nomwet.id}) }}"
+                    <td class="fon_td"> <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.edit', {'id': wetka.id, 'nomwet_id': nomwet.id}) }}"
                             class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
                     </td>
-                    <td>
+                    <td class="fon_td">
                         <form action="{{ path('drevos.rass.rods.linis.wetkas.nomwets.delete', {'id': wetka.id, 'nomwet_id': nomwet.id}) }}"
                               method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
                             <input type="hidden" name="token" value="{{ token }}" />
                             <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa "><span class="fa fa-trash"></span></button>
                         </form>
                     </td>
-                    <td>{{  nomwet.truts}}</td>
-                  <td></td>
+{#                    <td>{{  nomwet.truts}}</td>#}
+
                     <td>
-                        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts', {'id': nomwet.id}) }}">номер матки</a>
+                        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts', {'id': nomwet.id}) }}">
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa ">  Смотреть - {{ nomwet.truts }} </button>
+                        </a>
                     </td>
                     <td>
-                        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts', {'id': nomwet.id}) }}">номер матки</a>
+                        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.create', {'id': nomwet.id}) }}">
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa ">  Продолжить </button>-
+                        </a>
                     </td>
+{#                    <td>#}
+{#                        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts', {'id': nomwet.id}) }}">номер матки</a>#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts', {'id': nomwet.id}) }}">номер матки</a>#}
+{#                    </td>#}
                 </tr>
             {% endfor %}
             </tbody>

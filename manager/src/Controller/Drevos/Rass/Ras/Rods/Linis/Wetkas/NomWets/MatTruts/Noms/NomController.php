@@ -51,6 +51,7 @@ class NomController extends AbstractController
         $rodo =  $linia->getRodo();
         return $this->render('app/drevos/rass/rods/linis/wetkas/nomwets/mattruts/noms/index.html.twig', [
             'wetka' => $wetka,
+            'nomwet'=> $nomwet,
             'mattrut' => $mattrut,
             'linia' => $linia,
             'rodo' => $rodo,
@@ -69,7 +70,7 @@ class NomController extends AbstractController
      * @param Create\Handler $handler
      * @return Response
      */
-    public function create(MatTrut $mattrut, NomFetcher $noms, Request $request, Create\Handler $handler): Response
+    public function create( Request $request, MatTrut $mattrut, NomFetcher $noms, Create\Handler $handler): Response
    {
 
        $maxSort = $noms->getMaxSortNom($mattrut->getId()->getValue()) + 1;
@@ -89,13 +90,16 @@ class NomController extends AbstractController
                 $this->addFlash('error', $e->getMessage());
             }
         }
-        $wetka = $mattrut->getWetka();
+//        dd($mattrut->getNomwet());
+       $nomwet = $mattrut->getNomwet();
+       $wetka = $nomwet->getWetka();
         $linia = $wetka->getLinia();
         $rodo =  $linia->getRodo();
 
         return $this->render('app/drevos/rass/rods/linis/wetkas/nomwets/mattruts/noms/create.html.twig', [
             'mattrut' => $mattrut,
             'wetka' => $wetka,
+            'nomwet ' =>  $nomwet ,
             'linia' => $linia,
             'rodo' => $rodo,
             'stran' => $rodo->getStrana(),
@@ -184,7 +188,7 @@ class NomController extends AbstractController
     public function show(Request $request, MatTrut $mattrut, string $nom_id): Response
     {
         $nomer = $mattrut->getNom(new Id($nom_id));
-        $mattrut = $nomer->g();
+        $nomwet = $mattrut->getNomwet();
         $wetka = $nomwet->getWetka();
         $linia = $wetka->getLinia();
         $rodo = $linia->getRodo();
@@ -192,6 +196,7 @@ class NomController extends AbstractController
         return $this->render('app/drevos/rass/rods/linis/wetkas/nomwets/mattruts/noms/show.html.twig', [
             'nom' => $nomer,
             'mattrut' => $mattrut,
+            ' nomwet ' =>  $nomwet ,
             'wetka' => $wetka,
             'rodo' => $rodo,
             'linia'=>$linia,
