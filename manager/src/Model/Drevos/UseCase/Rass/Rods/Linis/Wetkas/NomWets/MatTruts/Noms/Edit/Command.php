@@ -40,7 +40,7 @@ class Command
         $this->id = $id;
     }
 
-    public static function fromNomWet(MatTrut $mattrut, Nom $nom): self
+    public static function fromMatTrut(MatTrut $mattrut, Nom $nom): self
     {
         $command = new self($mattrut->getId()->getValue(), $nom->getId()->getValue());
         $command->nom = $nom->getNom();

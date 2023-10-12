@@ -55,17 +55,15 @@
 
     <table class="table table-bordered table-hover">
         <thead>
-        <tr>
+        <tr class="td_cent">
             <th  class="fon_td_es" >Раса</th>
             <th  class="fon_td_es" >Страна</th>
             <th  class="fon_td_es" >Матковод(код)</th>
             <th class="fon_td_es" >Линии</th>
             <th class="fon_td_es"> Материнка </th>
-            <th  > Материнка трутня</th>
-
+            <th  class="fon_td_es"> Материнка трутня</th>
+            <th  colspan="2" >Номер матки / Заказал</th>
             <th class="fon_td" colspan="2"> редак/удалить</th>
-
-            <th class="fon_td_nado"  colspan="2" >Номер матки / Заказал</th>
 
         </tr>
 
@@ -80,8 +78,9 @@
                     <td class="fon_td_es" >{{ linia.name }}</td>
                     <td class="fon_td_es"> {{ wetka.nameW }}-{{ nomwet.titW }}</td>
                     {#                    <td  class="fon_td_es"> {{ nomwet.nomW  }}-{{ nomwet.godW  }}</td>#}
-                    <td>{{ mattrut.name_ot }}</td>
-
+                    <td class="fon_td_es">{{ mattrut.nameOt }}</td>
+                    <td>{{ nom.tit }}</td>
+                    <td>{{ nom.nike }}</td>
                     <td class="fon_td"> <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.edit', {'id': nomwet.id, 'mattrut_id': mattrut.id}) }}"
                         ><span class="fa fa-pencil"></span></a>
                     </td>
@@ -92,30 +91,16 @@
                             <span class="fa fa-trash"></span></button>
                         </form>
                     </td>
-                    <td>
-                        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms', {'id': mattrut.id}) }}">
-                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa ">  Смотреть - {{ mattrut.nomers}} </button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms.create', {'id': mattrut.id}) }}">
-                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa ">  Продолжить </button>-
-                        </a>
-                    </td>
-
-                    <td>{{ nom.name_ot }}</td>
-                    <td>{{ nom.tit }}</td>
-                    <td>{{ nom.nike }}</td>
-                    <td> <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms.edit', {'id': nomwet.id, 'nom_id': nom.id}) }}"
-                            class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
-                    </td>
-                    <td>
-                        <form action="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms.delete', {'id': nomwet.id, 'nom_id': nom.id}) }}"
-                              method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
-                            <input type="hidden" name="token" value="{{ token }}" />
-                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa "><span class="fa fa-trash"></span></button>
-                        </form>
-                    </td>
+{#                    <td>#}
+{#                        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms', {'id': mattrut.id}) }}">#}
+{#                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--drev ">  Смотреть - {{ mattrut.nomers}} </button>#}
+{#                        </a>#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms.create', {'id': mattrut.id}) }}">#}
+{#                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--drev ">  Продолжить </button>-#}
+{#                        </a>#}
+{#                    </td>#}
 
                 </tr>
             {% endfor %}

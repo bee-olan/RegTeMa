@@ -21,14 +21,14 @@
     <div class="box-smotrim">
         <table class="table table-bordered table-hover">
             <thead>
-            <tr>
+            <tr class="td_cent">
                 <th  class="fon_td_es" >Раса</th>
                 <th  class="fon_td_es" >Страна</th>
                 <th  class="fon_td_es" >Матковод(код)</th>
                 <th class="fon_td_es" >Линии</th>
-                <th>Ветка</th>
-                <th class="fon_td" colspan="2"> редак-ть / удалить</th>
-                <th class="fon_td_nado" colspan="2">Материнка - номер (к-во)</th>
+                <th colspan="2">Материнка - ветка</th>
+                <th class="fon_td td_cent" colspan="2"> редак-ть / удалить</th>
+                <th class="fon_td_nado td_cent" colspan="2">Материнка - номер (к-во)</th>
             </tr>
             </thead>
             <tbody>
@@ -39,26 +39,26 @@
                     <td  class="fon_td_es">    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</td>
                     <td class="fon_td_es" >{{ linia.name }}</td>
                     <td> {{ wetka.name_w }}</td>
-
-                    <td class="fon_td"> <a href="{{ path('drevos.rass.rods.linis.wetkas.edit', {'id': linia.id, 'wetka_id': wetka.id}) }}"
-                            class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
+                    <td class="fon_td_no"> </td>
+                    <td class="fon_td td_cent"> <a href="{{ path('drevos.rass.rods.linis.wetkas.edit', {'id': linia.id, 'wetka_id': wetka.id}) }}"
+                           ><span class="fa fa-pencil"></span></a>
                     </td>
-                    <td class="fon_td">
+                    <td class="fon_td td_cent">
                         <form action="{{ path('drevos.rass.rods.linis.wetkas.delete', {'id': linia.id, 'wetka_id': wetka.id}) }}"
                               method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
                             <input type="hidden" name="token" value="{{ token }}" />
-                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa "><span class="fa fa-trash"></span></button>
+                           <span class="fa fa-trash"></span></button>
                         </form>
                     </td>
 {#                   <td>{{ wetka.nomwets }}</td>#}
-                    <td>
+                    <td class="td_cent">
                         <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets', {'id': wetka.id}) }}">
-                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa ">  Смотреть - {{ wetka.nomwets }} </button>
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--drev ">  Смотреть - {{ wetka.nomwets }} </button>
                         </a>
                     </td>
-                    <td>
+                    <td class="td_cent">
                         <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.create', {'id': wetka.id}) }}">
-                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa ">  Продолжить </button>
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--drev ">  Продолжить </button>
                         </a>
                     </td>
                 </tr>

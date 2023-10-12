@@ -83,7 +83,8 @@ class NomController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms.show', ['id' => $mattrut->getId(),'nom_id'=>$command->id ]);
+
+                return $this->redirectToRoute('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms.show', ['id' => $mattrut->getId(), 'nom_id'=>$command->id ]);
 
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
@@ -188,6 +189,7 @@ class NomController extends AbstractController
     public function show(Request $request, MatTrut $mattrut, string $nom_id): Response
     {
         $nomer = $mattrut->getNom(new Id($nom_id));
+        $mattrut = $nomer->getMattrut();
         $nomwet = $mattrut->getNomwet();
         $wetka = $nomwet->getWetka();
         $linia = $wetka->getLinia();
@@ -196,7 +198,7 @@ class NomController extends AbstractController
         return $this->render('app/drevos/rass/rods/linis/wetkas/nomwets/mattruts/noms/show.html.twig', [
             'nom' => $nomer,
             'mattrut' => $mattrut,
-            ' nomwet ' =>  $nomwet ,
+            'nomwet' =>  $nomwet ,
             'wetka' => $wetka,
             'rodo' => $rodo,
             'linia'=>$linia,

@@ -178,10 +178,11 @@ class Nom
     }
 
 
-//    public function getNomwet(): MatTrut
-//    {
-//        return $this->mattrut;
-//    }
+    public function getMattrut(): MatTrut
+    {
+        return $this->mattrut;
+    }
+
 
 
     public function getNom(): string
