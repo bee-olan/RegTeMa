@@ -27,7 +27,7 @@
                 <th >Матковод</th>
                 <th >Код</th>
                 <th class="fon_td"></th>
-                <th class="fon_td_nado" >Линии</th>
+                <th class="fon_td_nado" >Линия</th>
                 <th class="fon_td_no" > Материнка</th>
                 <th class="fon_td_no"> Материнка трутня</th>
                 <th class="fon_td_no"> Матка </th>
@@ -43,7 +43,12 @@
                     <a href="{{ path('drevos.rass.rods.edit', {'id': rasa.id, 'rodo_id': rodo.id}) }}"
                       ><span class="fa fa-pencil"></span></a>
                 </td>
-                <td colspan="4" class="fon_td_no"></td>
+                <td  >
+                    <a href="{{ path('drevos.rass.rods.linis.create', {'id': rodo.id}) }}">
+                        <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--drev ">  Продолжить </button>
+                    </a>
+                </td>
+                <td colspan="3" class="fon_td_no"></td>
             </tr>
             </tbody>
         </table>

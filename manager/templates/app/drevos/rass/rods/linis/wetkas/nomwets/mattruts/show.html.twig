@@ -49,8 +49,12 @@
                     <a href="{{ path('drevos.rass.rods.linis.wetkas.edit', {'id': linia.id, 'wetka_id': wetka.id}) }}"
                        ><span class="fa fa-pencil"></span></a>
                 </td>
-                <td></td>
-                <td></td>
+
+                <td  colspan="2" class="td_cent" >
+                    <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.noms.create', {'id': mattrut.id}) }}">
+                        <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--drev ">  Продолжить </button>
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>

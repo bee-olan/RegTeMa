@@ -39,10 +39,14 @@
                 <td class="fon_td_es">{{ rodo.kodMatkov }}</td>
                 <td class="fon_td_es" >{{ linia.name }}</td>
                 <td  >{{ wetka.nameW }}</td>
-                <td class="fon_td_no" >номер</td>
+                <td  >
+                    <a href="{{ path('drevos.rass.rods.linis.wetkas.create', {'id': linia.id}) }}">
+                        <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--drev ">  Продолжить </button>
+                    </a>
+                </td>
                 <td class="fon_td">
                     <a href="{{ path('drevos.rass.rods.linis.wetkas.edit', {'id': linia.id, 'wetka_id': wetka.id}) }}"
-                       class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
+                       ><span class="fa fa-pencil"></span></a>
                 </td>
                 <td colspan="2" class="fon_td_no"></td>
             </tr>

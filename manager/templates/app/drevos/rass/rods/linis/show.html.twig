@@ -40,7 +40,12 @@
                 <td  >{{ linia.name }}</td>
                 <td  class="fon_td" >
                     <a href="{{ path('drevos.rass.rods.linis.edit', {'id': rodo.id, 'linia_id': linia.id}) }}"
-                       class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
+                      ><span class="fa fa-pencil"></span></a>
+                </td>
+                <td  >
+                    <a href="{{ path('drevos.rass.rods.linis.wetkas.create', {'id': linia.id}) }}">
+                        <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--drev ">  Продолжить </button>
+                    </a>
                 </td>
                 <td colspan="3" class="fon_td_no"></td>
             </tr>
