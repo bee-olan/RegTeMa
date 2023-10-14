@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Drevos\Rass\Ras\Rods\Linis\Wetkas\NomWets\MatTruts\Noms;
 
 use App\Annotation\Guid;
+use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\MatTrut;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Id;
 
@@ -41,10 +42,16 @@ class NomController extends AbstractController
      * @param MatTrut $mattrut
      * @param Request $request
      * @param NomFetcher $noms
+//     * @param UchastieRepository $uchRepa
      * @return Response
      */
-    public function index( Request $request, MatTrut $mattrut,  NomFetcher $noms): Response
+    public function index( Request $request, MatTrut $mattrut,
+                           NomFetcher $noms
+//                           UchastieRepository $uchRepa
+    ): Response
     {
+        $noms = $noms->allOfMatTrut($mattrut->getId()->getValue());
+
         $nomwet = $mattrut->getNomwet();
         $wetka = $nomwet->getWetka();
         $linia = $wetka->getLinia();
@@ -57,7 +64,7 @@ class NomController extends AbstractController
             'rodo' => $rodo,
             'stran' => $rodo->getStrana(),
             'rasa' => $rodo->getRasa()->getName(),
-            'noms' => $noms->allOfMatTrut($mattrut->getId()->getValue()),
+            'noms' => $noms,
         ]);
     }
 
@@ -91,7 +98,8 @@ class NomController extends AbstractController
                 $this->addFlash('error', $e->getMessage());
             }
         }
-//        dd($mattrut->getNomwet());
+
+
        $nomwet = $mattrut->getNomwet();
        $wetka = $nomwet->getWetka();
         $linia = $wetka->getLinia();
@@ -100,7 +108,7 @@ class NomController extends AbstractController
         return $this->render('app/drevos/rass/rods/linis/wetkas/nomwets/mattruts/noms/create.html.twig', [
             'mattrut' => $mattrut,
             'wetka' => $wetka,
-            'nomwet ' =>  $nomwet ,
+            'nomwet' =>  $nomwet ,
             'linia' => $linia,
             'rodo' => $rodo,
             'stran' => $rodo->getStrana(),
@@ -189,8 +197,10 @@ class NomController extends AbstractController
     public function show(Request $request, MatTrut $mattrut, string $nom_id): Response
     {
         $nomer = $mattrut->getNom(new Id($nom_id));
+//        dd($nomer['nike']);
         $mattrut = $nomer->getMattrut();
         $nomwet = $mattrut->getNomwet();
+
         $wetka = $nomwet->getWetka();
         $linia = $wetka->getLinia();
         $rodo = $linia->getRodo();

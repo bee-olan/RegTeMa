@@ -13,7 +13,7 @@
     {{ include('app/drevos/_tabs.html.twig') }}
 
     <div class="box">
-        <b class="dre_title "><strongo class="strongo--krox">Линия </strongo> - данные из паспорта или личных архивных данных</b>
+        <b class="dre_title "><strongo class="strongo--krox">Номер матки. Заказал </strongo> - данные из паспорта или личных архивных данных</b>
     </div>
 
     <div class="box-smotrim">
@@ -26,8 +26,8 @@
                 <th  class="fon_td_es" colspan="2" >Матковод(код)</th>
                 <th class="fon_td_es" >Линии</th>
                 <th class="fon_td_es" colspan="2"> Материнка</th>
-                <th> Материнка трутня</th>
-                <th colspan="2"> Матку купил </th>
+                <th  class="fon_td_es" > Материнка трутня</th>
+                <th colspan="2"> Номер матки. Заказал </th>
             </tr>
             </thead>
             <tbody>
@@ -38,10 +38,10 @@
                 <td class="fon_td_es">{{ rodo.kodMatkov }}</td>
                 <td class="fon_td_es" >{{ linia.name }}</td>
                 <td class="fon_td_es" >{{ wetka.nameW }}</td>
-{#                <td class="fon_td_es" > {{  nomwet.tit }} </td>#}
-            <td ></td>
-                    <td ></td>
-                    <td ></td>
+                <td class="fon_td_es" > {{  nomwet.titW }} </td>
+                <td class="fon_td_es" > {{  mattrut.nameOt }} </td>
+                <td ></td>
+                <td ></td>
             </tr>
             </tbody>
         </table>

@@ -8,8 +8,9 @@ use App\Annotation\Guid;
 
 use App\Controller\ErrorHandler;
 
-use App\ReadModel\Drevos\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\NomFetcher;
+//use App\ReadModel\Drevos\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\NomFetcher;
 
+use App\ReadModel\Drevos\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\NomFetcher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,10 +37,10 @@ class RodsController extends AbstractController
      */
     public function index( NomFetcher $nomFets): Response
     {
-
+//dd( $nomFets->all());
 
         return $this->render('app/drevos/rodos/index.html.twig', [
-//            'linia' => $linia,
+
             'noms' => $nomFets->all(),
 
         ]);

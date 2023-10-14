@@ -39,17 +39,12 @@ class NomFetcher
                 'w.god',
                 'w.tit',
                 'w.status',
-//                'w.name_ot',
                 'w.sort_nom',
                 'w.zakazal_id',
-                'TRIM(CONCAT(u.name_first, \' \', u.name_last, \'  - \', u.nike)) AS nike'
+'u.nike AS nike'
+//                'TRIM(CONCAT(u.name_first, \' \', u.name_last, \'  - \', u.nike)) AS w.nike'
 //                '(SELECT COUNT(*) FROM rod_rasa_rodo_mattrut_nomers n WHERE n.mattrut_id = w.id) AS nomers'
-                // '(
-                //     SELECT COUNT(ms.member_id)
-                //     FROM work_projects_project_memberships ms
-                //     INNER JOIN work_projects_project_membership_departments md ON ms.id = md.membership_id
-                //     WHERE md.department_id = d.id AND ms.materi_id = :materi
-                // ) AS members_count'
+
             )
             ->from('dre_ras_rod_lini_wet_nomw_noms', 'w')
             ->innerJoin('w', 'admin_uchasties_uchasties', 'u', 'w.zakazal_id = u.id')
@@ -72,10 +67,10 @@ class NomFetcher
                 'w.nom',
                 'w.god',
                 'w.tit',
-//                'w.name_ot',
                 'w.sort_nom',
                 'w.status',
                 'w.zakazal_id',
+                't.name_ot AS name_ot',
                 'n.tit_w',
                 'n.wetka_id',
                 'we.name_w',
@@ -85,14 +80,18 @@ class NomFetcher
                 'r.name_matkov AS name_m',
                 'r.kod_matkov AS kod_m',
                 'r.rasa_id',
+                'r.strana_id',
                 's.name AS strana',
                 'ra.name AS rasa',
+//                'u.nike AS nike'
                 'TRIM(CONCAT(u.name_first, \' \', u.name_last, \'  - \', u.nike)) AS nike'
 
 
             )
             ->from('dre_ras_rod_lini_wet_nomw_noms', 'w')
-            ->innerJoin('w', 'dre_ras_rod_lini_wet_nomws', 'n', 'w.mattrut_id = n.id')
+            ->innerJoin('w', 'dre_ras_rod_lini_wet_nomw_truts', 't', 'w.mattrut_id = t.id')
+            ->innerJoin('t', 'dre_ras_rod_lini_wet_nomws', 'n', 't.nomwet_id = n.id')
+
             ->innerJoin('n', 'dre_ras_rod_lini_wets', 'we', 'n.wetka_id = we.id')
             ->innerJoin('we', 'dre_ras_rod_linis', 'l', 'we.linia_id = l.id')
             ->innerJoin('l', 'dre_ras_rods', 'r', 'l.rodo_id = r.id')
@@ -100,7 +99,7 @@ class NomFetcher
             ->innerJoin('r', 'dre_rass', 'ra', 'r.rasa_id = ra.id')
             ->innerJoin('w', 'admin_uchasties_uchasties', 'u', 'w.zakazal_id = u.id')
             ->orderBy('sort_nom')
-            ->orderBy('sort_nom_wet')
+//            ->orderBy('sort_nom_wet')
             ->execute();
 
         return $stmt->fetchAll(FetchMode::ASSOCIATIVE);

@@ -78,7 +78,7 @@ class NomWetController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('drevos.rass.rods.linis.wetkas.nomwets.mattruts.show', ['id' => $wetka->getId(), 'nomwet_id'=>$command->id]);
+                return $this->redirectToRoute('drevos.rass.rods.linis.wetkas.nomwets.show', ['id' => $wetka->getId(), 'nomwet_id'=>$command->id]);
 
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
