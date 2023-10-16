@@ -18,11 +18,16 @@
 
         <h1 class="dre_title ">Родословная. Данные   из паспорта купленной матки</h1>
         <div class="drev-rod">
-            <b class="drev-rod_title" >Paca ::  </b><b class="drev-rod_title drev-grad" > {{ rasa.title }}  </b>
+            <a href="{{ path('app.proekts.drevorods.rodras') }}"  >
+                <b class="drev-rod_title" >  Paca ::  </b>
+            </a>
+            <b class="drev-rod_title drev-grad" > {{ rasa.title }}  </b>
 
             <div class="drev-rod drev-rod--rodrod">
-                <b class="drev-rod_title " >
-                    Страна - матковод - код :: </b>
+
+                <a href="{{ path('app.proekts.drevorods.rods.rodrods', {'id': rasa.id}) }}"  >
+                    <b class="drev-rod_title " >Страна - матковод - код :: </b>
+                </a>
                 <b class="drev-rod_title drev-grad" >
                     {{ stran.name}} - {{ rodo.nameMatkov }} - {{ rodo.kodMatkov }}</b>
                 <div class="drev-rod drev-rod--lini">
@@ -37,32 +42,39 @@
                     </b>
                     <div class="drev-rod drev-rod--lini">
                         <b class="drev-rod_title " >
-                            Ветка  -  :: </b>
+                            Материнка - ветка    :: </b>
                         <b class="drev-rod_title drev-grad" >
-                            {{ wetka.nameW }}</b> (Материнка)
+                            {{ wetka.nameW }}</b> ()
+
                         <div class="drev-rod drev-rod--lini">
+                            <b class="drev-rod_title " >
+                                Материнка - номер :: </b>
+                            <b class="drev-rod_title drev-grad" >{{ nomwet.titW }}</b>
+
+                                <div class="drev-rod drev-rod--lini">
                             <ul class="drev-rod_ul drev-grad-si ">
                                 <li class=" drev-rod_li">
-                                    Материнка - номер
+                                    Материнка трутня
                                 </li>
                                 <li class=" drev-rod_li">
-                                    Кол-во  номеров маток
+                                    Кол-во
                                 </li>
                             </ul>
-                            {% for nomwet in nomwets %}
+                            {% for mattrut in mattruts %}
 
-                            {% if nomwet.nomers > 0 %}
+                            {% if mattrut.nomers > 0 %}
                                 <ul class="drev-rod_ul">
                                     <li class=" drev-rod_li">
-                                        <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas.nomwets.mattruts',{'id': nomwet.id}) }}"  >
+                                        <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas.nomwets.mattruts.noms',{'id': mattrut.id}) }}"  >
 
-                                                {{ nomwet.tit_w }}
+                                                {{ mattrut.name_ot }}
                                         </a>
                                     </li>
-                                    <li class=" drev-rod_li">  {{ nomwet.nomers }}  </li>
+                                    <li class=" drev-rod_li">  {{ mattrut.nomers }}  </li>
                                 </ul>
                             {% endif %}
                         {% endfor %}
+                        </div>
                         </div>
                     </div>
                 </div>

@@ -19,20 +19,30 @@
 
             <h1 class="dre_title ">Родословная. Данные   из паспорта купленной матки</h1>
             <div class="drev-rod">
-                <b class="drev-rod_title" >Paca ::  </b><b class="drev-rod_title drev-grad" > {{ rasa.title }}  </b>
+
+                    <a href="{{ path('app.proekts.drevorods.rodras') }}"  >
+                        <b class="drev-rod_title" >  Paca ::  </b>
+                    </a>
+
+                <b class="drev-rod_title drev-grad" > {{ rasa.title }}</b>
 
                 <div class="drev-rod drev-rod--rodrod">
-                    <b class="drev-rod_title " >
-                       Страна - матковод - код :: </b>
+
+                    <a href="{{ path('app.proekts.drevorods.rods.rodrods', {'id': rasa.id}) }}"  >
+                        <b class="drev-rod_title " >Страна - матковод - код :: </b>
+                    </a>
                     <b class="drev-rod_title drev-grad" >
                           {{ stran.name}} - {{ rodo.nameMatkov }} - {{ rodo.kodMatkov }}</b>
                     <div class="drev-rod drev-rod--lini">
                         <ul class="drev-rod_ul drev-grad-si ">
-                            <li class=" drev-rod_li">
-                                Линии
-                            </li>
-                            <li class=" drev-rod_li">Кол-во веток (Материнка)
-                            </li>
+                                <li class=" drev-rod_li">Линии</li>
+
+                                <li class=" drev-rod_li">Кол-во веток (Материнка)</li>
+                        </ul>
+                        <ul class="drev-rod_ul  ">
+                            <li class=" drev-rod_li  drev-border"></li>
+                            <li class=" drev-rod_li  drev-border"></li>
+
                         </ul>
 
                             {% for linia in linias %}
@@ -47,7 +57,7 @@
                                                 {% endif %}
                                             </a>
                                         </li>
-                                        <li class=" drev-rod_li" >  {{ linia.wetkas }}  </li>
+                                        <li class=" drev-rod_li td_cent" >  {{ linia.wetkas }}  </li>
                                     </ul>
                                 {% endif %}
                             {% endfor %}

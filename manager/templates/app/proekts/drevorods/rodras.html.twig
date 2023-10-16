@@ -15,27 +15,34 @@
 {% block bodyy %}
     <div  class="proekts proekts--drev-rod">
 
+        <h1 class="dre_title ">Родословная.</h1>
+        <b class="drev-rod_title " > Данные   из паспорта купленной матки. </b>
 
-            <h1 class="drev-rod_title ">Родословная. Данные   из паспорта купленной матки</h1>
             <div class="drev-rod  drev-rod--rodrod">
 
-                <ul class="drev-rod_ul drev-grad-si ">
-                    <li class=" drev-rod_li">
-                        Paca
 
-                    </li>
-                    <li class=" drev-rod_li">Кол-во стран, матководов
-                    </li>
+                <ul class="drev-rod_ul drev-grad-si ">
+
+                    <li class=" drev-rod_li  ">Paca</li>
+
+                    <li class=" drev-rod_li  ">Кол-во стран, матководов</li>
+                </ul>
+                <ul class="drev-rod_ul  ">
+
+                    <li class=" drev-rod_li  drev-border"></li>
+
+                    <li class=" drev-rod_li  drev-border"></li>
                 </ul>
                 {% for rasa in rasas %}
                     {% if rasa.rodos > 0 %}
                         <ul class="drev-rod_ul">
-                            <li class=" drev-rod_li">
+                            <li class=" drev-rod_li ">
                                 <a href="{{ path('app.proekts.drevorods.rods.rodrods',{'id': rasa.id}) }}"  >
                                     {{ rasa.title }}
                                 </a>
                             </li>
-                            <li class=" drev-rod_li" >
+{#                            <div class="drev-border"></div>#}
+                            <li class=" drev-rod_li td_cent " >
                                 <a href="{{ path('app.proekts.drevorods.rods.rodrods',{'id': rasa.id}) }}"  >
                                     {{ rasa.rodos }}
                                 </a>

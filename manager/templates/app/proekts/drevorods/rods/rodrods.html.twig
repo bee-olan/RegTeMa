@@ -17,8 +17,15 @@
     <div  class="proekts proekts--drev-rod">
 
             <h1 class="dre_title ">Родословная. Данные   из паспорта купленной матки</h1>
+
             <div class="drev-rod">
-                <b class="drev-rod_title" >Paca ::  </b><b class="drev-rod_title drev-grad" > {{ rasa.title }}  </b>
+                <a href="{{ path('app.proekts.drevorods.rodras') }}"  >
+                    <b class="drev-rod_title" >  Paca ::  </b>
+                </a>
+
+                <b class="drev-rod_title drev-grad" > {{ rasa.title }}
+
+                </b>
                 <div class="drev-rod drev-rod--rodrod">
                     <ul class="drev-rod_ul drev-grad-si ">
                         <li class=" drev-rod_li">
@@ -27,6 +34,12 @@
                         <li class=" drev-rod_li">Матковод</li>
                         <li class=" drev-rod_li">Код</li>
                         <li class=" drev-rod_li">Кол. линий</li>
+                    </ul>
+                    <ul class="drev-rod_ul  ">
+                        <li class=" drev-rod_li  drev-border"></li>
+                        <li class=" drev-rod_li  drev-border"></li>
+                        <li class=" drev-rod_li  drev-border"></li>
+                        <li class=" drev-rod_li  drev-border"></li>
                     </ul>
                     {% for rodo in rodos %}
                         {% if rodo.linias > 0 %}
@@ -40,7 +53,7 @@
                                 <li class=" drev-rod_li">
                                     {{ rodo.kod_matkov }}
                                 </li>
-                                <li class=" drev-rod_li" >  {{ rodo.linias }}  </li>
+                                <li class=" drev-rod_li " >  {{ rodo.linias }}  </li>
                             </ul>
                     </a>
                         {% endif %}

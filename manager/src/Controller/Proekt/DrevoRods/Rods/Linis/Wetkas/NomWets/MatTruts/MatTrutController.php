@@ -39,7 +39,7 @@ class MatTrutController extends AbstractController
      * @param MatTrutFetcher $mattruts
      * @return Response
      */
-    public function index( Request $request, NomWet $nomwet,  NomWetFetcher $mattruts): Response
+    public function index( Request $request, NomWet $nomwet,  MatTrutFetcher $mattruts): Response
     {
         $wetka = $nomwet->getWetka();
         $linia = $wetka->getLinia();

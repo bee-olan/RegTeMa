@@ -39,10 +39,10 @@
                 <td class="fon_td_es">{{ rodo.kodMatkov }}</td>
                 <td class="fon_td_es" >{{ linia.name }}</td>
                 <td class="fon_td_es" >{{ wetka.nameW }}</td>
-                <td  > {{ nomwet.nomW }} </td>
+                <td  > {{ nomwet.titW }} </td>
                 <td class="fon_td td_cent">
-                    <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.edit', {'id': wetka.id, 'nomwet_id': nomwet.id}) }}"
-                       ><span class="fa fa-pencil"></span></a>
+                    <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.edit', {'id': wetka.id, 'nomwet_id': nomwet.id}) }}">
+                       <span class="fa fa-pencil"></span></a>
                 </td>
                 <td class="td_cent" >
                     <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.create', {'id': nomwet.id}) }}">
@@ -55,10 +55,10 @@
         </table>
     </div>
 
-    <div   >
-        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.create', {'id': nomwet.id}) }}"
-           class="btnn btnn--mb0 btnn--pt btnn--rasa">Продолжить -
-            <strong class="strongo strongo--kras">  материнка трутня </strong> </a>
-    </div>
+{#    <div   >#}
+{#        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.create', {'id': nomwet.id}) }}"#}
+{#           class="btnn btnn--mb0 btnn--pt btnn--rasa">Продолжить -#}
+{#            <strong class="strongo strongo--kras">  материнка трутня </strong> </a>#}
+{#    </div>#}
 
 {% endblock %}
