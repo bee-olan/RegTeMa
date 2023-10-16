@@ -31,8 +31,11 @@
                 <b class="drev-rod_title drev-grad" >
                     {{ stran.name}} - {{ rodo.nameMatkov }} - {{ rodo.kodMatkov }}</b>
                 <div class="drev-rod drev-rod--lini">
-                    <b class="drev-rod_title " >
-                        Линия :: </b>
+
+                    <a href="{{ path('app.proekts.drevorods.rods.linis', {'id': rodo.id}) }}"  >
+                        <b class="drev-rod_title " >Линия :: </b>
+                    </a>
+
                     <b class="drev-rod_title drev-grad" >
                         {% if linia.name == "-" %}
                             названя нет
@@ -41,19 +44,28 @@
                         {% endif %}
                     </b>
                     <div class="drev-rod drev-rod--lini">
-                        <b class="drev-rod_title " >
-                           Материнка - ветка :: </b>
+
+                        <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas', {'id': linia.id}) }}"  >
+                            <b class="drev-rod_title " >Материнка Ветка   :: </b>
+                        </a>
+
                         <b class="drev-rod_title drev-grad" >
                             {{ wetka.nameW }}</b>
 
                         <div class="drev-rod drev-rod--lini">
-                            <b class="drev-rod_title " >
-                                Материнка - номер :: </b>
+
+                            <a href="{{ path('app.proekts.drevorods.rods.linis.wetkas.nomwets', {'id': wetka.id}) }}"  >
+                                <b class="drev-rod_title " > Материнка - номер :: </b>
+                            </a>
+
                             <b class="drev-rod_title drev-grad" >{{ nomwet.titW }}</b>
 
                             <div class="drev-rod drev-rod--lini">
 
-                                <b class="drev-rod_title " >Материнка трутня :: </b>
+                                <a href="{{ path('app.proekts.drevorods.rods.linis.wetkas.nomwets.mattruts', {'id': nomwet.id}) }}"  >
+                                    <b class="drev-rod_title " > Материнка трутня :: </b>
+                                </a>
+
                                 <b class="drev-rod_title drev-grad" >{{ mattrut.nameOt }}</b>
 
 
@@ -70,6 +82,12 @@
                                             Статус
                                         </li>
                                     </ul>
+                                    <ul class="drev-rod_ul  ">
+                                        <li class=" drev-rod_li  drev-border"></li>
+                                        <li class=" drev-rod_li  drev-border"></li>
+                                        <li class=" drev-rod_li  drev-border"></li>
+
+                                    </ul>
                                     {% for nom in noms %}
 
                                         <ul class="drev-rod_ul">
@@ -80,6 +98,7 @@
                                             <li class=" drev-rod_li">  {{ nom_status(nom.status) }}  </li>
 
                                         </ul>
+
                                     {% endfor %}
 
                                 </div>

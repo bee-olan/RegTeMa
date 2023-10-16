@@ -2,6 +2,36 @@
 // display: inline-block;  по умолч будут блочными
 //font-family: inherit;  шрифт наследуется у родителя
 // box-shadow: 0 7px 17px -10px rgba($blue, .3);  тень для кнопки
+.btnn-bord {
+    display: inline-block; // чтобы падинги корректно работали
+    //vertical-align: top;
+    padding: 0 .4em 0 .55em;
+    border: 1px solid $border-kroxi;
+
+    cursor: pointer;
+    border-radius: 3em;
+    //background: inherit;
+    //background-color: $grad1;
+    font-family: inherit; //шрифт наследуется у родителя
+    //font-size: 1.2rem;
+    //line-height: 1.1;
+    //font-weight: 500;
+    //color: $border-kroxi;
+    text-decoration: none;
+    // плавное изменение цвета
+    transition: background-color .3s linear;
+    margin-bottom: .5rem;
+    margin-left: 1.1rem;
+
+    //margin-top: .5rem;
+
+    &:hover {
+        //background: linear-gradient( $grad1-o, $grad2-o);
+        text-decoration: none;
+        //color: $grad2;
+
+    }
+}
 .btnn {
     display: inline-block; // чтобы падинги корректно работали
     vertical-align: top;
