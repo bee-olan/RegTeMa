@@ -18,21 +18,21 @@
 
         <h1 class="dre_title ">Родословная. Данные   из паспорта купленной матки</h1>
         <div class="drev-rod">
-            <a href="{{ path('app.proekts.drevorods.rodras') }}"  >
-                <b class="drev-rod_title" >  Paca ::  </b>
+            <a href="{{ path('app.proekts.drevorods.rodras') }}"
+               class=" btnn-bord " >  Paca ::
             </a>
             <b class="drev-rod_title drev-grad" > {{ rasa.title }}  </b>
 
             <div class="drev-rod drev-rod--rodrod">
-                <a href="{{ path('app.proekts.drevorods.rods.rodrods', {'id': rasa.id}) }}"  >
-                    <b class="drev-rod_title " >Страна - матковод - код :: </b>
+                <a href="{{ path('app.proekts.drevorods.rods.rodrods', {'id': rasa.id}) }}"
+                   class=" btnn-bord " > Страна - матковод - код ::
                 </a>
                 <b class="drev-rod_title drev-grad" >
                     {{ stran.name}} - {{ rodo.nameMatkov }} - {{ rodo.kodMatkov }}</b>
                 <div class="drev-rod drev-rod--lini">
 
-                    <a href="{{ path('app.proekts.drevorods.rods.linis', {'id': rodo.id}) }}"  >
-                        <b class="drev-rod_title " >Линия :: </b>
+                    <a href="{{ path('app.proekts.drevorods.rods.linis', {'id': rodo.id}) }}"
+                       class=" btnn-bord " >Линия ::
                     </a>
 
                     <b class="drev-rod_title drev-grad" >
@@ -44,8 +44,8 @@
                     </b>
                     <div class="drev-rod drev-rod--lini">
 
-                        <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas', {'id': linia.id}) }}"  >
-                            <b class="drev-rod_title " >Материнка Ветка   :: </b>
+                        <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas', {'id': linia.id}) }}"
+                            class=" btnn-bord "  >Материнка Ветка   ::
                         </a>
                         <b class="drev-rod_title drev-grad" >
                             {{ wetka.nameW }}</b>
