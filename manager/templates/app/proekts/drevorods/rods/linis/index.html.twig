@@ -34,7 +34,7 @@
                     <b class="drev-rod_title drev-grad" >
                           {{ stran.name}} - {{ rodo.nameMatkov }} - {{ rodo.kodMatkov }}</b>
                     <div class="drev-rod drev-rod--lini">
-                        <ul class="drev-rod_ul drev-grad-si ">
+                        <ul class="drev-rod_ul  ">
                                 <li class=" drev-rod_li">Линии</li>
 
                                 <li class=" drev-rod_li">Кол-во веток (Материнка)</li>
@@ -47,7 +47,7 @@
 
                             {% for linia in linias %}
                                 {% if linia.wetkas > 0 %}
-                                    <ul class="drev-rod_ul">
+                                    <ul class="drev-rod_ul drev-grad-si">
                                         <li class=" drev-rod_li">
                                             <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas',{'id': linia.id}) }}"  >
                                                 {% if linia.name == "-" %}

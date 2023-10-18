@@ -52,7 +52,7 @@
 
 
                             <div class="drev-rod drev-rod--lini">
-                                <ul class="drev-rod_ul drev-grad-si ">
+                                <ul class="drev-rod_ul  ">
                                     <li class=" drev-rod_li">
                                         Материнка - номер
                                     </li>
@@ -68,7 +68,7 @@
                             {% for nomwet in nomwets %}
 
                             {% if nomwet.truts > 0 %}
-                                <ul class="drev-rod_ul">
+                                <ul class="drev-rod_ul drev-grad-si">
                                     <li class=" drev-rod_li">
                                         <a href="{{ path('app.proekts.drevorods.rods.linis.wetkas.nomwets.mattruts',{'id': nomwet.id}) }}"  >
 

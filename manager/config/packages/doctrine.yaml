@@ -48,6 +48,9 @@ doctrine:
             admin_matkas_kategoria_id: 'App\Model\Adminka\Entity\Matkas\Kategoria\IdType'
             admin_matkas_kategoria_permissions: 'App\Model\Adminka\Entity\Matkas\Kategoria\PermissionsType'
 
+            admin_drevmatka_id: 'App\Model\Adminka\Entity\DrevMatkas\IdType'
+            admin_drevmatka_status: 'App\Model\Adminka\Entity\DrevMatkas\StatusType'
+
             dre_stran_id: 'App\Model\Drevos\Entity\Strans\IdType'
 
             dre_ras_id: 'App\Model\Drevos\Entity\Rass\IdType'

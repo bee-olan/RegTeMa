@@ -44,7 +44,7 @@
                         {% endif %}
                     </b>
                     <div class="drev-rod drev-rod--lini">
-                        <ul class="drev-rod_ul drev-grad-si ">
+                        <ul class="drev-rod_ul  ">
                             <li class=" drev-rod_li">
                                 Материнка  ветка
                             </li>
@@ -52,16 +52,21 @@
                                 Кол-во номеров (Материнка)
                             </li>
                         </ul>
+                        <ul class="drev-rod_ul  ">
+                            <li class=" drev-rod_li  drev-border"></li>
+                            <li class=" drev-rod_li  drev-border"></li>
+
+                        </ul>
                         {% for wetka in wetkas %}
                         {% if linia.wetkas > 0 %}
-                            <ul class="drev-rod_ul">
+                            <ul class="drev-rod_ul drev-grad-si">
                                 <li class=" drev-rod_li">
                                     <a href="{{ path('app.proekts.drevorods.rods.linis.wetkas.nomwets',{'id': wetka.id}) }}"  >
 
                                             {{ wetka.name_w }}
                                     </a>
                                 </li>
-                                <li class=" drev-rod_li" >  {{ wetka.nomwets }}  </li>
+                                <li class=" drev-rod_li td_cent" >  {{ wetka.nomwets }}  </li>
                             </ul>
                         {% endif %}
                     {% endfor %}

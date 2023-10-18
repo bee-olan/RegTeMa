@@ -61,7 +61,7 @@
             color: $grad2;
             
         }
-    &--drev {
+        &--drev {
         background-color: $beloe;
         font-size: 1rem;
         border: 1px solid $sezon-text;
@@ -97,10 +97,12 @@
             opacity: 1;
             font-size: 1.2rem;
             color: $plem-color;
+            transition: background-color .3s linear;
+
             &:hover {
                 border: 1px solid $beloe;
                 box-shadow:  inset 0 5px 20px 0 rgba($beloe, 0.9);
-                opacity: 1;
+                opacity: .8;
                 text-decoration: none;
                 color: $beloe;
                 background-color: $plem-color;

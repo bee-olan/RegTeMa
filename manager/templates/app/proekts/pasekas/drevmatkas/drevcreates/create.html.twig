@@ -1,0 +1,65 @@
+{% extends 'probase.html.twig' %}
+
+{% block title %}ПлемМатка{% endblock %}
+
+{% block sidebarr %}
+    {% include('app/proekts/pasekas/matkas/side/_side_plem_create.html.twig') %}
+{% endblock %}
+
+{% block menupro %}
+    {{ include('app/proekts/pasekas/matkas/_tabs.html.twig') }}
+{% endblock %}
+
+ {% block kroxii %}
+            <a href="{{ path('proekt') }}">Главная</a>
+            <a href="#">Рег-ция ПлемМатки</a>
+            <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.creates') }}">Пункты 1-3</a>
+             <a href="{{ path('app.proekts.pasekas.rasas.plemmatka') }}">Раса_</a>
+            <span class="aktiv ">Пункт 3</span> 
+            <span class="aktiv ">Катеория и внутреняя нумерация</span> 
+{% endblock %}   
+
+{% block bodyy %}
+
+ <div  class="proekts proekts--plemmatka pb0">
+
+    {% include('app/proekts/pasekas/matkas/plemmatkas/_plemmatka-includ.html.twig') %}
+
+    <div class="proekts-plr  ">
+
+        <h1 class="plem__title  ">Компоненты  названия  ПлемМатки :<br>
+         <strong class="strongo strongo--kras"> {{command.sort}}</strong> - программный номер.   <br>
+           Ветка - номер <strong class="strongo strongo--kras">  {{ kakToTak }} </strong><br>
+{#         Внимание!!!<strong class="strongo strongo--kras"> Внутренняя нумерация </strong>-- Ваша нумерация или то, что придумаете для идентификации<br>  .#}
+        </h1>
+
+        <h1 class="plem__title  ">Заполняем еще три позиции:</h1>
+        <div class="plem-form__header  "> 
+            <div class="plem-form ">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {# <div class = "break-plem-create"> #}
+                    <ul class="plem__data plem__data--mt2">
+                        <li>    
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--col">Добавить в БД</button>
+                        </li>
+                        <li> 
+                            <a href="{{ path('app.proekts.pasekas.matkas') }}"
+                                class="btnn btnn--mb0 btnn--col"> Выйти из "Добавить"</a>
+                        </li>
+                    </ul> 
+
+                {{ form_end(form) }}
+            </div>                 
+        </div>
+    </div>        
+    <div class="inklud inklud--mb0 ">
+            <div class="inklud__title teni">
+            Характеристики категорий для регистрации  ПлемМатки
+            </div>
+        </div>  
+</div><!-- rasas -->
+{% include('app/proekts/pasekas/matkas/kategor/_kategor-includ.html.twig') %}
+
+
+{% endblock %}
