@@ -7,6 +7,7 @@ namespace App\Controller\Proekt\Pasekas\DrevMatkas\DrevCreates;
 use App\Annotation\Guid;
 
 
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
 use App\Model\Adminka\Entity\Matkas\Kategoria\Permission;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 
@@ -14,12 +15,13 @@ use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Nom;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\NomRepository;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Id;
 
+use App\ReadModel\Adminka\DrevMatkas\DrevMatkaFetcher;
 use App\ReadModel\Adminka\Matkas\KategoriaFetcher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use App\Model\Adminka\UseCase\Matkas\PlemMatka\Create;
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
-use App\ReadModel\Adminka\Matkas\PlemMatka\PlemMatkaFetcher;
+
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
 use App\ReadModel\Adminka\Uchasties\Uchastie\UchastieFetcher;
 
@@ -46,7 +48,7 @@ class PlemCreateController extends AbstractController
     /**
     * @Route("/", name="")
     * @param Request $request
-    * @param PlemMatkaFetcher $plemmatkas
+//    * @param DrevMatkaFetcher $drevmatkas
     * @param UchastieFetcher $uchasties,
     * @return Response
     */
@@ -106,23 +108,23 @@ class PlemCreateController extends AbstractController
      * @Route("/create/{id}", name=".create" , requirements={"id"=Guid::PATTERN})
      * @param Request $request
      * @param Nom $nomer
-     * @param PlemMatkaFetcher $plemmatkas
+     * @param DrevMatkaFetcher $drevmatkas
      * @param KategoriaFetcher $kategoria
      * @param Create\Handler $handler
      * @return Response
      */
     public function create( Request $request, Nom $nomer,
-                            PlemMatkaFetcher $plemmatkas,
+                            DrevMatkaFetcher $drevmatkas,
                             KategoriaFetcher $kategoria,
                             Create\Handler $handler): Response
     {
 
         //        $this->denyAccessUnlessGranted('ROLE_MANAGE_PLEMMATKAS');
 
-        $kategorias = $kategoria->all();
-        $permissions = Permission::names();
+//        $kategorias = $kategoria->all();
+//        $permissions = Permission::names();
 
-        $sort = $plemmatkas->getMaxSort() + 1;
+        $sort = $drevmatkas->getMaxSort() + 1;
         $command = new Create\Command($this->getUser()->getId(), $sort, $nomer->getId()->getValue());
 
 
@@ -144,8 +146,8 @@ class PlemCreateController extends AbstractController
         return $this->render('app/proekts/pasekas/drevmatkas/drevcreates/create.html.twig', [
             'form' => $form->createView(),
             'command' => $command,
-            'kategorias' => $kategorias,
-            'permissions' => $permissions,
+//            'kategorias' => $kategorias,
+//            'permissions' => $permissions,
             'kakToTak' => $kakToTak
         ]);
     }
@@ -157,7 +159,7 @@ class PlemCreateController extends AbstractController
     * @param NomRepository  $nomerOtecs
     * @param PlemMatka $plemmatka
     * @param MestoNomerFetcher $mestoNomers
-     * @param PlemMatkaFetcher $plemmatkas
+     * @param DrevMatkaFetcher $drevmatkas
      * @return Response
      */
     public function sdelano( PlemMatka $plemmatka,
@@ -165,7 +167,7 @@ class PlemCreateController extends AbstractController
                              Request $request,
                             PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
 //                            NomerRepository $nomers,
-                            PlemMatkaFetcher $plemmatkas): Response
+                            DrevMatkaFetcher $drevmatkas): Response
     {
 
     //    dd($plemmatka->getNomer()->getLinia()->getRasa()->getName());
@@ -176,7 +178,7 @@ class PlemCreateController extends AbstractController
 //        dd($nomerOtec->getName());
         // $mesto = $plemmatka->getMesto()->getNomer();
 // dd($plemmatka->getOtecNomer()->getLinia()->getNomers(new Id($plemmatka->getOtecNomer()->getId()->getValue())));
-//        $plemId = $plemmatkas->findIdByPlemMatka($plemmatka);
+//        $plemId = $drevmatkas->findIdByPlemMatka($plemmatka);
 
 
         return $this->render('app/proekts/pasekas/drevmatkas/drevcreates/sdelano.html.twig',
@@ -193,21 +195,21 @@ class PlemCreateController extends AbstractController
 
     /**
      * @Route("/{plemmatka_id}", name=".show", requirements={"plemmatka_id"=Guid::PATTERN})
-     * @param PlemMatka $plemmatka
-     * @param PlemMatkaFetcher $fetchers
+     * @param DrevMatka $drevmatka
+     * @param DrevMatkaFetcher $fetchers
      * @return Response
      */
-    public function show(  PlemMatkaFetcher $fetchers,
-                          PlemMatka $plemmatka
+    public function show(  DrevMatkaFetcher $fetchers,
+                           DrevMatka $drevmatka
     ): Response
     {
 
-        // $plemmatka = $fetchers->find($plem_id);
-        // dd( $plemmatka);
+        // $drevmatka = $fetchers->find($plem_id);
+        // dd( $drevmatka);
 
 
         return $this->render('app/proekts/pasekas/drevmatkas/drevcreates/redaktorss/show.html.twig',
-            compact('plemmatka'               
+            compact('drevmatka'
             ));
     }
 
