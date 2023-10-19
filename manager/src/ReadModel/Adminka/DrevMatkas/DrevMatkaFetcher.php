@@ -55,8 +55,8 @@ class DrevMatkaFetcher
     public function getMaxSort(): int
     {
         return (int)$this->connection->createQueryBuilder()
-            ->select('MAX(p.sort) AS m')
-            ->from('admin_drevmatkas', 'p')
+            ->select('MAX(dm.sort) AS m')
+            ->from('admin_drevmatkas', 'dm')
             ->execute()->fetch()['m'];
     }
 

@@ -15,9 +15,6 @@ use App\Model\Flusher;
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
 
-//use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
-//use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id as NomerId;
-//use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\NomerRepository as OtNomerRepository;
 
 
 
@@ -48,10 +45,22 @@ class Handler
 
         $nomer = $this->nomerRepository->get(new NomerId($command->nomer));
 
+        $nomwet = $nomer->getMattrut()->getNomwet()->getTitW();
 
-        $persona = $this->personas->find($command->uchastieId);
 
-        $mesto = $this->mestoNomers->find($command->uchastieId);
+        $wetka = $nomer->getMattrut()->getNomwet()->getWetka()->getNameW()."-".$nomwet;
+        $linia = $nomer->getMattrut()->getNomwet()->getWetka()->getLinia();
+        $lini = $linia->getName();
+        $rass = $linia->getRodo()->getRasa()->getName();
+
+        $persona = $personas->find($this->getUser()->getId());
+
+        $mesto = $mestos->find($this->getUser()->getId());
+
+//
+//        $persona = $this->personas->find($command->uchastieId);
+//
+//        $mesto = $this->mestoNomers->find($command->uchastieId);
 
         $nameG = explode("-", $nomer->getName());
 

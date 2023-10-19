@@ -19,7 +19,7 @@ use App\ReadModel\Adminka\DrevMatkas\DrevMatkaFetcher;
 use App\ReadModel\Adminka\Matkas\KategoriaFetcher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-use App\Model\Adminka\UseCase\Matkas\PlemMatka\Create;
+use App\Model\Adminka\UseCase\DrevMatkas\Create;
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
 
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
@@ -109,31 +109,28 @@ class PlemCreateController extends AbstractController
      * @param Request $request
      * @param Nom $nomer
      * @param DrevMatkaFetcher $drevmatkas
-     * @param KategoriaFetcher $kategoria
+
      * @param Create\Handler $handler
      * @return Response
      */
     public function create( Request $request, Nom $nomer,
                             DrevMatkaFetcher $drevmatkas,
-                            KategoriaFetcher $kategoria,
                             Create\Handler $handler): Response
     {
 
-        //        $this->denyAccessUnlessGranted('ROLE_MANAGE_PLEMMATKAS');
+        dd($nomer->drevMat());
 
-//        $kategorias = $kategoria->all();
-//        $permissions = Permission::names();
+        $sort = $drevmatkas->getMaxSort()+1;
 
-        $sort = $drevmatkas->getMaxSort() + 1;
-        $command = new Create\Command($this->getUser()->getId(), $sort, $nomer->getId()->getValue());
+        $command = new Create\Command( $sort , $nomer->getId()->getValue());
 
 
-        $form = $this->createForm(Create\Form::class, $command, ['rasa_id' => $nomer->getLinia()->getRasa()->getId()->getValue()]);
-        $form->handleRequest($request);
+//        $form = $this->createForm(Create\Form::class, $command, ['rasa_id' => $nomer->getLinia()->getRasa()->getId()->getValue()]);
+//        $form->handleRequest($request);
 
-        $kakToTak = $nomer->getLinia()->getNameStar()."-".$nomer->getName();
+//        $kakToTak = $nomer->getLinia()->getNameStar()."-".$nomer->getName();
 
-        if ($form->isSubmitted() && $form->isValid()) {
+//        if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
                 return $this->redirectToRoute('app.proekts.pasekas.drevmatkas.drevcreates.sdelano', [ 'name' => $command->name]);
@@ -141,14 +138,14 @@ class PlemCreateController extends AbstractController
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
-        }
+//        }
 
         return $this->render('app/proekts/pasekas/drevmatkas/drevcreates/create.html.twig', [
-            'form' => $form->createView(),
+//            'form' => $form->createView(),
             'command' => $command,
 //            'kategorias' => $kategorias,
 //            'permissions' => $permissions,
-            'kakToTak' => $kakToTak
+//            'kakToTak' => $kakToTak
         ]);
     }
 

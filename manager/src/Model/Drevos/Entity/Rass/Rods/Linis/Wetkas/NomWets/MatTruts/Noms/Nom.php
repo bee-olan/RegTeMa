@@ -73,6 +73,8 @@ class Nom
 
     private $zakazal;
 
+    private $drevMat;
+
     public function __construct(MatTrut $mattrut, Id $id,
 								string $nom,
                                 string $god,
@@ -103,7 +105,28 @@ class Nom
         $this->tit = $tit;
     }
 
+    public function drevMat(): string
+    {
 
+        $nomer = $this->nom;
+        $mattrut = $this->mattrut;
+
+        $nomwet = $mattrut->getNomwet();
+        $wetka = $nomwet->getWetka();
+
+         $wetkaW =  $wetka->getNameW()."-".$nomwet->getTitW();
+
+        $linia = $wetka->getLinia();
+        $lini = $linia->getName();
+        $rodo= $linia->getRodo();
+        $rass = $rodo->getRasa()->getName();
+
+        $nomerW= $this->getTit();
+
+        $drevMat =$rass." : ".$lini." : ".$wetkaW." : ".$nomerW;
+        return $drevMat  ;
+
+    }
 //------------------------------------------------------
     public function archive(): void
     {
@@ -201,6 +224,20 @@ class Nom
     {
         return $this->tit;
     }
+
+
+//    public function getDrevMat()
+//    {
+//        return $this->drevMat;
+//    }
+
+//    /**
+//     * @param mixed $drevMat
+//     */
+//    public function setDrevMat($drevMat): void
+//    {
+//        $this->drevMat = $drevMat;
+//    }
 
 
     public function getZakazal(): Uchastie

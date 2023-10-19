@@ -28,6 +28,8 @@ services:
     App\Model\Mesto\Entity\Okrugs\Oblasts\Raions\RaionRepository: ~
     App\Model\Mesto\Entity\InfaMesto\MestoNomerRepository: ~
 
+    App\Model\Adminka\Entity\DrevMatkas\DrevMatkaRepository: ~
+
     App\Model\Adminka\Entity\Uchasties\Group\GroupRepository: ~
     App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository: ~
     App\Model\Adminka\Entity\Uchasties\Personas\PersonaRepository: ~
