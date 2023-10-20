@@ -8,9 +8,14 @@ use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
 use App\Model\Adminka\Entity\DrevMatkas\DrevMatkaRepository;
 use App\Model\Adminka\Entity\DrevMatkas\Id;
 
+use App\Model\Adminka\Entity\Uchasties\Personas\PersonaRepository;
+ use App\Model\Adminka\Entity\Uchasties\Personas\Id as PersonaId;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\NomRepository;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Id as NomerId;;
 use App\Model\Flusher;
+
+use App\Model\Mesto\Entity\InfaMesto\MestoNomerRepository;
+ use App\Model\Mesto\Entity\InfaMesto\Id as MestoNomerId;
 
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
@@ -27,14 +32,15 @@ class Handler
     private $flusher;
 
     public function __construct(DrevMatkaRepository $drevmatkas,
-                                    PersonaFetcher $personas,
-                                    MestoNomerFetcher $mestoNomers,
+                                    PersonaRepository $personas,
+//                                    MestoNomerFetcher $mestoNomers,
+                                    MestoNomerRepository  $mestoNomers,
                                     NomRepository $nomerRepository,
                                     Flusher $flusher)
     {
         $this->drevmatkas = $drevmatkas;
 
-        $this->personas=$personas;
+        $this->personas = $personas;
         $this->mestoNomers=$mestoNomers;
         $this->nomerRepository=$nomerRepository;
         $this->flusher = $flusher;
@@ -44,35 +50,19 @@ class Handler
     {
 
         $nomer = $this->nomerRepository->get(new NomerId($command->nomer));
+        $nameDr = $nomer->drevMat();
 
-        $nomwet = $nomer->getMattrut()->getNomwet()->getTitW();
+        $nomer->getZakazal();
 
+        $persona = $this->personas->get(new PersonaId($nomer->getZakazal()->getId()->getValue()));
+           $personNom = $persona->getNomer();
 
-        $wetka = $nomer->getMattrut()->getNomwet()->getWetka()->getNameW()."-".$nomwet;
-        $linia = $nomer->getMattrut()->getNomwet()->getWetka()->getLinia();
-        $lini = $linia->getName();
-        $rass = $linia->getRodo()->getRasa()->getName();
+        $mesto = $this->mestoNomers->get(new MestoNomerId($nomer->getZakazal()->getId()->getValue()));
+         $mestoNom = $mesto->getNomer();
 
-        $persona = $personas->find($this->getUser()->getId());
-
-        $mesto = $mestos->find($this->getUser()->getId());
-
-//
-//        $persona = $this->personas->find($command->uchastieId);
-//
-//        $mesto = $this->mestoNomers->find($command->uchastieId);
-
-        $nameG = explode("-", $nomer->getName());
-
-        $godaVixod = (int) $nameG[1];
-
-        $nom = explode("_", $nomer->getTitle());
-
-        $namee = $nom[0]."_".$command->sort." : ".
-            $nomer->getLinia()->getNameStar()."-".$nomer->getName().
-                            " : ".$mesto->getNomer()."_пн-".$persona->getNomer();
-        $command->name = $namee;
-        if ($this->plemmatkas->hasByName($namee)) {
+         $command->name = $nameDr." : ".$mestoNom."_пн-".$personNom;
+//         dd($name);
+        if ($this->drevmatkas->hasByName($command->name)) {
             throw new \DomainException('ПлемМатка  уже существует.');
         }
 

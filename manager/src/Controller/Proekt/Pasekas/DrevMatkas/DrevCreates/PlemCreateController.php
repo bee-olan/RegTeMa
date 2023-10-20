@@ -118,7 +118,7 @@ class PlemCreateController extends AbstractController
                             Create\Handler $handler): Response
     {
 
-        dd($nomer->drevMat());
+//        dd($nomer->drevMat());
 
         $sort = $drevmatkas->getMaxSort()+1;
 
