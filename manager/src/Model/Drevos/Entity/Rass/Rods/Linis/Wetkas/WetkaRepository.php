@@ -21,19 +21,20 @@ class WetkaRepository
         $this->em = $em;
     }
 
-//    public function getByWetka(string $name_star, string $idVetka ): Wetka
-//    {
-//        /** @var Wetka $wetka */
-//        if (!$wetka = $this->repo->findOneBy([
-//                'nameStar' => $name_star,
-//                'idVetka' => $idVetka
-//
-//        ]))
-//        {
-//            throw new EntityNotFoundException('Wetka не найдена.');
-//        }
-//        return $wetka;
-//    }
+    public function getWetkaId(string $nameW): Id
+    {
+        /** @var Wetka $wetka */
+        if ($wetka = $this->repo->findOneBy(['nameW' => $nameW]))
+            return $wetka->getId();
+    }
+    public function hasWetka(string $nameW): bool
+    {
+        return $this->repo->createQueryBuilder('t')
+                ->select('COUNT(t.nameW)')
+                ->andWhere('t.nameW = :nameW')
+                ->setParameter(':nameW', $nameW)
+                ->getQuery()->getSingleScalarResult() > 0;
+    }
 
     public function has(Id $id): bool
     {

@@ -22,36 +22,6 @@
     </div>
     <div class="box-smotrim">
 
-{#        <table class="table table-bordered table-hover">#}
-{#            <thead>#}
-{#            <tr>#}
-{#                <th  class="fon_td_es" >Раса</th>#}
-{#                <th  class="fon_td_es" >Страна</th>#}
-{#                <th  class="fon_td_es" >Матковод(код)</th>#}
-{#                <th class="fon_td_es" >Линии</th>#}
-{#                <th  colspan="2"  class="fon_td_es"> Материнка</th>#}
-{#                <th> Материнка трутня</th>#}
-{#                <th> Матка </th>#}
-
-{#            </tr>#}
-{#            </thead>#}
-{#            <tbody>#}
-{#            <tr>#}
-{#                <td class="fon_td_es">    {{ rasa }}</td>#}
-{#                <td title = {{ stran.nomer }}  class="fon_td_es">  {{ stran.name}}  </td>#}
-{#                <td  class="fon_td_es">    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</td>#}
-{#                <td class="fon_td_es" >{{ linia.name }}</td>#}
-{#                <td class="fon_td_es" >{{ wetka.nameW }}</td>#}
-{#                <td class="fon_td_es" >{{ nomwet.nomW }}-{{ nomwet.godW }}</td>#}
-{#                <td  class="fon_td"></td>#}
-{#                <td  class="fon_td"></td>#}
-{#            </tr>#}
-{#            </tbody>#}
-{#        </table>#}
-{#    </div>#}
-
-
-{#    <div class="box">#}
 
     <table class="table table-bordered table-hover">
         <thead>
@@ -77,7 +47,6 @@
                     <td  class="fon_td_es">    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</td>
                     <td class="fon_td_es" >{{ linia.name }}</td>
                     <td class="fon_td_es"> {{ wetka.nameW }}-{{ nomwet.titW }}</td>
-{#                    <td  class="fon_td_es"> {{ nomwet.nomW  }}-{{ nomwet.godW  }}</td>#}
                     <td>{{ mattrut.name_ot }}</td>
 
                     <td class="fon_td"> <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.edit', {'id': nomwet.id, 'mattrut_id': mattrut.id}) }}"

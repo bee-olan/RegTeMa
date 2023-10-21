@@ -43,6 +43,19 @@
                 <td ></td>
                 <td ></td>
             </tr>
+                {% for nom in noms %}
+                    <tr>
+                        <td  colspan="8" > </td>
+
+                        <td class="td_cent">
+                            <strongo class="strongo--kras"> {{ nom.tit }}</strongo>
+                        </td>
+                        <td>{{nom.zakazal.nike }}</td>
+
+
+                        <td colspan="2" ></td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

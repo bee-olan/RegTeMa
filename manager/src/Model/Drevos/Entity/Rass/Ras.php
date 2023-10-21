@@ -82,11 +82,6 @@ class Ras
 
         $this->rodos->add(new Rod($this,
 									$id,
-//									$nameMat,
-//									$nameOt,
-//                                    $nameLin,
-//                                    $nameNom,
-//                                    $nameGod,
 									$sortRodo,
                                     $nameMatkov,
                                     $kodMatkov,
@@ -107,22 +102,7 @@ class Ras
         }
         throw new \DomainException('Rodo is not found.');
     }
-//
-//    public function editRo(RodId $id,
-//                             string $nameLin,
-//                             string $nameNom,
-//                            string $nameGod
-//    ): void
-//    {
-//        foreach ($this->rodos as $current) {
-//            if ($current->getId()->isEqual($id)) {
-//                $current->editRo($nameLin, $nameNom, $nameGod);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('Rodo is not found.');
-//    }
-//
+
     public function removeRod(RodId $id): void
     {
         foreach ($this->rodos as $rodo) {

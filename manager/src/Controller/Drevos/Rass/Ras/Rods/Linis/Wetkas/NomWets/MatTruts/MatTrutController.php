@@ -101,6 +101,7 @@ class MatTrutController extends AbstractController
             'stran' => $rodo->getStrana(),
             'rasa' => $rodo->getRasa(),
             'form' => $form->createView(),
+            'mattruts' => $nomwet->getMatTruts(),
         ]);
    }
 

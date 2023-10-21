@@ -95,6 +95,7 @@ class NomWetController extends AbstractController
             'stran' => $rodo->getStrana(),
             'rasa' => $rodo->getRasa()->getName(),
             'form' => $form->createView(),
+            'nomwets' => $wetka->getNomWets(),
         ]);
    }
 

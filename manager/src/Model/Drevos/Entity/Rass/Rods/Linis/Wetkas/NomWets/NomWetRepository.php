@@ -21,19 +21,20 @@ class NomWetRepository
         $this->em = $em;
     }
 
-//    public function getByNomWet(string $name_star, string $idVetka ): NomWet
-//    {
-//        /** @var NomWet $wetka */
-//        if (!$wetka = $this->repo->findOneBy([
-//                'nameStar' => $name_star,
-//                'idVetka' => $idVetka
-//
-//        ]))
-//        {
-//            throw new EntityNotFoundException('NomWet не найдена.');
-//        }
-//        return $wetka;
-//    }
+    public function getLiniId(string $name): Id
+    {
+        /** @var Lini $linia */
+        if ($linia = $this->repo->findOneBy(['name' => $name]))
+            return $linia->getId();
+    }
+    public function hasLini(string $name): bool
+    {
+        return $this->repo->createQueryBuilder('t')
+                ->select('COUNT(t.name)')
+                ->andWhere('t.name = :name')
+                ->setParameter(':name', $name)
+                ->getQuery()->getSingleScalarResult() > 0;
+    }
 
     public function has(Id $id): bool
     {

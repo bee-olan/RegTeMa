@@ -84,12 +84,13 @@ class LiniController extends AbstractController
                 $this->addFlash('error', $e->getMessage());
             }
         }
-//        dd("что-то  не так");
+
         return $this->render('app/drevos/rass/rods/linis/create.html.twig', [
             'rodo' => $rodo,
             'rasa' => $rodo->getRasa()->getTitle(),
             'stran' => $rodo->getStrana(),
             'form' => $form->createView(),
+            'linias'=> $rodo->getLinias(),
 
         ]);
    }

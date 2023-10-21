@@ -33,7 +33,19 @@ class Handler
     {
         $nomwet = $this->nomwets->get(new NomWetId($command->nomwet));
 
-
+//        if ( $this->liniaRepos->hasLini($command->name)){
+//
+//            $liniaRepos= $this->liniaRepos->getLiniId($command->name);
+//            $command->id = $liniaRepos;
+//
+//        } else {
+//
+//            $rodo->addLini(
+//                $command->id = Id::next(),
+//                $command->name ,
+//                $command->sortLini
+//            );
+//        }
 
      $nomwet->addMatTrut(
          $command->id = Id::next(),

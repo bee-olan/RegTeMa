@@ -107,7 +107,7 @@ class NomWet
     {
 
         foreach ($this->mattruts as $mattrut) {
-//            dd($mattrut);
+
             if ($mattrut->isTrutEqual($nameOt)) {
                 throw new \DomainException('номер уже существует.');
             }

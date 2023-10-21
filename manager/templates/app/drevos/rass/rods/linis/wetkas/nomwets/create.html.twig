@@ -27,6 +27,7 @@
                 <th  class="fon_td_es" >Матковод(код)</th>
                 <th class="fon_td_es" >Линии</th>
                 <th  colspan="2"> Материнка</th>
+                <th></th>
                 <th class="fon_td_no"> Материнка трутня</th>
                 <th class="fon_td_no"> Матка </th>
             </tr>
@@ -39,8 +40,25 @@
                 <td class="fon_td_es" >{{ linia.name }}</td>
                 <td class="fon_td_es" >{{ wetka.nameW }}</td>
                 <td  >номер</td>
+                <td></td>
                 <td colspan="2" class="fon_td_no"></td>
             </tr>
+            {% for nomwet in nomwets %}
+                <tr>
+                    <td  colspan="5" > </td>
+
+                    <td class="td_cent">
+                        <strongo class="strongo--kras"> {{ nomwet.nomW  }}-{{ nomwet.godW  }}</strongo>
+                    </td>
+
+                    <td> <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.create', {'id': nomwet.id}) }}">
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--drev ">  Выбрать </button>
+                        </a>
+                    </td>
+
+                    <td colspan="3" ></td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>

@@ -91,6 +91,7 @@ class WetkaController extends AbstractController
             'rasa' => $rodo->getRasa()->getTitle(),
             'stran' => $rodo->getStrana(),
             'form' => $form->createView(),
+            'wetkas' => $linia->getWetkas(),
         ]);
    }
 

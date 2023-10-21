@@ -33,35 +33,6 @@ class Rod
      */
     private $id;
 
-//    /**
-//     * @var string
-//     * @ORM\Column(type="string")
-//     */
-//    private $nameMat;
-//
-//     /**
-//     * @var string
-//     * @ORM\Column(type="string")
-//     */
-//    private $nameOt;
-//
-//    /**
-//     * @var string
-//     * @ORM\Column(type="string")
-//     */
-//    private $nameLin;
-//
-//    /**
-//     * @var string
-//     * @ORM\Column(type="string")
-//     */
-//    private $nameNom;
-//
-//    /**
-//     * @var string
-//     * @ORM\Column(type="string")
-//     */
-//    private $nameGod;
 
     /**
      * @var string
@@ -100,11 +71,6 @@ class Rod
 
 
     public function __construct(Ras $rasa, Id $id,
-//                                string $nameMat,
-//                                string $nameOt,
-//                                string $nameLin,
-//                                string $nameNom,
-//                                string $nameGod,
 								int $sortRodo,
                                 string $nameMatkov,
                                 string $kodMatkov,
@@ -114,11 +80,6 @@ class Rod
     {
         $this->rasa = $rasa;
         $this->id = $id;
-//        $this->nameMat = $nameMat;
-//        $this->nameOt = $nameOt;
-//        $this->nameLin = $nameLin;
-//        $this->nameNom = $nameNom;
-//        $this->nameGod = $nameGod;
 		$this->sortRodo = $sortRodo;
 		$this->nameMatkov = $nameMatkov;
 		$this->kodMatkov = $kodMatkov;

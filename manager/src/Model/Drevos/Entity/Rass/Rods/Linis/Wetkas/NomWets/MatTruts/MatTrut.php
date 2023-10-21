@@ -89,8 +89,9 @@ class MatTrut
                                 Uchastie $zakazal
                                 ): void
     {
-
+//        dd($this->nomers);
         foreach ($this->nomers as $nomer) {
+
             if ($nomer->isTitEqual($tit)) {
                 throw new \DomainException('номер уже существует.');
             }

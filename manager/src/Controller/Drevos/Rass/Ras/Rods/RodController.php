@@ -84,7 +84,7 @@ class RodController extends AbstractController
         return $this->render('app/drevos/rass/rods/create.html.twig', [
             'rasa' => $rasa,
             'form' => $form->createView(),
-
+            'rodos' => $rasa->getRods(),
         ]);
    }
 

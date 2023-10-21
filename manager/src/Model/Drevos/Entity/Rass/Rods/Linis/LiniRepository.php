@@ -21,19 +21,20 @@ class LiniRepository
         $this->em = $em;
     }
 
-//    public function getByLini(string $name_star, string $idVetka ): Lini
-//    {
-//        /** @var Lini $linia */
-//        if (!$linia = $this->repo->findOneBy([
-//                'nameStar' => $name_star,
-//                'idVetka' => $idVetka
-//
-//        ]))
-//        {
-//            throw new EntityNotFoundException('Lini не найдена.');
-//        }
-//        return $linia;
-//    }
+    public function getLiniId(string $name): Id
+    {
+        /** @var Lini $linia */
+        if ($linia = $this->repo->findOneBy(['name' => $name]))
+            return $linia->getId();
+    }
+    public function hasLini(string $name): bool
+    {
+        return $this->repo->createQueryBuilder('t')
+                ->select('COUNT(t.name)')
+                ->andWhere('t.name = :name')
+                ->setParameter(':name', $name)
+                ->getQuery()->getSingleScalarResult() > 0;
+    }
 
     public function has(Id $id): bool
     {

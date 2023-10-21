@@ -36,6 +36,20 @@ class Handler
 
         $command->titW = $command->nomW."-".$godW;
 
+//        if ( $this->liniaRepos->hasLini($command->name)){
+//
+//            $liniaRepos= $this->liniaRepos->getLiniId($command->name);
+//            $command->id = $liniaRepos;
+//
+//        } else {
+//
+//            $rodo->addLini(
+//                $command->id = Id::next(),
+//                $command->name ,
+//                $command->sortLini
+//            );
+//        }
+
      $wetka->addNomWet(
             $command->id =Id::next(),
 			$command->nomW,

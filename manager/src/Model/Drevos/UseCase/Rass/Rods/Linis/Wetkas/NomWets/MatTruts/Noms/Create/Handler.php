@@ -46,6 +46,20 @@ class Handler
 
         $command->tit = $command->nom."-".$god;
 
+//        if ( $this->liniaRepos->hasLini($command->name)){
+//
+//            $liniaRepos= $this->liniaRepos->getLiniId($command->name);
+//            $command->id = $liniaRepos;
+//
+//        } else {
+//
+//            $rodo->addLini(
+//                $command->id = Id::next(),
+//                $command->name ,
+//                $command->sortLini
+//            );
+//        }
+
      $mattrut->addNom(
          $command->id = Id::next(),
 			$command->nom,

@@ -114,6 +114,7 @@ class NomController extends AbstractController
             'stran' => $rodo->getStrana(),
             'rasa' => $rodo->getRasa(),
             'form' => $form->createView(),
+            'noms' => $mattrut->getNoms(),
         ]);
    }
 

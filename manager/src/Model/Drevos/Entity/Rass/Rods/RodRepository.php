@@ -21,6 +21,21 @@ class RodRepository
         $this->em = $em;
     }
 
+    public function getRodId(string $nameMatkov): Id
+    {
+        /** @var Rod $rod */
+        if ($rod = $this->repo->findOneBy(['nameMatkov' => $nameMatkov]))
+        return $rod->getId();
+    }
+    public function hasRod(string $nameMatkov): bool
+    {
+        return $this->repo->createQueryBuilder('t')
+                ->select('COUNT(t.nameMatkov)')
+                ->andWhere('t.nameMatkov = :nameMatkov')
+                ->setParameter(':nameMatkov', $nameMatkov)
+                ->getQuery()->getSingleScalarResult() > 0;
+    }
+
 //    public function getByLinia(string $name_star, string $idVetka ): Linia
 //    {
 //        /** @var Linia $rodo */
