@@ -115,6 +115,29 @@ class Nom
         $wetka = $nomwet->getWetka();
 
          $wetkaW =  $wetka->getNameW()."-".$nomwet->getTitW();
+        $mattrutW = $mattrut->getNameOt();
+        $linia = $wetka->getLinia();
+        $lini = $linia->getName();
+        $rodo= $linia->getRodo();
+        $rodoW = $rodo->getNameMatkov()."-".$rodo->getKodMatkov();
+        $rass = $rodo->getRasa()->getName();
+
+        $nomerW= $this->getTit();
+
+        $drevMat =$rass." | матковод: ".$rodoW." | линия: ".$lini." | материнка: ".$wetkaW." | мат.трутня: ".$mattrutW." | номер: ".$nomerW;
+        return $drevMat  ;
+
+    }
+    public function miniDrevMat(): string
+    {
+
+        $nomer = $this->nom;
+        $mattrut = $this->mattrut;
+
+        $nomwet = $mattrut->getNomwet();
+        $wetka = $nomwet->getWetka();
+
+        $nomwetW =  $nomwet->getNomW();
 
         $linia = $wetka->getLinia();
         $lini = $linia->getName();
@@ -123,8 +146,9 @@ class Nom
 
         $nomerW= $this->getTit();
 
-        $drevMat =$rass." : ".$lini." : ".$wetkaW." : ".$nomerW;
-        return $drevMat  ;
+        $miniDrevMat =$rass." : ".$lini." : ".$nomwetW."-".$nomerW;
+
+        return $miniDrevMat  ;
 
     }
 //------------------------------------------------------

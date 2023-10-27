@@ -58,6 +58,10 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% if noms is not empty %}
+            <b ><strongo class="strongo--kras">Внимание! </strongo> Данные "номер-год"  уже есть в БД (см выше),  </b> </br>
+            <b >при вводе данных (см ниже) повтора <strongo class="strongo--kras">не</strongo> должно быть!</b>
+        {% endif %}
     </div>
 
     <div class="box-edit">

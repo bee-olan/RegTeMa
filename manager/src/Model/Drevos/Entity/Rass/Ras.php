@@ -116,17 +116,18 @@ class Ras
 
 
 
-	 public function getRods()
+	 public function getRodos()
     {
         return $this->rodos->toArray();
     }
 
 
+
     public function getRodo(RodId $id): Rod
     {
-        foreach ($this->rodos as $rodo) {
-            if ($rodo->getId()->isEqual($id)) {
-                return $rodo;
+        foreach ($this->rodos as $rodoo) {
+            if ($rodoo->getId()->isEqual($id)) {
+                return $rodoo;
             }
         }
         throw new \DomainException('Rodo is not found.');

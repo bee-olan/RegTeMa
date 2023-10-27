@@ -63,6 +63,11 @@
             {% endfor %}
             </tbody>
         </table>
+        {% if rodos is not empty %}
+            <b ><strongo class="strongo--kras">Внимание! </strongo> - если будет повтор т.е. данные есть
+                в БД (см выше), то можно воспльзовться кнопкой "Выбрать" </b> </br>
+            <b > Если повтора <strongo class="strongo--kras">не</strongo> будет- переходите к  вводу данных (см ниже)</b>
+        {% endif %}
     </div>
 
 

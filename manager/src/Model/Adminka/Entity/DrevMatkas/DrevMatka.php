@@ -147,129 +147,7 @@ class DrevMatka
         }
         $this->status = Status::active();
     }
-//    ////////////////
-//    public function addDepartment(DepartmentId $id, string $name): void
-//    {
-//        foreach ($this->departments as $department) {
-//            if ($department->isNameEqual($name)) {
-//                throw new \DomainException('Отдел уже существует.');
-//            }
-//        }
-//        $this->departments->add(new Department($this, $id, $name));
-//    }
-//
-//    public function editDepartment(DepartmentId $id, string $name): void
-//    {
-//        foreach ($this->departments as $current) {
-//            if ($current->getId()->isEqual($id)) {
-//                $current->edit($name);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('Отдел не найден.');
-//    }
-//
-//    public function removeDepartment(DepartmentId $id): void
-//    {
-//        foreach ($this->departments as $department) {
-//            if ($department->getId()->isEqual($id)) {
-//                foreach ($this->uchastniks as $uchastnik) {
-//                     if ($uchastnik->isForDepartment($id)) {
-//                         throw new \DomainException('Не удалось удалить отдел с участиемs.');
-//                     }
-//                }
-//                $this->departments->removeElement($department);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('Отдел не найден.');
-//    }
-//    ///////
 
-
-//    public function hasUchastie(UchastieId $id): bool
-//    {
-//        foreach ($this->uchastniks as $uchastnik) {
-//            if ($uchastnik->isForUchastie($id)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//
-//
-//    /**
-//     * @param Uchastie $uchastie
-//     * @param DepartmentId[] $departmentIds
-//     * @param Role[] $roles
-//     * @throws \Exception
-//     */
-//    public function addUchastie(Uchastie $uchastie, array $departmentIds, array $roles): void
-//    {
-//        foreach ($this->uchastniks as $uchastnik) {
-//            if ($uchastnik->isForUchastie($uchastie->getId())) {
-//                throw new \DomainException('Такой участник уже добавлен.');
-//            }
-//        }
-//        $departments = array_map([$this, 'getDepartment'], $departmentIds);
-//        $this->uchastniks->add(new Uchastnik($this, $uchastie, $departments, $roles));
-//    }
-//
-//    /**
-//     * @param UchastieId $uchastie
-//     * @param DepartmentId[] $departmentIds
-//     * @param Role[] $roles
-//     */
-//    public function editUchastie(UchastieId $uchastie, array $departmentIds, array $roles): void
-//    {
-//        foreach ($this->uchastniks as $uchastnik) {
-//            if ($uchastnik->isForUchastie($uchastie)) {
-//                $uchastnik->changeDepartments(array_map([$this, 'getDepartment'], $departmentIds));
-//                $uchastnik->changeRoles($roles);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('Участие не найдено.');
-//    }
-//
-//    /**
-//     * @param UchastieId $uchastie
-//     * @param DepartmentId[] $departmentIds
-////     * @param Role[] $roles
-//     */
-//    public function editSezonUchastie(UchastieId $uchastie, array $departmentIds): void
-//    {
-//        foreach ($this->uchastniks as $uchastnik) {
-//            if ($uchastnik->isForUchastie($uchastie)) {
-//                $uchastnik->changeDepartments(array_map([$this, 'getDepartment'], $departmentIds));
-////                $uchastnik->changeRoles($roles);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('Участие не найдено.');
-//    }
-//
-//    public function removeUchastie(UchastieId $uchastie): void
-//    {
-//        foreach ($this->uchastniks as $uchastnik) {
-//            if ($uchastnik->isForUchastie($uchastie)) {
-//                $this->uchastniks->removeElement($uchastnik);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('Участие не найдено.');
-//    }
-//
-//// если есть у пользователя разрешение !!!!!!!!!!!!!!!!!!!!!!!!!
-//    public function isUchastieGranted(UchastieId $id, string $permission): bool
-//    {
-//        foreach ($this->uchastniks as $uchastnik) {
-//            if ($uchastnik->isForUchastie($id)) {
-//                return $uchastnik->isGranted($permission);
-//            }
-//        }
-//        return false;
-//    }
 
 
     public function isArchived(): bool
@@ -292,14 +170,14 @@ class DrevMatka
         return $this->name;
     }
 
-    public function getKorotkoName(): string
-    {
-
-        $korotkoNames= explode(" ",$this->getName() );
-
-//        dd(  $this->godaVixod);
-        return $this->korotkoName = $korotkoNames[0]."-";
-    }
+//    public function getKorotkoName(): string
+//    {
+//
+//        $korotkoNames= explode(" ",$this->getName() );
+//
+//
+//        return $this->korotkoName = $korotkoNames[0]."-";
+//    }
 
 
     public function getSort(): int

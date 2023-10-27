@@ -84,7 +84,7 @@ class RodController extends AbstractController
         return $this->render('app/drevos/rass/rods/create.html.twig', [
             'rasa' => $rasa,
             'form' => $form->createView(),
-            'rodos' => $rasa->getRods(),
+            'rodos' => $rasa->getRodos(),
         ]);
    }
 
@@ -160,7 +160,7 @@ class RodController extends AbstractController
     }
 
     /**
-     * @Route("/{rodo_id}", name=".show", requirements={"rodo_id"=Guid::PATTERN})
+     * @Route("/show/{rodo_id}", name=".show", requirements={"rodo_id"=Guid::PATTERN})
      * @param string $rodo_id
      * @param Request $request
      * @param Ras $rasa
@@ -168,7 +168,9 @@ class RodController extends AbstractController
      */
     public function show(Request $request,Ras $rasa, string $rodo_id): Response
     {
+
         $rodo = $rasa->getRodo(new Id($rodo_id));
+
         return $this->render('app/drevos/rass/rods/show.html.twig', [
             'rodo' => $rodo,
             'stran' => $rodo->getStrana(),

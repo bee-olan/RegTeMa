@@ -78,7 +78,7 @@ $drevmatka = new DrevMatka(
 
         $this->drevmatkas->add($drevmatka);
 
-        $nomer->ojidaetActive();
+        $nomer->isActive();
 
         $this->flusher->flush();
     }

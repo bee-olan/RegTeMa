@@ -39,12 +39,12 @@ class Handler
 
         $strana = $this->stranas->get(new StranId($command->strana));
 
-        if ( $this->rodRepas->hasRod($command->nameMatkov)){
-
-            $rodRepas= $this->rodRepas->getRodId($command->nameMatkov);
-            $command->id = $rodRepas;
-
-        } else {
+//        if ( $this->rodRepas->hasRod($command->nameMatkov)){
+//
+//            $rodRepas= $this->rodRepas->getRodId($command->nameMatkov);
+//            $command->id = $rodRepas;
+//
+//        } else {
 
             $rasa->addRod(
                 $command->id = Id::next(),
@@ -55,8 +55,8 @@ class Handler
             );
 
 
-            $this->rasas->add($rasa);
-        }
+//            $this->rasas->add($rasa);
+//        }
 
         $this->flusher->flush();
     }

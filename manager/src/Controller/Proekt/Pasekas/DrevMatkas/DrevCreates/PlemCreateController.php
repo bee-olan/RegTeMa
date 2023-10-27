@@ -88,20 +88,22 @@ class PlemCreateController extends AbstractController
             $this->addFlash('error', 'Внимание!!! Для продолжения нужно стать участником проекта! ');
             return $this->redirectToRoute('app.proekts.pasekas.uchasties.uchastiee');
         }
-       
 
-        $nomwet = $nomer->getMattrut()->getNomwet()->getTitW();
-        $wetka = $nomer->getMattrut()->getNomwet()->getWetka()->getNameW()."-".$nomwet;
-        $linia = $nomer->getMattrut()->getNomwet()->getWetka()->getLinia();
-        $lini = $linia->getName();
-        $rass = $linia->getRodo()->getRasa()->getName();
+        $drevMat = $nomer->drevMat();
+        $miniDrevMat = $nomer->miniDrevMat();
+//        $nomwet = $nomer->getMattrut()->getNomwet()->getTitW();
+//        $wetka = $nomer->getMattrut()->getNomwet()->getWetka()->getNameW()."-".$nomwet;
+//        $linia = $nomer->getMattrut()->getNomwet()->getWetka()->getLinia();
+//        $lini = $linia->getName();
+//        $rass = $linia->getRodo()->getRasa()->getName();
 
         $persona = $personas->find($this->getUser()->getId());
 
         $mesto = $mestos->find($this->getUser()->getId());
 
         return $this->render('app/proekts/pasekas/drevmatkas/drevcreates/plemmatka.html.twig',
-            compact('nomer', 'persona', 'mesto', 'wetka', 'rass', 'lini') );
+            compact('drevMat', 'nomer','persona', 'mesto', 'miniDrevMat') );
+//            compact('nomer', 'persona', 'mesto', 'wetka', 'rass', 'lini') );
     }
 
     /**
@@ -118,19 +120,12 @@ class PlemCreateController extends AbstractController
                             Create\Handler $handler): Response
     {
 
-//        dd($nomer->drevMat());
+
 
         $sort = $drevmatkas->getMaxSort()+1;
 
         $command = new Create\Command( $sort , $nomer->getId()->getValue());
 
-
-//        $form = $this->createForm(Create\Form::class, $command, ['rasa_id' => $nomer->getLinia()->getRasa()->getId()->getValue()]);
-//        $form->handleRequest($request);
-
-//        $kakToTak = $nomer->getLinia()->getNameStar()."-".$nomer->getName();
-
-//        if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
                 return $this->redirectToRoute('app.proekts.pasekas.drevmatkas.drevcreates.sdelano', [ 'name' => $command->name]);
@@ -138,14 +133,9 @@ class PlemCreateController extends AbstractController
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
-//        }
 
         return $this->render('app/proekts/pasekas/drevmatkas/drevcreates/create.html.twig', [
-//            'form' => $form->createView(),
             'command' => $command,
-//            'kategorias' => $kategorias,
-//            'permissions' => $permissions,
-//            'kakToTak' => $kakToTak
         ]);
     }
 
@@ -153,36 +143,26 @@ class PlemCreateController extends AbstractController
     * @Route("/sdelano/{name}", name=".sdelano" )
     * @ParamConverter("name", options={"id" = "name"})
     * @param Request $request
-    * @param NomRepository  $nomerOtecs
-    * @param PlemMatka $plemmatka
+    * @param DrevMatka $plemmatka
     * @param MestoNomerFetcher $mestoNomers
      * @param DrevMatkaFetcher $drevmatkas
      * @return Response
      */
-    public function sdelano( PlemMatka $plemmatka,
-                             NomRepository  $nomerOtecs,
-                             Request $request,
-                            PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
-//                            NomerRepository $nomers,
+    public function sdelano(Request $request,
+                            DrevMatka $plemmatka,
+                            PersonaFetcher $personas,
+                            MestoNomerFetcher $mestoNomers,
                             DrevMatkaFetcher $drevmatkas): Response
     {
 
-    //    dd($plemmatka->getNomer()->getLinia()->getRasa()->getName());
-        $nomer = $plemmatka->getNomer()->getTitle();
 
-        $nomerOtec = $nomerOtecs->get(new Id($plemmatka->getOtecNomer()->getId()->getValue()));
-//dd($nomerOtec->getLinia()->getName());
-//        dd($nomerOtec->getName());
-        // $mesto = $plemmatka->getMesto()->getNomer();
-// dd($plemmatka->getOtecNomer()->getLinia()->getNomers(new Id($plemmatka->getOtecNomer()->getId()->getValue())));
-//        $plemId = $drevmatkas->findIdByPlemMatka($plemmatka);
+        $nomer = $plemmatka->getNomer()->getTit();
 
+//        $miniDrevMat = $nom->miniDrevMat();
 
         return $this->render('app/proekts/pasekas/drevmatkas/drevcreates/sdelano.html.twig',
           [
               'plemmatka' => $plemmatka,
-                'nomerOtec' => $nomerOtec,
-                // 'mesto' => $mesto,
                 'nomer' => $nomer,
           ])
            ;
