@@ -74,11 +74,11 @@
 
                                         <li class=" drev-rod_li  drev-rod_li--widt">Номер матки</li>
 
-                                        <li class=" drev-rod_li drev-rod_li--widt ">Купил</li>
-
                                         <li class=" drev-rod_li drev-rod_li--widt">Статус</li>
 
-                                        <li  class=" drev-rod_li">Объявить ПлемМаткой</li>
+                                        <li  class=" drev-rod_li">Действие</li>
+                                        <li class=" drev-rod_li drev-rod_li--widt ">Купил</li>
+
                                     </ul>
                                     <ul class="drev-rod_ul  ">
                                         <li class=" drev-rod_li  drev-border"></li>
@@ -94,23 +94,23 @@
                                             <li  class=" drev-rod_li drev-rod_li--widt">
                                                 <b class="drev-rod_title drev-red" > {{ nom.tit }}</b>
                                             </li>
-
-                                            <li class=" drev-rod_li drev-rod_li--widt">  {{ nom.nike }}  </li>
                                             <li class=" drev-rod_li drev-rod_li--widt">  {{ nom_status(nom.status) }}  </li>
                                             {% if nom.status == "ojidaet" %}
                                                 <li class="drev-rod_li">
                                                     <a href="{{ path('app.proekts.pasekas.drevmatkas.drevcreates.plemmatka',{ id: nom.id} ) }}"
-                                                       class="btnn btnn--mb0 btnn--pt btnn--ojidaet ">  Объявить
+                                                       class=" btnn-rodos ">  Объявить
                                                     </a>
                                                 </li>
                                             {% endif %}
                                             {% if nom.status == "active" %}
                                                 <li class="drev-rod_li">
                                                     <a href="{{ path('app.proekts.pasekas.drevmatkas.drevcreates.plemmatka',{ id: nom.id} ) }}"
-                                                       class="btnn btnn--mb0 btnn--pt btnn--drev ">  Смотреть
+                                                       class=" btnn-rodos ">  Смотреть
                                                     </a>
                                                 </li>
                                             {% endif %}
+
+                                            <li class=" drev-rod_li drev-rod_li--widt">  {{ nom.nike }}  </li>
                                         </ul>
 
                                     {% endfor %}

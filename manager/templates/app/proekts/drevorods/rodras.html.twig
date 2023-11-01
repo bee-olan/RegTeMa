@@ -13,13 +13,20 @@
     {% endblock %}
 
 {% block bodyy %}
+
     <div  class="proekts proekts--drev-rod">
 
-        <h1 class="dre_title ">Родословная.</h1>
-        <b class="drev-rod_title " > Данные   из паспорта купленной матки. </b>
+        <h1 class="dre_title ">Родословная...</h1>
+
+        {% if rasas is  empty %}
+
+        <h1 class="dre_title "> Пока нет паспортных данных для маток.  </h1>
+
+        {% else %}
+
+            <b class="drev-rod_title " > Данные   из паспорта купленной матки. </b>
 
             <div class="drev-rod  drev-rod--rodrod">
-
 
                 <ul class="drev-rod_ul  ">
 
@@ -37,64 +44,38 @@
                     {% if rasa.rodos > 0 %}
                         <ul class="drev-rod_ul  drev-grad-si">
                             <li class=" drev-rod_li ">
-                                <a href="{{ path('app.proekts.drevorods.rods.rodrods',{'id': rasa.id}) }}"  >
+                                <a href="{{ path('app.proekts.drevorods.rods.rodrods',{'id': rasa.id}) }}"  class=" btnn-rodos " >
                                     {{ rasa.title }}
                                 </a>
                             </li>
-{#                            <div class="drev-border"></div>#}
                             <li class=" drev-rod_li td_cent " >
-                                <a href="{{ path('app.proekts.drevorods.rods.rodrods',{'id': rasa.id}) }}"  >
+
                                     {{ rasa.rodos }}
-                                </a>
+
                             </li>
                         </ul>
                     {% endif %}
                 {% endfor %}
+        </div>
 
-{#            </div>#}
+        {% endif %}
+
+    </div>
+    <div  class="proekts proekts--drev-rod">
+        <h1 class="dre_title ">  <strong class="strongo strongo--kras">Внимание! </strong> </h1>
+        <div class="drev-rod  drev-rod--rodrod">
+
+            <ul >
+                <li  class="drev-rod_title">
+                    Если <strong class="strongo strongo--kras">нет </strong> нужной родословной, напишите запрос и
+                    ожидайте,
+                </li>
+                <li class="drev-rod_title">
+                    модератор   обработает запрос и запишит данные в БД.
+                </li>
+            </ul>
+
         </div>
     </div>
-
-
-    {#    {% set token = csrf_token('delete') %}#}
-
-{#    <div class="box">#}
-{#       #}
-{#        <b class="dre_title  ">Расы зарегистрированные в БД </b>#}
-{#        <table class="table table-bordered table-hover">#}
-{#            <thead>#}
-{#            <tr>#}
-
-{#                <th> Название расы</th>#}
-{#                <th>Сокращено</th>#}
-{#                <th colspan="2"> редак-ть / удалить</th>#}
-{#                <th colspan="3">Родословные (к-во)</th>#}
-
-
-{#            </tr>#}
-{#            </thead>#}
-{#            <tbody>#}
-{#            {% for raca in rasas %}#}
-{#                <tr>#}
-{#                {% if raca.rodos > 0  %}#}
-
-{#                    <td>{{ raca.title }}</td>#}
-
-{#                    <td>{{ raca.name }}</td>#}
-
-
-{#                    <td> ( {{ raca.rodos }} )</td>#}
-
-
-{#                {% endif %}#}
-{#                </tr>#}
-
-{#            {% endfor %}#}
-{#            </tbody>#}
-{#        </table>#}
-{#    </div>#}
-
-
-
 
 {% endblock %}

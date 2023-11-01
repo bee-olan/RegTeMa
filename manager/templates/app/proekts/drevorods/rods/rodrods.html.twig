@@ -43,19 +43,21 @@
                     </ul>
                     {% for rodo in rodos %}
                         {% if rodo.linias > 0 %}
-                    <a href="{{ path('app.proekts.drevorods.rods.linis',{'id': rodo.id}) }}"  >
+
                             <ul class="drev-rod_ul drev-grad-si ">
                                 <li class=" drev-rod_li"> {{ rodo.strana}}
                                 </li>
                                 <li class=" drev-rod_li">
+                                    <a href="{{ path('app.proekts.drevorods.rods.linis',{'id': rodo.id}) }}" class=" btnn-rodos " >
                                         {{ rodo.name_matkov }}
+                                    </a>
                                 </li>
                                 <li class=" drev-rod_li">
                                     {{ rodo.kod_matkov }}
                                 </li>
                                 <li class=" drev-rod_li " >  {{ rodo.linias }}  </li>
                             </ul>
-                    </a>
+
                         {% endif %}
                 {% endfor %}
 
