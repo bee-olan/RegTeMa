@@ -100,10 +100,16 @@
                                             {% if nom.status == "ojidaet" %}
                                                 <li class="drev-rod_li">
                                                     <a href="{{ path('app.proekts.pasekas.drevmatkas.drevcreates.plemmatka',{ id: nom.id} ) }}"
-                                                       class="btnn btnn--pt btnn--mb0 ">  <strong class="strongo strongo--kras">выбрать номер </strong>
+                                                       class="btnn btnn--mb0 btnn--pt btnn--ojidaet ">  Объявить
                                                     </a>
                                                 </li>
-
+                                            {% endif %}
+                                            {% if nom.status == "active" %}
+                                                <li class="drev-rod_li">
+                                                    <a href="{{ path('app.proekts.pasekas.drevmatkas.drevcreates.plemmatka',{ id: nom.id} ) }}"
+                                                       class="btnn btnn--mb0 btnn--pt btnn--drev ">  Смотреть
+                                                    </a>
+                                                </li>
                                             {% endif %}
                                         </ul>
 

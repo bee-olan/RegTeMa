@@ -38,7 +38,7 @@ class Command
 
         $command = new self($rodo->getId()->getValue());
         $command->sortLini = $maxSort;
-$command->name = "-";
+        $command->name = "нет";
 
         return $command;
     }

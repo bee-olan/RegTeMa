@@ -67,9 +67,9 @@
     <div class="box-edit">
             {{ form_start(form) }}
             {{ form_widget(form) }}
-            <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить в БД</button>
-{#            <a href="{{ path('drevos.rass.rods.linis.wetkas',{'id': linia.id}) }}"#}
-{#                class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Добавить"</a>#}
+            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--drev-es">Добавить в БД</button>
+            <a href="{{ path('drevos.rass.rods.linis.wetkas',{'id': linia.id}) }}"
+                class="btnn btnn--ml3 btnn--pt btnn--drev-es"> Выйти из режима "Добавить"</a>
         {{ form_end(form) }}
 	</div>
 

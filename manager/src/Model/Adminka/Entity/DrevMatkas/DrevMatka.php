@@ -49,11 +49,6 @@ class DrevMatka
      */
       private $mesto;
 
-//    /**
-//     * @var string
-//     * @ORM\Column(type="string")
-//     */
-//    private $title;
 
     /**
      * @var Persona
@@ -75,41 +70,6 @@ class DrevMatka
     private $status;
 
 
-//    /**
-//     * @var int
-//     * @ORM\Column(type="integer")
-//     */
-//    private $godaVixod;
-
-//    /**
-//     * @var Kategoria
-//     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Matkas\Kategoria\Kategoria")
-//     * @ORM\JoinColumn(name="kategoria_id", referencedColumnName="id", nullable=false)
-//     */
-//    private $kategoria;
-
-//    /**
-//     * @var OtecNomer
-//     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Nomer")
-//     * @ORM\JoinColumn(name="otec_nomer_id", referencedColumnName="id", nullable=false)
-//     */
-//    private $otecNomer;
-
-//    /**
-//     * @var ArrayCollection|Department[]
-//     * @ORM\OneToMany(
-//     *     targetEntity="App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Department",
-//     *     mappedBy="plemmatka", orphanRemoval=true, cascade={"all"}
-//     * )
-//     * @ORM\OrderBy({"name" = "ASC"})
-//     */
-//    private $departments;
-//
-//    /**
-//     * @var ArrayCollection|Uchastnik[]
-//     * @ORM\OneToMany(targetEntity="Uchastnik", mappedBy="plemmatka", orphanRemoval=true, cascade={"all"})
-//     */
-//    private $uchastniks;
 
     public function __construct( Id $id,
                                  string $name,
@@ -170,20 +130,12 @@ class DrevMatka
         return $this->name;
     }
 
-//    public function getKorotkoName(): string
-//    {
-//
-//        $korotkoNames= explode(" ",$this->getName() );
-//
-//
-//        return $this->korotkoName = $korotkoNames[0]."-";
-//    }
-
 
     public function getSort(): int
     {
         return $this->sort;
     }
+
     public function getStatus(): Status
     {
         return $this->status;

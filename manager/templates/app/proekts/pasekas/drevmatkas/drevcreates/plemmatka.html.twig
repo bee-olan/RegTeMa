@@ -28,20 +28,30 @@
         <div class="proekts-plr  ">
 
            <h1 class="plem__title  ">
-               <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                   <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-               </svg>
-               Паспортные даные купленной матки!
+               Проверяем результат выбора
            </h1>
 
                 <ul class="plem__data">
                     {% if nomer %}
-
-                        <li><div class = "plem-nomer  plem-nomer__wid8">
-                              {{ drevMat }}
-                            </div>
+                        {% set drevMats = drevMat|split('|') %}
+                        <li>
+                            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                            </svg>
                         </li>
+                        <li class="plem__name  "> Паспортные даные купленной матки!</li>
+                        <li>
+                            <table class="table table-bordered table-hover">
+                                <thead class = "plem-nomer  plem-nomer__wid8">
+                                    {% for drevMa in drevMats %}
 
+                                        <tr  ><th > {{ drevMa }}</th></tr>
+
+                                    {% endfor %}
+                                </thead>
+                            </table>
+                        </li>
+                        <li></li>
                     {% endif %}
                 </ul>
 
@@ -55,7 +65,7 @@
                         <li><div class = "plem-nomer plem-nomer__wid12">
                             {{miniDrevMat }}  : <strong class="strongo strongo--kras">{{ mesto.nomer }}_пн-{{ persona.nomer }} </strong>
                             </div></li>
-                        <li class="plem__name  ">С учетом Ваших данных.</li>
+                        <li class="plem__name  ">Будет название с учетом Ваших данных.</li>
                        
                         <li></li>
                    

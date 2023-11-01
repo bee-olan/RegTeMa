@@ -31,6 +31,10 @@ class Handler
     {
         $rodo = $this->rodos->get(new RodoId($command->rodo));
 
+        if ($command->name == "нет"){
+            $command->name = "-";
+        }
+
         if ( $this->liniaRepos->hasLini($command->name)){
 
             $liniaRepos= $this->liniaRepos->getLiniId($command->name);

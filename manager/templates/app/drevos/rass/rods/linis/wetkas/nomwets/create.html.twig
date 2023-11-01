@@ -39,7 +39,7 @@
                 <td  class="fon_td_es">    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</td>
                 <td class="fon_td_es" >{{ linia.name }}</td>
                 <td class="fon_td_es" >{{ wetka.nameW }}</td>
-                <td  >номер</td>
+                <td class=" td_cent " >номер</td>
                 <td></td>
                 <td colspan="2" class="fon_td_no"></td>
             </tr>
@@ -47,12 +47,13 @@
                 <tr>
                     <td  colspan="5" > </td>
 
-                    <td class="td_cent">
+                    <td class="fon_td_es  td_cent">
                         <strongo class="strongo--kras"> {{ nomwet.nomW  }}-{{ nomwet.godW  }}</strongo>
                     </td>
 
-                    <td> <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.create', {'id': nomwet.id}) }}">
-                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--drev ">  Выбрать </button>
+                    <td class="td_cent" >
+                        <a href="{{ path('drevos.rass.rods.linis.wetkas.nomwets.mattruts.create', {'id': nomwet.id}) }}">
+                            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--drev-es ">  Выбрать </button>
                         </a>
                     </td>
 
@@ -62,7 +63,7 @@
             </tbody>
         </table>
         {% if nomwets is not empty %}
-            <b ><strongo class="strongo--kras">Внимание! </strongo> - если будет повтор т.е. данные есть
+            <b ><strongo class="strongo--kras">Информация! </strongo> - если будет повтор названия т.е. данные есть
                 в БД (см выше), то можно воспльзовться кнопкой "Выбрать" </b> </br>
             <b > Если повтора <strongo class="strongo--kras">не</strongo> будет- переходите к  вводу данных (см ниже)</b>
         {% endif %}
@@ -73,9 +74,9 @@
 
             {{ form_start(form) }}
             {{ form_widget(form) }}
-            <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить в БД</button>
-{#            <a href="{{ path('drevos.rass.rods.linis.wetkas',{'id': linia.id}) }}"#}
-{#                class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Добавить"</a>#}
+            <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--drev-es">Добавить в БД</button>
+            <a href="{{ path('drevos.rass.rods.linis.wetkas',{'id': linia.id}) }}"
+                class="btnn btnn--ml3 btnn--pt btnn--drev-es"> Выйти из режима "Добавить"</a>
         {{ form_end(form) }}
 	</div>
 

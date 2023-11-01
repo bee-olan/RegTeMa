@@ -33,13 +33,11 @@ class Handler
 
     public function __construct(DrevMatkaRepository $drevmatkas,
                                     PersonaRepository $personas,
-//                                    MestoNomerFetcher $mestoNomers,
                                     MestoNomerRepository  $mestoNomers,
                                     NomRepository $nomerRepository,
                                     Flusher $flusher)
     {
         $this->drevmatkas = $drevmatkas;
-
         $this->personas = $personas;
         $this->mestoNomers=$mestoNomers;
         $this->nomerRepository=$nomerRepository;
@@ -50,7 +48,7 @@ class Handler
     {
 
         $nomer = $this->nomerRepository->get(new NomerId($command->nomer));
-        $nameDr = $nomer->drevMat();
+        $nameDr = $nomer->miniDrevMat();
 
         $nomer->getZakazal();
 
@@ -78,7 +76,8 @@ $drevmatka = new DrevMatka(
 
         $this->drevmatkas->add($drevmatka);
 
-        $nomer->isActive();
+
+        $nomer->ojidaetActive();
 
         $this->flusher->flush();
     }

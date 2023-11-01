@@ -24,7 +24,10 @@
 
             {{ form_start(form) }}
             {{ form_widget(form) }}
-            <button type="submit" class="btn-my btn-my--sm">Добавить измения в БД</button>
+            <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить измения в БД</button>
+			<a href="{{ path('drevos.rass.rods',{'id': rasa.id}) }}"
+		   		class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Добавить"
+			</a>
             {{ form_end(form) }}
 	</div>
 </div>

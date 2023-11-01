@@ -21,12 +21,6 @@ class Form extends AbstractType
                     'placeholder' => 'Введите название линии ....'
                 ]
             ))
-//            ->add('nameStar', Type\TextType::class, array(
-//            'label' => 'Добавить название линии из документов или личных архивных данных',
-//            'attr' => [
-//                'placeholder' => 'Введите название линии ....'
-//            ]
-//        ))
 
         ;
     }

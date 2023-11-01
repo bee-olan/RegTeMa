@@ -41,7 +41,14 @@
                     <td class="fon_td_es">    {{ rasa }}</td>
                     <td title = {{ stran.nomer }}  class="fon_td_es">  {{ stran.name}}  </td>
                     <td  class="fon_td_es">    {{ rodo.nameMatkov }} / {{ rodo.kodMatkov }}</td>
-                    <td>   {{ linia.name }}</td>
+                    <td class="td_cent">
+                        {% if linia.name == "-" %}
+                            нет
+                        {% else %}
+                            {{ linia.name }}
+                        {% endif %}
+                    </td>
+
                     <td class="fon_td td_cent"> <a href="{{ path('drevos.rass.rods.linis.edit', {'id': rodo.id, 'linia_id': linia.id}) }}"
                                            ><span class="fa fa-pencil"></span></a>
                     </td>

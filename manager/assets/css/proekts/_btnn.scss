@@ -59,14 +59,31 @@
             //background: linear-gradient( $grad1-o, $grad2-o);
             text-decoration: none;
             color: $grad2;
-            
         }
+
+        &--ojidaet {
+            background-color: $beloe;
+            font-size: 1rem;
+            border: 1px solid #ffc107;
+            box-shadow: inset 0 0 10px rgba( #ffc107, 0.9);
+            color: #ffc107;
+
+            &:hover {
+                background-color: $grad2;
+                border: 1px solid $beloe;
+                box-shadow: inset 0 0 10px rgba( $beloe, 0.9);
+                text-decoration: none;
+                color:  #23282c;
+            }
+
+        }
+
         &--drev {
-        background-color: $beloe;
-        font-size: 1rem;
-        border: 1px solid $sezon-text;
-        box-shadow: inset 0 0 10px rgba( $sezon-text, 0.9);
-        color: $sezon-text;
+            background-color: $beloe;
+            font-size: 1rem;
+            border: 1px solid $sezon-text;
+            box-shadow: inset 0 0 10px rgba( $sezon-text, 0.9);
+            color: $sezon-text;
 
         &:hover {
             background-color: $grad2;
@@ -74,10 +91,26 @@
             box-shadow: inset 0 0 10px rgba( $beloe, 0.9);
             text-decoration: none;
             color:  #23282c;
-
         }
 
     }
+
+    &--drev-es {
+        background-color: $beloe;
+        font-size: 1rem;
+        border: 1px solid $grad1;
+        box-shadow: inset 0 0 10px rgba( $grad1, 0.9);
+        color: $grad1;
+
+        &:hover {
+            background-color: rgb(123, 165, 215);
+            border: 1px solid $grad1;
+            box-shadow: inset 0 0 10px rgba( $grad1, 0.9);
+            text-decoration: none;
+            color:  $beloe;
+        }
+    }
+
         &--plus{
             line-height: 1.0;
             padding: 0 .7rem;
