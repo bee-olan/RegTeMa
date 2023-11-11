@@ -19,13 +19,20 @@
             <h1 class="dre_title ">Родословная. Данные   из паспорта купленной матки</h1>
 
             <div class="drev-rod">
-                <a href="{{ path('app.proekts.drevorods.rodras') }}"
-                    class=" btnn-bord " >  Paca ::
-                </a>
 
-                <b class="drev-rod_title drev-grad" > {{ rasa.title }}
+                <div class="drev">
+                    <div class="drev__left">
+                        <a href="{{ path('app.proekts.drevorods.rodras') }}"
+                            class=" btnn-bord " >  Paca ::
+                        </a>
 
-                </b>
+                        <strong class="drev-rod_title drev-grad" > {{ rasa.title }}  </strong>
+                    </div>
+                    <div class="drev__right">
+                        <strong class="drev-rod_title " > В позиции рас-   {{ rodos|length }} </strong>
+                    </div>
+                </div>
+
                 <div class="drev-rod drev-rod--rodrod">
                     <ul class="drev-rod_ul  ">
                         <li class=" drev-rod_li">
@@ -42,7 +49,7 @@
                         <li class=" drev-rod_li  drev-border"></li>
                     </ul>
                     {% for rodo in rodos %}
-                        {% if rodo.linias > 0 %}
+
 
                             <ul class="drev-rod_ul drev-grad-si ">
                                 <li class=" drev-rod_li"> {{ rodo.strana}}
@@ -55,10 +62,13 @@
                                 <li class=" drev-rod_li">
                                     {{ rodo.kod_matkov }}
                                 </li>
-                                <li class=" drev-rod_li " >  {{ rodo.linias }}  </li>
+                                <li class=" drev-rod_li " >
+
+                                        {{ rodo.linias }}
+                                </li>
                             </ul>
 
-                        {% endif %}
+
                 {% endfor %}
 
             </div>

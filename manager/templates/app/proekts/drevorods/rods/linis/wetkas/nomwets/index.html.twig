@@ -52,33 +52,51 @@
 
 
                             <div class="drev-rod drev-rod--lini">
-                                <ul class="drev-rod_ul  ">
-                                    <li class=" drev-rod_li">
-                                        Материнка - номер
-                                    </li>
-                                    <li class=" drev-rod_li">
-                                        Кол-во  номеров маток
-                                    </li>
-                                </ul>
-                                <ul class="drev-rod_ul  ">
-                                    <li class=" drev-rod_li  drev-border"></li>
-                                    <li class=" drev-rod_li  drev-border"></li>
 
-                                </ul>
-                            {% for nomwet in nomwets %}
+                                {% if nomwets is  empty %}
 
-                            {% if nomwet.truts > 0 %}
-                                <ul class="drev-rod_ul drev-grad-si">
-                                    <li class=" drev-rod_li">
-                                        <a href="{{ path('app.proekts.drevorods.rods.linis.wetkas.nomwets.mattruts',{'id': nomwet.id}) }}" class=" btnn-rodos "  >
+                                    <h1 class="dre_title ">  <strong class="strongo strongo--kras">Внимание! </strong> </h1>
 
-                                                {{ nomwet.tit_w }}
-                                        </a>
-                                    </li>
-                                    <li class=" drev-rod_li td_cent">  {{ nomwet.truts }}  </li>
-                                </ul>
+                                    <ul >
+                                        <li  class="drev-rod_title">
+                                            Ввод данных для этой <strong class="strongo strongo--kras">родословной </strong> почему-то не закончен ?!,
+                                        </li>
+                                        <li class="drev-rod_title">
+                                            пожалуйста, повторите запрос - ошибку исправим.
+                                        </li>
+                                        <li class="drev-rod_title">
+                                            С извиненями за неудобство.
+                                        </li>
+                                    </ul>
+
+                                {% else %}
+                                    <ul class="drev-rod_ul  ">
+                                        <li class=" drev-rod_li">
+                                            Материнка - номер
+                                        </li>
+                                        <li class=" drev-rod_li">
+                                            Кол-во  номеров маток
+                                        </li>
+                                    </ul>
+                                    <ul class="drev-rod_ul  ">
+                                        <li class=" drev-rod_li  drev-border"></li>
+                                        <li class=" drev-rod_li  drev-border"></li>
+
+                                    </ul>
+                                    {% for nomwet in nomwets %}
+
+                                        <ul class="drev-rod_ul drev-grad-si">
+                                            <li class=" drev-rod_li">
+                                                <a href="{{ path('app.proekts.drevorods.rods.linis.wetkas.nomwets.mattruts',{'id': nomwet.id}) }}" class=" btnn-rodos "  >
+
+                                                        {{ nomwet.tit_w }}
+                                                </a>
+                                            </li>
+                                            <li class=" drev-rod_li td_cent">  {{ nomwet.truts }}  </li>
+                                        </ul>
+
+                                {% endfor %}
                             {% endif %}
-                        {% endfor %}
                         </div>
                     </div>
 {#                    </div>#}

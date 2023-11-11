@@ -44,13 +44,16 @@ class LiniController extends AbstractController
      */
     public function index( Request $request, Rod $rodo,  LiniFetcher $liniasf): Response
     {
+        $rasas =  $rodo->getRasa();
+        $rodoC = count($rasas->getRodos());
+
 //dd(allOfRodo($rodo->getId()->getValue()));
         return $this->render('app/proekts/drevorods/rods/linis/index.html.twig', [
             'rodo' => $rodo,
             'stran' => $rodo->getStrana(),
             'rasa' => $rodo->getRasa(),
-            'linias' => $liniasf->allOfRodo($rodo->getId()->getValue())
-//            allOfRodo($rodo->getId()->getValue()),
+            'linias' => $liniasf->allOfRodo($rodo->getId()->getValue()),
+            'rodoC' => $rodoC
         ]);
     }
 

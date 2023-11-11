@@ -19,7 +19,7 @@ use App\ReadModel\Adminka\DrevMatkas\DrevMatkaFetcher;
 use App\ReadModel\Adminka\Matkas\KategoriaFetcher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-use App\Model\Adminka\UseCase\DrevMatkas\Create;
+use App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\Create;
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
 
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;

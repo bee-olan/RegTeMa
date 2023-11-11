@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\UseCase\DrevMatkas\Archive;
+namespace App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\Archive;
 
 use Symfony\Component\Validator\Constraints as Assert;
 

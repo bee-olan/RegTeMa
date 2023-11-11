@@ -2,26 +2,19 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\UseCase\DrevMatkas\Create;
+namespace App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\Create;
 
 use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
 use App\Model\Adminka\Entity\DrevMatkas\DrevMatkaRepository;
 use App\Model\Adminka\Entity\DrevMatkas\Id;
 
 use App\Model\Adminka\Entity\Uchasties\Personas\PersonaRepository;
- use App\Model\Adminka\Entity\Uchasties\Personas\Id as PersonaId;
+use App\Model\Adminka\Entity\Uchasties\Personas\Id as PersonaId;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\NomRepository;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\Id as NomerId;;
 use App\Model\Flusher;
-
 use App\Model\Mesto\Entity\InfaMesto\MestoNomerRepository;
- use App\Model\Mesto\Entity\InfaMesto\Id as MestoNomerId;
-
-use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
-use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
-
-
-
+use App\Model\Mesto\Entity\InfaMesto\Id as MestoNomerId;
 
 class Handler
 {

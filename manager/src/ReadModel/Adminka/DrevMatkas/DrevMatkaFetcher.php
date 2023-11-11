@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\ReadModel\Adminka\DrevMatkas;
 
-
-
 use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
+
+use App\ReadModel\Adminka\DrevMatkas\Filter\Filter;
 use Doctrine\DBAL\FetchMode;
-//use App\ReadModel\Adminka\Matkas\PlemMatka\Filter\Filter;
 use Doctrine\DBAL\Connection;
-//use Knp\Component\Pager\Pagination\PaginationInterface;
+
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -61,50 +61,50 @@ class DrevMatkaFetcher
     }
 
 
-    public function allList(): array
-    {
-        $stmt = $this->connection->createQueryBuilder()
-            ->select(
-                'id',
-                'name'
-            )
-            ->from('admin_drevmatkas')
-            ->orderBy('sort')
-            ->execute();
+//    public function allList(): array
+//    {
+//        $stmt = $this->connection->createQueryBuilder()
+//            ->select(
+//                'id',
+//                'name'
+//            )
+//            ->from('admin_drevmatkas')
+//            ->orderBy('sort')
+//            ->execute();
+//
+//        return $stmt->fetchAll(\PDO::FETCH_KEY_PAIR);
+//    }
 
-        return $stmt->fetchAll(\PDO::FETCH_KEY_PAIR);
-    }
+//    public function existsPerson(string $id): bool
+//    {
+//        return $this->connection->createQueryBuilder()
+//                ->select('COUNT (id)')
+//                ->from('adminka_uchasties_personas')
+//                ->where('id = :id')
+//                ->setParameter(':id', $id)
+//                ->execute()->fetchColumn() > 0;
+//    }
 
-    public function existsPerson(string $id): bool
-    {
-        return $this->connection->createQueryBuilder()
-                ->select('COUNT (id)')
-                ->from('adminka_uchasties_personas')
-                ->where('id = :id')
-                ->setParameter(':id', $id)
-                ->execute()->fetchColumn() > 0;
-    }
+//    public function existsMesto(string $id): bool
+//    {
+//        return $this->connection->createQueryBuilder()
+//                ->select('COUNT (id)')
+//                ->from('mesto_mestonomers')
+//                ->where('id = :id')
+//                ->setParameter(':id', $id)
+//                ->execute()->fetchColumn() > 0;
+//    }
 
-    public function existsMesto(string $id): bool
-    {
-        return $this->connection->createQueryBuilder()
-                ->select('COUNT (id)')
-                ->from('mesto_mestonomers')
-                ->where('id = :id')
-                ->setParameter(':id', $id)
-                ->execute()->fetchColumn() > 0;
-    }
-
-    public function exists(int $sort): bool
-    {
-       // dd($sort);
-        return $this->connection->createQueryBuilder()
-                ->select('COUNT (sort)')
-                ->from('admin_drevmatkas')
-                ->where('sort = :sort')
-                ->setParameter(':sort', $sort)
-                ->execute()->fetchColumn() > 0;
-    }
+//    public function exists(int $sort): bool
+//    {
+//       // dd($sort);
+//        return $this->connection->createQueryBuilder()
+//                ->select('COUNT (sort)')
+//                ->from('admin_drevmatkas')
+//                ->where('sort = :sort')
+//                ->setParameter(':sort', $sort)
+//                ->execute()->fetchColumn() > 0;
+//    }
 
 
 //    public function infaRasaNom(string $rasaNomId): array
@@ -129,39 +129,39 @@ class DrevMatkaFetcher
 //    }
 
 
-    public function infaMesto(string $mesto): array
-    {
-        $stmt = $this->connection->createQueryBuilder()
-            ->select(
-                'r.name AS raion',
-                'ob.name AS oblast',
-                'ok.name AS okrug'
-            )
-            ->from('mesto_okrug_oblast_raions', 'r')
-            ->innerJoin('r', 'mesto_okrug_oblasts', 'ob', 'r.oblast_id = ob.id')
-            ->innerJoin('ob', 'mesto_okrugs', 'ok', 'ob.okrug_id = ok.id')
-
-            ->andWhere('r.mesto = :mesto')
-            ->setParameter(':mesto', $mesto)
-           // ->orderBy('p.sort')->addOrderBy('d.name')
-            ->execute();
-
-        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
-    }
+//    public function infaMesto(string $mesto): array
+//    {
+//        $stmt = $this->connection->createQueryBuilder()
+//            ->select(
+//                'r.name AS raion',
+//                'ob.name AS oblast',
+//                'ok.name AS okrug'
+//            )
+//            ->from('mesto_okrug_oblast_raions', 'r')
+//            ->innerJoin('r', 'mesto_okrug_oblasts', 'ob', 'r.oblast_id = ob.id')
+//            ->innerJoin('ob', 'mesto_okrugs', 'ok', 'ob.okrug_id = ok.id')
+//
+//            ->andWhere('r.mesto = :mesto')
+//            ->setParameter(':mesto', $mesto)
+//           // ->orderBy('dm.sort')->addOrderBy('d.name')
+//            ->execute();
+//
+//        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
+//    }
 
     public function all(): array
     {
         $stmt = $this->connection->createQueryBuilder()
             ->select(
-                'd.id',
-                'd.nomer_id',
-                'd.mesto_id',
-                'd.persona_id',
-                'd.name',
-                'd.sort',
-                'd.status'
-
-//                '(SELECT COUNT(*) FROM adminka_rasa_linias l WHERE (l.rasa_id = g.id AND  l.vetka_id IS NULL ) ) AS linias'
+                'dm.id',
+                'dm.nomer_id',
+                'dm.mesto_id',
+                'dm.persona_id',
+                'dm.name',
+                'dm.sort',
+                'dm.status',
+                '(SELECT COUNT(*) FROM adm_drev_sezondrevs s WHERE s.plemmatka_id = dm.id) AS sezondrevs_count'
+            //                '(SELECT COUNT(*) FROM admin_matkas_childmatkas c WHERE c.plemmatka_id = p.id) AS child_count'
             )
             ->from('admin_drevmatkas', 'dm')
             ->orderBy('sort')
@@ -171,64 +171,54 @@ class DrevMatkaFetcher
         return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
     }
 
-//    /**
-//     * @param Filter $filter
-//     * @param int $page
-//     * @param int $size
-//     * @param string $sort
-//     * @param string $direction
-//     * @return PaginationInterface
-//     */
-//    public function all(Filter $filter, int $page, int $size, string $sort, string $direction): PaginationInterface
-//    {
-//        $qb = $this->connection->createQueryBuilder()
-//            ->select(
-//                'p.id',
-//                'p.name',
-////                'p.persona_id',
-//                'p.status',
-//                'p.sort',
-////                'p.goda_vixod ',
-//                'pe.nomer as persona'
-////                'p.kategoria_id',
-////                's.name AS kategoria',
-////                'p.otec_nomer_id',
-////                'o.name AS otec_n',
-////                'o.oblet AS otec_o',
-////                'ol.name AS linia_o',
-////                '(SELECT COUNT(*) FROM admin_matkas_plemmatka_departments d WHERE d.plemmatka_id = p.id) AS departments_count',
-////                '(SELECT COUNT(*) FROM admin_matkas_childmatkas c WHERE c.plemmatka_id = p.id) AS child_count'
-//            )
-//            ->from('admin_matkas_plemmatkas', 'p')
+    /**
+     * @param Filter $filter
+     * @param int $page
+     * @param int $size
+     * @param string $sort
+     * @param string $direction
+     * @return PaginationInterface
+     */
+    public function allPagin(Filter $filter, int $page, int $size, string $sort, string $direction): PaginationInterface
+    {
+        $qb = $this->connection->createQueryBuilder()
+            ->select(
+                'dm.id',
+                'dm.name',
+                'dm.persona_id',
+                'dm.status',
+                'dm.sort',
+//                'pe.nomer as persona',
+                '(SELECT COUNT(*) FROM adm_drev_sezondrevs s WHERE s.plemmatka_id = dm.id) AS sezondrevs_count'
+           )
+            ->from('admin_drevmatkas', 'dm')
 //            ->innerJoin('p', 'adminka_uchasties_personas', 'pe', 'p.persona_id = pe.id')
-////            ->innerJoin('p', 'admin_matkas_kategorias', 's', 'p.kategoria_id = s.id')
-////            ->innerJoin('p', 'adminka_otec_ras_linia_nomers', 'o', 'p.otec_nomer_id = o.id')
-////            ->innerJoin('o', 'adminka_otec_ras_linias', 'ol', 'ol.id = o.linia_id')
-//        ;
+
+        ;
 //        if ($filter->uchastie) {
 //            $qb->andWhere('EXISTS (
 //                SELECT ms.uchastie_id FROM adminka_matkas_plemmatka_uchastniks ms WHERE ms.plemmatka_id = p.id AND ms.uchastie_id = :uchastie
 //            )');
 //            $qb->setParameter(':uchastie', $filter->uchastie);
 //        }
-//
-//
-//        if ($filter->name) {
-//            $qb->andWhere($qb->expr()->like('p.name', ':name'));
-//            $qb->setParameter(':name', '%' . mb_strtolower($filter->name) . '%');
-//        }
-//
-//        if ($filter->status) {
-//            $qb->andWhere('p.status = :status');
-//            $qb->setParameter(':status', $filter->status);
-//        }
-//
-//        if (!\in_array($sort, ['name', 'status','persona'], true)) {
-//            throw new \UnexpectedValueException('Cannot sort by ' . $sort);
-//        }
-//
-//        $qb->orderBy($sort, $direction === 'desc' ? 'desc' : 'asc');
-//
-//        return $this->paginator->paginate($qb, $page, $size);
-//    }
+
+
+        if ($filter->name) {
+            $qb->andWhere($qb->expr()->like('dm.name', ':name'));
+            $qb->setParameter(':name', '%' . mb_strtolower($filter->name) . '%');
+        }
+
+        if ($filter->status) {
+            $qb->andWhere('dm.status = :status');
+            $qb->setParameter(':status', $filter->status);
+        }
+
+        if (!\in_array($sort, ['name', 'status'], true)) {
+            throw new \UnexpectedValueException('Cannot sort by ' . $sort);
+        }
+
+        $qb->orderBy($sort, $direction === 'desc' ? 'desc' : 'asc');
+
+        return $this->paginator->paginate($qb, $page, $size);
+    }
 }

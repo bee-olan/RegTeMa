@@ -11,6 +11,7 @@ use App\Model\Drevos\UseCase\Rass\Edit;
 use App\Model\Drevos\UseCase\Rass\Remove;
 use App\ReadModel\Drevos\Rass\RasFetcher;
 use App\Controller\ErrorHandler;
+use App\ReadModel\Drevos\Rass\Rods\RodFetcher;
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,16 +37,17 @@ class RodRasController extends AbstractController
     /**
      * @Route("", name="")
      * @param RasFetcher $fetcher
+     * @param RodFetcher $fetcherRod
      * @return Response
      */
-    public function rodras(RasFetcher $fetcher): Response
+    public function rodras(RasFetcher $fetcher, RodFetcher $fetcherRod): Response
     {
        $rasas = $fetcher->all();
-// dd($rasas);
-  
+
+        $rods = $fetcherRod->all();
 
         return $this->render('app/proekts/drevorods/rodras.html.twig',
-                                compact('rasas'));
+                                compact('rasas', 'rods'));
     }
 
 }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\Entity\DrevMatkas;
 
+use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\SezonDrev;
+use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\Id as SezonDrevId;
 
 use App\Model\Adminka\Entity\Uchasties\Personas\Persona;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
@@ -69,7 +71,15 @@ class DrevMatka
      */
     private $status;
 
-
+    /**
+     * @var ArrayCollection|SezonDrev[]
+     * @ORM\OneToMany(
+     *     targetEntity="App\Model\Adminka\Entity\DrevMatkas\SezonDrev\SezonDrev",
+     *     mappedBy="plemmatka", orphanRemoval=true, cascade={"all"}
+     * )
+     * @ORM\OrderBy({"name" = "ASC"})
+     */
+    private $sezondrevs;
 
     public function __construct( Id $id,
                                  string $name,
@@ -88,9 +98,48 @@ class DrevMatka
         $this->nomer = $nomer;
         $this->status = Status::active();
 
+        $this->sezondrevs = new ArrayCollection();
+
     }
 
+    ////////////////
+    public function addSezonDrev(SezonDrevId $id, string $name): void
+    {
+        foreach ($this->sezondrevs as $sezondrev) {
+            if ($sezondrev->isNameEqual($name)) {
+                throw new \DomainException('Сезон уже существует.');
+            }
+        }
+        $this->sezondrevs->add(new SezonDrev($this, $id, $name));
+    }
 
+    public function editSezonDrev(SezonDrevId $id, string $name): void
+    {
+        foreach ($this->sezondrevs as $current) {
+            if ($current->getId()->isEqual($id)) {
+                $current->edit($name);
+                return;
+            }
+        }
+        throw new \DomainException('Сезон не найден.');
+    }
+
+    public function removeSezonDrev(SezonDrevId $id): void
+    {
+        foreach ($this->sezondrevs as $sezondrev) {
+            if ($sezondrev->getId()->isEqual($id)) {
+                foreach ($this->uchastniks as $uchastnik) {
+                    if ($uchastnik->isForSezonDrev($id)) {
+                        throw new \DomainException('Не удалось удалить отдел с участиемs.');
+                    }
+                }
+                $this->sezondrevs->removeElement($sezondrev);
+                return;
+            }
+        }
+        throw new \DomainException('Сезон не найден.');
+    }
+    ///////
 
     public function archive(): void
     {
@@ -107,8 +156,6 @@ class DrevMatka
         }
         $this->status = Status::active();
     }
-
-
 
     public function isArchived(): bool
     {
@@ -157,4 +204,18 @@ class DrevMatka
     }
 
 
+    public function getSezondrevs()
+    {
+        return $this->sezondrevs->toArray();;
+    }
+
+    public function getSezondrev(SezonDrevId $id): SezonDrev
+    {
+        foreach ($this->sezondrevs as $sezondrev) {
+            if ($sezondrev->getId()->isEqual($id)) {
+                return $sezondrev;
+            }
+        }
+        throw new \DomainException('сезон  не найден.');
+    }
 }

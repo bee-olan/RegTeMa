@@ -18,13 +18,13 @@
 
         <h1 class="dre_title ">Родословная...</h1>
 
-        {% if rasas is  empty %}
+        {% if rods is  empty %}
 
-        <h1 class="dre_title "> Пока нет паспортных данных для маток.  </h1>
+        <h1 class="drev-rod_title "> Пока <strong class="strongo strongo--kras">нет </strong> паспортных данных для маток.  </h1>
 
         {% else %}
 
-            <b class="drev-rod_title " > Данные   из паспорта купленной матки. </b>
+            <b class="drev-rod_title " > Данные   из паспорта купленной матки... </b>
 
             <div class="drev-rod  drev-rod--rodrod">
 
@@ -40,6 +40,7 @@
 
                     <li class=" drev-rod_li  drev-border"></li>
                 </ul>
+
                 {% for rasa in rasas %}
                     {% if rasa.rodos > 0 %}
                         <ul class="drev-rod_ul  drev-grad-si">

@@ -20,9 +20,18 @@
 
     <div class="box">
 
-        <b class="dre_title ">Родословная  - <strongo class="strongo--krox">данные из паспорта </strongo>или личных архивных данных</b>
+        <b class="dre_title ">Родословная - - <strongo class="strongo--krox">данные из паспорта </strongo>или личных архивных данных</b>
     </div>
+
     <div class="box-smotrim">
+
+    {% if rodos is  empty %}
+
+    <h1 class="drev-rod_title fon_td"> Пока для расы <strong class="strongo strongo--kras">{{ rasa.title }} </strong>
+       - нет паспортных данных зарегистрированных маток.  </h1>
+
+    {% else %}
+{#    <div class="box-smotrim">#}
 
         <table class="table table-bordered table-hover td_cent">
             <thead>
@@ -70,12 +79,15 @@
             {% endfor %}
             </tbody>
         </table>
+
+    {% endif %}
+
     </div>
 
-    <div class = "rasa__content"  >
+    <div class = "drev-rod_title"  > Данные о матководе
         <a href="{{ path('drevos.rass.rods.create', {'id': rasa.id}) }}"
-           class="btnn btnn--mb0 btnn--pt btnn--rasa">Добавить матковода для
-            <strong class="strongo strongo--kras"> родословной </strong> в БД</a>
+           class="btnn btnn---ml3 btnn--mt0 btnn--pt btnn--drev-es">Ввод данных
+            </a>
     </div>
 
 

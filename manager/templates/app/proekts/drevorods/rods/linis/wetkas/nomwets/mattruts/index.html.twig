@@ -62,34 +62,51 @@
                             <b class="drev-rod_title drev-grad" >{{ nomwet.titW }}</b>
 
                                 <div class="drev-rod drev-rod--lini">
-                                    <ul class="drev-rod_ul  ">
-                                        <li class=" drev-rod_li">
-                                            Материнка трутня
+
+                                    {% if mattruts is  empty %}
+
+                                    <h1 class="dre_title ">  <strong class="strongo strongo--kras">Внимание! </strong> </h1>
+
+                                    <ul >
+                                        <li  class="drev-rod_title">
+                                            Ввод данных для этой <strong class="strongo strongo--kras">родословной </strong> почему-то не закончен ?!,
                                         </li>
-                                        <li class=" drev-rod_li">
-                                            Кол-во
+                                        <li class="drev-rod_title">
+                                            пожалуйста, повторите запрос - ошибку исправим.
+                                        </li>
+                                        <li class="drev-rod_title">
+                                            С извиненями за неудобство.
                                         </li>
                                     </ul>
-                                    <ul class="drev-rod_ul  ">
-                                        <li class=" drev-rod_li  drev-border"></li>
-                                        <li class=" drev-rod_li  drev-border"></li>
 
-                                    </ul>
-                            {% for mattrut in mattruts %}
+                                    {% else %}
 
-                            {% if mattrut.nomers > 0 %}
+                                        <ul class="drev-rod_ul  ">
+                                            <li class=" drev-rod_li">
+                                                Материнка трутня
+                                            </li>
+                                            <li class=" drev-rod_li">
+                                                Кол-во
+                                            </li>
+                                        </ul>
+                                        <ul class="drev-rod_ul  ">
+                                            <li class=" drev-rod_li  drev-border"></li>
+                                            <li class=" drev-rod_li  drev-border"></li>
 
-                                <ul class="drev-rod_ul drev-grad-si">
-                                    <li class=" drev-rod_li">
-                                        <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas.nomwets.mattruts.noms',{'id': mattrut.id}) }}" class=" btnn-rodos "  >
-                                                {{ mattrut.name_ot }}
-                                        </a>
-                                    </li>
-                                    <li class=" drev-rod_li">  {{ mattrut.nomers }}  </li>
-                                </ul>
-                            {% endif %}
-                        {% endfor %}
-                        </div>
+                                        </ul>
+                                        {% for mattrut in mattruts %}
+
+                                            <ul class="drev-rod_ul drev-grad-si">
+                                                <li class=" drev-rod_li">
+                                                    <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas.nomwets.mattruts.noms',{'id': mattrut.id}) }}" class=" btnn-rodos "  >
+                                                            {{ mattrut.name_ot }}
+                                                    </a>
+                                                </li>
+                                                <li class=" drev-rod_li">  {{ mattrut.nomers }}  </li>
+                                            </ul>
+                                        {% endfor %}
+                                    {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>

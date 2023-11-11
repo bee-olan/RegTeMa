@@ -51,6 +51,8 @@ doctrine:
             admin_drevmatka_id: 'App\Model\Adminka\Entity\DrevMatkas\IdType'
             admin_drevmatka_status: 'App\Model\Adminka\Entity\DrevMatkas\StatusType'
 
+            adm_drev_sezondrev_id: 'App\Model\Adminka\Entity\DrevMatkas\SezonDrev\IdType'
+
             dre_stran_id: 'App\Model\Drevos\Entity\Strans\IdType'
 
             dre_ras_id: 'App\Model\Drevos\Entity\Rass\IdType'

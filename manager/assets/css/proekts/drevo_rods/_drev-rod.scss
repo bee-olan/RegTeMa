@@ -1,3 +1,16 @@
+
+.drev {
+  display: flex;
+}
+.drev__left {
+  width: 65%;
+}
+.drev__right {
+  display: flex;
+  width: 35%;
+  justify-content: flex-end; // прижали к правой стороне
+  padding-right: 1.5rem;
+}
 .drev-rod {
   color: $fon-ser-bor;
   a {
@@ -50,6 +63,10 @@
   padding: .5rem 0 .5rem 1rem;
   font-size: 1.2rem;
 }
+.align-right{
+  text-align: right;
+  }
+
 .drev-rod_ul {
   display: flex; // добавляем т.к добаилась li-шка
   align-items: center; // выравнивание по вертикали

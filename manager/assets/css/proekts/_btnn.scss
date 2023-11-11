@@ -13,8 +13,9 @@
     margin-left: 1.1rem;
 
     &:hover {
-        border: 1px solid $grad1;
         color: $grad1;
+        border: 1px solid $grad1;
+
     }
 }
 
@@ -210,6 +211,11 @@
         &--mt {
             margin-top: 2rem;
  
+        }
+
+        &--mt0 {
+            margin-top: 0;
+
         }
 
         &--ml3 {

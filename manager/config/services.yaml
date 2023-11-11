@@ -100,6 +100,9 @@ services:
     App\Menu\Adminka\MainMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_main }]
 
+    App\Menu\Adminka\DrevMainMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: admin_drew_main }]
+
     App\Menu\Drevos\RodosMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: drevos_rodos }]
 
@@ -121,7 +124,11 @@ services:
     App\Menu\Adminka\Matkas\CildMatkaPoiskMenu:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_matkas_childmatka_poisks }]
 
+    App\Menu\Adminka\DrevMatkas\DrevMatkaMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_drevmatka }]
 
+    App\Menu\Adminka\DrevMatkas\RedaktDrevMenu:
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_redaktdrev }]
 
     Symfony\Component\HttpFoundation\Session\Session:
         alias: Symfony\Component\HttpFoundation\Session\SessionInterface

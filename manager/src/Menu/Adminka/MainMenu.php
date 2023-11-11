@@ -25,7 +25,7 @@ class MainMenu
             ->setChildrenAttributes(['class' => 'nav nav-tabs mb-4']);
 
         $menu
-            ->addChild('Сезон ', ['route' => 'adminka.sezons.godas'])
+            ->addChild('Сезон!!! ', ['route' => 'adminka.sezons.godas'])
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 

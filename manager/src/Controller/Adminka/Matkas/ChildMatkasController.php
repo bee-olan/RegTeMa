@@ -384,38 +384,6 @@ class ChildMatkasController extends AbstractController
         return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
     }
 
-//    /**
-//     * @Route("/{id}/move", name=".move")
-//     * @param ChildMatka $childmatka
-//     * @param Request $request
-//     * @param Move\Handler $handler
-//     * @return Response
-//     */
-//    public function move(ChildMatka $childmatka, Request $request, Move\Handler $handler): Response
-//    {
-//       // $this->denyAccessUnlessGranted(ChildMatkaAccess::MANAGE, $childmatka);
-//
-//        $command = Move\Command::fromChildMatka($this->getUser()->getId(), $childmatka);
-//
-//        $form = $this->createForm(Move\Form::class, $command);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            try {
-//                $handler->handle($command);
-//                return $this->redirectToRoute('adminka.matkas.childmatkas.show', ['id' => $childmatka->getId()]);
-//            } catch (\DomainException $e) {
-//                $this->errors->handle($e);
-//                $this->addFlash('error', $e->getMessage());
-//            }
-//        }
-//
-//        return $this->render('app/adminka/plemmatkas/childmatkas/move.html.twig', [
-//            'plemmatka' => $childmatka->getPlemMatka(),
-//            'childmatka' => $childmatka,
-//            'form' => $form->createView(),
-//        ]);
-//    }
 
     /**
      * @Route("/{id}/plan", name=".plan")

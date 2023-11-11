@@ -38,12 +38,31 @@
 
                     <b class="drev-rod_title drev-grad" >
                         {% if linia.name == "-" %}
-                            названя нет
+                            - названя нет
                         {% else %}
                             {{ linia.name }}
                         {% endif %}
                     </b>
                     <div class="drev-rod drev-rod--lini">
+
+                    {% if wetkas is  empty %}
+
+                        <h1 class="dre_title ">  <strong class="strongo strongo--kras">Внимание! </strong> </h1>
+
+                        <ul >
+                            <li  class="drev-rod_title">
+                                Ввод данных для этой <strong class="strongo strongo--kras">родословной </strong> почему-то не закончен ?!,
+                            </li>
+                            <li class="drev-rod_title">
+                                пожалуйста, повторите запрос - ошибку исправим.
+                            </li>
+                            <li class="drev-rod_title">
+                                 С извиненями за неудобство.
+                            </li>
+                        </ul>
+
+                    {% else %}
+
                         <ul class="drev-rod_ul  ">
                             <li class=" drev-rod_li">
                                 Материнка  ветка
@@ -58,7 +77,7 @@
 
                         </ul>
                         {% for wetka in wetkas %}
-                        {% if linia.wetkas > 0 %}
+
                             <ul class="drev-rod_ul drev-grad-si">
                                 <li class=" drev-rod_li">
                                     <a href="{{ path('app.proekts.drevorods.rods.linis.wetkas.nomwets',{'id': wetka.id}) }}" class=" btnn-rodos "  >
@@ -67,9 +86,10 @@
                                 </li>
                                 <li class=" drev-rod_li td_cent" >  {{ wetka.nomwets }}  </li>
                             </ul>
-                        {% endif %}
-                    {% endfor %}
-                    </div>
+
+                        {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

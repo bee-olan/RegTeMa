@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ПлемМатка{% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka') }}">Пасека</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.matkas') }}">ПлемМатки</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('adminka.matkas.plemmatka.show', {'id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
+        <li class="breadcrumb-item active">Редактировать!!!</li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+    {{ include('app/adminka/drevmatkas/_tabs.html.twig') }}
+
+    {% include 'app/adminka/matkas/plemmatka/_tabs.html.twig' %}
+    {% include 'app/adminka/matkas/plemmatka/redaktors/_tabs.html.twig' %}
+
+    <div class="controls">
+        <a href="{{ path('adminka.matkas.plemmatka.redaktors.edit', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Редактировать?</a>
+        {% if plemmatka.active and plemmatka.id.value != app.user.id %}
+            <form action="{{ path('adminka.drevmatkas.drevmatka.redaktors.archive', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Отправить в архив? Вы уверены?')">
+                <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
+                <button type="submit" class="btn btn-danger">Архивировать?</button>
+            </form>
+        {% endif %}
+        {% if plemmatka.archived %}
+            <form action="{{ path('adminka.drevmatkas.drevmatka.redaktors.reinstate', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Достать из архива? Вы уверены??')">
+                <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
+                <button type="submit" class="btn btn-success">Разархивировать</button>
+            </form>
+        {% endif %}
+        <form action="{{ path('adminka.drevmatkas.delete', {'id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверенны?')">
+            <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+            <button type="submit" class="btn btn-danger">Удалить?</button>
+        </form>
+
+
+        <a href="{{ path('adminka.drevmatkas.drevmatka.redaktors.sezondrevs', {'plemmatka_id': plemmatka.id}) }}"
+                class="btn btn-primary">Смотреть СЕЗОНЫ</a>
+{#        <a href="{{ path('adminka.matkas.plemmatka.redaktors.uchasties', {'plemmatka_id': plemmatka.id}) }}"#}
+{#                class="btn btn-primary">Привязать участника</a>#}
+
+    </div>
+
+    <div class="box">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                <tr>
+                    <th>Название</th>
+                    <td> {{ plemmatka.name }} </td>
+                </tr>
+                <tr>
+                    <th>Статус</th>
+                    <td>{{ plemmatka_status(plemmatka.status.name) }}</td>
+                </tr>
+
+{#                    <td>{{ plemmatka_kategoria(plemmatka.nameKateg) }}</td>#}
+                    <td></td>
+                    <td>----</td>
+                </tr>
+                <tr>
+
+                    <th>...</th>
+                    <td>
+{#                        <table class="table table-bordered">#}
+{#                            <tbody>#}
+{#                            {% for departamen in departamens %}#}
+{#                            <tr>#}
+{#                                <th>сезон</th>#}
+{#                                <td>{{departamen.name }}</td>#}
+{#                                <th>Status</th>#}
+{#                                <td>{{ plemmatka_status(plemmatka.status.name) }}</td>#}
+{#                            </tr>#}
+{#                            {% endfor %}#}
+{#                            </tbody>#}
+{#                        </table>#}
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

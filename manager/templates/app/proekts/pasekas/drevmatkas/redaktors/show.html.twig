@@ -1,0 +1,168 @@
+{% extends 'probase.html.twig' %}
+
+{% block title %}Редактирование{% endblock %}
+
+{% block menupro %}
+    {{ include('app/proekts/pasekas/matkas/_tabs.html.twig') }}
+{% endblock %}
+
+   {% block kroxii %}
+{#       <a href="{{ path('proekt') }}">Главная</a>#}
+{#       <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>#}
+{#       <a href="{{ path('app.proekts.pasekas.matkas') }}">Список ПлемМаток</a>#}
+{#       <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id})  }}">{{ plemmatka.name }}</a>#}
+       <span class="aktiv ">Добавить сезон. Архив</span>
+   {% endblock %}
+
+{% block bodyy %}
+    <div  class="  proekts-plem">
+
+        <div class="inklud">
+
+{#            <div class="inklud__img  ">#}
+{#                <img class="" src="{{ asset('assets/proekt/images/sezon/sezon4.png') }}" alt="">#}
+{#            </div>#}
+
+            <div class="inklud__title inklud__title--plem teni">
+                Добавить сезон  . Статус (Активная/В архиве)
+            </div>
+        </div>
+
+
+    <div class="proekts-plr" >
+    <h1 class="plem__title  "><strong class="strongo ">{{ plemmatka.name }} </strong> --   ПлемМатка, берём за основу для ДочМаток</h1>
+
+
+        <ul class="plem plem__jus-st ">
+            <li class="plem__name " ><strong class="strongo ">Статус : </strong></li>
+            <li class="plem__name " ><strong class="strongo strongo--kras"> {{ plemmatka_status(plemmatka.status.name) }} </strong></li>
+            <li >  &nbsp; &nbsp;
+                {% if plemmatka.active and plemmatka.id.value != app.user.id %}
+                    <form action="{{ path('app.proekts.pasekas.drevmatkas.redaktors.archive', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                        <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
+                        <button type="submit" class="btnn  btnn--pt">В архив</button>
+                    </form>
+                {% endif %}
+                {% if plemmatka.archived %}
+                    <form action="{{ path('app.proekts.pasekas.drevmatkas.redaktors.reinstate', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
+                        <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
+                        <button type="submit" class="btnn  btnn--pt">Из архива</button>
+                    </form>
+                {% endif %}
+            </li>
+        </ul>
+
+        {% if uchastniks %}
+            <ul class="plem plem__jus-st ">
+                <li class="plem__name " >
+                    <strong class="strongo ">Заявленные сезоны : </strong>
+                 </li>
+                <li class="plem__name--wid20">
+                     {% for uchastnik in uchastniks %}
+                            <ul class="list-unstyled my-0">
+
+                                {% for department in uchastnik.departments %}
+                                    <li class="ma-le-2 ">{{ department.name }}</li>
+                                {% endfor %}
+                            </ul>
+                    {% endfor %}
+                </li>
+
+                <li class="plem__name--wid20">  &nbsp; &nbsp;Добавить сезон
+                    <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.uchastiess.edit',
+                        {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 ">Добавить сезон</a>
+                </li>
+                <li>
+                </li>
+            </ul>
+            <ul class="plem plem__jus-st ">
+
+                <li class="plem__name--wid20">  &nbsp; &nbsp; перейти на страничку добавления ДочьМаток
+                    <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.childmatka.show',
+                        {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 "> - перейти на страничку добавления ДочьМаток</a>
+                </li>
+            </ul>
+        {% else %}
+            <ul class="plem plem__jus-st ">
+                <li class="plem__name " >
+                    <strong class="strongo strongo--kras">Заявленных сезонов - нет!..</strong>
+                    Написать запрос на первый сезон (см ниже)
+                </li>
+            </ul>
+        {% endif %}
+
+    </div>
+</div>
+
+    {# ----------------------- #}
+{#    {% if uchastniks %}#}
+{#        <h3 class="form__title">Для добавления  очередного сезона  для ПлемМатки, перейдите по ссылке</h3>#}
+{#    {% else %}#}
+{#        <div  class="proekts proekts-plr">#}
+{#            <h3 class="form__title">Написать запрос  на первый сезон  данной ПлемМатки по предоставлению ДочьМаток в проект</h3>#}
+{#    #}
+{#            <div class="mesto-form__header  ">#}
+{#                <div class="mesto-form ">#}
+{#                    {{ form_start(commentForm) }}#}
+{#    #}
+{#                    {{ form_widget(commentForm) }}#}
+{#    #}
+{#                    <button type="submit" class="btnn  btnn--mb0 btnn--pt">Отправить</button>#}
+{#                    {{ form_end(commentForm) }}#}
+{#    #}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+
+
+{#    #}{# ----------------------- #}
+
+{#    <div  class="proekts proekts-plr">#}
+{#        <div class="card-mesto">#}
+{#            <h3 class="form__title">Запрос на первый сезон в проекте  данной ПлемМатки, </h3>#}
+{#            {% if comments|length %}#}
+
+{#                <div class="card-body">#}
+{#                    <div class="direct-chat">#}
+{#                        <div class="direct-chat-messages">#}
+{#                            {% for comment in comments %}#}
+{#                                <div class="direct-chat-msg">#}
+{#                                    <div class="direct-chat-info clearfix">#}
+{#                                        <span class="direct-chat-name pull-left">{{ comment.author_nike }}</span>#}
+{#                                        <span class="direct-chat-timestamp pull-right">{{ comment.date|date('Y-m-d H:i:s') }}</span>#}
+{#                                    </div>#}
+{#                                    <img class="direct-chat-img" src="{{ gravatar(comment.author_email, 40) }}" alt="">#}
+{#                                    <div class="direct-chat-text">#}
+{#                                        {{ comment.text|markdown|purify|adminka_processor }}#}
+{#                                        {% if is_granted('manage', comment) %}#}
+{#                                            <div class="controls-m ">#}
+{#                                                <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.comment.edit',#}
+{#                                                    {'plemmatka_id': plemmatka.id, 'id': comment.id}) }}"#}
+{#                                                   class="btnn btnn--mb0 btnn--pt btnn--col-child">#}
+{#                                                    <div class="karandash karandash--child">#}
+{#                                                        <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="редактировать">#}
+{#                                                    </div>#}
+{#                                                </a>#}
+{#                                                <form action="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.comment.delete', {'plemmatka_id': plemmatka.id, 'id': comment.id}) }}" method="post" onsubmit="return confirm('Вы  уверены? Удалить?')">#}
+{#                                                    <input type="hidden" name="token" value="{{ csrf_token('delete-comment') }}" />#}
+{#                                                    <button type="submit"  class="btnn  btnn--ml3 btnn--pt btnn--col-child">#}
+
+{#                                                        <div class="karandash karandash--child">#}
+{#                                                            <img src="{{ asset('assets/proekt/images/delet.png') }}" alt="удалить">#}
+{#                                                        </div>#}
+{#                                                    </button>#}
+{#                                                </form>#}
+{#                                            </div>#}
+{#                                        {% endif %}#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            {% endfor %}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endif %}#}
+{#        </div>#}
+{#    </div>#}
+{#    {% endif %}#}
+{% endblock %}

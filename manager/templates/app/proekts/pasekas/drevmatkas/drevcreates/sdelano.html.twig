@@ -55,22 +55,23 @@
                                
                                 </div> 
                         </li>                     
-                        <li class="plem__name  ">эти данные берём за основу при регистрации ДочьМатки!  </li>
+                        <li class="plem__name  ">Ваша ПлемМатка!  </li>
                         <li></li>
                                    
                 </ul>
         {% endif %}
                 <ul class="plem__data plem__data--mt2">
-                <li class="plem__title plem__title--mb0"> Внимание!  
+                    <li class="plem__name">
+                       Регистрация ДочМаток !!!
+                    </li>
+                <li class="plem__title plem__title--mb0">
                         <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id' : plemmatka.id}  ) }}"
-                        class="btnn btnn--break btnn--col">
-                            <strong class="strongo strongo--kras">Перейти </strong> на страничку
+                        class="btnn btnn--mb0 btnn--col-plemm ">
+                            Перейти  на страничку
                         </a>
                     </li>
                     
-                     <li class="plem__name"> 
-                        Заявка на сезон -   обязательно перейти и написать !!!
-                    </li>
+
                 </ul>
                 <ul class="plem__data plem__data--mt2">
                     <li>
@@ -80,8 +81,8 @@
                     </li>
 
                     <li>
-                        <a href="{{ path('app.proekts.pasekas.matkas'  ) }}"
-                        class="btnn btnn--mb0 btnn--col">Список Ваших <strong class="strongo strongo--kras">ПлемМаток  </strong> с выбранным сезоном.
+                        <a href="{{ path('app.proekts.pasekas.drevmatkas'  ) }}"
+                        class="btnn btnn--mb0 btnn--col-plemm">Список Ваших <strong class="strongo strongo--kras">ПлемМаток  </strong> с выбранным сезоном.
                         </a>
                     </li>
                 </ul>

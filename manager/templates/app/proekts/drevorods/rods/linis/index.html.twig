@@ -24,29 +24,55 @@
                    class=" btnn-bord " >  Paca ::
                 </a>
 
-                <b class="drev-rod_title drev-grad" > {{ rasa.title }}</b>
-
+                <strong class="drev-rod_title drev-grad" > {{ rasa.title }}</strong>
+                <strong class="drev-rod_title drev-grad" > В позиции матководов</strong>
                 <div class="drev-rod drev-rod--rodrod">
 
-                    <a href="{{ path('app.proekts.drevorods.rods.rodrods', {'id': rasa.id}) }}"
-                       class=" btnn-bord " > Страна - матковод - код ::
-                    </a>
-                    <b class="drev-rod_title drev-grad" >
-                          {{ stran.name}} - {{ rodo.nameMatkov }} - {{ rodo.kodMatkov }}</b>
+                    <div class="drev">
+                        <div class="drev__left">
+                            <a href="{{ path('app.proekts.drevorods.rods.rodrods', {'id': rasa.id}) }}"
+                               class=" btnn-bord " > Страна - матковод - код ::
+                            </a>
+                            <b class="drev-rod_title drev-grad" >
+                                  {{ stran.name}} - {{ rodo.nameMatkov }} - {{ rodo.kodMatkov }}</b>
+                        </div>
+                        <div class="drev__right">
+                            <strong class="drev-rod_title " >  В БД вариантов -  {{ rodoC }} </strong>
+                        </div>
+                    </div>
+
                     <div class="drev-rod drev-rod--lini">
-                        <ul class="drev-rod_ul  ">
+
+                        {% if linias is  empty %}
+
+
+                            <h1 class="dre_title ">  <strong class="strongo strongo--kras">Внимание! </strong> </h1>
+
+                            <ul >
+                                <li  class="drev-rod_title">
+                                    Ввод данных для этой <strong class="strongo strongo--kras">родословной </strong> почему-то не закончен ?!,
+                                </li>
+                                <li class="drev-rod_title">
+                                    пожалуйста, повторите запрос - ошибку исправим.
+                                </li>
+                                <li class="drev-rod_title">
+                                     С извиненями за неудобство.
+                                </li>
+                            </ul>
+
+                        {% else %}
+                            <ul class="drev-rod_ul  ">
                                 <li class=" drev-rod_li">Линии</li>
 
                                 <li class=" drev-rod_li">Кол-во веток (Материнка)</li>
-                        </ul>
-                        <ul class="drev-rod_ul  ">
-                            <li class=" drev-rod_li  drev-border"></li>
-                            <li class=" drev-rod_li  drev-border"></li>
+                            </ul>
+                            <ul class="drev-rod_ul  ">
+                                <li class=" drev-rod_li  drev-border"></li>
+                                <li class=" drev-rod_li  drev-border"></li>
 
-                        </ul>
-
+                            </ul>
                             {% for linia in linias %}
-                                {% if linia.wetkas > 0 %}
+
                                     <ul class="drev-rod_ul drev-grad-si">
                                         <li class=" drev-rod_li">
                                             <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas',{'id': linia.id}) }}"  class=" btnn-rodos " >
@@ -59,8 +85,9 @@
                                         </li>
                                         <li class=" drev-rod_li td_cent" >  {{ linia.wetkas }}  </li>
                                     </ul>
-                                {% endif %}
+
                             {% endfor %}
+                        {% endif %}
                     </div>
             </div>
         </div>

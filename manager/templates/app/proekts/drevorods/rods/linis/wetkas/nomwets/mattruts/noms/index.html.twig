@@ -70,51 +70,70 @@
 
 
                                 <div class="drev-rod drev-rod--lini">
-                                    <ul class="drev-rod_ul ">
 
-                                        <li class=" drev-rod_li  drev-rod_li--widt">Номер матки</li>
+                                    {% if noms is  empty %}
 
-                                        <li class=" drev-rod_li drev-rod_li--widt">Статус</li>
+                                    <h1 class="dre_title ">  <strong class="strongo strongo--kras">Внимание! </strong> </h1>
 
-                                        <li  class=" drev-rod_li">Действие</li>
-                                        <li class=" drev-rod_li drev-rod_li--widt ">Купил</li>
-
+                                    <ul >
+                                        <li  class="drev-rod_title">
+                                            Ввод данных для этой <strong class="strongo strongo--kras">родословной </strong> почему-то не закончен ?!,
+                                        </li>
+                                        <li class="drev-rod_title">
+                                            пожалуйста, повторите запрос - ошибку исправим.
+                                        </li>
+                                        <li class="drev-rod_title">
+                                            С извиненями за неудобство.
+                                        </li>
                                     </ul>
-                                    <ul class="drev-rod_ul  ">
-                                        <li class=" drev-rod_li  drev-border"></li>
-                                        <li class=" drev-rod_li  drev-border"></li>
-                                        <li class=" drev-rod_li  drev-border"></li>
-                                        <li class=" drev-rod_li  drev-border"></li>
 
-                                    </ul>
-                                    {% for nom in noms %}
+                                    {% else %}
 
-                                        <ul class="drev-rod_ul drev-grad-si">
+                                        <ul class="drev-rod_ul ">
 
-                                            <li  class=" drev-rod_li drev-rod_li--widt">
-                                                <b class="drev-rod_title drev-red" > {{ nom.tit }}</b>
-                                            </li>
-                                            <li class=" drev-rod_li drev-rod_li--widt">  {{ nom_status(nom.status) }}  </li>
-                                            {% if nom.status == "ojidaet" %}
-                                                <li class="drev-rod_li">
-                                                    <a href="{{ path('app.proekts.pasekas.drevmatkas.drevcreates.plemmatka',{ id: nom.id} ) }}"
-                                                       class=" btnn-rodos ">  Объявить
-                                                    </a>
-                                                </li>
-                                            {% endif %}
-                                            {% if nom.status == "active" %}
-                                                <li class="drev-rod_li">
-                                                    <a href="{{ path('app.proekts.pasekas.drevmatkas.drevcreates.plemmatka',{ id: nom.id} ) }}"
-                                                       class=" btnn-rodos ">  Смотреть
-                                                    </a>
-                                                </li>
-                                            {% endif %}
+                                            <li class=" drev-rod_li  drev-rod_li--widt">Номер матки</li>
 
-                                            <li class=" drev-rod_li drev-rod_li--widt">  {{ nom.nike }}  </li>
+                                            <li class=" drev-rod_li drev-rod_li--widt">Статус</li>
+
+                                            <li  class=" drev-rod_li">Действие</li>
+                                            <li class=" drev-rod_li drev-rod_li--widt ">Купил</li>
+
                                         </ul>
+                                        <ul class="drev-rod_ul  ">
+                                            <li class=" drev-rod_li  drev-border"></li>
+                                            <li class=" drev-rod_li  drev-border"></li>
+                                            <li class=" drev-rod_li  drev-border"></li>
+                                            <li class=" drev-rod_li  drev-border"></li>
 
-                                    {% endfor %}
+                                        </ul>
+                                        {% for nom in noms %}
 
+                                            <ul class="drev-rod_ul drev-grad-si">
+
+                                                <li  class=" drev-rod_li drev-rod_li--widt">
+                                                    <b class="drev-rod_title drev-red" > {{ nom.tit }}</b>
+                                                </li>
+                                                <li class=" drev-rod_li drev-rod_li--widt">  {{ nom_status(nom.status) }}  </li>
+                                                {% if nom.status == "ojidaet" %}
+                                                    <li class="drev-rod_li">
+                                                        <a href="{{ path('app.proekts.pasekas.drevmatkas.drevcreates.plemmatka',{ id: nom.id} ) }}"
+                                                           class=" btnn-rodos ">  Объявить
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if nom.status == "active" %}
+                                                    <li class="drev-rod_li">
+                                                        <a href="{{ path('app.proekts.pasekas.drevmatkas.drevcreates.plemmatka',{ id: nom.id} ) }}"
+                                                           class=" btnn-rodos ">  Смотреть
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+
+                                                <li class=" drev-rod_li drev-rod_li--widt">  {{ nom.nike }}  </li>
+                                            </ul>
+
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
 
                             </div>
