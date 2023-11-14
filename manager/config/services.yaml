@@ -128,7 +128,7 @@ services:
         tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_drevmatka }]
 
     App\Menu\Adminka\DrevMatkas\RedaktDrevMenu:
-        tags: [{ name: knp_menu.menu_builder, method: build, alias: adminka_redaktdrev }]
+        tags: [{ name: knp_menu.menu_builder, method: build, alias: admin_drev_redaktors }]
 
     Symfony\Component\HttpFoundation\Session\Session:
         alias: Symfony\Component\HttpFoundation\Session\SessionInterface

@@ -15,8 +15,7 @@
 {% block body %}
     {{ include('app/adminka/drevmatkas/_tabs.html.twig') }}
 
-    {% include 'app/adminka/matkas/plemmatka/_tabs.html.twig' %}
-    {% include 'app/adminka/matkas/plemmatka/redaktors/_tabs.html.twig' %}
+{{ include ('app/adminka/drevmatkas/drevmatka/redaktors/_tabs.html.twig') }}
 
     <div class="controls">
         <a href="{{ path('adminka.matkas.plemmatka.redaktors.edit', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-primary">Редактировать?</a>

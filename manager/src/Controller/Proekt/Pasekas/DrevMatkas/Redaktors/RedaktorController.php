@@ -74,7 +74,7 @@ class RedaktorController extends AbstractController
 
         return $this->render('app/proekts/pasekas/drevmatkas/redaktors/show.html.twig', [
             'plemmatka' => $plemmatka,
-            'uchastniks' => $plemmatka->getPersona()->getId()->getValue(),
+            'uchastniks' => $plemmatka->getUchasdrevs(),
             'comments' => $comments->allForDrevMatka($plemmatka->getId()->getValue()),
             'commentForm' => $commentForm->createView(),
 

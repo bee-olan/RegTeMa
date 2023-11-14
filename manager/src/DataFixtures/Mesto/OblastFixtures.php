@@ -54,6 +54,10 @@ class OblastFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($perm);
         $this->setReference(self::REFERENCE_PERM, $perm);
 
+        $bash = $this->createOblast($priwol, $name="Рес-ка Башкортостан", $nomer = "02", $mesto= "5-02");
+        $manager->persist($bash);
+        $this->setReference(self::REFERENCE_PERM, $bash);
+
 //        $oblast = $this->createOblast(2, $name="Ленинградская область ", $nomer = "47", $mesto= "2-47");
 //        $manager->persist($oblast);
 

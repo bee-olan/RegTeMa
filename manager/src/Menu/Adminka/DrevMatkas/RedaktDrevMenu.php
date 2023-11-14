@@ -27,36 +27,36 @@ class RedaktDrevMenu
         if ($this->auth->isGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS')) {
             $menu
                 ->addChild('Общие', [
-                    'route' => 'adminka.matkas.plemmatka.redaktors',
+                    'route' => 'adminka.drevmatkas.drevmatka.redaktors',
                     'routeParameters' => ['plemmatka_id' => $options['plemmatka_id']]
                 ])
                 ->setExtra('routes', [
-                    ['route' => 'adminka.matkas.plemmatka.redaktors'],
-                    ['route' => 'adminka.matkas.plemmatka.redaktors.edit'],
+                    ['route' => 'adminka.drevmatkas.drevmatka.redaktors'],
+                    ['route' => 'adminka.drevmatkas.drevmatka.redaktors.edit'],
                 ])
                 ->setAttribute('class', 'nav-item')
                 ->setLinkAttribute('class', 'nav-link');
 
             $menu
                 ->addChild('Сезоны', [
-                    'route' => 'adminka.matkas.plemmatka.redaktors.departments',
+                    'route' => 'adminka.drevmatkas.drevmatka.redaktors.sezondrevs',
                     'routeParameters' => ['plemmatka_id' => $options['plemmatka_id']]
                 ])
                 ->setExtra('routes', [
-                    ['route' => 'adminka.matkas.plemmatka.redaktors.departments'],
-                    ['pattern' => '/^adminka.matkas.plemmatka.redaktors.departments\..+/']
+                    ['route' => 'adminka.drevmatkas.drevmatka.redaktors.sezondrevs'],
+                    ['pattern' => '/^adminka.drevmatkas.drevmatka.redaktors.sezondrevs\..+/']
                 ])
                 ->setAttribute('class', 'nav-item')
                 ->setLinkAttribute('class', 'nav-link');
 
             $menu
-                ->addChild('Участники', [
-                    'route' => 'adminka.matkas.plemmatka.redaktors.uchasties',
+                ->addChild('Участник!!!', [
+                    'route' => 'adminka.drevmatkas.drevmatka.redaktors.uchasties',
                     'routeParameters' => ['plemmatka_id' => $options['plemmatka_id']]
                 ])
                 ->setExtra('routes', [
-                    ['route' => 'adminka.matkas.plemmatka.redaktors.uchasties'],
-                    ['pattern' => '/^adminka.matkas.plemmatka.redaktors.uchasties\..+/']
+                    ['route' => 'adminka.drevmatkas.drevmatka.redaktors.uchasties'],
+                    ['pattern' => '/^adminka.drevmatkas.drevmatka.redaktors.uchasties\..+/']
                 ])
                 ->setAttribute('class', 'nav-item')
                 ->setLinkAttribute('class', 'nav-link');

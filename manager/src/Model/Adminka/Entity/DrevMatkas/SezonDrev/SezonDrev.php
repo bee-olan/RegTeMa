@@ -68,6 +68,4 @@ class SezonDrev
         return $this->plemmatka;
     }
 
-
-
 }

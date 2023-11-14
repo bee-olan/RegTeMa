@@ -15,13 +15,14 @@
 
 {% block body %}
 
-    {% include 'app/adminka/matkas/plemmatka/_tabs.html.twig' %}
+    {{ include('app/adminka/drevmatkas/_tabs.html.twig') }}
 
-    {% include 'app/adminka/matkas/plemmatka/redaktors/_tabs.html.twig' %}
+    {% include 'app/adminka/drevmatkas/drevmatka/redaktors/_tabs.html.twig' %}
 
     <div class="controls">
-        <a href="{{ path('adminka.matkas.plemmatka.redaktors.uchasties.assign', {'plemmatka_id': plemmatka.id}) }}" class="btn btn-success">Прикрепить участника</a>
-        <a href="{{ path('adminka.matkas.roles') }}" class="btn btn-primary">Роли</a>
+        <a href="{{ path('adminka.drevmatkas.drevmatka.redaktors.uchasties.assign', {'plemmatka_id': plemmatka.id}) }}"
+           class="btn btn-success">Прикрепить участника</a>
+{#        <a href="{{ path('adminka.matkas.roles') }}" class="btn btn-primary">Роли</a>#}
     </div>
 
     <div class="box">
@@ -36,31 +37,31 @@
             </thead>
             <tbody>
             {% set token = csrf_token('revoke') %}
-            {% for uchastnik in uchastniks %}
+            {% for uchasdrev in uchasdrevs %}
                 <tr>
                     <td>
-                        <a href="{{ path('adminka.uchasties.show', {'id': uchastnik.uchastie.id}) }}" target="_blank" class="pull-right"><span class="fa fa-external-link"></span></a>
-                        {{ uchastnik.uchastie.nike }}   ( {{ uchastnik.uchastie.name.full }} )
+                        <a href="{{ path('adminka.uchasties.show', {'id': uchasdrev.uchastie.id}) }}" target="_blank" class="pull-right"><span class="fa fa-external-link"></span></a>
+                        {{ uchasdrev.uchastie.nike }}   ( {{ uchasdrev.uchastie.name.full }} )
                     </td>
                     <td>
                         <ul class="list-unstyled my-0">
-                            {% for department in uchastnik.departments %}
-                                <li>{{ department.name }}</li>
+                            {% for sezondrev in uchasdrev.sezondrevs %}
+                                <li>{{ sezondrev.name }}</li>
                             {% endfor %}
                         </ul>
                     </td>
-                    <td>
-                        <ul class="list-unstyled my-0">
-                            {% for role in uchastnik.roles %}
-                                <li>{{ role.name }}</li>
-                            {% endfor %}
-                        </ul>
-                    </td>
+{#                    <td>#}
+{#                        <ul class="list-unstyled my-0">#}
+{#                            {% for role in uchasdrev.roles %}#}
+{#                                <li>{{ role.name }}</li>#}
+{#                            {% endfor %}#}
+{#                        </ul>#}
+{#                    </td>#}
                     <td>
                         <div class="d-flex flex-row">
-                            <a href="{{ path('adminka.matkas.plemmatka.redaktors.uchasties.edit', {'plemmatka_id': plemmatka.id, 'uchastie_id': uchastnik.uchastie.id}) }}"
+                            <a href="{{ path('adminka.matkas.plemmatka.redaktors.uchasties.edit', {'plemmatka_id': plemmatka.id, 'uchastie_id': uchasdrev.uchastie.id}) }}"
                                class="btn btn-sm btn-primary mr-1"><span class="fa fa-pencil"></span></a>
-                            <form action="{{ path('adminka.matkas.plemmatka.redaktors.uchasties.revoke', {'plemmatka_id': plemmatka.id, 'uchastie_id': uchastnik.uchastie.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
+                            <form action="{{ path('adminka.matkas.plemmatka.redaktors.uchasties.revoke', {'plemmatka_id': plemmatka.id, 'uchastie_id': uchasdrev.uchastie.id}) }}" method="post" onsubmit="return confirm('Are you sure?')">
                                 <input type="hidden" name="token" value="{{ token }}" />
                                 <button type="submit" class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>
                             </form>

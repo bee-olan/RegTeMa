@@ -6,7 +6,7 @@ namespace App\Model\Adminka\Entity\DrevMatkas;
 
 use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\SezonDrev;
 use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\Id as SezonDrevId;
-
+use App\Model\Adminka\Entity\DrevMatkas;
 use App\Model\Adminka\Entity\Uchasties\Personas\Persona;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
@@ -81,6 +81,12 @@ class DrevMatka
      */
     private $sezondrevs;
 
+    /**
+     * @var ArrayCollection|UchasDrev[]
+     * @ORM\OneToMany(targetEntity="UchasDrev", mappedBy="plemmatka", orphanRemoval=true, cascade={"all"})
+     */
+    private $uchasdrevs;
+
     public function __construct( Id $id,
                                  string $name,
                                  int $sort,
@@ -99,7 +105,7 @@ class DrevMatka
         $this->status = Status::active();
 
         $this->sezondrevs = new ArrayCollection();
-
+        $this->uchasdrevs = new ArrayCollection();
     }
 
     ////////////////
@@ -128,8 +134,8 @@ class DrevMatka
     {
         foreach ($this->sezondrevs as $sezondrev) {
             if ($sezondrev->getId()->isEqual($id)) {
-                foreach ($this->uchastniks as $uchastnik) {
-                    if ($uchastnik->isForSezonDrev($id)) {
+                foreach ($this->uchasdrevs as $uchasdrev) {
+                    if ($uchasdrev->isForSezonDrev($id)) {
                         throw new \DomainException('Не удалось удалить отдел с участиемs.');
                     }
                 }
@@ -140,6 +146,87 @@ class DrevMatka
         throw new \DomainException('Сезон не найден.');
     }
     ///////
+    public function hasUchastie(UchastieId $id): bool
+    {
+        foreach ($this->uchasdrevs as $uchasdrev) {
+            if ($uchasdrev->isForUchastie($id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     * @param Uchastie $uchastie
+     * @param SezonDrevId[] $sezondrevIds
+     * @throws \Exception
+     */
+    public function addUchastie(Uchastie $uchastie, array $sezondrevIds): void
+    {
+        foreach ($this->uchasdrevs as $uchasdrev) {
+            if ($uchasdrev->isForUchastie($uchastie->getId())) {
+                throw new \DomainException('Такой участник уже добавлен.');
+            }
+        }
+        $sezondrevs = array_map([$this, 'getSezondrev'], $sezondrevIds);
+        $this->uchasdrevs->add(new UchasDrev($this, $uchastie, $sezondrevs));
+    }
+
+    /**
+     * @param UchastieId $uchastie
+     * @param SezonDrevId[] $sezondrevIds
+     */
+    public function editUchastie(UchastieId $uchastie, array $sezondrevIds): void
+    {
+        foreach ($this->uchasdrevs as $uchasdrev) {
+            if ($uchasdrev->isForUchastie($uchastie)) {
+                $uchasdrev->changeDepartments(array_map([$this, 'getSezondrev'], $sezondrevIds));
+//                $uchasdrev->changeRoles($roles);
+                return;
+            }
+        }
+        throw new \DomainException('Участие не найдено.');
+    }
+
+    /**
+     * @param UchastieId $uchastie
+     * @param SezonDrevId[] $sezondrevIds
+     */
+    public function editSezonUchastie(UchastieId $uchastie, array $sezondrevIds): void
+    {
+        foreach ($this->uchasdrevs as $uchasdrev) {
+            if ($uchasdrev->isForUchastie($uchastie)) {
+                $uchasdrev->changeDepartments(array_map([$this, 'getSezondrev'], $sezondrevIds));
+//                $uchasdrev->changeRoles($roles);
+                return;
+            }
+        }
+        throw new \DomainException('Участие не найдено.');
+    }
+
+    public function removeUchastie(UchastieId $uchastie): void
+    {
+        foreach ($this->uchasdrevs as $uchasdrev) {
+            if ($uchasdrev->isForUchastie($uchastie)) {
+                $this->uchasdrevs->removeElement($uchasdrev);
+                return;
+            }
+        }
+        throw new \DomainException('Участие не найдено.');
+    }
+
+// если есть у пользователя разрешение !!!!!!!!!!!!!!!!!!!!!!!!!
+    public function isUchastieGranted(UchastieId $id, string $permission): bool
+    {
+        foreach ($this->uchasdrevs as $uchasdrev) {
+            if ($uchasdrev->isForUchastie($id)) {
+                return $uchasdrev->isGranted($permission);
+            }
+        }
+        return false;
+    }
+    ///
 
     public function archive(): void
     {
@@ -203,10 +290,9 @@ class DrevMatka
         return $this->nomer;
     }
 
-
     public function getSezondrevs()
     {
-        return $this->sezondrevs->toArray();;
+        return $this->sezondrevs->toArray();
     }
 
     public function getSezondrev(SezonDrevId $id): SezonDrev
@@ -218,4 +304,20 @@ class DrevMatka
         }
         throw new \DomainException('сезон  не найден.');
     }
+
+
+    public function getUchasdrevs()
+    {
+        return $this->uchasdrevs->toArray();;
+    }
+
+//    public function getUchasdrev(UchastieId $id): UchasDrev
+//    {
+//        foreach ($this->uchasdrevs as $uchasdrev) {
+//            if ($uchasdrev->getId()->isEqual($id)) {
+//                return $uchasdrev;
+//            }
+//        }
+//        throw new \DomainException('сезон  не найден.');
+//    }
 }
