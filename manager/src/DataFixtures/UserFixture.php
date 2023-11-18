@@ -65,6 +65,15 @@ class UserFixture extends Fixture
         $manager->persist($matkowod);
         $this->setReference(self::REFERENCE_MODERATOR, $matkowod);
 
+
+        $matkow = $this->createModeratorByEmail(
+            new Name('Дмитрий', 'Дмитриев'),
+            new Email('carnicamed@yandex.ru'),
+            $hash
+        );
+        $manager->persist($matkow);
+        $this->setReference(self::REFERENCE_MODERATOR, $matkow);
+
 //        -----------------
 
         $manager->flush();

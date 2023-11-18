@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\UchasDrev\EditSez;
 
-use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Department;
-use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
-use App\Model\Adminka\Entity\Matkas\PlemMatka\Uchastnik;
-use App\Model\Adminka\Entity\Matkas\Role\Role;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
+use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\SezonDrev;
+use App\Model\Adminka\Entity\DrevMatkas\UchasDrev;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -24,11 +23,8 @@ class Command
     /**
      * @Assert\NotBlank()
      */
-    public $departments;
-//    /**
-//     * @Assert\NotBlank()
-//     */
-//    public $roles;
+    public $sezondrevs;
+
 
     public function __construct(string $plemmatka, string $uchastie)
     {
@@ -36,12 +32,12 @@ class Command
         $this->uchastie = $uchastie;
     }
 
-    public static function fromUchastnik(PlemMatka $plemmatka, Uchastnik $uchasnik): self
+    public static function fromUchasDrev(DrevMatka $plemmatka, UchasDrev $uchasdrev): self
     {
-        $command = new self($plemmatka->getId()->getValue(), $uchasnik->getUchastie()->getId()->getValue());
-        $command->departments = array_map(static function (Department $department): string {
-            return $department->getId()->getValue();
-        }, $uchasnik->getDepartments());
+        $command = new self($plemmatka->getId()->getValue(), $uchasdrev->getUchastie()->getId()->getValue());
+        $command->sezondrevs = array_map(static function (SezonDrev $sezondrev): string {
+            return $sezondrev->getId()->getValue();
+        }, $uchasdrev->getSezonDrevs());
 
 //        $command->roles = array_map(static function (Role $role): string {
 //            return $role->getId()->getValue();

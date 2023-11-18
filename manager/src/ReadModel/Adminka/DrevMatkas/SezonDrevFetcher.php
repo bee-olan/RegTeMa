@@ -35,21 +35,21 @@ class SezonDrevFetcher
 //    }
 
 
-//    public function listOfPlemMatka(string $plemmatka): array
-//    {
-//
-//        $stmt = $this->connection->createQueryBuilder()
-//            ->select(
-//                'id',
-//                'name'
-//            )
-//            ->from('admin_matkas_plemmatka_departments')
-//            ->andWhere('plemmatka_id = :plemmatka')
-//            ->setParameter(':plemmatka', $plemmatka)
-//            ->orderBy('name')
-//            ->execute();
-//        return $stmt->fetchAll(\PDO::FETCH_KEY_PAIR);
-//    }
+    public function listOfDrevMatka(string $plemmatka): array
+    {
+
+        $stmt = $this->connection->createQueryBuilder()
+            ->select(
+                'id',
+                'name'
+            )
+            ->from('adm_drev_sezondrevs')
+            ->andWhere('plemmatka_id = :plemmatka')
+            ->setParameter(':plemmatka', $plemmatka)
+            ->orderBy('name')
+            ->execute();
+        return $stmt->fetchAll(\PDO::FETCH_KEY_PAIR);
+    }
 
 // посчитать вручнкю всех участников этого проекта
 

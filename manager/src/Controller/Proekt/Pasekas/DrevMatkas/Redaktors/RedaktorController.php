@@ -70,7 +70,7 @@ class RedaktorController extends AbstractController
                 $this->addFlash('error', $e->getMessage());
             }
         }
-//        dd($comments->allForDrevMatka($plemmatka->getId()->getValue()));
+//dd($plemmatka->getUchasdrevs());
 
         return $this->render('app/proekts/pasekas/drevmatkas/redaktors/show.html.twig', [
             'plemmatka' => $plemmatka,

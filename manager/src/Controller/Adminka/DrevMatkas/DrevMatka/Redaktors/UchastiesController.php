@@ -63,7 +63,7 @@ class UchastiesController extends AbstractController
 //        $this->denyAccessUnlessGranted(DrevMatkaAccess::MANAGE_UCHASTIES, $plemmatka);
 //dd($plemmatka->getPersona()->getId()->getValue());
         $uchasRepo = $uchasRepos->get(new Id($plemmatka->getPersona()->getId()->getValue()));
-        dd($uchasRepo->getNike());
+//        dd($uchasRepo->getNike());
         //Проверка на : Если попытается привязать сотрудника, но еще нет департ-сообщества, то соотв. сообщение
         if (!$plemmatka->getSezondrevs()) {
             $this->addFlash('error', 'Добавьте СЕЗОНЫ перед добавлением участников.');

@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\UchasDrev\EditSez;
 
-use App\ReadModel\Adminka\Matkas\PlemMatka\DepartmentFetcher;
-use App\ReadModel\Adminka\Matkas\RoleFetcher;
+use App\ReadModel\Adminka\DrevMatkas\SezonDrevFetcher;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,20 +12,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class Form extends AbstractType
 {
-//    private $roles;
-    private $departments;
+    private $sezondrevs;
 
-    public function __construct( DepartmentFetcher $departments)
+    public function __construct( SezonDrevFetcher $sezondrevs)
     {
-//        $this->roles = $roles;
-        $this->departments = $departments;
+        $this->sezondrevs = $sezondrevs;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
         $builder
-            ->add('departments', Type\ChoiceType::class, [
-                'choices' => array_flip($this->departments->listOfPlemMatka($options['plemmatka'])),
+            ->add('sezondrevs', Type\ChoiceType::class, [
+                'choices' => array_flip($this->sezondrevs->listOfDrevMatka($options['plemmatka'])),
                 'label' => ' Сезоны',
                 'expanded' => true,
                 'multiple' => true,

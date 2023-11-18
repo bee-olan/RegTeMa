@@ -18,14 +18,14 @@
         <table class="table table-bordered table-hover">
             <thead>
             <tr  class="fon_td_es">
-                <th  >Раса!!!</th>
+                <th  >Раса</th>
                 <th >Страна</th>
                 <th  colspan="2">Матковод(код)</th>
                 <th  >Линии</th>
-                <th  colspan="2"> Материнка</th>
-
+                <th class="td_cent" > Материнка</th>
+{#                colspan="2"#}
                 <th  > Материнка трутня</th>
-                <th class="fon_td_nado " > Матка </th>
+                <th class="td_cent" > Матка </th>
                 <th>Статус</th>
                 <th  > Заказал </th>
 
@@ -39,12 +39,29 @@
                     <td>{{ nom.name_m }}</td>
                     <td>{{ nom.kod_m }}</td>
                     <td>{{ nom.name }}</td>
-                    <td>{{ nom.name_w }}</td>
-                    <td>{{ nom.tit_w }}</td>
+                    <td>{{ nom.name_w }}-{{ nom.tit_w }}</td>
+{#                    <td></td>#}
 
                     <td class="ot-lin ">{{nom.name_ot }}</td>
-                    <td class="fon_td_nado ">{{nom.tit }}</td>
+                    <td >
+                        {% if nom.status == "ojidaet" %}
+
+                                <a href="{{ path('app.proekts.pasekas.drevmatkas.drevcreates.plemmatka',{ id: nom.id} ) }}"
+                                   class=" btnn-rodos "  title="Объявить"> {{nom.tit }}
+                                </a>
+
+                        {% endif %}
+                        {% if nom.status == "active" %}
+                                <a href="{{ path('app.proekts.pasekas.drevmatkas.drevcreates.plemmatka',{ id: nom.id} ) }}"
+                                   class="btnn-rodos btnn-rodos--smotr " title="Смотреть"> {{nom.tit }}
+                                </a>
+                        {% endif %}
+
+
+                    </td>
+
                     <td > {{ nom_status(nom.status) }}</td>
+
                     <td class="ot-lin ">{{nom.nike }}</td>
 
 

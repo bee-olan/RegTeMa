@@ -4,34 +4,29 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\UchasDrev\EditSez;
 
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatkaRepository;
+use App\Model\Adminka\Entity\DrevMatkas\Id;
 use App\Model\Flusher;
-use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatkaRepository;
-use App\Model\Adminka\Entity\Matkas\PlemMatka\Id;
-use App\Model\Adminka\Entity\Matkas\Role\Role;
-use App\Model\Adminka\Entity\Matkas\Role\Id as RoleId;
-use App\Model\Adminka\Entity\Matkas\Role\RoleRepository;
+
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
-use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id as DepartmentId;
+use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\Id as SezonDrevId;
 
 
 class Handler
 {
     private $plemmatkas;
     private $uchasties;
-//    private $roles;
     private $flusher;
 
     public function __construct(
-        PlemMatkaRepository $plemmatkas,
+        DrevMatkaRepository $plemmatkas,
         UchastieRepository $uchasties,
-//        RoleRepository $roles,
         Flusher $flusher
     )
     {
         $this->plemmatkas = $plemmatkas;
         $this->uchasties = $uchasties;
-//        $this->roles = $roles;
         $this->flusher = $flusher;
     }
 
@@ -40,17 +35,14 @@ class Handler
 
         $plemmatka = $this->plemmatkas->get(new Id($command->plemmatka)) ;
         $uchastie = $this->uchasties->get(new UchastieId($command->uchastie));
-//        $role = $this->roles->get(new RoleId($command->uchastie));
 
-        $departments = array_map(static function (string $id): DepartmentId {
-            return new DepartmentId($id);
-        }, $command->departments);
-//
-//        $roles = array_map(function (string $id): Role {
-//            return $this->roles->get(new RoleId($id));
-//        }, $command->roles);
 
-        $plemmatka->editSezonUchastie($uchastie->getId(), $departments);
+        $sezondrevs = array_map(static function (string $id): SezonDrevId {
+            return new SezonDrevId($id);
+        }, $command->sezondrevs);
+
+
+        $plemmatka->editSezonUchastie($uchastie->getId(), $sezondrevs);
 
         $this->flusher->flush();
     }

@@ -53,18 +53,9 @@ class UchasDrev
      */
     private $sezondrevs;
 
-//    /**
-//     * @var ArrayCollection|Role[]
-//     * @ORM\ManyToMany(targetEntity="App\Model\Adminka\Entity\Matkas\Role\Role")
-//     * @ORM\JoinTable(name="adminka_matkas_plemmatka_uchastnik_roles",
-//     *     joinColumns={@ORM\JoinColumn(name="uchastnik_id", referencedColumnName="id")},
-//     *     inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
-//     * )
-//     */
-//    private $roles;
 
     /**
-     * Uchastnik constructor.
+     * UchasDrev constructor.
      * @param DrevMatka $plemmatka
      * @param Uchastie $uchastie
      * @param ArrayCollection|SezonDrev[] $sezondrevs
@@ -103,28 +94,6 @@ class UchasDrev
         }
     }
 
-//    /**
-//     * @param Role[] $roles
-//     */
-//    public function changeRoles(array $roles): void
-//    {
-//        $this->guardRoles($roles);
-//
-//        $current = $this->roles->toArray();
-//        $new = $roles;
-//
-//        $compare = static function (Role $a, Role $b): int {
-//            return $a->getId()->getValue() <=> $b->getId()->getValue();
-//        };
-//
-//        foreach (array_udiff($current, $new, $compare) as $item) {
-//            $this->roles->removeElement($item);
-//        }
-//
-//        foreach (array_udiff($new, $current, $compare) as $item) {
-//            $this->roles->add($item);
-//        }
-//    }
 
     public function isForUchastie(UchastieId $id): bool
     {
@@ -141,15 +110,6 @@ class UchasDrev
         return false;
     }
 
-//    public function isGranted(string $permission): bool
-//    {
-//        foreach ($this->roles as $role) {
-//            if ($role->hasPermission($permission)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
 
     public function getUchastie(): Uchastie
     {
@@ -168,13 +128,6 @@ class UchasDrev
         return $this->plemmatka;
     }
 
-//    /**
-//     * @return Role[]
-//     */
-//    public function getRoles(): array
-//    {
-//        return $this->roles->toArray();
-//    }
 
     public function getSezonDrevs(): array
     {

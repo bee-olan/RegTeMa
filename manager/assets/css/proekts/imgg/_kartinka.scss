@@ -31,6 +31,16 @@
 
 }
 
+.delit-kar {
+  display: block; // блочная
+  background-image: url('../../../../assets/images/proekts/delet.png');
+  width: 24px;
+  height: 24px;
+  // margin: 2rem auto 1.5rem;
+  position: relative; //чтобы бордер не исчезал  под картинкой
+
+}
+
 .mesto-kar {
   display: block; // блочная
   background-image: url('../../../../assets/images/proekts/mestos/mestos.png');

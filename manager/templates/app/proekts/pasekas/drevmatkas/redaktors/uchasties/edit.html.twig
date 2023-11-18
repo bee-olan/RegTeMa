@@ -1,0 +1,73 @@
+{% extends 'probase.html.twig' %}
+
+{% block title %}{{ plemmatka.name }}{% endblock %}
+
+ {% block kroxii %}
+     <a href="{{ path('proekt') }}">Главная</a>
+     <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
+     <a href="{{ path('app.proekts.pasekas.matkas') }}">Список ПлемМаток</a>
+     <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id})  }}">{{ plemmatka.name }}</a>
+     <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id})  }}">Редактировать</a>
+     <span class="aktiv ">Добавить сезон</span>
+ {% endblock %}
+
+{% block bodyy %}
+
+    <div  class="  proekts-plem">
+
+    <div class="inklud">
+
+        <div class="inklud__img">
+            <img class="" src="{{ asset('assets/proekt/images/karandash_m.png') }}" alt="">
+
+        </div>
+
+        <div class="inklud__title teni">
+           Добавить новый сезон  ПлемМатки!
+        </div>
+    </div>
+
+      <div class="proekts-plr  ">
+          {% if plemmatka.active  %}
+              <h1 class="plem__title  "><strong class="strongo strongo--kras">{{ plemmatka.name }} </strong> </h1>
+            <div class="plem-form__header  ">
+                <div class="plem-form ">
+
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <div>
+                         <ul class="plem plem__jus-st ">
+
+                            <li >
+                                <button type="submit" class="btnn  btnn--mb0 btnn--pt">Сохранить</button>
+                            </li>
+                            <li class="plem__name--wid20">  &nbsp; &nbsp;
+                                <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show',
+                                    {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Или вернуться на страничку</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {{ form_end(form) }}
+
+                    </div>
+                </div>
+                {% endif %}
+
+            {% if plemmatka.archived  %}
+                <h1 class="plem__title  ">Вы не можете добавить новый сезон, ПлемМатка находится в <strong class="strongo strongo--kras">архиве </strong></h1>
+                <ul class="plem plem__jus-st ">
+
+                    <li >
+                        <a href="{{ path('app.proekts.pasekas.matkas') }}" class="btnn btnn--mb0 btnn--col">Смотреть список</a>
+                    </li>
+                    <li class="plem__name--wid20">  &nbsp; &nbsp;
+                        <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show',
+                            {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Сезоны, статус, редактирование</a>
+                    </li>
+                </ul>
+            {% endif %}
+      </div>
+
+</div>
+
+{% endblock %}

@@ -31,7 +31,7 @@ class Form extends AbstractType
         foreach ($this->uchasties->activeGroupedList() as $item) {
             $uchasties[$item['group']][$item['nike'].' ('.$item['persona'].')'] = $item['id'];
         }
-
+//dd($this->sezondrevs->allOfDrevMatka($options['plemmatka']));
         $builder
             ->add('uchastie', Type\ChoiceType::class, [
                 'label' => 'Участники',
@@ -39,7 +39,7 @@ class Form extends AbstractType
             ])
             ->add('sezondrevs', Type\ChoiceType::class, [
                 'label' => ' Сезоны',
-                'choices' => array_flip($this->sezondrevs->allOfDrevMatka($options['plemmatka'])),
+                'choices' => array_flip($this->sezondrevs->listOfDrevMatka($options['plemmatka'])),
                 'expanded' => true,
                 'multiple' => true,
             ])

@@ -299,6 +299,7 @@ class DrevMatka
     {
         foreach ($this->sezondrevs as $sezondrev) {
             if ($sezondrev->getId()->isEqual($id)) {
+//                if ($sezondrev->getId()->isEqual($id)) {
                 return $sezondrev;
             }
         }
@@ -311,13 +312,13 @@ class DrevMatka
         return $this->uchasdrevs->toArray();;
     }
 
-//    public function getUchasdrev(UchastieId $id): UchasDrev
-//    {
-//        foreach ($this->uchasdrevs as $uchasdrev) {
-//            if ($uchasdrev->getId()->isEqual($id)) {
-//                return $uchasdrev;
-//            }
-//        }
-//        throw new \DomainException('сезон  не найден.');
-//    }
+    public function getUchasDrev(UchastieId $id): UchasDrev
+    {
+        foreach ($this->uchasdrevs as $uchasdrev) {
+            if ($uchasdrev->isForUchastie($id) ) {
+                return $uchasdrev;
+            }
+        }
+        throw new \DomainException('сезон  не найден.');
+    }
 }
