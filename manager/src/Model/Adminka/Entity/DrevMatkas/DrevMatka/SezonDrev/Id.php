@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\DrevMatkas\SezonDrev;
+namespace App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev;
 
 use Ramsey\Uuid\Uuid;
 use Webmozart\Assert\Assert;

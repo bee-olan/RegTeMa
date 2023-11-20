@@ -10,13 +10,11 @@ use App\Annotation\Guid;
 use App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\Archive;
 use App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\Reinstate;
 
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
 use App\ReadModel\Adminka\DrevMatkas\CommentDrevFetcher;
 use App\ReadModel\Adminka\Matkas\ChildMatka\CommentFetcher;
 use App\Model\Comment\UseCase\Comment;
-//use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 
-//use App\Security\Voter\Adminka\Matkas\PlemMatkaAccess;
 use App\Controller\ErrorHandler;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

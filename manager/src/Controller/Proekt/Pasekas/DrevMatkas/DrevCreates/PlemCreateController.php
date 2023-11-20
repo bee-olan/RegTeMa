@@ -7,7 +7,8 @@ namespace App\Controller\Proekt\Pasekas\DrevMatkas\DrevCreates;
 use App\Annotation\Guid;
 
 
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
+//use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
 use App\Model\Adminka\Entity\Matkas\Kategoria\Permission;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 

@@ -11,9 +11,10 @@
 {% endblock %}
 
     {% block kroxii %}
-        <a href="{{ path('proekt') }}">Главная</a>
-        <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
-        <span class="aktiv ">Список ПлемМаток</span> 
+        <a href="{{ path('app.proekts.basepro') }}">Главная</a>
+        <a href="{{ path('app.proekts.drevorods.rodras') }}">Рег-ция ЭлитМатки</a>
+        <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ЭлитМатки</a>
+        <span class="aktiv ">Список ПлемМаток!</span>
     {% endblock %}
 
 {% block bodyy %}
@@ -28,9 +29,9 @@
         </div>
 
         <div class="inklud__title inklud__title--plem teni">
-           Список зарегистрированных  ПлемМаток !!! &nbsp; &nbsp;
+           Список зарегистрированных  ЭлитМаток !!! &nbsp; &nbsp;
            <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.creates'  ) }}"
-               class="btnn btnn--mb0 btnn--plus" title="Добавить ПлемМатку"> 
+               class="btnn btnn--mb0 btnn--plus" title="Добавить ЭлитМаток">
                <strong class="strongo strongo--sizee">+</strong>  
             </a>
         </div> 
@@ -41,7 +42,7 @@
                 <ul class = "plem__data plem__data--col">
                    
                     <li class = "plem__name plem__name--wid34 plem__name-list--wid" >
-                    ПлемМатка (по ссылке -расшифровка)
+                        ЭлитМатки (по ссылке -расшифровка)
                     </li> 
 
                         {# <li class = "plem__name">Кат-рия</li> #}

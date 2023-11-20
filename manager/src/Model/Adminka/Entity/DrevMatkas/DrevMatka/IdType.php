@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\DrevMatkas;
+namespace App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\StringType;
+use Doctrine\DBAL\Types\GuidType;
 
-class StatusType extends StringType
+class IdType extends GuidType
 {
-    public const NAME = 'admin_drevmatka_status';
+    public const NAME = 'admin_drevmatka_id';
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
-        return $value instanceof Status ? $value->getName() : $value;
+        return $value instanceof Id ? $value->getValue() : $value;
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        return !empty($value) ? new Status($value) : null;
+        return !empty($value) ? new Id($value) : null;
     }
 
     public function getName(): string

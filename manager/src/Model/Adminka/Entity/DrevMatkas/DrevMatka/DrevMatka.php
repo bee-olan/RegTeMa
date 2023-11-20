@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\DrevMatkas;
+namespace App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
 
-use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\SezonDrev;
-use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\Id as SezonDrevId;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\SezonDrev;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\Id as SezonDrevId;
 use App\Model\Adminka\Entity\DrevMatkas;
 use App\Model\Adminka\Entity\Uchasties\Personas\Persona;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
@@ -74,7 +74,7 @@ class DrevMatka
     /**
      * @var ArrayCollection|SezonDrev[]
      * @ORM\OneToMany(
-     *     targetEntity="App\Model\Adminka\Entity\DrevMatkas\SezonDrev\SezonDrev",
+     *     targetEntity="App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\SezonDrev",
      *     mappedBy="plemmatka", orphanRemoval=true, cascade={"all"}
      * )
      * @ORM\OrderBy({"name" = "ASC"})
@@ -197,7 +197,7 @@ class DrevMatka
     {
         foreach ($this->uchasdrevs as $uchasdrev) {
             if ($uchasdrev->isForUchastie($uchastie)) {
-                $uchasdrev->changeDepartments(array_map([$this, 'getSezondrev'], $sezondrevIds));
+                $uchasdrev->changeSezonDrevs(array_map([$this, 'getSezondrev'], $sezondrevIds));
 //                $uchasdrev->changeRoles($roles);
                 return;
             }

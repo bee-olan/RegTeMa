@@ -48,10 +48,10 @@ doctrine:
             admin_matkas_kategoria_id: 'App\Model\Adminka\Entity\Matkas\Kategoria\IdType'
             admin_matkas_kategoria_permissions: 'App\Model\Adminka\Entity\Matkas\Kategoria\PermissionsType'
 
-            admin_drevmatka_id: 'App\Model\Adminka\Entity\DrevMatkas\IdType'
-            admin_drevmatka_status: 'App\Model\Adminka\Entity\DrevMatkas\StatusType'
+            admin_drevmatka_id: 'App\Model\Adminka\Entity\DrevMatkas\DrevMatka\IdType'
+            admin_drevmatka_status: 'App\Model\Adminka\Entity\DrevMatkas\DrevMatka\StatusType'
 
-            adm_drev_sezondrev_id: 'App\Model\Adminka\Entity\DrevMatkas\SezonDrev\IdType'
+            adm_drev_sezondrev_id: 'App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\IdType'
 
             dre_stran_id: 'App\Model\Drevos\Entity\Strans\IdType'
 

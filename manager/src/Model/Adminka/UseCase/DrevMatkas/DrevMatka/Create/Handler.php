@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\Create;
 
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatkaRepository;
-use App\Model\Adminka\Entity\DrevMatkas\Id;
-
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatkaRepository;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\Id;
 use App\Model\Adminka\Entity\Uchasties\Personas\PersonaRepository;
 use App\Model\Adminka\Entity\Uchasties\Personas\Id as PersonaId;
 use App\Model\Drevos\Entity\Rass\Rods\Linis\Wetkas\NomWets\MatTruts\Noms\NomRepository;
@@ -51,7 +50,7 @@ class Handler
         $mesto = $this->mestoNomers->get(new MestoNomerId($nomer->getZakazal()->getId()->getValue()));
          $mestoNom = $mesto->getNomer();
 
-         $command->name = $nameDr." : ".$mestoNom."_пн-".$personNom;
+         $command->name = $mestoNom."_пн-".$personNom." : ".$nameDr;
 //         dd($name);
         if ($this->drevmatkas->hasByName($command->name)) {
             throw new \DomainException('ПлемМатка  уже существует.');

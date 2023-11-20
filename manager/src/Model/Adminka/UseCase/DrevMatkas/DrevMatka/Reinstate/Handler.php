@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\Reinstate;
 
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatkaRepository;
-use App\Model\Adminka\Entity\DrevMatkas\Id;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatkaRepository;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\Id;
 use App\Model\Flusher;
 
 

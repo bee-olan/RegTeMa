@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\DrevMatkas;
+namespace App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
 
-use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\SezonDrev;
-use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\Id as SezonDrevId;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\SezonDrev;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\Id as SezonDrevId;
 
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
@@ -45,7 +45,7 @@ class UchasDrev
 
     /**
      * @var ArrayCollection|SezonDrev[]
-     * @ORM\ManyToMany(targetEntity="App\Model\Adminka\Entity\DrevMatkas\SezonDrev\SezonDrev")
+     * @ORM\ManyToMany(targetEntity="App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\SezonDrev")
      * @ORM\JoinTable(name="adm_drev_uchasdrev_sezondrevs",
      *     joinColumns={@ORM\JoinColumn(name="uchasdrev_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="sezondrev_id", referencedColumnName="id")}

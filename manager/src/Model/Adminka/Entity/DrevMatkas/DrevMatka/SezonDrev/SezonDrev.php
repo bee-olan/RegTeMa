@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\DrevMatkas\SezonDrev;
+namespace App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev;
 
-//use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -16,7 +15,7 @@ class SezonDrev
 {
     /**
      * @var DrevMatka
-     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\DrevMatkas\DrevMatka", inversedBy="sezondrevs")
+     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka", inversedBy="sezondrevs")
      * @ORM\JoinColumn(name="plemmatka_id", referencedColumnName="id", nullable=false)
      */
     private $plemmatka;

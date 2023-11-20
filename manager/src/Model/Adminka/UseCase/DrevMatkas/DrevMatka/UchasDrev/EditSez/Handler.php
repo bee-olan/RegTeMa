@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\UchasDrev\EditSez;
 
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatkaRepository;
-use App\Model\Adminka\Entity\DrevMatkas\Id;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatkaRepository;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\Id;
 use App\Model\Flusher;
 
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
-use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\Id as SezonDrevId;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\Id as SezonDrevId;
 
 
 class Handler

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\SezonDrevs\Create;
 
 use App\Model\Flusher;
-use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\Id ;
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatkaRepository;
-use App\Model\Adminka\Entity\DrevMatkas\Id as DrevMatkaId;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\Id ;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatkaRepository;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\Id as DrevMatkaId;
 
 
 use App\ReadModel\Adminka\DrevMatkas\SezonDrevFetcher;

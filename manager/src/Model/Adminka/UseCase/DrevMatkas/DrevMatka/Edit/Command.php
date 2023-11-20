@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\Edit;
 
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Command

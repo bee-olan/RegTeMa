@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\UchasDrev\EditSez;
 
 use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
-use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\SezonDrev;
-use App\Model\Adminka\Entity\DrevMatkas\UchasDrev;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\SezonDrev;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\UchasDrev;
 
 use Symfony\Component\Validator\Constraints as Assert;
 

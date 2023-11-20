@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\DrevMatkas;
+namespace App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
 
 use Webmozart\Assert\Assert;
 

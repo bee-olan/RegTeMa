@@ -44,6 +44,15 @@ class DreRodoMenu
             ->setAttribute('class', 'nav_pro-item')
             ->setLinkAttribute('class', 'nav_pro-link');
 
+        $menu
+            ->addChild('ЭлитМатки', ['route' => 'app.proekts.pasekas.drevmatkas.drevcreates'])
+            ->setExtra('routes', [
+                ['route' => 'app.proekts.pasekas.drevmatkas.drevcreates'],
+                ['pattern' => '/^app.proekts.pasekas.drevmatkas.drevcreates\..+/']
+            ])
+            ->setAttribute('class', 'nav_pro-item')
+            ->setLinkAttribute('class', 'nav_pro-link');
+
         return $menu;
 
     }

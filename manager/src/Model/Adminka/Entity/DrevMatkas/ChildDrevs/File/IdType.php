@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\DrevMatkas\SezonDrev;
+namespace App\Model\Adminka\Entity\Matkas\ChildMatka\File;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\GuidType;
 
 class IdType extends GuidType
 {
-    public const NAME = 'adm_drev_sezondrev_id';
+    public const NAME = 'adminka_matkas_childmatka_file_id';
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {

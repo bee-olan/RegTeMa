@@ -7,7 +7,7 @@ namespace App\ReadModel\Adminka\DrevMatkas;
 
 //use App\Model\Adminka\Entity\Matkas\PlemMatka\ChildMatka;
 
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
 use App\ReadModel\Comment\CommentRow;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\FetchMode;

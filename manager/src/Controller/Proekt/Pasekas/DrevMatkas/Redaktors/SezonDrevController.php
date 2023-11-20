@@ -6,12 +6,12 @@ namespace App\Controller\Proekt\Pasekas\DrevMatkas\Redaktors;
 
 use App\Annotation\Guid;
 
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
-use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\Id;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\Id;
 
-use  App\Model\Adminka\UseCase\Matkas\PlemMatka\Department\Create;
-use  App\Model\Adminka\UseCase\Matkas\PlemMatka\Department\Edit;
-use  App\Model\Adminka\UseCase\Matkas\PlemMatka\Department\Remove;
+//use  App\Model\Adminka\UseCase\Matkas\PlemMatka\Department\Create;
+//use  App\Model\Adminka\UseCase\Matkas\PlemMatka\Department\Edit;
+//use  App\Model\Adminka\UseCase\Matkas\PlemMatka\Department\Remove;
 
 use App\Controller\ErrorHandler;
 

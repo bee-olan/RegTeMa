@@ -9,7 +9,7 @@
     form {
         div {
             fieldset {
-                // display: block; //это все линия
+
                 padding-top: 1rem;
                 margin-bottom: 2rem;
 
@@ -35,20 +35,11 @@
                                         box-sizing: border-box;
                                         height: 16px; 
                                         width: 16px;
-                                        
-                                          
 
-                                        // &:focus  { 
-                                        //     margin-left: -4rem;
-                                        //     box-sizing: border-box;
-                                        //     height: 16px; 
-                                        //     width: 16px; 
-                                        // }
                                     }
                                     label{
-                                        // margin-left: 2rem;
-                                        // margin-right: 1.5rem;
-                                        font-size: 1.6rem;
+
+                                        font-size: 1.2rem;
                                         color: inherit;
                                     }
                             }    

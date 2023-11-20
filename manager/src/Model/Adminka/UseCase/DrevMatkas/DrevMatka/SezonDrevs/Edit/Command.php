@@ -6,7 +6,7 @@ namespace App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\SezonDrevs\Edit;
 
 
 use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
-use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\SezonDrev;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\SezonDrev;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Command

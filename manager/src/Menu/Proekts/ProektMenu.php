@@ -34,23 +34,33 @@ class ProektMenu
             ->setAttribute('class', 'nav_pro-item')
             ->setLinkAttribute('class', 'nav_pro-link');
 
+
         $menu
-            ->addChild('Место', ['route' => 'app.proekts.mestos.okrugs'])
+            ->addChild('Родословная', ['route' => 'app.proekts.drevorods.rodras'])
             ->setExtra('routes', [
-                ['route' => 'app.proekts.mestos'],
-                ['pattern' => '/^app.proekts.mestos\..+/']
+                ['route' => 'app.proekts.drevorods'],
+                ['pattern' => '/^app.proekts.drevorods\..+/']
             ])
             ->setAttribute('class', 'nav_pro-item')
             ->setLinkAttribute('class', 'nav_pro-link');
 
-        $menu
-            ->addChild('Персональный  номер', ['route' => 'app.proekts.personaa.diapazon'])
-            ->setExtra('routes', [
-                ['route' => 'app.proekts.personaa'],
-                ['pattern' => '/^app.proekts.personaa\..+/']
-            ])
-            ->setAttribute('class', 'nav_pro-item ')
-            ->setLinkAttribute('class', 'nav_pro-link ');
+//        $menu
+//            ->addChild('Место', ['route' => 'app.proekts.mestos.okrugs'])
+//            ->setExtra('routes', [
+//                ['route' => 'app.proekts.mestos'],
+//                ['pattern' => '/^app.proekts.mestos\..+/']
+//            ])
+//            ->setAttribute('class', 'nav_pro-item')
+//            ->setLinkAttribute('class', 'nav_pro-link');
+//
+//        $menu
+//            ->addChild('Персональный  номер', ['route' => 'app.proekts.personaa.diapazon'])
+//            ->setExtra('routes', [
+//                ['route' => 'app.proekts.personaa'],
+//                ['pattern' => '/^app.proekts.personaa\..+/']
+//            ])
+//            ->setAttribute('class', 'nav_pro-item ')
+//            ->setLinkAttribute('class', 'nav_pro-link ');
 
         $menu
             ->addChild('Участие', ['route' => 'app.proekts.pasekas.uchasties.uchastiee'])

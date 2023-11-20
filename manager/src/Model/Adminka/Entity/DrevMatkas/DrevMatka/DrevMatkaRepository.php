@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\DrevMatkas;
+namespace App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
 
 use App\Model\EntityNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;

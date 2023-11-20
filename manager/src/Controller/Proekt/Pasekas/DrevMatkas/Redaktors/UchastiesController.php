@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace App\Controller\Proekt\Pasekas\DrevMatkas\Redaktors;
 
 use App\Annotation\Guid;
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id;
 use App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\UchasDrev;
 
 use App\Controller\ErrorHandler;
-//use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 use App\Security\Voter\Adminka\Matkas\PlemMatkaAccess;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
