@@ -1,33 +1,33 @@
-{% extends 'probase.html.twig' %}
+{#{% extends 'probase.html.twig' %}#}
 
-{% block title %}Create{% endblock %}
+{#{% block title %}Create{% endblock %}#}
 
-{% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        {#        <li class="breadcrumb-item"><a href="{{ path('work') }}">Work</a></li>#}
-        <li class="breadcrumb-item"><a href="{{ path('paseka_matkas') }}">ПлемМатки</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka_matkas.plemmatka.show', {'id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('paseka_matkas.plemmatka.childmatkas', {'plemmatka_id': plemmatka.id}) }}">ТестМатка</a></li>
-        <li class="breadcrumb-item active">Create</li>
-    </ol>
-{% endblock %}
+{#{% block breadcrumbs %}#}
+{#    <ol class="breadcrumb">#}
+{#        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>#}
+{#        #}{#        <li class="breadcrumb-item"><a href="{{ path('work') }}">Work</a></li>#}
+{#        <li class="breadcrumb-item"><a href="{{ path('paseka_matkas') }}">ПлемМатки</a></li>#}
+{#        <li class="breadcrumb-item"><a href="{{ path('paseka_matkas.plemmatka.show', {'id': plemmatka.id}) }}">{{ plemmatka.name }}</a></li>#}
+{#        <li class="breadcrumb-item"><a href="{{ path('paseka_matkas.plemmatka.childmatkas', {'plemmatka_id': plemmatka.id}) }}">ТестМатка</a></li>#}
+{#        <li class="breadcrumb-item active">Create</li>#}
+{#    </ol>#}
+{#{% endblock %}#}
 
-{% block body %}
+{#{% block body %}#}
 
-    {% include 'app/work/projects/project/_tabs.html.twig' %}
+{#    {% include 'app/work/projects/project/_tabs.html.twig' %}#}
 
-    <div class="card">
-        <div class="card-body">
+{#    <div class="card">#}
+{#        <div class="card-body">#}
 
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <div>
-                <button type="submit" class="btn btn-primary">Сохранить</button>
-            </div>
-            {{ form_end(form) }}
+{#            {{ form_start(form) }}#}
+{#            {{ form_widget(form) }}#}
+{#            <div>#}
+{#                <button type="submit" class="btn btn-primary">Сохранить</button>#}
+{#            </div>#}
+{#            {{ form_end(form) }}#}
 
-        </div>
-    </div>
+{#        </div>#}
+{#    </div>#}
 
-{% endblock %}
+{#{% endblock %}#}

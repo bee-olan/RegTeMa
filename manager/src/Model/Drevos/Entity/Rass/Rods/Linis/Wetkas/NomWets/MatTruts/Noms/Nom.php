@@ -249,6 +249,14 @@ class Nom
         return $this->tit;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDrevMat()
+    {
+        return $this->drevMat;
+    }
+
 
 //    public function getDrevMat()
 //    {

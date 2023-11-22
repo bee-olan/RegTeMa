@@ -16,7 +16,7 @@
                     label {
                         min-width: 12rem;
                         // margin-left: .5rem;
-                        font-size: 1.6rem;
+                        font-size: 1.2rem;
                         color: $text;
                     }
 
@@ -65,7 +65,7 @@
                 // display: block; //это все линия
                 legend{
                     color: $child-form; 
-                    font-size: 1.6rem; 
+                    font-size: 1.2rem;
                 }
                 padding-top: 1rem;
                 margin-bottom: 2rem;
@@ -100,7 +100,7 @@
                                     label{
                                     
                                         // margin-right: 1.5rem;
-                                        font-size: 1.6rem;
+                                        font-size: 1.2rem;
                                         color: inherit;
                                     }
                             }    
@@ -117,10 +117,10 @@
                 position: relative; // относительно этого будем позиционировать form__line                
 
                     label{
-                        min-width: 12rem;
-                        margin-left: 2rem;
-                        font-size: 1.6rem;                            
-                        color: $child-form;                   
+                        min-width: 6rem;
+                        margin-left: 2.5rem;
+                        font-size: 1.2rem;
+                        color: $child-form;
                     }
                     
                     input{

@@ -285,10 +285,14 @@ class DrevMatka
         return $this->persona;
     }
 
+    /**
+     * @return Nom
+     */
     public function getNomer(): Nom
     {
         return $this->nomer;
     }
+
 
     public function getSezondrevs()
     {

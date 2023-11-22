@@ -12,6 +12,7 @@ use App\Model\Adminka\UseCase\DrevMatkas\ChildDrev\Plan;
 use App\Model\Adminka\UseCase\DrevMatkas\ChildDrev\Priority;
 use App\Model\Adminka\UseCase\DrevMatkas\ChildDrev\Status;
 use App\Model\Adminka\UseCase\DrevMatkas\ChildDrev\Type;
+use App\ReadModel\Adminka\DrevMatkas\ChildDrevs\ChildDrevFetcher;
 use App\ReadModel\Adminka\Matkas\Actions\ActionFetcher;
 use App\ReadModel\Adminka\Matkas\ChildMatka\ChildMatkaFetcher;
 use App\ReadModel\Adminka\Matkas\ChildMatka\CommentFetcher;

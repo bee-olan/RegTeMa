@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\ReadModel\Adminka\DrevMatkas\ChildDrevs;
 
-//use App\Model\Adminka\Entity\Matkas\ChildDrev\ChildMatka;
-//use App\ReadModel\Adminka\Matkas\ChildMatka\Filter\Filter;
+use App\ReadModel\Adminka\DrevMatkas\ChildDrevs\Filter\Filter;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\ChildDrev;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\FetchMode;
 use Doctrine\ORM\EntityManagerInterface;
@@ -37,7 +37,7 @@ class ChildDrevFetcher
                 'childmatka_id',
                 'uchastie_id'
             )
-            ->from('admin_matkas_childmatkas_executors')
+            ->from('admin_childdrev_executors')
             ->orderBy('childmatka_id')
             ->execute();
 
@@ -53,8 +53,8 @@ class ChildDrevFetcher
                 'm.name AS name',
                 'm.start_date AS god_test'
             )
-            ->from('admin_matkas_childmatkas_executors', 'e')
-            ->innerJoin('e', 'admin_matkas_childmatkas', 'm', 'e.childmatka_id = m.id')
+            ->from('admin_childdrev_executors', 'e')
+            ->innerJoin('e', 'admin_childdrevs', 'm', 'e.childmatka_id = m.id')
 //            ->innerJoin('e', 'admin_sezons_godas', 'g', 'e.childmatka_id = m.id')
             ->andWhere('e.uchastie_id = :uchasties')
             ->setParameter(':uchasties', $uchastie)
@@ -100,15 +100,15 @@ class ChildDrevFetcher
                 'r.nomer AS mesto',
                 'u.nomer AS  author_persona'
             )
-            ->from('admin_matkas_childmatkas', 't')
+            ->from('admin_childdrevs', 't')
             ->innerJoin('t', 'admin_uchasties_uchasties', 'm', 't.author_id = m.id')
-            ->innerJoin('t', 'admin_matkas_plemmatkas', 'p', 't.plemmatka_id = p.id')
+            ->innerJoin('t', 'admin_drevmatkas', 'p', 't.plemmatka_id = p.id')
             ->innerJoin('t', 'mesto_mestonomers', 'r', 't.author_id = r.id')
             ->innerJoin('t', 'adminka_uchasties_personas', 'u', 't.author_id = u.id')
         ;
 
         if ($filter->uchastie) {
-            $qb->innerJoin('t', 'adminka_matkas_plemmatka_uchastniks', 'ms', 't.plemmatka_id = ms.plemmatka_id');
+            $qb->innerJoin('t', 'adm_drev_uchasdrevs', 'ms', 't.plemmatka_id = ms.plemmatka_id');
             $qb->andWhere('ms.uchastie_id = :uchastie');
             $qb->setParameter(':uchastie', $filter->uchastie);
         }
@@ -154,7 +154,7 @@ class ChildDrevFetcher
         }
 
          if ($filter->executor) {
-             $qb->innerJoin('t', 'admin_matkas_childmatkas_executors', 'e', 'e.childmatka_id = t.id');
+             $qb->innerJoin('t', 'admin_childdrev_executors', 'e', 'e.childmatka_id = t.id');
              $qb->andWhere('e.uchastie_id = :executor');
              $qb->setParameter(':executor', $filter->executor);
          }
@@ -211,8 +211,8 @@ class ChildDrevFetcher
                  't.plan_date',
                  't.status'
              )
-             ->from('admin_matkas_childmatkas', 't')
-             ->innerJoin('t', 'admin_matkas_plemmatkas', 'p', 't.plemmatka_id = p.id')
+             ->from('admin_childdrevs', 't')
+             ->innerJoin('t', 'admin_drevmatkas', 'p', 't.plemmatka_id = p.id')
              ->andWhere('t.parent_id = :parent')
              ->setParameter(':parent', $childmatka)
              ->orderBy('date', 'desc')
@@ -239,7 +239,7 @@ class ChildDrevFetcher
 //                 'TRIM(CONCAT(m.name_first, \' \', m.name_last)) AS name'
                  'm.nike AS name'
              )
-             ->from('admin_matkas_childmatkas_executors', 'e')
+             ->from('admin_childdrev_executors', 'e')
              ->innerJoin('e', 'admin_uchasties_uchasties', 'm', 'm.id = e.uchastie_id')
              ->andWhere('e.childmatka_id IN (:childmatka)')
              ->setParameter(':childmatka', $ids, Connection::PARAM_INT_ARRAY)

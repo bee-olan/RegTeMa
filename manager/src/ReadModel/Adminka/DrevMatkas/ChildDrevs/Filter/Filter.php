@@ -24,7 +24,7 @@ class Filter
         $this->plemmatka = $plemmatka;
     }
 
-    public static function forPlemMatka(string $plemmatka): self
+    public static function forDrevMatka(string $plemmatka): self
     {
         return new self($plemmatka);
     }

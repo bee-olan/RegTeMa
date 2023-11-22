@@ -38,12 +38,12 @@
                 <ul class="plem plem__jus-st ">
                     <li class="ma-le-2 " >
                         <ul class="list-unstyled my-0">
-                            {% for department in uchastnik.departments %}
+                            {% for department in uchastnik.sezondrevs %}
                                 <li   >
                                     {% if plemmatka %}
 
                                         <div class="controls">
-                                            <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.childmatka.create', {'plemmatka_id' : plemmatka.id, 'department_id' : department.id  } ) }}"
+                                            <a href="{{ path('app.proekts.pasekas.drevmatkas.childdrev.create', {'plemmatka_id' : plemmatka.id, 'sezondrev_id' : department.id  } ) }}"
                                                class="btnn btnn--mb0 btnn--pt  "><strong class="strongo strongo--kras">{{ department.name }}</strong> - добавить ДочьМаток
                                             </a> 
                                             {# {{ plemmatka.child_count }} #}

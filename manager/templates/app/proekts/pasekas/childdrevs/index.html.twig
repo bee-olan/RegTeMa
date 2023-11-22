@@ -1,140 +1,129 @@
-{% extends 'probase/base.html.twig' %}
+{#{% extends 'probase/base.html.twig' %}#}
 
-{% block title %}ДочьМатки{% endblock %}
-
-{# {% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work') }}">Work</a></li>
-        <li class="breadcrumb-item"><a href="{{ path('work.projects') }}">Projects</a></li>
-        {% if project %}
-            <li class="breadcrumb-item"><a href="{{ path('work.projects.project.show', {'id': project.id}) }}">{{ project.name }}</a></li>
-        {% endif %}
-        <li class="breadcrumb-item active">childmatkas</li>
-    </ol>
-{% endblock %} #}
-
-{% block sidebar %}              
-    {% include('proekt/pasekas/childmatkas/side/_sidefiltr.html.twig') %}
-{% endblock %}
-    {% block kroxii %}
-        <a href="{{ path('proekt') }}">Главная</a>
-        <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Рег-ция ПлемМатки</a>             
-        <span class="aktiv ">Список ПлемМаток</span> 
-    {% endblock %}
-
-{% block bodyy %}
+{#{% block title %}ДочьМатки{% endblock %}#}
 
 
-     {% if plemmatka %}
-        <div class="controls">
-            <a href="{{ path('paseka.matkas.plemmatka.childmatkas.create', {'plemmatka_id' : plemmatka.id} ) }}"
-               class="btn-my btn-success matka__title ">Добавить ДочьМатку к ПлемМатке {{ plemmatka.name }}
-            </a>
-        </div>
-    {% endif %}
+{#{% block sidebar %}              #}
+{#    {% include('proekt/pasekas/childmatkas/side/_sidefiltr.html.twig') %}#}
+{#{% endblock %}#}
+{#    {% block kroxii %}#}
+{#        <a href="{{ path('proekt') }}">Главная</a>#}
+{#        <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Рег-ция ПлемМатки</a>             #}
+{#        <span class="aktiv ">Список ПлемМаток</span> #}
+{#    {% endblock %}#}
 
-    {# <div class="card">
-        <div class="card-body pb-1">
+{#{% block bodyy %}#}
 
-            {{ form_start(form) }}
-            <div class="row">
-                <div class="col-md-2 mb-2">{{ form_widget(form.text) }}</div>
-                <div class="col-md-2 mb-2">{{ form_widget(form.type) }}</div>
-                <div class="col-md-2 mb-2">{{ form_widget(form.status) }}</div>
-                <div class="col-md-2 mb-2">{{ form_widget(form.priority) }}</div>
-                <div class="col-md-2 mb-2">{{ form_widget(form.author) }}</div>
-                <div class="col-md-2 mb-2">{{ form_widget(form.executor) }}</div>
-                <div class="col-md-2 mb-2">
-                    <button type="submit" class="btn btn-primary">Filter</button>
-                    <a href="{{ path('paseka.matkas.childmatkas') }}" class="btn btn-default">Clear</a>
-                </div>
-            </div>
-            {{ form_end(form) }}
 
-        </div>
-    </div> #}
+{#     {% if plemmatka %}#}
+{#        <div class="controls">#}
+{#            <a href="{{ path('paseka.matkas.plemmatka.childmatkas.create', {'plemmatka_id' : plemmatka.id} ) }}"#}
+{#               class="btn-my btn-success matka__title ">Добавить ДочьМатку к ПлемМатке {{ plemmatka.name }}#}
+{#            </a>#}
+{#        </div>#}
+{#    {% endif %}#}
 
-    {# {% include 'app/work/projects/childmatkas/_presets.html.twig' %} #}
+{#    #}{# <div class="card">#}
+{#        <div class="card-body pb-1">#}
 
-<div  class="proekts proekts--childmatka">
-    <div class="inklud inklud--child">
-        <div class="inklud__img  ">
-            <img class="" src="{{ asset('assets/proekt/images/matkas/p4ela1.jpg') }}" alt="">           
-        </div>
-{% if not plemmatka %}
-        <div class="inklud__title  teni teni--kategor">
-            Список ПлемМаток и их ДочьМаток
-        </div> 
- {% else %}
-    <div class="inklud__title  teni teni--kategor">
-            Список  ДочьМаток от {{plemmatka.name}}
-    </div> 
- {% endif %}       
-    </div>
-<div class="tabl__header ">
-    <div style="overflow: auto">
-        <table class="tabl-child  tabl-hover-child ">
-            <thead>
-            <tr  >
-                <th  >Дата</th>
-                {% if not plemmatka %}
-                <th class="tabl-col-plem "  >  ПлемМатка</th>
-                {% endif %}
-                 <th class="tabl-col-child" >ДочьМатка</th>
-                <th  >Автор</th>
-                <th >Приорит</th>
-                <th  >Испол---ль</th>
-                <th >Plan</th>
-                <th  >В статусе</th>
-                
-            </tr>
-            </thead>
-            <tbody>
-            {% for childmatka in pagination %}
-                <tr>
+{#            {{ form_start(form) }}#}
+{#            <div class="row">#}
+{#                <div class="col-md-2 mb-2">{{ form_widget(form.text) }}</div>#}
+{#                <div class="col-md-2 mb-2">{{ form_widget(form.type) }}</div>#}
+{#                <div class="col-md-2 mb-2">{{ form_widget(form.status) }}</div>#}
+{#                <div class="col-md-2 mb-2">{{ form_widget(form.priority) }}</div>#}
+{#                <div class="col-md-2 mb-2">{{ form_widget(form.author) }}</div>#}
+{#                <div class="col-md-2 mb-2">{{ form_widget(form.executor) }}</div>#}
+{#                <div class="col-md-2 mb-2">#}
+{#                    <button type="submit" class="btn btn-primary">Filter</button>#}
+{#                    <a href="{{ path('paseka.matkas.childmatkas') }}" class="btn btn-default">Clear</a>#}
+{#                </div>#}
+{#            </div>#}
+{#            {{ form_end(form) }}#}
+
+{#        </div>#}
+{#    </div> #}
+
+{#    #}{# {% include 'app/work/projects/childmatkas/_presets.html.twig' %} #}
+
+{#<div  class="proekts proekts--childmatka">#}
+{#    <div class="inklud inklud--child">#}
+{#        <div class="inklud__img  ">#}
+{#            <img class="" src="{{ asset('assets/proekt/images/matkas/p4ela1.jpg') }}" alt="">           #}
+{#        </div>#}
+{#{% if not plemmatka %}#}
+{#        <div class="inklud__title  teni teni--kategor">#}
+{#            Список ПлемМаток и их ДочьМаток#}
+{#        </div> #}
+{# {% else %}#}
+{#    <div class="inklud__title  teni teni--kategor">#}
+{#            Список  ДочьМаток от {{plemmatka.name}}#}
+{#    </div> #}
+{# {% endif %}       #}
+{#    </div>#}
+{#<div class="tabl__header ">#}
+{#    <div style="overflow: auto">#}
+{#        <table class="tabl-child  tabl-hover-child ">#}
+{#            <thead>#}
+{#            <tr  >#}
+{#                <th  >Дата</th>#}
+{#                {% if not plemmatka %}#}
+{#                <th class="tabl-col-plem "  >  ПлемМатка</th>#}
+{#                {% endif %}#}
+{#                 <th class="tabl-col-child" >ДочьМатка</th>#}
+{#                <th  >Автор</th>#}
+{#                <th >Приорит</th>#}
+{#                <th  >Испол---ль</th>#}
+{#                <th >Plan</th>#}
+{#                <th  >В статусе</th>#}
+{#                #}
+{#            </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#            {% for childmatka in pagination %}#}
+{#                <tr>#}
 {#                    <td>{{ childmatka.id }} </td>#}
-                    <td class="tabl-bord-">{{ childmatka.date|date('Y-m-d') }}</td>
+{#                    <td class="tabl-bord-">{{ childmatka.date|date('Y-m-d') }}</td>#}
 
 
-                    {% if not plemmatka %}
-                        <td class="tabl-bord- tabl-bord-plem ">
-                            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plem_id': childmatka.plemmatka_id}) }}">{{childmatka.plemmatka_kat}}_{{ childmatka.plemmatka_name }}</a>
-                        </td>
-                    {% endif %}
-                    <td class="tabl-bord- tabl-bord-child">
-                        {% if childmatka.parent %}
-                            <span class="fa fa-angle-double-right"></span>
-                        {% endif %}
-                        <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.id}) }}">
-                            _{{ childmatka.mesto }}_пН-{{ childmatka.author_persona }}_{{ childmatka.id }}
-                        </a>
-                        {# {{ childmatka.sparing }} #}
-                    </td>
-                    <td class="tabl-bord-">{{ childmatka.author_name }}</td>
+{#                    {% if not plemmatka %}#}
+{#                        <td class="tabl-bord- tabl-bord-plem ">#}
+{#                            <a href="{{ path('proekt.pasekas.matkas.plemmatkas.show', {'plem_id': childmatka.plemmatka_id}) }}">{{childmatka.plemmatka_kat}}_{{ childmatka.plemmatka_name }}</a>#}
+{#                        </td>#}
+{#                    {% endif %}#}
+{#                    <td class="tabl-bord- tabl-bord-child">#}
+{#                        {% if childmatka.parent %}#}
+{#                            <span class="fa fa-angle-double-right"></span>#}
+{#                        {% endif %}#}
+{#                        <a href="{{ path('proekt.pasekas.childmatkas.show', {'id': childmatka.id}) }}">#}
+{#                            _{{ childmatka.mesto }}_пН-{{ childmatka.author_persona }}_{{ childmatka.id }}#}
+{#                        </a>#}
+{#                        #}{# {{ childmatka.sparing }} #}
+{#                    </td>#}
+{#                    <td class="tabl-bord-">{{ childmatka.author_name }}</td>#}
 {#                    <td>#}
 {#                        {% if childmatka.type != 'none' %}#}
 {#                            {{ paseka_matkas_childmatka_type(childmatka.type) }}#}
 {#                        {% endif %}#}
 {#                    </td>#}
-                    <td class="tabl-bord-">{{childmatka.priority}}</td>
-                    <td class="tabl-bord-" >
-                        {% for executor in childmatka.executors %}
-                            <span class="badge badge-default" style="background: #eee">{{ executor.name }}</span>
-                        {% endfor %}
-                    </td>
-                   <td class="tabl-bord-" >{{ childmatka.plan_date ? childmatka.plan_date|date('Y-m-d') : '' }}</td>
-                    <td class="tabl-bord-">{{ childmatka.status }}</td>
-                   
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>    
-</div>
-</div>
-    <div class="navigation">
-        {{ knp_pagination_render(pagination) }}
-    </div>
+{#                    <td class="tabl-bord-">{{childmatka.priority}}</td>#}
+{#                    <td class="tabl-bord-" >#}
+{#                        {% for executor in childmatka.executors %}#}
+{#                            <span class="badge badge-default" style="background: #eee">{{ executor.name }}</span>#}
+{#                        {% endfor %}#}
+{#                    </td>#}
+{#                   <td class="tabl-bord-" >{{ childmatka.plan_date ? childmatka.plan_date|date('Y-m-d') : '' }}</td>#}
+{#                    <td class="tabl-bord-">{{ childmatka.status }}</td>#}
+{#                   #}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    </div>    #}
+{#</div>#}
+{#</div>#}
+{#    <div class="navigation">#}
+{#        {{ knp_pagination_render(pagination) }}#}
+{#    </div>#}
 
-{% endblock %}
+{#{% endblock %}#}
