@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\ReadModel\Proekt\Pasekas\DrevMatka\Filter;
 
-use App\Model\Adminka\Entity\DrevMatkas\Status;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\Status;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\Form\FormBuilderInterface;

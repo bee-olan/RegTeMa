@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\Matkas\ChildMatka;
+namespace App\Model\Adminka\Entity\DrevMatkas\ChildDrevs;
 
 use Webmozart\Assert\Assert;
 

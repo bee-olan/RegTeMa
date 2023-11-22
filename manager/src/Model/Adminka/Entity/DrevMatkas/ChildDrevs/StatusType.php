@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\Matkas\ChildMatka;
+namespace App\Model\Adminka\Entity\DrevMatkas\ChildDrevs;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 
 class StatusType extends StringType
 {
-    public const NAME = 'admin_matkas_childmatka_status';
+    public const NAME = 'admin_childdrev_status';
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {

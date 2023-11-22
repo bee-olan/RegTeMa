@@ -6,7 +6,8 @@ namespace App\Controller\Adminka\DrevMatkas\DrevMatka\Redaktors;
 
 use App\Annotation\Guid;
 
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
+//use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository;
 use App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\UchasDrev;

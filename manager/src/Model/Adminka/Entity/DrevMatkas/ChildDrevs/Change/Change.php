@@ -2,29 +2,29 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\Matkas\ChildMatka\Change;
+namespace App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\Change;
 
-use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatka;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\ChildDrev;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="admin_matkas_child_changes")
+ * @ORM\Table(name="admin_childdrev_changes")
  */
 class Change
 {
 // Change  ==   Изменить
     /**
-     * @var ChildMatka
-     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatka", inversedBy="changes")
+     * @var ChildDrev
+     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\ChildDrev", inversedBy="changes")
      * @ORM\JoinColumn(name="childmatka_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      * @ORM\Id
      */
     private $childmatka;
     /**
      * @var string
-     * @ORM\Column(type="admin_matkas_child_change_id")
+     * @ORM\Column(type="admin_childdrev_change_id")
      * @ORM\Id
      */
     private $id;
@@ -45,7 +45,7 @@ class Change
      */
     private $set;
 
-    public function __construct(ChildMatka $childmatka, Id $id, Uchastie $actor, \DateTimeImmutable $date, Set $set)
+    public function __construct(ChildDrev $childmatka, Id $id, Uchastie $actor, \DateTimeImmutable $date, Set $set)
     {
         $this->childmatka = $childmatka;
         $this->id = $id;

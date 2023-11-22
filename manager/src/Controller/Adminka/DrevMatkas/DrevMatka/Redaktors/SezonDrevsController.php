@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Controller\Adminka\DrevMatkas\DrevMatka\Redaktors;
 
 use App\Annotation\Guid;
-use App\Model\Adminka\Entity\DrevMatkas\SezonDrev\Id;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\Id;
 //
 use  App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\SezonDrevs\Create;
 use  App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\SezonDrevs\Edit;
 use  App\Model\Adminka\UseCase\DrevMatkas\DrevMatka\SezonDrevs\Remove;
 
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
 use App\ReadModel\Adminka\DrevMatkas\SezonDrevFetcher;
 use App\Security\Voter\Adminka\Matkas\PlemMatkaAccess;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;

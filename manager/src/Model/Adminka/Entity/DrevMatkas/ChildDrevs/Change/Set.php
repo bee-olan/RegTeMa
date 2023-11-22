@@ -2,15 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\Matkas\ChildMatka\Change;
+namespace App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\Change;
 
-
-use App\Model\Adminka\Entity\Matkas\ChildMatka\Id as ChildMatkaId;
-use App\Model\Adminka\Entity\Matkas\ChildMatka\File\Info;
-use App\Model\Adminka\Entity\Matkas\ChildMatka\File\Id as FileId;
-use App\Model\Adminka\Entity\Matkas\ChildMatka\Status;
-use App\Model\Adminka\Entity\Matkas\ChildMatka\Type;
-use App\Model\Adminka\Entity\Matkas\PlemMatka\Id as PlemMatkaId;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\File\Info;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\File\Id as FileId;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\Id as ChildDrevId;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\Id as DrevMatkaId;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\Status;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\Type;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -21,8 +20,8 @@ class Set
 {
 // Set  установить присвоить
     /**
-     * @var PlemMatkaId
-     * @ORM\Column(type="admin_matkas_plemmatka_id", nullable=true)
+     * @var DrevMatkaId
+     * @ORM\Column(type="admin_drevmatka_id", nullable=true)
      */
     private $plemmatkaId;
 
@@ -40,24 +39,24 @@ class Set
 
     /**
      * @var Info|null
-     * @ORM\Column(type="adminka_matkas_childmatka_file_id", nullable=true)
+     * @ORM\Column(type="admin_childdrev_file_id", nullable=true)
      */
     private $fileId;
     /**
      * @var Info|null
-     * @ORM\Column(type="adminka_matkas_childmatka_file_id", nullable=true)
+     * @ORM\Column(type="admin_childdrev_file_id", nullable=true)
      */
     private $removedFileId;
 
     /**
      * @var Type|null
-     * @ORM\Column(type="admin_matkas_childmatka_type", length=16, nullable=true)
+     * @ORM\Column(type="admin_childdrev_type", length=16, nullable=true)
      */
     private $type;
 
     /**
      * @var Status|null
-     * @ORM\Column(type="admin_matkas_childmatka_status", nullable=true)
+     * @ORM\Column(type="admin_childdrev_status", nullable=true)
      */
     private $status;
 
@@ -80,8 +79,8 @@ class Set
     private $godaVixod;
 
     /**
-     * @var ChildMatkaId
-     * @ORM\Column(type="admin_matkas_childmatka_id", nullable=true)
+     * @var ChildDrevId
+     * @ORM\Column(type="admin_childdrev_id", nullable=true)
      */
     private $parentId;
 
@@ -137,7 +136,7 @@ class Set
 
     }
 
-    public static function forNewChildMatka(PlemMatkaId $plemmatka,
+    public static function forNewChildDrev(DrevMatkaId $plemmatka,
                                             string $name, ?string $content,
                                             Type $type, int $priority,
                                              int $kolChild,
@@ -236,7 +235,7 @@ class Set
         return $set;
     }
 
-    public static function fromParent(ChildMatkaId $parent): self
+    public static function fromParent(ChildDrevId $parent): self
     {
         $set = new self();
         $set->parentId = $parent;
@@ -278,7 +277,7 @@ class Set
         return $set;        
     }
 
-    public static function fromPlemMatka(PlemMatkaId $plemmatka): self
+    public static function fromDrevMatka(DrevMatkaId $plemmatka): self
     {
         $set = new self();
         $set->plemmatkaId = $plemmatka;

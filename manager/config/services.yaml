@@ -28,7 +28,7 @@ services:
     App\Model\Mesto\Entity\Okrugs\Oblasts\Raions\RaionRepository: ~
     App\Model\Mesto\Entity\InfaMesto\MestoNomerRepository: ~
 
-    App\Model\Adminka\Entity\DrevMatkas\DrevMatkaRepository: ~
+    App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatkaRepository: ~
 
     App\Model\Adminka\Entity\Uchasties\Group\GroupRepository: ~
     App\Model\Adminka\Entity\Uchasties\Uchastie\UchastieRepository: ~
@@ -52,6 +52,7 @@ services:
 
     App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatkaRepository: ~
 
+    App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\ChildDrevRepository: ~
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class

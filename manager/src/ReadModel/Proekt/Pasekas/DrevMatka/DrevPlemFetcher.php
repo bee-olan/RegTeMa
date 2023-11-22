@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\ReadModel\Proekt\Pasekas\DrevMatka;
 
 
-use App\Model\Adminka\Entity\DrevMatkas\DrevMatka;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
 use App\ReadModel\Proekt\Pasekas\DrevMatka\Filter\Filter;
 use Doctrine\DBAL\FetchMode;
 

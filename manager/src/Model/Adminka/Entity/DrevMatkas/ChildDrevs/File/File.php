@@ -2,24 +2,23 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\Matkas\ChildMatka\File;
+namespace App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\File;
 
-
-use App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatka;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\ChildDrev;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="adminka_matkas_childmatka_files", indexes={
+ * @ORM\Table(name="admin_childdrev_files", indexes={
  *     @ORM\Index(columns={"date"})
  * })
  */
 class File
 {
     /**
-     * @var ChildMatka
-     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatka", inversedBy="files")
+     * @var ChildDrev
+     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\ChildDrev", inversedBy="files")
      * @ORM\JoinColumn(name="childmatka_id", referencedColumnName="id", nullable=false)
      */
     private $childmatka;
@@ -31,7 +30,7 @@ class File
     private $uchastie;
     /**
      * @var Id
-     * @ORM\Column(type="adminka_matkas_childmatka_file_id")
+     * @ORM\Column(type="admin_childdrev_file_id")
      * @ORM\Id
      */
     private $id;
@@ -46,7 +45,7 @@ class File
      */
     private $info;
 
-    public function __construct(ChildMatka $childmatka, Id $id, Uchastie $uchastie, \DateTimeImmutable $date, Info $info)
+    public function __construct(ChildDrev $childmatka, Id $id, Uchastie $uchastie, \DateTimeImmutable $date, Info $info)
     {
         $this->childmatka = $childmatka;
         $this->id = $id;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\ReadModel\Adminka\Matkas\ChildMatka\Filter;
+namespace App\ReadModel\Adminka\DrevMatkas\ChildDrevs\Filter;
 
 class Filter
 {

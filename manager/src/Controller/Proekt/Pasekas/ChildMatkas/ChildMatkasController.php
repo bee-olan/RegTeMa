@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("proekt/pasekas/childmatkas", name="proekt.pasekas.childmatkas")
+ * @Route("app.proekts/pasekas/childdrevs", name="app.proekts.pasekas.childdrevs")
  * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
  */
 class ChildMatkasController extends AbstractController
@@ -65,7 +65,7 @@ class ChildMatkasController extends AbstractController
             $request->query->get('direction')
         );
 
-        return $this->render('proekt/pasekas/childmatkas/index.html.twig', [
+        return $this->render('app/proekts/pasekas/childdrevs/index.html.twig', [
             'proba' => 'проба',
             'plemmatka' => null,
             'pagination' => $pagination,
@@ -101,14 +101,14 @@ class ChildMatkasController extends AbstractController
 //        if ($form->isSubmitted() && $form->isValid()) {
 //            try {
 //                $handler->handle($command);
-//                return $this->redirectToRoute('proekt.pasekas.childmatkas');
+//                return $this->redirectToRoute('app.proekts.pasekas.childdrevs');
 //            } catch (\DomainException $e) {
 //                $this->errors->handle($e);
 //                $this->addFlash('error', $e->getMessage());
 //            }
 //        }
 //
-//        return $this->render('proekt/pasekas/childmatkas/create.html.twig', [
+//        return $this->render('app.proekts/pasekas/childdrevs/create.html.twig', [
 //            'plemmatka' => $plemmatka,
 //            'form' => $form->createView(),
 //        ]);
@@ -133,14 +133,14 @@ class ChildMatkasController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $handler->handle($command);
-                return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
+                return $this->redirectToRoute('app.proekts.pasekas.childdrevs.show', ['id' => $childmatka->getId()]);
             } catch (\DomainException $e) {
                 $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
 
-        return $this->render('proekt/pasekas/childmatkas/edit.html.twig', [
+        return $this->render('app/proekts/pasekas/childdrevs/edit.html.twig', [
             'plemmatka' => $childmatka->getPlemMatka(),
             'childmatka' => $childmatka,
             'form' => $form->createView(),
@@ -166,14 +166,14 @@ class ChildMatkasController extends AbstractController
 //        if ($form->isSubmitted() && $form->isValid()) {
 //            try {
 //                $handler->handle($command);
-//                return $this->redirectToRoute('proekt.pasekas.childmatkas.show', ['id' => $childmatka->getId()]);
+//                return $this->redirectToRoute('app.proekts.pasekas.childdrevs.show', ['id' => $childmatka->getId()]);
 //            } catch (\DomainException $e) {
 //                $this->errors->handle($e);
 //                $this->addFlash('error', $e->getMessage());
 //            }
 //        }
 //
-//        return $this->render('proekt/pasekas/childmatkas/move.html.twig', [
+//        return $this->render('app.proekts/pasekas/childdrevs/move.html.twig', [
 //            'plemmatka' => $childmatka->getPlemMatka(),
 //            'childmatka' => $childmatka,
 //            'form' => $form->createView(),

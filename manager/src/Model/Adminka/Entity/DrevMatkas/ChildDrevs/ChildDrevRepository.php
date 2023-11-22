@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\Matkas\ChildMatka;
+namespace App\Model\Adminka\Entity\DrevMatkas\ChildDrevs;
 
 use App\Model\EntityNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 
-class ChildMatkaRepository
+class ChildDrevRepository
 {
     private $repo;
     private $connection;
@@ -16,35 +16,35 @@ class ChildMatkaRepository
 
     public function __construct(EntityManagerInterface $em)
     {
-        $this->repo = $em->getRepository(ChildMatka::class);
+        $this->repo = $em->getRepository(ChildDrev::class);
         $this->connection = $em->getConnection();
         $this->em = $em;
     }
 
     /**
      * @param Id $id
-     * @return ChildMatka[]
+     * @return ChildDrev[]
      */
     public function allByParent(Id $id): array
     {
         return $this->repo->findBy(['parent' => $id->getValue()]);
     }
 
-    public function get(Id $id): ChildMatka
+    public function get(Id $id): ChildDrev
     {
-        /** @var ChildMatka $childmatka */
+        /** @var ChildDrev $childmatka */
         if (!$childmatka = $this->repo->find($id->getValue())) {
             throw new EntityNotFoundException('Дочерняя матка не найдена.');
         }
         return $childmatka;
     }
 
-    public function add(ChildMatka $childmatka): void
+    public function add(ChildDrev $childmatka): void
     {
         $this->em->persist($childmatka);
     }
 
-    public function remove(ChildMatka $childmatka): void
+    public function remove(ChildDrev $childmatka): void
     {
         $this->em->remove($childmatka);
     }

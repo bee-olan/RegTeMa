@@ -2,20 +2,19 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Adminka\Entity\Matkas\ChildMatka;
+namespace App\Model\Adminka\Entity\DrevMatkas\ChildDrevs;
 
-use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id as DepartmentId;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\Id as SezonDrevId;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\Change\Change;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\Change\Id as ChangeId;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\Change\Set;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\File\File;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\File\Id as FileId;
+use App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\File\Info;
+use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Nomer as OtecNomer;
 use App\Model\AggregateRoot;
 use App\Model\EventsTrait;
-use App\Model\Adminka\Entity\Matkas\ChildMatka\Change\Change;
-use App\Model\Adminka\Entity\Matkas\ChildMatka\Change\Id as ChangeId;
-use App\Model\Adminka\Entity\Matkas\ChildMatka\Change\Set;
-use App\Model\Adminka\Entity\Matkas\ChildMatka\File\File;
-use App\Model\Adminka\Entity\Matkas\ChildMatka\File\Id as FileId;
-use App\Model\Adminka\Entity\Matkas\ChildMatka\File\Info;
-use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
-
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
 
@@ -25,26 +24,26 @@ use Webmozart\Assert\Assert;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="admin_matkas_childmatkas", indexes={
+ * @ORM\Table(name="admin_childdrevs", indexes={
  *     @ORM\Index(columns={"date"})
  * })
  */
-class ChildMatka
+class ChildDrev
 //    implements AggregateRoot
 {
 //    use EventsTrait;
     /**
      * @var Id
-     * @ORM\Column(type="admin_matkas_childmatka_id")
+     * @ORM\Column(type="admin_childdrev_id")
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\SequenceGenerator(sequenceName="admin_matkas_childmatkas_seq", initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="admin_childdrevs_seq", initialValue=1)
      * @ORM\Id
      */
     private $id;
 //SEQUENCE  -- NONE
     /**
-     * @var PlemMatka
-     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka")
+     * @var DrevMatka
+     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka")
      * @ORM\JoinColumn(name="plemmatka_id", referencedColumnName="id", nullable=false)
      */
     private $plemmatka;
@@ -101,14 +100,14 @@ class ChildMatka
 
     /**
      * @var Type
-     * @ORM\Column(type="admin_matkas_childmatka_type", length=16)
+     * @ORM\Column(type="admin_childdrev_type", length=16)
      */
     private $type;
 
 
     /**
      * @var ArrayCollection|File[]
-     * @ORM\OneToMany(targetEntity="App\Model\Adminka\Entity\Matkas\ChildMatka\File\File", mappedBy="childmatka", orphanRemoval=true, cascade={"all"})
+     * @ORM\OneToMany(targetEntity="App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\File\File", mappedBy="childmatka", orphanRemoval=true, cascade={"all"})
      * @ORM\OrderBy({"date" = "ASC"})
      */
     private $files;
@@ -120,15 +119,15 @@ class ChildMatka
     private $priority;
 
     /**
-     * @var ChildMatka|null
-     * @ORM\ManyToOne(targetEntity="ChildMatka")
+     * @var ChildDrev|null
+     * @ORM\ManyToOne(targetEntity="ChildDrev")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $parent;  // родитель
 
     /**
      * @var Status
-     * @ORM\Column(type="admin_matkas_childmatka_status", length=16)
+     * @ORM\Column(type="admin_childdrev_status", length=16)
      */
     private $status;
 
@@ -166,7 +165,7 @@ class ChildMatka
      /**
      * @var Uchastie[]|ArrayCollection
      * @ORM\ManyToMany(targetEntity="App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie")
-     * @ORM\JoinTable(name="admin_matkas_childmatkas_executors",
+     * @ORM\JoinTable(name="admin_childdrev_executors",
      *      joinColumns={@ORM\JoinColumn(name="childmatka_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="uchastie_id", referencedColumnName="id")}
      * )
@@ -176,7 +175,7 @@ class ChildMatka
 
     /**
      * @var Change[]|ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Model\Adminka\Entity\Matkas\ChildMatka\Change\Change", mappedBy="childmatka", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\Change\Change", mappedBy="childmatka", orphanRemoval=true, cascade={"persist"})
      * @ORM\OrderBy({"id" = "ASC"})
      */
     private $changes;
@@ -190,7 +189,7 @@ class ChildMatka
 
     public function __construct(
         Id $id,
-        PlemMatka $plemmatka,
+        DrevMatka $plemmatka,
         Uchastie $author,
         \DateTimeImmutable $date,
         Type $type,
@@ -223,7 +222,7 @@ class ChildMatka
         $this->otecNomer = $otecNomer;
         $this->executors = new ArrayCollection();
         $this->changes = new ArrayCollection();
-        $this->addChange($author, $date, Set::forNewChildMatka($plemmatka->getId(), $name, $content, $type, $priority,
+        $this->addChange($author, $date, Set::forNewChildDrev($plemmatka->getId(), $name, $content, $type, $priority,
                                                                 $kolChild, $godaVixod, $sezonPlem, $sezonChild, $urowni ));
     }
 
@@ -297,7 +296,7 @@ class ChildMatka
     }
 
 
-    public function setChildOf(Uchastie $actor, \DateTimeImmutable $date,ChildMatka $parent): void
+    public function setChildOf(Uchastie $actor, \DateTimeImmutable $date,ChildDrev $parent): void
     {
         if ($parent === $this->parent) {
             return;
@@ -335,13 +334,13 @@ class ChildMatka
         $this->addChange($actor, $date, Set::forRemovedPlan());
     }
 // переместить
-    public function move(Uchastie $actor, \DateTimeImmutable $date, PlemMatka $plemmatka): void
+    public function move(Uchastie $actor, \DateTimeImmutable $date, DrevMatka $plemmatka): void
     {
         if ($plemmatka === $this->plemmatka) {
-            throw new \DomainException('PlemMatka это уже то же самое.');
+            throw new \DomainException('DrevMatka это уже то же самое.');
         }
         $this->plemmatka = $plemmatka;
-         $this->addChange($actor, $date, Set::fromPlemMatka($plemmatka->getId()));
+         $this->addChange($actor, $date, Set::fromDrevMatka($plemmatka->getId()));
 
     }
 
@@ -387,7 +386,7 @@ class ChildMatka
         }
         $this->priority = $priority;
         $this->addChange($actor, $date, Set::fromPriority($priority));
-//        $this->recordEvent(new Event\PlemMatkaPriorityChanged($actor->getId(), $this->id, $priority));
+//        $this->recordEvent(new Event\DrevMatkaPriorityChanged($actor->getId(), $this->id, $priority));
 
     }
 //-------------  Executor
@@ -431,13 +430,13 @@ class ChildMatka
         return $this->getSezonPlem() === $sezon;
     }
 
-    public function idDepart($departmentFetcher): DepartmentId
+    public function idSezonDrev($sezondrevFetcher): SezonDrevId
     {
-        foreach ($departmentFetcher as $key => $value) {
+        foreach ($sezondrevFetcher as $key => $value) {
 
             if ($this->isDepartEqual($value)) {
-                $idDeppart = $key;
-                return new DepartmentId($idDeppart ) ;
+                $idSezonDrev = $key;
+                return new SezonDrevId($idSezonDrev ) ;
                 break;
             }
         }
@@ -469,10 +468,12 @@ class ChildMatka
         return $this->id;
     }
 
-    public function getPlemMatka(): PlemMatka
+
+    public function getPlemmatka(): DrevMatka
     {
         return $this->plemmatka;
     }
+
 
     public function getAuthor(): Uchastie
     {
@@ -526,7 +527,7 @@ class ChildMatka
     }
 
 
-    public function getParent(): ?ChildMatka
+    public function getParent(): ?ChildDrev
     {
         return $this->parent;
     }

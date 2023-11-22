@@ -77,12 +77,19 @@ doctrine:
             admin_matkas_childmatka_type: 'App\Model\Adminka\Entity\Matkas\ChildMatka\TypeType'
             admin_matkas_childmatka_status: 'App\Model\Adminka\Entity\Matkas\ChildMatka\StatusType'
 
+            admin_childdrev_id: 'App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\IdType'
+            admin_childdrev_type: 'App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\TypeType'
+            admin_childdrev_status: 'App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\StatusType'
+
             admin_sezons_goda_id: 'App\Model\Adminka\Entity\Sezons\Godas\IdType'
 
             comment_comment_id: 'App\Model\Comment\Entity\Comment\IdType'
             comment_comment_author_id: 'App\Model\Comment\Entity\Comment\AuthorIdType'
             adminka_matkas_childmatka_file_id: 'App\Model\Adminka\Entity\Matkas\ChildMatka\File\IdType'
             admin_matkas_child_change_id: 'App\Model\Adminka\Entity\Matkas\ChildMatka\Change\IdType'
+
+            admin_childdrev_file_id: 'App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\File\IdType'
+            admin_childdrev_change_id: 'App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\Change\IdType'
 
 
     orm:

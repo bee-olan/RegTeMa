@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ReadModel\Adminka\Matkas\ChildMatka\Filter;
+namespace App\ReadModel\Adminka\DrevMatkas\ChildDrevs\Filter;
 
 use App\Model\Adminka\Entity\Matkas\ChildMatka\Status;
 use App\Model\Adminka\Entity\Matkas\ChildMatka\Type as ChildMatkaType;
