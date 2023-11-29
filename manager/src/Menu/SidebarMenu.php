@@ -40,16 +40,6 @@ class SidebarMenu
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 
-//        $menu->addChild('Проект', ['route' => 'proekt'])
-//            ->setExtra('routes', [
-//                ['route' => 'proekt'],
-//                ['pattern' => '/^proekt\..+/']
-//            ])
-////            ->setExtra('icon', 'nav-icon icon-briefcase')
-////            ->setExtra('image', '../assets/images/uchastie.jpg')
-//            ->setAttribute('class', 'nav-item')
-//            ->setLinkAttribute('class', 'nav-link');
-
 
         $menu->addChild('Место', ['route' => 'mesto.okrug'])
             ->setExtra('routes', [
@@ -123,10 +113,10 @@ class SidebarMenu
 
 
         $menu
-            ->addChild('Раса-Линия-Ветка-Номер', ['route' => 'adminka.rasas'])
+            ->addChild('Раса-Лин-Вет-Ном-Now', ['route' => 'drevos.rass.indbr'])
             ->setExtra('routes', [
-                ['route' => 'adminka.matkas.rasas'],
-                ['pattern' => '/^adminka.matkas.rasas\..+/']
+                ['route' => 'drevos.rass.linibrs'],
+                ['pattern' => '/^drevos.rass.linibrs\..+/']
             ])
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');

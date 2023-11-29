@@ -25,11 +25,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RasasController extends AbstractController
 {
-    private $logger;
+    private $errors;
 
-    public function __construct(LoggerInterface $logger)
+    public function __construct(ErrorHandler $errors)
     {
-        $this->logger = $logger;
+        $this->errors = $errors;
     }
 
 
@@ -67,7 +67,7 @@ class RasasController extends AbstractController
                 $handler->handle($command);
                 return $this->redirectToRoute('adminka.otec-for-ras');
             } catch (\DomainException $e) {
-                $this->logger->warning($e->getMessage(), ['exception' => $e]);
+                $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
@@ -96,7 +96,7 @@ class RasasController extends AbstractController
                 $handler->handle($command);
                 return $this->redirectToRoute('adminka.otec-for-ras.show', ['id' => $rasa->getId()]);
             } catch (\DomainException $e) {
-                $this->logger->warning($e->getMessage(), ['exception' => $e]);
+                $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
@@ -126,7 +126,7 @@ class RasasController extends AbstractController
             $handler->handle($command);
             return $this->redirectToRoute('adminka.otec-for-ras');
         } catch (\DomainException $e) {
-            $this->logger->warning($e->getMessage(), ['exception' => $e]);
+            $this->errors->handle($e);
             $this->addFlash('error', $e->getMessage());
         }
 

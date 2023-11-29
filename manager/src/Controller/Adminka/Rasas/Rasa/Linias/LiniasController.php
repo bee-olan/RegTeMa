@@ -24,11 +24,11 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class LiniasController extends AbstractController
 {
-    private $logger;
+    private $errors;
 
-    public function __construct(LoggerInterface $logger)
+    public function __construct(ErrorHandler $errors)
     {
-        $this->logger = $logger;
+        $this->errors = $errors;
     }
 
     /**

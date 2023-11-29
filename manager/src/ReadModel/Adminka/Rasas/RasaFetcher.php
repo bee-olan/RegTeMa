@@ -23,7 +23,7 @@ class RasaFetcher
                 'id',
                 'name'   
             )
-            ->from('adminka_rasas')
+            ->from('dre_rass')
             ->orderBy('name')
             ->execute();
 
@@ -36,37 +36,37 @@ class RasaFetcher
             ->select(
                 'g.id',
                 'g.name',
-                'g.title',
-                '(SELECT COUNT(*) FROM adminka_rasa_linias l WHERE (l.rasa_id = g.id AND  l.vetka_id IS NULL ) ) AS linias'
+                'g.title'
+//                '(SELECT COUNT(*) FROM adminka_rasa_linias l WHERE (l.rasa_id = g.id AND  l.vetka_id IS NULL ) ) AS linias'
             )
-            ->from('adminka_rasas', 'g')
+            ->from('dre_rass', 'g')
             ->orderBy('name')
             ->orderBy('title')
             ->execute();
 
         return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
     }
-    public function allRasaLin(): array
-    {
-        $stmt = $this->connection->createQueryBuilder()
-            ->select(
-                'r.id',
-                'r.name',
-                'r.title',
-                'l.sort_linia as sort_linia',
-                'l.name_star as linias',
-                'l.id as linia_id'
-                //,
-                // '(SELECT COUNT(*) FROM adminka_rasa_linias l WHERE l.rasa_id = r.id) AS kol_lin'
-            )
-            ->from('rabota_rasas', 'r')
-            ->innerJoin('r', 'adminka_rasa_linias', 'l', 'l.rasa_id = r.id')
-            ->orderBy('name')
-            ->orderBy('title')
-            ->execute();
-
-        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
-    }
+//    public function allRasaLin(): array
+//    {
+//        $stmt = $this->connection->createQueryBuilder()
+//            ->select(
+//                'r.id',
+//                'r.name',
+//                'r.title',
+//                'l.sort_linia as sort_linia',
+//                'l.name_star as linias',
+//                'l.id as linia_id'
+//                //,
+//                // '(SELECT COUNT(*) FROM adminka_rasa_linias l WHERE l.rasa_id = r.id) AS kol_lin'
+//            )
+//            ->from('rabota_rasas', 'r')
+//            ->innerJoin('r', 'adminka_rasa_linias', 'l', 'l.rasa_id = r.id')
+//            ->orderBy('name')
+//            ->orderBy('title')
+//            ->execute();
+//
+//        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
+//    }
 
     public function allRasaLinNom(): array
     {

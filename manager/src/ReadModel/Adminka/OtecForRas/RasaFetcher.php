@@ -23,7 +23,7 @@ class RasaFetcher
                 'id',
                 'name'
             )
-            ->from('adminka_rasas')
+            ->from('dre_rass')
             ->orderBy('name')
             ->execute();
 

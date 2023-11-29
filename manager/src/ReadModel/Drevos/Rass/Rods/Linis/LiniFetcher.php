@@ -61,11 +61,7 @@ class LiniFetcher
             ->select(
                 'l.id',
                 'l.name',
-//                'l.name_star',
-//                'l.title',
 				'l.sort_lini'
-//				'n.sort_nomer as sort_nomer'
-
 
                 // '(
                 //     SELECT COUNT(ms.member_id)

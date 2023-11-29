@@ -28,11 +28,11 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class NomerController extends AbstractController
 {
-    private $logger;
+    private $errors;
 
-    public function __construct(LoggerInterface $logger)
+    public function __construct(ErrorHandler $errors)
     {
-        $this->logger = $logger;
+        $this->errors = $errors;
     }
 
 
@@ -77,7 +77,7 @@ class NomerController extends AbstractController
                 $handler->handle($command);
                 return $this->redirectToRoute('adminka.otec-for-ras.linias.nomers', ['linia_id' => $linia->getId()]);
             } catch (\DomainException $e) {
-                $this->logger->warning($e->getMessage(), ['exception' => $e]);
+                $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
@@ -112,7 +112,7 @@ class NomerController extends AbstractController
                 return $this->redirectToRoute('adminka.otec-for-ras.linias.nomers.show',
 											['linia_id' => $linia->getId(), 'id' => $id]);
             } catch (\DomainException $e) {
-                $this->logger->warning($e->getMessage(), ['exception' => $e]);
+                $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
@@ -147,7 +147,7 @@ class NomerController extends AbstractController
         try {
             $handler->handle($command);
         } catch (\DomainException $e) {
-            $this->logger->warning($e->getMessage(), ['exception' => $e]);
+            $this->errors->handle($e);
             $this->addFlash('error', $e->getMessage());
         }
 

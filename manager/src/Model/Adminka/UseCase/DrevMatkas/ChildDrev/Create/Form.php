@@ -20,12 +20,15 @@ class Form extends AbstractType
     public function __construct(LiniaFetcher $otecLinias)
     {
         $this->otecLinias = $otecLinias;
+
     }
 
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
         $otecLinia = [];
+
         foreach ($this->otecLinias->otecLiniaNomerList($options['rasa_id']) as $item) {
             $otecLinia[$item['linia']][$item['nomer'].' ( '.$item['title'].' )'] = $item['otnomer_id'];
         }
@@ -36,7 +39,7 @@ class Form extends AbstractType
                 'label' => '1) Описание ДочьМатки  ',
                 'required' => false,
                 'attr' => ['rows' => 3,
-                'placeholder' => ' Подробное описание ДочьМатки'
+                'placeholder' => ' комментарий '
                 ]])
 
             ->add('kolChild', Type\ChoiceType::class, [
@@ -47,7 +50,7 @@ class Form extends AbstractType
                     '2' => 2,
                     '3' => 3,
                     '4' => 4,
-                    '5' => 10
+                    '10' => 5
                 ],
                 'expanded' => true,
                 'multiple' => false,

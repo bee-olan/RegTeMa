@@ -26,11 +26,11 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class LiniaController extends AbstractController
 {
-    private $logger;
+    private $errors;
 
-    public function __construct(LoggerInterface $logger)
+    public function __construct(ErrorHandler $errors)
     {
-        $this->logger = $logger;
+        $this->errors = $errors;
     }
 
 
@@ -74,7 +74,7 @@ class LiniaController extends AbstractController
                 $handler->handle($command);
                 return $this->redirectToRoute('adminka.otec-for-ras.linias', ['id' => $rasa->getId()]);
             } catch (\DomainException $e) {
-                $this->logger->warning($e->getMessage(), ['exception' => $e]);
+                $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
@@ -114,7 +114,7 @@ class LiniaController extends AbstractController
                 return $this->redirectToRoute('adminka.otec-for-ras.linias.show',
 									['id' => $rasa->getId(), 'linia_id' => $linia_id]);
             } catch (\DomainException $e) {
-                $this->logger->warning($e->getMessage(), ['exception' => $e]);
+                $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
@@ -149,7 +149,7 @@ class LiniaController extends AbstractController
         try {
             $handler->handle($command);
         } catch (\DomainException $e) {
-            $this->logger->warning($e->getMessage(), ['exception' => $e]);
+            $this->errors->handle($e);
             $this->addFlash('error', $e->getMessage());
         }
 

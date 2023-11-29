@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ linia.name }}{% endblock %}
+
+{#{% block breadcrumbs %}#}
+{#	<ol class="breadcrumb">#}
+{#		<li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>#}
+{#		<li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Раса -- {{ rasa.title }}</a></li>#}
+{#		<li class="breadcrumb-item active">Редактировать</li>#}
+{#	</ol>#}
+{#{% endblock %}#}
+
+{% block body %}
+<article class="rasa">
+<h1 	class="rasa__title  "><strong> Раса </strong>:  {{ rasa.name }} | {{ rasa.title }}</h1>
+	<div class="linia ">
+		<h1 class="rasa__title  ">Редактировать <strong>линию</strong> : {{ linia.name }} | {{linia.name }}</h1>
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btn-my btn-my--sm">Добавить измения в БД</button>
+            {{ form_end(form) }}
+	</div>
+</article>
+
+{% endblock %}

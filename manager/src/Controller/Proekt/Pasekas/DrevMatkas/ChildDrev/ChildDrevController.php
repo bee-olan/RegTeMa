@@ -9,7 +9,7 @@ use App\Annotation\Guid;
 use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\DrevMatka;
 
 use App\Model\Adminka\Entity\DrevMatkas\DrevMatka\SezonDrev\Id;
-use App\Model\Adminka\UseCase\Matkas\ChildMatka\Create;
+use App\Model\Adminka\UseCase\DrevMatkas\ChildDrev\Create;
 
 use App\ReadModel\Adminka\DrevMatkas\ChildDrevs\ChildDrevFetcher;
 use App\ReadModel\Adminka\DrevMatkas\ChildDrevs\Filter;

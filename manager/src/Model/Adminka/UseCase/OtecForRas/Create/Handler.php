@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\OtecForRas\Create;
 
+use App\Model\Drevos\Entity\Rass\RasRepository;
+use App\Model\Drevos\Entity\Rass\Id as RasaId;
 use App\Model\Flusher;
 use App\Model\Adminka\Entity\OtecForRas\Rasa;
-use App\Model\Adminka\Entity\Rasas\Id as RasaId;
+//use App\Model\Adminka\Entity\Rasas\Id as RasaId;
 use App\Model\Adminka\Entity\OtecForRas\Id;
 use App\Model\Adminka\Entity\OtecForRas\RasaOtecRepository;
-use App\Model\Adminka\Entity\Rasas\RasaRepository;
+//use App\Model\Adminka\Entity\Rasas\RasaRepository;
 
 class Handler
 {
@@ -17,7 +19,7 @@ class Handler
     private $rasaOt;
     private $flusher;
 
-    public function __construct(RasaRepository $rasas,RasaOtecRepository $rasaOt, Flusher $flusher)
+    public function __construct(RasRepository $rasas,RasaOtecRepository $rasaOt, Flusher $flusher)
     {
         $this->rasas = $rasas;
         $this->rasaOt = $rasaOt;

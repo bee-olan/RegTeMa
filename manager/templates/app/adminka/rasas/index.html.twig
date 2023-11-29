@@ -35,11 +35,11 @@
 
           {% set token = csrf_token('delete') %}
                 {% for rasa in rasas %}
-                      
-           
+
+{#                    ( {{ rasa.linias }} )      #}
                 <ul class="rasa__data">
                     <li class="rasa__name rasa__name--wid15 ">  {{ rasa.title }}  </li>
-                    <li class="rasa__name  ">{{ rasa.name }} ( {{ rasa.linias }} ) </li>
+                    <li class="rasa__name  ">{{ rasa.name }}  </li>
                     <li class=" rasa__name--wid15">
                         <a href="{{ path('adminka.rasas.linias',{'id': rasa.id}) }}"
                            class="btnn btnn--mb0 btnn--pt btnn--rasa">См/Добавить

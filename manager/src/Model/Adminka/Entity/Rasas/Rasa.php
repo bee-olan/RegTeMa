@@ -73,7 +73,6 @@ class Rasa
 
         $this->vetka = $vetka;
     }
-
     public function addLinia(LiniaId $id,
                                 string $name,
                                 string $nameStar,
@@ -83,7 +82,6 @@ class Rasa
                              ?Linia $vetka
                                 ): void
     {
-//        dd($this->linias);
         foreach ($this->linias as $linia) {
             if ($linia->isNameStarEqual($nameStar)) {
                 throw new \DomainException('Линия уже существует. Попробуйте для

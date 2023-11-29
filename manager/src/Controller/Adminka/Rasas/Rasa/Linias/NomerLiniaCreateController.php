@@ -24,12 +24,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class NomerLiniaCreateController extends AbstractController
 {
-    // private $logger;
-
-    // public function __construct(LoggerInterface $logger)
-    // {
-    //     $this->logger = $logger;
-    // }
 
     private $errors;
 

@@ -6,6 +6,7 @@ namespace App\Controller\Adminka\Matkas;
 
 use App\Annotation\Guid;
 
+use App\Controller\ErrorHandler;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 
 
@@ -27,11 +28,11 @@ class PlemMatkasController extends AbstractController
 {
     private const PER_PAGE = 50;
 
-    private $logger;
+    private $errors;
 
-    public function __construct(LoggerInterface $logger)
+    public function __construct(ErrorHandler $errors)
     {
-        $this->logger = $logger;
+        $this->errors = $errors;
     }
 
     /**
@@ -130,7 +131,7 @@ class PlemMatkasController extends AbstractController
                 $handler->handle($command);
                 return $this->redirectToRoute('adminka.matkas');
             } catch (\DomainException $e) {
-                $this->logger->warning($e->getMessage(), ['exception' => $e]);
+                $this->errors->handle($e);
                 $this->addFlash('error', $e->getMessage());
             }
         }
@@ -160,7 +161,7 @@ class PlemMatkasController extends AbstractController
             $handler->handle($command);
             return $this->redirectToRoute('adminka.matkas');
         } catch (\DomainException $e) {
-            $this->logger->warning($e->getMessage(), ['exception' => $e]);
+            $this->errors->handle($e);
             $this->addFlash('error', $e->getMessage());
         }
 

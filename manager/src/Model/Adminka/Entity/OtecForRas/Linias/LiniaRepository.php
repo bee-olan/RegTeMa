@@ -44,4 +44,9 @@ class LiniaRepository
     {
         $this->em->persist($linia);
     }
+
+    public function remove(Linia $linia): void
+    {
+        $this->em->remove($linia);
+    }
 }

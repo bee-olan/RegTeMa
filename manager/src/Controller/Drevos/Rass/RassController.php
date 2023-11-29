@@ -48,6 +48,20 @@ class RassController extends AbstractController
                                 compact('rasas'));
     }
 
+    /**
+     * @Route("/indbr", name=".indbr")
+     * @param RasFetcher $fetcher
+     * @return Response
+     */
+    public function indbr(RasFetcher $fetcher): Response
+    {
+        $rasas = $fetcher->all();
+        //dd($rasas);
+
+
+        return $this->render('app/drevos/rass/indbr.html.twig',
+            compact('rasas'));
+    }
 
     /**
      * @Route("/create", name=".create")

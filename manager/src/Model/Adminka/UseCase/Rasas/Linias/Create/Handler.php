@@ -4,17 +4,20 @@ declare(strict_types=1);
 
 namespace App\Model\Adminka\UseCase\Rasas\Linias\Create;
 
+use App\Model\Drevos\Entity\Rass\RasRepository;
+use App\Model\Drevos\Entity\Rass\Id as RasaId;
 use App\Model\Flusher;
 use App\Model\Adminka\Entity\Rasas\Linias\Id;
-use App\Model\Adminka\Entity\Rasas\Id as RasaId;
-use App\Model\Adminka\Entity\Rasas\RasaRepository;
+//use App\Model\Adminka\Entity\Rasas\Id as RasaId;
+//use App\Model\Adminka\Entity\Rasas\RasaRepository;
+
 
 class Handler
 {
     private $rasas;
     private $flusher;
 
-    public function __construct(RasaRepository $rasas, Flusher $flusher)
+    public function __construct(RasRepository $rasas, Flusher $flusher)
     {
         $this->rasas = $rasas;
         $this->flusher = $flusher;

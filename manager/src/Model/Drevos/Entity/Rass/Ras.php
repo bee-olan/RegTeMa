@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model\Drevos\Entity\Rass;
 
+use App\Model\Drevos\Entity\Rass\LiniBr\LiniBr;
+use App\Model\Drevos\Entity\Rass\LiniBr\Id as LiniBrId;
 use App\Model\Drevos\Entity\Rass\Rods\Rod;
 use App\Model\Drevos\Entity\Rass\Rods\Id as RodId;
 use App\Model\Drevos\Entity\Strans\Stran;
@@ -46,6 +48,16 @@ class Ras
      */
     private $rodos;
 
+    /**
+     * @var ArrayCollection|LiniBr[]
+     * @ORM\OneToMany(
+     *     targetEntity="App\Model\Drevos\Entity\Rass\LiniBr\LiniBr",
+     *     mappedBy="rasa", orphanRemoval=true, cascade={"all"}
+     * )
+     * @ORM\OrderBy({"name" = "ASC"})
+     */
+    private $linias;
+
     public function __construct(Id $id, string $name, string $title)
     {
         $this->id = $id;
@@ -53,6 +65,7 @@ class Ras
         $this->title = $title;
 
 		$this->rodos = new ArrayCollection();
+		$this->linias = new ArrayCollection();
     }
 
     public function edit(string $name, string $title): void
@@ -60,8 +73,68 @@ class Ras
         $this->name = $name;
         $this->title = $title;
     }
+/////////////////////////////////////////////////////////////////////////
+    public function addLiniBr(LiniBrId $id,
+                             string $name,
+                             int $sortLiniBr,
+                             ?LiniBr $vetka
+    ): void
+    {
+        foreach ($this->linias as $linia) {
+            if ($linia->isNameEqual($name)) {
+                throw new \DomainException('Линия уже существует. Попробуйте для
+                этой линии добавить свой номер');
+            }
+        }
+
+        $this->linias->add(new LiniBr($this,
+            $id,
+            $name,
+            $sortLiniBr,
+            $vetka
+        ));
+    }
+
+    public function editLiniBr(LiniBrId $id,
+                              string $name
+    ): void
+    {
+        foreach ($this->linias as $current) {
+            if ($current->getId()->isEqual($id)) {
+                $current->edit($name );
+                return;
+            }
+        }
+        throw new \DomainException('LiniBr is not found.');
+    }
+
+    public function removeLiniBr(LiniBrId $id): void
+    {
+        foreach ($this->linias as $linia) {
+            if ($linia->getId()->isEqual($id)) {
+                $this->linias->removeElement($linia);
+                return;
+            }
+        }
+        throw new \DomainException('LiniBr is not found.');
+    }
+
+    public function getLinias()
+    {
+        return $this->linias->toArray();;
+    }
 
 
+    public function getLinia(LiniBrId $id): LiniBr
+    {
+        foreach ($this->linias as $linia) {
+            if ($linia->getId()->isEqual($id)) {
+                return $linia;
+            }
+        }
+        throw new \DomainException('LiniBr is not found.');
+    }
+/////////////////////////////////////////////////////////////////////////////////
     public function addRod(RodId $id,
 								int $sortRodo,
                                 string $nameMatkov,
@@ -114,14 +187,10 @@ class Ras
         throw new \DomainException('Rodo is not found.');
     }
 
-
-
 	 public function getRodos()
     {
         return $this->rodos->toArray();
     }
-
-
 
     public function getRodo(RodId $id): Rod
     {

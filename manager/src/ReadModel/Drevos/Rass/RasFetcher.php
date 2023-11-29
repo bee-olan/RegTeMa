@@ -37,7 +37,8 @@ class RasFetcher
                 'g.id',
                 'g.name',
                 'g.title',
-                '(SELECT COUNT(*) FROM dre_ras_rods l WHERE (l.rasa_id = g.id  ) ) AS rodos'
+                '(SELECT COUNT(*) FROM dre_ras_rods r WHERE (r.rasa_id = g.id  ) ) AS rodos',
+                '(SELECT COUNT(*) FROM dre_ras_linibrs l WHERE (l.rasa_id = g.id  ) ) AS kol_linis'
             )
             ->from('dre_rass', 'g')
             ->orderBy('name')
