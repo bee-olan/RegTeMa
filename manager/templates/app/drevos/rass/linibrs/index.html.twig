@@ -15,6 +15,13 @@
     <article class="rasa">
         <div class="rasa__header  ">
         <h4 class="rasa__title  "><strong class="strongo--sin" > Раса  </strong> : {{ rasa.title }} </h4>
+
+            {% if linias is  empty %}
+
+            <h1 class="rasa__title"> Пока для этой  расы - нет  зарегистрированных линий.  </h1>
+
+            {% else %}
+
             <div class="linia ">
                 <div class="rasa__header  ">
                     <h4 class="rasa__title "> <strong class="strongo--sin">  Линии, </strong> зарегистрированные в БД </h4>
@@ -75,7 +82,7 @@
                         </ul>
                     {% endfor %}
                 </div>
-
+                {% endif %}
                 <div class = "rasa__content"  >
                     <a href="{{ path('drevos.rass.linibrs.create', {'id': rasa.id}) }}"
                        class="btnn btnn--mb0 btnn--pt btnn--rasa">Добавить другую
