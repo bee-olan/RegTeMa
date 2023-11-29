@@ -39,8 +39,8 @@ doctrine:
             admin_matkas_plemmatka_status: 'App\Model\Adminka\Entity\Matkas\PlemMatka\StatusType'
             admin_matkas_plemmatka_department_id: 'App\Model\Adminka\Entity\Matkas\PlemMatka\Department\IdType'
 
-            admin_mattest_plemtest_id: 'App\Model\Adminka\Entity\MatTests\PlemTest\IdType'
-            admin_mattest_plemtest_status: 'App\Model\Adminka\Entity\MatTests\PlemTest\StatusType'
+#            admin_mattest_plemtest_id: 'App\Model\Adminka\Entity\MatTests\PlemTest\IdType'
+#            admin_mattest_plemtest_status: 'App\Model\Adminka\Entity\MatTests\PlemTest\StatusType'
 
             adminka_matkas_role_permissions: 'App\Model\Adminka\Entity\Matkas\Role\PermissionsType'
             adminka_matkas_role_id: 'App\Model\Adminka\Entity\Matkas\Role\IdType'
