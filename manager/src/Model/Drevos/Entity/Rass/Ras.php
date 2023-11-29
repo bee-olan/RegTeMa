@@ -77,7 +77,7 @@ class Ras
     public function addLiniBr(LiniBrId $id,
                              string $name,
                              int $sortLiniBr,
-                             ?LiniBr $vetka
+                             ?LiniBr $roditBr
     ): void
     {
         foreach ($this->linias as $linia) {
@@ -91,7 +91,7 @@ class Ras
             $id,
             $name,
             $sortLiniBr,
-            $vetka
+            $roditBr
         ));
     }
 

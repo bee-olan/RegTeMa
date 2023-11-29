@@ -1,7 +1,7 @@
 ///////////Раса ==========
 .rasa {
-  margin: 6rem -1rem 2rem -1rem;
-  padding: 1.5rem 1.5rem;
+  margin: 4rem -1rem 2rem -1rem;
+  padding: 1.1rem 1.3rem;
   overflow: hidden; // в рамках размера -все лишнее скрылось overflow
   background-color: #588557;
   //background-color: transparent;
@@ -16,8 +16,8 @@
   }
 }
 .rasa__title {
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
+  margin-bottom: 1.1rem;
+  font-size: 1.5rem;
   color: $col-text;
   //font-weight: 500;
   a {
@@ -38,9 +38,9 @@
   align-items: center; // выравнивание по вертикали
   list-style: none; // убрала точку у li
   width: 100%;
-  color: $col-text;
+  color: $beloe;
   line-height: 2.0;
-
+  font-size: 1.2rem;
   a {
     padding: .6rem 1.6rem;
     color: inherit;
@@ -58,9 +58,13 @@
 .rasa__name {
   // display: flex; // добавляем т.к добаилась li-шка
   width: 10.0rem;
-  color: $col-text;
+  color: $beloe;
   padding: .6rem;
   border-bottom: 1px solid $col-text; // linia
+
+  &--col {
+    color: $grad1;
+  }
 
   &--wid25 {
     width: 25.0rem;
@@ -78,10 +82,21 @@
 
 .linia {
   margin: 1rem ;
-  width: 98%;
-  padding: 1.5rem 1.5rem;
+  width: 100%;
+  padding: 1.5rem 1rem  ;
   overflow: hidden; // в рамках размера -все лишнее скрылось overflow
   background-color: #70a370;
+  //background-color: transparent;
+  box-shadow: 0 15px 25px rgba($black, .35);
+  border-radius: 5px;
+}
+
+.vetka {
+  //margin: 1rem ;
+  width: 100%;
+  padding: 1.5rem 1rem  ;
+  overflow: hidden; // в рамках размера -все лишнее скрылось overflow
+  background-color: #588557;
   //background-color: transparent;
   box-shadow: 0 15px 25px rgba($black, .35);
   border-radius: 5px;

@@ -26,14 +26,14 @@ class Handler
 
 //        $command->name =  $command->name;
 //        $command->title = $command->title."_".$command->nameStar;
-        $vetka = $command->vetka = null;
+            $roditBr = $command->roditBr = null;
 
 
      $rasa->addLiniBr(
             Id::next(),
             $command->name ,
 			$command->sortLiniBr,
-            $vetka
+            $roditBr
         );
 //     dd($command);
         $this->flusher->flush();

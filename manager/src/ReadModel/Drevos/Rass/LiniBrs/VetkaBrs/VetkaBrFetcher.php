@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\ReadModel\Drevos\Rass\LiniBrs;
+namespace App\ReadModel\Drevos\Rass\LiniBrs\VetkaBrs;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\FetchMode;
 
-class LiniBrFetcher
+class VetkaBrFetcher
 {
     private $connection;
 
@@ -16,14 +16,14 @@ class LiniBrFetcher
         $this->connection = $connection;
     }
 
-//    public function allOfVetka(string $linia, string $name_star): array
+//    public function allOfVetka(string $vetka, string $name_star): array
 //    {
 //        $stmt = $this->connection->createQueryBuilder()
 //            ->select(
 //                'l.id',
 //                'l.name',
-//                'l.sort_lini_br'
-////                '(SELECT COUNT(*) FROM adminka_rasa_linia_nomers n WHERE n.linia_id = l.id) AS nomers'
+//                'l.sort_vet'
+////                '(SELECT COUNT(*) FROM adminka_vetka_vetka_nomers n WHERE n.vetka_id = l.id) AS nomers'
 //            // '(
 //            //     SELECT COUNT(ms.member_id)
 //            //     FROM work_projects_project_memberships ms
@@ -32,61 +32,61 @@ class LiniBrFetcher
 //            // ) AS members_count'
 //            )
 //            ->from('dre_ras_linibrs', 'l')
-//            ->andWhere('vetka_id = :linias AND  l.name_star = :stname')
-//            ->setParameter(':linias', $linia)
+//            ->andWhere('vetka_id = :vetkas AND  l.name_star = :stname')
+//            ->setParameter(':vetkas', $vetka)
 //            ->setParameter(':stname', $name_star)
 ////            ->orderBy('name')
-//            ->orderBy('l.sort_lini_br')
+//            ->orderBy('l.sort_vet')
 //            ->execute();
 //
 //        return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
 //    }
 
-    public function getMaxSortLiniBr(string $rasa): int
+    public function getMaxSortVet(string $linia): int
     {
         return (int)$this->connection->createQueryBuilder()
-            ->select('MAX(l.sort_lini_br) AS m')
-            ->from('dre_ras_linibrs', 'l')
-			->andWhere('rasa_id = :rasas')
-            ->setParameter(':rasas', $rasa)
+            ->select('MAX(l.sort_vet) AS m')
+            ->from('dre_ras_linibr_vets', 'l')
+			->andWhere('linia_id = :linias')
+            ->setParameter(':linias', $linia)
             ->execute()->fetch()['m'];
     }
 	
-//    public function listOfRasa(string $rasa): array
+//    public function listOfRasa(string $vetka): array
 //    {
 //        $stmt = $this->connection->createQueryBuilder()
 //            ->select(
 //                'id',
-////                'rasa_id',
+////                'vetka_id',
 ////                'name',
 ////                'name_star',
 ////                'title',
 //                'id_vetka'
-////				'sort_linia',
+////				'sort_vetka',
 ////                'vetka_id'
 //            )
-//            ->from('adminka_rasa_linias')
-//            ->andWhere('rasa_id = :rasas')
-//            ->setParameter(':rasas', $rasa)
+//            ->from('adminka_vetka_vetkas')
+//            ->andWhere('vetka_id = :vetkas')
+//            ->setParameter(':vetkas', $vetka)
 ////            ->orderBy('name')
 //            ->orderBy('name_star')
 ////            ->orderBy('title')
-////			->orderBy('sort_linia')
+////			->orderBy('sort_vetka')
 //            ->execute();
 //
 //        return $stmt->fetchAll(\PDO::FETCH_KEY_PAIR);
 //    }
 
-    public function allOfRas(string $rasa): array
+    public function allOfLiniBr(string $linia): array
     {
         $stmt = $this->connection->createQueryBuilder()
             ->select(
                 'l.id',
-                'l.rasa_id',
-                'l.rodit_br_id',
-                'l.name',
-                'l.sort_lini_br',
-                '(SELECT COUNT(*) FROM dre_ras_linibr_vets v WHERE v.linia_id = l.id) AS kol_vets'
+                'l.linia_id',
+                'l.nomer',
+                'l.god',
+                'l.sort_vet'
+//                '(SELECT COUNT(*) FROM adminka_vetka_vetka_nomers n WHERE n.vetka_id = l.id) AS nomers'
                 // '(
                 //     SELECT COUNT(ms.member_id)
                 //     FROM work_projects_project_memberships ms
@@ -94,24 +94,24 @@ class LiniBrFetcher
                 //     WHERE md.department_id = d.id AND ms.materi_id = :materi
                 // ) AS members_count'
             )
-            ->from('dre_ras_linibrs', 'l')
-            ->andWhere('rasa_id = :rasas')
-            ->setParameter(':rasas', $rasa)
-            ->orderBy('l.sort_lini_br')
+            ->from('dre_ras_linibr_vets', 'l')
+            ->andWhere('linia_id = :linias')
+            ->setParameter(':linias', $linia)
+            ->orderBy('l.sort_vet')
             ->execute();
 
             return $stmt->fetchAll(FetchMode::ASSOCIATIVE);
         }
 		
-	public function allOfRasLin(string $rasa): array
+	public function allOfLinVet(string $linia): array
     {
         $stmt = $this->connection->createQueryBuilder()
             ->select(
                 'l.id',
-                'l.rasa_id',
-                'l.rodit_br_id',
-                'l.name',
-				'l.sort_lini_br'
+                'l.linia_id',
+                'l.nomer',
+                'l.god',
+				'l.sort_vet'
 
                 // '(
                 //     SELECT COUNT(ms.member_id)
@@ -120,13 +120,13 @@ class LiniBrFetcher
                 //     WHERE md.department_id = d.id AND ms.materi_id = :materi
                 // ) AS members_count'
             )
-            ->from('dre_ras_linibrs', 'l')
-            ->andWhere('rasa_id = :rasas')
-            ->setParameter(':rasas', $rasa)
-//            ->innerJoin('l', 'adminka_rasa_linia_nomers', 'n', 'n.linia_id = l.id')
+            ->from('dre_ras_linibr_vets', 'l')
+            ->andWhere('vetka_id = :vetkas')
+            ->setParameter(':vetkas', $vetka)
+//            ->innerJoin('l', 'adminka_vetka_vetka_nomers', 'n', 'n.vetka_id = l.id')
 
-			->orderBy('sort_lini_br')
-            ->orderBy('name')
+			->orderBy('sort_vet')
+            ->orderBy('nomer')
             ->execute();
 
             return $stmt->fetchAll(FetchMode::ASSOCIATIVE);

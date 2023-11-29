@@ -45,8 +45,33 @@
             color:  #23282c;
         }
     }
+}
+
+.btnn-brend {
+    display: inline-block; // чтобы падинги корректно работали
+    padding: 0 .4em 0 .55em;
+    border: 1px solid #588557;
+    box-shadow: inset 0 0 10px rgba(#588557, 0.9);
+    background-color: $beloe;
+    cursor: pointer;
+    //border-radius: 3em;
+    font-family: inherit; //шрифт наследуется у родителя
+    text-decoration: none;
+    transition: background-color .3s linear;
 
 
+    &:hover {
+        border: 1px solid $border-kroxi;
+        box-shadow: inset 0 0 10px rgba( $border-kroxi, 0.9);
+
+        &--smotr{
+            background-color: $grad2;
+            border: 1px solid $beloe;
+            box-shadow: inset 0 0 10px rgba( $beloe, 0.9);
+            text-decoration: none;
+            color:  #23282c;
+        }
+    }
 }
 
 .btnn {
