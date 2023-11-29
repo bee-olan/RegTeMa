@@ -52,7 +52,7 @@ services:
 
     App\Model\Adminka\Entity\Matkas\ChildMatka\ChildMatkaRepository: ~
 
-    App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\ChildDrevRepository: ~
+#    App\Model\Adminka\Entity\DrevMatkas\ChildDrevs\ChildDrevRepository: ~
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
