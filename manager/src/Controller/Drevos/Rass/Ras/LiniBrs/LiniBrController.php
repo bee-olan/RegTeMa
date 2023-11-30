@@ -122,9 +122,6 @@ class LiniBrController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {
-//                $command->title = $rasa->getName();
-//                $command->title = $command->title."_".$command->name;
-//                 dd($command->title);
                 $handler->handle($command);
                 return $this->redirectToRoute('drevos.rass.linibrs.show',
                     [ 'id' => $rasa->getId()]);

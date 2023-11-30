@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ linia.name }}{% endblock %}
+
+  {% block kroxii %}
+	  <a href="{{ path('home') }}">Главная</a>
+	  <a href="{{ path('drevos.rass.indbr') }}">Раса</a>
+	  <span class="aktiv ">Линии</span>
+  {% endblock %}
+
+{% block body %}
+
+	{{ include('app/adminka/rasas/_tabs.html.twig') }}
+
+	<article class="rasa">
+		<h3 	class="rasa__title  "><strong  class="strongo--sin">Раса : </strong>    {{ rasa.title }}</h3>
+		<div class="linia ">
+
+			<h4 class="rasa__title"><strong class="strongo--sin">Линия : </strong> {{ linia.name }}</h4>
+
+			<div class="vetka ">
+				<div class="rasa__header  ">
+					<h4 class="rasa__title"><strong class="strongo--sin">Ветка </strong> </h4>
+
+					{{ form_start(form) }}
+					{{ form_widget(form) }}
+					<button type="submit" class="btn-my btn-my--sm">Добавить измения в БД</button>
+					{{ form_end(form) }}
+				</div>
+			</div>
+	</div>
+</article>
+
+{% endblock %}

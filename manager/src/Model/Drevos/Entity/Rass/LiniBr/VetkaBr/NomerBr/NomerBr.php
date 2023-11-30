@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr;
+namespace App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr;
 
 use App\Model\Drevos\Entity\Rass\LiniBr\LiniBr;
 //use App\Model\Drevos\Entity\Rass\LiniBr\Id;
@@ -12,9 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="dre_ras_linibr_vets")
+ * @ORM\Table(name="dre_ras_linibr_vet_noms")
  */
-class VetkaBr
+class NomerBr
 {
 
     /**
@@ -26,7 +26,7 @@ class VetkaBr
 	
     /**
      * @var Id
-     * @ORM\Column(type="dre_ras_linibr_vet_id")
+     * @ORM\Column(type="dre_ras_linibr_vet_nom_id")
      * @ORM\Id
      */
     private $id;

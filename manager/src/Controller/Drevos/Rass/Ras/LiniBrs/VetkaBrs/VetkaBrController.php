@@ -98,6 +98,7 @@ class VetkaBrController extends AbstractController
             }
         }
         return $this->render('app/drevos/rass/linibrs/vetbrs/create.html.twig', [
+            'rasa' => $linia->getRasa(),
             'linia' => $linia,
             'form' => $form->createView(),
 //            'name' => $command->title,
@@ -126,9 +127,7 @@ class VetkaBrController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {
-//                $command->title = $linia->getName();
-//                $command->title = $command->title."_".$command->name;
-//                 dd($command->title);
+
                 $handler->handle($command);
                 return $this->redirectToRoute('drevos.rass.linibrs.vetbrs.show',
                     [ 'id' => $linia->getId()]);
@@ -140,6 +139,7 @@ class VetkaBrController extends AbstractController
         }
 
         return $this->render('app/drevos/rass/linibrs/vetbrs/edit.html.twig', [
+            'rasa' => $linia->getRasa(),
             'linia' => $linia,
             'vetka' => $vetka,
             'form' => $form->createView(),

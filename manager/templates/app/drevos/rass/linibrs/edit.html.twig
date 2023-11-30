@@ -2,15 +2,16 @@
 
 {% block title %}{{ linia.name }}{% endblock %}
 
-{#{% block breadcrumbs %}#}
-{#	<ol class="breadcrumb">#}
-{#		<li class="breadcrumb-item"><a href="{{ path('home') }}">Главная</a></li>#}
-{#		<li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Раса -- {{ rasa.title }}</a></li>#}
-{#		<li class="breadcrumb-item active">Редактировать</li>#}
-{#	</ol>#}
-{#{% endblock %}#}
+  {% block kroxii %}
+	  <a href="{{ path('home') }}">Главная</a>
+	  <a href="{{ path('drevos.rass.indbr') }}">Раса</a>
+	  <span class="aktiv ">Линии</span>
+  {% endblock %}
 
 {% block body %}
+
+	{{ include('app/adminka/rasas/_tabs.html.twig') }}
+
 <article class="rasa">
 <h1 	class="rasa__title  "><strong> Раса </strong>:  {{ rasa.name }} | {{ rasa.title }}</h1>
 	<div class="linia ">

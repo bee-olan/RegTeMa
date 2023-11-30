@@ -2,18 +2,15 @@
 
 {% block title %}Линия{% endblock %}
 
-{% block breadcrumbs %}
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
-        {# <li class="breadcrumb-item"><a href="{{ path('adminka') }}">Paseka</a></li> #}
-        <li class="breadcrumb-item"><a href="{{ path('adminka.rasas') }}">Раса</a></li>
-        {# <li class="breadcrumb-item"><a href="{{ path('adminka.materis.rasas.show', {'id': rasas.id}) }}">{{ rasas.name }}</a></li> #}
-        <li class="breadcrumb-item active">Настройки-!!!!!</li>
-    </ol>
-{% endblock %}
+  {% block kroxii %}
+      <a href="{{ path('home') }}">Главная</a>
+      <a href="{{ path('drevos.rass.indbr') }}">Раса</a>
+      <span class="aktiv ">Линии</span>
+  {% endblock %}
 
 {% block body %}
 
+    {{ include('app/adminka/rasas/_tabs.html.twig') }}
 
 
       {# {% include 'app/rabota/materis/materi/_tabs.html.twig' %}
