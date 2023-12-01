@@ -6,6 +6,8 @@ namespace App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr;
 
 use App\Model\Drevos\Entity\Rass\LiniBr\LiniBr;
 //use App\Model\Drevos\Entity\Rass\LiniBr\Id;
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\NomerBr;
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\Id as NomerBrId;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -43,15 +45,15 @@ class VetkaBr
      */
     private $god;
 	
-//	 /**
-//     * @var ArrayCollection|NomWet[]
-//     * @ORM\OneToMany(
-//     *     targetEntity="App\Model\Drevos\Entity\Rass\Rods\LiniBrs\Wetkas\NomWets\NomWet",
-//     *     mappedBy="wetka", orphanRemoval=true, cascade={"all"}
-//     * )
-//     * @ORM\OrderBy({"nomW" = "ASC"})
-//     */
-//    private $nomwets;
+	 /**
+     * @var ArrayCollection|NomerBr[]
+     * @ORM\OneToMany(
+     *     targetEntity="App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\NomerBr",
+     *     mappedBy="vetka", orphanRemoval=true, cascade={"all"}
+     * )
+     * @ORM\OrderBy({"nomBr" = "ASC"})
+     */
+    private $nomers;
 	
 	 /**
      * @var int
@@ -73,7 +75,7 @@ class VetkaBr
 		$this->sortVet = $sortVet;
 
 
-//		$this->nomwets = new ArrayCollection();
+		$this->nomers = new ArrayCollection();
     }
 
 	public function edit(string $nomer, string $god): void
@@ -83,48 +85,47 @@ class VetkaBr
     }
 
 
-//    public function addNomWet(NomWetId $id,
-//                              string $nomW,
-//                                string $godW,
-//                                string $titW,
-//                                int $sortNomWet
-//                                ): void
-//    {
-//
-//        foreach ($this->nomwets as $nomwet) {
-//            if ($nomwet->isNomWEqual($nomW)) {
-//                throw new \DomainException('номер уже существует.');
-//            }
-//
-//        }
-//        $this->nomwets->add(new NomWet($this, $id, $nomW, $godW, $titW, $sortNomWet));
-//    }
-//
-//    public function editNomWet(NomWetId $id,
-//                               string $nomW,
-//                               string $godW ,
-//                               string $titW
-//                            ): void
-//    {
-//        foreach ($this->nomwets as $current) {
-//            if ($current->getId()->isEqual($id)) {
-//                $current->edit($nomW, $godW, $titW);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('nomer is not found.');
-//    }
-//
-//    public function removeNomWet(NomWetId $id): void
-//    {
-//        foreach ($this->nomwets as $nomwet) {
-//            if ($nomwet->getId()->isEqual($id)) {
-//                $this->nomwets->removeElement($nomwet);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('NomWet is not found.');
-//    }
+    public function addNomerBr(NomerBrId $id,
+                               string $nomBr,
+                               string $god,
+                               int $sortNom,
+                               string $title
+                                ): void
+    {
+
+        foreach ($this->nomers as $nomer) {
+            if ($nomer->isNomWEqual($nomBr)) {
+                throw new \DomainException('номер уже существует.');
+            }
+
+        }
+        $this->nomers->add(new NomerBr($this, $id, $nomBr, $god, $sortNom, $title));
+    }
+
+    public function editNomerBr(NomerBrId $id,
+                                string $nomBr,
+                                string $god
+                            ): void
+    {
+        foreach ($this->nomers as $current) {
+            if ($current->getId()->isEqual($id)) {
+                $current->edit($nomBr, $god);
+                return;
+            }
+        }
+        throw new \DomainException('nomer is not found.');
+    }
+
+    public function removeNomerBr(NomerBrId $id): void
+    {
+        foreach ($this->nomers as $nomer) {
+            if ($nomer->getId()->isEqual($id)) {
+                $this->nomers->removeElement($nomer);
+                return;
+            }
+        }
+        throw new \DomainException('NomerBr is not found.');
+    }
 	
 // равно Ли Имя
     public function isNomerEqual(string $nomer): bool
@@ -171,21 +172,21 @@ class VetkaBr
     }
 
 
-//
-//    public function getNomWets()
-//    {
-//        return $this->nomwets->toArray();
-//    }
-//
-//    public function getNomWet(NomWetId $id): NomWet
-//    {
-//        foreach ($this->nomwets as $nomwet) {
-//            if ($nomwet->getId()->isEqual($id)) {
-//                return $nomwet;
-//            }
-//        }
-//        throw new \DomainException('NomWet is not found.');
-//    }
+    public function getNomers()
+    {
+        return $this->nomers->toArray();;
+    }
+
+
+    public function getNomerBr(NomerBrId $id): NomerBr
+    {
+        foreach ($this->nomers as $nomer) {
+            if ($nomer->getId()->isEqual($id)) {
+                return $nomer;
+            }
+        }
+        throw new \DomainException('NomWet is not found.');
+    }
 
 
 }

@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr;
 
 use App\Model\Drevos\Entity\Rass\LiniBr\LiniBr;
-//use App\Model\Drevos\Entity\Rass\LiniBr\Id;
+
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\VetkaBr;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -18,11 +19,11 @@ class NomerBr
 {
 
     /**
-     * @var LiniBr
-     * @ORM\ManyToOne(targetEntity="App\Model\Drevos\Entity\Rass\LiniBr\LiniBr", inversedBy="vetkas")
-     * @ORM\JoinColumn(name="linia_id", referencedColumnName="id", nullable=false)
+     * @var VetkaBr
+     * @ORM\ManyToOne(targetEntity="App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\VetkaBr", inversedBy="nomers")
+     * @ORM\JoinColumn(name="vetka_id", referencedColumnName="id", nullable=false)
      */
-    private $linia;
+    private $vetka;
 	
     /**
      * @var Id
@@ -35,101 +36,112 @@ class NomerBr
      * @var string
      * @ORM\Column(type="string")
      */
-    private $nomer;
+    private $nomBr;
 
     /**
      * @var string
      * @ORM\Column(type="string")
      */
     private $god;
-	
-//	 /**
-//     * @var ArrayCollection|NomWet[]
-//     * @ORM\OneToMany(
-//     *     targetEntity="App\Model\Drevos\Entity\Rass\Rods\LiniBrs\Wetkas\NomWets\NomWet",
-//     *     mappedBy="wetka", orphanRemoval=true, cascade={"all"}
-//     * )
-//     * @ORM\OrderBy({"nomW" = "ASC"})
-//     */
-//    private $nomwets;
-	
+
 	 /**
      * @var int
      * @ORM\Column(type="integer")
      */
-    private $sortVet;
+    private $sortNom;
 
-    public function __construct(LiniBr $linia, Id $id,
-                                string $nomer,
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private $title;
+
+    /**
+     * @var Status
+     * @ORM\Column(type="dre_ras_linibr_vet_nom_status", length=16)
+     */
+    private $status;
+
+    public function __construct(VetkaBr $vetka, Id $id,
+                                string $nomBr,
                                 string $god,
-								int $sortVet
+								int $sortNom,
+                                string $title
 
                                 )
     {
-        $this->linia = $linia;
+        $this->vetka = $vetka;
         $this->id = $id;
-        $this->nomer = $nomer;
+        $this->nomBr = $nomBr;
         $this->god = $god;
-		$this->sortVet = $sortVet;
+		$this->sortNom = $sortNom;
+        $this->title = $title;
 
+        $this->status = Status::ojidaet();
 
-//		$this->nomwets = new ArrayCollection();
     }
 
-	public function edit(string $nomer, string $god): void
+	public function edit(string $nomBr, string $god): void
     {
-        $this->nomer = $nomer;
+        $this->nomBr = $nomBr;
         $this->god = $god;
     }
 
+    //------------------------------------------------------
+    public function archive(): void
+    {
+        if ($this->isArchived()) {
+            throw new \DomainException('Номер уже заархивирован.');
+        }
+        $this->status = Status::archived();
+    }
 
-//    public function addNomWet(NomWetId $id,
-//                              string $nomW,
-//                                string $godW,
-//                                string $titW,
-//                                int $sortNomWet
-//                                ): void
-//    {
-//
-//        foreach ($this->nomwets as $nomwet) {
-//            if ($nomwet->isNomWEqual($nomW)) {
-//                throw new \DomainException('номер уже существует.');
-//            }
-//
-//        }
-//        $this->nomwets->add(new NomWet($this, $id, $nomW, $godW, $titW, $sortNomWet));
-//    }
-//
-//    public function editNomWet(NomWetId $id,
-//                               string $nomW,
-//                               string $godW ,
-//                               string $titW
-//                            ): void
-//    {
-//        foreach ($this->nomwets as $current) {
-//            if ($current->getId()->isEqual($id)) {
-//                $current->edit($nomW, $godW, $titW);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('nomer is not found.');
-//    }
-//
-//    public function removeNomWet(NomWetId $id): void
-//    {
-//        foreach ($this->nomwets as $nomwet) {
-//            if ($nomwet->getId()->isEqual($id)) {
-//                $this->nomwets->removeElement($nomwet);
-//                return;
-//            }
-//        }
-//        throw new \DomainException('NomWet is not found.');
-//    }
+    public function reinstate(): void
+    {
+        if ($this->isActive()) {
+            throw new \DomainException('Номер уже активен.?');
+        }
+        $this->status = Status::active();
+    }
+
+    public function ojidaetActive(): void
+    {
+        if ($this->isActive()) {
+            throw new \DomainException('Номер уже активен.?');
+        }
+        $this->status = Status::active();
+
+    }
+
+    public function activeOjidaet(): void
+    {
+        if ($this->isOjidaet()) {
+            throw new \DomainException('Номер уже ожидает');
+        }
+        $this->status = Status::ojidaet();
+
+    }
+
+    public function isArchived(): bool
+    {
+        return $this->status->isArchived();
+    }
+
+    public function isActive(): bool
+    {
+        return $this->status->isActive();
+    }
+
+    public function isOjidaet(): bool
+    {
+        return $this->status->isOjidaet();
+    }
+
 	
 // равно Ли Имя
-    public function isNomerEqual(string $nomer): bool
+    public function isNomerEqual(string $nomBr): bool
     {
-        return $this->nomer === $nomer;
+        return $this->nomBr === $nomBr;
     }
 
 
@@ -139,20 +151,21 @@ class NomerBr
     }
 
     /**
-     * @return LiniBr
+     * @return VetkaBr
      */
-    public function getLinia(): LiniBr
+    public function getVetka(): VetkaBr
     {
-        return $this->linia;
+        return $this->vetka;
     }
 
-    /**
-     * @return string
-     */
-    public function getNomer(): string
+
+    public function getNomBr(): string
     {
-        return $this->nomer;
+        return $this->nomBr;
     }
+
+
+
 
     /**
      * @return string
@@ -165,9 +178,9 @@ class NomerBr
     /**
      * @return int
      */
-    public function getSortVet(): int
+    public function getSortNom(): int
     {
-        return $this->sortVet;
+        return $this->sortNom;
     }
 
 
