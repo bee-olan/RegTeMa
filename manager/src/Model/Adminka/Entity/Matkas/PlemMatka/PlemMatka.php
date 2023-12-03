@@ -11,12 +11,13 @@ use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id as DepartmentId;
 
 
 use App\Model\Adminka\Entity\Matkas\Role\Role;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
+//use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Nomer as OtecNomer;
 use App\Model\Adminka\Entity\Uchasties\Personas\Persona;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Id as UchastieId;
 
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\NomerBr;
 use App\Model\Mesto\Entity\InfaMesto\MestoNomer;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -42,12 +43,12 @@ class PlemMatka
 
     private $korotkoName;
 
-    /**
-     * @var Nomer
-     * @ORM\ManyToOne(targetEntity="App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer")
-     * @ORM\JoinColumn(name="nomer_id", referencedColumnName="id", nullable=false)
-     */
-    private $nomer;
+//    /**
+//     * @var NomerBr
+//     * @ORM\ManyToOne(targetEntity="App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\NomerBr")
+//     * @ORM\JoinColumn(name="nomer_id", referencedColumnName="id", nullable=false)
+//     */
+//    private $nomer;
 
     /**
      * @var MestoNomer
@@ -124,7 +125,7 @@ class PlemMatka
                                  string $title,
                                  int $godaVixod,
                                  MestoNomer  $mesto,
-                                 Nomer $nomer,
+//                                 NomerBr $nomer,
                                  Persona  $persona,
                                  Kategoria $kategoria,
                                  OtecNomer $otecNomer
@@ -139,7 +140,7 @@ class PlemMatka
         $this->otecNomer = $otecNomer;
         $this->mesto = $mesto;
         $this->persona = $persona;
-        $this->nomer = $nomer;
+//        $this->nomer = $nomer;
         $this->status = Status::active();
 
         $this->departments = new ArrayCollection();
@@ -385,10 +386,10 @@ class PlemMatka
     }
 
 
-    public function getNomer(): Nomer
-    {
-        return $this->nomer;
-    }
+//    public function getNomer(): NomerBr
+//    {
+//        return $this->nomer;
+//    }
 
 
 

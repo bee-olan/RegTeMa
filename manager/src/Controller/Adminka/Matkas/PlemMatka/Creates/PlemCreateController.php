@@ -11,9 +11,10 @@ use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 
 
 use App\Model\Adminka\UseCase\Matkas\PlemMatka\Create;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
+//use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
 
 
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\NomerBr;
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
 
 use App\ReadModel\Adminka\Matkas\PlemMatka\PlemMatkaFetcher;
@@ -50,7 +51,7 @@ class PlemCreateController extends AbstractController
     /**
      * @Route("/plemmatka/{id}", name=".plemmatka" , requirements={"id"=Guid::PATTERN})
      * @param Request $request
-     *  @param Nomer $nomer
+     *  @param NomerBr $nomer
      * @param PersonaFetcher $personas
      * @param MestoNomerFetcher $mestoNomers
 //     * @param string $id
@@ -58,7 +59,7 @@ class PlemCreateController extends AbstractController
      */
     public function plemmatka( Request $request,
                               PersonaFetcher $personas, MestoNomerFetcher $mestos,
-                              Nomer $nomer): Response
+                               NomerBr $nomer): Response
     {
 
         $persona = $personas->find($this->getUser()->getId());
@@ -72,14 +73,14 @@ class PlemCreateController extends AbstractController
     /**
      * @Route("/create/{id}", name=".create" , requirements={"id"=Guid::PATTERN})
      * @param Request $request
-     * @param Nomer $nomer
+     * @param NomerBr $nomer
      * @param PersonaFetcher $personas
      * @param MestoNomerFetcher $mestoNomers
      * @param PlemMatkaFetcher $plemmatkas
      * @param Create\Handler $handler
      * @return Response
      */
-    public function create( Request $request, Nomer $nomer,
+    public function create( Request $request, NomerBr $nomer,
                                 PlemMatkaFetcher $plemmatkas,
                                 PersonaFetcher $personas,
                                 MestoNomerFetcher $mestoNomers,
@@ -101,7 +102,7 @@ class PlemCreateController extends AbstractController
         $command = new Create\Command($this->getUser()->getId(), $sort, $nomer->getId()->getValue());
 
 
-        $form = $this->createForm(Create\Form::class, $command, ['rasa_id' => $nomer->getLinia()->getRasa()->getId()->getValue()]);
+        $form = $this->createForm(Create\Form::class, $command, ['rasa_id' => $nomer->getVetka()->getLinia()->getRasa()->getId()->getValue()]);
         $form->handleRequest($request);
 
 

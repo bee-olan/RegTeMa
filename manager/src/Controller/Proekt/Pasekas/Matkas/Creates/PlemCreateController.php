@@ -11,12 +11,13 @@ use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Id;
 use App\Model\Adminka\Entity\Matkas\Kategoria\Permission;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatka;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\NomerRepository;
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\NomerBr;
 use App\ReadModel\Adminka\Matkas\KategoriaFetcher;
 use App\ReadModel\Adminka\OtecForRas\Linias\Nomers\NomerFetcher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use App\Model\Adminka\UseCase\Matkas\PlemMatka\Create;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
+//use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
 use App\ReadModel\Adminka\Matkas\PlemMatka\PlemMatkaFetcher;
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
@@ -70,7 +71,7 @@ class PlemCreateController extends AbstractController
     * @Route("/plemmatka/{id}", name=".plemmatka" , requirements={"id"=Guid::PATTERN})
     * @param Request $request
     * @param UchastieFetcher $uchasties 
-    *  @param Nomer $nomer
+    *  @param NomerBr $nomer
     * @param PersonaFetcher $personas
     * @param MestoNomerFetcher $mestoNomers
     * @return Response
@@ -79,7 +80,7 @@ class PlemCreateController extends AbstractController
                             UchastieFetcher $uchasties,    
                             PersonaFetcher $personas, 
                             MestoNomerFetcher $mestos,
-                            Nomer $nomer): Response
+                               NomerBr $nomer): Response
     {
 
         if (!$uchasties->find($this->getUser()->getId())) {           
@@ -96,92 +97,92 @@ class PlemCreateController extends AbstractController
             compact('nomer', 'persona', 'mesto') );
     }
 
-    /**
-     * @Route("/create/{id}", name=".create" , requirements={"id"=Guid::PATTERN})
-     * @param Request $request
-     * @param Nomer $nomer
-     * @param PlemMatkaFetcher $plemmatkas
-     * @param KategoriaFetcher $kategoria
-     * @param Create\Handler $handler
-     * @return Response
-     */
-    public function create( Request $request, Nomer $nomer,
-                            PlemMatkaFetcher $plemmatkas,
-                            KategoriaFetcher $kategoria,
-                            Create\Handler $handler): Response
-    {
+//    /**
+//     * @Route("/create/{id}", name=".create" , requirements={"id"=Guid::PATTERN})
+//     * @param Request $request
+//     * @param NomerBr $nomer
+//     * @param PlemMatkaFetcher $plemmatkas
+//     * @param KategoriaFetcher $kategoria
+//     * @param Create\Handler $handler
+//     * @return Response
+//     */
+//    public function create( Request $request, NomerBr $nomer,
+//                            PlemMatkaFetcher $plemmatkas,
+//                            KategoriaFetcher $kategoria,
+//                            Create\Handler $handler): Response
+//    {
+//
+//        //        $this->denyAccessUnlessGranted('ROLE_MANAGE_PLEMMATKAS');
+//
+//        $kategorias = $kategoria->all();
+//        $permissions = Permission::names();
+//
+//        $sort = $plemmatkas->getMaxSort() + 1;
+//        $command = new Create\Command($this->getUser()->getId(), $sort, $nomer->getId()->getValue());
+//
+//
+//        $form = $this->createForm(Create\Form::class, $command, ['rasa_id' => $nomer->getLinia()->getRasa()->getId()->getValue()]);
+//        $form->handleRequest($request);
+//
+//        $kakToTak = $nomer->getLinia()->getNameStar()."-".$nomer->getName();
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            try {
+//                $handler->handle($command);
+//                return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.creates.sdelano', [ 'name' => $command->name]);
+//            } catch (\DomainException $e) {
+//                $this->errors->handle($e);
+//                $this->addFlash('error', $e->getMessage());
+//            }
+//        }
+//
+//        return $this->render('app/proekts/pasekas/matkas/plemmatkas/creates/create.html.twig', [
+//            'form' => $form->createView(),
+//            'command' => $command,
+//            'kategorias' => $kategorias,
+//            'permissions' => $permissions,
+//            'kakToTak' => $kakToTak
+//        ]);
+//    }
 
-        //        $this->denyAccessUnlessGranted('ROLE_MANAGE_PLEMMATKAS');
-
-        $kategorias = $kategoria->all();
-        $permissions = Permission::names();
-
-        $sort = $plemmatkas->getMaxSort() + 1;
-        $command = new Create\Command($this->getUser()->getId(), $sort, $nomer->getId()->getValue());
-
-
-        $form = $this->createForm(Create\Form::class, $command, ['rasa_id' => $nomer->getLinia()->getRasa()->getId()->getValue()]);
-        $form->handleRequest($request);
-
-        $kakToTak = $nomer->getLinia()->getNameStar()."-".$nomer->getName();
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            try {
-                $handler->handle($command);
-                return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.creates.sdelano', [ 'name' => $command->name]);
-            } catch (\DomainException $e) {
-                $this->errors->handle($e);
-                $this->addFlash('error', $e->getMessage());
-            }
-        }
-
-        return $this->render('app/proekts/pasekas/matkas/plemmatkas/creates/create.html.twig', [
-            'form' => $form->createView(),
-            'command' => $command,
-            'kategorias' => $kategorias,
-            'permissions' => $permissions,
-            'kakToTak' => $kakToTak
-        ]);
-    }
-
-    /**
-    * @Route("/sdelano/{name}", name=".sdelano" )
-    * @ParamConverter("name", options={"id" = "name"})
-    * @param Request $request
-    * @param NomerRepository  $nomerOtecs
-    * @param PlemMatka $plemmatka
-    * @param MestoNomerFetcher $mestoNomers
-     * @param PlemMatkaFetcher $plemmatkas
-     * @return Response
-     */
-    public function sdelano( PlemMatka $plemmatka,
-                             NomerRepository  $nomerOtecs,
-                             Request $request,
-                            PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
-//                            NomerRepository $nomers,
-                            PlemMatkaFetcher $plemmatkas): Response
-    {
-
-    //    dd($plemmatka->getNomer()->getLinia()->getRasa()->getName());
-        $nomer = $plemmatka->getNomer()->getTitle();
-
-        $nomerOtec = $nomerOtecs->get(new Id($plemmatka->getOtecNomer()->getId()->getValue()));
-//dd($nomerOtec->getLinia()->getName());
-//        dd($nomerOtec->getName());
-        // $mesto = $plemmatka->getMesto()->getNomer();
-// dd($plemmatka->getOtecNomer()->getLinia()->getNomers(new Id($plemmatka->getOtecNomer()->getId()->getValue())));
-//        $plemId = $plemmatkas->findIdByPlemMatka($plemmatka);
-
-
-        return $this->render('app/proekts/pasekas/matkas/plemmatkas/creates/sdelano.html.twig',
-          [
-              'plemmatka' => $plemmatka,
-                'nomerOtec' => $nomerOtec,
-                // 'mesto' => $mesto,
-                'nomer' => $nomer,
-          ])
-           ;
-    }
+//    /**
+//    * @Route("/sdelano/{name}", name=".sdelano" )
+//    * @ParamConverter("name", options={"id" = "name"})
+//    * @param Request $request
+//    * @param NomerRepository  $nomerOtecs
+//    * @param PlemMatka $plemmatka
+//    * @param MestoNomerFetcher $mestoNomers
+//     * @param PlemMatkaFetcher $plemmatkas
+//     * @return Response
+//     */
+//    public function sdelano( PlemMatka $plemmatka,
+//                             NomerRepository  $nomerOtecs,
+//                             Request $request,
+//                            PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
+////                            NomerRepository $nomers,
+//                            PlemMatkaFetcher $plemmatkas): Response
+//    {
+//
+//    //    dd($plemmatka->getNomer()->getLinia()->getRasa()->getName());
+//        $nomer = $plemmatka->getNomer()->getTitle();
+//
+//        $nomerOtec = $nomerOtecs->get(new Id($plemmatka->getOtecNomer()->getId()->getValue()));
+////dd($nomerOtec->getLinia()->getName());
+////        dd($nomerOtec->getName());
+//        // $mesto = $plemmatka->getMesto()->getNomer();
+//// dd($plemmatka->getOtecNomer()->getLinia()->getNomers(new Id($plemmatka->getOtecNomer()->getId()->getValue())));
+////        $plemId = $plemmatkas->findIdByPlemMatka($plemmatka);
+//
+//
+//        return $this->render('app/proekts/pasekas/matkas/plemmatkas/creates/sdelano.html.twig',
+//          [
+//              'plemmatka' => $plemmatka,
+//                'nomerOtec' => $nomerOtec,
+//                // 'mesto' => $mesto,
+//                'nomer' => $nomer,
+//          ])
+//           ;
+//    }
 //
 
 
