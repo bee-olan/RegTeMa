@@ -4,64 +4,57 @@ declare(strict_types=1);
 
 namespace App\Model\Drevos\UseCase\Rass\LiniBrs\VetkaBrs\NomerBrs\Create;
 
-use App\Model\Adminka\Entity\Rasas\Linias\Linia;
+use App\Model\Adminka\Entity\Sezons\Godas\GodaRepository;
+use App\Model\Adminka\Entity\Sezons\Godas\Id as GodaId;
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\VetBrRepository;
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\Id as VetBrId;
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\Id;
+
 use App\Model\Flusher;
 
-use App\Model\Adminka\Entity\Rasas\Linias\LiniaRepository;
-use App\Model\Adminka\Entity\Rasas\Linias\Id as LiniaId;
-
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id;
 
 class Handler
 {
-    private $linias;
+    private $godas;
+    private $vetkas;
     private $flusher;
 
-    public function __construct( LiniaRepository $linias, Flusher $flusher)
+    public function __construct( VetBrRepository $vetkas, GodaRepository $godas, Flusher $flusher)
     {
-        $this->linia = $linias;
-        $this->linias = $linias;
+        $this->godas = $godas;
+        $this->vetkas = $vetkas;
         $this->flusher = $flusher;
     }
     public function handle(Command $command): void
     {
 
+        $vetka = $this->vetkas->get(new VetBrId($command->vetka));
 
-//     +name: "4-2015"
-//    +title: "Як"
-//    +sortNomer: 1
-
-        $linia = $this->linias->get(new LiniaId($command->linia));
-
+        $goda = $this->godas->get(new GodaId($command->god));
+        $god = (string)$goda->getGod();
 //
-//if ($linia->getVetka()){
 
-    $names = explode("-",$command->name );
-    $command->vetkaNomer = $command->name;
-    $command->vetkaNomer = $names[0];
-    $command->nameStar  = $linia->getNameStar()."-".$command->vetkaNomer;
+//if ($vetka->getVetka()){
+
+//    $names = explode("-",$command->name );
+//    $command->vetkaNomer = $command->name;
+//    $command->vetkaNomer = $names[0];
+//    $command->nameStar  = $vetka->getNameStar()."-".$command->vetkaNomer;
 //}else{
-//    $command->nameStar  = $linia->getNameStar();
+//    $command->nameStar  = $vetka->getNameStar();
 //
 //    $command->vetkaNomer = "";
 //}
 //dd($command->nameStar);
 
-        $command->title = $linia->getTitle();
+        $command->title = $command->nomBr."-".$god;
 
-
-
-
-
-
-
-        $linia->addNomer(
+        $vetka->addNomerBr(
             Id::next(),
-            $command->name ,
-            $command->nameStar,
-            $command->title,
-            $command->sortNomer,
-            $command->vetkaNomer
+            $command->nomBr ,
+            $god,
+            $command->sortNom,
+            $command->title
         );
 //        dd($command);
         $this->flusher->flush();

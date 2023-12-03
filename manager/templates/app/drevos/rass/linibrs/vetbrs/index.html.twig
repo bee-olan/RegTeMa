@@ -36,7 +36,7 @@
                         <ul class="rasa__data">
 
                             <li class="rasa__name rasa__name--wid15   ">Номер ветки</li>
-                            <li class="rasa__name  td_cent  "> Кол-во </li>
+                            <li class="rasa__name  td_cent  "> Кол-во маток</li>
                             <li class=" rasa__name--wid15 td_cent">
                                 Смотреть\добавить
                             </li>
@@ -68,11 +68,11 @@
                                      {{ vetka.nomer }}-{{ vetka.god }}
                                 </li>
     {#                        {% endif %}#}
-                            <li class="rasa__name td_cent" >0</li>
-                            <li class="rasa__name--wid15 td_cent"> номер матки
-    {#                            <a href="{{ path('adminka.rasas.vetkas.nomers', {'vetka_id': vetka.id}) }}"#}
-    {#                               class="btnn btnn--mb0 btnn--pt btnn--rasa">Ветки<strong class="strongo strongo--kras"> =></strong> Номера#}
-    {#                            </a>#}
+                            <li class="rasa__name td_cent" >{{ vetka.kol_nombr }}</li>
+                            <li class="rasa__name--wid15 td_cent">
+                                <a href="{{ path('drevos.rass.linibrs.vetbrs.nombrs', {'vetka_id': vetka.id}) }}"
+                                   class="btnn btnn--mb0 btnn--pt btnn--rasa">номер матки
+                                </a>
                             </li>
 
                             <li class=" rasa__name--wid5 td_cent">

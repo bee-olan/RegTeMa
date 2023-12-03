@@ -20,11 +20,16 @@ class Command
      * @Assert\NotBlank()
      */
     public $nomBr;
-	
-	 /**
+
+    /**
      * @Assert\NotBlank()
      */
-    public $title;
+    public $god;
+	
+//	 /**
+//     * @Assert\NotBlank()
+//     */
+//    public $title;
 
     /**
      * @Assert\NotBlank()

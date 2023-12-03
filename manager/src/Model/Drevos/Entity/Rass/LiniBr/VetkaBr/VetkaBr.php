@@ -94,7 +94,7 @@ class VetkaBr
     {
 
         foreach ($this->nomers as $nomer) {
-            if ($nomer->isNomWEqual($nomBr)) {
+            if ($nomer->isNomerEqual($nomBr)) {
                 throw new \DomainException('номер уже существует.');
             }
 

@@ -4,30 +4,38 @@ declare(strict_types=1);
 
 namespace App\Model\Drevos\UseCase\Rass\LiniBrs\VetkaBrs\NomerBrs\Edit;
 
+use App\Model\Adminka\Entity\Sezons\Godas\GodaRepository;
+use App\Model\Adminka\Entity\Sezons\Godas\Id as GodaId;
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\VetBrRepository;
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\Id;
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\Id as NomBrId;
+
 use App\Model\Flusher;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id as NomerId;
-use App\Model\Adminka\Entity\Rasas\Linias\Id;
-use App\Model\Adminka\Entity\Rasas\Linias\LiniaRepository;
 
 class Handler
 {
-    private $linias;
+    private $godas;
+    private $vetkas;
     private $flusher;
 
-    public function __construct(LiniaRepository $linias, Flusher $flusher)
+    public function __construct(VetBrRepository $vetkas, GodaRepository $godas, Flusher $flusher)
     {
-        $this->linias = $linias;
+        $this->godas = $godas;
+        $this->vetkas = $vetkas;
         $this->flusher = $flusher;
     }
 
     public function handle(Command $command): void
     {
-        $linia = $this->linias->get(new Id($command->linia));
+        $vetka = $this->vetkas->get(new Id($command->vetka));
 
-        $linia->editNomer(new NomerId($command->id),
-										$command->name, 
-										$command->nameStar, 
-										$command->title);
+        $goda = $this->godas->get(new GodaId($command->god));
+        $god = (string)$goda->getGod();
+
+        $vetka->editNomerBr(new NomBrId($command->id),
+                $command->nomBr ,
+                $god
+            );
 
         $this->flusher->flush();
     }

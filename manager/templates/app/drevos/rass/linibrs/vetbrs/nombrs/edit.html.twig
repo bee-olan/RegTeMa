@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ linia.name }}{% endblock %}
+{% block title %}{{ nomer.nomBr }}{% endblock %}
 
   {% block kroxii %}
 	  <a href="{{ path('home') }}">Главная</a>
@@ -20,15 +20,23 @@
 
 			<div class="vetka ">
 				<div class="rasa__header  ">
-					<h4 class="rasa__title"><strong class="strongo--sin">Ветка </strong> </h4>
+					<h4 class="rasa__title"><strong class="strongo--sin">Ветка :</strong> {{ vetka.nomer }}-{{ vetka.god }} </h4>
 
-					{{ form_start(form) }}
-					{{ form_widget(form) }}
-					<button type="submit" class="btn-my btn-my--sm">Добавить измения в БД</button>
-					{{ form_end(form) }}
+					<div class="nomer ">
+						<div class="rasa__header  ">
+							<h4 class="rasa__title"><strong class="strongo--sin">Номер матки </strong> {{ nomer.nomBr }}-{{ nomer.god }}</h4>
+
+							{{ form_start(form) }}
+							{{ form_widget(form) }}
+							<button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить измения в БД</button>
+							<a href="{{ path('drevos.rass.linibrs.vetbrs.nombrs',{'vetka_id': vetka.id}) }}"
+							   class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Редактировать"</a>
+							{{ form_end(form) }}
+						</div>
+					</div>
 				</div>
 			</div>
-	</div>
+		</div>
 </article>
 
 {% endblock %}

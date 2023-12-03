@@ -96,6 +96,18 @@ class NomerBr
         $this->status = Status::archived();
     }
 
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+
+    public function getStatus(): Status
+    {
+        return $this->status;
+    }
+
     public function reinstate(): void
     {
         if ($this->isActive()) {

@@ -85,8 +85,8 @@ class VetkaBrFetcher
                 'l.linia_id',
                 'l.nomer',
                 'l.god',
-                'l.sort_vet'
-//                '(SELECT COUNT(*) FROM adminka_vetka_vetka_nomers n WHERE n.vetka_id = l.id) AS nomers'
+                'l.sort_vet',
+                '(SELECT COUNT(*) FROM dre_ras_linibr_vet_noms n WHERE n.vetka_id = l.id) AS kol_nombr'
                 // '(
                 //     SELECT COUNT(ms.member_id)
                 //     FROM work_projects_project_memberships ms

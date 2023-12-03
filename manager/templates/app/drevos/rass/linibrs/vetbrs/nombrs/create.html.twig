@@ -21,13 +21,20 @@
 
         <div class="vetka ">
             <div class="rasa__header  ">
-                <h4 class="rasa__title"><strong class="strongo--sin">Ветка </strong> </h4>
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить в БД</button>
-                <a href="{{ path('drevos.rass.linibrs.vetbrs',{'id': linia.id}) }}"
-                    class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Добавить"</a>
-                {{ form_end(form) }}
+                <h4 class="rasa__title"><strong class="strongo--sin">Ветка :</strong> {{ vetka.nomer }}-{{ vetka.god }}</h4>
+
+                <div class="nomer ">
+                    <div class="rasa__header  ">
+                        <h4 class="rasa__title"><strong class="strongo--sin">Номер матки </strong> </h4>
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <button type="submit" class="btnn btnn--mb0 btnn--pt">Добавить в БД</button>
+                        <a href="{{ path('drevos.rass.linibrs.vetbrs.nombrs',{'vetka_id': vetka.id}) }}"
+                            class="btnn btnn--mb0 btnn--pt"> Выйти из режима "Добавить"</a>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+
             </div>
         </div>
 	</div>

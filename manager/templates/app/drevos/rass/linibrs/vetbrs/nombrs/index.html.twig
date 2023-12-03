@@ -6,14 +6,14 @@
   {% block kroxii %}
       <a href="{{ path('home') }}">Главная</a>
       <a href="{{ path('drevos.rass.indbr') }}">Раса</a>
-      <span class="aktiv ">Линии</span>
+      <span class="aktiv ">Номер матки</span>
   {% endblock %}
 
 {% block body %}
 
     {{ include('app/adminka/rasas/_tabs.html.twig') }}
 
-    <article class="rasa">
+    <div class="rasa">
         <h4 class="rasa__title  "><strong class="strongo--sin"> Раса </strong> :   {{ rasa.title }}</h4>
         <div class="linia ">
             <h4 class="rasa__title  "><strong class="strongo--sin"> Линия </strong> :
@@ -22,23 +22,26 @@
 
             </h4>
 
-            {% if vetkas is  empty %}
-
-                <h1 class="rasa__title"> Пока для этой  линии - <strong class="strongo--kras"> нет </strong>
-                      зарегистрированных <strong class="strongo--kras"> веток </strong>  </h1>
-
-            {% else %}
-
             <div class="vetka ">
                 <div class="rasa__header  ">
-                    <h5 class="rasa__title  "><strong class="strongo--sin"> Ветки </strong> зарегистрированные в БД </h5>
-{#                    <div  class="shapka-nomer ">#}
+                    <h5 class="rasa__title  "><strong class="strongo--sin"> Ветка :</strong>  {{ vetka.nomer }}-{{ vetka.god }}</h5>
+                    {% if nomers is  empty %}
+
+                    <h1 class="rasa__title"> Пока для этой  ветке - <strong class="strongo--kras"> нет </strong>
+                        зарегистрированных <strong class="strongo--kras"> маток </strong>  </h1>
+
+                    {% else %}
+
+                    <div class="nomer ">
+                        <div class="rasa__header  ">
+                            <h4 class=" rasa__title"><strong class="strongo--sin">Номера маток </strong> </h4>
+
                         <ul class="rasa__data">
 
-                            <li class="rasa__name rasa__name--wid15   ">Номер ветки</li>
-                            <li class="rasa__name  td_cent  "> Кол-во </li>
+                            <li class="rasa__name rasa__name--wid15   ">Матка</li>
+                            <li class="rasa__name  td_cent  "> Статус </li>
                             <li class=" rasa__name--wid15 td_cent">
-                                Смотреть\добавить
+                                Действие
                             </li>
                             <li >
                                 ред-вать
@@ -48,39 +51,37 @@
                             </li>
 
                         </ul>
-{#                    </div>#}
-                    {#----------------------------#}
 
                     {% set token = csrf_token('delete') %}
-                    {% for vetka in vetkas %}
+                    {% for nomer in nomers %}
                         <ul class="rasa__data">
-    {#                        {% if vetka.vetka_id %}#}
-    {#                            {% set foos = vetka.name_star|split('-') %}#}
+    {#                        {% if nomer.nomer_id %}#}
+    {#                            {% set foos = nomer.name_star|split('-') %}#}
     {#                            <li class="rasa__name rasa__name--wid35">#}
     {#                                {% for i in 1..foos|length-1 %}#}
     {#                                    <img  style="margin-bottom: 2px" src="{{ asset('assets/proekt/images/strelka_w.png') }}" alt="редактировать">#}
     {#                                {% endfor %}#}
-    {#                                {{ vetka.name_star }} ( {{ vetka.nomers }} )#}
+    {#                                {{ nomer.name_star }} ( {{ nomer.nomers }} )#}
     {#                            </li>#}
 
     {#                        {% else %}#}
                                 <li class="rasa__name rasa__name--wid15 rasa__name--col">
-                                     {{ vetka.nomer }}-{{ vetka.god }}
+                                     {{ nomer.nom_br }}-{{ nomer.god }}
                                 </li>
     {#                        {% endif %}#}
-                            <li class="rasa__name td_cent" >0</li>
+                            <li class="rasa__name td_cent" > {{ nomer_status(nomer.status) }}</li>
                             <li class="rasa__name--wid15 td_cent"> номер матки
-    {#                            <a href="{{ path('adminka.rasas.vetkas.nomers', {'vetka_id': vetka.id}) }}"#}
+    {#                            <a href="{{ path('drevos.rass.linibrs.vetbrs', {'nomer_id': nomer.id}) }}"#}
     {#                               class="btnn btnn--mb0 btnn--pt btnn--rasa">Ветки<strong class="strongo strongo--kras"> =></strong> Номера#}
     {#                            </a>#}
                             </li>
 
                             <li class=" rasa__name--wid5 td_cent">
-                                <a href="{{ path('drevos.rass.linibrs.vetbrs.edit', {'id': linia.id, 'vetka_id': vetka.id}) }}"
+                                <a href="{{ path('drevos.rass.linibrs.vetbrs.nombrs.edit', {'vetka_id': vetka.id, 'id': nomer.id}) }}"
                                    class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-pencil"></span></a>
                             </li>
                             <li class=" rasa__name--wid5 td_cent">
-                                <form action="{{ path('drevos.rass.linibrs.vetbrs.delete', {'id': linia.id, 'vetka_id': vetka.id}) }}" method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
+                                <form action="{{ path('drevos.rass.linibrs.vetbrs.nombrs.delete', {'vetka_id': vetka.id, 'id': nomer.id}) }}" method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
                                     <input type="hidden" name="token" value="{{ token }}" />
                                     <button type="submit" class="btnn btnn--mb0 btnn--pt btnn--rasa"><span class="fa fa-trash"></span></button>
                                 </form>
@@ -91,17 +92,17 @@
                     {% endfor %}
                 </div>
             {% endif %}
-                <div class = "rasa__content"  >
-                    <a href="{{ path('drevos.rass.linibrs.vetbrs.create', {'id': linia.id}) }}"
-                       class="btnn btnn--mb0 btnn--pt btnn--rasa">Добавить новую
-                        <strong class="strongo strongo--kras"> ветку </strong> в БД</a>
+                        <div class = "rasa__content"  >
+                            <a href="{{ path('drevos.rass.linibrs.vetbrs.nombrs.create', {'vetka_id': vetka.id}) }}"
+                               class="btnn btnn--mb0 btnn--pt btnn--rasa">Добавить новый
+                                <strong class="strongo strongo--kras">номер матки </strong> в БД</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
         </div>
 
-    </article><!-- rasas -->
+    </div><!-- rasas -->
 
 {#    {{ include('app/adminka/rasas/_tabs.html.twig') }}#}
 

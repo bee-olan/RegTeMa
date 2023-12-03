@@ -25,7 +25,7 @@ class Handler
     {
         $vetka = $this->vetkas->get(new Id($command->vetka));
 
-        $vetka->removeNomBr(new NomerBrId($command->id));
+        $vetka->removeNomerBr(new NomerBrId($command->id));
 
         $this->flusher->flush();
     }

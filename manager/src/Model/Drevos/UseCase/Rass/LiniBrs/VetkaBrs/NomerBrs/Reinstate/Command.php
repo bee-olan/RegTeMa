@@ -16,6 +16,7 @@ class Command
     public function __construct(string $id)
     {
         $this->id = $id;
+
     }
 }
 
