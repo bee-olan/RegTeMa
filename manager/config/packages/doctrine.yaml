@@ -69,10 +69,10 @@ doctrine:
             dre_ras_linibr_vet_nom_id: 'App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\IdType'
             dre_ras_linibr_vet_nom_status: 'App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\StatusType'
 
-            adminka_rasa_id: 'App\Model\Adminka\Entity\Rasas\IdType'
-            adminka_rasa_linia_id: 'App\Model\Adminka\Entity\Rasas\Linias\IdType'
-            adminka_rasa_linia_nomer_status: 'App\Model\Adminka\Entity\Rasas\Linias\Nomers\StatusType'
-            adminka_rasa_linia_nomer_id: 'App\Model\Adminka\Entity\Rasas\Linias\Nomers\IdType'
+#            adminka_rasa_id: 'App\Model\Adminka\Entity\Rasas\IdType'
+#            adminka_rasa_linia_id: 'App\Model\Adminka\Entity\Rasas\Linias\IdType'
+#            adminka_rasa_linia_nomer_status: 'App\Model\Adminka\Entity\Rasas\Linias\Nomers\StatusType'
+#            adminka_rasa_linia_nomer_id: 'App\Model\Adminka\Entity\Rasas\Linias\Nomers\IdType'
 
             adminka_otec_ras_id: 'App\Model\Adminka\Entity\OtecForRas\IdType'
             adminka_otec_ras_linia_id: 'App\Model\Adminka\Entity\OtecForRas\Linias\IdType'

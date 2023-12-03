@@ -130,14 +130,14 @@ class SidebarMenu
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 
-        $menu
-            ->addChild('Схема Р-Л-В-Н', ['route' => 'adminka.rasas.info_rasa'])
-            ->setExtra('routes', [
-                ['route' => 'adminka.matkas.rasas.info_rasa'],
-                ['pattern' => '/^adminka.matkas.rasas.info_rasa\..+/']
-            ])
-            ->setAttribute('class', 'nav-item')
-            ->setLinkAttribute('class', 'nav-link');
+//        $menu
+//            ->addChild('Схема Р-Л-В-Н', ['route' => 'adminka.rasas.info_rasa'])
+//            ->setExtra('routes', [
+//                ['route' => 'adminka.matkas.rasas.info_rasa'],
+//                ['pattern' => '/^adminka.matkas.rasas.info_rasa\..+/']
+//            ])
+//            ->setAttribute('class', 'nav-item')
+//            ->setLinkAttribute('class', 'nav-link');
 
         $menu->addChild('Зарегистрированы')
             ->setAttribute('class', 'nav-title')

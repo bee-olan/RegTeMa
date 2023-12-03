@@ -38,11 +38,11 @@ services:
     App\Model\Adminka\Entity\Matkas\Role\RoleRepository: ~
     App\Model\Adminka\Entity\Matkas\Kategoria\KategoriaRepository: ~
 
-    App\Model\Adminka\Entity\MatTests\PlemTest\PlemTestRepository: ~
-
-    App\Model\Adminka\Entity\Rasas\RasaRepository: ~
-    App\Model\Adminka\Entity\Rasas\Linias\LiniaRepository: ~
-    App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository: ~
+#    App\Model\Adminka\Entity\MatTests\PlemTest\PlemTestRepository: ~
+#
+#    App\Model\Adminka\Entity\Rasas\RasaRepository: ~
+#    App\Model\Adminka\Entity\Rasas\Linias\LiniaRepository: ~
+#    App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository: ~
 
     App\Model\Adminka\Entity\OtecForRas\RasaOtecRepository: ~
     App\Model\Adminka\Entity\OtecForRas\Linias\LiniaRepository: ~

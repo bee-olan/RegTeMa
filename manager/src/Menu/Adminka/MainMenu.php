@@ -34,14 +34,14 @@ class MainMenu
             ->setAttribute('class', 'nav-item')
             ->setLinkAttribute('class', 'nav-link');
 
-        $menu
-            ->addChild('Раса-Линия_Номер', ['route' => 'adminka.rasas'])
-            ->setExtra('routes', [
-                ['route' => 'adminka.rasas'],
-                ['pattern' => '/^adminka.rasas\..+/']
-            ])
-            ->setAttribute('class', 'nav-item ')
-            ->setLinkAttribute('class', 'nav-link ');
+//        $menu
+//            ->addChild('Раса-Линия_Номер', ['route' => 'adminka.rasas'])
+//            ->setExtra('routes', [
+//                ['route' => 'adminka.rasas'],
+//                ['pattern' => '/^adminka.rasas\..+/']
+//            ])
+//            ->setAttribute('class', 'nav-item ')
+//            ->setLinkAttribute('class', 'nav-link ');
 
     
         if ($this->auth->isGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS')) {
