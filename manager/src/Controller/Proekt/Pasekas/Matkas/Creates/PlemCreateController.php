@@ -71,7 +71,7 @@ class PlemCreateController extends AbstractController
     * @Route("/plemmatka/{id}", name=".plemmatka" , requirements={"id"=Guid::PATTERN})
     * @param Request $request
     * @param UchastieFetcher $uchasties 
-    *  @param NomerBr $nomer
+    * @param NomerBr $nomer
     * @param PersonaFetcher $personas
     * @param MestoNomerFetcher $mestoNomers
     * @return Response

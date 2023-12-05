@@ -13,7 +13,7 @@
   list-style: none; // убрала точку у li
   min-width: 75%;
   font-size: 1.2rem;
-  line-height: 2.0;
+  //line-height: 2.0;
 
   &--ras {
     max-width: 100%;
@@ -94,8 +94,8 @@
 .lini {
 
     max-width:  100%;
-    margin-left: 4rem;
-    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-right: .5rem;
 
     padding: 1.5rem 1.5rem 2.5rem 1.5rem;
     overflow: hidden; // в рамках размера -все лишнее скрылось overflow

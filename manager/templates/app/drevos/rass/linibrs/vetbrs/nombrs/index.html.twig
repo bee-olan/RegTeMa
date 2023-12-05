@@ -11,20 +11,24 @@
 
 {% block body %}
 
-    {{ include('app/adminka/rasas/_tabs.html.twig') }}
+    {{ include('app/adminka/_tabs.html.twig') }}
 
     <div class="rasa">
         <h4 class="rasa__title  "><strong class="strongo--sin"> Раса </strong> :   {{ rasa.title }}</h4>
         <div class="linia ">
             <h4 class="rasa__title  "><strong class="strongo--sin"> Линия </strong> :
-                <a href="{{ path('adminka.rasas.linias.show', {'id': linia.id}) }}"> {{ linia.name }}
+                <a href="{{ path('drevos.rass.linibrs.show', {'id': rasa.id}) }}"> {{ linia.name }}
                 </a>
 
             </h4>
 
             <div class="vetka ">
                 <div class="rasa__header  ">
-                    <h5 class="rasa__title  "><strong class="strongo--sin"> Ветка :</strong>  {{ vetka.nomer }}-{{ vetka.god }}</h5>
+                    <h5 class="rasa__title  "><strong class="strongo--sin"> Ветка :</strong>
+
+                        <a href="{{ path('drevos.rass.linibrs.vetbrs', {'id': linia.id}) }}"> {{ vetka.nomer }}-{{ vetka.god }}
+                        </a>
+                    </h5>
                     {% if nomers is  empty %}
 
                     <h1 class="rasa__title"> Пока для этой  ветке - <strong class="strongo--kras"> нет </strong>

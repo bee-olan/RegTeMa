@@ -1,0 +1,91 @@
+{% extends 'probase.html.twig' %}
+
+{% block title %}Линия{% endblock %}
+
+{#{% block sidebarr %}#}
+{#    {% include('app/proekts/pasekas/matkas/side/_side_plem_linia.html.twig') %}#}
+{#{% endblock %}#}
+
+{% block menupro %}
+    {{ include('app/proekts/pasekas/matkas/_tabs.html.twig') }}
+{% endblock %}
+
+{% block kroxii %}
+    <a href="{{ path('proekt') }}">Главная</a>
+{#    <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>#}
+{#    <a href="{{ path('app.proekts.pasekas.rasas.plemmatka') }}">Выбoр Расы</a>#}
+    <span class="aktiv "> Ветки</span>
+{% endblock %}
+
+{% block bodyy %}
+
+<div  class="proekts proekts--rasa">
+
+    <div class="inklud inklud--rasa">
+        <div class="inklud__title teni teni--rasa">
+            Выбираем Ветку для регистрации брендовой ПлемМатки
+        </div>
+    </div>
+
+    <div class="proekts-plr  "> 
+     {# <div >  #}
+        <ul class="ras__data">
+            <li >
+                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                </svg>
+            </li>
+            <li class="ras__name   ">
+                <strong class="strongo " >Раса :  </strong> {{ rasa.title }}
+            </li>
+        </ul>    
+    
+    </div>
+    <div class="lini">
+        <ul class="ras__data">
+            <li>
+                <svg width="2em"
+                     height="2em"
+                     viewBox="0 0 16 16"
+                     class="bi bi-check2"
+                     fill="currentColor"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                          d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                </svg>
+            </li>
+            <li class="ras__name">
+                <strong class="strongo " >Линия :  </strong> {{ linia.name }}
+            </li>
+        </ul>
+    <div class="lini ">
+        <div class="lini-margin ">
+            {% if vetkas %}
+                <h1 class="ras__title "> <strong class="strongo " >Ветки  </strong>   </h1>
+                {% for vetka in vetkas %}
+                    <ul class="ras__data lini-margin ">
+                        
+                         <li class="ras__name ras__name--widt30">
+                                    {{ vetka.nomer }}-{{vetka.god }}
+                                </li>
+                                <li>Номера
+{#                                    <a href="{{ path('app.proekts.drevorods.rasbrs.linibrs.vetbrs.nomers.plemnom', {'id': vetka.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >#}
+{#                                       <strong class="strongo strongo--kras">=> </strong> Номера#}
+{#                                    </a>#}
+                                </li>
+                        <li class="ras__name rasa__name--widt-9">( {{ vetka.kol_nombr }} )</li>
+                               
+                    </ul>
+                {% endfor %}
+            {% else %}
+                <h1 class="ras__title "> <strong class="strongo strongo--kras " >Веток :   </strong> <strong class="strongo " >нет   </strong>  </h1>
+            {% endif %}
+        </div>         
+    </div>
+    </div>
+</div><!-- rasas -->
+
+    {# ----------------------- #}
+
+
+{% endblock %}

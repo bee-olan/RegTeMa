@@ -11,7 +11,7 @@
 
 {% block body %}
 
-    {{ include('app/adminka/rasas/_tabs.html.twig') }}
+    {{ include('app/adminka/_tabs.html.twig') }}
 
     <article class="rasa">
 
@@ -51,7 +51,7 @@
                            class="btnn btnn--mb0 btnn--pt "><span class="fa fa-pencil"></span></a>
                     </li>
                     <li class="rasa__name--wid5">
-                        <form action="{{ path('adminka.rasas.delete', {'id': rasa.id}) }}"
+                        <form action="{{ path('drevos.rass.delete', {'id': rasa.id}) }}"
                               method="post" onsubmit="return confirm('Подтверждаете - удалить?')">
                             <input type="hidden" name="token" value="{{ token }}" />
                             <button type="submit" class="btnn btnn--mb0 btnn--pt  "><span class="fa fa-trash"></span></button>
