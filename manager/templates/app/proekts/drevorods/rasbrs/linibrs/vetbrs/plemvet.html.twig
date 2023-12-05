@@ -68,10 +68,10 @@
                          <li class="ras__name ras__name--widt30">
                                     {{ vetka.nomer }}-{{vetka.god }}
                                 </li>
-                                <li>Номера
-{#                                    <a href="{{ path('app.proekts.drevorods.rasbrs.linibrs.vetbrs.nomers.plemnom', {'id': vetka.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >#}
-{#                                       <strong class="strongo strongo--kras">=> </strong> Номера#}
-{#                                    </a>#}
+                                <li>
+                                    <a href="{{ path('app.proekts.drevorods.rasbrs.linibrs.vetbrs.nomers.plemnom', {'vetka_id': vetka.id}) }}" class="btnn btnn--pt btnn--ml3 btnn--col-ras"  >
+                                       <strong class="strongo strongo--kras">=> </strong> Номера
+                                    </a>
                                 </li>
                         <li class="ras__name rasa__name--widt-9">( {{ vetka.kol_nombr }} )</li>
                                
