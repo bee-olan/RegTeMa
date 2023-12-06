@@ -28,26 +28,29 @@
                             div {
                                
                                     display: block;       
-                                    width: 20%;
-    
+                                    width: 15%;
+
+    // PlemMat
                                     input{
                                         // margin-left: 4rem;
                                         box-sizing: border-box;
-                                        height: 16px; 
+                                        margin: .5rem 0 0 2rem;
+                                        height: 16px;
                                         width: 16px;
+
 
                                     }
                                     label{
-
-                                        font-size: 1.2rem;
+                                        //padding-left: 1.5rem;
                                         color: inherit;
+                                        font-size: 1.2rem;
                                     }
                             }    
                         }
             }
-            select {
+            select {    // plemMatka
                 padding-left: 2rem;
-                font-size: 1.8rem;                            
+                font-size: 1.2rem;
                 color:  $plem-color;
             }
             div {
@@ -62,8 +65,7 @@
 
                     label{
                         min-width: 12rem;
-                        margin-left: 2rem;
-                        font-size: 1.8rem;                            
+                        font-size: 1.3rem;     // PlemMat
                         color: $border-kroxi;                   
                     }
                     

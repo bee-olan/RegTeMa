@@ -12,8 +12,9 @@ use App\Model\Adminka\Entity\Matkas\PlemMatka\PlemMatkaRepository;
 use App\ReadModel\Adminka\Uchasties\PersonaFetcher;
 use App\ReadModel\Mesto\InfaMesto\MestoNomerFetcher;
 
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\NomerRepository;
-use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Id as NomerId;
+
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\NomBrRepository;
+use App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\Id as NomerId;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\NomerRepository as OtNomerRepository;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Id as OtecNomerId;
 //
@@ -36,7 +37,7 @@ class Handler
                                     MestoNomerFetcher $mestoNomers,
                                     KategoriaRepository $kategorias,
                                     OtNomerRepository $otecNomers,
-                                    NomerRepository $nomerRepository,
+                                    NomBrRepository $nomerRepository,
                                     Flusher $flusher)
     {
         $this->plemmatkas = $plemmatkas;
@@ -62,15 +63,18 @@ class Handler
 
         $nomer = $this->nomerRepository->get(new NomerId($command->nomer));
 
-        $nameG = explode("-", $nomer->getName());
 
-        $godaVixod = (int) $nameG[1];
+        $godaVixod = (int) $nomer->getGod();
+        $nombr = $nomer->getNomBr();
 
-        $nom = explode("_", $nomer->getTitle());
+        $vetka= $nomer->getVetka();
+        $linia= $vetka->getLinia();
+        $rasa= $linia->getRasa();
 
-        $namee = $nom[0]."_".$command->sort." : ".
-            $nomer->getLinia()->getNameStar()."-".$nomer->getName().
+        $namee = $rasa->getName()."_".$command->sort." : ".
+            $linia->getName()."-".$vetka->getNomer()."-".$vetka->getGod()."-".$nomer->getTitle().
                             " : ".$mesto->getNomer()."_пн-".$persona->getNomer();
+//        dd($namee);
         $command->name = $namee;
         if ($this->plemmatkas->hasByName($namee)) {
             throw new \DomainException('ПлемМатка  уже существует.');

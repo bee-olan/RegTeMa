@@ -9,9 +9,7 @@ use App\Model\Adminka\Entity\Matkas\Kategoria\Kategoria;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Department;
 use App\Model\Adminka\Entity\Matkas\PlemMatka\Department\Id as DepartmentId;
 
-
 use App\Model\Adminka\Entity\Matkas\Role\Role;
-//use App\Model\Adminka\Entity\Rasas\Linias\Nomers\Nomer;
 use App\Model\Adminka\Entity\OtecForRas\Linias\Nomers\Nomer as OtecNomer;
 use App\Model\Adminka\Entity\Uchasties\Personas\Persona;
 use App\Model\Adminka\Entity\Uchasties\Uchastie\Uchastie;
@@ -43,12 +41,12 @@ class PlemMatka
 
     private $korotkoName;
 
-//    /**
-//     * @var NomerBr
-//     * @ORM\ManyToOne(targetEntity="App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\NomerBr")
-//     * @ORM\JoinColumn(name="nomer_id", referencedColumnName="id", nullable=false)
-//     */
-//    private $nomer;
+    /**
+     * @var NomerBr
+     * @ORM\ManyToOne(targetEntity="App\Model\Drevos\Entity\Rass\LiniBr\VetkaBr\NomerBr\NomerBr")
+     * @ORM\JoinColumn(name="nomer_id", referencedColumnName="id", nullable=false)
+     */
+    private $nomer;
 
     /**
      * @var MestoNomer
@@ -125,7 +123,7 @@ class PlemMatka
                                  string $title,
                                  int $godaVixod,
                                  MestoNomer  $mesto,
-//                                 NomerBr $nomer,
+                                 NomerBr $nomer,
                                  Persona  $persona,
                                  Kategoria $kategoria,
                                  OtecNomer $otecNomer
@@ -140,7 +138,7 @@ class PlemMatka
         $this->otecNomer = $otecNomer;
         $this->mesto = $mesto;
         $this->persona = $persona;
-//        $this->nomer = $nomer;
+        $this->nomer = $nomer;
         $this->status = Status::active();
 
         $this->departments = new ArrayCollection();
@@ -328,17 +326,17 @@ class PlemMatka
     {
         return $this->title;
     }
+
     public function getSort(): int
     {
         return $this->sort;
     }
+
     public function getStatus(): Status
     {
         return $this->status;
     }
-    /**
-     * @return int
-     */
+
     public function getGodaVixod(): int
     {
         return $this->godaVixod;
@@ -386,12 +384,10 @@ class PlemMatka
     }
 
 
-//    public function getNomer(): NomerBr
-//    {
-//        return $this->nomer;
-//    }
-
-
+    public function getNomer(): NomerBr
+    {
+        return $this->nomer;
+    }
 
     public function getDepartments()
     {
@@ -408,8 +404,6 @@ class PlemMatka
         }
         throw new \DomainException('раздел  не найден.');
     }
-
-
 
 
 }
