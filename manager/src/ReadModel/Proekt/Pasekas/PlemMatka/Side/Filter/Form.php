@@ -29,6 +29,10 @@ class Form extends AbstractType
                 'onchange' => 'this.form.submit()',
             ]])
 
+            ->add('persona', Type\TextType::class, ['required' => false, 'attr' => [
+                'placeholder' => 'ПерсонНомер',
+                'onchange' => 'this.form.submit()',
+            ]])
 
             ->add('status', Type\ChoiceType::class, ['choices' => [
                 'Активные' => Status::ACTIVE,

@@ -1,27 +1,30 @@
-<aside class="sidee" >
+<aside class="sidebarr" >
 
     <div class="sidebarr__header">
         <div class="logo_es"></div>
     </div>
 
-    <div class="sideemenu" >
-       <div class="sideefiltr__li sideefiltr__li--wid100">
-           <a class="btnn btnn--pt btnn--mb0"  href="/proekt">На Главную</a>
-       </div>
-    </div>
+
 
   <div class="sideefiltr">
+
+{#      <div class="sideemenu" >#}
+{#          <div class="sideefiltr__li sideefiltr__li--wid100">#}
+{#              <a class="btnn btnn--pt btnn--mb0"  href="/proekt">На Главную</a>#}
+{#          </div>#}
+{#      </div>#}
+
     {{ form_start(form) }}
         <ul class="sideefiltr__ul">
             <li class="sideefiltr__li sideefiltr__li--wid100 sideefiltr__li--flex">
               <div >
-                <button type="submit" class=" btnn btnn--mb0 btnn--pt" >Фильтр</button>
+                <button type="submit" class=" btnn btnn--mb0 btnn--pt btnn--filtr" >Фильтр</button>
               </div>
               <div class="sidee__lupa">
-                <img src="{{ asset('assets/proekt/images/lupa.png') }}" alt="">
+                  <div class="lupaimg"></div>
               </div>
-              <div >????
-{#                <a  class=" btnn btnn--mb0 btnn--pt" href="{{ path('proekt.pasekas.matkas') }}" >Сбросить</a>#}
+              <div >
+                <a  class=" btnn btnn--mb0 btnn--pt btnn--filtr " href="{{ path('app.proekts.pasekas.matkas') }}" >Сбросить</a>
               </div>
             </li>
 
@@ -30,6 +33,10 @@
             </li>
             <li class="sideefiltr__li sideefiltr__li--wid100">
               <a class="sideefiltr__link " > {{ form_widget(form.name) }}</a> 
+            </li>
+
+            <li class="sideefiltr__li sideefiltr__li--wid100">
+                <a class="sideefiltr__link " > {{ form_widget(form.persona) }}</a>
             </li>
             
             <li class="sideefiltr__li sideefiltr__li--wid100">

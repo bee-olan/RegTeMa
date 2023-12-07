@@ -178,18 +178,18 @@ class PlemSideFetcher
             $qb->andWhere('k.name = :name');
             $qb->setParameter(':name', $filter->kategoria);
         }
-//
-//        if ($filter->persona) {
-//            $qb->andWhere('p.persona = :persona');
-//            $qb->setParameter(':persona', $filter->persona);
-//        }
+
+        if ($filter->persona) {
+            $qb->andWhere('p.persona = :persona');
+            $qb->setParameter(':persona', $filter->persona);
+        }
 
         if ($filter->goda_vixod) {
             $qb->andWhere('p.goda_vixod = :goda_vixod');
             $qb->setParameter(':goda_vixod', $filter->goda_vixod);
         }
 
-        if (!\in_array($sort, ['name','persona', 'kategoria', 'goda_vixod'], true)) {
+        if (!\in_array($sort, ['name','persona', 'kategoria', 'status', 'goda_vixod'], true)) {
             throw new \UnexpectedValueException('Cannot sort by ' . $sort);
         }
 

@@ -20,17 +20,17 @@
 				</li>
 
 				<li class="nav__item">
-					<a class="nav__link has-subnav  nav-teni " href="#">Родослов</a>
+					<a class="nav__link has-subnav  nav-teni " href="{{ path('app.proekts.pasekas.drevmatkas') }}">ЭлитМатки</a>
 					<ul class="subnav">
 						<li>
-							<a class="subnav__link "  href="{{ path('app.proekts.drevorods.rodras') }}">Родословная</a>
+							<a class="subnav__link "  href="{{ path('app.proekts.pasekas.drevmatkas') }}">Список ЭлитМаток</a>
 						</li>
 						<li>
-							<a class="subnav__link "  href="{{ path('app.proekts.pasekas.drevmatkas.drevcreates') }}">Рег-ция ПлемМатки</a>
+							<a class="subnav__link "  href="{{ path('app.proekts.pasekas.drevmatkas.drevcreates') }}">Рег-ция ЭлитМатки</a>
 						</li>
 
 						<li>
-							<a class="subnav__link" href="{{ path('app.proekts.pasekas.drevmatkas') }}">Список ПлемМаток</a>
+							<a class="subnav__link" href="{{ path('app.proekts.drevorods.rodras') }}">Родословная</a>
 						</li>
 
 					</ul>
@@ -54,7 +54,7 @@
 				</li>
 
 				<li class="nav__item">
-					<a class="nav__link has-subnav  nav-teni " href="{{ path('proekt') }}">Матки</a>
+					<a class="nav__link has-subnav  nav-teni " href="{{ path('proekt') }}">БрендМатки</a>
 					<ul class="subnav">
 {#						<li>#}
 {#							<a class="subnav__link "  href="{{ path('app.proekts.drevorods.rodras') }}">Родословная</a>#}

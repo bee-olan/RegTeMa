@@ -210,18 +210,18 @@ class PlemMatkaFetcher
             $qb->andWhere('p.status = :status');
             $qb->setParameter(':status', $filter->status);
         }
-//
+
 //        if ($filter->kategoria) {
 //            $qb->andWhere('p.kategoria = :kategoria');
 //            $qb->setParameter(':kategoria', $filter->kategoria);
 //        }
 
-//        if ($filter->persona) {
-//            $qb->andWhere('p.persona = :persona');
-//            $qb->setParameter(':persona', $filter->persona);
-//        }
-//
-        if (!\in_array($sort, ['name', 'status','persona'], true)) {
+        if ($filter->persona) {
+            $qb->andWhere('p.persona = :persona');
+            $qb->setParameter(':persona', $filter->persona);
+        }
+
+        if (!\in_array($sort, ['name', 'status',  'persona'], true)) {
             throw new \UnexpectedValueException('Cannot sort by ' . $sort);
         }
 

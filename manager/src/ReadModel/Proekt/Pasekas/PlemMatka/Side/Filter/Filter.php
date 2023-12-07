@@ -12,6 +12,7 @@ class Filter
     public $name;
     public $goda_vixod;
     public $kategoria;
+    public $persona;
     public $status = Status::ACTIVE;
 
 

@@ -35,10 +35,19 @@ class MatkaMenu
             ->setLinkAttribute('class', 'nav_pro-link');
 
         $menu
-            ->addChild('Матка', ['route' => 'app.proekts.pasekas.matkas.plemmatkas.creates'])
+            ->addChild('Список ПлемМаток', ['route' => 'app.proekts.pasekas.matkas'])
             ->setExtra('routes', [
-                ['route' => 'app.proekts.pasekas.matkas.plemmatkas'],
-                ['pattern' => '/^app.proekts.pasekas.matkas.plemmatkas\..+/']
+                ['route' => 'app.proekts.pasekas.matkas'],
+                ['pattern' => '/^app.proekts.pasekas.matkas\..+/']
+            ])
+            ->setAttribute('class', 'nav_pro-item')
+            ->setLinkAttribute('class', 'nav_pro-link');
+
+        $menu
+            ->addChild('Регистрация ПлемМатки', ['route' => 'app.proekts.pasekas.matkas.plemmatkas.creates'])
+            ->setExtra('routes', [
+                ['route' => 'app.proekts.pasekas.matkas.plemmatkas.creates'],
+                ['pattern' => '/^app.proekts.pasekas.matkas.plemmatkas.creates\..+/']
             ])
             ->setAttribute('class', 'nav_pro-item')
             ->setLinkAttribute('class', 'nav_pro-link');

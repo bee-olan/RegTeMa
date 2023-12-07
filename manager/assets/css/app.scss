@@ -81,6 +81,7 @@ main {
 a {
     color: inherit;
     opacity: 0.8;
+    background-color: transparent;
     transition: opacity .2s linear;
   
     &:hover {
@@ -178,6 +179,9 @@ pre {
 @import "proekts/proekt/proekts";
 @import "proekts/sides/sidebarr";
 @import "proekts/profiles/profile";
+
+@import "proekts/side/sidebar";
+@import "proekts/side/sidefiltr";
 
 @import "proekts/imgg/kartinka";
 @import "proekts/imgg/drevimg";

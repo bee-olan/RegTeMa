@@ -15,7 +15,6 @@
     &:hover {
         color: $grad1;
         border: 1px solid $grad1;
-
     }
 }
 
@@ -99,6 +98,10 @@
         &:hover {
             text-decoration: none;
             color: $grad2;
+        }
+
+        &--filtr {
+            font-size: 1.1rem;
         }
 
         &--ojidaet {

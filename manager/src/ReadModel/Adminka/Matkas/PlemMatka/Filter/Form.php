@@ -20,10 +20,18 @@ class Form extends AbstractType
                 'placeholder' => 'Название',
                 'onchange' => 'this.form.submit()',
             ]])
-//            ->add('persona', Type\TextType::class, ['required' => false, 'attr' => [
-//                'placeholder' => 'ПерсонНомер',
-//                'onchange' => 'this.form.submit()',
-//            ]])
+            ->add('persona', Type\TextType::class, ['required' => false, 'attr' => [
+                'placeholder' => 'ПерсонНомер',
+                'onchange' => 'this.form.submit()',
+            ]])
+
+//            ->add('kategoria', Type\ChoiceType::class, [
+//                'label' => 'Категория ПлемМатки',
+//                'choices' => array_flip($this->kategorias->allList()),
+//                'expanded' => true,
+//                'multiple' => false
+//            ])
+
             ->add('status', Type\ChoiceType::class, ['choices' => [
                 'Активная' => Status::ACTIVE,
                 'Архив' => Status::ARCHIVED,

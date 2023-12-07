@@ -12,29 +12,29 @@
    z-index: $z-index-sidebar;
 //-------проверка как работает миксин -----------------
 
-    @include breakpoint($tablet-bp) {
-        display: flex;
-        flex-direction: column;
-        height: calc(100vh - 4rem);
-        padding-bottom: 1.5rem;
-        overflow: auto;
-        
-        top: 4rem;
-        
-        transform: translateX(-100%);
-        transition: transform .2s linear;
-        
-        .show-sidebar & {
-            transform: translateX(0);
-        }
-
-      //.sideemenu__ul {
-      //    display: flex;
-      //    flex-wrap: wrap;
-      //    align-items: center;
-      //
-      //}
-    }
+    //@include breakpoint($tablet-bp) {
+    //    display: flex;
+    //    flex-direction: column;
+    //    height: calc(100vh - 4rem);
+    //    padding-bottom: 1.5rem;
+    //    overflow: auto;
+    //
+    //    top: 4rem;
+    //
+    //    transform: translateX(-100%);
+    //    transition: transform .2s linear;
+    //
+    //    .show-sidebar & {
+    //        transform: translateX(0);
+    //    }
+    //
+    //  //.sideemenu__ul {
+    //  //    display: flex;
+    //  //    flex-wrap: wrap;
+    //  //    align-items: center;
+    //  //
+    //  //}
+    //}
 }
 .sid__header {
     margin-bottom: 1rem;
@@ -47,37 +47,37 @@
     height: 4.5rem;
     margin-bottom: 2rem;
 
-    img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        padding: 0 .2rem;
-        object-fit: cover; // если картинка не по размеру
-    }
+    //img {
+    //    display: block;
+    //    width: 100%;
+    //    height: 100%;
+    //    padding: 0 .2rem;
+    //    object-fit: cover; // если картинка не по размеру
+    //}
 
-    @include breakpoint($tablet-bp) {
-        height: 4.6rem;
-    }
+    //@include breakpoint($tablet-bp) {
+    //    height: 4.6rem;
+    //}
 }
 
-.sidee__lupa {
-    height: 2.6rem;
-    width: 2.6rem;
-    //margin-bottom: 2rem;
-   
-
-    img {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        //padding: 0 .2rem;
-          margin-top: .4rem;
-       margin-left: .4rem;
-      // margin: 1.5rem 1rem;
-        object-fit: cover; // если картинка не по размеру
-       
-    }
-}
+//.sidee__lupa {
+//    height: 2.6rem;
+//    width: 2.6rem;
+//    //margin-bottom: 2rem;
+//
+//
+//    img {
+//        display: flex;
+//        width: 100%;
+//        height: 100%;
+//        //padding: 0 .2rem;
+//          margin-top: .4rem;
+//       margin-left: .4rem;
+//      // margin: 1.5rem 1rem;
+//        object-fit: cover; // если картинка не по размеру
+//
+//    }
+//}
 
 .sideefiltr{
     display: block;   
@@ -86,11 +86,11 @@
 .sideemenu {
    display: none;
 
-  @include breakpoint($tablet-bp) {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      }
+  //@include breakpoint($tablet-bp) {
+  //    display: flex;
+  //    flex-wrap: wrap;
+  //    align-items: center;
+  //    }
 }
 
 .sideefiltr__ul { 
@@ -107,21 +107,20 @@
     padding-left: 6px;
       //flex: 0 0 16.66667%;
     height:  15.5rem;
-    width: calc($sidebar_width - 4rem);
+    width: $sidebar_width;
 
     box-shadow: 0 5px 22px rgba($black, .25);
 
-    margin-bottom: 1rem;
-    margin-left: 1.5rem;
+    margin-bottom: .8rem;
 
         &--wid10 {
-            height: 10rem;
+            height: 8rem;
             padding-right: 5px;
             padding-left: 5px;
             
         }
         &--wid100 {
-            height: 5rem;
+            height: 4.1rem;
             padding-right: 5px;
             padding-left: 5px;
             text-align: center;
@@ -162,14 +161,14 @@
  .side-title__li{
     margin: .5rem 0 .5rem 0;
     padding-left: 1rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: $text;
 
-    @include breakpoint($tablet-bp) {
-        font-size: 1.8rem;
-        color: $red;
-        padding-left: 2.5rem;
-    }
+    //@include breakpoint($tablet-bp) {
+    //    font-size: 1.8rem;
+    //    color: $red;
+    //    padding-left: 2.5rem;
+    //}
   }
    
  // стилизация ссылок
@@ -178,8 +177,8 @@
     padding: .8rem 1.35rem .8rem 1.35rem;
      // это border сверху\снизу у текста
     border-bottom: 2px solid $border-linia;
-  
-     font-size: 1.6rem; 
+  background-color: transparent;
+     font-size: 1.3rem;
      line-height: 1.6;
     // text-transform: uppercase;// буквы- большие
     color: $border-kroxi;
