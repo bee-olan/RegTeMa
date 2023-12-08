@@ -36,7 +36,18 @@ class DreRodoMenu
             ->setLinkAttribute('class', 'nav_pro-link');
 
         $menu
-            ->addChild('Родословная', ['route' => 'app.proekts.drevorods.rodras'])
+            ->addChild('Список ЭлитМаток', ['route' => 'app.proekts.pasekas.drevmatkas.spisoks'])
+            ->setExtra('routes', [
+                ['route' => 'app.proekts.pasekas.drevmatkas.spisoks'],
+                ['route' => 'app.proekts.pasekas.drevmatkas.redaktors'],
+                ['pattern' => '/^app.proekts.pasekas.drevmatkas.spisoks\..+/'],
+                ['pattern' => '/^app.proekts.pasekas.drevmatkas.redaktors\..+/']
+            ])
+            ->setAttribute('class', 'nav_pro-item')
+            ->setLinkAttribute('class', 'nav_pro-link');
+
+        $menu
+            ->addChild('Родословная ЭлитМаток', ['route' => 'app.proekts.drevorods.rodras'])
             ->setExtra('routes', [
                 ['route' => 'app.proekts.drevorods'],
                 ['pattern' => '/^app.proekts.drevorods\..+/']
@@ -45,7 +56,7 @@ class DreRodoMenu
             ->setLinkAttribute('class', 'nav_pro-link');
 
         $menu
-            ->addChild('ЭлитМатки', ['route' => 'app.proekts.pasekas.drevmatkas.drevcreates'])
+            ->addChild('Рег-ция ЭлитМаток', ['route' => 'app.proekts.pasekas.drevmatkas.drevcreates'])
             ->setExtra('routes', [
                 ['route' => 'app.proekts.pasekas.drevmatkas.drevcreates'],
                 ['pattern' => '/^app.proekts.pasekas.drevmatkas.drevcreates\..+/']
@@ -53,14 +64,16 @@ class DreRodoMenu
             ->setAttribute('class', 'nav_pro-item')
             ->setLinkAttribute('class', 'nav_pro-link');
 
-        $menu
-            ->addChild('Список ЭлитМаток', ['route' => 'app.proekts.pasekas.drevmatkas.spisoks'])
-            ->setExtra('routes', [
-                ['route' => 'app.proekts.pasekas.drevmatkas.spisoks'],
-                ['pattern' => '/^app.proekts.pasekas.drevmatkas.spisoks\..+/']
-            ])
-            ->setAttribute('class', 'nav_pro-item')
-            ->setLinkAttribute('class', 'nav_pro-link');
+//        $menu
+//            ->addChild('Сезоны ЭлитМатки',
+//                ['route' => 'app.proekts.pasekas.drevmatkas.drevcreates'])
+//            ->setExtra('routes', [
+//                ['route' => 'app.proekts.pasekas.drevmatkas.drevcreates'],
+//                ['pattern' => '/^app.proekts.pasekas.drevmatkas.drevcreates\..+/']
+//            ])
+//            ->setAttribute('class', 'nav_pro-item')
+//            ->setLinkAttribute('class', 'nav_pro-link');
+
 
         return $menu;
 
