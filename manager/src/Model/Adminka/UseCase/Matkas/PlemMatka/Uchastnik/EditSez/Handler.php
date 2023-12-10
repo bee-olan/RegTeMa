@@ -39,6 +39,7 @@ class Handler
     {
 
         $plemmatka = $this->plemmatkas->get(new Id($command->plemmatka)) ;
+
         $uchastie = $this->uchasties->get(new UchastieId($command->uchastie));
 //        $role = $this->roles->get(new RoleId($command->uchastie));
 

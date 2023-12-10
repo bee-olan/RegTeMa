@@ -20,6 +20,7 @@ class Form extends AbstractType
     {
 //        $this->roles = $roles;
         $this->departments = $departments;
+
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -31,6 +32,7 @@ class Form extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
             ]);
+
 //            ->add('roles', Type\ChoiceType::class, [
 //                    'required' =>false,
 //                'choices' => array_flip($this->roles->allList()),

@@ -101,7 +101,7 @@ class UchastiesController extends AbstractController
             $this->addFlash('error', 'Эту матку зарегистрировали не Вы.');
             return $this->redirectToRoute('app.proekts.pasekas.matkas');
         }
-//dd($this->getUser()->getId());
+
 //        $uchastnik = $plemmatka->getUchastnik(new Id($this->getUser()->getId()));
         $uchastnik = $plemmatka->getUchastnik(new Id($uchastnikI));
         $command = Uchastnik\EditSez\Command::fromUchastnik($plemmatka, $uchastnik);

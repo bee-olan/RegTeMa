@@ -88,13 +88,15 @@
   margin-bottom: 0;
   // background-color:#efe9cd;
   //  #f0f3f5;
-  box-shadow: inset 0px 0px 10px rgba($child-text, 0.9);
+  box-shadow: inset 0 0 10px rgba($child-text, 0.9);
   border-bottom: 1px solid $child-text;
 }
 .controls-m {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  padding-top: 1rem;
   margin-bottom: 20px;
 }
 

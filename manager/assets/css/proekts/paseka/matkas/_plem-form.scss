@@ -9,7 +9,10 @@
     form {
         div {
             fieldset {
-
+                legend{
+                    color: $child-form;
+                    font-size: 1.2rem;
+                }
                 padding-top: 1rem;
                 margin-bottom: 2rem;
 
@@ -32,9 +35,9 @@
 
     // PlemMat
                                     input{
-                                        // margin-left: 4rem;
+                                         margin-left: 5.8rem; // Это добавление сезона ??? что-то испортила
                                         box-sizing: border-box;
-                                        margin: .5rem 0 0 2rem;
+                                        //margin: .5rem 0 0 2rem;
                                         height: 16px;
                                         width: 16px;
 

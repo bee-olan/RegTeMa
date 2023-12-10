@@ -1,12 +1,15 @@
-{% extends 'proekt/base.html.twig' %}
+{% extends 'probase.html.twig' %}
 
 {% block title %}{{ plemmatka.name }}{% endblock %}
+
+{% block menupro %}
+    {{ include('app/proekts/pasekas/matkas/_tabs.html.twig') }}
+{% endblock %}
 
  {% block kroxii %}
      <a href="{{ path('proekt') }}">Главная</a>
      <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
      <a href="{{ path('app.proekts.pasekas.matkas') }}">Список ПлемМаток</a>
-     <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id})  }}">{{ plemmatka.name }}</a>
      <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id})  }}">Редактировать</a>
      <span class="aktiv ">Добавить сезон</span>
  {% endblock %}
@@ -43,7 +46,8 @@
                             </li>
                             <li class="plem__name--wid20">  &nbsp; &nbsp;
                                 <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show',
-                                    {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 btnn--col">Или вернуться на страничку</a>
+                                    {'plemmatka_id': plemmatka.id}) }}"
+                                   class="btnn btnn--mb0 btnn--pt btnn--col-plemm">Или вернуться на страничку</a>
                             </li>
                         </ul>
                     </div>
