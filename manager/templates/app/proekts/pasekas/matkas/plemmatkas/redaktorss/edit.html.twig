@@ -2,11 +2,16 @@
 
 {% block title %}Редактирование. ПлемМатка{% endblock %}
 
+{% block menupro %}
+    {{ include('app/proekts/pasekas/matkas/_tabs.html.twig') }}
+{% endblock %}
+
 {% block kroxii %}
         <a href="{{ path('proekt') }}">Главная</a>
         <a href="{{ path('app.proekts.pasekas.matkas') }}">Список ПлемМаток</a>
-        <span class="aktiv ">{{ plemmatka.name }}</span> 
-        <span class="aktiv ">Редактировать внутреннюю нумерацию</span> 
+        <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.show', {'plemmatka_id': plemmatka.id})  }}">
+            Добавить сезон. Редактировать. Архив</a>
+        <span class="aktiv ">Редактировать </span>
     {% endblock %}
 
 {% block bodyy %}

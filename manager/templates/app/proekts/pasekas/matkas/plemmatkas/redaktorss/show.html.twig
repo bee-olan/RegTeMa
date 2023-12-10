@@ -2,11 +2,13 @@
 
 {% block title %}Редактирование{% endblock %}
 
+{% block menupro %}
+    {{ include('app/proekts/pasekas/matkas/_tabs.html.twig') }}
+{% endblock %}
+
    {% block kroxii %}
        <a href="{{ path('proekt') }}">Главная</a>
        <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.creates') }}">Рег-ция ПлемМатки</a>
-       <a href="{{ path('app.proekts.pasekas.matkas') }}">Список ПлемМаток</a>
-       <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.show', {'plemmatka_id': plemmatka.id})  }}">{{ plemmatka.name }}</a>
        <span class="aktiv ">Добавить сезон. Редактировать. Архив</span>
    {% endblock %}
 
@@ -32,27 +34,28 @@
     <div class = "no_break" >
         <li class="plem__name " ><strong class="strongo ">Комментарий : </strong></li>
     </div>    
-        <li class="plem__name " >{{plemmatka.title}}</li>
+        <li class="plem__name plem__name--wid20" >{{plemmatka.title}}</li>
         <li class="plem__name--wid20">  &nbsp; &nbsp;
             <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.edit',
-                {'plemmatka_id': plemmatka.id}) }}" class="btnn btnn--mb0 ">Редактировать</a>
+                {'plemmatka_id': plemmatka.id}) }}"
+               class="btnn btnn--mb0 btnn--pt btnn--col-plemm">Редактировать</a>
         </li>
     </ul>
 
         <ul class="plem plem__jus-st ">
             <li class="plem__name " ><strong class="strongo ">Статус : </strong></li>
-            <li class="plem__name " ><strong class="strongo strongo--kras"> {{ plemmatka_status(plemmatka.status.name) }} </strong></li>
-            <li >  &nbsp; &nbsp;
+            <li class=" plem__name--wid20" ><strong class="strongo strongo--kras"> {{ plemmatka_status(plemmatka.status.name) }} </strong></li>
+            <li class="plem__name--wid20">  &nbsp; &nbsp;
                 {% if plemmatka.active and plemmatka.id.value != app.user.id %}
                     <form action="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.archive', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                         <input type="hidden" name="token" value="{{ csrf_token('archive') }}" />
-                        <button type="submit" class="btnn  btnn--pt">В архив</button>
+                        <button type="submit" class="btnn  btnn--mb2 btnn--pt btnn--col-plemm">В архив</button>
                     </form>
                 {% endif %}
                 {% if plemmatka.archived %}
                     <form action="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.reinstate', {'plemmatka_id': plemmatka.id}) }}" method="post" onsubmit="return confirm('Вы уверены?')">
                         <input type="hidden" name="token" value="{{ csrf_token('reinstate') }}" />
-                        <button type="submit" class="btnn  btnn--pt">Из архива</button>
+                        <button type="submit" class="btnn btnn--mb2 btnn--pt btnn--col-plemm">Из архива</button>
                     </form>
                 {% endif %}
             </li>
@@ -102,13 +105,13 @@
 
     {# ----------------------- #}
 {% if uchastniks %}
-    <h3 class="form__title">Для добавления  очередного сезона  для ПлемМатки, перейдите по ссылке</h3>
+    <h3 class="direct__title">Для добавления  очередного сезона  для ПлемМатки, перейдите по ссылке</h3>
 {% else %}
-    <div  class="proekts proekts-plr">
-        <h3 class="form__title">Написать запрос  на первый сезон  данной ПлемМатки по предоставлению ДочьМаток в проект</h3>
+    <div  class="proekts  proekts--marg-bot  proekts-plr">
+        <h3 class="direct__title">Написать запрос  на первый сезон  данной ПлемМатки по предоставлению ДочьМаток в проект</h3>
 
-        <div class="mesto-form__header  ">
-            <div class="mesto-form ">
+        <div class="direc-form__header  ">
+            <div class="direc-form ">
                 {{ form_start(commentForm) }}
 
                 {{ form_widget(commentForm) }}
@@ -126,7 +129,7 @@
 
     <div  class="proekts proekts-plr">
         <div class="card-mesto">
-            <h3 class="form__title">Запрос на первый сезон в проекте  данной ПлемМатки, </h3>
+            <h3 class="direct__title">Запрос на первый сезон в проекте  данной ПлемМатки, </h3>
             {% if comments|length %}
                 <div class="card-body">
                     <div class="direct-chat">
@@ -145,17 +148,12 @@
                                                 <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.comment.edit',
                                                     {'plemmatka_id': plemmatka.id, 'id': comment.id}) }}"
                                                    class="btnn btnn--mb0 btnn--pt btnn--col-child">
-                                                    <div class="karandash karandash--child">
-                                                        <img src="{{ asset('assets/proekt/images/karandash.png') }}" alt="редактировать">
-                                                    </div>
+                                                        <div class="karanda-kar" title="редактировать"></div>
                                                 </a>
                                                 <form action="{{ path('app.proekts.pasekas.matkas.plemmatkas.redaktorss.comment.delete', {'plemmatka_id': plemmatka.id, 'id': comment.id}) }}" method="post" onsubmit="return confirm('Вы  уверены? Удалить?')">
                                                     <input type="hidden" name="token" value="{{ csrf_token('delete-comment') }}" />
                                                     <button type="submit"  class="btnn  btnn--ml3 btnn--pt btnn--col-child">
-
-                                                        <div class="karandash karandash--child">
-                                                            <img src="{{ asset('assets/proekt/images/delet.png') }}" alt="удалить">
-                                                        </div>
+                                                        <div class="delit-kar" title="удалить"></div>
                                                     </button>
                                                 </form>
                                             </div>

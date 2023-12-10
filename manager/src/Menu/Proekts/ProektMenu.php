@@ -36,7 +36,7 @@ class ProektMenu
 
 
         $menu
-            ->addChild('ЭлитМатки', ['route' => 'app.proekts.pasekas.drevmatkas.spisoks'])
+            ->addChild('Список ЭлитМаток', ['route' => 'app.proekts.pasekas.drevmatkas.spisoks'])
             ->setExtra('routes', [
                 ['route' => 'app.proekts.pasekas.drevmatkas.spisoks'],
                 ['pattern' => '/^app.proekts.pasekas.drevmatkas.spisoks\..+/']
@@ -66,7 +66,11 @@ class ProektMenu
             ->addChild('Участие', ['route' => 'app.proekts.pasekas.uchasties.uchastiee'])
             ->setExtra('routes', [
                 ['route' => 'app.proekts.pasekas.uchasties.uchastiee'],
-                ['pattern' => '/^app.proekts.pasekas.uchasties.uchastiee\..+/']
+                ['route' => 'app.proekts.personaa'],
+                ['route' => 'app.proekts.mestos'],
+                ['pattern' => '/^app.proekts.pasekas.uchasties.uchastiee\..+/'],
+                ['pattern' => '/^app.proekts.personaa\..+/'],
+                ['pattern' => '/^app.proekts.mestos\..+/']
             ])
             ->setAttribute('class', 'nav_pro-item ')
             ->setLinkAttribute('class', 'nav_pro-link ');

@@ -24,6 +24,20 @@ class DrevMatkaMenu
         $menu = $this->factory->createItem('root')
             ->setChildrenAttributes(['class' => 'nav nav-tabs mb-4']);
 
+//        if ($this->auth->isGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS')) {
+            $menu
+                ->addChild('Редактирование - Настройки', [
+                    'route' => 'adminka.matkas.plemmatka.redaktors',
+                    'routeParameters' => ['plemmatka_id' => $options['plemmatka_id']]
+                ])
+                ->setExtra('routes', [
+                    ['route' => 'adminka.matkas.plemmatka.redaktors'],
+                    ['pattern' => '/^adminka.matkas.plemmatka.redaktors\..+/']
+                ])
+                ->setAttribute('class', 'nav-item')
+                ->setLinkAttribute('class', 'nav-link');
+//        }
+
 //        $menu
 //            ->addChild('Добавить ДочьМатку', [
 //                'route' => 'adminka.matkas.plemmatka.show',
@@ -73,19 +87,7 @@ class DrevMatkaMenu
 //            ->setAttribute('class', 'nav-item')
 //            ->setLinkAttribute('class', 'nav-link');
 
-        if ($this->auth->isGranted('ROLE_ADMINKA_MANAGE_PLEMMATKAS')) {
-            $menu
-                ->addChild('Редактирование - Настройки', [
-                    'route' => 'adminka.matkas.plemmatka.redaktors',
-                    'routeParameters' => ['plemmatka_id' => $options['plemmatka_id']]
-                ])
-                ->setExtra('routes', [
-                    ['route' => 'adminka.matkas.plemmatka.redaktors'],
-                    ['pattern' => '/^adminka.matkas.plemmatka.redaktors\..+/']
-                ])
-                ->setAttribute('class', 'nav-item')
-                ->setLinkAttribute('class', 'nav-link');
-        }
+
 
         return $menu;
     }

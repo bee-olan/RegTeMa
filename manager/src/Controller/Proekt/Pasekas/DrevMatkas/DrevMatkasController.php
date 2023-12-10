@@ -61,7 +61,7 @@ class DrevMatkasController extends AbstractController
 //, 'persona'
         if (!$pagination->getItems() ) {
             $this->addFlash('error', 'Внимание!!!  У Вас нет зарегистрированных или Активных ПлемМаток. Сейчас Вы на страничке для регистрации');
-            return $this->redirectToRoute('app.proekts.pasekas.matkas.plemmatkas.creates');
+            return $this->redirectToRoute('app.proekts.pasekas.drevmatkas.drevcreates');
         }
         return $this->render('app/proekts/pasekas/drevmatkas/spisoks/index.html.twig', [
             'pagination' => $pagination,

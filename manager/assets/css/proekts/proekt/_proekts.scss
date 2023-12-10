@@ -10,6 +10,10 @@
   box-shadow: 0 5px 22px rgba($white, .25);
   border-radius: 5px;
 
+  &--marg-bot {
+    margin-bottom: 1rem;
+  }
+
   &--uhastiee {
     background-color: $col-uchastie;
     box-shadow: 0 5px 22px rgba($black, .35);

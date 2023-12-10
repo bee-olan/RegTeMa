@@ -8,8 +8,12 @@
 
     {% block kroxii %}
         <a href="{{ path('home') }}">Главная</a>
-        <a href="{{ path('drevos.rass') }}">Родословная</a>
-        <span class="aktiv ">Расы</span>
+        <a href="{{ path('app.proekts.drevorods.rodras') }}">Родословная</a>
+        <a href="{{ path('app.proekts.drevorods.rods.rodrods', {'id':rasa.id} ) }}">Матковод</a>
+        <a href="{{ path('app.proekts.drevorods.rods.linis', {'id':rodo.id}) }}">Линия</a>
+        <a href="{{ path('app.proekts.drevorods.rods.rodrods.linis.wetkas', {'id':linia.id}) }}">Ветка</a>
+        <a href="{{ path('app.proekts.drevorods.rods.linis.wetkas.nomwets', {'id':wetka.id}) }}">Номер</a>
+        <span class="aktiv ">Трутни</span>
     {% endblock %}
 
 {% block bodyy %}

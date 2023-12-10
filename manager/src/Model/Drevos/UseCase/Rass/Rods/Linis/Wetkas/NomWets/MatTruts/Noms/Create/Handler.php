@@ -16,6 +16,8 @@ use App\Model\Flusher;
 use App\Model\Adminka\Entity\Sezons\Godas\GodaRepository;
 use App\Model\Adminka\Entity\Sezons\Godas\Id as GodaId;
 
+use Symfony\Component\Routing\Annotation\Route;
+
 class Handler
 {
     private $godas;
@@ -37,7 +39,8 @@ class Handler
     public function handle(Command $command): void
     {
         $mattrut = $this->mattruts->get(new MatTrutId($command->mattrut));
-
+        $nomwet = $mattrut->getNomwet()->getGodW();
+//        dd($nomwet);
         $zakazal = $this->uchasties->get(new UchatieId($command->zakaz));
 
         $goda = $this->godas->get(new GodaId($command->god));
@@ -59,7 +62,11 @@ class Handler
 //                $command->sortLini
 //            );
 //        }
-
+        if ( (int)$god < (int)$nomwet ){
+            throw new \DomainException('Внимание! Исправьте год выхода матки. Дочь не может быть старше матери .');
+//            $this->addFlash('error', 'Внимание!!! Пожалуйста, начните с этого! ');
+//            return $this->redirectToRoute('app.proekts.pasekas.uchasties.uchastiee');
+        }
      $mattrut->addNom(
          $command->id = Id::next(),
 			$command->nom,
