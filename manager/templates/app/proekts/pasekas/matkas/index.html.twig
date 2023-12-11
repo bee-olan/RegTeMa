@@ -161,7 +161,8 @@
                         <div class="karandash  karandash--plem">
                             <img src="{{ asset('assets/proekt/images/matkas/matki_.png') }}" alt="матка">
                         </div> 
-                        <a   href="{{ path('app.proekts.pasekas.matkas.plemmatkas.childmatka.show', {'plemmatka_id': plemmatka.id}) }}"  class="btnn btnn--mb1 "
+                        <a   href="{{ path('app.proekts.pasekas.matkas.plemmatkas.childmatka.show', {'plemmatka_id': plemmatka.id}) }}"
+                             class="btnn btnn--mb1 btnn--col-plemm"
                              title = "Добавить ДочьМаток от этой маточки" >
                              От этой маточки <strong class="strongo strongo--kras">объявить</strong>  ДочьМаток
                         </a>
@@ -184,13 +185,13 @@
         <ul class="plem__data plem__data--mt2">
             <li>
                 <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.creates') }}"
-                   class="btnn btnn--mb0 btnn--col"> Регистрация  <strong class="strongo strongo--kras">ПлемМатки  </strong>
+                   class="btnn btnn--mb0  btnn--col-plemm"> Регистрация  <strong class="strongo strongo--kras">ПлемМатки  </strong>
                 </a>
             </li>
-            <li>???
-{#                <a href="{{ path('app.proekts.pasekas.childmatkas'  ) }}"  class="btnn btnn--mb0 btnn--col">#}
-{#                 Список   <strong class="strongo strongo--kras">ДочьМаток (ТестМаток) </strong>#}
-{#                </a>#}
+            <li>
+                <a href="{{ path('app.proekts.pasekas.childmatkas'  ) }}"  class="btnn btnn--mb0  btnn--col-plemm">
+                 Список   <strong class="strongo strongo--kras">ДочьМаток (ТестМаток) </strong>
+                </a>
             </li>
         </ul>
        

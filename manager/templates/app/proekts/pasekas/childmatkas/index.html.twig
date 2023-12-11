@@ -2,10 +2,14 @@
 
 {% block title %}ДочьМатки{% endblock %}
 
+    {% block menupro %}
+        {{ include('app/proekts/pasekas/matkas/_tabs.html.twig') }}
+    {% endblock %}
 
-{% block sidebar %}
-    {% include('proekt/pasekas/childmatkas/side/_sidefiltr.html.twig') %}
-{% endblock %}
+    {% block sidebarr %}
+        {% include('app/proekts/pasekas/childmatkas/side/_sidefiltr.html.twig') %}
+    {% endblock %}
+
     {% block kroxii %}
         <a href="{{ path('proekt') }}">Главная</a>
 {#        <a href="{{ path('proekt.pasekas.matkas.plemmatkas') }}">Рег-ция ПлемМатки</a>#}
@@ -23,26 +27,26 @@
         </div>
     {% endif %}
 
-     <div class="card">
-        <div class="card-body pb-1">
+{#     <div class="card">#}
+{#        <div class="card-body pb-1">#}
 
-            {{ form_start(form) }}
-            <div class="row">
-                <div class="col-md-2 mb-2">{{ form_widget(form.text) }}</div>
-                <div class="col-md-2 mb-2">{{ form_widget(form.type) }}</div>
-                <div class="col-md-2 mb-2">{{ form_widget(form.status) }}</div>
+{#            {{ form_start(form) }}#}
+{#            <div class="row">#}
+{#                <div class="col-md-2 mb-2">{{ form_widget(form.text) }}</div>#}
+{#                <div class="col-md-2 mb-2">{{ form_widget(form.type) }}</div>#}
+{#                <div class="col-md-2 mb-2">{{ form_widget(form.status) }}</div>#}
 {#                <div class="col-md-2 mb-2">{{ form_widget(form.priority) }}</div>#}
-                <div class="col-md-2 mb-2">{{ form_widget(form.author) }}</div>
-                <div class="col-md-2 mb-2">{{ form_widget(form.executor) }}</div>
-                <div class="col-md-2 mb-2">
-                    <button type="submit" class="btn btn-primary">Filter</button>
+{#                <div class="col-md-2 mb-2">{{ form_widget(form.author) }}</div>#}
+{#                <div class="col-md-2 mb-2">{{ form_widget(form.executor) }}</div>#}
+{#                <div class="col-md-2 mb-2">#}
+{#                    <button type="submit" class="btn btn-primary">Filter</button>#}
 {#                    <a href="{{ path('paseka.matkas.childmatkas') }}" class="btn btn-default">Clear</a>#}
-                </div>
-            </div>
-            {{ form_end(form) }}
+{#                </div>#}
+{#            </div>#}
+{#            {{ form_end(form) }}#}
 
-        </div>
-    </div>
+{#        </div>#}
+{#    </div>#}
 
 {#     {% include 'app/work/projects/childmatkas/_presets.html.twig' %}#}
 
@@ -52,11 +56,11 @@
             <img class="" src="{{ asset('assets/proekt/images/matkas/p4ela1.jpg') }}" alt="">
         </div>
 {% if not plemmatka %}
-        <div class="inklud__title  teni teni--kategor">
+        <div class="inklud__title  teni teni--child">
             Список ПлемМаток и их ДочьМаток
         </div>
  {% else %}
-    <div class="inklud__title  teni teni--kategor">
+    <div class="inklud__title  teni teni--child">
             Список  ДочьМаток от {{plemmatka.name}}
     </div>
  {% endif %}
@@ -66,16 +70,16 @@
         <table class="tabl-child  tabl-hover-child ">
             <thead>
             <tr  >
-                <th  >Дата</th>
+                <td  >Дата</td>
                 {% if not plemmatka %}
-                <th class="tabl-col-plem "  >  ПлемМатка</th>
+                <td class="tabl-col-plem "  >  ПлемМатка</td>
                 {% endif %}
-                 <th class="tabl-col-child" >ДочьМатка</th>
-                <th  >Автор</th>
-                <th >Приорит</th>
-                <th  >Испол---ль</th>
-                <th >Plan</th>
-                <th  >В статусе</th>
+                 <td class="tabl-col-child" >ДочьМатка</td>
+                <td  >Автор</td>
+                <td >Приорит</td>
+                <td  >Испол---ль</td>
+                <td >Plan</td>
+                <td  >В статусе</td>
 
             </tr>
             </thead>

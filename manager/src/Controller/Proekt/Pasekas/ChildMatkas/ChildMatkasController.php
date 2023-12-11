@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("app.proekts/pasekas/childdrevs", name="app.proekts.pasekas.childdrevs")
+ * @Route("app/proekts/pasekas/childmatkas", name="app.proekts.pasekas.childmatkas")
  * @ParamConverter("plemmatka", options={"id" = "plemmatka_id"})
  */
 class ChildMatkasController extends AbstractController
@@ -65,7 +65,7 @@ class ChildMatkasController extends AbstractController
             $request->query->get('direction')
         );
 
-        return $this->render('app/proekts/pasekas/childdrevs/index.html.twig', [
+        return $this->render('app/proekts/pasekas/childmatkas/index.html.twig', [
             'proba' => 'проба',
             'plemmatka' => null,
             'pagination' => $pagination,
