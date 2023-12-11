@@ -71,9 +71,9 @@ class Handler
         $linia= $vetka->getLinia();
         $rasa= $linia->getRasa();
 
-        $namee = $rasa->getName()."_".$command->sort." : ".
-            $linia->getName()."-".$vetka->getNomer()."-".$vetka->getGod()."-".$nomer->getTitle().
-                            " : ".$mesto->getNomer()."_пн-".$persona->getNomer();
+        $namee = $rasa->getName()."-".$command->sort." : ".
+            $linia->getName()." : ".$vetka->getNomer()."-".$vetka->getGod()." : ".$nomer->getTitle().
+                            " : ".$mesto->getNomer()." : пн-".$persona->getNomer();
 //        dd($namee);
         $command->name = $namee;
         if ($this->plemmatkas->hasByName($namee)) {

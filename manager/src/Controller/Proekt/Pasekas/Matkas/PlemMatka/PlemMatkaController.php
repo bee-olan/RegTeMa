@@ -47,15 +47,21 @@ class PlemMatkaController extends AbstractController
         $otecNomer = $nomerRepo->get(new Id($plemmatka->getOtecNomer()->getId()->getValue()));
 
 
-       $kategorias = $kategoria->all();
-       $permissions = Permission::names();
+        $kategorias = $kategoria->all();
+        $permissions = Permission::names();
 
-      $infaMesto = $fetchers->infaMesto($plemmatka->getMesto()->getNomer());
+        $infaMesto = $fetchers->infaMesto($plemmatka->getMesto()->getNomer());
+
+        $nomer = $plemmatka->getNomer();
+        $vetka = $nomer->getVetka();
+        $linia = $vetka->getLinia();
+        $rasa = $linia->getRasa();
 
        return $this->render('app/proekts/pasekas/matkas/plemmatkas/show.html.twig',
            compact('plemmatka', 'infaMesto',
                'kategorias', 'permissions',
-                'sesMessages', 'otecNomer'
+                'sesMessages', 'otecNomer',
+           'rasa', 'linia', 'vetka', 'nomer'
            ));
    }
 }

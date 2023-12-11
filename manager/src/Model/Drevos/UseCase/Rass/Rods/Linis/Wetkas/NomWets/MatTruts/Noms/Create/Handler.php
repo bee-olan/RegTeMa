@@ -64,8 +64,6 @@ class Handler
 //        }
         if ( (int)$god < (int)$nomwet ){
             throw new \DomainException('Внимание! Исправьте год выхода матки. Дочь не может быть старше матери .');
-//            $this->addFlash('error', 'Внимание!!! Пожалуйста, начните с этого! ');
-//            return $this->redirectToRoute('app.proekts.pasekas.uchasties.uchastiee');
         }
      $mattrut->addNom(
          $command->id = Id::next(),

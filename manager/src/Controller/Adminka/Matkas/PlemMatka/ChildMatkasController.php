@@ -44,7 +44,7 @@ class ChildMatkasController extends AbstractController
     {
         $this->denyAccessUnlessGranted(PlemMatkaAccess::VIEW, $plemmatka);
 
-        $korotkoName = $plemmatka->getKorotkoName();
+//        $korotkoName = $plemmatka->getKorotkoName();
 //dd($korotkoName);
         $filter = Filter\Filter::forPlemMatka($plemmatka->getId()->getValue());
 

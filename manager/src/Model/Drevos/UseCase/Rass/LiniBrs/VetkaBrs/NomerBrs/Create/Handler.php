@@ -29,23 +29,14 @@ class Handler
     {
 
         $vetka = $this->vetkas->get(new VetBrId($command->vetka));
+        $god_vetka = $vetka->getGod();
 
         $goda = $this->godas->get(new GodaId($command->god));
         $god = (string)$goda->getGod();
-//
 
-//if ($vetka->getVetka()){
-
-//    $names = explode("-",$command->name );
-//    $command->vetkaNomer = $command->name;
-//    $command->vetkaNomer = $names[0];
-//    $command->nameStar  = $vetka->getNameStar()."-".$command->vetkaNomer;
-//}else{
-//    $command->nameStar  = $vetka->getNameStar();
-//
-//    $command->vetkaNomer = "";
-//}
-//dd($command->nameStar);
+        if ( (int)$goda->getGod() < (int)$god_vetka ){
+            throw new \DomainException('Внимание! Исправьте год выхода матки. Дочь не может быть старше матери .');
+        }
 
         $command->title = $command->nomBr."-".$god;
 

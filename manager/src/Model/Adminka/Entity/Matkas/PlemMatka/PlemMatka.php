@@ -313,14 +313,14 @@ class PlemMatka
         return $this->name;
     }
 
-    public function getKorotkoName(): string
-    {
-
-        $korotkoNames= explode(" ",$this->getName() );
-
-//        dd(  $this->godaVixod);
-        return $this->korotkoName = $korotkoNames[0]."-".$this->godaVixod;
-    }
+//    public function getKorotkoName(): string
+//    {
+//
+//        $korotkoNames= explode(" ",$this->getName() );
+//
+////        dd(  $this->godaVixod);
+//        return $this->korotkoName = $korotkoNames[0]."-".$this->godaVixod;
+//    }
 
     public function getTitle(): string
     {

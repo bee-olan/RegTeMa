@@ -41,7 +41,7 @@
 
                        
                         <li><div class = "plem-nomer  plem-nomer__wid8">
-                            {{ rasa.name }}_{{ linia.name }}_{{ vetka.nomer }}-<strong class="strongo strongo--kras">{{nomer.title }} </strong>
+                            {{ rasa.name }} : {{ linia.name }} : {{ vetka.nomer }}-{{vetka.god  }} : <strong class="strongo strongo--kras">{{nomer.title }} </strong>
                             </div>
                         </li>
                         <li class="plem__name  ">Как-то так!  Это будут базовые данные </li>
@@ -57,21 +57,20 @@
                                 <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                             </svg>
                         </li> 
-                        <li><div class = "plem-nomer plem-nomer__wid12">
-{#                                {{ rlvn }} : #}
-                                <strong class="strongo strongo--kras">пн-{{ persona.nomer }}_{{ mesto.nomer }} </strong>
-                                _{{ rasa.name }}_{{ linia.name }}_{{ vetka.nomer }}-{{nomer.title }}
+                        <li><div class = "plem-nomer plem-nomer--wid28">
+                                {{ rasa.name }} : {{ linia.name }} : {{ vetka.nomer }}-{{vetka.god  }} : {{nomer.title }} :
+                                <strong class="strongo strongo--kras">пн-{{ persona.nomer }} : {{ mesto.nomer }} </strong>
                             </div></li>
-                        <li class="plem__name  ">С учетом Ваших данных: ПерсонНомера и НомерМеста.</li>
+                        <li class="plem__name  ">С учетом Ваших данных.</li>
                        
                         <li></li>
                    
                    
                 </ul>
                 <ul class="plem__data"> 
-                    <li>Продолжить регистрацию
+                    <li>
                         <a href="{{ path('app.proekts.pasekas.matkas.plemmatkas.creates.create',{'id' : nomer.id}  ) }}"
-                            class="btnn btnn--mb0 btnn--col">Продолжить регистрацию <strong class="stro stro--kras">ПлемМатки  </strong>
+                            class="btnn btnn--mb0 btnn--col-plemm">Продолжить регистрацию <strong class="stro stro--kras">ПлемМатки  </strong>
                         </a>
                     </li>
                     <li class="plem__name" >3.  Вам нужно заполнить еще пару позиций:</li>

@@ -163,19 +163,12 @@ class PlemCreateController extends AbstractController
                              NomerRepository  $nomerOtecs,
                              Request $request,
                             PersonaFetcher $personas, MestoNomerFetcher $mestoNomers,
-//                            NomerRepository $nomers,
                             PlemMatkaFetcher $plemmatkas): Response
     {
 
-    //    dd($plemmatka->getNomer()->getLinia()->getRasa()->getName());
         $nomer = $plemmatka->getNomer()->getTitle();
 
         $nomerOtec = $nomerOtecs->get(new Id($plemmatka->getOtecNomer()->getId()->getValue()));
-//dd($nomerOtec->getLinia()->getName());
-//        dd($nomerOtec->getName());
-        // $mesto = $plemmatka->getMesto()->getNomer();
-// dd($plemmatka->getOtecNomer()->getLinia()->getNomers(new Id($plemmatka->getOtecNomer()->getId()->getValue())));
-//        $plemId = $plemmatkas->findIdByPlemMatka($plemmatka);
 
 
         return $this->render('app/proekts/pasekas/matkas/plemmatkas/creates/sdelano.html.twig',
